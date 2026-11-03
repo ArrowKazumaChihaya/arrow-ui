@@ -1,0 +1,24 @@
+/* @covers ArPeriodNav 1.0.0 */
+/* ArPeriodNav：今の ARROW の MonthChanger（md：‹ › は 30px のテーマ色の丸に白い 12px の矢印・間8px、年月は幅いっぱいの 2px のテーマ色の枠・
+   テーマ色の 18px 太さ600・行の高さ30）と DateChanger（lg：日付は枠なしの黒い 30px 太さ600・最大220px、曜日は 22px の灰色・土は青・日は赤）。
+   乗せると丸は不透明度 .8。「今日」は今の ARROW にないので antd の小さなボタンを右に並べる（refs/classic/rules/arrow-MonthChanger.css・arrow-DateChanger.css）。 */
+[data-ar-design="classic"] [data-ar="period-nav"]{gap:8px;color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]{gap:8px}
+[data-ar-design="classic"] [data-ar="period-nav"][data-size="md"]>[data-part="center"]{flex:1}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]{width:30px;height:30px;border:0;border-radius:50%;background:var(--ar-accent);color:#fff;transition:opacity .2s}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:hover:not(:disabled){opacity:.8}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:1px}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:disabled{background:#C8C8C8}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]>[data-ar="icon"]{width:12px;height:12px;stroke-width:4}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]{justify-content:center;gap:4px;height:34px;padding:0 8px;border:2px solid var(--ar-accent);border-radius:0;background:#fff;color:var(--ar-accent);font-size:18px;font-weight:600;line-height:30px}
+[data-ar-design="classic"] [data-ar="period-nav"][data-size="md"]>[data-part="center"]>[data-part="label"]{flex:1}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:1px}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="caret"]{width:16px;height:16px;stroke-width:3;color:inherit}
+[data-ar-design="classic"] [data-ar="period-nav"][data-size="lg"]>[data-part="center"]>[data-part="label"]{align-items:baseline;justify-content:center;width:220px;max-width:220px;height:auto;padding:0;border:0;color:#000;font-size:30px;line-height:30px}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{margin-left:1px;color:gray;font-size:22px;font-weight:600}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"][data-tone="sun"]{color:red}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"][data-tone="sat"]{color:blue}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="today"]{position:static;transform:none;flex:none;height:24px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;box-shadow:0 2px 0 rgba(0,0,0,.02);transition:border-color .2s,color .2s}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="today"]:hover:not(:disabled){border-color:var(--ar-accent);color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="today"]:disabled{background:rgba(0,0,0,.04);color:rgba(0,0,0,.25)}

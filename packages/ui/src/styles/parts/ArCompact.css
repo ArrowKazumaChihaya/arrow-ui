@@ -1,0 +1,10 @@
+/* ArCompact の構造：すき間なく並べ、線を1本に重ねる */
+[data-ar="compact"]{display:inline-flex;align-items:stretch;vertical-align:middle;min-width:0}
+[data-ar="compact"][data-direction="vertical"]{flex-direction:column}
+[data-ar="compact"][data-block]{display:flex;width:100%}
+[data-ar="compact"][data-block]>*:last-child{flex:1 1 auto;min-width:0}
+[data-ar="compact"]>*{position:relative;margin:0}
+[data-ar="compact"][data-direction="horizontal"]>*+*{margin-left:-1px}
+[data-ar="compact"][data-direction="vertical"]>*+*{margin-top:-1px}
+[data-ar="compact"]>*:hover{z-index:1}
+[data-ar="compact"]>*:focus-within,[data-ar="compact"]>*:focus-visible{z-index:2}

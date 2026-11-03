@@ -1,0 +1,20 @@
+/* @covers ArRadioGroup 1.0.0 */
+/* ArRadioGroup：.radio（18px の丸・枠1.5 #AEB9C4、選ぶと枠5のテーマ色）。type=button は .seg（ArSegmented と同じ形）。 */
+[data-ar-design="remix"] [data-ar="radio-group"]{gap:10px 18px}
+[data-ar-design="remix"] [data-ar="radio-group"][data-direction="vertical"]{gap:10px}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"]{gap:8px;font-size:13.5px;line-height:1.5;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"]>[data-part="control"]>[data-part="mark"]{width:18px;height:18px;border-radius:50%;border:1.5px solid #AEB9C4;background:#fff;transition:border var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"]:hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{border:5px solid var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"]>[data-part="control"]>[data-part="input"]:focus-visible+[data-part="mark"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"][data-state~="disabled"]{color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"][data-state~="disabled"]>[data-part="control"]>[data-part="mark"]{background:var(--ar-color-surface-alt);border-color:var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="item"][data-state~="disabled"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-color-field)}
+/* ボタン型 */
+[data-ar-design="remix"] [data-ar="radio-group"][data-type="button"]{gap:2px;padding:3px;border-radius:10px;background:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]{gap:6px;height:28px;padding:0 12px;border-radius:8px;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600;line-height:1;transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]:hover:not([data-state~="disabled"]):not([data-state~="checked"]){color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="radio-group"][data-type="button"]>[data-part="item"][data-state~="checked"]{background:#fff;color:var(--ar-accent-ink);box-shadow:0 1px 3px rgba(31,41,51,.14)}
+[data-ar-design="remix"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]:has([data-part="input"]:focus-visible){box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="radio-group"][data-type="button"]>[data-part="item"][data-state~="checked"]:has([data-part="input"]:focus-visible){box-shadow:0 1px 3px rgba(31,41,51,.14),0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="radio-group"][data-type="button"]>[data-part="item"][data-state~="disabled"]{color:var(--ar-color-text-faint)}

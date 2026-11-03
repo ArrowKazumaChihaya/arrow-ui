@@ -1,0 +1,8 @@
+[data-ar="ellipsis"]{display:inline-block;max-width:100%;min-width:0;overflow:hidden;vertical-align:bottom}
+[data-ar="ellipsis"][data-lines="single"]{white-space:nowrap;text-overflow:ellipsis}
+[data-ar="ellipsis"][data-lines="multi"]{display:-webkit-box;-webkit-box-orient:vertical;white-space:normal;overflow-wrap:anywhere}
+[data-ar="ellipsis"][data-state~="cut"]:focus-visible{outline:2px solid currentColor;outline-offset:1px}
+[data-ar="ellipsis-tip"]{pointer-events:none;white-space:pre-wrap;overflow-wrap:anywhere}
+[data-ar="ellipsis-tip"]::after{content:"";position:absolute;transform:rotate(45deg);background:inherit}
+[data-ar="ellipsis-tip"][data-placement^="top"]::after{bottom:-4px;left:calc(var(--ar-float-arrow, 50%) - 4px);width:8px;height:8px}
+[data-ar="ellipsis-tip"][data-placement^="bottom"]::after{top:-4px;left:calc(var(--ar-float-arrow, 50%) - 4px);width:8px;height:8px}

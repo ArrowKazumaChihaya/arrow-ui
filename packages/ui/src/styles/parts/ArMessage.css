@@ -1,0 +1,14 @@
+/* ArMessage・ArMessageHost の形：上の真ん中に重ねて並べる。 */
+[data-ar="message-host"]{position:fixed;left:0;right:0;z-index:1100;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+[data-ar="message-host"]>[data-ar="message"]{pointer-events:auto}
+[data-ar="message"]{display:inline-flex;align-items:center;box-sizing:border-box;max-width:calc(100vw - 32px)}
+[data-ar="message"]>[data-part="icon"]{flex:none}
+[data-ar="message"]>[data-part="text"]{min-width:0}
+[data-ar="message"]>[data-part="spinner"]{display:inline-block;flex:none;box-sizing:border-box;border-radius:50%;border-style:solid;border-right-color:transparent!important;animation:ar-spin .8s linear infinite}
+@keyframes ar-spin{to{transform:rotate(360deg)}}
+.ar-message-enter-active,.ar-message-leave-active{transition:opacity .2s,transform .2s}
+.ar-message-enter-from,.ar-message-leave-to{opacity:0;transform:translateY(-8px)}
+@media (prefers-reduced-motion:reduce){
+  [data-ar="message"]>[data-part="spinner"]{animation-duration:2.4s}
+  .ar-message-enter-active,.ar-message-leave-active{transition:none}
+}

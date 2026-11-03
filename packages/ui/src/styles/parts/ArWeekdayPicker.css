@@ -1,0 +1,6 @@
+[data-ar="weekday-picker"]{display:flex;flex-wrap:wrap}
+[data-ar="weekday-picker"]>[data-part="day"]{display:flex;align-items:center;justify-content:center;margin:0;padding:0;cursor:pointer;box-sizing:border-box;flex:none}
+[data-ar="weekday-picker"]>[data-part="day"]:disabled{cursor:not-allowed}
+[data-ar="pills"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="pills"]>[data-part="pill"]{display:inline-flex;align-items:center;margin:0;cursor:pointer;white-space:nowrap;box-sizing:border-box;flex:none}
+[data-ar="pills"]>[data-part="pill"]:disabled{cursor:not-allowed}

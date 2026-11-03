@@ -1,0 +1,4 @@
+/* ArWatermark の形：中身の上に全面の幕。文字の形は mask、色は background。 */
+[data-ar="watermark"]{position:relative;overflow:hidden}
+[data-ar="watermark"]>[data-part="mark"]{position:absolute;inset:-40px;pointer-events:none;mask-repeat:repeat;-webkit-mask-repeat:repeat;z-index:1}
+@media print{[data-ar="watermark"]>[data-part="mark"]{-webkit-print-color-adjust:exact;print-color-adjust:exact}}

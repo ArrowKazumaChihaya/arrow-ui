@@ -1,0 +1,4 @@
+/* @covers ArAutoComplete 1.0.0 */
+/* ArAutoComplete：入力は ArTextInput、候補は _picker.css（行34px・頭文字の丸24px・合っている文字はテーマ色の太字）。
+   開いている間も入力はフォーカスの見た目（テーマ色の枠と淡い輪）のまま。 */
+[data-ar-design="remix"] [data-ar="auto-complete"]{font-family:var(--ar-font-family)}

@@ -1,0 +1,8 @@
+/* ArSpin の形：輪は回り続ける。中身を包むときは上に幕を重ねる。 */
+[data-ar="spin"]{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle}
+[data-ar="spin"][data-wrap]{position:relative;display:block}
+[data-ar="spin"]>[data-part="content"]{min-width:0}
+[data-ar="spin"]>[data-part="mask"]{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2}
+[data-ar="spin"]>[data-part="spinner"],[data-ar="spin"]>[data-part="mask"]>[data-part="spinner"]{display:inline-block;flex:none;box-sizing:border-box;border-radius:50%;border-style:solid;border-right-color:transparent!important;animation:ar-spin .8s linear infinite}
+@keyframes ar-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){[data-ar="spin"]>[data-part="spinner"],[data-ar="spin"]>[data-part="mask"]>[data-part="spinner"]{animation-duration:2.4s}}

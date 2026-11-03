@@ -1,0 +1,3 @@
+/* @covers ArAutoComplete 1.0.0 */
+/* ArAutoComplete（素の antd 4 の AutoComplete：入力は Input と同じ、候補は Select のプルダウン。active の行は rgba(0,0,0,.04)・文字13px） */
+[data-ar-design="classic"] [data-ar="auto-complete"]{font-family:var(--ar-font-family)}

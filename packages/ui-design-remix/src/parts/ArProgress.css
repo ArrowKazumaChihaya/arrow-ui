@@ -1,0 +1,19 @@
+/* @covers ArProgress 1.0.0 */
+/* 線・円・刻み（.ad-prg・.ad-ring）：進行はテーマ色、終わりは緑、失敗は赤。地は line-2。 */
+[data-ar-design="remix"] [data-ar="progress"]{gap:10px;color:var(--ar-color-text-secondary);font-size:var(--ar-font-size-label);font-weight:600;line-height:1.5;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="progress"]>[data-part="track"]{height:8px;border-radius:4px;background:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="progress"]>[data-part="track"]>[data-part="bar"]{border-radius:4px;background-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="progress"][data-status="success"]>[data-part="track"]>[data-part="bar"]{background-color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="progress"][data-status="exception"]>[data-part="track"]>[data-part="bar"]{background-color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="progress"][data-status="active"]>[data-part="track"]>[data-part="bar"]{background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);background-size:60% 100%}
+[data-ar-design="remix"] [data-ar="progress"][data-type="steps"]>[data-part="track"]{gap:3px;background:none;border-radius:0}
+[data-ar-design="remix"] [data-ar="progress"][data-type="steps"]>[data-part="track"]>[data-part="step"]{border-radius:2px;background:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="steps"]>[data-part="track"]>[data-part="step"][data-state="on"]{background:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="steps"][data-status="success"]>[data-part="track"]>[data-part="step"][data-state="on"]{background:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="steps"][data-status="exception"]>[data-part="track"]>[data-part="step"][data-state="on"]{background:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"]{width:96px;height:96px;color:var(--ar-color-text);font-size:18px;font-weight:var(--ar-font-weight-strong)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"][data-size="sm"]{width:56px;height:56px;font-size:12.5px}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"]>[data-part="ring"]>[data-part="ring-track"]{stroke:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"][data-status="success"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"][data-status="exception"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:var(--ar-color-danger)}

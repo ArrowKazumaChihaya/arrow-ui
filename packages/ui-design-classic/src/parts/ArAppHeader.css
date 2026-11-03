@@ -1,0 +1,67 @@
+/* @covers ArAppHeader 1.0.0, ArAppFooter 1.0.0, ArMobileHeader 1.0.0, ArBottomNav 1.0.0 */
+/* 今の MenuLayout のヘッダー（arrow-Header.png）：#EDF3F7 の面・下に 6px の #6CB1B7（その他の色）。
+   1段目：ロゴ 100px、上から垂れる 235px のタブ（お知らせ #DFDFDF／やること #FFEAE6・角丸 0 0 12 12）、右に「管理ページ」14px。
+   2段目：120×76（右は 100）の白い四角（角丸4・間12）に 42px の丸とアイコン、下に 14px の名前。今いる項目・指した項目は項目の色で塗り、名前は白の太字 */
+[data-ar-design="classic"] [data-ar="app-header"]{background:#EDF3F7;border-bottom:6px solid #6CB1B7;font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]{max-width:1440px;height:53px;margin:0 auto;padding:10px 40px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]>:is(img,svg){width:100px;height:auto}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]{position:absolute;top:0;z-index:5;justify-content:center;gap:8px;width:235px;padding:9px 0;border:0;border-radius:0 0 12px 12px;box-shadow:0 3px 6px rgba(71,79,87,.16);font-size:14px;font-weight:700;line-height:20px;transition:.3s}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]:nth-of-type(1){left:170px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]:nth-of-type(2){left:415px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]:nth-of-type(3){left:660px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="notice"]{background:#DFDFDF;color:#1890FF}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="notice"]>[data-part="pill-icon"]{width:24px;height:18px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="notice"][data-state="empty"]{background:#9B9A9B;color:#fff}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="todo"]{background:#FFEAE6;color:#DC2525}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="todo"][data-state="empty"]{color:gray}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="todo"]>[data-part="pill-icon"]{width:16px;height:16px;margin-bottom:3px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-state="has-count"]>:is([data-part="pill-icon"],[data-part="pill-label"]){animation:ar-classic-blink 1s ease-in infinite alternate}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-part="count"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]:focus-visible{outline:2px solid #4096FF;outline-offset:-2px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]{height:33px;padding:1px 16px 1px 6px;border:0;background:none;color:#000;font-size:14px;line-height:13px;transition:.3s}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="avatar"]{display:none}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="account-icon"]{width:20px;height:20px;margin-right:6px;stroke-width:1.5}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="account-arrow"]{position:absolute;right:0;top:50%;width:10px;height:10px;margin-top:-5px;stroke-width:2.6}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]:focus-visible{outline:2px solid #4096FF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]{max-width:1440px;margin:0 auto;padding:20px 40px 10px;gap:12px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]{flex-direction:column;justify-content:flex-start;width:120px;height:76px;padding:6px 0;border-radius:4px;background:#fff;transition:.3s;overflow:hidden}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-side="end"]{width:100px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]{width:42px;height:42px;border-radius:50%;color:#5C5C5C}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]>[data-ar="icon"]{width:29px;height:29px;stroke-width:1.5}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-label"]{width:100%;margin-top:4px;font-size:14px;line-height:18px;color:#333;text-align:center}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"]){background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"])>[data-part="item-icon"]{background:rgba(255,255,255,.5)}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"])>[data-part="item-label"]{color:#fff;font-weight:700}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:focus-visible{outline:2px solid #4096FF;outline-offset:1px}@keyframes ar-classic-blink{0%{opacity:0}50%{opacity:1}100%{opacity:1}}@media (prefers-reduced-motion: reduce){[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-state="has-count"]>*{animation:none}}
+/* 管理ページのメニュー（arrow-Header-loginmenu：150px・#4495D4 の 3px の枠・角丸4・行40 の 14px 太字） */
+[data-ar-design="classic"] [data-ar="app-account-menu"]{width:150px;border:3px solid #4495D4;border-radius:4px;background:#fff;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="app-account-menu"]>[data-part="menu-item"]{height:40px;padding:0 0 0 40px;border:0;background:none;color:#333;font-size:14px;font-weight:700;line-height:40px;transition:.3s;outline:0}
+[data-ar-design="classic"] [data-ar="app-account-menu"]>[data-part="menu-item"]:is(:hover,:focus-visible){background:#DBF0FF;color:#4495D4}
+[data-ar-design="classic"] [data-ar="app-account-menu"]>[data-part="menu-item"]>[data-part="menu-arrow"]{position:absolute;left:15px;top:12px;width:16px;height:16px;padding:3px;border-radius:50%;background:#4495D4;color:#fff;stroke-width:3.2;box-sizing:border-box}
+/* 画面の足（arrow-Footer.png：#72AEDB の 120px のリンク・135×68 の問い合わせ・12px の著作権） */
+[data-ar-design="classic"] [data-ar="app-footer"]{max-width:1440px;margin:0 auto;padding:0 40px;font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]{align-items:flex-start}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]{gap:10px;padding:28px 0}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"]{display:inline-block;width:120px;padding:8px 0;border:0;border-radius:4px;background:#72AEDB;color:#fff;font-size:14px;font-weight:700;line-height:13px;text-align:center;transition:.3s}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]{gap:10px}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]{flex-direction:column;justify-content:space-between;width:135px;height:68px;padding:5px 0 10px;border:0;border-radius:0;background:#72AEDB;color:#fff;font-size:14px;line-height:13px;transition:.3s}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]>[data-part="support-icon"]{width:34px;height:34px;margin-top:3px;stroke-width:1.6}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]>:is([data-part="links"],[data-part="supports"])>:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]>:is([data-part="links"],[data-part="supports"])>:focus-visible{outline:2px solid #4096FF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="app-footer"]>[data-part="copyright"]{padding:10px 0;font-size:12px;line-height:12px;text-align:center}
+/* スマホの頭（959px 以下の header_inner_slim と HeaderNotice：高さ50・ロゴ80・40px の橙の角丸10・右下の赤い丸） */
+[data-ar-design="classic"] [data-ar="mobile-header"]{height:50px;padding:0 0 0 15px;background:#EDF3F7;border-bottom:1px solid #6CB1B7;font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="logo"]>:is(img,svg){width:80px;height:auto}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="notice"]{width:40px;height:40px;margin-right:10px;padding:7px;border:0;border-radius:10px;background:#EB9142;color:#3E3A39}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="notice"][data-state="empty"]{background:#DFDFDF}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="notice"]:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="notice"]:focus-visible{outline:2px solid #4096FF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="notice"]>[data-ar="icon"]{width:25px;height:25px;stroke-width:1.6}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="notice"]>[data-part="count"]{bottom:-3px;right:-3px;width:20px;height:20px;border-radius:10px;background:red;color:#fff;font-size:9px;font-weight:600;line-height:20px}
+/* 下のメニュー（959px 以下の footer_inner_slim：#ECECEC・高さ65（下に15）・上に 2px の線、今いる項目は線とアイコンと名前が項目の色） */
+[data-ar-design="classic"] [data-ar="bottom-nav"]{height:65px;padding-bottom:15px;background:#ECECEC;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"]{justify-content:flex-start;height:100%;padding:7px;border-top:2px solid #ECECEC;background:none;color:#5C5C5C;font-size:8px;font-weight:600;line-height:1}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"]>[data-part="icon"]{width:20px;height:20px;flex:none}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"]>[data-part="label"]{margin-top:4px}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"][data-state~="on"]{border-top-color:var(--ar-accent);color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"]:focus-visible{outline:2px solid #4096FF;outline-offset:-2px}

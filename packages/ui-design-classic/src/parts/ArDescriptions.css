@@ -1,0 +1,13 @@
+/* @covers ArDescriptions 1.0.0 */
+/* ArDescriptions（素の ant-design-vue 4 の Descriptions。plain＝既定：「ラベル：値」14px、行の下16。bordered（small）＝角丸8・rgba(5,5,5,.06) の枠、ラベルは rgba(0,0,0,.02) の地・余白 8/16） */
+[data-ar-design="classic"] [data-ar="descriptions"]{color:rgba(0,0,0,.88);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="descriptions"]>[data-part="header"]{margin-bottom:20px}
+[data-ar-design="classic"] [data-ar="descriptions"]>[data-part="header"]>[data-part="title"]{font-size:16px;font-weight:600;line-height:24px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]{padding-bottom:16px}
+[data-ar-design="classic"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]>[data-part="label"]::after{content:":";margin:0 8px 0 2px}
+[data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{border:1px solid rgba(5,5,5,.06);border-radius:8px;overflow:hidden}
+[data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){padding:8px 16px;border-right:1px solid rgba(5,5,5,.06);border-bottom:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);white-space:nowrap}
+[data-ar-design="classic"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="danger"]>[data-part="value"]{color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="warn"]>[data-part="value"]{color:#FAAD14}
+[data-ar-design="classic"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="ok"]>[data-part="value"]{color:#3F8600}

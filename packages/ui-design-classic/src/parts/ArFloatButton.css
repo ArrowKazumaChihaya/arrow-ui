@@ -1,0 +1,13 @@
+/* @covers ArFloatButton 1.0.0 */
+/* ArFloatButton：今の ARROW にない部品。ant-design-vue 4 の FloatButton（40pxの丸・白・影、primary はテーマ色、件数は #ff4d4f）。 */
+[data-ar-design="classic"] [data-ar="float-button"]:not([data-shape="group"]){width:40px;height:40px;border-radius:50%;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);transition:background .2s}
+[data-ar-design="classic"] [data-ar="float-button"]:not([data-shape="group"]):hover{background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="float-button"][data-tone="primary"]{background:var(--ar-accent);color:#fff}
+[data-ar-design="classic"] [data-ar="float-button"][data-tone="primary"]:hover{background:var(--ar-accent-hi)}
+[data-ar-design="classic"] [data-ar="float-button"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]{border-radius:20px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
+[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]{width:40px;height:40px;background:none;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]+[data-part="item"]{border-top:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]:hover{background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="float-button"]>[data-part="badge"],[data-ar-design="classic"] [data-ar="float-button"]>[data-part="item"]>[data-part="badge"]{top:-4px;right:-4px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:12px;line-height:20px;box-shadow:0 0 0 1px #fff}
+[data-ar-design="classic"] [data-ar="float-button"]>[data-part="item"]>[data-part="badge"]{top:0;right:0}

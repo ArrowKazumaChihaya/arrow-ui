@@ -1,0 +1,3 @@
+[data-ar="flag-group"]{display:flex;flex-wrap:wrap}
+[data-ar="flag-group"][data-direction="vertical"]{flex-direction:column;align-items:flex-start}
+[data-ar="flag-view"]{display:inline-flex;flex-wrap:wrap;align-items:center;vertical-align:middle}

@@ -1,0 +1,13 @@
+/* ArTour の構造：画面いっぱいの重ね（押せない）と、指す要素の場所の窓。カードは浮かぶものとして置く。 */
+[data-ar="tour"][data-part="overlay"]{position:fixed;inset:0;z-index:1055}
+[data-ar="tour"][data-part="overlay"]>[data-part="spot"]{position:fixed;pointer-events:none;box-sizing:border-box;transition:top .2s,left .2s,width .2s,height .2s}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]{position:relative;box-sizing:border-box}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{position:absolute;pointer-events:none}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]{position:absolute;display:inline-flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>:is([data-part="title"],[data-part="description"],[data-part="footer"]){position:relative}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="title"]{display:block}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{display:flex;align-items:center}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]{display:flex;align-items:center}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]>[data-part="dot"]{display:block;flex:none}
+[data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="actions"]{display:flex;align-items:center;margin-left:auto}
+@media (prefers-reduced-motion:reduce){[data-ar="tour"][data-part="overlay"]>[data-part="spot"]{transition:none}}

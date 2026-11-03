@@ -1,0 +1,2 @@
+[data-ar="zip-input"]{display:inline-flex;align-items:center;flex-wrap:wrap;vertical-align:middle}
+[data-ar="zip-input"]>[data-part="status"]:empty{display:none}

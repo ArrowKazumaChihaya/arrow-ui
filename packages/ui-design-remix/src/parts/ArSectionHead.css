@@ -1,0 +1,19 @@
+/* @covers ArSectionHead 1.0.0 */
+/* ArSectionHead：シフト画面の .v-sh（箱 32・角丸10・acc-50 の地と acc-ink のアイコン、見出し 16px 太字、件数 .r-hc 22px・角丸11・12px 太字）。
+   end の中の小さなラベル（「表示モード」）は 12px（.v-sh .lab）。 */
+[data-ar-design="remix"] [data-ar="section-head"]{gap:8px;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="toggle"]{gap:8px;border-radius:10px}
+[data-ar-design="remix"] [data-ar="section-head"]>button[data-part="toggle"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="icon"]{width:32px;height:32px;border-radius:10px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="title"]{margin-right:2px;font-size:16px;font-weight:700;line-height:24px}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="count"]{height:22px;margin-left:-2px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;line-height:18px;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="caret"]{color:var(--ar-color-text-muted);transition:transform var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="section-head"][data-state="closed"]>[data-part="toggle"]>[data-part="caret"]{transform:rotate(-90deg)}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="actions"]{gap:8px;margin-left:8px}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="end"]{gap:8px}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="end"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{font-size:12px;line-height:18px}
+[data-ar-design="remix"] [data-ar="section-head"]>button[data-part="toggle"]{font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="section-head"]>button[data-part="toggle"]>[data-part="title"]{margin-right:0}
+/* 見出しの横の操作は .v-tint（左右12px） */
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="actions"]>[data-ar="button"]:not([data-size]),[data-ar-design="remix"] [data-ar="section-head"]>[data-part="actions"]>[data-ar="button"][data-size="md"]{padding:0 12px}
+[data-ar-design="remix"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="caret"]{margin-left:2px}

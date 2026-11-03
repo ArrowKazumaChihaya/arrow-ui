@@ -1,0 +1,10 @@
+/* ArDescriptions の構造。bordered は「ラベル｜値」を1組として列に並べる（項目の div は display:contents） */
+[data-ar="descriptions"]{min-width:0}
+[data-ar="descriptions"]>[data-part="header"]{display:flex;align-items:center;justify-content:space-between;gap:8px}
+[data-ar="descriptions"]>[data-part="header"]>[data-part="title"]{margin:0}
+[data-ar="descriptions"]>[data-part="list"]{display:grid;margin:0;min-width:0}
+[data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),auto minmax(0,1fr))}
+[data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]{display:contents}
+[data-ar="descriptions"][data-variant="plain"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr))}
+[data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]{display:flex;align-items:baseline;min-width:0}
+[data-ar="descriptions"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){margin:0;min-width:0}

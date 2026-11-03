@@ -1,15 +1,46 @@
 /* @covers ArCard 1.0.0 */
-[data-ar-design="remix"] [data-ar="card"]{background:var(--ar-color-surface);color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]{border-radius:var(--ar-radius-card);box-shadow:var(--ar-shadow-card);overflow:hidden}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;overflow:hidden;min-height:54px;padding:0 16px;justify-content:center;gap:8px;background:linear-gradient(120deg,var(--ar-accent-hi) 0%,var(--ar-accent) 45%,var(--ar-accent-strong) 100%);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::before,[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.12);pointer-events:none}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::before{width:120px;height:120px;left:-30px;top:-70px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::after{width:90px;height:90px;right:40px;bottom:-60px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{gap:8px;font-size:18px;font-weight:var(--ar-font-weight-strong);letter-spacing:.08em}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:absolute;right:12px;top:50%;transform:translateY(-50%);gap:6px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="body"]{padding:16px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]{border-radius:14px;box-shadow:inset 0 0 0 1px var(--ar-color-border);padding:14px 16px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]{margin-bottom:10px;gap:8px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:var(--ar-font-size-heading);font-weight:var(--ar-font-weight-strong)}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="actions"]{gap:6px}
-[data-ar-design="remix"] [data-ar="card"][data-flush]>[data-part="body"]{padding:0}
+/* ArCard（band＝.v-card＋.v-band＋.v-tabs、elevated・outlined＝.ad-card、plain＝.stat の小さな線の箱） */
+[data-ar-design="remix"] [data-ar="card"]{font-feature-settings:"palt" 1;background:var(--ar-color-surface);color:var(--ar-color-text)}
+
+/* band：白・角丸18・影。帯は54px・18px太字・字間0.08em、テーマ色の120度のやわらかいグラデーションに淡い白の丸 */
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]{border-radius:18px;box-shadow:var(--ar-shadow-card);overflow:hidden}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;overflow:hidden;flex:none;flex-wrap:nowrap;height:54px;padding:0 16px;justify-content:center;background:linear-gradient(120deg,var(--ar-accent-hi) 0%,var(--ar-accent) 45%,var(--ar-accent-strong) 100%);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::before,[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::before{right:-30px;top:-46px;width:150px;height:150px;background:rgba(255,255,255,.10)}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::after{left:-40px;bottom:-70px;width:140px;height:140px;background:rgba(255,255,255,.07)}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{position:relative;gap:9px;font-size:18px;font-weight:700;letter-spacing:.08em;line-height:1.5;white-space:nowrap}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:20px;height:20px;stroke-width:2;color:inherit}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:absolute;right:12px;top:50%;transform:translateY(-50%);gap:6px;text-shadow:none}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]{height:46px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:15px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:18px;height:18px}
+/* 帯のすぐ下のタブの帯（acc-50 の地・下に acc-100 の線）は ArTabs（variant="band"）が持つ。ここは隙間なくつなぐだけ */
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding:0}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="body"]{--ar-card-pad-x:18px;padding:18px 18px 20px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="body"]{--ar-card-pad-x:12px;padding:12px}
+
+/* elevated・outlined：白・角丸18（影か線）。見出しの行は下に線、本文は灰色の13px */
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"]){border-radius:18px;overflow:hidden}
+[data-ar-design="remix"] [data-ar="card"][data-variant="elevated"]{box-shadow:var(--ar-shadow-card)}
+[data-ar-design="remix"] [data-ar="card"][data-variant="outlined"]{box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="head"]{gap:8px;flex-wrap:nowrap;padding:12px 16px;border-bottom:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="head"]>[data-part="title"]{gap:8px;font-size:14.5px;font-weight:700;line-height:1.5}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:16px;height:16px;color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="head"]>[data-part="actions"]{gap:4px;margin-left:auto;font-size:12.5px;font-weight:600;color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="body"]{--ar-card-pad-x:16px;padding:14px 16px;font-size:13px;line-height:1.7;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])[data-size="sm"]>[data-part="head"]{padding:10px 14px}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])[data-size="sm"]>[data-part="body"]{--ar-card-pad-x:14px;padding:12px 14px}
+[data-ar-design="remix"] [data-ar="card"]>[data-part="cover"]{min-height:90px;background:linear-gradient(120deg,var(--ar-accent-hi),var(--ar-accent) 45%,var(--ar-accent-strong))}
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]{display:flex;border-top:1px solid var(--ar-color-border-subtle);color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>*{flex:1;height:40px;border-radius:0}
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>*+*{border-left:1px solid var(--ar-color-border-subtle)}
+
+/* plain：中のさらに小さな線の箱（角丸12・線・10/12の余白） */
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]{border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);padding:10px 12px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]{gap:6px;flex-wrap:nowrap;margin-bottom:2px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{gap:4px;font-size:11.5px;font-weight:400;line-height:1.5;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:13px;height:13px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="actions"]{gap:4px;margin-left:auto}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"][data-size="sm"]{padding:8px 10px}
+
+[data-ar-design="remix"] [data-ar="card"][data-flush]>[data-part="body"]{--ar-card-pad-x:0px;padding:0}

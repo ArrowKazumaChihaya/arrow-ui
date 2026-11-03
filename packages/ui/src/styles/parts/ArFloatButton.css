@@ -1,0 +1,7 @@
+/* ArFloatButton の構造 */
+[data-ar="float-button"]{position:relative;box-sizing:border-box;flex:none}
+[data-ar="float-button"]:not([data-shape="group"]){display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;cursor:pointer;text-decoration:none;font:inherit}
+[data-ar="float-button"][data-shape="group"]{display:inline-flex;flex-direction:column;overflow:hidden}
+[data-ar="float-button"][data-shape="group"]>[data-part="item"]{position:relative;display:flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;cursor:pointer;font:inherit}
+[data-ar="float-button"][data-fixed]{position:fixed;right:24px;bottom:24px;z-index:900}
+[data-ar="float-button"] [data-part="badge"]{position:absolute;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:none}

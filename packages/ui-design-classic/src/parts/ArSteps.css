@@ -1,0 +1,31 @@
+/* @covers ArSteps 1.0.0 */
+/* ArSteps：今の ARROW の手順（UI/Step ＝ ant-design-vue の Steps small・ラベルは下）。
+ * 丸24px・12px。済み：#E6F4FF の丸に #1677FF のチェック・線も #1677FF。今：#1677FF の数字（丸は透明）。まだ：rgba(0,0,0,.06) の丸。題 14px（まだは .45）。
+ * 縦（direction="vertical"）は ant-design-vue の縦の Steps（丸32・題16px）。mini はラベル横の small。 */
+[data-ar-design="classic"] [data-ar="steps"]{color:rgba(0,0,0,.88);font-size:14px}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="icon"]{width:24px;height:24px;border:1px solid transparent;border-radius:24px;box-sizing:border-box;background:rgba(0,0,0,.06);color:rgba(0,0,0,.88);font-size:12px;line-height:1}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="finish"]>[data-part="body"]>[data-part="icon"]{background:#E6F4FF;border-color:#E6F4FF;color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="process"]>[data-part="body"]>[data-part="icon"]{background:transparent;color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="icon"]{background:#fff;border-color:#FF4D4F;color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{font-size:14px;line-height:24px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="wait"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="description"]{font-size:13px;line-height:13px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="content"]>[data-part="description"]{color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"][data-clickable]:hover>[data-part="content"]>[data-part="title"]{color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="horizontal"]{padding:0 16px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="horizontal"]>[data-part="step"]>[data-part="body"]{flex-direction:column;align-items:center;gap:12px;text-align:center}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="horizontal"]>[data-part="step"]>[data-part="body"]>[data-part="content"]{align-items:center;gap:4px;width:112px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="horizontal"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="title"]::after{display:none}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="horizontal"]>[data-part="step"]:not(:last-child)::after{content:"";position:absolute;top:12px;left:calc(50% + 24px);right:calc(-50% + 24px);height:1px;background:rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="horizontal"]>[data-part="step"][data-status="finish"]:not(:last-child)::after{background:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]{padding-bottom:12px;min-height:58px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]{gap:16px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]>[data-part="icon"]{width:32px;height:32px;border-radius:32px;font-size:14px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{font-size:16px;line-height:32px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]:not(:last-child)::before{content:"";position:absolute;left:16px;top:38px;bottom:6px;width:1px;background:rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"][data-status="finish"]:not(:last-child)::before{background:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="steps"][data-size="mini"]{gap:12px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="mini"]>[data-part="step"]>[data-part="body"]{gap:8px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="mini"]>[data-part="connector"]{width:32px;height:1px;background:rgba(5,5,5,.06)}

@@ -1,0 +1,15 @@
+/* @covers ArDivider 1.0.0 */
+/* ArDivider：ant-design-vue 4 の Divider（線 rgba(5,5,5,.06)・上下24・文字16px） */
+[data-ar-design="classic"] [data-ar="divider"][data-orientation="horizontal"]{margin:24px 0;color:rgba(0,0,0,.88);font-size:16px;font-weight:500;line-height:1.5}
+[data-ar-design="classic"] [data-ar="divider"][data-with-text]{margin:16px 0}
+[data-ar-design="classic"] [data-ar="divider"][data-orientation="horizontal"]::before,[data-ar-design="classic"] [data-ar="divider"][data-orientation="horizontal"]::after{border-top:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="divider"][data-align="start"]::before,[data-ar-design="classic"] [data-ar="divider"][data-align="end"]::after{flex:0 0 5%}
+[data-ar-design="classic"] [data-ar="divider"]>[data-part="text"]{padding:0 1em}
+[data-ar-design="classic"] [data-ar="divider"][data-dashed]::before,[data-ar-design="classic"] [data-ar="divider"][data-dashed]::after{border-top-style:dashed}
+[data-ar-design="classic"] [data-ar="divider"][data-plain]{font-size:14px;font-weight:400}
+[data-ar-design="classic"] [data-ar="divider"][data-orientation="vertical"]{height:.9em;margin:0 8px;border-left:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="divider"][data-orientation="vertical"][data-dashed]{border-left-style:dashed}
+[data-ar-design="classic"] [data-ar="divider"][data-bleed][data-orientation="horizontal"]{width:auto;margin-inline:calc(var(--ar-card-pad-x,0px) * -1)}
+/* subtle：今のシフトカレンダーの年月の下の区切り（灰色の点線）。bleed は今の画面では余白の内側に収める。 */
+[data-ar-design="classic"] [data-ar="divider"][data-subtle][data-orientation="horizontal"]::before,[data-ar-design="classic"] [data-ar="divider"][data-subtle][data-orientation="horizontal"]::after{border-top:1px dashed #C8C8C8}
+[data-ar-design="classic"] [data-ar="divider"][data-bleed][data-subtle][data-orientation="horizontal"]{margin-inline:0}

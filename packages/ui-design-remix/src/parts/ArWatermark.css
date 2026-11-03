@@ -1,0 +1,3 @@
+/* @covers ArWatermark 1.0.0 */
+/* 透かし（.ad-wm）：うすい ink（10%）の文字。 */
+[data-ar-design="remix"] [data-ar="watermark"]>[data-part="mark"]{background:rgba(31,41,51,.10)}

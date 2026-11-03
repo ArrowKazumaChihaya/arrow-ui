@@ -5,7 +5,8 @@ import type { Demo } from "./demos";
 import { highlight } from "./highlight";
 import { palette, shown, designs } from "./state";
 
-const props = defineProps<{ demo: Demo; both?: boolean; hideCode?: boolean }>();
+/** screen：画面の例。余白なしで大きく出し、両方の見た目のときも左右に並べず上下に重ねる。 */
+const props = defineProps<{ demo: Demo; both?: boolean; hideCode?: boolean; screen?: boolean }>();
 const open = ref(false);
 const copied = ref(false);
 const list = computed(() => (props.both ? [...designs] : shown.value));
@@ -22,8 +23,8 @@ async function copy() {
 </script>
 
 <template>
-  <section class="demo" :id="demo.id">
-    <div class="demo-stage" :class="{ 'is-both': list.length > 1 }">
+  <section class="demo" :class="{ 'is-screen': screen }" :id="demo.id">
+    <div class="demo-stage" :class="{ 'is-both': list.length > 1 && !screen, 'is-stack': list.length > 1 && screen }">
       <div v-for="d in list" :key="d.id" class="demo-pane">
         <div v-if="list.length > 1" class="demo-pane-label">{{ d.id === "remix" ? "新しい見た目" : "今の見た目" }}</div>
         <ArUiProvider :design="d" :palette="palette" scope="self">

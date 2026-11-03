@@ -1,0 +1,17 @@
+/* ArDateRange・ArDatePicker の並び */
+[data-ar="date-range"],[data-ar="date-picker"]{display:flex;flex-direction:column;align-items:flex-start}
+[data-ar="date-range"]>[data-part="row"],[data-ar="date-picker"]>[data-part="row"]{display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="date-range"]>[data-part="row"]>[data-part="separator"],[data-ar="date-picker"]>[data-part="row"]>[data-part="separator"],[data-ar="date-range"]>[data-part="row"]>[data-part="days"],[data-ar="date-picker"]>[data-part="row"]>[data-part="days"]{flex:none;white-space:nowrap}
+[data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]{display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;cursor:pointer;flex:none;box-sizing:border-box}
+[data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]:disabled{cursor:not-allowed}
+[data-ar="date-picker-panel"]{box-sizing:border-box}
+[data-ar="date-picker-panel"][data-ar-float]{position:fixed;z-index:1000}
+[data-ar="date-picker-panel"][data-inline]{display:inline-block}
+[data-ar="date-picker-panel"]>[data-part="head"]{display:flex;align-items:center}
+[data-ar="date-picker-panel"]>[data-part="head"]>[data-part="title"]{flex:1;text-align:center}
+[data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]{display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;cursor:pointer;flex:none}
+[data-ar="date-picker-panel"]>[data-part="grid"]{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+[data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]{display:contents}
+[data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]{margin:0;padding:0;border:0;cursor:pointer;font-variant-numeric:tabular-nums}
+[data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="date-picker-panel"]>[data-part="foot"]{display:flex;justify-content:space-between;align-items:center}

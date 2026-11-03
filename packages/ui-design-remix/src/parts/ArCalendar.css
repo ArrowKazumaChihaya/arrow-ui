@@ -1,0 +1,70 @@
+/* @covers ArCalendar 1.0.0 */
+/* ArCalendar：デザインシステムの .ad-calf（角丸12・線の枠・見出しの段 8/10 と下線、曜日は淡いテーマ色の 28px、マスは 54px・線 #F0F3F6・12px 中太の数字、
+   今日はテーマ色の 20px の丸、選んだ日は acc-25 の地と 1.5px の枠、前後の月は #A3AEB9）と .ev（行事の印）、.seg（月／年の切り替え）。 */
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"]){border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-border);overflow:hidden;color:var(--ar-color-text);font-size:14px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]{gap:8px;padding:8px 10px;border-bottom:1px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="title"]{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]{gap:10px}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="year"]{width:90px}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]{gap:2px;padding:3px;border-radius:10px;background:#F0F3F6}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]{height:28px;padding:0 12px;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font:600 12.5px/1 var(--ar-font-family);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:hover{color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"][data-state~="selected"]{background:#fff;color:var(--ar-accent-ink);box-shadow:0 1px 3px rgba(31,41,51,.14)}
+[data-ar-design="remix"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>:is([data-part="weekday"],[data-part="cell"]){border-right:1px solid #F0F3F6;border-bottom:1px solid #F0F3F6}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>:is([data-part="weekday"],[data-part="cell"]):last-child{border-right:0}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{height:28px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11.5px;font-weight:600}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{min-height:54px;gap:2px;padding:4px 6px;font:600 12px/1.5 var(--ar-font-family);font-variant-numeric:tabular-nums;outline:0;transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]:hover{background:#F8FAFC}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="selected"]{background:var(--ar-accent-faint);box-shadow:inset 0 0 0 1.5px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="selected"]:focus-visible{box-shadow:inset 0 0 0 1.5px var(--ar-accent),inset 0 0 0 4px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-weekend="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-weekend="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="adjacent"]{color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="disabled"]{background:#F8FAFC;color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="today"]>[data-part="day"]{width:20px;height:20px;border-radius:50%;background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]{gap:2px}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]>[data-part="event"]{padding:1px 6px;border-radius:5px;background:var(--ar-color-event-subtle);color:#5B3D8F;font-size:11.5px;font-weight:600;line-height:16px}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]>[data-part="event"][data-tone="danger"]{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]>[data-part="event"][data-tone="accent"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]>[data-part="event"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"][data-grid="year"]>[data-part="row"]>[data-part="cell"]{min-height:64px;padding:8px 10px;font-size:12.5px}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"][data-grid="year"]>[data-part="row"]>[data-part="cell"][data-state~="current"]{background:var(--ar-accent-faint);box-shadow:inset 0 0 0 1.5px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"][data-grid="year"]>[data-part="row"]>[data-part="cell"][data-state~="current"]>[data-part="day"]{color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"])>[data-part="grid"]>[data-part="row"]:last-child>[data-part="cell"]{border-bottom:0}
+/* board：シフト画面の .v-wh / .v-wg / .v-cc（マスは角丸12・#F7F9FB、土日は #F3F6F9、間は4px。日付は 30px の丸の中の 14px 太字、
+   今日はテーマ色の丸、選んだ日は白い地にテーマ色の2pxの枠と影、ロック中は斜線と右上の鍵、非公開は左上の目の印、注意は #E58A84 の 1.5px の枠。
+   イベントは色の点と 10.5px 太字の紫の文字、下の段（foot）は 10.5px 太字の ink-2 で、札（ArTag xs）と人数を間3pxで並べる）。 */
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]{color:var(--ar-color-text);font-size:14px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]{gap:4px}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]{gap:4px}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"][data-row="head"]{gap:0}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{height:30px;color:var(--ar-color-text);font-size:12px;font-weight:700;letter-spacing:.08em}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-weekend="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-weekend="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{min-height:88px;gap:4px;padding:6px 4px;border-radius:12px;background:#F7F9FB;color:var(--ar-color-text);font-feature-settings:normal;outline:0;transition:background .12s}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]:hover{background:#EEF3F8}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-weekend]{background:#F3F6F9}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-weekend="sun"]>[data-part="day"]{color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-weekend="sat"]>[data-part="day"]{color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="locked"]{background:repeating-linear-gradient(135deg,#F7F9FB 0 6px,#EEF1F5 6px 12px)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="adjacent"]{background:transparent;cursor:default}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="adjacent"]>[data-part="day"]{color:#C3CBD3}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="disabled"]{opacity:.55}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="alert"]{box-shadow:inset 0 0 0 1.5px #E58A84}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="selected"]{background:#fff;box-shadow:inset 0 0 0 2px var(--ar-accent),0 6px 16px -8px color-mix(in srgb,var(--ar-accent) 60%,transparent)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent-line),0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="selected"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent),0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"]{width:30px;height:30px;border-radius:50%;font-family:var(--ar-font-family-numeric);font-size:14px;font-weight:700;line-height:normal;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"][data-size="sm"]{font-size:11px}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="today"]>[data-part="day"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow);box-shadow:0 4px 10px -3px color-mix(in srgb,var(--ar-accent) 70%,transparent)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>:is([data-part="lock"],[data-part="unpublished"]){top:7px;width:12px;height:12px;color:#8592A0}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="lock"]{right:7px}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="unpublished"]{left:7px}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]{gap:4px;color:#6A4BA3;font-size:10.5px;font-weight:700;line-height:normal}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{width:6px;height:6px;border-radius:50%;background:var(--ar-event-color,var(--ar-color-event))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="danger"]>[data-part="dot"]{background:var(--ar-event-color,var(--ar-color-danger))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="accent"]>[data-part="dot"]{background:var(--ar-event-color,var(--ar-accent))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="ok"]>[data-part="dot"]{background:var(--ar-event-color,var(--ar-color-ok))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="foot"]{gap:3px;min-height:16px;color:var(--ar-color-text-secondary);font-size:10.5px;font-weight:700;line-height:16px;font-variant-numeric:tabular-nums}

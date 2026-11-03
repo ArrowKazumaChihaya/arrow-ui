@@ -1,0 +1,27 @@
+/* @covers ArInputNumber 1.0.0 */
+/* ArInputNumber（.ad-num）：枠 field・角丸10・数字は 600 14px の等幅。頭と後ろの文字は mute 13px。右に▲▼（22px・線 ln・9px）。 */
+[data-ar-design="remix"] [data-ar="input-number"]{height:38px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font-size:14px;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="input-number"]:hover{border-color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="input-number"]:focus-within{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="input"]{padding:0 10px;font-size:14px;font-weight:600}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="input"]::placeholder{color:#7B8794;font-weight:500;opacity:1}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="prefix"]{padding-left:10px;color:var(--ar-color-text-muted);font-size:13px}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="suffix"]{padding-right:10px;color:var(--ar-color-text-muted);font-size:13px}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="steps"]{border-left:1px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="steps"]>button{width:22px;background:#fff;color:var(--ar-color-text-muted);font-size:9px;transition:color var(--ar-motion-fast),background-color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="steps"]>button+button{border-top:1px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="steps"]>button:hover:not(:disabled){color:var(--ar-accent-ink);background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="input-number"]>[data-part="steps"]>button:disabled{color:#CBD5DF}
+[data-ar-design="remix"] [data-ar="input-number"][data-size="sm"]{height:30px;border-radius:9px;font-size:13px}
+[data-ar-design="remix"] [data-ar="input-number"][data-size="sm"]>[data-part="input"]{font-size:13px}
+[data-ar-design="remix"] [data-ar="input-number"][data-size="sm"]>[data-part="steps"]>button{font-size:8px}
+[data-ar-design="remix"] [data-ar="input-number"][data-size="lg"]{height:44px;border-radius:11px}
+[data-ar-design="remix"] [data-ar="input-number"][data-size="lg"]>[data-part="input"]{font-size:15px}
+[data-ar-design="remix"] [data-ar="input-number"][data-size="lg"]>[data-part="steps"]>button{width:24px}
+[data-ar-design="remix"] [data-ar="input-number"][data-state~="invalid"]{border-color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="input-number"][data-state~="invalid"]:focus-within{box-shadow:0 0 0 3px rgba(192,50,43,.16)}
+[data-ar-design="remix"] [data-ar="input-number"][data-state~="readonly"]{background:#F8FAFC}
+[data-ar-design="remix"] [data-ar="input-number"][data-state~="readonly"]>[data-part="steps"]>button{background:#F8FAFC}
+[data-ar-design="remix"] [data-ar="input-number"][data-state~="disabled"]{background:#F8FAFC;color:#A3AEB9;box-shadow:none;cursor:not-allowed}
+[data-ar-design="remix"] [data-ar="input-number"][data-state~="disabled"]>[data-part="steps"]>button{background:#F8FAFC}
+[data-ar-design="remix"] [data-ar="input-number"][data-state~="disabled"]>:is([data-part="prefix"],[data-part="suffix"]){color:#A3AEB9}

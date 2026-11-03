@@ -1,0 +1,15 @@
+/* @covers ArCollapse 1.0.0 */
+/* ArCollapse（.ad-coll：角丸12・線。見出しは bg-2 の地に 700 13.5px・11/14 の余白、矢印は灰色の15px で開くと下向き。中身は 12/14/14/38 の余白・13px 行高1.7） */
+[data-ar-design="remix"] [data-ar="collapse"]{font-feature-settings:"palt" 1;border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);overflow:hidden;background:var(--ar-color-surface);color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]+[data-part="panel"]{border-top:1px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]{gap:8px;padding:11px 14px;background:var(--ar-color-surface-alt);font-size:13.5px;font-weight:700;line-height:1.5;transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:hover:not(:disabled){background:var(--ar-color-hover)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:-2px}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{width:15px;height:15px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="icon"]{width:15px;height:15px;color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="extra"]{font-size:12px;font-weight:500;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:disabled{color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="body"]{padding:12px 14px 14px 38px;font-size:13px;line-height:1.7;color:var(--ar-color-text-secondary);background:var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ar="collapse"][data-ghost]{box-shadow:none;background:none;border-radius:0}
+[data-ar-design="remix"] [data-ar="collapse"][data-ghost]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]{background:none}
+[data-ar-design="remix"] [data-ar="collapse"][data-ghost]>[data-part="panel"]>[data-part="body"]{background:none}

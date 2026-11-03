@@ -1,0 +1,21 @@
+/* @covers ArTimeline 1.0.0 */
+/* ArTimeline：antd の Timeline。点は 10px の白い丸に 3px の色の輪（既定はテーマ色、ok #52C41A・danger #FF4D4F・warn #FAAD14・event #722ED1、まだは rgba(0,0,0,.25)）、
+   線は 2px rgba(5,5,5,.06)（点の下から）、中身は点から 26px・上に 7px 寄せる・13px（ARROW の div の指定で行の高さ13px）、1つの下 20px、最後は高さ48まで（refs/classic/antd-Timeline.png・rules を実測）。 */
+[data-ar-design="classic"] [data-ar="timeline"]{color:rgba(0,0,0,.88);font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]{grid-template-columns:10px minmax(0,1fr);column-gap:16px;padding-bottom:20px}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]::before{left:4px;top:10px;bottom:0;width:0;border-left:2px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="dot"]:empty{width:10px;height:10px;border:3px solid var(--ar-accent);border-radius:50%;background:#fff}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="dot"]:not(:empty){height:10px;color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-tone="ok"]>[data-part="dot"]:empty{border-color:#52C41A}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-tone="danger"]>[data-part="dot"]:empty{border-color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-tone="warn"]>[data-part="dot"]:empty{border-color:#FAAD14}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-tone="event"]>[data-part="dot"]:empty{border-color:#722ED1}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-state="current"]>[data-part="dot"]:empty{background:var(--ar-accent);border-color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-state="pending"]>[data-part="dot"]:empty{border-color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]{position:relative;top:-7px}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]>[data-part="title"]{font-weight:400;line-height:13px}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-state="pending"]>[data-part="content"]>[data-part="title"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]>[data-part="description"]{color:rgba(0,0,0,.45);margin-top:6px;font-size:12px;line-height:12px;font-variant-numeric:tabular-nums}
+[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]:last-child>[data-part="content"]{min-height:48px}
+[data-ar-design="classic"] [data-ar="timeline"][data-mode="alternate"]>[data-part="item"]{grid-template-columns:minmax(0,1fr) 10px minmax(0,1fr);column-gap:16px}
+[data-ar-design="classic"] [data-ar="timeline"][data-mode="alternate"]>[data-part="item"]::before{left:calc(50% - 1px)}

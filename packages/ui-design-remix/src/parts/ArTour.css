@@ -1,0 +1,23 @@
+/* @covers ArTour 1.0.0 */
+/* ArTour：デザインシステムの .ad-tour（.hl：角丸10の窓のまわりに rgba(31,41,51,.45) の幕）と .tp（幅250・白・角丸14・sh-pop・余白 12/14・13px、
+   見出し 14px 太字・下4px、下の段は上10px・間6、点は 6px の #E6EBF0、今は 14 幅・角丸3 の acc、［前へ］muted sm・［次へ］primary sm）、.ad-arr（白い10pxの矢印）。 */
+[data-ar-design="remix"] [data-ar="tour"][data-part="overlay"]>[data-part="spot"]{border-radius:10px;box-shadow:0 0 0 9999px rgba(31,41,51,.45)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="overlay"]:not([data-mask])>[data-part="spot"]{box-shadow:0 0 0 2px var(--ar-accent),0 0 0 6px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="overlay"]:not([data-mask])>[data-part="spot"][data-target="none"]{box-shadow:none}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]{width:250px;max-width:calc(100vw - 16px);padding:12px 14px;border-radius:14px;background:#fff;color:var(--ar-color-text);box-shadow:var(--ar-shadow-pop);font-size:13px;line-height:1.5;animation:ar-tour-in .16s ease-out}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="title"]{margin-bottom:4px;font-size:14px;font-weight:700}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]{top:8px;right:8px;width:24px;height:24px;border:0;border-radius:6px;background:none;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]:hover{background:#F2F5F8;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]+[data-part="title"]{padding-right:22px}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{gap:6px;margin-top:10px}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]{gap:6px}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]>[data-part="dot"]{width:6px;height:6px;border-radius:50%;background:var(--ar-color-border);transition:width .2s,background .2s}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]>[data-part="dot"][data-state~="current"]{width:14px;border-radius:3px;background:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="actions"]{gap:6px}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{width:10px;height:10px;background:#fff;transform:rotate(45deg)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]:is([data-placement^="top"],[data-placement^="bottom"])>[data-part="panel"]>[data-part="arrow"]{left:clamp(16px,calc(var(--ar-float-arrow,29px) - 5px),calc(100% - 26px))}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]:is([data-placement^="left"],[data-placement^="right"])>[data-part="panel"]>[data-part="arrow"]{top:clamp(14px,calc(var(--ar-float-arrow,22px) - 5px),calc(100% - 24px))}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-5px;box-shadow:-1px -1px 0 rgba(31,41,51,.06)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"][data-placement^="top"]>[data-part="panel"]>[data-part="arrow"]{bottom:-5px;box-shadow:1px 1px 0 rgba(31,41,51,.06)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5px;box-shadow:-1px 1px 0 rgba(31,41,51,.06)}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5px;box-shadow:1px -1px 0 rgba(31,41,51,.06)}@keyframes ar-tour-in{from{opacity:0}to{opacity:1}}

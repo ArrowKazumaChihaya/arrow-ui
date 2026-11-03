@@ -1,0 +1,9 @@
+[data-ar="slider"]{position:relative;box-sizing:border-box;touch-action:none;user-select:none}
+[data-ar="slider"]>[data-part="rail"]{position:relative;display:flex;align-items:center;cursor:pointer}
+[data-ar="slider"][data-state~="disabled"]>[data-part="rail"]{cursor:not-allowed}
+[data-ar="slider"]>[data-part="rail"]>[data-part="line"]{position:absolute;left:0;right:0}
+[data-ar="slider"]>[data-part="rail"]>[data-part="track"],[data-ar="slider"]>[data-part="rail"]>[data-part="dot"],[data-ar="slider"]>[data-part="rail"]>[data-part="mark"],[data-ar="slider"]>[data-part="rail"]>[data-part="handle"]{position:absolute}
+[data-ar="slider"]>[data-part="rail"]>[data-part="mark"]{transform:translateX(-50%);white-space:nowrap}
+[data-ar="slider"]>[data-part="rail"]>[data-part="handle"]{box-sizing:border-box;z-index:1}
+[data-ar="slider"]>[data-part="rail"]>[data-part="handle"]>[data-part="tooltip"]{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;pointer-events:none}
+[data-ar="slider"][data-tooltip="auto"]>[data-part="rail"]>[data-part="handle"]:not(:hover):not(:focus-visible):not([data-state~="dragging"])>[data-part="tooltip"]{display:none}

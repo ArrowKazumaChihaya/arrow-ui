@@ -1,0 +1,6 @@
+/* 日の要約の構造 */
+[data-ar="day-summary"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="day-summary"][data-align="center"]{justify-content:center}
+[data-ar="day-summary"]>[data-part="item"],[data-ar="day-summary"]>[data-part="publish"]{display:inline-flex;align-items:center;white-space:nowrap;box-sizing:border-box;margin:0;font-family:inherit}
+[data-ar="day-summary"]>[data-part="publish"]{cursor:pointer}
+[data-ar="day-summary"]>[data-part="publish"]:disabled{cursor:default}

@@ -1,0 +1,21 @@
+/* @covers ArAvatar 1.0.0, ArAvatarGroup 1.0.0 */
+/* ArAvatar（素の ant-design-vue 4 の Avatar：32・丸・rgba(0,0,0,.25) の地に白い 14px。小 24・大 40・特大 64、四角は角丸6。重ねると白い1pxの縁で -8px） */
+[data-ar-design="classic"] [data-ar="avatar"]{width:32px;height:32px;border:1px solid transparent;border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:14px;font-weight:400;line-height:30px}
+[data-ar-design="classic"] [data-ar="avatar"]:is([data-size="xs"],[data-size="sm"]){width:24px;height:24px;font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="lg"]{width:40px;height:40px;font-size:18px;line-height:38px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="xl"]{width:64px;height:64px;font-size:24px;line-height:62px}
+[data-ar-design="classic"] [data-ar="avatar"][data-shape="square"]{border-radius:6px}
+[data-ar-design="classic"] [data-ar="avatar"][data-shape="square"]:is([data-size="xs"],[data-size="sm"]){border-radius:4px}
+[data-ar-design="classic"] [data-ar="avatar"][data-shape="square"][data-size="lg"]{border-radius:8px}
+[data-ar-design="classic"] [data-ar="avatar"]>[data-part="icon"]{width:18px;height:18px}
+[data-ar-design="classic"] [data-ar="avatar"]:is([data-size="xs"],[data-size="sm"])>[data-part="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="lg"]>[data-part="icon"]{width:22px;height:22px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="xl"]>[data-part="icon"]{width:36px;height:36px}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="orange"]{background:#F56A00}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="green"],[data-ar-design="classic"] [data-ar="avatar"][data-tone="ok"]{background:#87D068}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="blue"]{background:#1677FF}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="purple"],[data-ar-design="classic"] [data-ar="avatar"][data-tone="event"]{background:#7265E6}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="yellow"],[data-ar-design="classic"] [data-ar="avatar"][data-tone="warn"]{background:#FFBF00}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="danger"]{background:#FF4D4F}
+[data-ar-design="classic"] [data-ar="avatar-group"]>[data-ar="avatar"]{border-color:#fff}
+[data-ar-design="classic"] [data-ar="avatar-group"]>[data-ar="avatar"]+[data-ar="avatar"]{margin-left:-8px}

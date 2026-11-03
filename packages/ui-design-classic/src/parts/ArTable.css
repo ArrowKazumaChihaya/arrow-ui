@@ -1,17 +1,48 @@
 /* @covers ArTable 1.0.0 */
-/* ArTable（今の表：見出しはテーマ色の枠・中央・灰色の太字、行は下の線だけ） */
-[data-ar-design="classic"] [data-ar="table"]{background:#fff}
-[data-ar-design="classic"] [data-ar="table"] th{padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:var(--ar-color-text-secondary);font-size:14px;font-weight:700;line-height:20px;text-align:center!important;white-space:nowrap}
-[data-ar-design="classic"] [data-ar="table"] th:last-child{border-right:1px solid var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="table"] td{padding:12px 8px;border-bottom:1px solid var(--ar-color-border-subtle);background:#fff;color:var(--ar-color-text-secondary);font-size:13px;transition:background .3s}
-[data-ar-design="classic"] [data-ar="table"][data-density="compact"] td{padding:6px 8px}
-[data-ar-design="classic"] [data-ar="table"] tbody [data-part="row"]:hover td{background:#FAFAFA}
-[data-ar-design="classic"] [data-ar="table"] tbody [data-part="row"][data-state="selected"] td{background:var(--ar-accent-faint)}
+/* ArTable（今の ARROW の表 Component/Table：見出しは白地・テーマ色の1px枠・中央・13px、行は上に #E8E8E8 の線だけ、行高32。並べ替えは ▲▼（#BFBFBF・向きだけ #1677FF）。チェックは灰枠 #808080） */
+[data-ar-design="classic"] [data-ar="table"]{color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"]{background:#fff}
+[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]{padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:rgba(0,0,0,.65);font-size:13px;font-weight:400;line-height:20px;text-align:center!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]:last-child{border-right:1px solid var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"]{padding:6px 8px;border-top:1px solid #E8E8E8;background:#fff;color:rgba(0,0,0,.65);font-size:13px;line-height:32px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-ar-design="classic"] [data-ar="table"] tbody[data-part="body"]>tr:first-child>[data-part="cell"],[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"]>tr:first-child>[data-part="cell"]{border-top:0}
+[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"]>tr>[data-part="cell"]{background:#EFEFEF}
+[data-ar-design="classic"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="select"]{width:16px}
+[data-ar-design="classic"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="expand"]{width:17px}
+[data-ar-design="classic"] [data-ar="table"][data-density="compact"] [data-part="cell"]{line-height:24px}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-emphasis="strong"]{font-weight:400}
+[data-ar-design="classic"] [data-ar="table"] [data-part="row"][data-state~="off"]>td{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="table"] [data-sticky-edge]{box-shadow:inset -10px 0 8px -8px rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"] td{background:#FAFAFA;color:var(--ar-color-text);font-weight:600}
-[data-ar-design="classic"] [data-ar="table"] td[data-part="empty"]{padding:16px;text-align:center;color:var(--ar-color-text-faint);font-size:14px}
-[data-ar-design="classic"] [data-ar="table"] tr[data-part="expanded-row"] td{background:#FAFAFA}
-[data-ar-design="classic"] [data-ar="table"] :is(th,td)>[data-part="select"]{width:16px;height:16px;margin:0;accent-color:var(--classic-blue);vertical-align:middle;cursor:pointer}
-[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"] [data-ar="icon"]{color:var(--ar-color-text-faint)}
-[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order] [data-ar="icon"]{color:var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="table"] td>[data-part="expand-toggle"]{color:var(--ar-color-text-muted)}
+/* 名前の列・何行にも並ぶ値・行の操作（ボタンの間は3px） */
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]{gap:8px;line-height:20px}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>b{font-weight:400}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]{gap:4px;font-size:11px;line-height:16px;color:#5F5F5F}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{width:7px;height:7px;border-radius:2px}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="lines"]{line-height:20px}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"]{gap:3px}
+/* 並べ替えの印（SortMark：▲▼ 12×16、#BFBFBF。並べている向きだけ #1677FF） */
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]{gap:5px}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]{width:12px;height:16px;stroke:none}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>[data-shape="chevron"]{display:none}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>[data-shape="caret"]{fill:#BFBFBF}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="asc"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="asc"],[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="desc"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="desc"]{fill:#1677FF}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+/* チェック（ARROW の Check：16・角丸4・枠は灰 #808080 のまま、選ぶと #1677FF の塗り） */
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="check-box"]{width:16px;height:16px;border:1px solid #808080;border-radius:4px;background:#fff;color:#fff;transition:all .3s}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="check-box"]>[data-ar="icon"]{width:11px;height:11px;stroke-width:3.4}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"][data-state="checked"]>[data-part="check-box"]{background:#1677FF}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"][data-state="indeterminate"]>[data-part="check-box"]{background:#fff;color:#1677FF}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"][data-state="indeterminate"]>[data-part="check-box"]>[data-ar="icon"]{width:8px;height:8px;background:#1677FF;stroke:none}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="select"]:focus-visible+[data-part="check-box"]{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="select"]:disabled+[data-part="check-box"]{background:rgba(0,0,0,.04)}
+/* 開く（antd の展開ボタン：17×17・角丸4・枠 #F0F0F0）と開いた行 */
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="expand-toggle"]{width:17px;height:17px;align-items:center;justify-content:center;border:1px solid #F0F0F0;border-radius:4px;background:#fff;color:rgba(0,0,0,.88);box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="table"] tr[data-part="expanded-row"]>td{padding:6px 8px;border-top:1px solid #E8E8E8;background:#FAFAFA;line-height:20px}
+/* 合計の行の見出しつきの値 */
+[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"] [data-part="foot-label"]{font-size:11px;line-height:16px}
+[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"] [data-part="foot-value"]{font-weight:400;line-height:20px}
+/* データがないとき（p.nodata：上下16・14px・rgba(0,0,0,.25)・中央） */
+[data-ar-design="classic"] [data-ar="table"] td[data-part="empty"]{padding:16px 0;border:0;background:#fff;color:rgba(0,0,0,.25);font-size:14px;line-height:14px;text-align:center}
+[data-ar-design="classic"] [data-ar="table"] td[data-part="empty"]>[data-ar="empty"]{padding:0;border:0;background:none;color:inherit;font-size:inherit;line-height:inherit}
+[data-ar-design="classic"] [data-ar="table"] tbody[data-part="before-rows"]>tr>td{padding:8px 0}
+[data-ar-design="classic"] [data-ar="table"]>[data-part="below"]{margin-top:10px}

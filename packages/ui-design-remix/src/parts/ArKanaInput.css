@@ -1,0 +1,10 @@
+/* @covers ArKanaInput 1.0.0, ArKanaText 1.0.0 */
+/* 氏名とフリガナ：姓・名の欄（各150）を8空けて並べ、下にセイ・メイ。フリガナの行は少し低く・小さく */
+[data-ar-design="remix"] [data-ar="kana-input"]{gap:8px}
+[data-ar-design="remix"] [data-ar="kana-input"]>[data-part="row"]{gap:8px}
+[data-ar-design="remix"] [data-ar="kana-input"]>[data-part="row"]>[data-ar="text-input"]{width:150px}
+[data-ar-design="remix"] [data-ar="kana-input"]>[data-part="row"][data-row="kana"]>[data-ar="text-input"]{height:34px;font-size:13px}
+/* フリガナつきの氏名：名前の上に 10.5px の mute */
+[data-ar-design="remix"] [data-ar="kana-text"]>[data-part="stack"]>[data-part="kana"]{font-size:10.5px;font-weight:600;line-height:1.3;letter-spacing:.04em;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="kana-text"]>[data-part="stack"]>[data-part="name"]{line-height:1.4}
+[data-ar-design="remix"] [data-ar="kana-text"]{font-feature-settings:"palt" 1}

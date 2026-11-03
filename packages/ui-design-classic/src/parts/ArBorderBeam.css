@@ -1,0 +1,5 @@
+/* @covers ArBorderBeam 1.0.0 */
+/* ArBorderBeam（今の画面にない部品。ant-design-vue のカードの枠に青の光） */
+[data-ar-design="classic"] [data-ar="border-beam"]{padding:16px 24px;border-radius:8px;background:#F0F0F0;color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="border-beam"]>[data-part="beam"]{background:conic-gradient(from 0deg,transparent 0 70%,#91CAFF 80%,var(--classic-blue) 88%,transparent 96%)}
+[data-ar-design="classic"] [data-ar="border-beam"]::after{inset:1px;border-radius:7px;background:#fff}

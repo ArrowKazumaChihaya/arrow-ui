@@ -1,0 +1,6 @@
+[data-ar="rate"]{display:inline-flex;align-items:center;vertical-align:middle;outline-offset:2px}
+[data-ar="rate"]>[data-part="star"]{position:relative;display:inline-flex;cursor:pointer}
+[data-ar="rate"][data-state~="readonly"]>[data-part="star"],[data-ar="rate"][data-state~="disabled"]>[data-part="star"]{cursor:default}
+[data-ar="rate"]>[data-part="star"]>[data-part="fg"]{position:absolute;inset:0;clip-path:inset(0 100% 0 0)}
+[data-ar="rate"]>[data-part="star"][data-state="on"]>[data-part="fg"]{clip-path:none}
+[data-ar="rate"]>[data-part="star"][data-state="half"]>[data-part="fg"]{clip-path:inset(0 50% 0 0)}

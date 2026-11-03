@@ -1,0 +1,11 @@
+/* @covers ArLink 1.0.0 */
+/* ArLink：テーマ色の文字・下線（text-underline-offset 3px） */
+[data-ar-design="remix"] [data-ar="link"]{gap:4px;color:var(--ar-accent-ink);text-decoration:underline;text-underline-offset:3px;font-feature-settings:"palt" 1;border-radius:3px}
+[data-ar-design="remix"] [data-ar="link"]:hover{color:var(--ar-accent-strong)}
+[data-ar-design="remix"] [data-ar="link"][data-underline="hover"]{text-decoration:none}
+[data-ar-design="remix"] [data-ar="link"][data-underline="hover"]:hover{text-decoration:underline}
+[data-ar-design="remix"] [data-ar="link"][data-type="secondary"]{color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="link"][data-type="secondary"]:hover{color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="link"][data-type="danger"]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="link"][data-state~="disabled"]{color:var(--ar-color-text-faint);text-decoration:none}
+[data-ar-design="remix"] [data-ar="link"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}

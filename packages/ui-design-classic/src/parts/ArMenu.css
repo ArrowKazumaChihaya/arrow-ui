@@ -1,0 +1,27 @@
+/* @covers ArMenu 1.0.0 */
+/* ArMenu：今の ARROW の左メニュー（UI/Menu ＝ ant-design-vue の inline Menu に ARROW の上書き）。
+ * 項目 高さ35.5・13px・左の余白24、選択中は #E8F0FE の地と #1677FF の文字（角丸 0 18 18 0）。子を持つ親は角丸8。子の項目は左に2pxの線（選択中は #1A73E8）。 */
+[data-ar-design="classic"] [data-ar="menu"]{gap:4px;color:rgba(0,0,0,.88);font-size:13px;background:#fff}
+[data-ar-design="classic"] [data-ar="menu"][data-bordered]:not([data-mode="inline"]){border-right:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="group"]{padding:8px 16px 8px 24px;color:rgba(0,0,0,.45);font-size:13px;line-height:22px}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="divider"]{height:1px;margin:1px 0;background:rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"]{gap:10px;height:35.5px;margin:0 4px;padding:0 16px 0 24px;border-radius:0 18px 18px 0;transition:background .3s,color .3s}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="vertical"]>[data-part="item"]{padding-left:16px}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="item"] [data-ar="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="item"]:hover:not([aria-disabled="true"]):not([data-state~="selected"]){background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="item"][data-state~="selected"]{background:#E8F0FE;color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"]:is([data-state~="open"],[data-state~="active"]){border-radius:8px}
+[data-ar-design="classic"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"][data-state~="active"]{background:#E8F0FE;color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"]{position:relative;margin-left:24px;padding:8px 0 8px 10px;border-radius:0 18px 18px 0;background:none}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#E8EAED}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"][data-state~="selected"]{background:none;color:#1A73E8}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"][data-state~="selected"]::before{background:#1A73E8}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="item"]>[data-part="arrow"] [data-ar="icon"]{width:12px;height:12px;stroke-width:2.4}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-state~="open"]>[data-part="arrow"]{transform:rotate(180deg)}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="item"]:is([data-state~="disabled"],[data-state~="locked"]){color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="item"][data-tone="danger"]:not([aria-disabled="true"]){color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="item"]:focus-visible{outline:2px solid #91CAFF;outline-offset:-2px}
+[data-ar-design="classic"] [data-ar="menu"][data-size="sm"]>[data-part="item"]{margin:0;padding-left:16px}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="horizontal"]{gap:0;border-bottom:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]{gap:10px;height:35.5px;padding:0 16px;border-radius:0 18px 18px 0;transition:background .3s,color .3s}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]:is([data-state~="selected"],[data-state~="active"]){background:#E8F0FE;color:var(--classic-blue)}

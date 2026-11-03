@@ -1,8 +1,33 @@
 /* @covers ArTextInput 1.0.0 */
-/* ArTextInput */
-[data-ar-design="classic"] [data-ar="text-input"]{gap:4px;padding:4px 11px}
-[data-ar-design="classic"] [data-ar="text-input"]>[data-part="input"]::placeholder{color:rgba(0,0,0,.25)}
-[data-ar-design="classic"] [data-ar="text-input"]>[data-part="icon"],[data-ar-design="classic"] [data-ar="text-input"]>[data-part="suffix"]{color:var(--ar-color-text-muted)}
+/* ArTextInput（今の ARROW の Input＝素の antd 4 の Input）：高さ32・角丸6・余白 4px 11px・枠 #d9d9d9・14px。
+   hover は枠 #4096FF、focus は枠 #4096FF＋0 0 0 2px rgba(5,145,255,.1)。前後のアイコン 14px、消すボタンは 12px の灰の丸、目は rgba(0,0,0,.45)。 */
+[data-ar-design="classic"] [data-ar="text-input"]{height:var(--ar-size-control-md);gap:4px;padding:4px 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;line-height:22px;transition:all .2s}
+[data-ar-design="classic"] [data-ar="text-input"]:hover{border-color:#4096FF}
+[data-ar-design="classic"] [data-ar="text-input"]:focus-within{border-color:#4096FF;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="input"]{height:100%;padding:0;line-height:22px}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="input"]::placeholder{color:rgba(0,0,0,.25);opacity:1}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="prefix"],[data-ar-design="classic"] [data-ar="text-input"]>[data-part="suffix"]{color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="prefix"][data-kind="icon"],[data-ar-design="classic"] [data-ar="text-input"]>[data-part="suffix"][data-kind="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="count"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="clear"]{width:12px;height:12px;border-radius:50%;background:rgba(0,0,0,.25);color:#fff;transition:background-color .2s}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="clear"]:hover{background:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="clear"] [data-ar="icon"]{width:8px;height:8px;stroke-width:3}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="reveal"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="reveal"]:hover{color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="reveal"] [data-ar="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="addon"]{padding:0 11px;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="addon"][data-side="start"]{margin:-5px 0 -5px -12px;border:1px solid #D9D9D9;border-radius:6px 0 0 6px;align-self:auto;height:calc(100% + 10px)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="addon"][data-side="end"]{margin:-5px -12px -5px auto;border:1px solid #D9D9D9;border-radius:0 6px 6px 0;align-self:auto;height:calc(100% + 10px)}
 [data-ar-design="classic"] [data-ar="text-input"][data-size="sm"]{height:var(--ar-size-control-sm);padding:0 7px;border-radius:4px}
-[data-ar-design="classic"] [data-ar="text-input"][data-size="lg"]{height:var(--ar-size-control-lg);font-size:16px;border-radius:8px}
-[data-ar-design="classic"] [data-ar="text-input"][data-state~="readonly"]{background:#FAFAFA}
+[data-ar-design="classic"] [data-ar="text-input"][data-size="lg"]{height:var(--ar-size-control-lg);padding:7px 11px;font-size:16px;border-radius:8px}
+[data-ar-design="classic"] [data-ar="text-input"][data-variant="filled"]{background:rgba(0,0,0,.04);border-color:transparent}
+[data-ar-design="classic"] [data-ar="text-input"][data-variant="filled"]:hover{background:rgba(0,0,0,.06);border-color:transparent}
+[data-ar-design="classic"] [data-ar="text-input"][data-variant="filled"]:focus-within{background:#fff;border-color:#4096FF}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="invalid"]{border-color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="invalid"]:hover{border-color:#FFA39E}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="invalid"]:focus-within{border-color:#FF4D4F;box-shadow:0 0 0 2px rgba(255,38,5,.06)}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="warning"]{border-color:#FAAD14}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="warning"]:hover{border-color:#FFD666}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="warning"]:focus-within{border-color:#FAAD14;box-shadow:0 0 0 2px rgba(255,215,5,.1)}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="disabled"]{background:rgba(0,0,0,.04);border-color:#D9D9D9;color:rgba(0,0,0,.25);box-shadow:none}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="disabled"]>[data-part="prefix"],[data-ar-design="classic"] [data-ar="text-input"][data-state~="disabled"]>[data-part="suffix"]{color:rgba(0,0,0,.25)}

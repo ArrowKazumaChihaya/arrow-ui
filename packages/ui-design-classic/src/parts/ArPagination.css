@@ -1,0 +1,17 @@
+/* @covers ArPagination 1.0.0 */
+/* ArPagination：今の ARROW のページ送り（UI/Pagination ＝ ant-design-vue 4）。32×32・角丸6・13px、今のページは白地に #1677FF の枠と文字（600）。hover は rgba(0,0,0,.06)。 */
+[data-ar-design="classic"] [data-ar="pagination"]{gap:8px;color:rgba(0,0,0,.88);font-size:13px}
+[data-ar-design="classic"] [data-ar="pagination"]>:is([data-part="prev"],[data-part="next"],[data-part="page"]){min-width:32px;height:32px;padding:0 6px;border:1px solid transparent;border-radius:6px;background:transparent;color:rgba(0,0,0,.88);font-size:13px;font-weight:400;transition:background .2s,color .2s}
+[data-ar-design="classic"] [data-ar="pagination"]>:is([data-part="prev"],[data-part="next"],[data-part="page"]):hover:not(:disabled):not([data-state~="selected"]){background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="pagination"]>[data-part="page"][data-state~="selected"]{border-color:var(--classic-blue);background:#fff;color:var(--classic-blue);font-weight:600}
+[data-ar-design="classic"] [data-ar="pagination"]>[data-part="page"][data-state~="selected"]:hover{border-color:#4096FF;color:#4096FF}
+[data-ar-design="classic"] [data-ar="pagination"]>:is([data-part="prev"],[data-part="next"]):disabled{color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="pagination"]>:is([data-part="prev"],[data-part="next"],[data-part="page"]):focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="pagination"]>:is([data-part="prev"],[data-part="next"]) [data-ar="icon"]{width:12px;height:12px;stroke-width:2.2}
+[data-ar-design="classic"] [data-ar="pagination"]>[data-part="ellipsis"]{width:32px;text-align:center;color:rgba(0,0,0,.25);letter-spacing:2px;font-size:0}
+[data-ar-design="classic"] [data-ar="pagination"]>[data-part="ellipsis"]::before{content:"•••";font-size:12px}
+[data-ar-design="classic"] [data-ar="pagination"]>[data-part="size"]{margin-left:8px;width:124px}
+[data-ar-design="classic"] [data-ar="pagination"]>[data-part="total"]{order:-1;margin-right:8px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="pagination"][data-size="sm"]{gap:0}
+[data-ar-design="classic"] [data-ar="pagination"][data-size="sm"]>:is([data-part="prev"],[data-part="next"],[data-part="page"]){min-width:24px;height:24px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="pagination"][data-size="sm"]>[data-part="ellipsis"]{width:24px}

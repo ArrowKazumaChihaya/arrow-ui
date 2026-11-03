@@ -28,17 +28,16 @@ describe("ArSelect", () => {
     { value: 1, label: "渋谷店" },
     { label: "大阪", options: [{ value: 3, label: "梅田店" }] },
   ];
-  it("値の型（数）のまま出し、グループも選べる", async () => {
+  it("ネイティブの select を使わず、押す所は combobox", () => {
     const w = mount(ArSelect, { props: { modelValue: 1, options, label: "店舗" } });
-    expect(w.findAll("optgroup")).toHaveLength(1);
-    await w.get("select").setValue("1");
-    expect(w.emitted("update:modelValue")?.[0]).toEqual([3]);
+    expect(w.find("select").exists()).toBe(false);
+    expect(w.get('[data-ar="select"]').attributes("role")).toBe("combobox");
+    expect(w.get('[data-part="value"]').text()).toBe("渋谷店");
   });
-  it("未選択は placeholder の行で、選ぶと null", async () => {
+  it("未選択は placeholder を出し、empty の状態", () => {
     const w = mount(ArSelect, { props: { modelValue: null, options, placeholder: "選んでください", label: "店舗" } });
-    expect(w.attributes("data-state")).toContain("empty");
-    await w.get("select").setValue("");
-    expect(w.emitted("update:modelValue")?.[0]).toEqual([null]);
+    expect(w.get('[data-ar="select"]').attributes("data-state")).toContain("empty");
+    expect(w.get('[data-part="placeholder"]').text()).toBe("選んでください");
   });
 });
 

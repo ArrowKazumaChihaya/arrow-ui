@@ -1,0 +1,18 @@
+/* ArTimeInput：列いっぱい・点線の文字 */
+[data-ar="time-input"][data-block]{display:flex;width:100%}
+[data-ar="time-input"][data-block]>[data-part="input"]{flex:1;width:auto}
+[data-ar="time-input"]>[data-part="day-toggle"]{display:flex;align-items:center;white-space:nowrap}
+[data-ar="time-input"]>[data-part="note"]{display:flex;align-items:center;justify-content:center;flex:1;white-space:nowrap;min-width:0}
+[data-ar="time-range"]{display:inline-flex;flex-direction:column;align-items:flex-start}
+[data-ar="time-range"]>[data-part="row"]{display:inline-flex;align-items:center;flex-wrap:nowrap}
+[data-ar="time-range"]>[data-part="row"]>[data-part="separator"]{flex:none}
+[data-ar="time-range"]>[data-part="error"],[data-ar="date-range"]>[data-part="error"],[data-ar="date-picker"]>[data-part="error"]{display:flex;align-items:center}
+[data-ar="time-picker"]{display:inline-flex;align-items:center;vertical-align:middle}
+[data-ar="time-picker"]>[data-part="trigger"]{display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;cursor:pointer;flex:none;box-sizing:border-box}
+[data-ar="time-picker-panel"]{display:inline-flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
+[data-ar="time-picker-panel"][data-ar-float]{position:fixed;z-index:1000}
+[data-ar="time-picker-panel"]>[data-part="cols"]{display:flex}
+[data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;box-sizing:border-box;outline:0}
+[data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]::-webkit-scrollbar{display:none}
+[data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]{flex:none;cursor:pointer;font-variant-numeric:tabular-nums}
+[data-ar="time-picker-panel"]>[data-part="foot"]{display:flex;justify-content:space-between;align-items:center}

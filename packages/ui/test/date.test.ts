@@ -1,5 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { clampDate, daysInMonth, weekdayOf } from "../src/components/date";
+// jsdom には scrollIntoView がない（年のプルダウンが使う）
+Element.prototype.scrollIntoView ??= function () {};
 import ArDateInput from "../src/components/ArDateInput.vue";
 
 describe("日付の計算", () => {
@@ -15,11 +17,12 @@ describe("日付の計算", () => {
 describe("ArDateInput", () => {
   it("値を年・月・日に分けて出し、曜日を出す", () => {
     const w = mount(ArDateInput, { props: { modelValue: "2026-10-18" } });
-    expect((w.get('[data-part="year"]').element as HTMLSelectElement).value).toBe("2026");
+    expect(w.get('[data-part="year"]').text()).toBe("2026");
+    expect(w.find("select").exists()).toBe(false);
     expect((w.get('[data-part="month"]').element as HTMLInputElement).value).toBe("10");
     expect((w.get('[data-part="day"]').element as HTMLInputElement).value).toBe("18");
     const wd = w.get('[data-part="weekday"]');
-    expect(wd.text()).toBe("(日)");
+    expect(wd.text()).toBe("（日）");
     expect(wd.attributes("data-kind")).toBe("sun");
   });
 
@@ -47,11 +50,16 @@ describe("ArDateInput", () => {
     expect(w.emitted("update:modelValue")?.[0]).toEqual([null]);
   });
 
-  it("年はセレクトで、選ぶとすぐ出す", async () => {
-    const w = mount(ArDateInput, { props: { modelValue: "2026-10-18", minYear: 2024, maxYear: 2028 } });
+  it("年はプルダウン（ネイティブの select ではない）で、選ぶとすぐ出す", async () => {
+    const w = mount(ArDateInput, { props: { modelValue: "2026-10-18", minYear: 2024, maxYear: 2028 }, attachTo: document.body });
     const y = w.get('[data-part="year"]');
-    expect(y.findAll("option")).toHaveLength(5);
-    await y.setValue("2027");
+    expect(y.attributes("role")).toBe("combobox");
+    await y.trigger("keydown", { key: "ArrowDown" });
+    await new Promise((r) => setTimeout(r, 0));
+    expect(document.querySelectorAll('[role="option"]')).toHaveLength(5);
+    await y.trigger("keydown", { key: "ArrowDown" });
+    await y.trigger("keydown", { key: "Enter" });
     expect(w.emitted("update:modelValue")?.[0]).toEqual(["2027-10-18"]);
+    w.unmount();
   });
 });

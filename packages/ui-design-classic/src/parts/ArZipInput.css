@@ -1,0 +1,6 @@
+/* @covers ArZipInput 1.0.0 */
+/* 今の Zip（ant-design-vue の Input に「###-####」のマスク） */
+[data-ar-design="classic"] [data-ar="zip-input"]{gap:8px}
+[data-ar-design="classic"] [data-ar="zip-input"]>[data-ar="text-input"]{width:120px}
+[data-ar-design="classic"] [data-ar="zip-input"]>[data-part="status"]{font-size:12px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="zip-input"]:is([data-state~="not-found"],[data-state~="failed"])>[data-part="status"]{color:#D46B08}

@@ -1,0 +1,7 @@
+/* @covers ArEmpty 1.0.0 */
+/* ArEmpty（.v-empty：灰色の12.5px・中央。アイコンは線の22px・#B8C1CA） */
+[data-ar-design="remix"] [data-ar="empty"]{font-feature-settings:"palt" 1;gap:6px;padding:14px 8px;color:var(--ar-color-text-muted);font-size:12.5px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="empty"]>[data-part="icon"]{width:22px;height:22px;color:#B8C1CA}
+[data-ar-design="remix"] [data-ar="empty"]>[data-part="action"]{margin-top:4px}
+[data-ar-design="remix"] [data-ar="empty"][data-size="md"]{gap:8px;padding:28px 16px;font-size:13px}
+[data-ar-design="remix"] [data-ar="empty"][data-size="md"]>[data-part="icon"]{width:28px;height:28px}

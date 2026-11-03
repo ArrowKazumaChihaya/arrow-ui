@@ -1,0 +1,8 @@
+/* ArPopover の構造：基準の包みは中身の形のまま。矢印は吹き出しの中に重ねる。マスの表示は押せない（下のマスを邪魔しない）。 */
+[data-ar="popover"][data-part="trigger"]{display:inline-flex;max-width:100%;vertical-align:middle}
+[data-ar="popover"][data-part="root"]>[data-part="panel"]{position:relative;display:block;box-sizing:border-box}
+[data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{position:absolute;pointer-events:none}
+[data-ar="popover"][data-part="root"]>[data-part="panel"]>:is([data-part="title"],[data-part="body"],[data-part="footer"]){position:relative}
+[data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"]{pointer-events:none;white-space:pre}
+[data-ar="popover"][data-part="root"]:has(>[data-part="panel"][data-variant="cell"]){pointer-events:none}

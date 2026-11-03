@@ -1,0 +1,13 @@
+/* @covers ArTitle 1.0.0 */
+/* ArTitle：ant-design-vue 4 の Typography.Title（38/30/24/20/16px・600） */
+[data-ar-design="classic"] [data-ar="title"]{margin:0 0 .5em;font-weight:600;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="title"][data-level="1"]{font-size:38px;line-height:1.2105}
+[data-ar-design="classic"] [data-ar="title"][data-level="2"]{font-size:30px;line-height:1.2667}
+[data-ar-design="classic"] [data-ar="title"][data-level="3"]{font-size:24px;line-height:1.3333}
+[data-ar-design="classic"] [data-ar="title"][data-level="4"]{font-size:20px;line-height:1.4}
+[data-ar-design="classic"] [data-ar="title"][data-level="5"]{font-size:16px;line-height:1.5}
+[data-ar-design="classic"] [data-ar="title"]:is([data-type="secondary"],[data-type="muted"]){color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="title"][data-type="success"]{color:#52C41A}
+[data-ar-design="classic"] [data-ar="title"][data-type="warning"]{color:#FAAD14}
+[data-ar-design="classic"] [data-ar="title"][data-type="danger"]{color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="title"][data-type="disabled"]{color:rgba(0,0,0,.25)}

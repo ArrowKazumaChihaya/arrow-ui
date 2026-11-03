@@ -1,0 +1,5 @@
+/* ArDateInput：年はボタン＋プルダウン（一覧は ArYearInput と同じ year-list） */
+[data-ar="date-input"]>[data-part="year"]{position:relative;display:inline-flex;align-items:center;margin:0;cursor:pointer;font-variant-numeric:tabular-nums;white-space:nowrap;box-sizing:border-box;text-align:left}
+[data-ar="date-input"]>[data-part="year"]:disabled{cursor:not-allowed}
+[data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]{position:absolute;top:50%;transform:translateY(-50%);pointer-events:none}
+[data-ar="date-input"]>[data-part="weekday"]{white-space:nowrap}

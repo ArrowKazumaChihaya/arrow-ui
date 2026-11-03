@@ -1,0 +1,10 @@
+/* @covers ArCollapse 1.0.0 */
+/* ArCollapse（ARROW の Collapse＝antd の ghost：枠も地もなし、見出しは高さ32・13px、右向きの矢印 12px（開くと下）と 12px の間、中身は余白なし 13px） */
+[data-ar-design="classic"] [data-ar="collapse"]{color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]{gap:12px;min-height:32px;padding:6px 0;font-size:13px;font-weight:400;line-height:20px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{width:12px;height:12px;stroke-width:2.2;transition:transform .3s}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="extra"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:disabled{color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="body"]{padding:0;font-size:13px;line-height:13px}

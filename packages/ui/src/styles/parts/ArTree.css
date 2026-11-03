@@ -1,0 +1,7 @@
+/* ArTree の構造：1行ずつ縦に並べ、深さ（--ar-tree-depth）の分だけ字下げする。 */
+[data-ar="tree"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="tree"]>[data-part="node"]{display:flex;align-items:center;min-width:0;box-sizing:border-box;cursor:pointer;user-select:none}
+[data-ar="tree"]>[data-part="node"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="tree"]>[data-part="node"]>:is([data-part="switcher"],[data-part="handle"],[data-part="check"]){display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="tree"][data-draggable]>[data-part="node"]>[data-part="handle"]{cursor:grab}
+[data-ar="tree"]>[data-part="node"]>[data-part="label"]{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}

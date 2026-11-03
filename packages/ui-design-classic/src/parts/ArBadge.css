@@ -1,0 +1,24 @@
+/* @covers ArBadge 1.0.0, ArRibbon 1.0.0 */
+/* ArBadge（素の ant-design-vue 4 の Badge：件数 20・角丸10・#FF4D4F・12px・白い1pxの縁、右上に半分はみ出す。点 6px。状態の点 6px＋8px の間・14px） */
+[data-ar-design="classic"] [data-ar="badge"]{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+[data-ar-design="classic"] [data-ar="badge"]>[data-part="count"]{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:12px;font-weight:400;line-height:20px;box-shadow:0 0 0 1px #fff}
+[data-ar-design="classic"] [data-ar="badge"]>[data-part="count"][data-multi]{padding:0 8px}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="count"]{top:0;right:0;transform:translate(50%,-50%)}
+[data-ar-design="classic"] [data-ar="badge"]>[data-part="dot"]{width:6px;height:6px;border-radius:100%;background:#FF4D4F;box-shadow:0 0 0 1px #fff}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="dot"]{top:0;right:0;transform:translate(50%,-50%)}
+[data-ar-design="classic"] [data-ar="badge"][data-tone="accent"]>:is([data-part="count"],[data-part="dot"]){background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="badge"][data-tone="neutral"]>:is([data-part="count"],[data-part="dot"]){background:#D9D9D9;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"]{gap:8px;color:rgba(0,0,0,.88);font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"]>[data-part="status-dot"]{width:6px;height:6px;border-radius:50%;background:#D9D9D9}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="ok"]>[data-part="status-dot"]{background:#52C41A}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="accent"]>[data-part="status-dot"]{background:#1677FF}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="warn"]>[data-part="status-dot"]{background:#FAAD14}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="danger"]>[data-part="status-dot"]{background:#FF4D4F}
+/* ArRibbon（Badge.Ribbon：上8・右-8、高さ22・角丸4 4 0 4・14px 白、折り返しの三角） */
+[data-ar-design="classic"] [data-ar="ribbon"]>[data-part="ribbon"]{top:8px;right:-8px;height:22px;padding:0 8px;border-radius:4px 4px 0 4px;background:var(--ar-accent);color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="ribbon"][data-placement="start"]>[data-part="ribbon"]{right:auto;left:-8px;border-radius:4px 4px 4px 0}
+[data-ar-design="classic"] [data-ar="ribbon"]>[data-part="ribbon"]>[data-part="corner"]{top:100%;right:0;width:8px;height:8px;box-sizing:border-box;border:4px solid currentColor;border-color:var(--ar-accent-strong) transparent transparent var(--ar-accent-strong);color:var(--ar-accent-strong)}
+[data-ar-design="classic"] [data-ar="ribbon"][data-placement="start"]>[data-part="ribbon"]>[data-part="corner"]{right:auto;left:0;border-color:var(--ar-accent-strong) var(--ar-accent-strong) transparent transparent}
+[data-ar-design="classic"] [data-ar="ribbon"][data-tone="danger"]>[data-part="ribbon"]{background:#FF4D4F}
+[data-ar-design="classic"] [data-ar="ribbon"][data-tone="ok"]>[data-part="ribbon"]{background:#52C41A}
+[data-ar-design="classic"] [data-ar="ribbon"][data-tone="warn"]>[data-part="ribbon"]{background:#FAAD14}

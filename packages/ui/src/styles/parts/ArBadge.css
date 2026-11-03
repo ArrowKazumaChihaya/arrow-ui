@@ -1,0 +1,8 @@
+/* ArBadge・ArRibbon の構造（子の右上に重ねる） */
+[data-ar="badge"]{position:relative;display:inline-flex;align-items:center;vertical-align:middle;line-height:1}
+[data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="count"],[data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="dot"]{position:absolute;z-index:1}
+[data-ar="badge"]>[data-part="count"]{display:inline-block;box-sizing:border-box;text-align:center;white-space:nowrap;vertical-align:baseline}
+[data-ar="badge"]>[data-part="dot"],[data-ar="badge"]>[data-part="status-dot"]{display:inline-block;flex:none}
+[data-ar="ribbon"]{position:relative}
+[data-ar="ribbon"]>[data-part="ribbon"]{position:absolute;white-space:nowrap}
+[data-ar="ribbon"]>[data-part="ribbon"]>[data-part="corner"]{position:absolute}

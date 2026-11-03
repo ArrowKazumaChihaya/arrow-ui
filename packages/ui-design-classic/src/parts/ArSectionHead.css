@@ -1,0 +1,13 @@
+/* @covers ArSectionHead 1.0.0 */
+/* ArSectionHead：今のシフト詳細の見出し（「勤務メンバー」18px 太さ600 の黒、折りたたみの「勤務可能な人」はテーマ色。件数はテーマ色の文字）。箱のアイコンは今の画面にないので出さない。 */
+[data-ar-design="classic"] [data-ar="section-head"]{gap:8px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]{gap:6px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="section-head"]>button[data-part="toggle"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:1px}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="icon"]{display:none}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="title"]{font-size:18px;font-weight:600;line-height:27px}
+[data-ar-design="classic"] [data-ar="section-head"]>button[data-part="toggle"]>[data-part="title"]{color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="count"]{color:var(--ar-accent);font-size:14px;font-weight:700}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="caret"]{color:rgba(0,0,0,.45);transition:transform .2s}
+[data-ar-design="classic"] [data-ar="section-head"][data-state="closed"]>[data-part="toggle"]>[data-part="caret"]{transform:rotate(-90deg)}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="actions"]{gap:8px;margin-left:8px}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="end"]{gap:8px}

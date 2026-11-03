@@ -1,18 +1,22 @@
 <script setup lang="ts">
 /**
- * ArTimeInput 1.0 — 時刻の入力。
+ * ArTimeInput 1.0 — 時刻の入力（高さ36・角丸9）。ARROW の時刻はこれを使う（パネルで選ぶ ArTimePicker は補助）。
  * - キー入力が基本：「930」「9:30」「０９３０」は 09:30 になる。↑↓で step 分ずつ動く。
- * - dayShift なら枠と一体の［当日］ボタン。押すたびに［前日］と切り替わる。Tab では止まらない。
+ * - dayShift なら枠と一体の［当日］ボタン。押すたびに［前日］（橙）と切り替わる。Tab では止まらない。
  * - 値の確定は Enter・フォーカスが外れたとき・切り替えのときだけ。
+ * - note を渡すと入力の代わりに点線の枠で文字を出す（「打刻と同じ」など）。
  */
 import { computed, ref, watch } from "vue";
-import { addMinutes, parseTime } from "./time";
+import { parseTime, toMinutes } from "./time";
 import type { ArTimeInputProps, ArTimeValue } from "./ArTimeInput.contract";
 
 const props = withDefaults(defineProps<ArTimeInputProps>(), {
   dayShift: false,
+  overnight: false,
   step: 5,
   size: "md",
+  block: false,
+  note: undefined,
   invalid: false,
   disabled: false,
   placeholder: "--:--",
@@ -39,10 +43,17 @@ watch(
   },
 );
 
+const maxHour = computed(() => (props.overnight ? 47 : 23));
 const day = computed(() => (props.dayShift ? props.modelValue.day : "same"));
 const state = computed(
   () =>
-    [day.value === "prev" && "prev", (props.invalid || unreadable.value) && "invalid", props.disabled && "disabled"]
+    [
+      day.value === "prev" && "prev",
+      (props.invalid || unreadable.value) && "invalid",
+      props.disabled && "disabled",
+      props.note && "note",
+      !text.value && "empty",
+    ]
       .filter(Boolean)
       .join(" ") || undefined,
 );
@@ -53,7 +64,7 @@ function send(value: ArTimeValue) {
 }
 
 function commit() {
-  const parsed = parseTime(text.value);
+  const parsed = parseTime(text.value, maxHour.value);
   if (parsed === undefined) {
     unreadable.value = true;
     emit("invalid", text.value);
@@ -66,9 +77,15 @@ function commit() {
 
 function toggleDay() {
   if (props.disabled) return;
-  const parsed = parseTime(text.value);
+  const parsed = parseTime(text.value, maxHour.value);
   const time = parsed === undefined ? props.modelValue.time : parsed;
   send({ time, day: day.value === "prev" ? "same" : "prev" });
+}
+
+function shift(base: string, minutes: number): string {
+  const span = (maxHour.value + 1) * 60;
+  const t = ((((toMinutes(base) ?? 0) + minutes) % span) + span) % span;
+  return `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
 }
 
 function onKeydown(e: KeyboardEvent) {
@@ -78,8 +95,9 @@ function onKeydown(e: KeyboardEvent) {
   }
   if (e.key === "ArrowUp" || e.key === "ArrowDown") {
     e.preventDefault();
-    const base = parseTime(text.value) ?? props.modelValue.time ?? "09:00";
-    text.value = addMinutes(base, e.key === "ArrowUp" ? props.step : -props.step);
+    const base = parseTime(text.value, maxHour.value) ?? props.modelValue.time ?? "09:00";
+    text.value = shift(base, e.key === "ArrowUp" ? props.step : -props.step);
+    unreadable.value = false;
   }
 }
 
@@ -90,9 +108,9 @@ function onBlur() {
 </script>
 
 <template>
-  <span data-ar="time-input" data-part="root" :data-size="size" :data-state="state">
+  <span data-ar="time-input" data-part="root" :data-size="size" :data-block="block || undefined" :data-state="state">
     <button
-      v-if="dayShift"
+      v-if="dayShift && !note"
       type="button"
       data-part="day-toggle"
       tabindex="-1"
@@ -104,7 +122,9 @@ function onBlur() {
     >
       {{ day === "prev" ? labels.prev : labels.same }}
     </button>
+    <span v-if="note" :id="id" data-part="note" role="note" :aria-label="label ? `${label}：${note}` : note">{{ note }}</span>
     <input
+      v-else
       :id="id"
       v-model="text"
       data-part="input"

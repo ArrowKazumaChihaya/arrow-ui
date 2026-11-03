@@ -1,0 +1,9 @@
+/* @covers ArCompact 1.0.0 */
+/* ArCompact：ant-design-vue 4 の Space.Compact（角丸6を外側だけ残し、線を重ねる）。 */
+[data-ar-design="classic"] [data-ar="compact"]>*{border-radius:0!important}
+[data-ar-design="classic"] [data-ar="compact"][data-direction="horizontal"]>*:first-child{border-radius:6px 0 0 6px!important}
+[data-ar-design="classic"] [data-ar="compact"][data-direction="horizontal"]>*:last-child{border-radius:0 6px 6px 0!important}
+[data-ar-design="classic"] [data-ar="compact"][data-direction="vertical"]>*:first-child{border-radius:6px 6px 0 0!important}
+[data-ar-design="classic"] [data-ar="compact"][data-direction="vertical"]>*:last-child{border-radius:0 0 6px 6px!important}
+[data-ar-design="classic"] [data-ar="compact"]>*:only-child{border-radius:6px!important}
+[data-ar-design="classic"] [data-ar="compact"]>[data-ar="button"][data-tone="primary"]+[data-ar="button"][data-tone="primary"]{border-left-color:rgba(255,255,255,.5)}

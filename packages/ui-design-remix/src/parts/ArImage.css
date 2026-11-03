@@ -1,0 +1,17 @@
+/* @covers ArImage 1.0.0 */
+/* ArImage：デザインシステムの .ad-img（150×100・角丸12）、.ov（rgba(31,41,51,.45) の幕に白い 12.5px 中太・虫めがね15px・間6）、
+   .xph（読み込めない：#F8FAFC の箱に #A3AEB9 の画像の印 18px）。プレビューは同じ ink の暗い幕に白い道具。 */
+[data-ar-design="remix"] [data-ar="image"][data-part="root"]{width:150px;height:100px;border-radius:12px;background:#F8FAFC}
+[data-ar-design="remix"] [data-ar="image"][data-part="root"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="image"][data-part="root"]>[data-part="placeholder"]{color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="image"][data-part="root"]>[data-part="mask"]{gap:6px;background:rgba(31,41,51,.45);color:#fff;font:600 12.5px/1.5 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="scrim"]{background:rgba(31,41,51,.82);animation:ar-image-fade .2s ease-out}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="stage"]{padding:64px 32px 96px}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="stage"]>[data-part="picture"]{border-radius:12px;box-shadow:0 24px 60px rgba(15,23,32,.4);animation:ar-image-fade .2s ease-out}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="close"]{top:20px;right:20px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="toolbar"]{bottom:28px;gap:2px;padding:4px;border-radius:12px;background:rgba(255,255,255,.14);color:#fff}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="toolbar"]>:is([data-part="tool"],[data-part="scale"]){height:34px;min-width:34px;border:0;border-radius:9px;background:none;color:#fff;font:600 12.5px/1 var(--ar-font-family);font-variant-numeric:tabular-nums;transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="toolbar"]>[data-part="scale"]{min-width:56px}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>:is([data-part="close"],[data-part="toolbar"]>[data-part="tool"],[data-part="toolbar"]>[data-part="scale"]):hover:not(:disabled){background:rgba(255,255,255,.22)}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="toolbar"]>[data-part="tool"]:disabled{opacity:.4}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>:is([data-part="close"],[data-part="toolbar"]>[data-part="tool"],[data-part="toolbar"]>[data-part="scale"]):focus-visible{outline:0;box-shadow:0 0 0 3px rgba(255,255,255,.5)}@keyframes ar-image-fade{from{opacity:0}to{opacity:1}}

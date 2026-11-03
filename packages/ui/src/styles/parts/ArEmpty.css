@@ -1,0 +1,3 @@
+/* ArEmpty の構造 */
+[data-ar="empty"]{display:flex;flex-direction:column;align-items:center;text-align:center;box-sizing:border-box}
+[data-ar="empty"]>[data-part="text"]{margin:0}

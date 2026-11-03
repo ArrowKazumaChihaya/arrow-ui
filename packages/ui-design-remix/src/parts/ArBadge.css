@@ -1,0 +1,25 @@
+/* @covers ArBadge 1.0.0, ArRibbon 1.0.0 */
+/* ArBadge（.ad-bdg sup：18・角丸9・700 11px・白い2pxの縁、右上に top-7 right-9。点は8px。状態の点 .ad-st は7px＋7pxの間） */
+[data-ar-design="remix"] [data-ar="badge"]{font-family:var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-color-danger);color:#fff;font-size:11px;font-weight:700;line-height:18px;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="count"]{top:-7px;right:-9px}
+[data-ar-design="remix"] [data-ar="badge"]>[data-part="dot"]{width:8px;height:8px;border-radius:50%;background:var(--ar-color-danger);box-shadow:0 0 0 2px var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="dot"]{top:-2px;right:-2px}
+[data-ar-design="remix"] [data-ar="badge"][data-tone="accent"]>:is([data-part="count"],[data-part="dot"]){background:var(--ar-accent);color:var(--ar-on-accent)}
+[data-ar-design="remix"] [data-ar="badge"][data-tone="neutral"]>:is([data-part="count"],[data-part="dot"]){background:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="badge"][data-standalone]>[data-part="count"]{box-shadow:none}
+/* 状態の点＋言葉 */
+[data-ar-design="remix"] [data-ar="badge"][data-mode="status"]{gap:7px;font-size:13px;line-height:1.5;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="status"]>[data-part="status-dot"]{width:7px;height:7px;border-radius:50%;background:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="status"][data-tone="ok"]>[data-part="status-dot"]{background:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="status"][data-tone="accent"]>[data-part="status-dot"]{background:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="status"][data-tone="warn"]>[data-part="status-dot"]{background:#E39A2D}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="status"][data-tone="danger"]>[data-part="status-dot"]{background:var(--ar-color-danger)}
+
+/* ArRibbon（.ad-rib .rb：上10・右に寄せ、テーマ色の塗り・白い700 11.5px・3/10の余白・角丸6 6 0 6） */
+[data-ar-design="remix"] [data-ar="ribbon"]>[data-part="ribbon"]{top:10px;right:0;padding:3px 10px;border-radius:6px 0 0 6px;background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow);font-family:var(--ar-font-family);font-size:11.5px;font-weight:700;line-height:16px}
+[data-ar-design="remix"] [data-ar="ribbon"][data-placement="start"]>[data-part="ribbon"]{right:auto;left:0;border-radius:0 6px 6px 0}
+[data-ar-design="remix"] [data-ar="ribbon"]>[data-part="ribbon"]>[data-part="corner"]{display:none}
+[data-ar-design="remix"] [data-ar="ribbon"][data-tone="danger"]>[data-part="ribbon"]{background:var(--ar-color-danger);color:#fff;text-shadow:none}
+[data-ar-design="remix"] [data-ar="ribbon"][data-tone="ok"]>[data-part="ribbon"]{background:var(--ar-color-ok);color:#fff;text-shadow:none}
+[data-ar-design="remix"] [data-ar="ribbon"][data-tone="warn"]>[data-part="ribbon"]{background:#E39A2D;color:#fff;text-shadow:0 1px 2px rgba(90,40,0,.28)}

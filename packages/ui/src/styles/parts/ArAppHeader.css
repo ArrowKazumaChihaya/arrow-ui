@@ -1,0 +1,34 @@
+/* 画面の頭・足・スマホの頭・下のメニューの構造（並びと固定だけ） */
+[data-ar="app-header"]{position:relative;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="top"]{position:relative;display:flex;align-items:center;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="top"]>[data-part="logo"]{display:flex;align-items:center;flex:none;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="top"]>[data-part="logo"]>:is(img,svg){display:block}
+[data-ar="app-header"]>[data-part="top"]>[data-part="pill"],[data-ar="app-header"]>[data-part="top"]>[data-part="account"]{display:inline-flex;align-items:center;flex:none;margin:0;cursor:pointer;white-space:nowrap;font-family:inherit;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="top"]>[data-part="account"]{position:relative;margin-left:auto}
+[data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="avatar"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="app-header"]>[data-part="nav"]{display:flex;align-items:center;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="spacer"]{flex:1}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="item"]{display:flex;align-items:center;flex:none;margin:0;border:0;cursor:pointer;white-space:nowrap;text-decoration:none;font-family:inherit;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-label"]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+[data-ar="app-account-menu"]{display:flex;flex-direction:column}
+[data-ar="app-account-menu"]>[data-part="menu-item"]{position:relative;display:flex;align-items:center;margin:0;border:0;cursor:pointer;text-align:left;font-family:inherit;white-space:nowrap;box-sizing:border-box}
+[data-ar="app-footer"]{box-sizing:border-box}
+[data-ar="app-footer"]>[data-part="row"]{display:flex;flex-wrap:wrap}
+[data-ar="app-footer"]>[data-part="row"]>[data-part="links"],[data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]{margin-left:auto}
+[data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"],[data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]{margin:0;cursor:pointer;text-decoration:none;white-space:nowrap;font-family:inherit;box-sizing:border-box}
+[data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]{display:flex;align-items:center}
+[data-ar="app-footer"]>[data-part="copyright"]{margin:0}
+[data-ar="mobile-header"]{position:relative;display:flex;align-items:center;box-sizing:border-box}
+[data-ar="mobile-header"]>[data-part="logo"]{display:flex;align-items:center;flex:none}
+[data-ar="mobile-header"]>[data-part="logo"]>:is(img,svg){display:block}
+[data-ar="mobile-header"]>[data-part="actions"]{display:flex;align-items:center;margin-left:auto}
+[data-ar="mobile-header"]>[data-part="notice"]{position:relative;display:flex;font-family:inherit;align-items:center;justify-content:center;flex:none;margin:0 0 0 auto;cursor:pointer;box-sizing:border-box}
+[data-ar="mobile-header"]>[data-part="actions"]+[data-part="notice"]{margin-left:0}
+[data-ar="mobile-header"]>[data-part="notice"]>[data-part="count"]{position:absolute;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+[data-ar="bottom-nav"]{display:grid;grid-template-columns:repeat(var(--ar-bottom-nav-count,5),minmax(0,1fr));box-sizing:border-box}
+[data-ar="bottom-nav"][data-fixed]{position:fixed;left:0;right:0;bottom:0;z-index:900}
+[data-ar="bottom-nav"]>[data-part="item"]{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;margin:0;border:0;cursor:pointer;text-align:center;text-decoration:none;font-family:inherit;box-sizing:border-box}
+[data-ar="bottom-nav"]>[data-part="item"]>[data-part="label"]{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

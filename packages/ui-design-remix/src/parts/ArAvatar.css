@@ -1,0 +1,28 @@
+/* @covers ArAvatar 1.0.0, ArAvatarGroup 1.0.0 */
+/* ArAvatar（.ad-av / .v-av：頭文字・700・地は淡いテーマ色。人ごとの色はシフト画面の AVC） */
+[data-ar-design="remix"] [data-ar="avatar"]{font-feature-settings:"palt" 1;width:32px;height:32px;border-radius:50%;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:13px;font-weight:700}
+[data-ar-design="remix"] [data-ar="avatar"][data-size="xs"]{width:24px;height:24px;font-size:11px}
+[data-ar-design="remix"] [data-ar="avatar"][data-size="sm"]{width:26px;height:26px;font-size:11px}
+[data-ar-design="remix"] [data-ar="avatar"][data-size="lg"]{width:44px;height:44px;font-size:16px}
+[data-ar-design="remix"] [data-ar="avatar"][data-size="xl"]{width:60px;height:60px;font-size:22px}
+[data-ar-design="remix"] [data-ar="avatar"][data-shape="square"]{border-radius:10px}
+[data-ar-design="remix"] [data-ar="avatar"][data-shape="square"]:is([data-size="xs"],[data-size="sm"]){border-radius:7px}
+[data-ar-design="remix"] [data-ar="avatar"]>[data-part="icon"]{width:15px;height:15px}
+[data-ar-design="remix"] [data-ar="avatar"]:is([data-size="xs"],[data-size="sm"])>[data-part="icon"]{width:13px;height:13px}
+[data-ar-design="remix"] [data-ar="avatar"][data-size="lg"]>[data-part="icon"]{width:20px;height:20px}
+[data-ar-design="remix"] [data-ar="avatar"][data-size="xl"]>[data-part="icon"]{width:26px;height:26px}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="neutral"]{background:var(--ar-color-surface-alt);color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="blue"]{background:#E3EEFA;color:#1F5F99}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="orange"]{background:#FCEBDD;color:#9A4A12}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="green"]{background:#E5F4EC;color:#226B47}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="purple"]{background:#F3E8F8;color:#6E3E8C}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="yellow"]{background:#FFF2CC;color:#7A5A00}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="warn"]{background:var(--ar-color-warn-subtle);color:var(--ar-color-warn)}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="danger"]{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="avatar"][data-tone="event"]{background:var(--ar-color-event-subtle);color:var(--ar-color-event)}
+/* 重ねる（白い縁で8px重ねる） */
+[data-ar-design="remix"] [data-ar="avatar-group"]>[data-ar="avatar"]{box-shadow:0 0 0 2px var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ar="avatar-group"]>[data-ar="avatar"]+[data-ar="avatar"]{margin-left:-8px}
+[data-ar-design="remix"] [data-ar="avatar-group"]:is([data-size="xs"],[data-size="sm"])>[data-ar="avatar"]+[data-ar="avatar"]{margin-left:-6px}
+[data-ar-design="remix"] [data-ar="avatar-group"][data-size="xl"]>[data-ar="avatar"]+[data-ar="avatar"]{margin-left:-12px}

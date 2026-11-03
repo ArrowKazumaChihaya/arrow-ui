@@ -1,0 +1,13 @@
+/* @covers ArMentions 1.0.0 */
+/* ArMentions（.inp を複数行に：余白 8px 12px・13.5px 500・行の高さ1.6・角丸10）。呼んだ名前は .ad-men（淡いテーマ色の地・テーマ色の文字・角丸4）。
+   重ねた文字と textarea の幅がずれないよう、札の左右の余白は影で、太さは線（text-stroke）で付ける。 */
+[data-ar-design="remix"] [data-ar="mentions"]{min-height:56px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font-size:13.5px;font-weight:500;line-height:1.6;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="mentions"]:hover{border-color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="mentions"]:focus-within{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="mentions"]>:is([data-part="mirror"],[data-part="input"]){padding:8px 12px}
+[data-ar-design="remix"] [data-ar="mentions"]>[data-part="input"]{min-height:54px}
+[data-ar-design="remix"] [data-ar="mentions"]>[data-part="input"]::placeholder{color:#7B8794}
+[data-ar-design="remix"] [data-ar="mentions"]>[data-part="mirror"]>[data-part="mention"]{border-radius:4px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);box-shadow:-3px 0 0 var(--ar-accent-subtle),3px 0 0 var(--ar-accent-subtle);-webkit-text-stroke:.35px currentColor}
+[data-ar-design="remix"] [data-ar="mentions"][data-state~="invalid"]{border-color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="mentions"][data-state~="readonly"]{background:#F8FAFC}
+[data-ar-design="remix"] [data-ar="mentions"][data-state~="disabled"]{background:#F8FAFC;color:#A3AEB9;box-shadow:none}

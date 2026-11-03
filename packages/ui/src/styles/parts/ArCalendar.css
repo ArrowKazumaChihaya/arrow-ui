@@ -1,0 +1,23 @@
+/* ArCalendar の構造：見出しの横並び、7列（年の表示は4列）のマス、マスの中身は下に寄せる。 */
+[data-ar="calendar"]{display:flex;flex-direction:column;min-width:0;box-sizing:border-box}
+[data-ar="calendar"]>[data-part="header"]{display:flex;align-items:center;min-width:0}
+[data-ar="calendar"]>[data-part="header"]>[data-part="extra"]{display:flex;align-items:center;margin-left:auto;min-width:0}
+[data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]{display:inline-flex;align-items:stretch}
+[data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap}
+[data-ar="calendar"]>[data-part="grid"]>[data-part="row"]{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+[data-ar="calendar"]>[data-part="grid"][data-grid="year"]>[data-part="row"]{grid-template-columns:repeat(4,minmax(0,1fr))}
+[data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+[data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{display:flex;flex-direction:column;align-items:flex-start;min-width:0;box-sizing:border-box;cursor:pointer;user-select:none}
+[data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"]{display:inline-flex;align-items:center;justify-content:center}
+[data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]{display:flex;flex-direction:column;align-items:flex-start;margin-top:auto;min-width:0;max-width:100%}
+[data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]>[data-part="event"]{max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;box-sizing:border-box}
+/* board：角の丸いマス。日付は真ん中、イベントはその下、cell slot（foot）はマスの下に寄せる。鍵・非公開の印は角に置く。 */
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]{display:flex;flex-direction:column}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{position:relative;align-items:center;overflow:hidden}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"]{flex:none}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>:is([data-part="lock"],[data-part="unpublished"]){position:absolute}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]{display:flex;align-items:center;flex:none;max-width:100%;overflow:hidden;white-space:nowrap}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{flex:none}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>span{overflow:hidden;text-overflow:ellipsis}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="foot"]{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;flex:none;max-width:100%;margin-top:auto}

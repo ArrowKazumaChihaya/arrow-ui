@@ -1,0 +1,15 @@
+/* @covers ArStatistic 1.0.0 */
+/* ArStatistic（素の ant-design-vue 4 の Statistic：見出し 14px rgba(0,0,0,.45)・下4、数字 24px/400 rgba(0,0,0,.88)、単位も24px。色つきは #3F8600（増）・#CF1322（減）） */
+[data-ar-design="classic"] [data-ar="statistic"]{color:rgba(0,0,0,.88);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="title"]{gap:4px;margin-bottom:4px;color:rgba(0,0,0,.45);font-size:14px;line-height:14px}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="title"]>[data-part="title-icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]{gap:4px;font-size:24px;font-weight:400;line-height:24px}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]{gap:2px;font-size:16px}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"][data-trend="up"]{color:#3F8600}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"][data-trend="down"]{color:#CF1322}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]>[data-ar="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="statistic"][data-tone="ok"]>[data-part="content"]{color:#3F8600}
+[data-ar-design="classic"] [data-ar="statistic"][data-tone="warn"]>[data-part="content"]{color:#D48806}
+[data-ar-design="classic"] [data-ar="statistic"][data-tone="danger"]>[data-part="content"]{color:#CF1322}
+[data-ar-design="classic"] [data-ar="statistic"][data-size="sm"]>[data-part="content"]{font-size:20px;line-height:20px}
+[data-ar-design="classic"] [data-ar="statistic"][data-size="sm"]>[data-part="title"]{font-size:13px;line-height:13px}

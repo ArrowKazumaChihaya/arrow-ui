@@ -1,14 +1,27 @@
-<!-- 1つを選ぶ | direction="vertical" で縦に並べる。 -->
+<!-- ラジオ | 18px の丸。選ぶと枠5のテーマ色。7つ以上なら ArSelect。←→↑↓で選べる。 -->
 <script setup lang="ts">
 import { ArRadioGroup, ArStack } from "@arrow/ui";
 import { ref } from "vue";
-const v = ref<string | number | boolean | null>("next");
-const opts = [{ value: "next", label: "次の回だけ" }, { value: "after", label: "これ以降" }, { value: "all", label: "すべて" }];
+const scope = ref("once");
+const opts = [
+  { value: "once", label: "次の回だけ" },
+  { value: "after", label: "これ以降すべて" },
+  { value: "all", label: "すべて" },
+];
 </script>
 
 <template>
-<ArStack :gap="4">
-  <ArRadioGroup v-model="v" :options="opts" label="変更する範囲" />
-  <ArRadioGroup v-model="v" :options="opts" direction="vertical" label="変更する範囲（縦）" />
+<ArStack :gap="5">
+  <ArRadioGroup v-model="scope" label="変える範囲" :options="opts" />
+  <ArRadioGroup v-model="scope" label="変える範囲（縦）" direction="vertical" :options="opts" />
+  <ArRadioGroup
+    model-value="once"
+    label="使えない"
+    :options="[
+      { value: 'once', label: '次の回だけ', disabled: true },
+      { value: 'after', label: 'これ以降すべて', disabled: true },
+      { value: 'all', label: 'すべて' },
+    ]"
+  />
 </ArStack>
 </template>

@@ -1,0 +1,5 @@
+/* @covers ArBorderBeam 1.0.0 */
+/* 光の線がふちを回る（.ad-beam）：地はふちの線、光はテーマ色の淡い光（acc-hi → acc）、中は白・角丸14。 */
+[data-ar-design="remix"] [data-ar="border-beam"]{padding:16px;border-radius:14px;background:var(--ar-color-border);color:var(--ar-color-text);font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="border-beam"]>[data-part="beam"]{background:conic-gradient(from 0deg,transparent 0 70%,var(--ar-accent-hi) 80%,var(--ar-accent) 88%,transparent 96%)}
+[data-ar-design="remix"] [data-ar="border-beam"]::after{inset:1.5px;border-radius:12.5px;background:var(--ar-color-surface)}

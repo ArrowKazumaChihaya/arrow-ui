@@ -1,0 +1,5 @@
+[data-ar="info"]{margin:0;box-sizing:border-box}
+[data-ar="info"][data-kind="note"],[data-ar="info"][data-kind="attention"]{white-space:pre-wrap}
+[data-ar="info"][data-kind="attention"]{display:flex;align-items:flex-start}
+[data-ar="info"][data-kind="mark"],[data-ar="info"][data-kind="detail"]{display:inline-flex;align-items:center;vertical-align:middle;padding:0;border:0;background:none;cursor:pointer;font:inherit;text-decoration:none}
+[data-ar="info"]>[data-part="icon"]{flex:none}

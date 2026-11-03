@@ -1,0 +1,10 @@
+/* @covers ArParagraph 1.0.0 */
+/* ArParagraph：ant-design-vue 4 の Typography.Paragraph（14px・1.5714・下に1em） */
+[data-ar-design="classic"] [data-ar="paragraph"]{margin:0 0 1em;font-size:14px;line-height:1.5714;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="paragraph"][data-size="sm"]{font-size:12px}
+[data-ar-design="classic"] [data-ar="paragraph"][data-strong]{font-weight:600}
+[data-ar-design="classic"] [data-ar="paragraph"]:is([data-type="secondary"],[data-type="muted"]){color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="paragraph"][data-type="success"]{color:#52C41A}
+[data-ar-design="classic"] [data-ar="paragraph"][data-type="warning"]{color:#FAAD14}
+[data-ar-design="classic"] [data-ar="paragraph"][data-type="danger"]{color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="paragraph"][data-type="disabled"]{color:rgba(0,0,0,.25)}

@@ -1,0 +1,10 @@
+/* ArList の構造 */
+[data-ar="list"]{min-width:0;box-sizing:border-box}
+[data-ar="list"]>[data-part="viewport"]{overflow:auto}
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="group-title"]{position:sticky;top:0;z-index:1}
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]{list-style:none;margin:0;padding:0}
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]{display:flex;align-items:center;min-width:0}
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="avatar"]{display:inline-flex;flex:none}
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="meta"]{flex:1;min-width:0}
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="meta"]>*{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="actions"]{display:flex;align-items:center;flex:none}

@@ -1,0 +1,7 @@
+/* ArStepper の構造 */
+[data-ar="stepper"]{display:inline-flex;align-items:center;box-sizing:border-box;vertical-align:middle}
+[data-ar="stepper"]>[data-part="decrement"],[data-ar="stepper"]>[data-part="increment"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;padding:0;border:0;cursor:pointer;touch-action:none;box-sizing:border-box}
+[data-ar="stepper"]>[data-part="decrement"]:disabled,[data-ar="stepper"]>[data-part="increment"]:disabled{cursor:not-allowed}
+[data-ar="stepper"]>[data-part="value"]{margin:0;padding:0;border:0;outline:0;background:transparent;font:inherit;color:inherit;text-align:center;font-variant-numeric:tabular-nums;box-sizing:border-box;min-width:0}
+[data-ar="stepper"][data-variant="joined"]{overflow:hidden;align-items:stretch}
+[data-ar="stepper"]>[data-part="unit"]{flex:none;white-space:nowrap}

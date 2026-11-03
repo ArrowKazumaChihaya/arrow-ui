@@ -1,0 +1,20 @@
+/* @covers ArStepper 1.0.0 */
+/* ArStepper（今の画面にない部品。ant-design-vue 4 の材料で：高さ32・角丸6・枠 #d9d9d9・−＋は既定のボタン） */
+[data-ar-design="classic"] [data-ar="stepper"]{color:rgba(0,0,0,.88);font-size:14px}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="joined"]{height:var(--ar-size-control-md);border:1px solid #D9D9D9;border-radius:6px;background:#fff}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="joined"]:focus-within{border-color:#4096FF;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="joined"]>:is([data-part="decrement"],[data-part="increment"]){width:32px;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="joined"]>[data-part="decrement"]{border-right:1px solid #D9D9D9}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="joined"]>[data-part="increment"]{border-left:1px solid #D9D9D9}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="joined"]>[data-part="value"]{width:44px}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="joined"]>[data-part="unit"]{display:flex;align-items:center;padding-right:11px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="split"]{gap:4px}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="split"]>:is([data-part="decrement"],[data-part="increment"]){width:32px;height:32px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="split"]>:is([data-part="decrement"],[data-part="increment"]):hover:not(:disabled){border-color:#4096FF;color:#4096FF}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="split"]>[data-part="value"]{width:32px}
+[data-ar-design="classic"] [data-ar="stepper"][data-variant="split"]>[data-part="unit"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="stepper"]>:is([data-part="decrement"],[data-part="increment"]) [data-ar="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="stepper"]>:is([data-part="decrement"],[data-part="increment"]):disabled{color:rgba(0,0,0,.25);background:rgba(0,0,0,.04)}
+[data-ar-design="classic"] [data-ar="stepper"][data-size="sm"][data-variant="joined"]{height:var(--ar-size-control-sm);border-radius:4px}
+[data-ar-design="classic"] [data-ar="stepper"][data-size="sm"][data-variant="split"]>:is([data-part="decrement"],[data-part="increment"]){width:24px;height:24px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="stepper"][data-state~="disabled"]{color:rgba(0,0,0,.25)}

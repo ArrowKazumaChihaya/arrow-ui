@@ -1,0 +1,10 @@
+/* ArLayout の構造：ヘッダー・横のメニュー・中身・フッターの格子 */
+[data-ar="layout"]{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;grid-template-areas:"header" "content" "footer";min-width:0;box-sizing:border-box}
+[data-ar="layout"][data-has-sider="start"]{grid-template-columns:var(--ar-layout-sider) minmax(0,1fr);grid-template-areas:"header header" "sider content" "sider footer"}
+[data-ar="layout"][data-has-sider="end"]{grid-template-columns:minmax(0,1fr) var(--ar-layout-sider);grid-template-areas:"header header" "content sider" "footer sider"}
+[data-ar="layout"][data-fill]{height:100%}
+[data-ar="layout"][data-bordered]{overflow:hidden}
+[data-ar="layout"]>[data-part="header"]{grid-area:header;display:flex;align-items:center;min-width:0}
+[data-ar="layout"]>[data-part="sider"]{grid-area:sider;min-width:0;overflow:auto;display:flex;flex-direction:column}
+[data-ar="layout"]>[data-part="content"]{grid-area:content;min-width:0;min-height:0;overflow:auto}
+[data-ar="layout"]>[data-part="footer"]{grid-area:footer;display:flex;align-items:center;justify-content:center;min-width:0}

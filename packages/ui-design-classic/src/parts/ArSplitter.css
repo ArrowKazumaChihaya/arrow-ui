@@ -1,0 +1,14 @@
+/* @covers ArSplitter 1.0.0 */
+/* ArSplitter：今の ARROW にない部品。ant-design-vue（antd 5 の Splitter）の既定に合わせる：つまみは線1px、hover でテーマ色の淡い面。 */
+[data-ar-design="classic"] [data-ar="splitter"]{font-size:13px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="splitter"][data-bordered]{border:1px solid #D9D9D9;border-radius:6px;overflow:hidden}
+[data-ar-design="classic"] [data-ar="splitter"]>[data-part="pane"]{padding:12px}
+[data-ar-design="classic"] [data-ar="splitter"]>[data-part="bar"]{position:relative;width:1px;background:rgba(5,5,5,.06);overflow:visible}
+[data-ar-design="classic"] [data-ar="splitter"][data-orientation="vertical"]>[data-part="bar"]{width:auto;height:1px}
+[data-ar-design="classic"] [data-ar="splitter"]>[data-part="bar"]::before{content:"";position:absolute;inset:0 -3px;z-index:1}
+[data-ar-design="classic"] [data-ar="splitter"][data-orientation="vertical"]>[data-part="bar"]::before{inset:-3px 0}
+[data-ar-design="classic"] [data-ar="splitter"]>[data-part="bar"]::after{content:"";position:absolute;z-index:2;width:6px;height:20px;border-radius:6px;background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="splitter"][data-orientation="vertical"]>[data-part="bar"]::after{width:20px;height:6px}
+[data-ar-design="classic"] [data-ar="splitter"]>[data-part="bar"]:hover,[data-ar-design="classic"] [data-ar="splitter"][data-state~="dragging"]>[data-part="bar"]{background:var(--ar-accent-hi)}
+[data-ar-design="classic"] [data-ar="splitter"]>[data-part="bar"]:hover::after,[data-ar-design="classic"] [data-ar="splitter"][data-state~="dragging"]>[data-part="bar"]::after{background:var(--ar-accent-muted)}
+[data-ar-design="classic"] [data-ar="splitter"]>[data-part="bar"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}

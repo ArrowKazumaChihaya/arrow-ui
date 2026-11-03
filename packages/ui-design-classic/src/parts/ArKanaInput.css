@@ -1,0 +1,8 @@
+/* @covers ArKanaInput 1.0.0, ArKanaText 1.0.0 */
+/* 今の 氏名（Split 150px を Space で並べる：間8）と Kana（ui-Kana：13px の名前の 15px 上に 10px のフリガナを重ねる） */
+[data-ar-design="classic"] [data-ar="kana-input"]{gap:8px}
+[data-ar-design="classic"] [data-ar="kana-input"]>[data-part="row"]{gap:8px}
+[data-ar-design="classic"] [data-ar="kana-input"]>[data-part="row"]>[data-ar="text-input"]{width:150px}
+[data-ar-design="classic"] [data-ar="kana-text"]{font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="kana-text"]>[data-part="stack"]{position:relative}
+[data-ar-design="classic"] [data-ar="kana-text"]>[data-part="stack"]>[data-part="kana"]{position:absolute;top:-15px;left:0;font-size:10px;line-height:13px;white-space:nowrap}

@@ -1,0 +1,17 @@
+/* ArSelect の構造（ネイティブの select は使わない。右の印・消すボタンは右に重ねる） */
+/* 押す所（トリガー）は ArCascader・ArTreeSelect も同じ形なので、ここで3つまとめて当てる。 */
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]){box-sizing:border-box;cursor:pointer;user-select:none;-webkit-user-select:none;outline:0}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-state~="disabled"]{cursor:not-allowed}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="value"],:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="placeholder"]{display:flex;align-items:center;flex:1;min-width:0;overflow:hidden;white-space:nowrap}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="value"]>[data-part="value-text"]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="value"]>[data-part="avatar"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]{display:flex;flex-wrap:wrap;align-items:center;flex:1;min-width:0}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]>[data-part="tag"]{display:inline-flex;align-items:center;max-width:100%;white-space:nowrap;box-sizing:border-box}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]{display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="icon"]{flex:none}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="arrow"],:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="clear"],:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="spinner"]{position:absolute;top:50%;transform:translateY(-50%)}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="arrow"]{pointer-events:none}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="clear"]{z-index:1;display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;cursor:pointer;opacity:0}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):hover>[data-part="clear"],:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):focus-visible>[data-part="clear"],:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="clear"]:focus-visible{opacity:1}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):hover>[data-part="clear"]~[data-part="arrow"]{opacity:0}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="spinner"]{box-sizing:border-box;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:ar-spin .8s linear infinite}

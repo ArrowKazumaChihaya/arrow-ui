@@ -1,14 +1,20 @@
-<!-- タブを入れる | #tabs にタブを置くと、見出しの下につながる。 -->
+<!-- 帯の下のタブ | #tabs にタブを置くと、帯のすぐ下に淡いテーマ色の帯（下に線）としてつながる。 -->
 <script setup lang="ts">
 import { ArCard, ArTabs } from "@arrow/ui";
 import { ref } from "vue";
-const tab = ref("member");
-const items = [{ key: "member", label: "勤務メンバー", icon: "users" as const, count: 4 }, { key: "available", label: "勤務可能な人" }, { key: "event", label: "イベント" }];
+const tab = ref("calendar");
+const items = [
+  { key: "calendar", label: "カレンダー", icon: "cal" as const },
+  { key: "table", label: "テーブル", icon: "grid" as const },
+  { key: "view", label: "閲覧", icon: "eye" as const },
+];
 </script>
 
 <template>
-<ArCard title="シフト詳細" variant="band">
-  <template #tabs><ArTabs v-model="tab" :items="items" label="詳細" /></template>
-  選んでいるタブ：{{ tab }}
-</ArCard>
+<div style="max-width: 541px">
+  <ArCard title="シフトカレンダー" icon="cal" variant="band">
+    <template #tabs><ArTabs v-model="tab" variant="band" :items="items" label="表示の切り替え" /></template>
+    選んでいるタブ：{{ tab }}
+  </ArCard>
+</div>
 </template>
