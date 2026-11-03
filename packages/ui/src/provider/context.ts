@@ -1,4 +1,4 @@
-import { inject, type InjectionKey, type Ref } from "vue";
+import { computed, inject, type InjectionKey, type Ref } from "vue";
 import type { ArPaletteName } from "@arrow/ui-tokens";
 import type { ArDesign } from "../design";
 
@@ -21,4 +21,13 @@ let seq = 0;
 export function useId(prefix = "ar"): string {
   seq += 1;
   return `${prefix}-${seq}`;
+}
+
+/**
+ * デザインが選んだ部品の形（ArDesign.forms）を読む。Provider の外や指定がなければ fallback。
+ * 例：useDesignForm("ArTimeInput", "fields", "single")
+ */
+export function useDesignForm<T extends string>(component: string, key: string, fallback: T): import("vue").ComputedRef<T> {
+  const ui = useArUi();
+  return computed(() => ((ui?.design.value.forms as Record<string, Record<string, string>> | undefined)?.[component]?.[key] as T) ?? fallback);
 }
