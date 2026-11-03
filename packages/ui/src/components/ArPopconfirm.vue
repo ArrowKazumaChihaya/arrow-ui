@@ -26,7 +26,6 @@ defineOptions({ inheritAttrs: false });
 
 const id = useId("ar-popconfirm");
 const anchor = ref<HTMLElement | null>(null);
-const float = ref<InstanceType<typeof ArFloat> | null>(null);
 const inner = ref(false);
 const isOpen = computed(() => props.open ?? inner.value);
 const tone = computed(() => props.iconTone ?? (props.okTone === "danger" ? "danger" : "warn"));
@@ -57,7 +56,7 @@ watch(isOpen, async (o) => {
   if (!o) return;
   await nextTick();
   await nextTick();
-  float.value?.panel?.querySelector<HTMLElement>('[data-part="footer"]>[data-ar="button"]:last-child')?.focus();
+  document.getElementById(id)?.querySelector<HTMLElement>('[data-part="footer"]>[data-ar="button"]:last-child')?.focus();
 });
 </script>
 
@@ -72,7 +71,6 @@ watch(isOpen, async (o) => {
     @click="toggle"
   ><slot /></span>
   <ArFloat
-    ref="float"
     :id="id"
     ar="popconfirm"
     role="alertdialog"

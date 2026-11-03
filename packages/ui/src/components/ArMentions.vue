@@ -65,7 +65,7 @@ interface Row {
   opt: ArMentionsOption;
   pieces: ArTextPiece[];
 }
-const rows = computed<Row[]>(() => {
+const hits = computed<Row[]>(() => {
   if (!token.value) return [];
   const q = token.value.query;
   const fq = fold(q);
@@ -79,9 +79,9 @@ const rows = computed<Row[]>(() => {
   }
   return out;
 });
-const enabled = (i: number) => !!rows.value[i];
-const open = computed(() => !!token.value && (rows.value.length > 0 || props.emptyText !== undefined));
-watch(rows, () => (active.value = firstEnabled(rows.value.length, enabled)));
+const enabled = (i: number) => !!hits.value[i];
+const open = computed(() => !!token.value && (hits.value.length > 0 || props.emptyText !== undefined));
+watch(hits, () => (active.value = firstEnabled(hits.value.length, enabled)));
 const optionId = (i: number) => `${uid}-opt-${i}`;
 
 /** 重ねて見せる文字：呼んだ名前（と今打っている「@…」）を札にする。 */
@@ -134,7 +134,7 @@ function onInput(e: Event) {
   nextTick(readToken);
 }
 function choose(i: number) {
-  const r = rows.value[i];
+  const r = hits.value[i];
   const t = ta.value;
   if (!r || !t || !token.value) return;
   const before = props.modelValue.slice(0, token.value.start);
@@ -152,7 +152,7 @@ function choose(i: number) {
 }
 function onKey(e: KeyboardEvent) {
   if (!open.value) return;
-  const n = rows.value.length;
+  const n = hits.value.length;
   if (e.key === "ArrowDown" || e.key === "ArrowUp") {
     e.preventDefault();
     active.value = step(active.value, e.key === "ArrowDown" ? 1 : -1, n, enabled);
@@ -212,7 +212,7 @@ defineExpose({ focus: () => ta.value?.focus() });
   <ArFloat ar="select-panel" :open="open" :anchor="root" :match-width="true" :offset="6" @close="close">
     <div :id="listId" ref="listEl" data-part="list" role="listbox" aria-label="呼ぶ人" style="max-height: 232px" @mousedown.prevent>
       <ArOptionRow
-        v-for="(r, i) in rows"
+        v-for="(r, i) in hits"
         :id="optionId(i)"
         :key="String(r.opt.value)"
         :pieces="r.pieces"
@@ -224,7 +224,7 @@ defineExpose({ focus: () => ta.value?.focus() });
         @click="choose(i)"
         @mousemove="active = i"
       />
-      <div v-if="!rows.length" data-part="empty" role="status">{{ emptyText }}</div>
+      <div v-if="!hits.length" data-part="empty" role="status">{{ emptyText }}</div>
     </div>
   </ArFloat>
 </template>

@@ -8,7 +8,7 @@ const options = ["朝礼", "店長会議", "棚卸し", "清掃", "研修"];
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center" wrap>
   <ArAutoComplete v-model="v" :options="options" placeholder="イベント名" empty-text="候補がありません" clearable label="イベント名" style="width: 220px" />
   <ArAutoComplete v-model="w" :options="options" size="sm" placeholder="小" label="小" style="width: 160px" />
   <ArAutoComplete model-value="朝礼" :options="options" disabled label="使えない" style="width: 160px" />

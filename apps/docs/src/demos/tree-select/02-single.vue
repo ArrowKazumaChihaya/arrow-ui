@@ -11,7 +11,7 @@ const tree = [
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center" wrap>
   <ArTreeSelect v-model="a" :tree="tree" label="部署" style="width: 240px" />
   <ArTreeSelect v-model="b" :tree="tree" leaf-only searchable placeholder="課・営業所を選ぶ" label="課" style="width: 240px" />
   <ArTreeSelect v-model="a" :tree="tree" size="sm" label="小" style="width: 200px" />

@@ -78,10 +78,13 @@
 @import "./parts/ArThumbnail.css";
 @import "./parts/ArTimeInput.css";
 @import "./parts/ArTimePicker.css";
+@import "./parts/ArTimeline.css";
 @import "./parts/ArTitle.css";
 @import "./parts/ArToast.css";
 @import "./parts/ArTooltip.css";
+@import "./parts/ArTour.css";
 @import "./parts/ArTransfer.css";
+@import "./parts/ArTree.css";
 @import "./parts/ArTreeSelect.css";
 @import "./parts/ArUpload.css";
 @import "./parts/ArWatermark.css";

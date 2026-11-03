@@ -17,7 +17,7 @@ const stores = [
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center" wrap>
   <ArCascader v-model="a" :options="stores" change-on-select expand-trigger="hover" label="地域" style="width: 240px" />
   <ArCascader v-model="b" :options="stores" display-last variant="selbox" icon="store" label="店舗（最後だけ）" />
   <ArCascader v-model="b" :options="stores" size="sm" label="小" style="width: 220px" />

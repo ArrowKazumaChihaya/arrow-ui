@@ -1,9 +1,10 @@
 <!-- 人を選ぶ | avatar（頭文字の丸）と description（右の小さな文字）。登録済みの人は disabled で選べない。名前・コードで探せる（keywords）。 -->
 <script setup lang="ts">
 import { ArSelect } from "@arrow/ui";
+import type { ArSelectOption } from "@arrow/ui";
 import { ref } from "vue";
 const member = ref<string | number | null>(null);
-const people = [
+const people: ArSelectOption[] = [
   { value: 1, label: "千速 一真", avatar: "千", keywords: "ちはや かずま S1001", description: "登録済み", disabled: true },
   { value: 2, label: "末永 修也", avatar: "末", avatarColor: "#FCEBDD", avatarInk: "#9A4A12", keywords: "すえなが しゅうや S1002", description: "登録済み", disabled: true },
   { value: 3, label: "新里 匠", avatar: "新", avatarColor: "#E5F4EC", avatarInk: "#226B47", keywords: "にいざと たくみ S1003", description: "登録済み", disabled: true },

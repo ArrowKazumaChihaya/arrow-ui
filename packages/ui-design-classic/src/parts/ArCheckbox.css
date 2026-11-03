@@ -15,7 +15,7 @@
 /* ArCheckboxGroup（ui-Flag：Check を横に並べる・縦は行30で積む） */
 [data-ar-design="classic"] [data-ar="checkbox-group"]>[data-part="list"]{gap:0}
 /* ArRadioGroup（ui-Radio・ui-RadioGroup）：16×16 の丸・枠 #D9D9D9、選ぶと #1677FF の塗りに白い中心点（8px）。ラベルは 14px・左右8。横は行32。 */
-[data-ar-design="classic"] [data-ar="radio-group"]{gap:0 8px}
+[data-ar-design="classic"] [data-ar="radio-group"]{gap:0}
 [data-ar-design="classic"] [data-ar="radio-group"]:not([data-type="button"]):not([data-direction="vertical"])>[data-part="item"]{line-height:32px}
 [data-ar-design="classic"] [data-ar="radio-group"][data-direction="vertical"]{gap:0}
 [data-ar-design="classic"] [data-ar="radio-group"][data-direction="vertical"]>[data-part="item"]{line-height:22px}

@@ -1,0 +1,26 @@
+/* @covers ArTour 1.0.0 */
+/* ArTour：antd の Tour。まわりは rgba(0,0,0,.5) の幕、指す要素のまわり 6px・角丸2 を残す。カードは幅520・白・角丸8・薄い影、見出し 14px 太さ600（余白 16/16/8）、
+   説明 13px 行の高さ1.57（左右16）、下の段は 余白 8/16/16、点は 6px・間6・rgba(0,0,0,.15)、今はテーマ色、ボタンは小（間8）。矢印は 16×8、要素との間は 16px（refs/classic/antd-Tour-open.png を実測）。 */
+[data-ar-design="classic"] [data-ar="tour"][data-part="overlay"]>[data-part="spot"]{border-radius:2px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="overlay"]>[data-part="spot"]::before{content:"";position:absolute;inset:-2px;border-radius:2px;box-shadow:0 0 0 9999px rgba(0,0,0,.5)}
+[data-ar-design="classic"] [data-ar="tour"][data-part="overlay"]:not([data-mask])>[data-part="spot"]::before{box-shadow:0 0 0 2px var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="tour"][data-part="overlay"]>[data-part="spot"][data-target="none"]::before{inset:0}
+[data-ar-design="classic"] [data-ar="tour"][data-part="overlay"]:not([data-mask])>[data-part="spot"][data-target="none"]::before{box-shadow:none}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]{width:520px;max-width:calc(100vw - 16px);padding:0;border-radius:8px;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 1px 2px 0 rgba(0,0,0,.03),0 1px 6px -1px rgba(0,0,0,.02),0 2px 4px 0 rgba(0,0,0,.02);font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="title"]{padding:16px 16px 8px;font-size:14px;font-weight:600;line-height:22px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]+[data-part="title"]{padding-right:44px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="description"]{padding:0 16px;line-height:1.57143;overflow-wrap:break-word}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]{top:16px;right:16px;z-index:1;width:22px;height:22px;border:0;border-radius:4px;background:none;color:rgba(0,0,0,.45);transition:background-color .2s,color .2s}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]:hover{background:rgba(0,0,0,.06);color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{padding:8px 16px 16px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]{gap:6px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]>[data-part="dot"]{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.15)}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]>[data-part="dot"][data-state~="current"]{background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="actions"]{gap:8px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{width:11.3px;height:11.3px;background:#fff;transform:rotate(45deg)}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]:is([data-placement^="top"],[data-placement^="bottom"])>[data-part="panel"]>[data-part="arrow"]{left:clamp(12px,calc(var(--ar-float-arrow,24px) - 5.65px),calc(100% - 23.3px))}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"]:is([data-placement^="left"],[data-placement^="right"])>[data-part="panel"]>[data-part="arrow"]{top:clamp(12px,calc(var(--ar-float-arrow,24px) - 5.65px),calc(100% - 23.3px))}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-5.65px;border-top-left-radius:2px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"][data-placement^="top"]>[data-part="panel"]>[data-part="arrow"]{bottom:-5.65px;border-bottom-right-radius:2px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5.65px;border-bottom-left-radius:2px}
+[data-ar-design="classic"] [data-ar="tour"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5.65px;border-top-right-radius:2px}

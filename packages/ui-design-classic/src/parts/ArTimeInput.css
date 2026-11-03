@@ -23,3 +23,6 @@
 [data-ar-design="classic"] [data-ar="time-range"]>[data-part="row"]{gap:4px;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
 [data-ar-design="classic"] [data-ar="time-range"]>[data-part="error"]{gap:4px;margin-top:2px;font:600 13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#D10C1D}
 [data-ar-design="classic"] [data-ar="time-input"][data-state~="disabled"]{background:none;border:0}
+/* 今の切り替えは1文字（「前」「当」）なので頭の1文字だけ見せる（読み上げは aria-label） */
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]{display:block;height:32px;font-size:0}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]::first-letter{font-size:13px}
