@@ -66,7 +66,7 @@ const rows: R[] = [
 
 describe("Y：ArTable の行の並べ替え", () => {
   it("つまみで Alt+↓ を押すと1つ下へ動かし update:rows と reorder を出す", async () => {
-    const w = mount(ArTable, { props: { columns: [{ key: "name", title: "名称" }], rows, rowKey: "id", caption: "勤務種別", sortableRows: true } });
+    const w = mount(ArTable, { props: { columns: [{ key: "name", title: "名称" }], rows, rowKey: "id", caption: "勤務種別", sortableRows: true } as never });
     const handles = w.findAll('[data-part="drag-handle"]');
     expect(handles).toHaveLength(3);
     await handles[0]!.trigger("keydown", { key: "ArrowDown", altKey: true });
@@ -81,7 +81,7 @@ describe("Y：ArTable の行の並べ替え", () => {
   });
 
   it("つまみをつかんで別の行の下へ落とすと、その後ろへ動かす", async () => {
-    const w = mount(ArTable, { props: { columns: [{ key: "name", title: "名称" }], rows, rowKey: "id", caption: "勤務種別", sortableRows: true } });
+    const w = mount(ArTable, { props: { columns: [{ key: "name", title: "名称" }], rows, rowKey: "id", caption: "勤務種別", sortableRows: true } as never });
     const trs = w.findAll('[data-part="row"]');
     await w.findAll('[data-part="drag-handle"]')[0]!.trigger("mousedown");
     await trs[0]!.trigger("dragstart", { dataTransfer: { setData() {}, effectAllowed: "" } });
@@ -111,7 +111,7 @@ const cols = [{ key: "name", title: "店舗名" }];
 
 describe("Y：ArTreeTable", () => {
   it("既定ですべて開き、深さ・開け閉めを読み上げに出す。開け閉めのボタンで閉じる", async () => {
-    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗" } });
+    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗" } as never });
     const trs = w.findAll('tbody[data-part="body"] > [data-part="row"]');
     expect(trs.map((t) => t.attributes("aria-level"))).toEqual(["1", "2", "2", "1"]);
     expect(trs[0]!.attributes("aria-expanded")).toBe("true");
@@ -122,7 +122,7 @@ describe("Y：ArTreeTable", () => {
   });
 
   it("キーボード：← で閉じ、→ で開く", async () => {
-    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗" }, attachTo: document.body });
+    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗" } as never, attachTo: document.body });
     const first = w.get('[data-part="row"]');
     await first.trigger("keydown", { key: "ArrowLeft" });
     expect(w.findAll('tbody[data-part="body"] > [data-part="row"]')).toHaveLength(2);
@@ -132,7 +132,7 @@ describe("Y：ArTreeTable", () => {
   });
 
   it("つまみで Alt+→ を押すと、すぐ上の行の子にした木を update:rows で渡す", async () => {
-    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗", draggable: true } });
+    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗", draggable: true } as never });
     const handle = w.findAll('[data-part="drag-handle"]').find((x) => x.attributes("data-key") === "12")!;
     await handle.trigger("keydown", { key: "ArrowRight", altKey: true });
     expect(w.emitted("drop")![0]![0]).toEqual({ key: 12, target: 11, position: "inside" });
@@ -143,7 +143,7 @@ describe("Y：ArTreeTable", () => {
   });
 
   it("Alt+← で親の後ろへ出し、自分の下の行の中へは動かせない", async () => {
-    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗", draggable: true } });
+    const w = mount(ArTreeTable, { props: { columns: cols, rows: tree, rowKey: "id", caption: "店舗", draggable: true } as never });
     const h11 = w.findAll('[data-part="drag-handle"]').find((x) => x.attributes("data-key") === "11")!;
     await h11.trigger("keydown", { key: "ArrowLeft", altKey: true });
     const next = w.emitted("update:rows")![0]![0] as T[];
