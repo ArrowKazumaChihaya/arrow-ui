@@ -26,7 +26,7 @@ function sync(v: string | null) {
   const m = v ? /^(\d{4})-(\d{1,2})$/.exec(v) : null;
   if (m) {
     year.value = Number(m[1]);
-    if (digitsOf(month.value, 2) !== Number(m[2])) month.value = String(Number(m[2]));
+    if (digitsOf(month.value, 2) !== Number(m[2])) month.value = m[2]!;
   } else {
     // 値が空になっても、打ちかけの月はそのまま残す
     year.value ??= Math.min(new Date().getFullYear(), props.maxYear);

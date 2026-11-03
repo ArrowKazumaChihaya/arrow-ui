@@ -1,0 +1,11 @@
+/* @covers ArForm 1.0.0 */
+/* ArForm：縦（ポップアップ）は項目の間18px、横（設定の画面 .ad-form）は14px。
+   間違いのまとめは淡い赤の地（danger-bg）・角丸12・赤い文字。項目ごとの間違いは .derr（ArField）。 */
+[data-ar-design="remix"] [data-ar="form"]{gap:18px;color:var(--ar-color-text);font-size:13.5px}
+[data-ar-design="remix"] [data-ar="form"][data-layout="inline"]{gap:14px}
+[data-ar-design="remix"] [data-ar="form"]>[data-part="summary"]{padding:12px 14px;border-radius:12px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);box-shadow:inset 0 0 0 1px rgba(192,50,43,.18)}
+[data-ar-design="remix"] [data-ar="form"]>[data-part="summary"]:focus-visible{box-shadow:inset 0 0 0 1px rgba(192,50,43,.18),0 0 0 3px rgba(192,50,43,.2)}
+[data-ar-design="remix"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-title"]{gap:6px;font-size:13.5px;font-weight:700;line-height:20px}
+[data-ar-design="remix"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-list"]{margin-top:6px;padding-left:21px;font-size:12.5px;font-weight:600;line-height:20px}
+[data-ar-design="remix"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-list"]>[data-part="summary-item"]>a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(176,45,39,.4)}
+[data-ar-design="remix"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-list"]>[data-part="summary-item"]>a:hover{text-decoration-color:currentColor}

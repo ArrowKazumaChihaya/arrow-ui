@@ -7,7 +7,7 @@ const people = ref(2);
 </script>
 
 <template>
-<ArCluster :gap="6" align="center" wrap="wrap">
+<ArCluster :gap="6" align="center">
   <ArStepper v-model="day" :min="1" :max="31" label="日" />
   <ArStepper v-model="people" variant="split" :min="1" unit="人" label="人数" />
 </ArCluster>

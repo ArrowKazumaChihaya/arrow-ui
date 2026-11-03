@@ -14,3 +14,4 @@
 [data-ar-design="remix"] [data-ar="day-summary"]>[data-part="publish"]:focus-visible{outline:0;box-shadow:inset 0 0 0 1px var(--ar-accent),0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="day-summary"]>[data-part="publish"][data-state~="off"]{background:#FFF6E5;color:#8A5A00;box-shadow:inset 0 0 0 1px #F2D9A6}
 [data-ar-design="remix"] [data-ar="day-summary"]>[data-part="publish"]:disabled{opacity:.6}
+[data-ar-design="remix"] [data-ar="day-summary"]{font-feature-settings:"palt" 1}

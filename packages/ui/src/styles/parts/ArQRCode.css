@@ -1,0 +1,7 @@
+/* ArQRCode の構造：QR を真四角に描き、状態の幕を上に重ねる。 */
+[data-ar="qr-code"]{position:relative;display:inline-block;flex:none;box-sizing:content-box;vertical-align:middle}
+[data-ar="qr-code"]>[data-part="code"]{display:block;width:var(--ar-qr-size,120px);height:var(--ar-qr-size,120px)}
+[data-ar="qr-code"]>[data-part="message"]{display:flex;align-items:center;justify-content:center;width:var(--ar-qr-size,120px);height:var(--ar-qr-size,120px);text-align:center}
+[data-ar="qr-code"]>[data-part="overlay"]{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+@keyframes ar-qr-spin{to{transform:rotate(360deg)}}
+[data-ar="qr-code"]>[data-part="overlay"]>[data-part="spinner"]{display:block;animation:ar-qr-spin .8s linear infinite}

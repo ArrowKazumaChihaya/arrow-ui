@@ -4,7 +4,7 @@ import { ArLink, ArCluster } from "@arrow/ui";
 </script>
 
 <template>
-<ArCluster :gap="5" align="center" wrap="wrap">
+<ArCluster :gap="5" align="center">
   <ArLink href="#link">使い方を見る</ArLink>
   <ArLink href="https://example.com" target="_blank" icon="help">ヘルプ（別のタブ）</ArLink>
   <ArLink href="#link" :underline="false">下線なし</ArLink>

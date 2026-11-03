@@ -7,7 +7,7 @@ const b = ref(5);
 </script>
 
 <template>
-<ArCluster :gap="5" align="center" wrap="wrap">
+<ArCluster :gap="5" align="center">
   <ArStepper v-model="a" :min="1" size="sm" label="小" />
   <ArStepper v-model="a" :min="1" variant="split" size="sm" unit="人" label="小（split）" />
   <ArStepper v-model="b" disabled label="使えない" />

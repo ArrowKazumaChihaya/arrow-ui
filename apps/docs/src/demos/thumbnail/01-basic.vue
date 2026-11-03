@@ -10,7 +10,7 @@ const d = ref<string | null>(null);
 </script>
 
 <template>
-<ArCluster :gap="6" align="end" wrap="wrap">
+<ArCluster :gap="6" align="end">
   <ArThumbnail v-model="a" shape="circle" alt="千速 一真さんの写真" :quality="2" fit="cover" />
   <ArThumbnail v-model="b" shape="circle" />
   <ArThumbnail v-model="c" :size="100" alt="写真" />

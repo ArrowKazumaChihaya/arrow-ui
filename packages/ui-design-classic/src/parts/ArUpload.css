@@ -1,23 +1,33 @@
 /* @covers ArUpload 1.0.0 */
-/* ArUpload（仮：ant-design-vue 4 の Upload.Dragger。点線 #d9d9d9・角丸8・地 rgba(0,0,0,.02)、一覧は行22、失敗は赤） */
+/* ArUpload（今の ui-Upload はボタンだけなので、置き場は素の antd 4 の Upload.Dragger をテーマ色に）：点線 1px #D9D9D9・角丸8・地 rgba(0,0,0,.02)・余白16、
+   アイコン 48px テーマ色、見出し 16px、説明 14px rgba(0,0,0,.45)。一覧は行22（上に8）、失敗は #FF4D4F、進み具合は 2px のテーマ色。写真は 102px の点線の升。 */
 [data-ar-design="classic"] [data-ar="upload"]{gap:8px 16px}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]{flex:0 1 300px;gap:4px;padding:16px;border:1px dashed #D9D9D9;border-radius:8px;background:rgba(0,0,0,.02);color:rgba(0,0,0,.45);font-size:14px;transition:border-color .3s}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]:hover,[data-ar-design="classic"] [data-ar="upload"][data-state~="dragover"]>[data-part="drop"]{border-color:var(--classic-blue)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]>[data-part="icon"]{width:40px;height:40px;color:var(--classic-blue)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]>[data-part="title"]{color:rgba(0,0,0,.88);font-size:16px;font-weight:400}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]>[data-part="hint"]>[data-part="pick"]{color:var(--classic-blue)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]{flex:0 1 280px}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]{gap:8px;height:22px;margin-top:8px;font-size:14px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]{flex:0 1 400px;gap:4px;padding:16px;border:1px dashed #D9D9D9;border-radius:8px;background:rgba(0,0,0,.02);color:rgba(0,0,0,.45);font-size:14px;outline:0;transition:border-color .3s}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]:hover,[data-ar-design="classic"] [data-ar="upload"][data-state~="dragover"]>[data-part="drop"]{border-color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]:focus-visible{outline:4px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="upload"][data-state~="disabled"]>[data-part="drop"]{background:rgba(0,0,0,.04);border-color:#D9D9D9}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]>[data-part="icon"]{width:48px;height:48px;margin-bottom:12px;stroke-width:1.4;color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]>[data-part="title"]{margin-bottom:0;color:rgba(0,0,0,.88);font-size:16px;font-weight:400}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="drop"]>[data-part="hint"]>[data-part="pick"]{color:var(--ar-accent-ink)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]{flex:0 1 300px}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]{gap:8px;height:22px;margin-top:8px;padding:0 4px;border-radius:4px;font-size:14px;color:rgba(0,0,0,.88);transition:background .3s}
 [data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]:hover{background:rgba(0,0,0,.04)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-ar="icon"]{color:rgba(0,0,0,.45)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="error"]>[data-part="row"]>:is([data-part="name"],[data-part="kind"]){color:var(--classic-error)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]{width:22px;height:22px;color:rgba(0,0,0,.45)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]{height:2px;margin:2px 0 0 22px;background:rgba(0,0,0,.06)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]>i{background:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-ar="icon"]{width:14px;height:14px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-ar="icon"][data-part="status"]{color:#52C41A}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="status"]{font-size:12px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="error"]>[data-part="row"]>:is([data-part="name"],[data-part="kind"],[data-part="remove"]){color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]{width:22px;height:22px;border-radius:4px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]:hover{background:rgba(0,0,0,.04)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]>[data-part="remove"]{display:none}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]:is(:hover,:focus-within)>[data-part="remove"]{display:inline-flex}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]:is(:hover,:focus-within)>[data-part="status"]{display:none}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]{height:2px;margin:2px 0 0 26px;border-radius:100px;background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]>i{background:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]{gap:8px}
 [data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>:is([data-part="add"],[data-part="card"]){width:102px;height:102px;border-radius:8px}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"]{gap:8px;border:1px dashed #D9D9D9;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);font-size:14px}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"]:hover{border-color:var(--classic-blue)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]{border:1px solid #D9D9D9;padding:8px;background:#fff;font-size:12px}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"][data-status="error"]{border-color:var(--classic-error);color:var(--classic-error)}
-[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="remove"]{top:4px;right:4px;width:20px;height:20px;border-radius:4px;background:rgba(0,0,0,.45);color:#fff}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"]{gap:8px;border:1px dashed #D9D9D9;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);font-size:14px;transition:border-color .3s}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"]:hover:not(:disabled){border-color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]{padding:8px;border:1px solid #D9D9D9;background:#fff;font-size:12px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>img{border-radius:4px}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"][data-status="error"]{border-color:#FF4D4F;color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="remove"]{top:4px;right:4px;width:22px;height:22px;border-radius:4px;background:rgba(0,0,0,.45);color:#fff}

@@ -1,6 +1,7 @@
 /* @covers ArEmpty 1.0.0 */
-/* ArEmpty（ant-design-vue の Empty の簡易形：灰色の14px・中央）。仮：本番の参照ができたら合わせる */
-[data-ar-design="classic"] [data-ar="empty"]{gap:8px;padding:16px;color:rgba(0,0,0,.25);font-size:14px;line-height:1.5715}
-[data-ar-design="classic"] [data-ar="empty"]>[data-part="icon"]{width:32px;height:32px;color:#D9D9D9}
-[data-ar-design="classic"] [data-ar="empty"][data-size="md"]{padding:32px 16px}
-[data-ar-design="classic"] [data-ar="empty"][data-size="md"]>[data-part="icon"]{width:48px;height:48px}
+/* ArEmpty（ARROW の EmptyCard：余白30・白地・#DDDDDD の1px の枠・14px 黒・中央「データがありません」。size="sm" は枠なし（表の下の p.nodata：上下16・14px・rgba(0,0,0,.25)）） */
+[data-ar-design="classic"] [data-ar="empty"]{gap:8px;padding:16px 0;color:rgba(0,0,0,.25);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:14px;line-height:14px}
+[data-ar-design="classic"] [data-ar="empty"]>[data-part="icon"]{width:20px;height:20px;color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="empty"][data-size="md"]{padding:30px;border:1px solid #DDDDDD;background:#fff;color:#000}
+[data-ar-design="classic"] [data-ar="empty"][data-size="md"]>[data-part="icon"]{color:#9B9A9B}
+[data-ar-design="classic"] [data-ar="empty"]>[data-part="action"]{margin-top:8px}

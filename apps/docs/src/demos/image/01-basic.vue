@@ -12,7 +12,7 @@ const room = pic("#BBD3EB", "#5591CE", "#2C6AA6");
 </script>
 
 <template>
-<ArCluster :gap="3" wrap="wrap">
+<ArCluster :gap="3">
   <ArImage :src="shop" alt="渋谷店の外観" />
   <ArImage :src="room" alt="休憩室" />
   <ArImage src="/no-such-image.png" alt="新宿店の外観" :width="100" />

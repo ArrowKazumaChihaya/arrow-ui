@@ -1,0 +1,15 @@
+/* @covers ArCompact 1.0.0 */
+/* ArCompact：.ad-cmp。角丸10を外側だけ残す。中の secondary ボタンの枠は入力と同じ field 色。 */
+[data-ar-design="remix"] [data-ar="compact"]>*{border-radius:0!important}
+[data-ar-design="remix"] [data-ar="compact"][data-direction="horizontal"]>*:first-child{border-radius:10px 0 0 10px!important}
+[data-ar-design="remix"] [data-ar="compact"][data-direction="horizontal"]>*:last-child{border-radius:0 10px 10px 0!important}
+[data-ar-design="remix"] [data-ar="compact"][data-direction="vertical"]>*:first-child{border-radius:10px 10px 0 0!important}
+[data-ar-design="remix"] [data-ar="compact"][data-direction="vertical"]>*:last-child{border-radius:0 0 10px 10px!important}
+[data-ar-design="remix"] [data-ar="compact"]>*:only-child{border-radius:10px!important}
+[data-ar-design="remix"] [data-ar="compact"]>[data-ar="button"]:is([data-tone="secondary"],[data-tone="subtle"]):not(:disabled){box-shadow:inset 0 0 0 1px var(--ar-color-field)}
+[data-ar-design="remix"] [data-ar="compact"]>[data-ar="button"][data-tone="secondary"]:not(:disabled):focus-visible{box-shadow:inset 0 0 0 1px var(--ar-accent),0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="compact"]>[data-ar="button"][data-tone="primary"]+[data-ar="button"][data-tone="primary"]{margin-left:0;box-shadow:inset 1px 0 0 rgba(255,255,255,.35),0 4px 10px -4px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="compact"]>[data-ar="button"][data-tone="primary"]+[data-ar="button"][data-tone="primary"][data-icon-only]{width:32px}
+[data-ar-design="remix"] [data-ar="compact"][data-direction="horizontal"]>[data-ar="button"]{height:auto;min-height:34px}
+[data-ar-design="remix"] [data-ar="compact"][data-direction="horizontal"]>[data-ar="button"][data-size="sm"]{min-height:30px}
+[data-ar-design="remix"] [data-ar="compact"][data-direction="horizontal"]>[data-ar="button"][data-size="lg"]{min-height:42px}

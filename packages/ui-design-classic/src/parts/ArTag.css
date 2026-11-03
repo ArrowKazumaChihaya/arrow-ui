@@ -1,10 +1,30 @@
 /* @covers ArTag 1.0.0 */
-/* ArTag（ant-design-vue の Tag） */
-[data-ar-design="classic"] [data-ar="tag"]{gap:3px;height:22px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;background:#FAFAFA;color:var(--ar-color-text);font-size:12px}
-[data-ar-design="classic"] [data-ar="tag"][data-size="sm"]{height:18px;padding:0 5px;font-size:11px}
-[data-ar-design="classic"] [data-ar="tag"][data-tone="accent"]{background:var(--ar-accent-subtle);border-color:var(--ar-accent-line);color:var(--ar-accent-ink)}
-[data-ar-design="classic"] [data-ar="tag"][data-tone="solid"]{background:var(--ar-accent);border-color:var(--ar-accent);color:#fff}
-[data-ar-design="classic"] [data-ar="tag"][data-tone="ok"]{background:#F6FFED;border-color:#B7EB8F;color:#389E0D}
-[data-ar-design="classic"] [data-ar="tag"][data-tone="warn"]{background:#FFFBE6;border-color:#FFE58F;color:#D48806}
-[data-ar-design="classic"] [data-ar="tag"][data-tone="danger"]{background:#FFF2F0;border-color:#FFCCC7;color:#CF1322}
+/* ArTag（素の ant-design-vue 4 の Tag：高さ22・角丸4・1px 枠・12px/400・行高20。色は status の色、種類はテーマ色に合わせる） */
+[data-ar-design="classic"] [data-ar="tag"]{gap:3px;height:22px;padding:0 7px;box-sizing:border-box;border:1px solid #D9D9D9;border-radius:4px;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:12px;font-weight:400;line-height:20px;transition:all .2s}
+[data-ar-design="classic"] [data-ar="tag"]>[data-part="icon"]{width:12px;height:12px}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="accent"]{background:var(--ar-accent-faint);border-color:var(--ar-accent-line);color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="solid"]{background:var(--ar-accent);border-color:transparent;color:#fff}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="ok"]{background:#F6FFED;border-color:#B7EB8F;color:#52C41A}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="warn"]{background:#FFFBE6;border-color:#FFE58F;color:#FAAD14}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="danger"]{background:#FFF2F0;border-color:#FFCCC7;color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="tag"][data-tone="event"]{background:#F9F0FF;border-color:#D3ADF7;color:#531DAB}
+[data-ar-design="classic"] [data-ar="tag"][data-size="sm"]{height:20px;padding:0 5px;line-height:18px}
+[data-ar-design="classic"] [data-ar="tag"][data-size="xs"]{height:16px;padding:0 4px;border-radius:4px;font-size:10px;line-height:14px}
+/* 丸い札（今の ARROW の「備考の件数の丸」：角丸10・高さ20・白い1px の縁・12px） */
+[data-ar-design="classic"] [data-ar="tag"][data-shape="pill"]{height:20px;padding:0 6px;border-radius:10px;line-height:18px}
+[data-ar-design="classic"] [data-ar="tag"][data-shape="pill"][data-tone="accent"]{background:var(--ar-accent);border-color:#fff;color:#fff}
+/* 外す ×（10px・rgba(0,0,0,.45)） */
+[data-ar-design="classic"] [data-ar="tag"]>[data-part="close"]{margin-left:3px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="tag"]>[data-part="close"] [data-ar="icon"]{width:10px;height:10px;stroke-width:2.4}
+[data-ar-design="classic"] [data-ar="tag"]>[data-part="close"]:hover{color:rgba(0,0,0,.88)}
+/* 「タグを追加」（白地・点線の枠） */
+[data-ar-design="classic"] [data-ar="tag"][data-kind="dashed"]{background:#fff;border:1px dashed #D9D9D9;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="tag"][data-kind="dashed"]:hover:not(:disabled){border-color:#4096FF;color:#4096FF}
+/* 選べる札（CheckableTag：枠なし。選ぶと #1677FF の塗り） */
+[data-ar-design="classic"] [data-ar="tag"][data-kind="checkable"]{background:transparent;border-color:transparent;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="tag"][data-kind="checkable"]:hover:not(:disabled):not([data-state~="checked"]){color:#1677FF}
+[data-ar-design="classic"] [data-ar="tag"][data-kind="checkable"]:active:not(:disabled){background:#0958D9;color:#fff}
+[data-ar-design="classic"] [data-ar="tag"][data-kind="checkable"][data-state~="checked"]{background:#1677FF;color:#fff}
+[data-ar-design="classic"] [data-ar="tag"][data-kind="checkable"][data-state~="checked"]:hover:not(:disabled){background:#4096FF}
+[data-ar-design="classic"] button[data-ar="tag"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] button[data-ar="tag"]:disabled{color:rgba(0,0,0,.25);background:rgba(0,0,0,.04)}

@@ -3,3 +3,4 @@
 [data-ar-design="remix"] [data-ar="zip-input"]>[data-ar="text-input"]{width:132px;font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="zip-input"]>[data-part="status"]{font-size:12px;font-weight:600;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="zip-input"]:is([data-state~="not-found"],[data-state~="failed"])>[data-part="status"]{color:var(--ar-color-warn)}
+[data-ar-design="remix"] [data-ar="zip-input"]{font-feature-settings:"palt" 1}

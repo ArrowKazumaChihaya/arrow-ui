@@ -143,7 +143,7 @@ function clear() {
   root.value?.focus();
 }
 function scrollActive() {
-  const el = listEl.value?.querySelector<HTMLElement>(`#${CSS.escape(optionId(active.value))}`);
+  const el = document.getElementById(optionId(active.value));
   el?.scrollIntoView?.({ block: "nearest" });
 }
 watch(active, () => nextTick(scrollActive));
@@ -193,7 +193,7 @@ function onKey(e: KeyboardEvent) {
     default:
       if (!fromSearch && isPrintableKey(e)) {
         if (!open.value) setOpen(true);
-        const labels = flat.value.map((o) => o.label);
+        const labels = flat.value.map((o) => (o.keywords ? [o.label, ...o.keywords.split(/[\s　]+/)] : o.label));
         const i = typeahead(e.key, labels, active.value, enabled);
         if (i >= 0) active.value = i;
       }

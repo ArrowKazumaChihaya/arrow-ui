@@ -1,0 +1,18 @@
+/* @covers ArTimeline 1.0.0 */
+/* ArTimeline：デザインシステムの .ad-tl（13px、点は 10px の白い丸に 2px の色の輪、今は acc の塗り、まだは #A3AEB9、
+   線は 1px #E6EBF0、行の下 16px、点と中身の間 10px、見出しは太字、下の文字は 11.5px #66727F の等幅の数字）。 */
+[data-ar-design="remix"] [data-ar="timeline"]{color:var(--ar-color-text);font-size:13px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"]{gap:10px;padding-bottom:16px}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"]::before{left:7.5px;top:14px;width:1px;background:var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"]>[data-part="dot"]:empty{width:10px;height:10px;margin:4px 3px 0;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"]>[data-part="dot"]:not(:empty){height:18px;color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"][data-tone="ok"]>[data-part="dot"]:empty{box-shadow:0 0 0 2px var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"][data-tone="danger"]>[data-part="dot"]:empty{box-shadow:0 0 0 2px var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"][data-tone="warn"]>[data-part="dot"]:empty{box-shadow:0 0 0 2px #D08A1E}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"][data-tone="event"]>[data-part="dot"]:empty{box-shadow:0 0 0 2px var(--ar-color-event)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"][data-state="current"]>[data-part="dot"]:empty{background:var(--ar-accent);box-shadow:0 0 0 2px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"][data-state="pending"]>[data-part="dot"]:empty{background:#fff;box-shadow:0 0 0 2px var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]>[data-part="title"]{font-weight:700}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"][data-state="pending"]>[data-part="content"]>[data-part="title"]{color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]>[data-part="description"]{color:var(--ar-color-text-muted);font-size:11.5px;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="timeline"][data-mode="alternate"]>[data-part="item"]::before{left:calc(50% - .5px)}

@@ -4,7 +4,7 @@ import { ArButton, ArCluster } from "@arrow/ui";
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center">
   <ArButton tone="danger-fill">削除する</ArButton>
   <ArButton tone="danger-outline">削除</ArButton>
   <ArButton tone="danger-ghost" icon="trash">削除</ArButton>

@@ -23,6 +23,11 @@
         "ja": "横に並べる"
       },
       {
+        "slug": "compact",
+        "name": "ArCompact",
+        "ja": "つなげる（Compact）"
+      },
+      {
         "slug": "divider",
         "name": "ArDivider",
         "ja": "区切り線"
@@ -33,9 +38,24 @@
         "ja": "格子に並べる"
       },
       {
+        "slug": "layout",
+        "name": "ArLayout",
+        "ja": "画面の枠（レイアウト）"
+      },
+      {
+        "slug": "masonry",
+        "name": "ArMasonry",
+        "ja": "メイソンリー"
+      },
+      {
         "slug": "split",
         "name": "ArSplit",
         "ja": "左右に分ける"
+      },
+      {
+        "slug": "splitter",
+        "name": "ArSplitter",
+        "ja": "分割パネル"
       },
       {
         "slug": "stack",
@@ -93,6 +113,41 @@
     "title": "移動",
     "items": [
       {
+        "slug": "affix",
+        "name": "ArAffix",
+        "ja": "固定（Affix）"
+      },
+      {
+        "slug": "anchor",
+        "name": "ArAnchor",
+        "ja": "目次（アンカー）"
+      },
+      {
+        "slug": "breadcrumb",
+        "name": "ArBreadcrumb",
+        "ja": "パンくず"
+      },
+      {
+        "slug": "dropdown",
+        "name": "ArDropdown",
+        "ja": "ドロップダウン"
+      },
+      {
+        "slug": "menu",
+        "name": "ArMenu",
+        "ja": "メニュー"
+      },
+      {
+        "slug": "pagination",
+        "name": "ArPagination",
+        "ja": "ページ送り"
+      },
+      {
+        "slug": "steps",
+        "name": "ArSteps",
+        "ja": "手順（ステップ）"
+      },
+      {
         "slug": "tabs",
         "name": "ArTabs",
         "ja": "タブ"
@@ -102,6 +157,16 @@
   {
     "title": "入力",
     "items": [
+      {
+        "slug": "auto-complete",
+        "name": "ArAutoComplete",
+        "ja": "入力の候補"
+      },
+      {
+        "slug": "cascader",
+        "name": "ArCascader",
+        "ja": "階層の選択"
+      },
       {
         "slug": "checkbox",
         "name": "ArCheckbox",
@@ -143,9 +208,19 @@
         "ja": "入力の項目"
       },
       {
+        "slug": "form",
+        "name": "ArForm",
+        "ja": "フォーム"
+      },
+      {
         "slug": "input-number",
         "name": "ArInputNumber",
         "ja": "数の入力"
+      },
+      {
+        "slug": "mentions",
+        "name": "ArMentions",
+        "ja": "メンション"
       },
       {
         "slug": "pills",
@@ -213,6 +288,11 @@
         "ja": "トランスファー"
       },
       {
+        "slug": "tree-select",
+        "name": "ArTreeSelect",
+        "ja": "ツリーセレクト"
+      },
+      {
         "slug": "upload",
         "name": "ArUpload",
         "ja": "アップロード"
@@ -238,6 +318,11 @@
         "ja": "アバターを重ねる"
       },
       {
+        "slug": "badge",
+        "name": "ArBadge",
+        "ja": "バッジ（件数・点）"
+      },
+      {
         "slug": "calendar",
         "name": "ArCalendar",
         "ja": "カレンダー"
@@ -253,6 +338,21 @@
         "ja": "カルーセル"
       },
       {
+        "slug": "collapse",
+        "name": "ArCollapse",
+        "ja": "折りたたみ"
+      },
+      {
+        "slug": "countdown",
+        "name": "ArCountdown",
+        "ja": "しめきりまでの残り"
+      },
+      {
+        "slug": "descriptions",
+        "name": "ArDescriptions",
+        "ja": "説明リスト"
+      },
+      {
         "slug": "empty",
         "name": "ArEmpty",
         "ja": "空の状態"
@@ -263,9 +363,29 @@
         "ja": "画像"
       },
       {
+        "slug": "list",
+        "name": "ArList",
+        "ja": "リスト"
+      },
+      {
         "slug": "popover",
         "name": "ArPopover",
         "ja": "ポップオーバー"
+      },
+      {
+        "slug": "qr-code",
+        "name": "ArQRCode",
+        "ja": "QRコード"
+      },
+      {
+        "slug": "ribbon",
+        "name": "ArRibbon",
+        "ja": "リボン"
+      },
+      {
+        "slug": "statistic",
+        "name": "ArStatistic",
+        "ja": "統計（大きな数字）"
       },
       {
         "slug": "table",
@@ -278,9 +398,24 @@
         "ja": "札（タグ）"
       },
       {
+        "slug": "timeline",
+        "name": "ArTimeline",
+        "ja": "タイムライン"
+      },
+      {
         "slug": "tooltip",
         "name": "ArTooltip",
         "ja": "ツールチップ"
+      },
+      {
+        "slug": "tour",
+        "name": "ArTour",
+        "ja": "ツアー"
+      },
+      {
+        "slug": "tree",
+        "name": "ArTree",
+        "ja": "ツリー"
       }
     ]
   },
@@ -368,9 +503,24 @@
     "title": "ARROW",
     "items": [
       {
+        "slug": "app-footer",
+        "name": "ArAppFooter",
+        "ja": "画面の足（PC）"
+      },
+      {
+        "slug": "app-header",
+        "name": "ArAppHeader",
+        "ja": "画面の頭（PC）"
+      },
+      {
         "slug": "balloon",
         "name": "ArBalloon",
         "ja": "吹き出し"
+      },
+      {
+        "slug": "bottom-nav",
+        "name": "ArBottomNav",
+        "ja": "下のメニュー（スマホ）"
       },
       {
         "slug": "changed-value",
@@ -416,6 +566,11 @@
         "slug": "kana-text",
         "name": "ArKanaText",
         "ja": "フリガナつきの氏名"
+      },
+      {
+        "slug": "mobile-header",
+        "name": "ArMobileHeader",
+        "ja": "画面の頭（スマホ）"
       },
       {
         "slug": "month-day-input",

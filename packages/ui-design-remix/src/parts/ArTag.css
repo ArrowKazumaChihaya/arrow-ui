@@ -1,9 +1,40 @@
 /* @covers ArTag 1.0.0 */
-[data-ar-design="remix"] [data-ar="tag"]{gap:4px;height:24px;padding:0 9px;border-radius:7px;font-size:12px;font-weight:600;background:var(--ar-color-surface-alt);color:var(--ar-color-text-secondary);box-shadow:inset 0 0 0 1px var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="tag"][data-size="sm"]{height:20px;padding:0 7px;font-size:11px;border-radius:var(--ar-radius-chip)}
+/* ArTag（.ad-tag：角丸7・高さ24・600 12px・線つき。pill＝.badge/.r-hc：高さ22・角丸11・700・線なし。xs＝.r-short/.r-sub：10px・高さ16・角丸5） */
+[data-ar-design="remix"] [data-ar="tag"]{font-feature-settings:"palt" 1;gap:4px;height:24px;padding:0 9px;box-sizing:border-box;border-radius:7px;font-size:12px;font-weight:600;line-height:1;background:var(--ar-color-surface-alt);color:var(--ar-color-text-secondary);box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="tag"]>[data-part="icon"]{width:15px;height:15px}
 [data-ar-design="remix"] [data-ar="tag"][data-tone="accent"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);box-shadow:inset 0 0 0 1px var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="tag"][data-tone="solid"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow);box-shadow:none}
 [data-ar-design="remix"] [data-ar="tag"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:var(--ar-color-ok);box-shadow:inset 0 0 0 1px #B9DEC9}
 [data-ar-design="remix"] [data-ar="tag"][data-tone="warn"]{background:var(--ar-color-warn-subtle);color:var(--ar-color-warn);box-shadow:inset 0 0 0 1px var(--ar-color-warn-line)}
 [data-ar-design="remix"] [data-ar="tag"][data-tone="danger"]{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);box-shadow:inset 0 0 0 1px #EBC2BF}
 [data-ar-design="remix"] [data-ar="tag"][data-tone="event"]{background:var(--ar-color-event-subtle);color:var(--ar-color-event);box-shadow:inset 0 0 0 1px #D9CBEE}
+[data-ar-design="remix"] [data-ar="tag"][data-size="sm"]{height:20px;padding:0 7px;font-size:11px}
+[data-ar-design="remix"] [data-ar="tag"][data-size="sm"]>[data-part="icon"]{width:13px;height:13px}
+
+/* 丸い札（件数・状態）。線なし・700 */
+[data-ar-design="remix"] [data-ar="tag"][data-shape="pill"]{height:22px;padding:0 8px;border-radius:11px;font-weight:700;box-shadow:none}
+[data-ar-design="remix"] [data-ar="tag"][data-shape="pill"][data-tone="neutral"]{background:#EEF1F5;color:#525E6B}
+[data-ar-design="remix"] [data-ar="tag"][data-shape="pill"][data-size="sm"]{height:18px;padding:0 6px;border-radius:9px;font-size:11px}
+
+/* 小さな札（カレンダーのマス）：10px・高さ16・角丸5 */
+[data-ar-design="remix"] [data-ar="tag"][data-size="xs"]{height:16px;padding:0 4px;border-radius:5px;font-size:10px;font-weight:700;box-shadow:none}
+[data-ar-design="remix"] [data-ar="tag"][data-size="xs"]>[data-part="icon"]{width:11px;height:11px}
+[data-ar-design="remix"] [data-ar="tag"][data-size="xs"][data-tone="danger"]{background:#FDECEA;color:#B4231C}
+[data-ar-design="remix"] [data-ar="tag"][data-size="xs"][data-tone="ok"]{background:#E3F4EA;color:#1E7A4C}
+
+/* 外す × */
+[data-ar-design="remix"] [data-ar="tag"]>[data-part="close"]{width:15px;height:15px;margin-right:-2px;color:inherit;opacity:.6;border-radius:4px}
+[data-ar-design="remix"] [data-ar="tag"]>[data-part="close"] [data-ar="icon"]{width:15px;height:15px}
+[data-ar-design="remix"] [data-ar="tag"]>[data-part="close"]:hover{opacity:1}
+[data-ar-design="remix"] [data-ar="tag"]>[data-part="close"]:focus-visible{opacity:1;outline:2px solid var(--ar-accent);outline-offset:1px}
+
+/* 点線の「タグを追加」 */
+[data-ar-design="remix"] [data-ar="tag"][data-kind="dashed"]{background:#fff;color:var(--ar-color-text-muted);box-shadow:none;outline:1px dashed var(--ar-color-field);outline-offset:-1px}
+[data-ar-design="remix"] [data-ar="tag"][data-kind="dashed"]:hover:not(:disabled){color:var(--ar-accent-ink);outline-color:var(--ar-accent)}
+
+/* 選べる札：選ぶとテーマ色の塗り */
+[data-ar-design="remix"] [data-ar="tag"][data-kind="checkable"]{background:none;color:var(--ar-color-text-secondary);box-shadow:none;transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="tag"][data-kind="checkable"]:hover:not(:disabled):not([data-state~="checked"]){background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="tag"][data-kind="checkable"][data-state~="checked"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
+[data-ar-design="remix"] button[data-ar="tag"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
+[data-ar-design="remix"] button[data-ar="tag"]:disabled{opacity:.45}

@@ -1,0 +1,56 @@
+/* @covers ArAppHeader 1.0.0, ArAppFooter 1.0.0, ArMobileHeader 1.0.0, ArBottomNav 1.0.0 */
+/* 画面の頭（Header .v-hd：1段目38・2段目の項目36・今いる項目はテーマ色の塗り・下端3pxのテーマ色の線） */
+[data-ar-design="remix"] [data-ar="app-header"]{z-index:5;background:#fff;box-shadow:0 1px 0 var(--ar-color-border),0 6px 24px rgba(31,41,51,.04);color:var(--ar-color-text);font-size:14px;line-height:1.5;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="app-header"]::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]{height:38px;gap:8px;padding:0 28px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]{width:128px;padding-left:20px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]>:is(img,svg){height:18px;width:auto}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]{height:26px;gap:7px;padding:0 4px 0 10px;border:0;border-radius:13px;font-size:12.5px;font-weight:600;line-height:1.5}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-state="empty"]{padding-right:10px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="notice"]{background:#F1F4F7;color:#3B4A5A}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="todo"]{background:#FFF0EE;color:#B4322C}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]:hover{filter:brightness(.97)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>:is([data-part="pill"],[data-part="account"]):focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-part="count"]{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#DC2525;color:#fff;font-size:11px;font-weight:700}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]{height:36px;gap:8px;padding:0 6px;border:0;border-radius:10px;background:none;color:var(--ar-color-text-secondary);font-size:13px;font-weight:600}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]:hover,[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"][data-state~="open"]{background:#F3F6F9}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="avatar"]{width:28px;height:28px;border-radius:50%;background:#E8EEF4;color:#3B4A5A;font-size:12px;font-weight:700}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="account-icon"]{display:none}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]{gap:4px;padding:2px 24px 8px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]{height:36px;gap:7px;padding:0 12px;border-radius:10px;background:none;color:var(--ar-color-text-secondary);font-size:13px;font-weight:700;line-height:1.5;transition:background .12s}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]>[data-ar="icon"]{width:17px;height:17px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:hover{background:#F2F5F8;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
+/* 管理ページのメニュー（Dropdown .r-ddm：角丸14・行34） */
+[data-ar-design="remix"] [data-ar="app-account-menu"]{min-width:200px;padding:6px;background:#fff;border-radius:14px;box-shadow:0 18px 44px rgba(31,41,51,.2),0 0 0 1px rgba(31,41,51,.07)}
+[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]{gap:8px;height:34px;padding:0 10px;border-radius:7px;background:none;color:var(--ar-color-text);font-size:13.5px;outline:0}
+[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]:is(:hover,:focus-visible){background:var(--ar-color-hover)}
+[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]>[data-part="menu-arrow"]{margin-left:auto;color:var(--ar-color-text-faint)}
+/* 画面の足（.v-fo：左に文字のリンク、右に白いボタン） */
+[data-ar-design="remix"] [data-ar="app-footer"]{padding:30px 32px 10px;color:var(--ar-color-text);font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]{align-items:center;gap:6px}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>:is([data-part="links"],[data-part="supports"]){gap:6px}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"]{display:inline-flex;align-items:center;height:30px;padding:0 10px;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"]:hover{background:#E4EAF0}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]{height:44px;gap:8px;padding:0 14px;border:0;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(31,41,51,.06);color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]:hover{box-shadow:0 1px 2px rgba(31,41,51,.06),0 0 0 1px var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]>[data-part="support-icon"]{width:15px;height:15px;color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>:is([data-part="links"],[data-part="supports"])>:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="copyright"]{padding:14px 0 6px;text-align:center;font-size:11.5px;color:var(--ar-color-text-muted)}
+/* スマホの頭（MobileShell .v-sph：高さ56・ロゴ17・ベル44） */
+[data-ar-design="remix"] [data-ar="mobile-header"]{height:56px;padding:0 8px 0 16px;background:#fff;box-shadow:0 1px 0 var(--ar-color-border);color:var(--ar-color-text);font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="mobile-header"]::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="logo"]>:is(img,svg){height:17px;width:auto}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]{width:44px;height:44px;padding:0;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]:hover{background:#F1F4F7;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]>[data-part="count"]{top:6px;right:5px;min-width:17px;height:17px;padding:0 4px;border:2px solid #fff;border-radius:9px;background:#DC2525;color:#fff;font-size:10.5px;font-weight:700;line-height:1}
+/* 下のメニュー（.v-bn：高さ66・アイコン22・9.5px の太字・今いるものは淡いテーマ色） */
+[data-ar-design="remix"] [data-ar="bottom-nav"]{height:66px;padding:6px 4px 8px;background:rgba(255,255,255,.96);box-shadow:0 -1px 0 var(--ar-color-border),0 -8px 24px rgba(31,41,51,.06);font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="bottom-nav"][data-fixed]{height:calc(66px + env(safe-area-inset-bottom,0px));padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]{gap:3px;padding:0;border-radius:12px;background:none;color:var(--ar-color-text-muted);font-size:9.5px;font-weight:700;line-height:1.15}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]>[data-part="icon"]{width:22px;height:22px}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}

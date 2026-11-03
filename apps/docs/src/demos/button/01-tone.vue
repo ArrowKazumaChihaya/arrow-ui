@@ -4,7 +4,7 @@ import { ArButton, ArCluster } from "@arrow/ui";
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center">
   <ArButton tone="primary" icon="check">この内容で追加</ArButton>
   <ArButton tone="secondary">キャンセル</ArButton>
   <ArButton tone="subtle" icon="yen">日毎人件費</ArButton>

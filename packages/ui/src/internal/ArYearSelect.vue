@@ -56,7 +56,7 @@ function choose(i: number) {
 async function scrollActive() {
   await nextTick();
   await nextTick();
-  document.getElementById(optId(active.value))?.scrollIntoView({ block: "nearest" });
+  document.getElementById(optId(active.value))?.scrollIntoView?.({ block: "nearest" });
 }
 function move(to: number) {
   active.value = Math.min(rows.value.length - 1, Math.max(0, to));

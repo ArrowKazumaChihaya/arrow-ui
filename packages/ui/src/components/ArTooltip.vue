@@ -30,9 +30,9 @@ const shown = computed(() => !props.disabled && (props.open ?? inner.value));
 const timer = delayed();
 
 function set(v: boolean) {
-  if (inner.value === v) return;
+  const was = shown.value;
   inner.value = v;
-  emit("update:open", v);
+  if (was !== v) emit("update:open", v);
 }
 const show = (ms = props.delay) => timer.run(ms, () => set(true));
 const hide = (ms = props.hideDelay) => timer.run(ms, () => set(false));

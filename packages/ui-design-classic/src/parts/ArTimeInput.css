@@ -1,18 +1,25 @@
 /* @covers ArTimeInput 1.0.0, ArTimeRange 1.0.0 */
-/* ArTimeInput（今は「時：分」の小さな箱と、左の「前／当」の文字） */
-[data-ar-design="classic"] [data-ar="time-input"]>[data-part="input"]{width:56px;padding:0 4px;text-align:center;font-size:14px;color:var(--ar-color-text)}
+/* ArTimeInput（ui-Time）：枠は入力そのもの（高さ30・角丸6・枠 #D9D9D9・14px・中央・余白0）。今は時と分の2つの箱（27×30）を「:」でつなぐが、
+   ここでは1つの箱（幅58＝今の time_component の幅）にまとめる。前日の切り替えは左の 13px のリンク（#1677FF）。 */
+[data-ar-design="classic"] [data-ar="time-input"]{height:32px;align-items:center;gap:3px;border:0;border-radius:0;background:none;box-shadow:none;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000;overflow:visible}
+[data-ar-design="classic"] [data-ar="time-input"]:hover,[data-ar-design="classic"] [data-ar="time-input"]:focus-within,[data-ar-design="classic"] [data-ar="time-input"][data-state~="invalid"]{border:0;box-shadow:none}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="input"]{width:58px;height:30px;padding:0;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;line-height:30px;text-align:center;transition:border-color .2s,box-shadow .2s}
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="input"]::placeholder{color:rgba(0,0,0,.25)}
-[data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]{border:0;padding:0 2px 0 9px;background:none;color:var(--ar-color-text);font-size:14px;text-decoration:underline;text-decoration-color:var(--ar-color-field);text-underline-offset:3px}
-[data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]:hover:not(:disabled){color:var(--classic-blue)}
-[data-ar-design="classic"] [data-ar="time-input"][data-state~="prev"]>[data-part="day-toggle"]{color:var(--ar-color-warn);font-weight:600;text-decoration-color:currentColor}
-[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]{height:var(--ar-size-control-sm);border-radius:4px}
-[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]>[data-part="input"]{width:48px;font-size:12px}
-[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]{height:var(--ar-size-control-lg);border-radius:8px}
-[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]>[data-part="input"]{width:64px;font-size:16px}
-[data-ar-design="classic"] [data-ar="time-input"][data-state~="note"]{border-style:dashed}
-[data-ar-design="classic"] [data-ar="time-input"]>[data-part="note"]{padding:0 8px;font-size:12px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="input"]:hover:not(:disabled){border-color:#4096FF}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="input"]:focus{border-color:#4096FF;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="time-input"][data-state~="invalid"]>[data-part="input"]{border-color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="time-input"][data-state~="invalid"]>[data-part="input"]:focus{box-shadow:0 0 0 2px rgba(255,38,5,.06)}
+[data-ar-design="classic"] [data-ar="time-input"][data-state~="disabled"]>[data-part="input"]{background:rgba(0,0,0,.04);border-color:#D9D9D9;color:rgba(0,0,0,.25);cursor:not-allowed}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]{padding:0;border:0;background:none;color:#1677FF;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]:hover:not(:disabled){color:#4096FF}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]:disabled{color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="time-input"][data-state~="note"]>[data-part="note"]{height:30px;padding:0 8px;border:1px dashed #D9D9D9;border-radius:6px;font-size:12px;line-height:28px;color:rgba(0,0,0,.45);box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]{height:26px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]>[data-part="input"]{height:25px;line-height:25px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]{height:40px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]>[data-part="input"]{width:64px;height:38px;font-size:16px;border-radius:8px}
 [data-ar-design="classic"] [data-ar="time-input"][data-block]>[data-part="input"]{width:auto}
-/* ArTimeRange（仮） */
-[data-ar-design="classic"] [data-ar="time-range"]>[data-part="row"]{gap:6px}
-[data-ar-design="classic"] [data-ar="time-range"]>[data-part="row"]>[data-part="separator"]{color:rgba(0,0,0,.45)}
-[data-ar-design="classic"] [data-ar="time-range"]>[data-part="error"]{gap:4px;margin-top:4px;font-size:14px;color:var(--classic-error)}
+/* ArTimeRange：2つの時刻を「〜」（13px の黒）でつなぐ */
+[data-ar-design="classic"] [data-ar="time-range"]>[data-part="row"]{gap:4px;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="time-range"]>[data-part="error"]{gap:4px;margin-top:2px;font:600 13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#D10C1D}
+[data-ar-design="classic"] [data-ar="time-input"][data-state~="disabled"]{background:none;border:0}

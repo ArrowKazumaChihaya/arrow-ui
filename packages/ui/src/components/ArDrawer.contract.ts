@@ -8,7 +8,7 @@ export interface ArDrawerProps {
   icon?: ArIconName;
   /** 出てくる側。 */
   placement?: "right" | "left";
-  /** 幅（px か CSS の長さ）。既定 340。 */
+  /** 幅（px か CSS の長さ）。省くとデザインの既定（remix 340・classic 378）。 */
   width?: number | string;
   /** 右上の × と Esc で閉じられる。 */
   closable?: boolean;

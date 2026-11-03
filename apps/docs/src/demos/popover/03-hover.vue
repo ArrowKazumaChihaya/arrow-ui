@@ -5,7 +5,7 @@ const places = ["top", "bottom", "left", "right"] as const;
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center">
   <ArPopover v-for="p in places" :key="p" trigger="hover" :placement="p" :title="`${p} に出す`" content="乗せている間だけ出ます。" :width="200">
     <ArButton tone="secondary" size="sm">{{ p }}</ArButton>
   </ArPopover>

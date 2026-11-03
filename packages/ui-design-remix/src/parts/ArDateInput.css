@@ -1,6 +1,6 @@
 /* @covers ArDateInput 1.0.0, ArDateRange 1.0.0 */
 /* ArDateInput：.dti（年 76×36・月日 40×36・角丸9・600 14px、単位は 13px ink-2、曜日 12px mute。日は赤・土は青） */
-[data-ar-design="remix"] [data-ar="date-input"]{gap:4px;font-size:13px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="date-input"]{font-feature-settings:"palt" 1;gap:4px;font-size:13px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"],[data-ar-design="remix"] [data-ar="date-input"]>input{height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text);font:600 14px var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"]{width:76px;padding:0 20px 0 9px}
 [data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]{right:5px;width:14px;height:14px;stroke-width:2;color:var(--ar-color-text-muted)}
@@ -19,3 +19,4 @@
 [data-ar-design="remix"] [data-ar="date-range"]>[data-part="row"]>[data-part="separator"]{color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="date-range"]>[data-part="row"]>[data-part="days"]{font-size:12.5px;font-weight:600;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="date-range"]>[data-part="error"]{gap:6px;margin-top:6px;font-size:12.5px;font-weight:600;color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] :is([data-ar="date-range"],[data-ar="date-picker"],[data-ar="time-range"]){font-feature-settings:"palt" 1}

@@ -1,0 +1,16 @@
+<!-- 曜日 | いくつでも選ぶ。選んだ曜日はテーマ色の塗り、選んでいない日・祝は赤、土は青。sm は表の行の中（シフト募集）。 -->
+<script setup lang="ts">
+import { ArWeekdayPicker, ArStack, type ArWeekday } from "@arrow/ui";
+import { ref } from "vue";
+const days = ref<ArWeekday[]>([1, 2, 3, 4, 5]);
+const weekend = ref<ArWeekday[]>([0, 6, "holiday"]);
+</script>
+
+<template>
+<ArStack :gap="4" align="start">
+  <ArWeekdayPicker v-model="days" label="繰り返す曜日" />
+  <ArWeekdayPicker v-model="weekend" size="sm" label="募集する曜日" />
+  <ArWeekdayPicker v-model="days" start-on-monday :holiday="false" label="月曜から" />
+  <ArWeekdayPicker :model-value="[1, 3]" disabled label="使えない" />
+</ArStack>
+</template>

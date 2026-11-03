@@ -4,7 +4,7 @@ import { ArButton, ArCluster, ArTooltip } from "@arrow/ui";
 </script>
 
 <template>
-<ArCluster :gap="4" align="center" wrap="wrap">
+<ArCluster :gap="4" align="center">
   <ArTooltip title="前日の打刻です（押すと当日に）" placement="top-start">
     <ArButton tone="secondary">前日</ArButton>
   </ArTooltip>

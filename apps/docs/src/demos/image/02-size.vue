@@ -10,7 +10,7 @@ const tall = pic(300, 600, "#DCEFE7", "#4EB187");
 </script>
 
 <template>
-<ArCluster :gap="3" wrap="wrap" align="end">
+<ArCluster :gap="3" align="end">
   <ArImage :src="tall" alt="名札（切り取って埋める）" :width="80" :height="80" />
   <ArImage :src="tall" alt="名札（全体を入れる）" :width="80" :height="80" fit="contain" />
   <ArImage :src="tall" alt="縦長の書類" :width="120" :height="160" />

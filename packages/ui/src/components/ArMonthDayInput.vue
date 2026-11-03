@@ -23,8 +23,8 @@ const monthEl = ref<HTMLInputElement | null>(null);
 function sync(v: string | null) {
   const m = v ? /^(\d{1,2})-(\d{1,2})$/.exec(v) : null;
   if (!m) return;
-  if (digitsOf(month.value, 2) !== Number(m[1])) month.value = String(Number(m[1]));
-  if (digitsOf(day.value, 2) !== Number(m[2])) day.value = String(Number(m[2]));
+  if (digitsOf(month.value, 2) !== Number(m[1])) month.value = m[1]!;
+  if (digitsOf(day.value, 2) !== Number(m[2])) day.value = m[2]!;
 }
 sync(props.modelValue);
 watch(() => props.modelValue, sync);

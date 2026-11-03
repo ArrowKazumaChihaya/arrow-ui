@@ -8,12 +8,12 @@ const empty = ref<number | null>(null);
 
 <template>
 <ArStack :gap="4">
-  <ArCluster :gap="2" align="center" wrap="wrap">
+  <ArCluster :gap="2" align="center">
     <ArInputNumber v-model="v" size="sm" :min="0" :max="10" label="小" />
     <ArInputNumber v-model="v" :min="0" :max="10" label="ふつう" />
     <ArInputNumber v-model="v" size="lg" :min="0" :max="10" label="大" />
   </ArCluster>
-  <ArCluster :gap="2" align="center" wrap="wrap">
+  <ArCluster :gap="2" align="center">
     <ArInputNumber v-model="empty" placeholder="未入力" label="空" />
     <ArInputNumber :model-value="-5" invalid label="間違い" />
     <ArInputNumber :model-value="3000" prefix="¥" disabled label="使えない" />

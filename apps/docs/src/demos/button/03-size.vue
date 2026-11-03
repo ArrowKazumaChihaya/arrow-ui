@@ -5,7 +5,7 @@ import { ArButton, ArCluster, ArStack } from "@arrow/ui";
 
 <template>
 <ArStack :gap="4">
-  <ArCluster :gap="3" align="center" wrap="wrap">
+  <ArCluster :gap="3" align="center">
     <ArButton tone="primary" size="sm">小さい</ArButton>
     <ArButton tone="primary">ふつう</ArButton>
     <ArButton tone="primary" size="lg">大きい</ArButton>
@@ -13,7 +13,7 @@ import { ArButton, ArCluster, ArStack } from "@arrow/ui";
     <ArButton tone="secondary" icon="print">印刷</ArButton>
     <ArButton tone="secondary" size="lg" icon="print">印刷</ArButton>
   </ArCluster>
-  <ArCluster :gap="3" align="center" wrap="wrap">
+  <ArCluster :gap="3" align="center">
     <ArButton tone="muted" icon="pen" label="変更" />
     <ArButton tone="danger-ghost" icon="trash" label="削除" />
     <ArButton tone="secondary" icon="more" label="その他の操作" size="sm" />

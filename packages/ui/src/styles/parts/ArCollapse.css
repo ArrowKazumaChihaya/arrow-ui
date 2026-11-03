@@ -1,0 +1,9 @@
+/* ArCollapse の構造（開くと矢印が下を向く） */
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]{margin:0;font:inherit}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]{all:unset;box-sizing:border-box;display:flex;align-items:center;width:100%;cursor:pointer}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:disabled{cursor:not-allowed}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="title"]{min-width:0}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="extra"]{margin-left:auto;flex:none}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{transition:transform .15s}
+[data-ar="collapse"]>[data-part="panel"][data-state~="open"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{transform:rotate(90deg)}
+@media (prefers-reduced-motion: reduce){[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{transition:none}}

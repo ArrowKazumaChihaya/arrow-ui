@@ -4,7 +4,7 @@ import { ArButton, ArCluster, ArTooltip } from "@arrow/ui";
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center">
   <ArTooltip title="すぐ出る" :delay="0"><ArButton tone="secondary">すぐ</ArButton></ArTooltip>
   <ArTooltip title="0.5秒で出る" :delay="500"><ArButton tone="secondary">0.5秒</ArButton></ArTooltip>
   <ArTooltip title="出ない" disabled><ArButton tone="secondary">出さない</ArButton></ArTooltip>

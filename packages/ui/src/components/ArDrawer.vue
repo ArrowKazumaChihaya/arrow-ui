@@ -13,7 +13,7 @@ import type { ArDrawerProps } from "./ArDrawer.contract";
 const props = withDefaults(defineProps<ArDrawerProps>(), {
   icon: undefined,
   placement: "right",
-  width: 340,
+  width: undefined,
   closable: true,
   closeOnScrim: true,
   teleportTo: "body",
@@ -26,7 +26,7 @@ const id = useId("ar-drawer");
 const ui = useArUi();
 const target = computed(() => (props.teleportTo === "body" && ui?.portal.value ? ui.portal.value : (props.teleportTo ?? "body")));
 const panel = ref<HTMLElement | null>(null);
-const panelStyle = computed(() => ({ width: typeof props.width === "number" ? `${props.width}px` : props.width }));
+const panelStyle = computed(() => (props.width === undefined ? undefined : { width: typeof props.width === "number" ? `${props.width}px` : props.width }));
 
 function close() {
   emit("update:open", false);

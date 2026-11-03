@@ -1,26 +1,22 @@
 /* @covers ArCard 1.0.0 */
-/* ArCard（band：今のページのタイトルの帯＋灰色の枠。ほか：ant-design-vue の Card）。仮：本番の参照ができたら合わせる */
-[data-ar-design="classic"] [data-ar="card"]{background:#fff;color:var(--ar-color-text)}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;min-height:36px;padding:0 12px;justify-content:center;background:var(--ar-accent);color:#fff}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:18px;font-weight:700;line-height:36px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:15px}
+/* ArCard（band＝今のページの帯 Title：高さ36・テーマ色・白 18px/600・中央、その下は枠なし。elevated・outlined・plain＝ARROW の Card：余白10・角丸5・#9B9A9B の枠、見出し 16px/600 黒、本文 13px） */
+[data-ar-design="classic"] [data-ar="card"]{background:#fff;color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;height:36px;padding:0 12px;justify-content:center;flex-wrap:nowrap;background:var(--ar-accent);color:#fff}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:18px;font-weight:600;line-height:36px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:18px;height:18px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:16px}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:absolute;right:8px;top:50%;transform:translateY(-50%);gap:3px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding-top:8px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="body"]{border:1px solid var(--classic-card-line);border-radius:0 0 var(--ar-radius-card) var(--ar-radius-card);padding:10px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]+[data-part="body"]{border-radius:0 var(--ar-radius-card) var(--ar-radius-card) var(--ar-radius-card)}
-[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"]){border-radius:8px;overflow:hidden}
-[data-ar-design="classic"] [data-ar="card"]:is([data-variant="outlined"],[data-variant="plain"]){border:1px solid #F0F0F0}
-[data-ar-design="classic"] [data-ar="card"][data-variant="elevated"]{box-shadow:0 1px 2px 0 rgba(0,0,0,.03),0 1px 6px -1px rgba(0,0,0,.02),0 2px 4px 0 rgba(0,0,0,.02)}
-[data-ar-design="classic"] [data-ar="card"]:not([data-variant="band"])>[data-part="head"]{gap:8px;min-height:56px;padding:0 24px;border-bottom:1px solid #F0F0F0}
-[data-ar-design="classic"] [data-ar="card"]:not([data-variant="band"])>[data-part="head"]>[data-part="title"]{gap:6px;font-size:16px;font-weight:600;color:rgba(0,0,0,.88)}
-[data-ar-design="classic"] [data-ar="card"]:not([data-variant="band"])>[data-part="head"]>[data-part="actions"]{gap:4px;margin-left:auto;color:var(--classic-blue);font-size:14px}
-[data-ar-design="classic"] [data-ar="card"]:not([data-variant="band"])>[data-part="body"]{padding:24px;font-size:14px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="head"]{min-height:38px;padding:0 12px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="body"]{padding:12px}
-[data-ar-design="classic"] [data-ar="card"]:not([data-variant="band"])[data-size="sm"]>[data-part="head"]{min-height:38px;padding:0 12px}
-[data-ar-design="classic"] [data-ar="card"]:not([data-variant="band"])[data-size="sm"]>[data-part="body"]{padding:12px}
-[data-ar-design="classic"] [data-ar="card"]>[data-part="cover"]{min-height:90px;background:var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]{display:flex;border-top:1px solid #F0F0F0;background:#fff;color:rgba(0,0,0,.45)}
-[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>*{flex:1;height:44px;border-radius:0}
-[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>*+*{border-left:1px solid #F0F0F0}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding-top:15px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="body"]{padding:15px 0 0}
+[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"]){padding:10px;border:1px solid #9B9A9B;border-radius:5px}
+[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]{gap:8px;flex-wrap:nowrap;margin-bottom:10px}
+[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]>[data-part="title"]{gap:6px;color:#000;font-size:16px;font-weight:600;line-height:16px}
+[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:16px;height:16px}
+[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]>[data-part="actions"]{gap:3px;margin-left:auto}
+[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="card"]>[data-part="cover"]{min-height:90px;margin:-10px -10px 10px;background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]{display:flex;margin:10px -10px -10px;border-top:1px solid #9B9A9B}
+[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>*{flex:1;height:36px;border-radius:0}
+[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>*+*{border-left:1px solid #9B9A9B}
 [data-ar-design="classic"] [data-ar="card"][data-flush]>[data-part="body"]{padding:0}
+[data-ar-design="classic"] [data-ar="card"][data-flush]:not([data-variant="band"]){padding:0}

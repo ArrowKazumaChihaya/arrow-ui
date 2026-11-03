@@ -5,8 +5,11 @@
 [data-ar-design="classic"] [data-ar="select-panel"] [data-part="group-label"]{display:flex;align-items:center;min-height:32px;padding:5px 12px;box-sizing:border-box;font-size:12px;color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]{gap:8px;min-height:32px;padding:5px 12px;border-radius:4px;font-size:14px;line-height:22px;color:rgba(0,0,0,.88);transition:background .3s}
 [data-ar-design="classic"] [data-ar="select-panel"] [data-part="group"]>[data-part="option"]{padding-left:24px}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="search"]>[data-ar="text-input"]{height:24px;padding:0 7px;border-radius:4px}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"][data-state~="active"]{background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]:is([data-state~="selected"],[data-state~="path"]){background:#E6F4FF;font-weight:600}
+/* 今の ARROW では項目の文字は div のグローバル指定で 13px・400（選んだ行も太くならない） */
+[data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-label"]{font-size:13px;font-weight:400}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"][data-state~="disabled"]{background:none;color:rgba(0,0,0,.25);font-weight:400}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-label"]>[data-part="match"]{color:var(--classic-blue);font-weight:600}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-check"]{width:14px;height:14px;color:var(--classic-blue);stroke-width:2.4}

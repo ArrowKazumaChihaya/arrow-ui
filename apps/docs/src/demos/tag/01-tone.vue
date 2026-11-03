@@ -1,23 +1,23 @@
-<!-- 種類 | 状態や区分を短く示す。押せるものには使わない（押せるならボタン）。 -->
+<!-- 意味の色 | 角丸7・高さ24。意味の色はどのページでも同じ（提出済＝緑、未提出＝橙、エラー＝赤、イベント＝紫）。種類はテーマ色の淡い札、店長などはテーマ色の塗り。色だけで伝えず、必ず言葉を入れる。 -->
 <script setup lang="ts">
-import { ArTag, ArCluster, ArStack } from "@arrow/ui";
+import { ArTag } from "@arrow/ui";
 </script>
 
 <template>
-<ArStack :gap="3">
-  <ArCluster :gap="2">
-    <ArTag>下書き</ArTag>
-    <ArTag tone="accent">人件費 ¥31,500</ArTag>
-    <ArTag tone="solid">確定</ArTag>
-    <ArTag tone="ok" icon="eye">公開中</ArTag>
-    <ArTag tone="warn">未承認</ArTag>
-    <ArTag tone="danger">不足1</ArTag>
-    <ArTag tone="event">朝礼</ArTag>
-  </ArCluster>
-  <ArCluster :gap="2">
-    <ArTag size="sm">小</ArTag>
-    <ArTag size="sm" tone="accent" icon="clock">8:00</ArTag>
-    <ArTag size="sm" tone="danger">遅刻</ArTag>
-  </ArCluster>
-</ArStack>
+<div style="display: grid; gap: 12px">
+  <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center">
+    <ArTag>標準</ArTag>
+    <ArTag tone="accent">パート</ArTag>
+    <ArTag tone="solid">店長</ArTag>
+    <ArTag tone="ok" icon="check">提出済</ArTag>
+    <ArTag tone="warn">未提出</ArTag>
+    <ArTag tone="danger">エラー</ArTag>
+    <ArTag tone="event">イベント</ArTag>
+  </div>
+  <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center">
+    <ArTag size="sm" tone="accent">v6.6 新</ArTag>
+    <ArTag size="sm">小さい札</ArTag>
+    <ArTag size="sm" tone="danger" icon="alert">要確認</ArTag>
+  </div>
+</div>
 </template>

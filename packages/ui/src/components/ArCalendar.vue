@@ -78,8 +78,8 @@ const years = computed(() => {
   const hi = Math.max(props.maxYear ?? t + 5, ym.value.y);
   return Array.from({ length: hi - lo + 1 }, (_, i) => ({ value: lo + i, label: `${lo + i}${props.labels.year}` }));
 });
-function onYear(v: string | number | null) {
-  if (v !== null) setMonth(Number(v), ym.value.m);
+function onYear(v: string | number | readonly (string | number)[] | null) {
+  if (v !== null && !Array.isArray(v)) setMonth(Number(v), ym.value.m);
 }
 
 /* 日のマス（6週ぶん。最後の週がまるごと次の月なら落とす） */

@@ -1,7 +1,7 @@
 /* @covers ArDrawer 1.0.0 */
 /* 右から出る板（.ad-drw）：幕は ink の42%、頭は白（下に line-2）、足は bg-2。 */
 [data-ar-design="remix"] [data-ar="drawer"]>[data-part="scrim"]{background:var(--ar-color-overlay)}
-[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]{background:var(--ar-color-surface);color:var(--ar-color-text);box-shadow:-12px 0 40px rgba(31,41,51,.2);font-size:14px;line-height:1.5;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]{width:340px;background:var(--ar-color-surface);color:var(--ar-color-text);box-shadow:-12px 0 40px rgba(31,41,51,.2);font-size:14px;line-height:1.5;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="drawer"][data-placement="left"]>[data-part="panel"]{box-shadow:12px 0 40px rgba(31,41,51,.2)}
 [data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]{gap:8px;padding:14px 16px;border-bottom:1px solid var(--ar-color-border-subtle);font-size:15px;font-weight:var(--ar-font-weight-strong)}
 [data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="title"]{font-size:15px;font-weight:var(--ar-font-weight-strong);line-height:1.5}

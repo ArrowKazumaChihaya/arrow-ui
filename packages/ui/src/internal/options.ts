@@ -67,7 +67,8 @@ export function initialOf(label: string): string {
 export function createTypeahead(timeout = 600) {
   let buf = "";
   let timer: ReturnType<typeof setTimeout> | undefined;
-  return (key: string, labels: readonly string[], from: number, enabled: (i: number) => boolean): number => {
+  /** labels は項目ごとの名前（読みなども見るときは配列で）。 */
+  return (key: string, labels: readonly (string | readonly string[])[], from: number, enabled: (i: number) => boolean): number => {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => (buf = ""), timeout);
     buf += key;
@@ -79,7 +80,9 @@ export function createTypeahead(timeout = 600) {
     const needle = same ? fold(buf[0]!) : q;
     for (let k = 0; k < n; k++) {
       const i = (start + k + n) % n;
-      if (enabled(i) && fold(labels[i] ?? "").startsWith(needle)) return i;
+      const l = labels[i] ?? "";
+      const names = typeof l === "string" ? [l] : l;
+      if (enabled(i) && names.some((n) => fold(n).startsWith(needle))) return i;
     }
     return -1;
   };

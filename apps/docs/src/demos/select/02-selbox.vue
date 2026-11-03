@@ -12,7 +12,7 @@ const stores = [
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center">
   <span style="font-size: 12.5px; font-weight: 600; color: #66727f">店舗</span>
   <ArSelect v-model="store" :options="stores" variant="selbox" icon="store" label="店舗" />
   <ArSelect v-model="store" :options="stores" variant="selbox" icon="store" size="sm" label="店舗（小）" />

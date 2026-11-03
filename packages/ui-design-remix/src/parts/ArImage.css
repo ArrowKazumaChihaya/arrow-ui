@@ -14,5 +14,4 @@
 [data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="toolbar"]>[data-part="scale"]{min-width:56px}
 [data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>:is([data-part="close"],[data-part="toolbar"]>[data-part="tool"],[data-part="toolbar"]>[data-part="scale"]):hover:not(:disabled){background:rgba(255,255,255,.22)}
 [data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>[data-part="toolbar"]>[data-part="tool"]:disabled{opacity:.4}
-[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>:is([data-part="close"],[data-part="toolbar"]>[data-part="tool"],[data-part="toolbar"]>[data-part="scale"]):focus-visible{outline:0;box-shadow:0 0 0 3px rgba(255,255,255,.5)}
-@keyframes ar-image-fade{from{opacity:0}to{opacity:1}}
+[data-ar-design="remix"] [data-ar="image"][data-part="viewer"]>:is([data-part="close"],[data-part="toolbar"]>[data-part="tool"],[data-part="toolbar"]>[data-part="scale"]):focus-visible{outline:0;box-shadow:0 0 0 3px rgba(255,255,255,.5)}@keyframes ar-image-fade{from{opacity:0}to{opacity:1}}

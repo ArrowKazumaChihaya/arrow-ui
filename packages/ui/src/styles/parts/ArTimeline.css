@@ -1,0 +1,12 @@
+/* ArTimeline の構造：点の列（16px）と中身の2列。点と点の間に線（::before）。alternate は中央に線を置き、左右に交互。 */
+[data-ar="timeline"]{display:flex;flex-direction:column;margin:0;padding:0;list-style:none;min-width:0}
+[data-ar="timeline"]>[data-part="item"]{position:relative;display:grid;grid-template-columns:16px minmax(0,1fr)}
+[data-ar="timeline"]>[data-part="item"]::before{content:"";position:absolute;bottom:0}
+[data-ar="timeline"]>[data-part="item"]:last-child::before{display:none}
+[data-ar="timeline"]>[data-part="item"]>[data-part="dot"]{position:relative;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+[data-ar="timeline"]>[data-part="item"]>[data-part="content"]{min-width:0}
+[data-ar="timeline"]>[data-part="item"]>[data-part="content"]>:is([data-part="title"],[data-part="description"]){display:block}
+[data-ar="timeline"][data-mode="alternate"]>[data-part="item"]{grid-template-columns:minmax(0,1fr) 16px minmax(0,1fr)}
+[data-ar="timeline"][data-mode="alternate"]>[data-part="item"]>[data-part="dot"]{grid-column:2;grid-row:1}
+[data-ar="timeline"][data-mode="alternate"]>[data-part="item"]:nth-child(odd)>[data-part="content"]{grid-column:3;grid-row:1}
+[data-ar="timeline"][data-mode="alternate"]>[data-part="item"]:nth-child(even)>[data-part="content"]{grid-column:1;grid-row:1;text-align:right}

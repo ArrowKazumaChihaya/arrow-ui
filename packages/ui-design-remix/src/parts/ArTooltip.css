@@ -8,5 +8,4 @@
 [data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="top"]>[data-part="panel"]>[data-part="arrow"]{bottom:-5px}
 [data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-5px}
 [data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5px}
-[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5px}
-@keyframes ar-tooltip-in{from{opacity:0}to{opacity:1}}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5px}@keyframes ar-tooltip-in{from{opacity:0}to{opacity:1}}

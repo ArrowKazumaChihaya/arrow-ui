@@ -1,9 +1,9 @@
 /* @covers ArRate 1.0.0 */
-/* ArRate（仮：ant-design-vue 4 の Rate。星20・間8・#FADB14、空きは #F0F0F0） */
+/* ArRate（素の antd 4 の Rate）：星 20px・間8・#FADB14、空きは rgba(0,0,0,.06)。hover で 1.1 倍。 */
 [data-ar-design="classic"] [data-ar="rate"]{gap:8px}
+[data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]{transition:transform .2s}
 [data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]>svg{width:20px;height:20px;fill:currentColor;stroke:none;display:block}
 [data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]>[data-part="bg"]{color:rgba(0,0,0,.06)}
 [data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]>[data-part="fg"]{color:#FADB14}
 [data-ar-design="classic"] [data-ar="rate"]:not([data-state])>[data-part="star"]:hover{transform:scale(1.1)}
-[data-ar-design="classic"] [data-ar="rate"]:focus-visible{outline:1px dashed #FADB14}
-[data-ar-design="classic"] [data-ar="rate"][data-state~="disabled"]{opacity:.5}
+[data-ar-design="classic"] [data-ar="rate"]:focus-visible{outline:1px dashed #FADB14;outline-offset:2px}

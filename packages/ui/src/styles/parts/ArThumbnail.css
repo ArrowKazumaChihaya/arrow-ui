@@ -2,12 +2,12 @@
 [data-ar="thumbnail"]{position:relative;display:inline-block;flex:none;width:var(--ar-thumbnail-size,120px);height:var(--ar-thumbnail-size,120px);vertical-align:middle;box-sizing:border-box}
 [data-ar="thumbnail"]>[data-part="image"]{display:block;width:100%;height:100%;object-fit:cover;box-sizing:border-box}
 [data-ar="thumbnail"]>[data-part="silhouette"]{display:flex;align-items:center;justify-content:center;width:100%;height:100%;overflow:hidden;box-sizing:border-box}
-[data-ar="thumbnail"]>[data-part="silhouette"]>[data-ar="icon"]{width:62%;height:62%}
+[data-ar="thumbnail"]>[data-part="silhouette"]>:is([data-part="silhouette-line"],[data-part="silhouette-fill"]){width:62%;height:62%;flex:none}
 [data-ar="thumbnail"]>[data-part="camera"]{position:absolute;display:flex;align-items:center;justify-content:center;margin:0;padding:0;cursor:pointer;box-sizing:border-box}
 [data-ar="thumbnail"]>[data-part="camera"]>[data-part="camera-icon"]{display:block;flex:none}
 [data-ar="thumbnail-editor"]{display:flex;flex-direction:column;align-items:center}
 [data-ar="thumbnail-editor"]>[data-part="hint"]{margin:0;white-space:pre-wrap}
-[data-ar="thumbnail-editor"]>[data-part="frame"]{position:relative;overflow:hidden;touch-action:none;user-select:none;box-sizing:border-box;flex:none}
+[data-ar="thumbnail-editor"]>[data-part="frame"]{width:var(--ar-thumbnail-frame-w);height:var(--ar-thumbnail-frame-h);position:relative;overflow:hidden;touch-action:none;user-select:none;box-sizing:border-box;flex:none}
 [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="has-image"]{cursor:grab}
 [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="has-image"]:active{cursor:grabbing}
 [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="empty"]{cursor:pointer}

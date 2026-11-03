@@ -1,13 +1,19 @@
 /* @covers ArPopover 1.0.0 */
-/* 仮：ant-design-vue 4 の Popover の既定（白・角丸8・余白12・影 boxShadowSecondary・見出し 14px 600・矢印8px）。cell は Tooltip の既定の地。参照ができたら合わせ直す。 */
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]{width:240px;max-width:calc(100vw - 16px);padding:12px;border-radius:8px;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);font-size:14px;line-height:1.5714;outline:0}
+/* ArPopover：antd の Popover（白・角丸8・余白12・antd の影・幅は中身なり、見出し 13px 太さ600・下8px、中身 13px 行の高さ13px・游ゴシック、矢印 16×8、基準との間 16px）。
+   variant="cell" は今の ARROW の Tooltip と同じ濃い地（矢印なし）。refs/classic/antd-Popover-open.png を実測。 */
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]{width:max-content;max-width:min(320px,calc(100vw - 16px));padding:12px;border-radius:8px;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;outline:0}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="title"]{margin-bottom:8px;font-weight:600}
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{gap:8px;margin-top:12px}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{width:8px;height:8px;background:#fff;transform:rotate(45deg)}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"]:is([data-placement^="top"],[data-placement^="bottom"])>[data-part="panel"]>[data-part="arrow"]{left:clamp(12px,calc(var(--ar-float-arrow,24px) - 4px),calc(100% - 20px))}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"]:is([data-placement^="left"],[data-placement^="right"])>[data-part="panel"]>[data-part="arrow"]{top:clamp(12px,calc(var(--ar-float-arrow,20px) - 4px),calc(100% - 20px))}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-4px}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="top"]>[data-part="panel"]>[data-part="arrow"]{bottom:-4px}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-4px}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-4px}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"]{width:auto;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font-size:12px;line-height:1.5}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="top"]>[data-part="panel"]:not([data-variant="cell"]){margin-bottom:6px}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]:not([data-variant="cell"]){margin-top:6px}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="left"]>[data-part="panel"]:not([data-variant="cell"]){margin-right:6px}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="right"]>[data-part="panel"]:not([data-variant="cell"]){margin-left:6px}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{width:11.3px;height:11.3px;background:#fff;transform:rotate(45deg)}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]:is([data-placement^="top"],[data-placement^="bottom"])>[data-part="panel"]>[data-part="arrow"]{left:clamp(10px,calc(var(--ar-float-arrow,24px) - 5.65px),calc(100% - 21.3px))}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]:is([data-placement^="left"],[data-placement^="right"])>[data-part="panel"]>[data-part="arrow"]{top:clamp(10px,calc(var(--ar-float-arrow,20px) - 5.65px),calc(100% - 21.3px))}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="top"]>[data-part="panel"]>[data-part="arrow"]{bottom:-5.65px;border-bottom-right-radius:2px;box-shadow:3px 3px 7px rgba(0,0,0,.07)}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-5.65px;border-top-left-radius:2px}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5.65px;border-top-right-radius:2px}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5.65px;border-bottom-left-radius:2px}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"]{width:auto;max-width:none;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}

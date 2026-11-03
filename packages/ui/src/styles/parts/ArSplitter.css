@@ -1,0 +1,9 @@
+/* ArSplitter の構造 */
+[data-ar="splitter"]{display:flex;min-width:0;min-height:0;box-sizing:border-box}
+[data-ar="splitter"][data-orientation="vertical"]{flex-direction:column}
+[data-ar="splitter"]>[data-part="pane"]{min-width:0;min-height:0;overflow:auto;box-sizing:border-box}
+[data-ar="splitter"]>[data-part="pane"][data-pane="end"]{flex:1 1 0}
+[data-ar="splitter"]>[data-part="bar"]{flex:none;display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none;box-sizing:border-box}
+[data-ar="splitter"][data-orientation="horizontal"]>[data-part="bar"]{cursor:col-resize}
+[data-ar="splitter"][data-orientation="vertical"]>[data-part="bar"]{cursor:row-resize}
+[data-ar="splitter"][data-state~="dragging"]{user-select:none}

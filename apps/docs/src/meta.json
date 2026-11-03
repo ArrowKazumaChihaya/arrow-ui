@@ -115,6 +115,41 @@
   "dataAr": "cluster"
  },
  {
+  "name": "ArCompact",
+  "version": "1.0.0",
+  "description": "部品をすき間なくつなげる（Space.Compact）。角丸は外側だけ残す。\n入力＋ボタン、日・週・月のボタンの組、Dropdown.Button など。切り替えには ArSegmented を優先する。",
+  "props": [
+   {
+    "name": "direction",
+    "type": "'horizontal' | 'vertical'",
+    "required": false,
+    "description": "並べる向き。",
+    "default": "\"horizontal\""
+   },
+   {
+    "name": "block",
+    "type": "boolean",
+    "required": false,
+    "description": "親の幅いっぱい（中の最後の部品が残りを取る）。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "まとまりの読み上げの名前（ボタンの組など）。渡すと role=\"group\"。"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root"
+  ],
+  "dataAr": "compact"
+ },
+ {
   "name": "ArDivider",
   "version": "1.0.0",
   "description": "区切り線。横（文字つきも可）と縦。",
@@ -198,6 +233,91 @@
   "dataAr": "grid"
  },
  {
+  "name": "ArLayout",
+  "version": "1.0.0",
+  "description": "画面の枠。ヘッダー・横のメニュー（Sider）・中身・フッター。\nヘッダーの下にテーマ色の線、Sider の地は淡い灰、中身の地は bg（まとまりは白いカードを置く）。",
+  "props": [
+   {
+    "name": "siderWidth",
+    "type": "number",
+    "required": false,
+    "description": "横のメニュー（sider スロット）の幅（px）。",
+    "default": "200"
+   },
+   {
+    "name": "siderPlacement",
+    "type": "'start' | 'end'",
+    "required": false,
+    "description": "横のメニューを右に置く。",
+    "default": "\"start\""
+   },
+   {
+    "name": "bordered",
+    "type": "boolean",
+    "required": false,
+    "description": "外側に角丸12と線を付ける（画面の一部に枠として置くとき）。画面全体なら付けない。",
+    "default": "false"
+   },
+   {
+    "name": "fill",
+    "type": "boolean",
+    "required": false,
+    "description": "高さを親いっぱいにする（中身はその中でスクロール）。",
+    "default": "false"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "header",
+   "sider",
+   "default",
+   "footer"
+  ],
+  "parts": [
+   "root",
+   "header",
+   "sider",
+   "content",
+   "footer"
+  ],
+  "dataAr": "layout"
+ },
+ {
+  "name": "ArMasonry",
+  "version": "1.0.0",
+  "description": "高さの違うカード（お知らせ・イベント）を列に詰めて並べる。見た目は持たない（中のカードが持つ）。\n並びは上から下、左の列から右の列（読み上げの順も同じ）。",
+  "props": [
+   {
+    "name": "columns",
+    "type": "1 | 2 | 3 | 4 | 5 | 6",
+    "required": false,
+    "description": "列の数。",
+    "default": "4"
+   },
+   {
+    "name": "minColumnWidth",
+    "type": "number",
+    "required": false,
+    "description": "列の最小の幅（px）。渡すと幅に合わせて列の数が変わる（columns は上限になる）。"
+   },
+   {
+    "name": "gap",
+    "type": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8",
+    "required": false,
+    "description": "カードの間（余白トークンの段階）。",
+    "default": "3"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root"
+  ],
+  "dataAr": "masonry"
+ },
+ {
   "name": "ArSplit",
   "version": "1.0.0",
   "description": "左右に分ける。左の幅は段階（sm 320 / md 420 / lg 540 / xl 640）。\n置かれた場所の幅が stackBelow より狭いと、上下に積む（コンテナクエリ）。",
@@ -242,6 +362,96 @@
    "end"
   ],
   "dataAr": "split"
+ },
+ {
+  "name": "ArSplitter",
+  "version": "1.0.0",
+  "description": "分割パネル。つまみをドラッグして大きさを変え、ダブルクリックで元に戻す。\nつまみは separator として読み上げ、←→（上下なら ↑↓）で動かし、Home / End で最小・最大、Enter で元に戻す。",
+  "props": [
+   {
+    "name": "size",
+    "type": "number",
+    "required": false,
+    "description": "最初のパネル（start）の大きさ（px）。v-model:size。渡さなければ defaultSize から始める。"
+   },
+   {
+    "name": "defaultSize",
+    "type": "string | number",
+    "required": false,
+    "description": "最初の大きさ（px か \"40%\"）。ダブルクリックでここへ戻る。",
+    "default": "\"50%\""
+   },
+   {
+    "name": "min",
+    "type": "number",
+    "required": false,
+    "description": "最初のパネルの最小（px）。",
+    "default": "0"
+   },
+   {
+    "name": "max",
+    "type": "number",
+    "required": false,
+    "description": "最初のパネルの最大（px）。渡さなければ「全体 − 後ろのパネルの最小」。"
+   },
+   {
+    "name": "endMin",
+    "type": "number",
+    "required": false,
+    "description": "後ろのパネル（end）の最小（px）。",
+    "default": "0"
+   },
+   {
+    "name": "orientation",
+    "type": "'horizontal' | 'vertical'",
+    "required": false,
+    "description": "horizontal：左右に分ける。vertical：上下に分ける。",
+    "default": "\"horizontal\""
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "つまみの読み上げの名前。",
+    "default": "\"大きさを変える\""
+   },
+   {
+    "name": "bordered",
+    "type": "boolean",
+    "required": false,
+    "description": "外側に角丸12と線を付ける。",
+    "default": "false"
+   },
+   {
+    "name": "step",
+    "type": "number",
+    "required": false,
+    "description": "キーボードで動かす量（px）。Shift を押すと5倍。",
+    "default": "10"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:size",
+    "payload": "[size: number]",
+    "description": ""
+   },
+   {
+    "name": "resizeEnd",
+    "payload": "[size: number]",
+    "description": "ドラッグ・キー操作が終わったとき。"
+   }
+  ],
+  "slots": [
+   "start",
+   "end"
+  ],
+  "parts": [
+   "root",
+   "pane",
+   "bar"
+  ],
+  "dataAr": "splitter"
  },
  {
   "name": "ArStack",
@@ -793,6 +1003,242 @@
   "dataAr": "title"
  },
  {
+  "name": "ArAffix",
+  "version": "1.0.0",
+  "description": "スクロールしても上（または下）に残る操作の帯（「3件を選んでいます［まとめて承認］」など）。\n一番近いスクロールする箱の中で張り付く（position: sticky）。張り付いている間は data-state=\"affixed\"。",
+  "props": [
+   {
+    "name": "offsetTop",
+    "type": "number",
+    "required": false,
+    "description": "上に残すときの、スクロールする箱の上端からの距離（px）。",
+    "default": "0"
+   },
+   {
+    "name": "offsetBottom",
+    "type": "number",
+    "required": false,
+    "description": "渡すと下に残す（下端からの距離 px）。"
+   },
+   {
+    "name": "bandWhenStuck",
+    "type": "boolean",
+    "required": false,
+    "description": "残っているときだけ帯の見た目（半透明の白・ぼかし・下の線）にする。false なら常に帯の見た目。",
+    "default": "false"
+   }
+  ],
+  "emits": [
+   {
+    "name": "change",
+    "payload": "[affixed: boolean]",
+    "description": "上（下）に張り付いた・はがれた。"
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root"
+  ],
+  "dataAr": "affix"
+ },
+ {
+  "name": "ArDropdown",
+  "version": "1.0.0",
+  "description": "押すとメニュー。項目にアイコン・説明・見出し・区切り・危ない項目（赤）・使えない・鍵（権限なし）。\n押すもの：default slot（自由）か、label で「操作」ボタン（variant=\"ops\"）・ArButton・Dropdown.Button（split）。\n↓ Enter Space で開き、メニューの中は ↑↓ で移る。Escape・外を押す・Tab で閉じ、押したものにフォーカスを戻す。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArMenuItem[]",
+    "required": true,
+    "description": "メニューの項目（ArMenu と同じ形。group の見出し・divider の区切り・description の説明・danger・disabled・locked）。"
+   },
+   {
+    "name": "open",
+    "type": "boolean",
+    "required": false,
+    "description": "開いているか。v-model:open（渡さなければ中で持つ）。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "default slot を使わないときの、押すボタンの文字。"
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag'",
+    "required": false,
+    "description": "押すボタンの頭のアイコン。"
+   },
+   {
+    "name": "variant",
+    "type": "'button' | 'ops' | 'split'",
+    "required": false,
+    "description": "default slot を使わないときの押すボタンの形。\nops：シフト画面の「操作」ボタン（テーマ色・右に区切り線と cd）。\nbutton：ArButton（右に cd）。split：Dropdown.Button（左が操作、右の cd でメニュー。Compact でつなぐ）。",
+    "default": "\"button\""
+   },
+   {
+    "name": "tone",
+    "type": "ArButtonTone",
+    "required": false,
+    "description": "variant が button・split のときのボタンの種類。",
+    "default": "\"secondary\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "ボタンの大きさ（button・split）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "placement",
+    "type": "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'",
+    "required": false,
+    "description": "メニューを出す向き。",
+    "default": "\"bottom-start\""
+   },
+   {
+    "name": "width",
+    "type": "number",
+    "required": false,
+    "description": "メニューの幅（px）。渡さなければ中身に合わせる（少なくとも押すボタンの幅）。"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "押せない。",
+    "default": "false"
+   },
+   {
+    "name": "closeOnSelect",
+    "type": "boolean",
+    "required": false,
+    "description": "選んだら閉じる。",
+    "default": "true"
+   },
+   {
+    "name": "moreLabel",
+    "type": "string",
+    "required": false,
+    "description": "split の右のボタンの読み上げの名前。",
+    "default": "\"ほかの操作\""
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:open",
+    "payload": "[open: boolean]",
+    "description": ""
+   },
+   {
+    "name": "select",
+    "payload": "[key: string, item: ArMenuItem]",
+    "description": "項目を選んだ。"
+   },
+   {
+    "name": "click",
+    "payload": "[event: MouseEvent]",
+    "description": "split の左のボタンを押した。"
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "slot",
+   "trigger",
+   "icon",
+   "label",
+   "caret"
+  ],
+  "dataAr": "dropdown"
+ },
+ {
+  "name": "ArMenu",
+  "version": "1.0.0",
+  "description": "メニュー。inline（子メニューをその場で開く）・vertical（子メニューを右に浮かせる）・horizontal（横に並べる）。\n選んでいる項目：上の段はテーマ色の塗り（白文字）、子は淡い面とテーマ色の文字。権限がない項目は鍵と灰色。\n↑↓（horizontal は ←→）で移り、Enter・Space で選ぶ・子メニューを開く。→ で子メニューを開き、← で閉じる。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArMenuItem[]",
+    "required": true,
+    "description": "項目の並び。"
+   },
+   {
+    "name": "selected",
+    "type": "string",
+    "required": false,
+    "description": "選んでいる項目の key。v-model:selected。"
+   },
+   {
+    "name": "openKeys",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "開いている子メニューの key（mode=\"inline\"）。v-model:openKeys。渡さなければ選んでいる項目の親を開く。"
+   },
+   {
+    "name": "mode",
+    "type": "'horizontal' | 'vertical' | 'inline'",
+    "required": false,
+    "description": "inline：子メニューをその場で開く（設定などの横のメニュー）。\nvertical：子メニューを右に浮かせて出す。horizontal：横に並べる（下線のタブと同じ形）。子メニューは下に浮かせる。",
+    "default": "\"inline\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。sm は Layout の Sider の中の小さな項目。",
+    "default": "\"md\""
+   },
+   {
+    "name": "bordered",
+    "type": "boolean",
+    "required": false,
+    "description": "外側の白い面と線（inline / vertical）。Sider の中では false。",
+    "default": "true"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "読み上げの名前。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:selected",
+    "payload": "[key: string]",
+    "description": ""
+   },
+   {
+    "name": "update:openKeys",
+    "payload": "[keys: string[]]",
+    "description": ""
+   },
+   {
+    "name": "select",
+    "payload": "[key: string, item: ArMenuItem]",
+    "description": "項目を選んだ（子メニューを持たない項目）。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "divider",
+   "group",
+   "item",
+   "icon",
+   "label",
+   "arrow"
+  ],
+  "dataAr": "menu"
+ },
+ {
   "name": "ArTabs",
   "version": "1.0.0",
   "description": "タブ。中身の出し分けは使う側が modelValue で行う。\nvariant：band はカードの頭（帯）に置くタブ、line はカードの中の下線のタブ、card は閉じられる・足せるタブ。\n←→ で移り、Home / End で端へ。閉じられるタブは Delete で close。",
@@ -872,6 +1318,278 @@
    "add"
   ],
   "dataAr": "tabs"
+ },
+ {
+  "name": "ArAutoComplete",
+  "version": "1.0.0",
+  "description": "打った文字に合う候補を出す入力（名前の選択など）。\n候補は頭文字の丸つき、合っている文字はテーマ色の太字。読み（keywords）でも探せる（「さと」で「佐藤」）。\nキーボード：↓↑で候補を動く、Enter で選ぶ、Escape で閉じる。選ぶと入力に名前が入り、select を出す。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "string",
+    "required": true,
+    "description": "入っている文字。v-model で受け渡す。"
+   },
+   {
+    "name": "options",
+    "type": "readonly (string | ArAutoCompleteOption)[]",
+    "required": true,
+    "description": "候補。文字だけの配列でもよい。"
+   },
+   {
+    "name": "placeholder",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag'",
+    "required": false,
+    "description": "入力の頭のアイコン（例：search）。"
+   },
+   {
+    "name": "avatar",
+    "type": "boolean",
+    "required": false,
+    "description": "候補に頭文字の丸を出す（名前の選択）。",
+    "default": "false"
+   },
+   {
+    "name": "filter",
+    "type": "boolean",
+    "required": false,
+    "description": "打った文字で候補を絞る。false にすると options をそのまま出す（サーバーで探すとき）。",
+    "default": "true"
+   },
+   {
+    "name": "minChars",
+    "type": "number",
+    "required": false,
+    "description": "候補を出し始める文字数。",
+    "default": "1"
+   },
+   {
+    "name": "emptyText",
+    "type": "string",
+    "required": false,
+    "description": "合う候補がないときの文字（省くとプルダウンを出さない）。"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "default": "\"md\""
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "clearable",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "block",
+    "type": "boolean",
+    "required": false,
+    "description": "幅を親いっぱいにする。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前（ArField の中では不要）。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "input の id（ArField の中ではスロットの id を渡す）。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "select",
+    "payload": "[value: string | number, option: ArAutoCompleteOption]",
+    "description": "候補を選んだとき。"
+   },
+   {
+    "name": "search",
+    "payload": "[query: string]",
+    "description": "打ったとき（サーバーで探すときに使う）。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "list",
+   "empty"
+  ],
+  "dataAr": "auto-complete"
+ },
+ {
+  "name": "ArCascader",
+  "version": "1.0.0",
+  "description": "店舗・部署のような階層を、段ごとの列で選ぶ。\n選んだ道筋は淡いテーマ色、最後の段はチェック。使えない項目は灰色。押す所には「ARROW事業部 / 東京 / 渋谷店」と出す。\nキーボード：↓↑で段の中を動く、→ で次の段へ、← で前の段へ、Enter で選ぶ、Escape で閉じる。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "readonly ArCascaderValue[] | null",
+    "required": true,
+    "description": "選んでいる道筋（上の段から順の値）。何も選んでいなければ null。"
+   },
+   {
+    "name": "options",
+    "type": "readonly ArCascaderOption[]",
+    "required": true,
+    "description": "階層の選択肢。"
+   },
+   {
+    "name": "placeholder",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"選んでください\""
+   },
+   {
+    "name": "variant",
+    "type": "'field' | 'selbox'",
+    "required": false,
+    "description": "見た目。field：入力と同じ枠。selbox：店舗の選択のような、アイコン＋名前＋下向きの印。",
+    "default": "\"field\""
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag'",
+    "required": false,
+    "description": "頭に出すアイコン（例：store）。"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "default": "\"md\""
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "clearable",
+    "type": "boolean",
+    "required": false,
+    "description": "選んでいるとき、右に消すボタンを出す。",
+    "default": "false"
+   },
+   {
+    "name": "changeOnSelect",
+    "type": "boolean",
+    "required": false,
+    "description": "途中の段（東京・大阪など）も選べる。",
+    "default": "false"
+   },
+   {
+    "name": "expandTrigger",
+    "type": "'click' | 'hover'",
+    "required": false,
+    "description": "次の段を開くきっかけ。click：押したとき。hover：乗せたとき。",
+    "default": "\"click\""
+   },
+   {
+    "name": "separator",
+    "type": "string",
+    "required": false,
+    "description": "道筋の区切り。",
+    "default": "\" / \""
+   },
+   {
+    "name": "displayLast",
+    "type": "boolean",
+    "required": false,
+    "description": "押す所に最後の段の名前だけを出す。",
+    "default": "false"
+   },
+   {
+    "name": "block",
+    "type": "boolean",
+    "required": false,
+    "description": "幅を親いっぱいにする。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前（ArField の中では不要）。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "押す所の id（ArField の中ではスロットの id を渡す）。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: ArCascaderValue[] | null]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "payload": "[value: ArCascaderValue[] | null, options: ArCascaderOption[]]",
+    "description": "選んだとき。値の道筋と、その項目の道筋。"
+   },
+   {
+    "name": "open-change",
+    "payload": "[open: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "icon",
+   "value",
+   "value-text",
+   "placeholder",
+   "clear",
+   "arrow",
+   "column"
+  ],
+  "dataAr": "cascader"
  },
  {
   "name": "ArCheckbox",
@@ -1432,7 +2150,7 @@
    },
    {
     "name": "layout",
-    "type": "'stacked' | 'inline'",
+    "type": "'inline' | 'stacked'",
     "required": false,
     "description": "stacked：ラベルが上（ポップアップ）。inline：ラベルが左・右寄せ（設定の画面）。ArForm の中では ArForm の layout。"
    },
@@ -1469,6 +2187,91 @@
    "help"
   ],
   "dataAr": "field"
+ },
+ {
+  "name": "ArForm",
+  "version": "1.0.0",
+  "description": "ArField を縦（ラベルが上）か横（ラベルが左・120px 右寄せ）に並べる枠。\nrules を受けて name ごとに確かめ、間違いを ArField に出す（必須の札も自動）。送ると確かめ、合っていれば submit、\n間違いがあれば invalid を出し、summary なら上に間違いのまとめ（押すとその項目へ）を出して最初の項目へフォーカスする。",
+  "props": [
+   {
+    "name": "model",
+    "type": "Record<string, unknown>",
+    "required": true,
+    "description": "入力の値をまとめたもの（ArField の name がこのキー）。"
+   },
+   {
+    "name": "rules",
+    "type": "Record<string, ArFormRule | readonly ArFormRule[]>",
+    "required": false,
+    "description": "name ごとの検証の決まり。",
+    "default": "{}"
+   },
+   {
+    "name": "layout",
+    "type": "'inline' | 'stacked'",
+    "required": false,
+    "description": "stacked：ラベルが上（ポップアップ）。inline：ラベルが左・120px 右寄せ（設定の画面）。中の ArField に配る。",
+    "default": "\"stacked\""
+   },
+   {
+    "name": "labelSize",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "inline のラベルの幅。sm＝88px・md＝120px・lg＝168px。",
+    "default": "\"md\""
+   },
+   {
+    "name": "validateOn",
+    "type": "'submit' | 'blur' | 'change'",
+    "required": false,
+    "description": "いつ確かめるか。submit：送るときだけ。blur：項目から出たとき。change：打つたび（一度送ったあとは常に change）。",
+    "default": "\"blur\""
+   },
+   {
+    "name": "summary",
+    "type": "boolean",
+    "required": false,
+    "description": "送って間違いがあったとき、上に間違いのまとめを出す（押すとその項目へ）。",
+    "default": "false"
+   },
+   {
+    "name": "summaryTitle",
+    "type": "string",
+    "required": false,
+    "description": "間違いのまとめの見出し（{n} は件数）。",
+    "default": "\"入力に間違いが{n}件あります\""
+   },
+   {
+    "name": "errors",
+    "type": "Record<string, string | undefined>",
+    "required": false,
+    "description": "外から渡す間違い（サーバーの返事など）。name → 文。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "submit",
+    "payload": "[model: Record<string, unknown>]",
+    "description": "送って、全部合っていたとき。"
+   },
+   {
+    "name": "invalid",
+    "payload": "[errors: Record<string, string>]",
+    "description": "送って、間違いがあったとき。name → 文。"
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "summary",
+   "summary-title",
+   "summary-list",
+   "summary-item"
+  ],
+  "dataAr": "form"
  },
  {
   "name": "ArInputNumber",
@@ -1615,6 +2418,125 @@
    "down"
   ],
   "dataAr": "input-number"
+ },
+ {
+  "name": "ArMentions",
+  "version": "1.0.0",
+  "description": "＠で人を呼べる複数行の入力（通知・お知らせ）。\n「@」に続けて打つと、合う人の候補（頭文字の丸・合っている文字はテーマ色の太字）が出る。\n呼んだ名前は淡いテーマ色の札で見せる（textarea の後ろに同じ文字を重ねて色を付ける）。\nキーボード：↓↑で候補を動く、Enter・Tab で選ぶ、Escape で閉じる。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "string",
+    "required": true,
+    "description": "入っている文字。v-model で受け渡す。"
+   },
+   {
+    "name": "options",
+    "type": "readonly (string | ArMentionsOption)[]",
+    "required": true,
+    "description": "呼べる人。"
+   },
+   {
+    "name": "prefix",
+    "type": "string",
+    "required": false,
+    "description": "呼ぶときの頭の文字。",
+    "default": "\"@\""
+   },
+   {
+    "name": "placeholder",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "rows",
+    "type": "number",
+    "required": false,
+    "description": "はじめの行数（高さは少なくとも56px）。",
+    "default": "1"
+   },
+   {
+    "name": "maxRows",
+    "type": "number",
+    "required": false,
+    "description": "打った量に合わせて伸びる上限の行数（超えたら中でスクロール）。",
+    "default": "6"
+   },
+   {
+    "name": "avatar",
+    "type": "boolean",
+    "required": false,
+    "description": "候補に頭文字の丸を出す。",
+    "default": "true"
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "readonly",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "emptyText",
+    "type": "string",
+    "required": false,
+    "description": "合う人がいないときの文字（省くとプルダウンを出さない）。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前（ArField の中では不要）。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "textarea の id（ArField の中ではスロットの id を渡す）。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "select",
+    "payload": "[option: ArMentionsOption]",
+    "description": "人を選んだとき。"
+   },
+   {
+    "name": "search",
+    "payload": "[query: string]",
+    "description": "「@」のあとに打ったとき（サーバーで探すときに使う）。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "mirror",
+   "mention",
+   "input",
+   "list",
+   "empty"
+  ],
+  "dataAr": "mentions"
  },
  {
   "name": "ArPills",
@@ -2097,6 +3019,113 @@
    "tooltip"
   ],
   "dataAr": "slider"
+ },
+ {
+  "name": "ArStepper",
+  "version": "1.0.0",
+  "description": "− ＋ で挟む数の入力（人数など1ずつ変える小さな数）。\njoined は枠の中に − 数 ＋（.stp）、split は小さな四角いボタンで数を挟む。最小・最大で端のボタンは押せない。\n真ん中は spinbutton（↑↓で増減、Home・End で最小・最大）。押し続けると繰り返す。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "number",
+    "required": true,
+    "description": "今の数。v-model で受け渡す。"
+   },
+   {
+    "name": "min",
+    "type": "number",
+    "required": false,
+    "description": "いちばん小さい数（人数なら1）。",
+    "default": "0"
+   },
+   {
+    "name": "max",
+    "type": "number",
+    "required": false,
+    "description": "いちばん大きい数。"
+   },
+   {
+    "name": "step",
+    "type": "number",
+    "required": false,
+    "description": "− ＋ で変わる量。",
+    "default": "1"
+   },
+   {
+    "name": "unit",
+    "type": "string",
+    "required": false,
+    "description": "数の後ろの単位（例：「人」）。"
+   },
+   {
+    "name": "variant",
+    "type": "'split' | 'joined'",
+    "required": false,
+    "description": "見た目。\njoined：枠の中に − 数 ＋ を並べる（.stp・日にちなど範囲の決まった数）。\nsplit：− と ＋ を小さな四角いボタンにして数を挟む（人数）。",
+    "default": "\"joined\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。sm＝高さ30・md＝38。",
+    "default": "\"md\""
+   },
+   {
+    "name": "editable",
+    "type": "boolean",
+    "required": false,
+    "description": "真ん中の数を打って変えられる。",
+    "default": "true"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前（例：「人数」）。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "数の入力の id（ArField の中ではスロットの id を渡す）。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: number]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "payload": "[value: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "decrement",
+   "value",
+   "unit",
+   "increment"
+  ],
+  "dataAr": "stepper"
  },
  {
   "name": "ArSwitch",
@@ -2910,6 +3939,206 @@
   "dataAr": "transfer"
  },
  {
+  "name": "ArTreeSelect",
+  "version": "1.0.0",
+  "description": "部署のような木から選ぶ（プルダウンの中に木）。\nmultiple はチェックで選び、一部だけ選んでいる親は indeterminate（テーマ色に白い横線）。1つ選ぶときは選んだ行が淡いテーマ色。\nキーボード：↓↑で行を動く、→ で開く・子へ、← で閉じる・親へ、Enter・Space で選ぶ／チェック、Escape で閉じる。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "ArTreeSelectValue | readonly ArTreeSelectValue[] | null",
+    "required": true,
+    "description": "1つ選ぶときは値か null。multiple のときはチェックした一番下の部署の値の配列。"
+   },
+   {
+    "name": "tree",
+    "type": "readonly ArTreeSelectNode[]",
+    "required": true,
+    "description": "部署の木。"
+   },
+   {
+    "name": "multiple",
+    "type": "boolean",
+    "required": false,
+    "description": "チェックで複数選ぶ。親をチェックすると下が全部入り、一部だけのときは親が indeterminate になる。",
+    "default": "false"
+   },
+   {
+    "name": "leafOnly",
+    "type": "boolean",
+    "required": false,
+    "description": "1つ選ぶとき、下のある部署（親）は選べなくする。",
+    "default": "false"
+   },
+   {
+    "name": "expanded",
+    "type": "readonly ArTreeSelectValue[]",
+    "required": false,
+    "description": "開いている部署の値（v-model:expanded）。省くと、選んでいる部署までを開いて出す。"
+   },
+   {
+    "name": "defaultExpandAll",
+    "type": "boolean",
+    "required": false,
+    "description": "はじめに全部開く。",
+    "default": "false"
+   },
+   {
+    "name": "searchable",
+    "type": "boolean",
+    "required": false,
+    "description": "プルダウンに探す欄を出す。",
+    "default": "false"
+   },
+   {
+    "name": "searchPlaceholder",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"探す\""
+   },
+   {
+    "name": "placeholder",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"選んでください\""
+   },
+   {
+    "name": "variant",
+    "type": "'field' | 'selbox'",
+    "required": false,
+    "description": "見た目。field：入力と同じ枠（複数は札）。selbox：部署の選択のような、アイコン＋名前＋下向きの印。",
+    "default": "\"field\""
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag'",
+    "required": false,
+    "description": "頭に出すアイコン（例：bld）。"
+   },
+   {
+    "name": "showPath",
+    "type": "boolean",
+    "required": false,
+    "description": "押す所に「営業部 / 東京営業所」のように上の部署から出す。",
+    "default": "true"
+   },
+   {
+    "name": "maxTags",
+    "type": "number",
+    "required": false,
+    "description": "札を何枚まで出すか（multiple・field）。残りは「+n」。",
+    "default": "2"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "default": "\"md\""
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "clearable",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "emptyText",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"選べるものがありません\""
+   },
+   {
+    "name": "block",
+    "type": "boolean",
+    "required": false,
+    "description": "幅を親いっぱいにする。",
+    "default": "false"
+   },
+   {
+    "name": "listHeight",
+    "type": "number",
+    "required": false,
+    "description": "プルダウンの高さの上限（px）。",
+    "default": "300"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前（ArField の中では不要）。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "押す所の id（ArField の中ではスロットの id を渡す）。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: ArTreeSelectValue | ArTreeSelectValue[] | null]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "payload": "[value: ArTreeSelectValue | ArTreeSelectValue[] | null]",
+    "description": ""
+   },
+   {
+    "name": "update:expanded",
+    "payload": "[value: ArTreeSelectValue[]]",
+    "description": ""
+   },
+   {
+    "name": "open-change",
+    "payload": "[open: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "icon",
+   "tags",
+   "tag",
+   "tag-remove",
+   "placeholder",
+   "value",
+   "value-text",
+   "clear",
+   "arrow",
+   "search",
+   "list",
+   "node",
+   "switch",
+   "check",
+   "dash",
+   "node-label",
+   "match",
+   "empty"
+  ],
+  "dataAr": "tree-select"
+ },
+ {
   "name": "ArUpload",
   "version": "1.0.0",
   "description": "ファイルを置く・選ぶ（Excel登録と同じ形）。置き場は淡いテーマ色の点線。\n一覧：済みは緑のチェック、途中はテーマ色の進み具合、失敗は赤と理由。送る処理は親が行い、files に状態を入れる。\n置き場は Enter・Space でファイルを選ぶ画面を開く。",
@@ -3178,6 +4407,77 @@
    "rest"
   ],
   "dataAr": "avatar-group"
+ },
+ {
+  "name": "ArBadge",
+  "version": "1.0.0",
+  "description": "件数の丸・点・状態の点。\n子（アイコンのボタンなど）の右上に件数（赤＝重要／テーマ色）や点を重ねる。status を渡すと「点＋言葉」の状態の表示になる。\n「提出済」のような札は ArTag を使う。",
+  "props": [
+   {
+    "name": "count",
+    "type": "number",
+    "required": false,
+    "description": "件数。子（アイコンのボタンなど）の右上に重ねる。子がなければその場に出す。"
+   },
+   {
+    "name": "max",
+    "type": "number",
+    "required": false,
+    "description": "これを超えると「99+」のように出す。",
+    "default": "99"
+   },
+   {
+    "name": "showZero",
+    "type": "boolean",
+    "required": false,
+    "description": "0 でも出す。",
+    "default": "false"
+   },
+   {
+    "name": "dot",
+    "type": "boolean",
+    "required": false,
+    "description": "数を出さずに点だけ（新しいものがある）。",
+    "default": "false"
+   },
+   {
+    "name": "tone",
+    "type": "'danger' | 'accent' | 'neutral'",
+    "required": false,
+    "description": "件数・点の色。danger＝赤（重要）、accent＝テーマ色、neutral＝灰色。",
+    "default": "\"danger\""
+   },
+   {
+    "name": "status",
+    "type": "'danger' | 'accent' | 'neutral' | 'ok' | 'warn'",
+    "required": false,
+    "description": "状態の点（出勤中・処理中・未提出・エラー）。渡すと件数ではなく「点＋言葉」の形になる。\nok＝緑、accent＝テーマ色（淡い輪つき＝処理中）、warn＝橙、danger＝赤、neutral＝灰色。"
+   },
+   {
+    "name": "text",
+    "type": "string",
+    "required": false,
+    "description": "状態の言葉（default slot でも渡せる）。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前（件数のとき）。省くと「n件」。"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "status-dot",
+   "text",
+   "dot",
+   "count"
+  ],
+  "dataAr": "badge"
  },
  {
   "name": "ArCalendar",
@@ -3478,6 +4778,177 @@
   "dataAr": "carousel"
  },
  {
+  "name": "ArCollapse",
+  "version": "1.0.0",
+  "description": "折りたたみ。見出しは bg-2 の地に太字、開くと矢印が下を向く。\n見出しのボタンは ↑↓ Home End で移り、Enter・Space で開閉する（WAI-ARIA の Accordion）。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArCollapseItem[]",
+    "required": true,
+    "description": "項目。"
+   },
+   {
+    "name": "modelValue",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "開いている項目の key（v-model）。",
+    "default": "[]"
+   },
+   {
+    "name": "accordion",
+    "type": "boolean",
+    "required": false,
+    "description": "1つだけ開く（ほかを開くと前のが閉じる）。",
+    "default": "false"
+   },
+   {
+    "name": "ghost",
+    "type": "boolean",
+    "required": false,
+    "description": "枠と見出しの地をなくす（カードの中で使う）。",
+    "default": "false"
+   },
+   {
+    "name": "headingLevel",
+    "type": "2 | 3 | 4 | 5",
+    "required": false,
+    "description": "見出しの段階（読み上げ）。",
+    "default": "3"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[keys: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "`extra-<key>`",
+   "`panel-<key>`",
+   "panel"
+  ],
+  "parts": [
+   "root",
+   "panel",
+   "header",
+   "trigger",
+   "arrow",
+   "icon",
+   "title",
+   "extra",
+   "body"
+  ],
+  "dataAr": "collapse"
+ },
+ {
+  "name": "ArCountdown",
+  "version": "1.0.0",
+  "description": "しめきりまでの残り（Statistic.Timer）。残りが少ないと橙になる。\n見た目は ArStatistic のもの（この部品は残りを数えるだけ）。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "小さな見出し（「提出のしめきりまで」）。"
+   },
+   {
+    "name": "target",
+    "type": "number | Date",
+    "required": true,
+    "description": "しめきり（Date か ms）。"
+   },
+   {
+    "name": "format",
+    "type": "string",
+    "required": false,
+    "description": "出し方。D＝日、HH・mm・ss。既定は「D日 HH:mm:ss」（1日未満は「HH:mm:ss」）。"
+   },
+   {
+    "name": "warnWithin",
+    "type": "number",
+    "required": false,
+    "description": "残りがこれ（ms）より少ないと橙にする。既定は3日。",
+    "default": "3 * 24 * 60 * 60 * 1000"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。",
+    "default": "\"md\""
+   }
+  ],
+  "emits": [
+   {
+    "name": "finish",
+    "payload": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [],
+  "dataAr": null
+ },
+ {
+  "name": "ArDescriptions",
+  "version": "1.0.0",
+  "description": "ラベルと値の一覧（社員の情報・日の要約）。\nbordered は枠つき（ラベルの地は淡いテーマ色）、plain は枠なしで「出勤人数 8名」のように並べる。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArDescriptionsItem[]",
+    "required": true,
+    "description": "項目。"
+   },
+   {
+    "name": "column",
+    "type": "number",
+    "required": false,
+    "description": "1行に並べる項目の数。",
+    "default": "3"
+   },
+   {
+    "name": "variant",
+    "type": "'plain' | 'bordered'",
+    "required": false,
+    "description": "形。bordered＝枠つきの表（ラベルの地は淡いテーマ色）、plain＝枠なしで「ラベル 値」を並べる（日の要約の形）。",
+    "default": "\"bordered\""
+   },
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "上の見出し。"
+   },
+   {
+    "name": "headingLevel",
+    "type": "2 | 3 | 4",
+    "required": false,
+    "description": "見出しの段階。",
+    "default": "3"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "extra",
+   "`label-<key>`",
+   "`item-<key>`"
+  ],
+  "parts": [
+   "root",
+   "header",
+   "title",
+   "extra",
+   "list",
+   "item",
+   "label",
+   "value"
+  ],
+  "dataAr": "descriptions"
+ },
+ {
   "name": "ArEmpty",
   "version": "1.0.0",
   "description": "空の状態。何もないことと、次の一手を言葉で書く（絵は使わず線のアイコン）。\nslot：default（文）、action（次の一手のボタン）。",
@@ -3614,6 +5085,80 @@
   "dataAr": "image"
  },
  {
+  "name": "ArList",
+  "version": "1.0.0",
+  "description": "人やものの一覧（antd 6 の Listy の形）。\n1行は「頭文字の丸・名前と説明・右の操作」。group が続く間を1つにまとめ、淡いテーマ色の見出しを上に出す（スクロールしても残る）。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArListItem[]",
+    "required": true,
+    "description": "項目（並びは製品が決める）。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "一覧の名前（読み上げ）。"
+   },
+   {
+    "name": "bordered",
+    "type": "boolean",
+    "required": false,
+    "description": "枠で囲む（角丸12・線）。",
+    "default": "true"
+   },
+   {
+    "name": "emptyText",
+    "type": "string",
+    "required": false,
+    "description": "項目がないときの文。",
+    "default": "\"データがありません\""
+   },
+   {
+    "name": "maxHeight",
+    "type": "number",
+    "required": false,
+    "description": "高さの上限（px）。超えるとスクロールし、グループの見出しは上に残る。"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。sm は詰めた一覧。",
+    "default": "\"md\""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "header",
+   "item",
+   "avatar",
+   "title",
+   "description",
+   "actions",
+   "empty",
+   "footer"
+  ],
+  "parts": [
+   "root",
+   "header",
+   "viewport",
+   "group",
+   "group-title",
+   "items",
+   "item",
+   "avatar",
+   "meta",
+   "title",
+   "description",
+   "actions",
+   "empty",
+   "footer"
+  ],
+  "dataAr": "list"
+ },
+ {
   "name": "ArPopover",
   "version": "1.0.0",
   "description": "白い吹き出し（見出し・中身・操作）。押す、または乗せると出る。\nvariant=\"cell\" はシフトのマスに乗せたときの時間の表示（濃い地・矢印なし・行ごとに改行）。\n押して開いたときは吹き出しにフォーカスを移し、Escape・外を押す で閉じて基準の要素へ戻す。",
@@ -3703,6 +5248,201 @@
    "footer"
   ],
   "dataAr": "popover"
+ },
+ {
+  "name": "ArQRCode",
+  "version": "1.0.0",
+  "description": "QR コード（打刻用など）。点は ink、期限切れは白い幕と「作り直す」ボタン。\nQR は中で作る（外の部品に頼らない。UTF-8・型番 1〜40・誤り訂正 L/M/Q/H）。",
+  "props": [
+   {
+    "name": "value",
+    "type": "string",
+    "required": true,
+    "description": "QR に入れる文字（URL など）。UTF-8 のまま入る。"
+   },
+   {
+    "name": "size",
+    "type": "number",
+    "required": false,
+    "description": "1辺の大きさ（px、白い余白を除く）。既定 120。",
+    "default": "120"
+   },
+   {
+    "name": "level",
+    "type": "ArQrLevel",
+    "required": false,
+    "description": "誤り訂正の強さ。L 7%・M 15%（既定）・Q 25%・H 30%。",
+    "default": "\"M\""
+   },
+   {
+    "name": "status",
+    "type": "'active' | 'expired' | 'loading' | 'scanned'",
+    "required": false,
+    "description": "active：ふつう。expired：期限切れ（白い幕と作り直すボタン）。loading：作っている途中。scanned：読み取り済み。",
+    "default": "\"active\""
+   },
+   {
+    "name": "bordered",
+    "type": "boolean",
+    "required": false,
+    "description": "枠を付ける。",
+    "default": "true"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前。既定「QRコード」。",
+    "default": "\"QRコード\""
+   },
+   {
+    "name": "labels",
+    "type": "{ expired: string; refresh: string; loading: string; scanned: string; tooLong: string; }",
+    "required": false,
+    "description": "画面の文字。",
+    "default": "{ expired: \"期限切れ\", refresh: \"作り直す\", loading: \"作っています\", scanned: \"読み取りました\", tooLong: \"QR に入りきりません\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "refresh",
+    "payload": "[]",
+    "description": "期限切れの「作り直す」を押したとき。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "code",
+   "message",
+   "overlay",
+   "refresh",
+   "spinner"
+  ],
+  "dataAr": "qr-code"
+ },
+ {
+  "name": "ArRibbon",
+  "version": "1.0.0",
+  "description": "カードの右上のリボン（「おすすめ」）。中にカードを入れる。テーマ色の塗りに白文字。",
+  "props": [
+   {
+    "name": "text",
+    "type": "string",
+    "required": true,
+    "description": "リボンの言葉（「おすすめ」）。"
+   },
+   {
+    "name": "tone",
+    "type": "'danger' | 'accent' | 'ok' | 'warn'",
+    "required": false,
+    "description": "色。accent＝テーマ色の塗りに白文字。",
+    "default": "\"accent\""
+   },
+   {
+    "name": "placement",
+    "type": "'start' | 'end'",
+    "required": false,
+    "description": "右上（end）か左上（start）。",
+    "default": "\"end\""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "content",
+   "ribbon",
+   "corner"
+  ],
+  "dataAr": "ribbon"
+ },
+ {
+  "name": "ArStatistic",
+  "version": "1.0.0",
+  "description": "大きな数字（今月の人件費・出勤人数）。\n数字は等幅、単位は小さく、増減は意味の色（増＝緑・減＝赤）。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "小さな見出し（「今月の人件費」）。"
+   },
+   {
+    "name": "titleIcon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag'",
+    "required": false,
+    "description": "見出しの後ろのアイコン（説明があることを示す info など）。"
+   },
+   {
+    "name": "value",
+    "type": "string | number",
+    "required": true,
+    "description": "数字。数なら3桁ごとに「,」を入れる。文字ならそのまま出す。"
+   },
+   {
+    "name": "precision",
+    "type": "number",
+    "required": false,
+    "description": "小数の桁数（数のとき）。"
+   },
+   {
+    "name": "prefix",
+    "type": "string",
+    "required": false,
+    "description": "数字の前（「¥」）。"
+   },
+   {
+    "name": "suffix",
+    "type": "string",
+    "required": false,
+    "description": "数字の後ろの単位（「名」「/ 9名」）。"
+   },
+   {
+    "name": "trend",
+    "type": "'up' | 'down'",
+    "required": false,
+    "description": "増減。up＝増えた（緑）、down＝減った（赤）。"
+   },
+   {
+    "name": "trendValue",
+    "type": "string",
+    "required": false,
+    "description": "増減の値（「3.2%」）。"
+   },
+   {
+    "name": "tone",
+    "type": "'danger' | 'default' | 'ok' | 'warn'",
+    "required": false,
+    "description": "数字の色（未提出＝warn、不足＝danger など）。",
+    "default": "\"default\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。sm は数字の箱の中（18px）。",
+    "default": "\"md\""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "title",
+   "default"
+  ],
+  "parts": [
+   "root",
+   "title",
+   "title-icon",
+   "content",
+   "prefix",
+   "value",
+   "suffix",
+   "trend"
+  ],
+  "dataAr": "statistic"
  },
  {
   "name": "ArTable",
@@ -3896,39 +5636,159 @@
  {
   "name": "ArTag",
   "version": "1.0.0",
-  "description": "状態や種類の札（「提出済」「パート」「不足1」）。色だけで伝えず、必ず言葉を入れる。",
+  "description": "状態や種類の札（「提出済」「パート」「不足1」「4名」）。色だけで伝えず、必ず言葉を入れる。\ncheckable で選べる札（CheckableTag）、dashed で「タグを追加」、closable で外せる札になる。",
   "props": [
    {
     "name": "tone",
     "type": "'danger' | 'accent' | 'neutral' | 'ok' | 'warn' | 'event' | 'solid'",
     "required": false,
-    "description": "",
+    "description": "意味の色。neutral＝標準・変更なし、accent＝種類（テーマ色の淡い札）、solid＝テーマ色の塗り、\nok＝提出済、warn＝未提出・非公開、danger＝エラー・不足、event＝イベント。色だけで伝えず、必ず言葉を入れる。",
     "default": "\"neutral\""
+   },
+   {
+    "name": "shape",
+    "type": "'square' | 'pill'",
+    "required": false,
+    "description": "形。square＝角丸7の札（線つき）、pill＝丸い札（線なし・太字。件数「4名」や状態「提出済」）。",
+    "default": "\"square\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'xs'",
+    "required": false,
+    "description": "大きさ。md＝24（pill は22）、sm＝20、xs＝16（カレンダーのマスの「不足1」「提出2」）。",
+    "default": "\"md\""
    },
    {
     "name": "icon",
     "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag'",
     "required": false,
+    "description": "文字の前の線のアイコン。"
+   },
+   {
+    "name": "count",
+    "type": "boolean",
+    "required": false,
+    "description": "件数の札（数字を等幅にする）。",
+    "default": "false"
+   },
+   {
+    "name": "closable",
+    "type": "boolean",
+    "required": false,
+    "description": "右に × を出して外せるようにする（close を出す）。",
+    "default": "false"
+   },
+   {
+    "name": "closeLabel",
+    "type": "string",
+    "required": false,
+    "description": "× の読み上げの名前。",
+    "default": "\"外す\""
+   },
+   {
+    "name": "dashed",
+    "type": "boolean",
+    "required": false,
+    "description": "点線の「タグを追加」の形（押せる）。",
+    "default": "false"
+   },
+   {
+    "name": "checkable",
+    "type": "boolean",
+    "required": false,
+    "description": "選べる札（CheckableTag）。押すと update:checked を出す。",
+    "default": "false"
+   },
+   {
+    "name": "checked",
+    "type": "boolean",
+    "required": false,
+    "description": "選んでいるか（v-model:checked）。checkable のときだけ。",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "押せない（checkable・dashed・closable のとき）。",
+    "default": "false"
+   }
+  ],
+  "emits": [
+   {
+    "name": "close",
+    "payload": "[event: MouseEvent]",
     "description": ""
    },
    {
-    "name": "size",
-    "type": "'sm' | 'md'",
-    "required": false,
-    "description": "",
-    "default": "\"md\""
+    "name": "update:checked",
+    "payload": "[checked: boolean]",
+    "description": ""
+   },
+   {
+    "name": "click",
+    "payload": "[event: MouseEvent]",
+    "description": ""
    }
   ],
-  "emits": [],
   "slots": [
    "default"
   ],
   "parts": [
    "root",
    "icon",
-   "label"
+   "label",
+   "close"
   ],
   "dataAr": "tag"
+ },
+ {
+  "name": "ArTimeline",
+  "version": "1.0.0",
+  "description": "打刻・承認の履歴。点は意味の色（線の丸）、今はテーマ色の塗り、まだは灰色。点と点は細い線でつなぐ。\nitem slot（{ item, index }）で中身を、dot slot で点を変えられる。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArTimelineItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "mode",
+    "type": "'left' | 'alternate'",
+    "required": false,
+    "description": "left：点を左に並べる。alternate：中央の線の左右に交互に並べる。",
+    "default": "\"left\""
+   },
+   {
+    "name": "reverse",
+    "type": "boolean",
+    "required": false,
+    "description": "新しいものを上に（並びを逆に）する。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前（例：「打刻の履歴」）。"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "dot",
+   "item"
+  ],
+  "parts": [
+   "root",
+   "item",
+   "dot",
+   "content",
+   "title",
+   "description"
+  ],
+  "dataAr": "timeline"
  },
  {
   "name": "ArTooltip",
@@ -4001,6 +5861,204 @@
    "body"
   ],
   "dataAr": "tooltip"
+ },
+ {
+  "name": "ArTour",
+  "version": "1.0.0",
+  "description": "初めての人への案内。指す要素のまわりを残して暗い幕をかけ、白いカードで説明する。\n下に今どこかの点（今はテーマ色）と［前へ］［次へ（2/3）］。Escape で閉じ、Tab はカードの中で回る。閉じると元の場所へフォーカスを戻す。",
+  "props": [
+   {
+    "name": "steps",
+    "type": "readonly ArTourStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "open",
+    "type": "boolean",
+    "required": true,
+    "description": "出しているか（v-model:open）。"
+   },
+   {
+    "name": "current",
+    "type": "number",
+    "required": false,
+    "description": "今の番号（0 から、v-model:current）。渡さなければ中で持つ。"
+   },
+   {
+    "name": "mask",
+    "type": "boolean",
+    "required": false,
+    "description": "周りを暗くする。false なら幕なし（指す要素の枠だけ）。",
+    "default": "true"
+   },
+   {
+    "name": "gap",
+    "type": "number",
+    "required": false,
+    "description": "指す要素の周りの余白（px）。",
+    "default": "4"
+   },
+   {
+    "name": "closable",
+    "type": "boolean",
+    "required": false,
+    "description": "右上に閉じるボタンを出す（Escape はいつでも閉じる）。",
+    "default": "false"
+   },
+   {
+    "name": "labels",
+    "type": "{ prev: string; next: string; finish: string; close: string; }",
+    "required": false,
+    "description": "画面の文字。next は「次へ（2/3）」の形で数が付く。",
+    "default": "{ prev: \"前へ\", next: \"次へ\", finish: \"完了\", close: \"閉じる\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:open",
+    "payload": "[open: boolean]",
+    "description": ""
+   },
+   {
+    "name": "update:current",
+    "payload": "[index: number]",
+    "description": ""
+   },
+   {
+    "name": "finish",
+    "payload": "[]",
+    "description": "最後の「完了」を押したとき。"
+   },
+   {
+    "name": "close",
+    "payload": "[]",
+    "description": "閉じたとき（Escape・閉じるボタン・完了）。"
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "overlay",
+   "spot",
+   "panel",
+   "arrow",
+   "close",
+   "title",
+   "description",
+   "footer",
+   "dots",
+   "dot",
+   "actions"
+  ],
+  "dataAr": "tour"
+ },
+ {
+  "name": "ArTree",
+  "version": "1.0.0",
+  "description": "店舗・部署の階層。開け閉め、選んだものは淡いテーマ色、checkable は ArCheckbox、draggable はつまみで並べ替え。\nキーボード（WAI-ARIA の tree）：↑↓ で移り、→ で開く／子へ、← で閉じる／親へ、Home / End、Enter で選ぶ、\nSpace でチェック（checkable のとき）、文字で飛ぶ、Alt+↑↓ で並べ替え（draggable のとき）。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArTreeNode[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "modelValue",
+    "type": "ArTreeKey | null",
+    "required": false,
+    "description": "選んでいるもの（v-model）。選ばないなら null。",
+    "default": "null"
+   },
+   {
+    "name": "expanded",
+    "type": "readonly ArTreeKey[]",
+    "required": false,
+    "description": "開いているもの（v-model:expanded）。渡さなければ中で持つ。"
+   },
+   {
+    "name": "defaultExpandAll",
+    "type": "boolean",
+    "required": false,
+    "description": "始めにすべて開く（expanded を渡さないとき）。",
+    "default": "false"
+   },
+   {
+    "name": "checkable",
+    "type": "boolean",
+    "required": false,
+    "description": "名前の前にチェックを出す（ArCheckbox）。親を付けると子もすべて付く。",
+    "default": "false"
+   },
+   {
+    "name": "checked",
+    "type": "readonly ArTreeKey[]",
+    "required": false,
+    "description": "チェックしたもの（v-model:checked）。親は子がすべて付いたとき付き、一部なら「一部」の印。",
+    "default": "[]"
+   },
+   {
+    "name": "selectable",
+    "type": "boolean",
+    "required": false,
+    "description": "選べるか（false なら開け閉めとチェックだけ）。",
+    "default": "true"
+   },
+   {
+    "name": "draggable",
+    "type": "boolean",
+    "required": false,
+    "description": "つまみでドラッグして並べ替える（drop を出す。並べ替えるのは親）。キーボードでは Alt+↑↓。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前（例：「店舗」）。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[key: ArTreeKey]",
+    "description": ""
+   },
+   {
+    "name": "update:expanded",
+    "payload": "[keys: ArTreeKey[]]",
+    "description": ""
+   },
+   {
+    "name": "update:checked",
+    "payload": "[keys: ArTreeKey[]]",
+    "description": ""
+   },
+   {
+    "name": "select",
+    "payload": "[node: ArTreeNode]",
+    "description": "選んだとき（押す・Enter）。"
+   },
+   {
+    "name": "drop",
+    "payload": "[drop: ArTreeDrop]",
+    "description": "ドラッグ・Alt+↑↓ で並べ替えたとき。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "node",
+   "handle",
+   "switcher",
+   "grip",
+   "check",
+   "icon",
+   "label"
+  ],
+  "dataAr": "tree"
  },
  {
   "name": "ArAlert",
@@ -4136,8 +6194,7 @@
     "name": "width",
     "type": "string | number",
     "required": false,
-    "description": "幅（px か CSS の長さ）。既定 340。",
-    "default": "340"
+    "description": "幅（px か CSS の長さ）。省くとデザインの既定（remix 340・classic 378）。"
    },
    {
     "name": "closable",
@@ -4738,7 +6795,7 @@
    },
    {
     "name": "status",
-    "type": "'success' | 'normal' | 'active' | 'exception'",
+    "type": "'success' | 'active' | 'normal' | 'exception'",
     "required": false,
     "description": "normal：進行（テーマ色）。active：取り込み中（光が流れる）。success：終わり（緑）。exception：失敗（赤）。\n渡さなければ 100% で success。"
    },
@@ -5085,6 +7142,147 @@
   "dataAr": "watermark"
  },
  {
+  "name": "ArAppFooter",
+  "version": "1.0.0",
+  "description": "PC の画面の足。左にリンク、右に問い合わせのボタン、下に著作権。項目は props で渡す。",
+  "props": [
+   {
+    "name": "links",
+    "type": "readonly ArAppFooterLink[]",
+    "required": false,
+    "description": "左のリンク（ご利用ガイド・利用規約・特定商取引法・操作説明動画・ヘルプ）。",
+    "default": "[]"
+   },
+   {
+    "name": "supports",
+    "type": "readonly ArAppFooterLink[]",
+    "required": false,
+    "description": "右の大きめのボタン（問題報告・電話・お問い合わせ）。icon を付ける。",
+    "default": "[]"
+   },
+   {
+    "name": "copyright",
+    "type": "string",
+    "required": false,
+    "description": "下に小さく出す著作権の表示。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "select",
+    "payload": "[key: string, event: MouseEvent]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "row",
+   "links",
+   "link",
+   "supports",
+   "support",
+   "support-icon",
+   "support-label",
+   "copyright"
+  ],
+  "dataAr": "app-footer"
+ },
+ {
+  "name": "ArAppHeader",
+  "version": "1.0.0",
+  "description": "PC の画面の頭（2段）。\n1段目：ロゴ（slot）・お知らせとやることのピル（件数の丸）・右端に管理ページ（押すとメニュー）。\n2段目：メニュー（今いるものをテーマ色で塗る）。下端にページのテーマ色の線。項目はすべて props で渡す。",
+  "props": [
+   {
+    "name": "menus",
+    "type": "readonly ArAppNavItem[]",
+    "required": true,
+    "description": "2段目の左のメニュー（シフト・勤怠・給与賞与報酬年調・書類集計・通知）。"
+   },
+   {
+    "name": "menusEnd",
+    "type": "readonly ArAppNavItem[]",
+    "required": false,
+    "description": "2段目の右のメニュー（会社情報・社員情報・設定）。",
+    "default": "[]"
+   },
+   {
+    "name": "current",
+    "type": "string",
+    "required": false,
+    "description": "今いるメニューの key。テーマ色で塗る（aria-current=\"page\"）。"
+   },
+   {
+    "name": "pills",
+    "type": "readonly ArAppHeaderPill[]",
+    "required": false,
+    "description": "",
+    "default": "[]"
+   },
+   {
+    "name": "account",
+    "type": "{ label: string; initial?: string | undefined; }",
+    "required": false,
+    "description": "右上の名前（「管理ページ」）と丸の頭文字（「管」）。"
+   },
+   {
+    "name": "accountMenu",
+    "type": "readonly ArAppAccountAction[]",
+    "required": false,
+    "description": "右上を押したときに開くメニュー。無ければ押すと account を key \"\" で出す。"
+   },
+   {
+    "name": "labels",
+    "type": "{ nav: string; count: string; }",
+    "required": false,
+    "description": "",
+    "default": "{ nav: \"メインメニュー\", count: \"件\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "navigate",
+    "payload": "[key: string, event: MouseEvent]",
+    "description": ""
+   },
+   {
+    "name": "pill",
+    "payload": "[key: string]",
+    "description": ""
+   },
+   {
+    "name": "account",
+    "payload": "[key: string]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "logo"
+  ],
+  "parts": [
+   "root",
+   "top",
+   "logo",
+   "pill",
+   "pill-icon",
+   "pill-label",
+   "count",
+   "account",
+   "avatar",
+   "account-icon",
+   "account-label",
+   "account-arrow",
+   "menu-item",
+   "menu-arrow",
+   "nav",
+   "spacer",
+   "item",
+   "item-icon",
+   "item-label"
+  ],
+  "dataAr": "app-header"
+ },
+ {
   "name": "ArBalloon",
   "version": "1.0.0",
   "description": "吹き出し。その場に置く（浮かばない）注意や目印。\n物に重ねて浮かべる説明は ArEllipsis などの吹き出し（ArFloat）を使う。",
@@ -5134,6 +7332,54 @@
    "body"
   ],
   "dataAr": "balloon"
+ },
+ {
+  "name": "ArBottomNav",
+  "version": "1.0.0",
+  "description": "スマホの下に固定するメニュー。アイコンと小さな名前を5つ等分に並べ、今いるものをテーマ色で示す。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArAppNavItem[]",
+    "required": true,
+    "description": "項目（シフト・勤怠・給与賞与報酬年調・書類集計・メニュー）。5つまで。"
+   },
+   {
+    "name": "current",
+    "type": "string",
+    "required": false,
+    "description": "今いる項目の key。"
+   },
+   {
+    "name": "fixed",
+    "type": "boolean",
+    "required": false,
+    "description": "画面の下に固定する（既定）。false なら置いた場所に出す（説明の見本など）。",
+    "default": "true"
+   },
+   {
+    "name": "labels",
+    "type": "{ nav: string; }",
+    "required": false,
+    "description": "",
+    "default": "{ nav: \"メインメニュー\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "navigate",
+    "payload": "[key: string, event: MouseEvent]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "item",
+   "icon",
+   "label"
+  ],
+  "dataAr": "bottom-nav"
  },
  {
   "name": "ArChangedValue",
@@ -5553,7 +7799,7 @@
    },
    {
     "name": "layout",
-    "type": "'stacked' | 'inline'",
+    "type": "'inline' | 'stacked'",
     "required": false,
     "description": "stacked：名前の上に小さくフリガナ（既定。スマホの幅では「名前（フリガナ）」になる）。inline：いつも「名前（フリガナ）」。",
     "default": "\"stacked\""
@@ -5572,6 +7818,67 @@
    "inline"
   ],
   "dataAr": "kana-text"
+ },
+ {
+  "name": "ArMobileHeader",
+  "version": "1.0.0",
+  "description": "スマホの画面の頭。左にロゴ（slot）、右にお知らせのボタンと件数の丸。下端にテーマ色の線。",
+  "props": [
+   {
+    "name": "count",
+    "type": "number",
+    "required": false,
+    "description": "お知らせの件数。1以上なら赤い丸で出す。",
+    "default": "0"
+   },
+   {
+    "name": "noticeLabel",
+    "type": "string",
+    "required": false,
+    "description": "ベルのボタンの名前（読み上げ・ツールチップ。「システムからのお知らせ」）。",
+    "default": "\"お知らせ\""
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag'",
+    "required": false,
+    "description": "ベルのアイコン。既定は speaker。",
+    "default": "\"speaker\""
+   },
+   {
+    "name": "hideNotice",
+    "type": "boolean",
+    "required": false,
+    "description": "ベルを出さない。",
+    "default": "false"
+   },
+   {
+    "name": "labels",
+    "type": "{ count: string; }",
+    "required": false,
+    "description": "",
+    "default": "{ count: \"件\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "notice",
+    "payload": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "logo",
+   "actions"
+  ],
+  "parts": [
+   "root",
+   "logo",
+   "actions",
+   "notice",
+   "count"
+  ],
+  "dataAr": "mobile-header"
  },
  {
   "name": "ArMonthDayInput",
@@ -5738,6 +8045,8 @@
    "root",
    "image",
    "silhouette",
+   "silhouette-line",
+   "silhouette-fill",
    "camera",
    "camera-icon",
    "hint",

@@ -1,0 +1,8 @@
+/* @covers ArCascader 1.0.0 */
+/* ArCascader（素の antd 4 の Cascader）：押す所は Select と同じ。列は幅111px前後・余白4・右に rgba(5,5,5,.06) の線。
+   項目は余白 5px 12px・角丸4・文字13px（行の高さ13px：div のグローバル指定）＝高さ23px、道筋は #e6f4ff の 600、› は 12px rgba(0,0,0,.45)。 */
+[data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]{min-width:111px;max-height:180px;padding:4px;border-right:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]:last-child{border-right:0}
+[data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]>[data-part="option"]{min-height:23px;height:23px;padding:5px 12px;gap:12px;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]>[data-part="option"]>[data-part="option-label"]{line-height:13px}
+[data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]>[data-part="option"]>[data-part="option-check"]{display:none}

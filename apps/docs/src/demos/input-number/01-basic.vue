@@ -8,7 +8,7 @@ const rate = ref<number | null>(1.25);
 </script>
 
 <template>
-<ArCluster :gap="4" align="center" wrap="wrap">
+<ArCluster :gap="4" align="center">
   <ArInputNumber v-model="wage" prefix="¥" :min="0" :step="10" label="時給" />
   <ArInputNumber v-model="people" suffix="人" :min="1" :max="99" :controls="false" label="人数" />
   <ArInputNumber v-model="rate" :step="0.05" :min="1" :max="2" suffix="倍" label="割増" />

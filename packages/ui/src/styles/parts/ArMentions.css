@@ -1,0 +1,9 @@
+/* ArMentions の構造：textarea の後ろに同じ文字（mirror）を重ね、呼んだ名前だけ色を付ける */
+[data-ar="mentions"]{position:relative;display:block;box-sizing:border-box;min-width:0;cursor:text}
+[data-ar="mentions"]>[data-part="mirror"],[data-ar="mentions"]>[data-part="input"]{margin:0;font:inherit;letter-spacing:inherit;white-space:pre-wrap;overflow-wrap:break-word;word-break:break-word;box-sizing:border-box;width:100%}
+[data-ar="mentions"]>[data-part="mirror"]{position:absolute;inset:0;overflow:hidden;pointer-events:none;color:inherit;border:0}
+[data-ar="mentions"]>[data-part="mirror"]>[data-part="mention"]{color:inherit;background:none;font:inherit}
+[data-ar="mentions"]>[data-part="input"]{position:relative;display:block;resize:none;border:0;outline:0;background:transparent;color:inherit;-webkit-text-fill-color:transparent}
+[data-ar="mentions"]>[data-part="input"]::placeholder{-webkit-text-fill-color:currentColor}
+[data-ar="mentions"]>[data-part="input"]::selection{-webkit-text-fill-color:currentColor}
+[data-ar="mentions"][data-state~="disabled"]{cursor:not-allowed}

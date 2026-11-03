@@ -1,0 +1,4 @@
+/* ArAutoComplete の構造 */
+[data-ar="auto-complete"]{display:inline-flex;vertical-align:middle;min-width:0}
+[data-ar="auto-complete"][data-block]{display:flex;width:100%}
+[data-ar="auto-complete"]>[data-ar="text-input"]{flex:1}

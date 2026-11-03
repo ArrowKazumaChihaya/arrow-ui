@@ -7,12 +7,12 @@ const v = ref("");
 
 <template>
 <ArStack :gap="4">
-  <ArCluster :gap="2" align="center" wrap="wrap">
+  <ArCluster :gap="2" align="center">
     <ArTextInput v-model="v" size="sm" placeholder="小" label="小" style="width: 140px" />
     <ArTextInput v-model="v" placeholder="ふつう" label="ふつう" style="width: 140px" />
     <ArTextInput v-model="v" size="lg" placeholder="大" label="大" style="width: 140px" />
   </ArCluster>
-  <ArCluster :gap="2" align="center" wrap="wrap">
+  <ArCluster :gap="2" align="center">
     <ArTextInput model-value="間違い" invalid label="間違い" style="width: 140px" />
     <ArTextInput model-value="注意" warning label="注意" style="width: 140px" />
     <ArTextInput model-value="使えない" disabled label="使えない" style="width: 140px" />

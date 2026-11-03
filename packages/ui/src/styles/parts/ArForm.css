@@ -1,0 +1,6 @@
+/* ArForm の構造：ArField を縦に並べる */
+[data-ar="form"]{display:flex;flex-direction:column;min-width:0;margin:0}
+[data-ar="form"]>[data-part="summary"]{outline:0}
+[data-ar="form"]>[data-part="summary"]>[data-part="summary-title"]{display:flex;align-items:center;margin:0}
+[data-ar="form"]>[data-part="summary"]>[data-part="summary-list"]{margin:0;padding:0;list-style:none}
+[data-ar="form"]>[data-part="summary"]>[data-part="summary-list"]>[data-part="summary-item"]>a{color:inherit;cursor:pointer}

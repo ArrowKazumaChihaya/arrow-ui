@@ -1,0 +1,20 @@
+/* ArMenu・ArDropdown の構造 */
+[data-ar="menu"]{display:flex;flex-direction:column;min-width:0;box-sizing:border-box}
+[data-ar="menu"][data-mode="horizontal"]{flex-direction:row;align-items:stretch;overflow-x:auto;scrollbar-width:none}
+[data-ar="menu"]>[data-part="item"]{display:flex;align-items:center;min-width:0;cursor:pointer;text-decoration:none;color:inherit;box-sizing:border-box;user-select:none;white-space:nowrap}
+[data-ar="menu"][data-mode="horizontal"]>[data-part="item"]{flex:none}
+[data-ar="menu"]>[data-part="item"][aria-disabled="true"]{cursor:not-allowed}
+[data-ar="menu"]>[data-part="item"]>[data-part="label"]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+[data-ar="menu"]>[data-part="item"]>[data-part="arrow"]{display:inline-flex;margin-left:auto;flex:none}
+[data-ar="menu"][data-mode="horizontal"]>[data-part="item"]>[data-part="arrow"]{margin-left:0}
+[data-ar="dropdown"]{display:inline-flex;vertical-align:middle;position:relative}
+[data-ar="dropdown"]>[data-part="slot"]{display:inline-flex}
+[data-ar="dropdown"]>[data-part="trigger"]{display:inline-flex;align-items:center;margin:0;cursor:pointer;white-space:nowrap;font:inherit;box-sizing:border-box}
+[data-ar="dropdown"]>[data-part="trigger"]:disabled{cursor:not-allowed}
+[data-ar="dropdown"]>[data-part="trigger"]>[data-part="caret"]{display:inline-flex}
+[data-ar="dropdown-menu"]{display:flex;flex-direction:column}
+[data-ar="dropdown-menu"]>[data-part="list"]{display:flex;flex-direction:column;box-sizing:border-box;max-height:min(70vh,520px);overflow:auto;outline:0}
+[data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]{display:flex;align-items:center;width:100%;margin:0;border:0;background:none;text-align:left;cursor:pointer;font:inherit;text-decoration:none;box-sizing:border-box;white-space:nowrap}
+[data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"][aria-disabled="true"]{cursor:not-allowed}
+[data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="icon-box"]{display:flex;align-items:center;justify-content:center;flex:none}
+[data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]{display:flex;flex-direction:column;min-width:0;white-space:normal}

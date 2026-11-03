@@ -5,7 +5,7 @@ import { ArBalloon, ArCluster, ArStack, ArIcon } from "@arrow/ui";
 
 <template>
 <ArStack :gap="6">
-  <ArCluster :gap="5" align="center" wrap="wrap">
+  <ArCluster :gap="5" align="center">
     <ArBalloon>前日の打刻です（押すと当日に）</ArBalloon>
     <ArBalloon tone="accent" tail="top">ここから始めます</ArBalloon>
     <ArBalloon tone="danger" tail="right">人数が足りません</ArBalloon>

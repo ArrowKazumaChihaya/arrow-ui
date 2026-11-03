@@ -22,7 +22,6 @@ const onSteps = computed(() => Math.round((pct.value / 100) * props.steps));
 const info = computed(() => props.label ?? (props.type === "steps" ? `${onSteps.value}/${props.steps}` : `${Math.round(pct.value)}%`));
 /** 円：md は 96px（半径42・太さ8）、sm は 56px（半径23・太さ6）。 */
 const ring = computed(() => (props.size === "sm" ? { box: 56, r: 23, w: 6 } : { box: 96, r: 42, w: 8 }));
-const circ = computed(() => 2 * Math.PI * ring.value.r);
 const icon = computed(() => (state.value === "success" ? "check" : state.value === "exception" ? "alert" : null));
 </script>
 
@@ -52,8 +51,9 @@ const icon = computed(() => (state.value === "success" ? "check" : state.value =
           fill="none"
           :stroke-width="ring.w"
           stroke-linecap="round"
-          :stroke-dasharray="circ.toFixed(1)"
-          :stroke-dashoffset="(circ * (1 - pct / 100)).toFixed(1)"
+          pathLength="100"
+          stroke-dasharray="100"
+          :stroke-dashoffset="(100 - pct).toFixed(2)"
         />
       </svg>
       <span v-if="showInfo" data-part="info">

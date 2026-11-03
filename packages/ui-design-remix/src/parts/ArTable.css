@@ -38,6 +38,7 @@
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"]{gap:2px;color:inherit;font:inherit;letter-spacing:inherit;border-radius:4px}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]{width:12px;height:12px;stroke-width:1.8}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>path{opacity:.5}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>[data-shape="caret"]{display:none}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"][data-order="asc"]>[data-part="sort-icon"]>[data-dir="asc"],[data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"][data-order="desc"]>[data-part="sort-icon"]>[data-dir="desc"]{opacity:1}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"][data-order="asc"]>[data-part="sort-icon"]>[data-dir="desc"],[data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"][data-order="desc"]>[data-part="sort-icon"]>[data-dir="asc"]{opacity:.3}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"]:hover>[data-part="sort-icon"]>path{opacity:1}

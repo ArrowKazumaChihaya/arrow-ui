@@ -1,0 +1,9 @@
+/* @covers ArForm 1.0.0 */
+/* ArForm（今の ARROW の Form＝antd 4 の Form）：項目の下に24px（.ant-form-item の margin-bottom）。
+   間違いのまとめは antd の Alert（error：地 #fff2f0・枠 #ffccc7・角丸8・余白 8px 12px）の形。 */
+[data-ar-design="classic"] [data-ar="form"]{gap:24px;color:rgba(0,0,0,.88);font-size:14px}
+[data-ar-design="classic"] [data-ar="form"]>[data-part="summary"]{padding:8px 12px;border:1px solid #FFCCC7;border-radius:8px;background:#FFF2F0;color:rgba(0,0,0,.88);font-size:13px;line-height:20px}
+[data-ar-design="classic"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-title"]{gap:8px}
+[data-ar-design="classic"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-title"]>[data-ar="icon"]{width:14px;height:14px;color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-list"]{margin-top:4px;padding-left:22px}
+[data-ar-design="classic"] [data-ar="form"]>[data-part="summary"]>[data-part="summary-list"]>[data-part="summary-item"]>a{color:#FF4D4F}

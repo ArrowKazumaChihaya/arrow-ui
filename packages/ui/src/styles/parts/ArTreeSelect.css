@@ -1,0 +1,9 @@
+/* ArTreeSelect の構造（押す所は ArSelect.css） */
+[data-ar="tree-select"]{position:relative;display:inline-flex;align-items:center;vertical-align:middle;min-width:0}
+[data-ar="tree-select"][data-block]{display:flex;width:100%}
+[data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]{display:flex;align-items:center;box-sizing:border-box;cursor:pointer;user-select:none;-webkit-user-select:none;white-space:nowrap}
+[data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="switch"]{display:inline-flex;align-items:center;justify-content:center;flex:none;align-self:stretch}
+[data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"]{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
+[data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="node-label"]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+[data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="node-label"]>[data-part="match"]{background:none;color:inherit}

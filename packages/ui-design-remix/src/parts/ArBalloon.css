@@ -7,3 +7,4 @@
 [data-ar-design="remix"] [data-ar="balloon"][data-tone="warn"]{background:var(--ar-color-warn-subtle);color:var(--ar-color-warn);font-weight:600}
 [data-ar-design="remix"] [data-ar="balloon"][data-shape="dot"]{color:#fff;font:700 calc(var(--ar-balloon-size) * .5) var(--ar-font-family-numeric)}
 [data-ar-design="remix"] [data-ar="balloon"][data-shape="dot"][data-tone="ink"]{background:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="balloon"]{font-feature-settings:"palt" 1}

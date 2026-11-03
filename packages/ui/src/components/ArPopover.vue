@@ -4,7 +4,7 @@
  * variant="cell" はシフトのマスに乗せたときの時間の表示（濃い地・矢印なし・行ごとに改行）。
  * 押して開いたときは吹き出しにフォーカスを移し、Escape・外を押す で閉じて基準の要素へ戻す。
  */
-import { computed, nextTick, onBeforeUnmount, ref, useSlots, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch } from "vue";
 import ArFloat from "../internal/ArFloat.vue";
 import { delayed, setAria, triggerTarget } from "../internal/trigger";
 import { useId } from "../provider/context";
@@ -43,9 +43,9 @@ const widthStyle = computed(() =>
 
 function set(v: boolean) {
   timer.clear();
-  if (inner.value === v) return;
+  const was = shown.value;
   inner.value = v;
-  emit("update:open", v);
+  if (was !== v) emit("update:open", v);
 }
 function focusTrigger() {
   triggerTarget(wrap.value)?.focus?.();
@@ -94,20 +94,19 @@ function onFocusOut(e: FocusEvent) {
   set(false);
 }
 
-watch(
-  [shown, () => wrap.value],
-  ([v]) => {
-    const t = triggerTarget(wrap.value);
-    if (isCell.value) {
-      setAria(t, "aria-describedby", v ? id : undefined);
-      return;
-    }
-    setAria(t, "aria-haspopup", "dialog");
-    setAria(t, "aria-expanded", String(!!v));
-    setAria(t, "aria-controls", v ? id : undefined);
-  },
-  { flush: "post" },
-);
+function syncAria() {
+  const v = shown.value;
+  const t = triggerTarget(wrap.value);
+  if (isCell.value) {
+    setAria(t, "aria-describedby", v ? id : undefined);
+    return;
+  }
+  setAria(t, "aria-haspopup", "dialog");
+  setAria(t, "aria-expanded", String(!!v));
+  setAria(t, "aria-controls", v ? id : undefined);
+}
+watch([shown, () => wrap.value], syncAria, { flush: "post" });
+onMounted(syncAria);
 onBeforeUnmount(() => timer.clear());
 </script>
 

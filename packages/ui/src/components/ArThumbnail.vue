@@ -243,7 +243,9 @@ defineExpose({ edit: startEdit });
     :style="{ '--ar-thumbnail-size': `${size}px` }"
   >
     <img v-if="modelValue" data-part="image" :src="modelValue" :alt="alt" />
-    <span v-else data-part="silhouette" :role="alt ? 'img' : undefined" :aria-label="alt || undefined"><ArIcon name="user" /></span>
+    <span v-else data-part="silhouette" :role="alt ? 'img' : undefined" :aria-label="alt || undefined"
+      ><ArIcon name="user" data-part="silhouette-line" /><svg data-part="silhouette-fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4.6" fill="currentColor" /><path d="M2.6 22c.4-4.8 4.4-7.6 9.4-7.6s9 2.8 9.4 7.6z" fill="currentColor" /></svg
+    ></span>
     <button v-if="editable" type="button" data-part="camera" :aria-label="labels.change" :title="labels.change" @click="startEdit">
       <svg data-part="camera-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
@@ -257,7 +259,7 @@ defineExpose({ edit: startEdit });
           data-part="frame"
           :data-shape="shape"
           :data-state="[src ? 'has-image' : 'empty', dragOver && 'drag-over'].filter(Boolean).join(' ')"
-          :style="{ width: `${frame.w}px`, height: `${frame.h}px` }"
+          :style="{ '--ar-thumbnail-frame-w': `${frame.w}px`, '--ar-thumbnail-frame-h': `${frame.h}px` }"
           tabindex="0"
           role="group"
           :aria-label="src ? labels.area : labels.empty"

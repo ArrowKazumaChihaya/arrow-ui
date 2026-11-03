@@ -1,0 +1,12 @@
+/* @covers ArAnchor 1.0.0 */
+/* ArAnchor：.ad-anc。左に2pxの線、今いるところはテーマ色の線と文字（太字）。小見出しは一段下げて12.5px。 */
+[data-ar-design="remix"] [data-ar="anchor"]{border-left:2px solid var(--ar-color-border);font-size:13px;line-height:1.5;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="anchor"]>[data-part="link"]{padding:5px 12px;margin-left:-2px;border-left:2px solid transparent;color:var(--ar-color-text-secondary);transition:color var(--ar-motion-fast),border-color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="anchor"]>[data-part="link"]:hover{color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="anchor"]>[data-part="link"][data-level="2"]{padding-left:26px;font-size:12.5px}
+[data-ar-design="remix"] [data-ar="anchor"]>[data-part="link"][data-state~="active"]{color:var(--ar-accent-ink);font-weight:700;border-left-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="anchor"]>[data-part="link"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring);border-radius:4px}
+[data-ar-design="remix"] [data-ar="anchor"][data-direction="horizontal"]{border-left:0;border-bottom:2px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"]{margin:0 0 -2px;border-left:0;border-bottom:2px solid transparent}
+[data-ar-design="remix"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"][data-level="2"]{padding-left:12px}
+[data-ar-design="remix"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"][data-state~="active"]{border-bottom-color:var(--ar-accent)}

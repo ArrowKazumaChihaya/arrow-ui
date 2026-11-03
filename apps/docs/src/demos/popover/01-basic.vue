@@ -4,7 +4,7 @@ import { ArButton, ArCluster, ArPopover } from "@arrow/ui";
 </script>
 
 <template>
-<ArCluster :gap="3" align="center" wrap="wrap">
+<ArCluster :gap="3" align="center">
   <ArPopover title="10月21日（水）の不足" content="13:00〜17:00 に1名足りません。">
     <ArButton tone="danger-subtle" size="sm">不足1</ArButton>
     <template #footer="{ close }">

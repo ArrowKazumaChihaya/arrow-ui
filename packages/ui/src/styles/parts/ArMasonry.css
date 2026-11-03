@@ -1,0 +1,4 @@
+/* ArMasonry の構造：CSS の段組みで詰める */
+[data-ar="masonry"]{column-gap:var(--ar-gap);min-width:0}
+[data-ar="masonry"]>*{break-inside:avoid;margin:0 0 var(--ar-gap);display:block}
+[data-ar="masonry"]>*:last-child{margin-bottom:0}

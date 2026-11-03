@@ -13,12 +13,12 @@ const options = [
 
 <template>
 <ArStack :gap="4">
-  <ArCluster :gap="2" align="center" wrap="wrap">
+  <ArCluster :gap="2" align="center">
     <ArSelect v-model="v" :options="options" size="sm" label="小" style="width: 140px" />
     <ArSelect v-model="v" :options="options" label="ふつう" style="width: 140px" />
     <ArSelect v-model="v" :options="options" size="lg" label="大" style="width: 140px" />
   </ArCluster>
-  <ArCluster :gap="2" align="center" wrap="wrap">
+  <ArCluster :gap="2" align="center">
     <ArSelect v-model="none" :options="options" invalid placeholder="間違い" label="間違い" style="width: 140px" />
     <ArSelect v-model="v" :options="options" disabled label="使えない" style="width: 140px" />
     <ArSelect v-model="none" :options="[]" loading placeholder="読み込み中" label="読み込み中" style="width: 140px" />

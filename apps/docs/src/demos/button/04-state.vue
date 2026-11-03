@@ -8,7 +8,7 @@ function save() { busy.value = true; setTimeout(() => (busy.value = false), 1500
 
 <template>
 <ArStack :gap="4">
-  <ArCluster :gap="3" align="center" wrap="wrap">
+  <ArCluster :gap="3" align="center">
     <ArButton tone="primary" icon="check" :loading="busy" @click="save">保存する</ArButton>
     <ArButton tone="primary" loading>保存中</ArButton>
     <ArButton tone="secondary" loading>読み込み中</ArButton>

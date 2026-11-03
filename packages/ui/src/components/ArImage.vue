@@ -124,8 +124,8 @@ onBeforeUnmount(() => open.value && document.documentElement.removeAttribute("da
     @click="canPreview && setOpen(true)"
   >
     <img v-if="shownSrc" :key="shownSrc" data-part="img" :src="shownSrc" :alt="canPreview ? '' : alt" @load="loaded = true" @error="onError" />
-    <span v-else data-part="placeholder" aria-hidden="true"><ArGlyph name="image" /></span>
-    <span v-if="canPreview" data-part="mask" aria-hidden="true"><ArGlyph name="zoom" size="sm" />{{ labels.preview }}</span>
+    <span v-else data-part="placeholder" aria-hidden="true"><ArIcon name="image" /></span>
+    <span v-if="canPreview" data-part="mask" aria-hidden="true"><ArIcon name="zoom" size="sm" />{{ labels.preview }}</span>
   </component>
   <Teleport :to="target" :disabled="!open" defer>
     <div
@@ -150,7 +150,7 @@ onBeforeUnmount(() => open.value && document.documentElement.removeAttribute("da
         </button>
         <button type="button" data-part="scale" :aria-label="labels.reset" aria-keyshortcuts="0" @click="scale = 1">{{ Math.round(scale * 100) }}%</button>
         <button type="button" data-part="tool" :aria-label="labels.zoomIn" :disabled="scale >= 4" aria-keyshortcuts="+" @click="zoom(1)">
-          <ArGlyph name="zoom" />
+          <ArIcon name="zoom" />
         </button>
       </div>
     </div>

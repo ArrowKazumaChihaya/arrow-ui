@@ -68,9 +68,10 @@ const footCells = computed(() => {
   for (let i = 0; i < cols.length; i++) {
     const col = cols[i]!;
     const raw = props.footer?.[col.key];
-    const obj = raw !== undefined && typeof raw === "object" ? raw : null;
+    const obj = raw !== null && typeof raw === "object" ? raw : null;
     const span = Math.max(1, Math.min(obj?.span ?? 1, cols.length - i));
-    out.push({ col, span, raw, label: obj?.label, value: obj ? obj.value : (raw ?? "") });
+    const value: string | number = obj ? obj.value : typeof raw === "string" || typeof raw === "number" ? raw : "";
+    out.push({ col, span, raw, label: obj?.label, value });
     i += span - 1;
   }
   return out;
@@ -231,8 +232,10 @@ const colspan = computed(
                 <button v-if="c.sortable" type="button" data-part="sort" :data-order="orderOf(c)" @click="cycleSort(c)">
                   <span>{{ c.title }}</span>
                   <svg data-part="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path data-dir="asc" d="m8 9 4-4 4 4" />
-                    <path data-dir="desc" d="m8 15 4 4 4-4" />
+                    <path data-dir="asc" data-shape="chevron" d="m8 9 4-4 4 4" />
+                    <path data-dir="desc" data-shape="chevron" d="m8 15 4 4 4-4" />
+                    <path data-dir="asc" data-shape="caret" d="M12 2.5 20 11H4Z" />
+                    <path data-dir="desc" data-shape="caret" d="M12 21.5 4 13h16Z" />
                   </svg>
                 </button>
                 <template v-else>{{ c.title }}</template>

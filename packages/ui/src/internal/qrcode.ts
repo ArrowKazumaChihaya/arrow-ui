@@ -50,7 +50,7 @@ function rsDivisor(degree: number): number[] {
   for (let i = 0; i < degree; i++) {
     for (let j = 0; j < r.length; j++) {
       r[j] = gfMul(r[j]!, root);
-      if (j + 1 < r.length) r[j] ^= r[j + 1]!;
+      if (j + 1 < r.length) r[j] = r[j]! ^ r[j + 1]!;
     }
     root = gfMul(root, 0x02);
   }
@@ -61,7 +61,7 @@ function rsRemainder(data: readonly number[], div: readonly number[]): number[] 
   for (const b of data) {
     const f = b ^ r.shift()!;
     r.push(0);
-    div.forEach((c, i) => (r[i] ^= gfMul(c, f)));
+    div.forEach((c, i) => (r[i] = r[i]! ^ gfMul(c, f)));
   }
   return r;
 }

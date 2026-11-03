@@ -14,5 +14,4 @@
 [data-ar-design="remix"] [data-ar="popover"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5px;box-shadow:1px -1px 0 rgba(31,41,51,.06)}
 [data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"]{width:auto;padding:7px 10px;border-radius:9px;background:#1F2933;color:#fff;box-shadow:0 10px 24px -8px rgba(15,23,32,.5);font-size:11.5px;font-weight:600;line-height:1.5;font-variant-numeric:tabular-nums;animation:none}
 [data-ar-design="remix"] [data-ar="popover"][data-part="root"]:is([data-placement$="-start"],[data-placement="top"],[data-placement="bottom"])>[data-part="panel"][data-variant="cell"]{margin-left:2px}
-[data-ar-design="remix"] [data-ar="popover"][data-part="root"][data-placement$="-end"]>[data-part="panel"][data-variant="cell"]{margin-left:-2px}
-@keyframes ar-popover-in{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:none}}
+[data-ar-design="remix"] [data-ar="popover"][data-part="root"][data-placement$="-end"]>[data-part="panel"][data-variant="cell"]{margin-left:-2px}@keyframes ar-popover-in{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:none}}
