@@ -1,0 +1,35 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": [
+      "vitest/globals"
+    ],
+    "paths": {
+      "@arrow/ui-tokens": [
+        "packages/ui-tokens/src/index.ts"
+      ],
+      "@arrow/ui": [
+        "packages/ui/src/index.ts"
+      ],
+      "@arrow/ui/requirements": [
+        "packages/ui/src/requirements/index.ts"
+      ],
+      "@arrow/ui-skin-remix": [
+        "packages/ui-skin-remix/src/index.ts"
+      ],
+      "@arrow/ui-skin-classic": [
+        "packages/ui-skin-classic/src/index.ts"
+      ],
+      "@arrow/ui/skin": [
+        "packages/ui/src/skin-entry.ts"
+      ]
+    }
+  },
+  "include": [
+    "packages/*/src/**/*",
+    "packages/*/test/**/*",
+    "apps/catalog/src/**/*",
+    "env.d.ts"
+  ]
+}

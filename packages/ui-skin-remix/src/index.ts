@@ -1,0 +1,90 @@
+/**
+ * remix — ARROW リミックスの見た目。
+ * 落ち着いた青を基本に、ページごとのテーマ色・やわらかい帯・角丸10の部品。テーマ色の上の文字はすべて白。
+ */
+import { defineSkin } from "@arrow/ui/skin";
+import { derivePalette } from "@arrow/ui-tokens";
+
+const shadow = (rgba: string) => `0 1px 2px ${rgba}`;
+
+export const remixSkin = defineSkin({
+  id: "remix",
+  label: "ARROW リミックス",
+  tokens: {
+    "color.text": "#1F2933",
+    "color.text-secondary": "#4A5562",
+    "color.text-muted": "#66727F",
+    "color.text-faint": "#A3AEB9",
+    "color.border": "#E6EBF0",
+    "color.border-subtle": "#F0F3F6",
+    "color.field": "#CBD5DF",
+    "color.surface": "#FFFFFF",
+    "color.surface-alt": "#F8FAFC",
+    "color.bg": "#EEF2F6",
+    "color.hover": "#F2F5F8",
+    "color.overlay": "rgba(31,41,51,.42)",
+    "color.danger": "#C0322B",
+    "color.danger-ink": "#B02D27",
+    "color.danger-subtle": "#FCEBEA",
+    "color.warn": "#8A4F00",
+    "color.warn-subtle": "#FFF1DB",
+    "color.warn-line": "#E8B66B",
+    "color.ok": "#1E7A4C",
+    "color.ok-subtle": "#E6F3EC",
+    "color.sun": "#C8322B",
+    "color.sat": "#2563C9",
+    "color.event": "#8E6BC4",
+    "color.event-subtle": "#F1EBFA",
+    "font.family": "'Noto Sans JP','Hiragino Sans','Hiragino Kaku Gothic ProN',Meiryo,sans-serif",
+    "font.family-numeric": "'Noto Sans JP','Hiragino Sans',sans-serif",
+    "font.size-caption": "11.5px",
+    "font.size-label": "12.5px",
+    "font.size-body": "13.5px",
+    "font.size-control": "14px",
+    "font.size-heading": "16px",
+    "font.size-title": "18px",
+    "font.weight-regular": "400",
+    "font.weight-strong": "700",
+    "space.1": "4px",
+    "space.2": "8px",
+    "space.3": "12px",
+    "space.4": "16px",
+    "space.5": "20px",
+    "space.6": "24px",
+    "space.7": "28px",
+    "space.8": "32px",
+    "radius.chip": "5px",
+    "radius.control": "10px",
+    "radius.cell": "12px",
+    "radius.card": "18px",
+    "shadow.card": "0 1px 2px rgba(31,41,51,.06),0 10px 30px -12px rgba(31,41,51,.12)",
+    "shadow.pop": "0 18px 44px rgba(31,41,51,.18),0 0 0 1px rgba(31,41,51,.06)",
+    "shadow.modal": "0 24px 60px rgba(31,41,51,.28)",
+    "size.control-sm": "30px",
+    "size.control-md": "36px",
+    "size.control-lg": "42px",
+    "motion.fast": ".15s",
+  },
+  palettes: {
+    blue: derivePalette("#5591CE", "#2C6AA6"),
+    green: derivePalette("#4EB187", "#387F61"),
+    yellow: derivePalette("#D1AA00", "#8A7000", shadow("rgba(80,60,0,.35)")),
+    pink: derivePalette("#E389B7", "#B83A7B", shadow("rgba(90,20,55,.28)")),
+    orange: derivePalette("#EB9142", "#B45E13", shadow("rgba(90,40,0,.28)")),
+    teal: derivePalette("#6CB1B7", "#407D82", shadow("rgba(20,60,62,.3)")),
+    // 集計：仮の色（設計書の「決めること」）
+    amber: derivePalette("#E07A2E", "#A9521A", shadow("rgba(90,40,0,.28)")),
+  },
+  covers: {
+    ArIcon: "1.0.0",
+    ArButton: "1.0.0",
+    ArField: "1.0.0",
+    ArTimeInput: "1.0.0",
+    ArDateInput: "1.0.0",
+    ArTable: "1.0.0",
+    ArModal: "1.0.0",
+  },
+  styles: () => import("@arrow/ui-skin-remix/styles.css"),
+});
+
+export default remixSkin;

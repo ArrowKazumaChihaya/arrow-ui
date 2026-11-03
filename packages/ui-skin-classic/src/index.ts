@@ -1,0 +1,91 @@
+/**
+ * classic — 今の ARROW の見た目（移行中だけ使う互換の skin）。
+ * 全画面を新しい部品へ移し、remix を全社に出したら、このパッケージごと外して廃止する。
+ * 今の見た目に大まかに近づける程度で、細部までは合わせない。
+ */
+import { defineSkin } from "@arrow/ui/skin";
+import { derivePalette, mixHex } from "@arrow/ui-tokens";
+
+const pal = (base: string) => derivePalette(base, mixHex(base, 0.72, "#000000"));
+
+export const classicSkin = defineSkin({
+  id: "classic",
+  label: "ARROW（これまでの見た目）",
+  deprecated: "移行中だけ使う。全画面の移行と remix の全社公開のあとに廃止する。",
+  tokens: {
+    "color.text": "rgba(0,0,0,.85)",
+    "color.text-secondary": "rgba(0,0,0,.65)",
+    "color.text-muted": "#808080",
+    "color.text-faint": "#BFBFBF",
+    "color.border": "#D9D9D9",
+    "color.border-subtle": "#F0F0F0",
+    "color.field": "#D9D9D9",
+    "color.surface": "#FFFFFF",
+    "color.surface-alt": "#FAFAFA",
+    "color.bg": "#F0F2F5",
+    "color.hover": "#F5F5F5",
+    "color.overlay": "rgba(0,0,0,.45)",
+    "color.danger": "#D10C1D",
+    "color.danger-ink": "#CA3A31",
+    "color.danger-subtle": "#FFF1F0",
+    "color.warn": "#D46B08",
+    "color.warn-subtle": "#FFF7E6",
+    "color.warn-line": "#FFD591",
+    "color.ok": "#389E0D",
+    "color.ok-subtle": "#F6FFED",
+    "color.sun": "#D10C1D",
+    "color.sat": "#1677FF",
+    "color.event": "#722ED1",
+    "color.event-subtle": "#F9F0FF",
+    "font.family": "-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Noto Sans JP',Meiryo,sans-serif",
+    "font.family-numeric": "-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif",
+    "font.size-caption": "12px",
+    "font.size-label": "14px",
+    "font.size-body": "14px",
+    "font.size-control": "14px",
+    "font.size-heading": "16px",
+    "font.size-title": "18px",
+    "font.weight-regular": "400",
+    "font.weight-strong": "600",
+    "space.1": "4px",
+    "space.2": "8px",
+    "space.3": "12px",
+    "space.4": "16px",
+    "space.5": "20px",
+    "space.6": "24px",
+    "space.7": "28px",
+    "space.8": "32px",
+    "radius.chip": "2px",
+    "radius.control": "6px",
+    "radius.cell": "4px",
+    "radius.card": "5px",
+    "shadow.card": "0 1px 2px rgba(0,0,0,.06)",
+    "shadow.pop": "0 3px 6px -4px rgba(0,0,0,.12),0 6px 16px rgba(0,0,0,.08)",
+    "shadow.modal": "0 6px 16px rgba(0,0,0,.08),0 9px 28px 8px rgba(0,0,0,.05)",
+    "size.control-sm": "24px",
+    "size.control-md": "32px",
+    "size.control-lg": "40px",
+    "motion.fast": ".2s",
+  },
+  palettes: {
+    blue: pal("#4395D4"),
+    green: pal("#4EB187"),
+    yellow: pal("#D1AA00"),
+    pink: pal("#E389B7"),
+    orange: pal("#EB9142"),
+    teal: pal("#6CB1B7"),
+    amber: pal("#EE751B"),
+  },
+  covers: {
+    ArIcon: "1.0.0",
+    ArButton: "1.0.0",
+    ArField: "1.0.0",
+    ArTimeInput: "1.0.0",
+    ArDateInput: "1.0.0",
+    ArTable: "1.0.0",
+    ArModal: "1.0.0",
+  },
+  styles: () => import("@arrow/ui-skin-classic/styles.css"),
+});
+
+export default classicSkin;

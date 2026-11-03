@@ -1,0 +1,16 @@
+{
+  "name": "@arrow/ui-skin-classic",
+  "version": "0.1.0",
+  "description": "ARROW UI の skin：classic",
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./styles.css": "./src/styles.css"
+  },
+  "files": ["dist", "src/styles.css"],
+  "scripts": { "build": "tsc -p tsconfig.build.json" },
+  "peerDependencies": { "@arrow/ui": "0.1.0" },
+  "dependencies": { "@arrow/ui-tokens": "0.1.0" },
+  "publishConfig": { "registry": "https://npm.pkg.github.com" }
+}
