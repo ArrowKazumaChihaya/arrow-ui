@@ -114,7 +114,7 @@ const floatAnchor = computed(() => (props.variant === "split" && !custom.value ?
       match-width="min"
       @close="(r) => close(r === 'escape')"
     >
-      <ArMenuPanel :items="items" :style="width ? { width: `${width}px` } : undefined" @select="onSelect" @close="close(true)" />
+      <ArMenuPanel :items="items" :variant="custom ? 'custom' : variant" :style="width ? { width: `${width}px` } : undefined" @select="onSelect" @close="close(true)" />
     </ArFloat>
   </span>
 </template>

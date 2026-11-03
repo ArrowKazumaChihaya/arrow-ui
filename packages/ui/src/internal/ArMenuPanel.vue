@@ -7,8 +7,9 @@ import { computed, nextTick, onMounted, ref } from "vue";
 import ArIcon from "../components/ArIcon.vue";
 import type { ArMenuItem } from "../components/ArMenu.contract";
 
-const props = withDefaults(defineProps<{ items: readonly ArMenuItem[]; selected?: string; autofocus?: boolean }>(), {
+const props = withDefaults(defineProps<{ items: readonly ArMenuItem[]; selected?: string; autofocus?: boolean; variant?: string }>(), {
   selected: undefined,
+  variant: undefined,
   autofocus: true,
 });
 const emit = defineEmits<{ select: [key: string, item: ArMenuItem]; close: [] }>();
@@ -77,7 +78,7 @@ defineExpose({ focusAt });
 </script>
 
 <template>
-  <div ref="root" data-part="list" :data-rich="rich || undefined" @keydown="onKeydown">
+  <div ref="root" data-part="list" :data-rich="rich || undefined" :data-variant="variant" @keydown="onKeydown">
     <template v-for="r in rows" :key="r.kind === 'item' ? r.item.key : r.key">
       <div v-if="r.kind === 'divider'" data-part="divider" role="separator" />
       <div v-else-if="r.kind === 'group'" data-part="group" role="presentation">{{ r.label }}</div>
