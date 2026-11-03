@@ -1,0 +1,17 @@
+/* @covers ArSwitch 1.0.0 */
+/* ArSwitch（今の Toggle：テーマ色） */
+[data-ar-design="classic"] [data-ar="switch"]>[data-part="track"]{min-width:44px;height:22px;border-radius:100px;background:rgba(0,0,0,.25);transition:background var(--ar-motion-fast)}
+[data-ar-design="classic"] [data-ar="switch"]:hover:not(:disabled)>[data-part="track"]{background:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="switch"]>[data-part="track"]>[data-part="thumb"]{left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 2px 4px 0 rgba(0,35,11,.2);transition:left var(--ar-motion-fast)}
+[data-ar-design="classic"] [data-ar="switch"][data-state~="on"]>[data-part="track"]{background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="switch"][data-state~="on"]:hover:not(:disabled)>[data-part="track"]{background:var(--ar-accent-hi)}
+[data-ar-design="classic"] [data-ar="switch"][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:calc(100% - 20px)}
+[data-ar-design="classic"] [data-ar="switch"]>[data-part="track"]>[data-part="text"]{padding:0 7px 0 24px;font-size:12px;color:#fff}
+[data-ar-design="classic"] [data-ar="switch"][data-state~="on"]>[data-part="track"]>[data-part="text"]{padding:0 24px 0 9px}
+[data-ar-design="classic"] [data-ar="switch"][data-size="sm"]>[data-part="track"]{min-width:28px;height:16px}
+[data-ar-design="classic"] [data-ar="switch"][data-size="sm"]>[data-part="track"]>[data-part="thumb"]{width:12px;height:12px}
+[data-ar-design="classic"] [data-ar="switch"][data-size="sm"][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:calc(100% - 14px)}
+[data-ar-design="classic"] [data-ar="switch"]:focus-visible{outline:0}
+[data-ar-design="classic"] [data-ar="switch"]:focus-visible>[data-part="track"]{outline:4px solid #91CAFF;outline-offset:0}
+[data-ar-design="classic"] [data-ar="switch"][data-state~="disabled"]{opacity:.65}
+[data-ar-design="classic"] [data-ar="switch"][data-state~="loading"]>[data-part="track"]>[data-part="thumb"]{border:2px solid var(--ar-accent);border-right-color:transparent;box-sizing:border-box;animation:ar-spin .8s linear infinite}

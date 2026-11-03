@@ -7,11 +7,11 @@ import path from "node:path";
  * 入れ物の部品の部位は子の結合子（>）で書き、中の部品に効かないようにする。
  */
 const root = path.resolve(__dirname, "../..");
-const files = [
-  "ui/src/styles/structure.css",
-  "ui-design-remix/src/styles.css",
-  "ui-design-classic/src/styles.css",
-].map((f) => path.join(root, f));
+const partsOf = (d: string) =>
+  fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith(".css")).map((f) => path.join(root, d, f));
+const remixParts = partsOf("ui-design-remix/src/parts");
+const classicParts = partsOf("ui-design-classic/src/parts");
+const files = [path.join(root, "ui/src/styles/structure.css"), ...remixParts, ...classicParts];
 const containers = ["field", "card", "modal", "alert", "checkbox", "radio-group", "switch", "tabs", "select", "text-input", "time-input", "date-input", "button"];
 const descendant = new RegExp(
   String.raw`\[data-ar="(${containers.join("|")})"\](?:\[[^\]]+\]|:[a-z-]+(?:\((?:[^()]|\([^()]*\))*\))?)* \[data-part=`,
@@ -42,10 +42,7 @@ describe("デザインの CSS", () => {
     });
   }
   it("デザインの CSS は自分のデザインの中だけに効く", () => {
-    for (const [f, id] of [
-      [files[1]!, "remix"],
-      [files[2]!, "classic"],
-    ] as const) {
+    for (const [f, id] of [...remixParts.map((f) => [f, "remix"] as const), ...classicParts.map((f) => [f, "classic"] as const)]) {
       const css = fs.readFileSync(f, "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
       const selectors = [...css.matchAll(/(^|})\s*([^@{}][^{}]*)\{/g)].map((m) => m[2]!.trim()).filter((s) => !/^(from|to|\d+%)/.test(s));
       const outside = selectors.flatMap(splitTop).map((s) => s.trim()).filter((s) => !s.startsWith(`[data-ar-design="${id}"]`));

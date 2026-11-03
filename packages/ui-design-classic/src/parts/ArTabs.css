@@ -1,0 +1,13 @@
+/* @covers ArTabs 1.0.0 */
+/* ArTabs（band：今の灰色のタブ。line：ant-design-vue の下線のタブ） */
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="band"]{gap:3px}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="band"]>[data-part="tab"]{gap:5px;min-width:130px;height:30px;padding:0 16px;border:0;border-radius:8px 8px 0 0;background:#DCDCDC;color:gray;font-size:14px;font-weight:700}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="band"]>[data-part="tab"]:hover:not([data-state~="selected"]):not(:disabled){background:#E6E6E6}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="band"]>[data-part="tab"][data-state~="selected"]{background:var(--ar-accent);color:#fff}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="line"]{gap:32px;border-bottom:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="line"]>[data-part="tab"]{gap:6px;padding:12px 0;margin-bottom:-1px;border:0;border-bottom:2px solid transparent;background:none;color:var(--ar-color-text);font-size:14px}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="line"]>[data-part="tab"]:hover:not(:disabled){color:var(--ar-accent-hi)}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="line"]>[data-part="tab"][data-state~="selected"]{color:var(--ar-accent);border-bottom-color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="tabs"]>[data-part="tab"]:disabled{color:var(--ar-color-text-faint)}
+[data-ar-design="classic"] [data-ar="tabs"]>[data-part="tab"]:focus-visible{outline:2px solid #91CAFF;outline-offset:-2px}
+[data-ar-design="classic"] [data-ar="tabs"]>[data-part="tab"]>[data-part="count"]{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:12px;font-weight:400;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}

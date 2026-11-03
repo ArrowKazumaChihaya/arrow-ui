@@ -1,0 +1,8 @@
+{
+  "name": "ArStack",
+  "version": "1.0.0",
+  "group": "並べる",
+  "ja": "縦に並べる",
+  "slug": "stack",
+  "structural": true
+}

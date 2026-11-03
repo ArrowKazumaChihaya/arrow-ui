@@ -1,0 +1,8 @@
+/* @covers ArTextInput 1.0.0 */
+/* ArTextInput */
+[data-ar-design="classic"] [data-ar="text-input"]{gap:4px;padding:4px 11px}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="input"]::placeholder{color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="text-input"]>[data-part="icon"],[data-ar-design="classic"] [data-ar="text-input"]>[data-part="suffix"]{color:var(--ar-color-text-muted)}
+[data-ar-design="classic"] [data-ar="text-input"][data-size="sm"]{height:var(--ar-size-control-sm);padding:0 7px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="text-input"][data-size="lg"]{height:var(--ar-size-control-lg);font-size:16px;border-radius:8px}
+[data-ar-design="classic"] [data-ar="text-input"][data-state~="readonly"]{background:#FAFAFA}

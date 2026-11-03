@@ -1,0 +1,8 @@
+{
+  "name": "ArUiProvider",
+  "version": "1.1.0",
+  "group": "しくみ",
+  "ja": "デザインを当てる枠",
+  "slug": "provider",
+  "structural": true
+}

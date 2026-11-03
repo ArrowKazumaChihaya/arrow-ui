@@ -1,0 +1,17 @@
+/* @covers ArTable 1.0.0 */
+/* ArTable（今の表：見出しはテーマ色の枠・中央・灰色の太字、行は下の線だけ） */
+[data-ar-design="classic"] [data-ar="table"]{background:#fff}
+[data-ar-design="classic"] [data-ar="table"] th{padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:var(--ar-color-text-secondary);font-size:14px;font-weight:700;line-height:20px;text-align:center!important;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="table"] th:last-child{border-right:1px solid var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="table"] td{padding:12px 8px;border-bottom:1px solid var(--ar-color-border-subtle);background:#fff;color:var(--ar-color-text-secondary);font-size:13px;transition:background .3s}
+[data-ar-design="classic"] [data-ar="table"][data-density="compact"] td{padding:6px 8px}
+[data-ar-design="classic"] [data-ar="table"] tbody [data-part="row"]:hover td{background:#FAFAFA}
+[data-ar-design="classic"] [data-ar="table"] tbody [data-part="row"][data-state="selected"] td{background:var(--ar-accent-faint)}
+[data-ar-design="classic"] [data-ar="table"] [data-sticky-edge]{box-shadow:inset -10px 0 8px -8px rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"] td{background:#FAFAFA;color:var(--ar-color-text);font-weight:600}
+[data-ar-design="classic"] [data-ar="table"] td[data-part="empty"]{padding:16px;text-align:center;color:var(--ar-color-text-faint);font-size:14px}
+[data-ar-design="classic"] [data-ar="table"] tr[data-part="expanded-row"] td{background:#FAFAFA}
+[data-ar-design="classic"] [data-ar="table"] :is(th,td)>[data-part="select"]{width:16px;height:16px;margin:0;accent-color:var(--classic-blue);vertical-align:middle;cursor:pointer}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"] [data-ar="icon"]{color:var(--ar-color-text-faint)}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order] [data-ar="icon"]{color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="expand-toggle"]{color:var(--ar-color-text-muted)}

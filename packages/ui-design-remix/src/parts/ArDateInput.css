@@ -1,0 +1,12 @@
+/* @covers ArDateInput 1.0.0 */
+[data-ar-design="remix"] [data-ar="date-input"]{gap:4px}
+[data-ar-design="remix"] [data-ar="date-input"] select,[data-ar-design="remix"] [data-ar="date-input"] input{height:var(--ar-size-control-md);border:1px solid var(--ar-color-field);border-radius:9px;background:var(--ar-color-surface);color:var(--ar-color-text);font-family:var(--ar-font-family-numeric);font-size:var(--ar-font-size-control);font-weight:600;box-sizing:border-box;outline:0}
+[data-ar-design="remix"] [data-ar="date-input"] select{padding:0 6px 0 10px}
+[data-ar-design="remix"] [data-ar="date-input"] input{width:44px;text-align:center;padding:0}
+[data-ar-design="remix"] [data-ar="date-input"] select:focus,[data-ar-design="remix"] [data-ar="date-input"] input:focus{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="date-input"]>[data-part="unit"]{font-size:13px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="date-input"]>[data-part="weekday"]{margin-left:2px;font-size:13px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="date-input"][data-state~="invalid"] select,[data-ar-design="remix"] [data-ar="date-input"][data-state~="invalid"] input{border-color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="date-input"][data-state~="disabled"]{opacity:.6}

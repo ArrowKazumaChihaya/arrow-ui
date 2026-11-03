@@ -1,0 +1,14 @@
+/* @covers ArAlert 1.0.0 */
+/* ArAlert（ant-design-vue の Alert） */
+[data-ar-design="classic"] [data-ar="alert"]{gap:8px;padding:8px 12px;border:1px solid;border-radius:8px;font-size:14px;line-height:22px;color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="alert"]>[data-part="icon"]{margin-top:3px;width:16px;height:16px}
+[data-ar-design="classic"] [data-ar="alert"]>[data-part="content"]>[data-part="title"]{font-size:14px;font-weight:600}
+[data-ar-design="classic"] [data-ar="alert"]>[data-part="close"]{border:0;background:none;padding:3px;color:var(--ar-color-text-muted)}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="info"]{background:#E6F4FF;border-color:#91CAFF}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="info"]>[data-part="icon"]{color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="ok"]{background:#F6FFED;border-color:#B7EB8F}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="ok"]>[data-part="icon"]{color:#52C41A}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="warn"]{background:#FFFBE6;border-color:#FFE58F}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="warn"]>[data-part="icon"]{color:#FAAD14}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="danger"]{background:#FFF2F0;border-color:#FFCCC7}
+[data-ar-design="classic"] [data-ar="alert"][data-tone="danger"]>[data-part="icon"]{color:var(--classic-error)}

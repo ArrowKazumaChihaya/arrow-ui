@@ -1,0 +1,14 @@
+/* @covers ArCard 1.0.0 */
+/* ArCard（band：今のページのタイトルの帯＋灰色の枠。plain：今のカード） */
+[data-ar-design="classic"] [data-ar="card"]{background:#fff;color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]{border:1px solid var(--classic-card-line);border-radius:var(--ar-radius-card);padding:10px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="head"]{margin-bottom:8px;gap:8px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:16px;font-weight:700;color:#000}
+[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="actions"]{gap:3px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;min-height:36px;padding:0 12px;justify-content:center;background:var(--ar-accent);color:#fff}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:18px;font-weight:700;line-height:36px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:absolute;right:8px;top:50%;transform:translateY(-50%);gap:3px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding-top:8px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="body"]{border:1px solid var(--classic-card-line);border-radius:0 0 var(--ar-radius-card) var(--ar-radius-card);padding:10px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]+[data-part="body"]{border-radius:0 var(--ar-radius-card) var(--ar-radius-card) var(--ar-radius-card)}
+[data-ar-design="classic"] [data-ar="card"][data-flush]>[data-part="body"]{padding:0}

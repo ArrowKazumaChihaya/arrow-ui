@@ -1,0 +1,10 @@
+/* @covers ArTextInput 1.0.0 */
+[data-ar-design="remix"] [data-ar="text-input"]{height:var(--ar-size-control-md);gap:8px;padding:0 12px;border:1px solid var(--ar-color-field);border-radius:var(--ar-radius-control);background:var(--ar-color-surface);color:var(--ar-color-text);font-size:var(--ar-font-size-control);font-weight:500;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="text-input"]:hover{border-color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="text-input"]:focus-within{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="text-input"]>[data-part="input"]::placeholder{color:var(--ar-color-text-faint);font-weight:400}
+[data-ar-design="remix"] [data-ar="text-input"]>[data-part="icon"],[data-ar-design="remix"] [data-ar="text-input"]>[data-part="suffix"]{color:var(--ar-color-text-muted);font-size:13px}
+[data-ar-design="remix"] [data-ar="text-input"][data-size="sm"]{height:var(--ar-size-control-sm);font-size:13px;border-radius:9px;padding:0 10px}
+[data-ar-design="remix"] [data-ar="text-input"][data-size="lg"]{height:44px;font-size:15px;border-radius:11px}
+[data-ar-design="remix"] [data-ar="text-input"][data-state~="invalid"]{border-color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="text-input"][data-state~="disabled"],[data-ar-design="remix"] [data-ar="text-input"][data-state~="readonly"]{background:var(--ar-color-surface-alt);color:var(--ar-color-text-faint)}

@@ -1,0 +1,10 @@
+/* @covers ArDateInput 1.0.0 */
+/* ArDateInput（今の「2026 ▾ 年 10 月 21 日」） */
+[data-ar-design="classic"] [data-ar="date-input"]{gap:3px}
+[data-ar-design="classic"] [data-ar="date-input"] select{padding:0 6px 0 11px}
+[data-ar-design="classic"] [data-ar="date-input"] input{width:34px;padding:0;text-align:center}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="unit"]{font-size:16px;color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"]{margin-left:2px;font-size:14px;color:var(--ar-color-text-secondary)}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="classic"] [data-ar="date-input"][data-state~="disabled"]{opacity:.6}

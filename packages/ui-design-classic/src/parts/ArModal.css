@@ -1,0 +1,21 @@
+/* @covers ArModal 1.0.0 */
+/* ArModal（ant-design-vue のダイアログ。手順は ant-design-vue の Steps の色） */
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="scrim"]{background:var(--ar-color-overlay)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]{border-radius:8px;background:#fff;box-shadow:var(--ar-shadow-modal);color:var(--ar-color-text);padding:20px 24px}
+[data-ar-design="classic"] [data-ar="modal"][data-size="full"]>[data-part="panel"]{border-radius:0}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]{gap:12px;margin-bottom:8px}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>div>[data-part="title"]{font-size:16px;font-weight:600;line-height:1.5}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>div>[data-part="description"]{margin-top:4px;font-size:14px;color:var(--ar-color-text-secondary)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{width:22px;height:22px;border:0;border-radius:4px;background:none;color:var(--ar-color-text-muted);display:inline-flex;align-items:center;justify-content:center}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]:hover{background:rgba(0,0,0,.06);color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]{gap:8px 16px;padding:8px 0 16px}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"]{gap:8px;font-size:14px;color:var(--ar-color-text-muted)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"]:not(:last-child)::after{content:"";width:40px;height:1px;background:rgba(5,5,5,.06);margin-left:8px}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"][data-state="done"]:not(:last-child)::after{background:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"]>[data-part="step-mark"]{width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.06);color:var(--ar-color-text-muted);font-size:12px}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"][data-state="current"]{color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"][data-state="current"]>[data-part="step-mark"]{background:var(--classic-blue);color:#fff}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"][data-state="done"]{color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="steps"]>[data-part="step"][data-state="done"]>[data-part="step-mark"]{background:#E6F4FF;color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="body"]{font-size:14px;line-height:1.5715}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]{gap:8px;padding-top:12px}

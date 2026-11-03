@@ -1,0 +1,11 @@
+/*
+ * classic — 今の ARROW の見た目。
+ * 基本は ant-design-vue 4 の既定（高さ32・角丸6・枠 #d9d9d9・14px）に、ARROW の上書きを重ねる：
+ * - ボタンは塗り（押す操作）・黒い枠（やめる）・リンク色の枠（情報）・下線の文字の4つ
+ * - 帯つきのカードは、ページのタイトルと同じテーマ色の帯（白い太字・中央）と灰色の枠
+ * - タブは灰色（選んでいるものだけテーマ色）、表の見出しはテーマ色の枠
+ * - チェック・ラジオ・手順は ant-design-vue の青（#1677FF）
+ * 今の画面にない部品も、同じ材料（枠・角丸6・塗りか枠か）で作っている。
+ */
+[data-ar-design="classic"]{--classic-blue:#1677FF;--classic-blue-ring:rgba(5,145,255,.1);--classic-error:#FF4D4F;--classic-card-line:#9B9A9B}
+[data-ar-design="classic"] [data-ar]{font-family:var(--ar-font-family)}

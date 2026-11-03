@@ -6,6 +6,7 @@
  * 全画面を新しい部品へ移し、remix を全社に出したら、このパッケージごと外して廃止する。
  */
 import { defineDesign } from "@arrow/ui/design";
+import { covers } from "./covers.generated";
 import { derivePalette, mixHex, type ArPalette } from "@arrow/ui-tokens";
 
 /** 今のページの色（section-*）と、押したときの明るい色（section-*-hover）。 */
@@ -82,24 +83,7 @@ export const classicDesign = defineDesign({
     orange: section("#EB9142", "#EFA35F"), // 通知
     teal: section("#6CB1B7", "#7CC4CA"), // 会社情報・社員情報・設定
   },
-  covers: {
-    ArIcon: "1.0.0",
-    ArButton: "1.0.0",
-    ArField: "1.0.0",
-    ArTimeInput: "1.0.0",
-    ArDateInput: "1.0.0",
-    ArTable: "1.0.0",
-    ArModal: "1.0.0",
-    ArTextInput: "1.0.0",
-    ArSelect: "1.0.0",
-    ArCheckbox: "1.0.0",
-    ArRadioGroup: "1.0.0",
-    ArSwitch: "1.0.0",
-    ArTabs: "1.0.0",
-    ArCard: "1.0.0",
-    ArAlert: "1.0.0",
-    ArTag: "1.0.0",
-  },
+  covers,
   styles: () => import("@arrow/ui-design-classic/styles.css"),
 });
 

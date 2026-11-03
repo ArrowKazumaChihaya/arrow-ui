@@ -1,0 +1,10 @@
+/* @covers ArTag 1.0.0 */
+/* ArTag（ant-design-vue の Tag） */
+[data-ar-design="classic"] [data-ar="tag"]{gap:3px;height:22px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;background:#FAFAFA;color:var(--ar-color-text);font-size:12px}
+[data-ar-design="classic"] [data-ar="tag"][data-size="sm"]{height:18px;padding:0 5px;font-size:11px}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="accent"]{background:var(--ar-accent-subtle);border-color:var(--ar-accent-line);color:var(--ar-accent-ink)}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="solid"]{background:var(--ar-accent);border-color:var(--ar-accent);color:#fff}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="ok"]{background:#F6FFED;border-color:#B7EB8F;color:#389E0D}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="warn"]{background:#FFFBE6;border-color:#FFE58F;color:#D48806}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="danger"]{background:#FFF2F0;border-color:#FFCCC7;color:#CF1322}
+[data-ar-design="classic"] [data-ar="tag"][data-tone="event"]{background:#F9F0FF;border-color:#D3ADF7;color:#531DAB}

@@ -1,0 +1,8 @@
+{
+  "name": "ArGrid",
+  "version": "1.0.0",
+  "group": "並べる",
+  "ja": "格子に並べる",
+  "slug": "grid",
+  "structural": true
+}

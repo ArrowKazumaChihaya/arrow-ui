@@ -3,9 +3,8 @@
  * 落ち着いた青を基本に、ページごとのテーマ色・やわらかい帯・角丸10の部品。テーマ色の上の文字はすべて白。
  */
 import { defineDesign } from "@arrow/ui/design";
+import { covers } from "./covers.generated";
 import { derivePalette } from "@arrow/ui-tokens";
-
-const shadow = (rgba: string) => `0 1px 2px ${rgba}`;
 
 export const remixDesign = defineDesign({
   id: "remix",
@@ -65,34 +64,18 @@ export const remixDesign = defineDesign({
     "size.control-lg": "42px",
     "motion.fast": ".15s",
   },
+  // テーマ色：ARROW デザインシステムの th-shift・th-att・th-pay・th-doc・th-notice・th-admin と同じ値
   palettes: {
-    blue: derivePalette("#5591CE", "#2C6AA6"),
-    green: derivePalette("#4EB187", "#387F61"),
-    yellow: derivePalette("#D1AA00", "#8A7000", shadow("rgba(80,60,0,.35)")),
-    pink: derivePalette("#E389B7", "#B83A7B", shadow("rgba(90,20,55,.28)")),
-    orange: derivePalette("#EB9142", "#B45E13", shadow("rgba(90,40,0,.28)")),
-    teal: derivePalette("#6CB1B7", "#407D82", shadow("rgba(20,60,62,.3)")),
-    // 集計：仮の色（設計書の「決めること」）
-    amber: derivePalette("#E07A2E", "#A9521A", shadow("rgba(90,40,0,.28)")),
+    blue: { "accent": "#5591CE", "accent-ink": "#2C6AA6", "on-accent": "#fff", "accent-hi": "#7AA9D9", "accent-strong": "#497DB1", "accent-faint": "#F8FBFD", "accent-subtle": "#F0F5FB", "accent-muted": "#DDE9F5", "accent-line": "#BBD3EB", "accent-ring": "rgba(85,145,206,.24)", "on-accent-shadow": "none" },
+    green: { "accent": "#4EB187", "accent-ink": "#387F61", "on-accent": "#fff", "accent-hi": "#75C2A1", "accent-strong": "#439874", "accent-faint": "#F8FCFA", "accent-subtle": "#EFF8F4", "accent-muted": "#DCEFE7", "accent-line": "#B8E0CF", "accent-ring": "rgba(78,177,135,.24)", "on-accent-shadow": "none" },
+    yellow: { "accent": "#D1AA00", "accent-ink": "#8A7000", "on-accent": "#fff", "accent-hi": "#DBBD38", "accent-strong": "#B49200", "accent-faint": "#FDFCF5", "accent-subtle": "#FBF7E8", "accent-muted": "#F6EECC", "accent-line": "#EDDD99", "accent-ring": "rgba(209,170,0,.24)", "on-accent-shadow": "0 1px 2px rgba(80,60,0,.35)" },
+    pink: { "accent": "#E389B7", "accent-ink": "#B83A7B", "on-accent": "#fff", "accent-hi": "#E9A3C7", "accent-strong": "#C3769D", "accent-faint": "#FEFAFC", "accent-subtle": "#FCF4F9", "accent-muted": "#F9E7F1", "accent-line": "#F4D0E2", "accent-ring": "rgba(227,137,183,.24)", "on-accent-shadow": "0 1px 2px rgba(90,20,55,.28)" },
+    orange: { "accent": "#EB9142", "accent-ink": "#B45E13", "on-accent": "#fff", "accent-hi": "#EFA96C", "accent-strong": "#CA7D39", "accent-faint": "#FEFBF7", "accent-subtle": "#FDF5EE", "accent-muted": "#FBE9D9", "accent-line": "#F7D3B3", "accent-ring": "rgba(235,145,66,.24)", "on-accent-shadow": "0 1px 2px rgba(90,40,0,.28)" },
+    teal: { "accent": "#6CB1B7", "accent-ink": "#407D82", "on-accent": "#fff", "accent-hi": "#8CC2C7", "accent-strong": "#5D989D", "accent-faint": "#F9FCFC", "accent-subtle": "#F2F8F9", "accent-muted": "#E2EFF1", "accent-line": "#C4E0E2", "accent-ring": "rgba(108,177,183,.24)", "on-accent-shadow": "0 1px 2px rgba(20,60,62,.3)" },
+    // 集計：仮の色（デザインシステムにまだない。設計書の「決めること」）
+    amber: derivePalette("#E07A2E", "#A9521A", "0 1px 2px rgba(90,40,0,.28)"),
   },
-  covers: {
-    ArIcon: "1.0.0",
-    ArButton: "1.0.0",
-    ArField: "1.0.0",
-    ArTimeInput: "1.0.0",
-    ArDateInput: "1.0.0",
-    ArTable: "1.0.0",
-    ArModal: "1.0.0",
-    ArTextInput: "1.0.0",
-    ArSelect: "1.0.0",
-    ArCheckbox: "1.0.0",
-    ArRadioGroup: "1.0.0",
-    ArSwitch: "1.0.0",
-    ArTabs: "1.0.0",
-    ArCard: "1.0.0",
-    ArAlert: "1.0.0",
-    ArTag: "1.0.0",
-  },
+  covers,
   styles: () => import("@arrow/ui-design-remix/styles.css"),
 });
 

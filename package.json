@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "npm run build -w @arrow/ui-tokens && npm run build -w @arrow/ui && npm run build -w @arrow/ui-design-remix -w @arrow/ui-design-classic -w @arrow/eslint-plugin-ui",
-    "typecheck": "vue-tsc -p tsconfig.json --noEmit",
+    "typecheck": "node scripts/gen-registry.mjs --check && vue-tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "catalog": "npm run dev -w @arrow/catalog",
     "catalog:build": "npm run build -w @arrow/catalog",
@@ -20,7 +20,8 @@
     "test:visual": "node apps/catalog/visual.mjs",
     "check": "npm run typecheck && npm run test && npm run build",
     "changeset": "changeset",
-    "release": "npm run build && changeset publish"
+    "release": "npm run build && changeset publish",
+    "gen": "node scripts/gen-registry.mjs && node scripts/gen-meta.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7",

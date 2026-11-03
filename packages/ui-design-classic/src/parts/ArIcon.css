@@ -1,0 +1,3 @@
+/* @covers ArIcon 1.0.0 */
+/* アイコンは線の太さだけを決める（大きさは構造の CSS）。 */
+[data-ar-design="classic"] [data-ar="icon"]{stroke-width:1.8}
