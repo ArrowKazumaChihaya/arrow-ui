@@ -77,5 +77,6 @@ export const icons = {
   "qmark": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6\"></path><path d=\"M12 17h.01\"></path>", // はてな（問い合わせ）
   "smile": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M8.5 14a4 4 0 0 0 7 0\"></path><path d=\"M9 9.5h.01M15 9.5h.01\"></path>", // 満足・結果
   "drag": "<path d=\"M9 5h.01M15 5h.01M9 12h.01M15 12h.01M9 19h.01M15 19h.01\"></path>", // つまみ（ドラッグ）
+  "camera": "<path d=\"M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z\"></path><circle cx=\"12\" cy=\"13\" r=\"3.5\"></circle>", // カメラ（写真を撮る・変える）
 } as const;
 export type ArIconName = keyof typeof icons;
