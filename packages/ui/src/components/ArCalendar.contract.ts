@@ -1,5 +1,12 @@
 /** ArCalendar 1.0 の契約。月の表示（マスの中身は cell slot）と、年の表示（12か月）。 */
 export interface ArCalendarProps {
+  /**
+   * 形。sheet＝線で区切った1枚の表（デザインシステムのカレンダー）。
+   * board＝角の丸いマスを並べた形（シフト画面のカレンダー。日付は真ん中の丸、イベントは色の点と名前、cell slot はマスの下の段）。
+   */
+  variant?: "sheet" | "board";
+  /** 日ごとの状態の印（ロック中＝斜線と鍵・非公開＝目の印・注意＝赤い枠）。 */
+  cellMarks?: (date: string) => ArCalendarCellMarks | undefined;
   /** 選んでいる日（"YYYY-MM-DD"）。選ばないなら null。 */
   modelValue?: string | null;
   /** 表示している月（"YYYY-MM"、v-model:month）。渡さなければ選んでいる日の月（なければ今日の月）から始める。 */
@@ -26,7 +33,17 @@ export interface ArCalendarProps {
   /** 読み上げ用の名前（例：「シフトのカレンダー」）。 */
   label?: string;
   /** 画面の文字。 */
-  labels?: { weekdays: readonly string[]; month: string; year: string; yearSelect: string; modeSwitch: string };
+  labels?: {
+    weekdays: readonly string[];
+    month: string;
+    year: string;
+    yearSelect: string;
+    modeSwitch: string;
+    /** 印の読み上げ（マスの名前のあとに付ける）。 */
+    locked?: string;
+    unpublished?: string;
+    alert?: string;
+  };
 }
 export interface ArCalendarEmits {
   /** 日を選んだとき（押す・Enter・Space）。 */
@@ -43,6 +60,17 @@ export interface ArCalendarEvent {
   date: string;
   label: string;
   tone?: "event" | "danger" | "accent" | "ok";
+  /** board の点の色（イベントに登録した色）。省くと tone の色。 */
+  color?: string;
+}
+/** 日ごとの状態の印（cellMarks が返す）。 */
+export interface ArCalendarCellMarks {
+  /** ロック中（斜線の地と右上の鍵）。 */
+  locked?: boolean;
+  /** 非公開（左上に目に斜線の印）。 */
+  unpublished?: boolean;
+  /** 注意（人が足りないなど。赤い枠。色だけに頼らず cell slot に「不足1」などの文字を添える）。 */
+  alert?: boolean;
 }
 /** cell slot が受け取る値。 */
 export interface ArCalendarCell {
@@ -72,4 +100,8 @@ export type ArCalendarPart =
   | "day"
   | "row"
   | "content"
-  | "event";
+  | "event"
+  | "dot"
+  | "foot"
+  | "lock"
+  | "unpublished";

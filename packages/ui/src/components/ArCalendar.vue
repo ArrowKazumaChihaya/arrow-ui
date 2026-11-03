@@ -6,11 +6,14 @@
  */
 import { computed, nextTick, ref, watch } from "vue";
 import ArSelect from "./ArSelect.vue";
+import ArIcon from "./ArIcon.vue";
 import { daysInMonth, formatDate, splitDate, weekdayOf } from "./date";
 import { useId } from "../provider/context";
 import type { ArCalendarCell, ArCalendarEvent, ArCalendarProps } from "./ArCalendar.contract";
 
 const props = withDefaults(defineProps<ArCalendarProps>(), {
+  variant: "sheet",
+  cellMarks: undefined,
   modelValue: null,
   month: undefined,
   mode: undefined,
@@ -30,6 +33,9 @@ const props = withDefaults(defineProps<ArCalendarProps>(), {
     year: "年",
     yearSelect: "年",
     modeSwitch: "表示の切り替え",
+    locked: "ロック中",
+    unpublished: "非公開",
+    alert: "注意",
   }),
 });
 const emit = defineEmits<{
@@ -209,12 +215,35 @@ const eventMap = computed(() => {
 });
 const eventsOf = (date: string) => eventMap.value.get(date) ?? [];
 const weekendOf = (wd: number) => (props.weekendColors ? (wd === 0 ? "sun" : wd === 6 ? "sat" : undefined) : undefined);
-const cellState = (c: ArCalendarCell) =>
-  [!c.inMonth && "adjacent", c.isToday && "today", c.selected && "selected", c.disabled && "disabled"].filter(Boolean).join(" ") || undefined;
+const marksOf = (c: ArCalendarCell) => (c.inMonth || props.variant === "sheet" ? props.cellMarks?.(c.date) : undefined);
+const cellState = (c: ArCalendarCell) => {
+  const m = marksOf(c);
+  return (
+    [
+      !c.inMonth && "adjacent",
+      c.isToday && "today",
+      c.selected && "selected",
+      c.disabled && "disabled",
+      m?.locked && "locked",
+      m?.unpublished && "unpublished",
+      m?.alert && "alert",
+    ]
+      .filter(Boolean)
+      .join(" ") || undefined
+  );
+};
+const cellLabel = (c: ArCalendarCell) => {
+  const m = marksOf(c);
+  const L = props.labels;
+  const extra = [m?.locked && L.locked, m?.unpublished && L.unpublished, m?.alert && L.alert].filter(Boolean);
+  return `${c.year}${L.year}${c.month}${L.month}${c.day}日${extra.length ? `（${extra.join("・")}）` : ""}`;
+};
+/** board の日付：月の1日は「10/1」のように月を添える。 */
+const dayText = (c: ArCalendarCell) => (props.variant === "board" && c.inMonth && c.day === 1 ? `${c.month}/${c.day}` : String(c.day));
 </script>
 
 <template>
-  <div data-ar="calendar" data-part="root" :data-mode="mode">
+  <div data-ar="calendar" data-part="root" :data-mode="mode" :data-variant="variant">
     <div v-if="showHeader" data-part="header">
       <div :id="`${id}-title`" data-part="title" aria-live="polite">{{ title }}</div>
       <div data-part="extra">
@@ -272,12 +301,21 @@ const cellState = (c: ArCalendarCell) =>
           :aria-selected="c.selected"
           :aria-disabled="c.disabled || undefined"
           :aria-current="c.isToday ? 'date' : undefined"
-          :aria-label="`${c.year}${labels.year}${c.month}${labels.month}${c.day}日`"
+          :aria-label="cellLabel(c)"
           :tabindex="c.date === focusDate ? 0 : -1"
           @click="choose(c)"
           @keydown="onKey($event, c)"
         >
-          <template v-if="c.inMonth || showAdjacent">
+          <template v-if="(c.inMonth || showAdjacent) && variant === 'board'">
+            <span data-part="day" :data-size="dayText(c).length > 2 ? 'sm' : undefined">{{ dayText(c) }}</span>
+            <ArIcon v-if="marksOf(c)?.locked" name="lock" data-part="lock" />
+            <ArIcon v-if="marksOf(c)?.unpublished" name="eyeoff" data-part="unpublished" />
+            <span v-for="(ev, k) in c.inMonth ? eventsOf(c.date) : []" :key="k" data-part="event" :data-tone="ev.tone ?? 'event'">
+              <i data-part="dot" :style="ev.color ? { background: ev.color } : undefined" aria-hidden="true" /><span>{{ ev.label }}</span>
+            </span>
+            <div v-if="c.inMonth && $slots.cell" data-part="foot"><slot name="cell" v-bind="c" /></div>
+          </template>
+          <template v-else-if="c.inMonth || showAdjacent">
             <span data-part="day">{{ c.day }}</span>
             <div v-if="$slots.cell || eventsOf(c.date).length" data-part="content">
               <span v-for="(ev, k) in eventsOf(c.date)" :key="k" data-part="event" :data-tone="ev.tone ?? 'event'">{{ ev.label }}</span>

@@ -1,0 +1,14 @@
+/* ArViewOptions の構造：ボタンの横並び、プルダウンの中は縦の並び（項目はチェック・文字・見本の横並び）。 */
+[data-ar="view-options"]{position:relative;display:inline-flex;vertical-align:middle}
+[data-ar="view-options"]>[data-part="trigger"]{display:inline-flex;align-items:center;white-space:nowrap;box-sizing:border-box;margin:0;cursor:pointer;font-family:inherit}
+[data-ar="view-options"]>[data-part="trigger"]:disabled{cursor:not-allowed}
+[data-ar="view-options"]>[data-part="trigger"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;font-variant-numeric:tabular-nums}
+[data-ar="view-options-panel"]>[data-part="panel"]{display:flex;flex-direction:column;box-sizing:border-box;max-width:calc(100vw - 24px);overflow-y:auto}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]{display:flex;flex-direction:column}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]{display:flex;align-items:center;width:100%;margin:0;border:0;background:none;text-align:left;cursor:pointer;font-family:inherit;box-sizing:border-box}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]:disabled{cursor:not-allowed}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="box"]{display:flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="text"]{display:flex;flex-direction:column;flex:1;min-width:0}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="sample"]{display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box;white-space:nowrap}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="foot"]{display:flex;justify-content:space-between}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="foot"]>button{margin:0;border:0;background:none;cursor:pointer;font-family:inherit}

@@ -12,3 +12,12 @@
 [data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"]{display:inline-flex;align-items:center;justify-content:center}
 [data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]{display:flex;flex-direction:column;align-items:flex-start;margin-top:auto;min-width:0;max-width:100%}
 [data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]>[data-part="event"]{max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;box-sizing:border-box}
+/* board：角の丸いマス。日付は真ん中、イベントはその下、cell slot（foot）はマスの下に寄せる。鍵・非公開の印は角に置く。 */
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]{display:flex;flex-direction:column}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{position:relative;align-items:center;overflow:hidden}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"]{flex:none}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>:is([data-part="lock"],[data-part="unpublished"]){position:absolute}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]{display:flex;align-items:center;flex:none;max-width:100%;overflow:hidden;white-space:nowrap}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{flex:none}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>span{overflow:hidden;text-overflow:ellipsis}
+[data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="foot"]{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;flex:none;max-width:100%;margin-top:auto}
