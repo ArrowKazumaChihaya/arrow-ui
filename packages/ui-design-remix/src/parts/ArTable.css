@@ -115,3 +115,12 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]{align-items:flex-start}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]>[data-ar="button"]:not([data-icon-only])+[data-ar="button"]{margin-left:2px}
 [data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"][data-col="select"]>[data-part="select-text"]{margin-right:6px;font-size:12px}
+/* 行の並べ替え（シフトパターンの一覧と同じ）：左に 24px のつまみの列（⠿ 15px・text-faint・つかむ手のカーソル）。運んでいる行は淡いテーマ色、置く所はテーマ色の線 */
+[data-ar-design="remix"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="drag"]{width:24px;box-sizing:content-box;padding-right:0}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="drag-handle"]{width:24px;height:28px;border-radius:6px;color:var(--ar-color-text-faint);cursor:grab}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="drag-handle"]:hover{color:var(--ar-color-text-muted);background:var(--ar-color-hover)}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="drag-handle"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:0}
+[data-ar-design="remix"] [data-ar="table"] [data-part="cell"]:not([data-col])>[data-part="drag-handle"]{width:18px;margin-right:6px}
+[data-ar-design="remix"] [data-ar="table"] [data-part="row"][data-state~="dragging"]>td{background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="table"] [data-part="row"][data-drop="before"]>td{box-shadow:inset 0 2px 0 var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="table"] [data-part="row"][data-drop="after"]>td{box-shadow:inset 0 -2px 0 var(--ar-accent)}

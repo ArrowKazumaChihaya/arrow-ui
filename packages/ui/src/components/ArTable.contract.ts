@@ -2,6 +2,8 @@
  * ArTable 1.0 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
  * デザインが選べる形（ArDesign.forms.ArTable）：
  * - selectHead："check"（既定。見出しはチェックだけ）／"label"（チェックの左に「全選択」の文字。今の ARROW の SelectTable。classic）。
+ * - dragHandle："column"（既定。並べ替えのつまみを左の専用の列に）／"cell"（1列目のセルの頭に。今の ARROW の SortableTable。classic）。
+ * 行の並べ替え（sortableRows）：1列目のつまみをドラッグするか、つまみで Alt+↑↓。並べた行は update:rows（v-model:rows）と reorder で渡す。
  */
 import type { ArIconName } from "../icons";
 import type { ArAvatarTone } from "./ArAvatar.contract";
@@ -67,6 +69,17 @@ export interface ArTableLabels {
   collapse: string;
   /** 行の右端の操作の列の見出し（読み上げだけ）。 */
   actions: string;
+  /** 並べ替えのつまみの名前（sortableRows のとき）。 */
+  dragHandle: string;
+  /** 並べ替えたあとに読み上げる文。{n} は新しい順番（1から）。 */
+  moved: string;
+}
+
+/** 行を並べ替えたとき（reorder）。from・to は rows の中の順番（0から）。 */
+export interface ArTableReorder {
+  key: ArRowKey;
+  from: number;
+  to: number;
 }
 
 export interface ArTableProps<Row> {
@@ -109,6 +122,11 @@ export interface ArTableProps<Row> {
   rowOff?: (row: Row) => boolean;
   /** 読み上げの名前。 */
   labels?: Partial<ArTableLabels>;
+  /**
+   * 行をドラッグで並べ替えられるようにする（今の ARROW の SortableTable）。つまみは左の列か1列目の頭（デザインが選ぶ）。
+   * マウスはつまみをつかんで上下へ、キーボードはつまみで Alt+↑↓。並べた行は update:rows（v-model:rows）と reorder で渡す。
+   */
+  sortableRows?: boolean;
 }
 
 export interface ArTableEmits<Row> {
@@ -116,6 +134,10 @@ export interface ArTableEmits<Row> {
   "update:sort": [sort: ArTableSort | null];
   "update:expanded": [keys: ArRowKey[]];
   "row-click": [row: Row, index: number];
+  /** 並べ替えた後の行（v-model:rows）。 */
+  "update:rows": [rows: Row[]];
+  /** 並べ替えた1行。 */
+  reorder: [move: ArTableReorder];
 }
 
 /**
@@ -153,4 +175,6 @@ export type ArTablePart =
   | "foot-label"
   | "foot-value"
   | "empty"
-  | "below";
+  | "below"
+  | "drag-handle"
+  | "status";

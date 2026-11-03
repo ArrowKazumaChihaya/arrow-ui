@@ -35,7 +35,7 @@ const text = computed(() =>
       <span data-part="value"><slot>{{ text }}</slot></span>
       <small v-if="suffix" data-part="suffix">{{ suffix }}</small>
       <span v-if="trend" data-part="trend" :data-trend="trend">
-        <ArIcon :name="trend === 'up' ? 'up' : 'down'" size="sm" />
+        <ArIcon line :name="trend === 'up' ? 'up' : 'down'" size="sm" />
         <span data-ar-visually-hidden>{{ trend === "up" ? "増加" : "減少" }}</span>{{ trendValue }}
       </span>
     </div>

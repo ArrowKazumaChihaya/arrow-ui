@@ -280,7 +280,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             @mousedown.prevent
             @click.stop="remove(o.value)"
           >
-            <ArIcon name="x" size="sm" /></button
+            <ArIcon line name="x" size="sm" /></button
         ></span>
         <span v-if="restCount" data-part="tag" data-kind="more" :aria-label="`ほか${restCount}件`">+{{ restCount }}</span>
       </span>
@@ -307,10 +307,10 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       @mousedown.prevent
       @click.stop="clear"
     >
-      <ArIcon name="x" size="sm" />
+      <ArIcon line name="x" size="sm" />
     </button>
     <span v-if="loading" data-part="spinner" aria-hidden="true" />
-    <ArIcon v-else name="cd" size="sm" data-part="arrow" />
+    <ArIcon line v-else name="cd" size="sm" data-part="arrow" />
   </div>
   <ArFloat ar="select-panel" :open="open" :anchor="root" match-width="min" :offset="6" @close="(r) => close(r === 'escape')">
     <div v-if="showSearch" data-part="search" :data-kind="people ? 'people' : undefined">
@@ -392,7 +392,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
         <span data-part="spinner" aria-hidden="true" />{{ loadingText }}
       </div>
       <div v-else-if="!flat.length" data-part="empty" role="status">
-        <ArIcon v-if="query" name="search" size="sm" />{{ query ? `「${query}」は見つかりません` : emptyText }}
+        <ArIcon line v-if="query" name="search" size="sm" />{{ query ? `「${query}」は見つかりません` : emptyText }}
       </div>
     </div>
   </ArFloat>

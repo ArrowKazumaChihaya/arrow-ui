@@ -181,10 +181,10 @@ const role = computed(() => (props.mode === "horizontal" ? "menubar" : "menu"));
         @click="activate(r.item, $event.currentTarget as HTMLElement)"
         @keydown="onKeydown($event, r)"
       >
-        <ArIcon v-if="r.item.locked || r.item.icon" :name="r.item.locked ? 'lock' : r.item.icon!" data-part="icon" size="sm" />
+        <ArIcon v-if="r.item.locked || r.item.icon" :line="!!r.item.locked" :name="r.item.locked ? 'lock' : r.item.icon!" data-part="icon" size="sm" />
         <span data-part="label">{{ r.item.label }}</span>
         <span v-if="isParent(r.item)" data-part="arrow" aria-hidden="true">
-          <ArIcon :name="mode === 'horizontal' || (mode === 'inline' && openList.includes(r.item.key)) ? 'cd' : 'cr'" size="sm" />
+          <ArIcon line :name="mode === 'horizontal' || (mode === 'inline' && openList.includes(r.item.key)) ? 'cd' : 'cr'" size="sm" />
         </span>
       </component>
     </template>

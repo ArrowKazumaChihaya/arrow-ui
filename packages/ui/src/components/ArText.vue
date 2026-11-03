@@ -80,7 +80,7 @@ function onEnter() {
       :title="copyLabel"
       @click="copy"
     >
-      <ArIcon :name="copied ? 'check' : 'copy'" size="sm" />
+      <ArIcon line :name="copied ? 'check' : 'copy'" size="sm" />
     </button>
     <span v-if="copyable !== false" data-ar-visually-hidden aria-live="polite">{{ copied ? copyLabel : "" }}</span>
   </span>

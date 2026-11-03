@@ -2,6 +2,7 @@
 /**
  * ArButton 1.0 — ボタン。種類（tone）・大きさ・形・アイコン・読み込み中・押せない・幅いっぱい。
  * href を渡すとリンク（a 要素）として出す。
+ * 後ろのアイコン（iconEnd：開く∨など）はいつも線で描く（今の ARROW のボタンには後ろのアイコンが無く、開く印は antd の∨のため）。
  */
 import { computed, ref, useSlots } from "vue";
 import ArIcon from "./ArIcon.vue";
@@ -80,7 +81,7 @@ function onClick(e: MouseEvent) {
     <span v-if="loading" data-part="spinner" aria-hidden="true" />
     <ArIcon v-else-if="icon" :name="icon" data-part="icon" :data-icon="icon" size="sm" />
     <span v-if="$slots.default" data-part="label"><slot /></span>
-    <ArIcon v-if="iconEnd && !(loading && !icon && !$slots.default)" :name="iconEnd" data-part="icon-end" :data-icon="iconEnd" size="sm" />
+    <ArIcon v-if="iconEnd && !(loading && !icon && !$slots.default)" line :name="iconEnd" data-part="icon-end" :data-icon="iconEnd" size="sm" />
     <ArModal
       v-if="explains"
       :open="reasonOpen"

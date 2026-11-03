@@ -102,7 +102,7 @@ function onClickKey(dir: 1 | -1, e: MouseEvent) {
       @pointercancel="repeat.stop"
       @click="onClickKey(-1, $event)"
     >
-      <ArIcon name="minus" size="sm" />
+      <ArIcon line name="minus" size="sm" />
     </button>
     <input
       :id="id"
@@ -137,7 +137,7 @@ function onClickKey(dir: 1 | -1, e: MouseEvent) {
       @pointercancel="repeat.stop"
       @click="onClickKey(1, $event)"
     >
-      <ArIcon name="plus" size="sm" />
+      <ArIcon line name="plus" size="sm" />
     </button>
     <small v-if="unit && variant === 'split'" data-part="unit" aria-hidden="true">{{ unit }}</small>
   </span>

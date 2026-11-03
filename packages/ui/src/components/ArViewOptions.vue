@@ -96,10 +96,10 @@ function onPanelKey(e: KeyboardEvent) {
       @click="isOpen ? close(false) : setOpen(true)"
       @keydown="onTriggerKey"
     >
-      <ArIcon name="filter" data-part="icon" />
+      <ArIcon line name="filter" data-part="icon" />
       <span data-part="label">{{ label }}</span>
       <span data-part="count">{{ onCount }}/{{ all.length }}</span>
-      <ArIcon name="cd" data-part="caret" />
+      <ArIcon line name="cd" data-part="caret" />
     </button>
     <ArFloat :id="id" :open="isOpen" :anchor="trigger" ar="view-options-panel" role="menu" :label="title ?? label" :placement="placement" :offset="6" @close="(r) => close(r === 'escape')">
       <div ref="panel" data-part="panel" :style="{ width: `${width}px` }" @keydown="onPanelKey">
@@ -118,7 +118,7 @@ function onPanelKey(e: KeyboardEvent) {
             tabindex="-1"
             @click="toggle(o)"
           >
-            <span data-part="box" aria-hidden="true"><ArIcon name="check" /></span>
+            <span data-part="box" aria-hidden="true"><ArIcon line name="check" /></span>
             <span data-part="text">
               <b>{{ o.label }}</b>
               <small v-if="o.description" data-part="description">{{ o.description }}</small>

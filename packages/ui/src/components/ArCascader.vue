@@ -213,9 +213,9 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
     <span v-if="!empty" data-part="value"><span data-part="value-text">{{ display }}</span></span>
     <span v-else data-part="placeholder">{{ placeholder }}</span>
     <button v-if="canClear" type="button" data-part="clear" tabindex="-1" aria-label="選んだものを消す" @mousedown.prevent @click.stop="clear">
-      <ArIcon name="x" size="sm" />
+      <ArIcon line name="x" size="sm" />
     </button>
-    <ArIcon name="cd" size="sm" data-part="arrow" />
+    <ArIcon line name="cd" size="sm" data-part="arrow" />
   </div>
   <ArFloat :id="`${uid}-panel`" ar="cascader-panel" :open="open" :anchor="root" :offset="6" @close="(r) => close(r === 'escape')">
       <div

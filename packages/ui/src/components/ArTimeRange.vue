@@ -63,6 +63,6 @@ const set = (key: "start" | "end", v: ArTimeValue) => emit("update:modelValue", 
         @update:model-value="(v) => set('end', v)"
       />
     </div>
-    <div v-if="reversed" data-part="error" role="alert"><ArIcon name="alert" size="sm" />{{ labels.reversed }}</div>
+    <div v-if="reversed" data-part="error" role="alert"><ArIcon line name="alert" size="sm" />{{ labels.reversed }}</div>
   </div>
 </template>

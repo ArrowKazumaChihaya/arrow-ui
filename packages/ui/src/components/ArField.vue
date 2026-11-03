@@ -94,7 +94,7 @@ function onFocusOut(e: FocusEvent) {
     >
     <div data-part="control">
       <slot v-bind="control" />
-      <p v-if="error" :id="errorId" data-part="error" role="alert"><ArIcon name="alert" size="sm" />{{ error }}</p>
+      <p v-if="error" :id="errorId" data-part="error" role="alert"><ArIcon line name="alert" size="sm" />{{ error }}</p>
       <p v-if="help" :id="helpId" data-part="help">{{ help }}</p>
     </div>
   </div>

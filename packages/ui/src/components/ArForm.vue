@@ -143,7 +143,7 @@ defineExpose({ validate, validateField, clearErrors, submit: onSubmit, errors: e
 <template>
   <form data-ar="form" data-part="root" :data-layout="layout === 'horizontal' ? 'inline' : layout === 'vertical' ? 'stacked' : layout" novalidate @submit.prevent="onSubmit" @reset="onReset">
     <div v-if="summary && submitted && ordered.length" ref="summaryEl" data-part="summary" role="alert" tabindex="-1">
-      <p data-part="summary-title"><ArIcon name="alert" size="sm" />{{ summaryTitle.replace("{n}", String(ordered.length)) }}</p>
+      <p data-part="summary-title"><ArIcon line name="alert" size="sm" />{{ summaryTitle.replace("{n}", String(ordered.length)) }}</p>
       <ul data-part="summary-list">
         <li v-for="[name, msg] in ordered" :key="name" data-part="summary-item">
           <a :href="fields.get(name) ? `#${fields.get(name)!.id}` : undefined" @click.prevent="focusField(name)">{{ msg }}</a>

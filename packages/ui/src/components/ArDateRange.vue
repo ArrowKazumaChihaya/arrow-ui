@@ -67,6 +67,6 @@ const set = (key: "start" | "end", v: string | null) => emit("update:modelValue"
       />
       <span v-if="showDays && days" data-part="days" aria-live="polite">{{ labels.days(days) }}</span>
     </div>
-    <div v-if="reversed" data-part="error" role="alert"><ArIcon name="alert" size="sm" />{{ labels.reversed }}</div>
+    <div v-if="reversed" data-part="error" role="alert"><ArIcon line name="alert" size="sm" />{{ labels.reversed }}</div>
   </div>
 </template>

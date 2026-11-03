@@ -1,0 +1,4 @@
+/* @covers ArLogoSpin 1.0.0 */
+/* ArLogoSpin（今の LogoSpin・CircleSpin：70px の絵を左 10px あけて置く。LogoBlink：100px） */
+[data-ar-design="classic"] [data-ar="logo-spin"]>[data-part="logo"]{width:70px;height:70px;margin-left:10px}
+[data-ar-design="classic"] [data-ar="logo-spin"][data-motion="blink"]>[data-part="logo"]{width:100px;height:100px;margin-left:0}

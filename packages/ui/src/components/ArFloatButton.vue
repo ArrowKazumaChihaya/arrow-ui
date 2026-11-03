@@ -80,7 +80,7 @@ function onClick(e: MouseEvent) {
     :title="name"
     @click="onClick"
   >
-    <ArIcon :name="icon ?? (backTop ? 'up' : 'plus')" data-part="icon" />
+    <ArIcon :line="!icon" :name="icon ?? (backTop ? 'up' : 'plus')" data-part="icon" />
     <span v-if="showBadge(badge)" data-part="badge" aria-hidden="true">{{ badge }}</span>
   </component>
 </template>

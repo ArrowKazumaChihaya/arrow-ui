@@ -78,5 +78,34 @@ export const icons = {
   "smile": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M8.5 14a4 4 0 0 0 7 0\"></path><path d=\"M9 9.5h.01M15 9.5h.01\"></path>", // 満足・結果
   "drag": "<path d=\"M9 5h.01M15 5h.01M9 12h.01M15 12h.01M9 19h.01M15 19h.01\"></path>", // つまみ（ドラッグ）
   "camera": "<path d=\"M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z\"></path><circle cx=\"12\" cy=\"13\" r=\"3.5\"></circle>", // カメラ（写真を撮る・変える）
+  "unlock": "<rect x=\"4\" y=\"11\" width=\"16\" height=\"10\" rx=\"2\"></rect><path d=\"M8 11V7a4 4 0 0 1 7.75-1.4\"></path>", // ロック解除（鍵が開いている）
+  "pointer": "<path d=\"M10.5 2v2.2M5.6 4.1l1.5 1.5M15.4 4.1l-1.5 1.5\"></path><path d=\"M9 14.5V9.3a1.5 1.5 0 0 1 3 0v4.2\"></path><path d=\"M12 13v-1.2a1.5 1.5 0 0 1 3 0V13.5\"></path><path d=\"M15 13.2v-.4a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-1a5.2 5.2 0 0 1-4.2-2.1l-2.4-3.2a1.5 1.5 0 0 1 2.4-1.8L9 17\"></path>", // 操作（指で押す手）
+  "movie": "<rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"></rect><path d=\"m10 9 5 3-5 3z\"></path>", // 動画
+  "money": "<circle cx=\"15.5\" cy=\"7\" r=\"4\"></circle><path d=\"M2 15h3.5l3-1.5h4a1.5 1.5 0 0 1 0 3H9\"></path><path d=\"m12.5 16.5 5-2.5a1.6 1.6 0 0 1 1.8 2.5L15 20H6l-4-1\"></path>", // お金（給与の受け取り）
+  "checkcircle": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m8 12 3 3 5-6\"></path>", // 済み・選ばれている（丸の中のチェック）
+  "exclaim": "<path d=\"M12 4v11M12 20h.01\"></path>", // 注意（「！」だけ）
+  "list": "<path d=\"M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01\"></path>", // 一覧
+  "schedule": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"></rect><path d=\"M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4\"></path>", // 予定・確定したシフト
+  "shift": "<path d=\"M21 10V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6\"></path><path d=\"M16 2v4M8 2v4M3 10h18\"></path><circle cx=\"17.5\" cy=\"17.5\" r=\"4.5\"></circle><path d=\"M17.5 15.5v2l1.3 1\"></path>", // シフト（カレンダーと時計）
+  "comment": "<path d=\"M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path><path d=\"M8 8h8M8 12h5\"></path>", // コメント
+  "notice": "<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22z\"></path><path d=\"M8 10h8M8 14h5\"></path>", // お知らせ（丸い吹き出し）
+  "cut": "<circle cx=\"6\" cy=\"6\" r=\"3\"></circle><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><path d=\"M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12\"></path>", // 切り取り
+  "paste": "<rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\"></rect><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"></path>", // 貼り付け
+  "save": "<path d=\"M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z\"></path><path d=\"M17 21v-8H7v8M7 3v5h8\"></path>", // 保存
+  "return": "<path d=\"m9 10-5 5 5 5\"></path><path d=\"M4 15h10.5a5.5 5.5 0 0 0 0-11H11\"></path>", // 戻す（折り返しの矢印）
+  "zoomout": "<circle cx=\"11\" cy=\"11\" r=\"7\"></circle><path d=\"m20 20-4-4\"></path><path d=\"M8 11h6\"></path>", // 縮小
+  "zoomreset": "<circle cx=\"11\" cy=\"11\" r=\"7\"></circle><path d=\"m20 20-4-4\"></path><path d=\"M8.5 11a2.5 2.5 0 1 0 .8-1.8M8.5 8v1.5H10\"></path>", // 大きさを戻す
+  "silhouette": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"></rect><circle cx=\"12\" cy=\"10\" r=\"3\"></circle><path d=\"M6.5 21a5.5 5.5 0 0 1 11 0\"></path>", // 顔写真の場所（人の影）
+  "twoperson": "<circle cx=\"7.5\" cy=\"8\" r=\"3\"></circle><circle cx=\"16.5\" cy=\"8\" r=\"3\"></circle><path d=\"M2 20a5.5 5.5 0 0 1 11 0M11 20a5.5 5.5 0 0 1 11 0\"></path>", // 二人
+  "manager": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"></rect><path d=\"M3 7h18\"></path><circle cx=\"12\" cy=\"12\" r=\"2.5\"></circle><path d=\"M7.5 19a4.5 4.5 0 0 1 9 0\"></path>", // 管理者
+  "card": "<rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"></rect><circle cx=\"8\" cy=\"11\" r=\"2\"></circle><path d=\"M5 16a3 3 0 0 1 6 0M14 10h5M14 14h4\"></path>", // 社員証・カード
+  "nocard": "<path d=\"M8 5h12a2 2 0 0 1 2 2v10M18 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2\"></path><path d=\"m2 2 20 20\"></path>", // カードなし
+  "keyboard": "<rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"></rect><path d=\"M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 16h10\"></path>", // キーボード（打刻の番号入力）
+  "punchin": "<circle cx=\"16\" cy=\"5\" r=\"2.2\"></circle><path d=\"M13 21v-6l-1-1v-3a2.5 2.5 0 0 1 2.5-2.5h3A2.5 2.5 0 0 1 20 11v3l-1 1v6\"></path><path d=\"M2 13h7M6 10l3 3-3 3\"></path>", // 出勤
+  "punchout": "<circle cx=\"8\" cy=\"5\" r=\"2.2\"></circle><path d=\"M5 21v-6l-1-1v-3a2.5 2.5 0 0 1 2.5-2.5h3A2.5 2.5 0 0 1 12 11v3l-1 1v6\"></path><path d=\"M15 13h7M19 10l3 3-3 3\"></path>", // 退勤
+  "bank": "<path d=\"M3 21h18M3 10h18M5 6l7-3 7 3\"></path><path d=\"M6 10v8M10 10v8M14 10v8M18 10v8\"></path>", // 銀行・口座
+  "hierarchy": "<rect x=\"9\" y=\"2\" width=\"6\" height=\"5\" rx=\"1\"></rect><rect x=\"2\" y=\"17\" width=\"6\" height=\"5\" rx=\"1\"></rect><rect x=\"9\" y=\"17\" width=\"6\" height=\"5\" rx=\"1\"></rect><rect x=\"16\" y=\"17\" width=\"6\" height=\"5\" rx=\"1\"></rect><path d=\"M12 7v10M5 17v-3h14v3\"></path>", // 階層図
+  "status": "<path d=\"m15 5 4 4\"></path><path d=\"M13 7 8.7 2.7a2.4 2.4 0 0 0-3.4 0L2.7 5.3a2.4 2.4 0 0 0 0 3.4L7 13\"></path><path d=\"m8 6 2-2\"></path><path d=\"m2 22 5.5-1.5L21.2 6.8a2.8 2.8 0 0 0-4-4L3.5 16.5z\"></path><path d=\"m18 16 2-2\"></path><path d=\"m17 11 4.3 4.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L11 17\"></path>", // 状態・設定の項目（鉛筆と定規）
+  "chevrons": "<path d=\"m6 4 6 5 6-5M6 10l6 5 6-5M6 16l6 5 6-5\"></path>", // 下へ進む（三重の下向き矢印。書類の流れ）
 } as const;
 export type ArIconName = keyof typeof icons;

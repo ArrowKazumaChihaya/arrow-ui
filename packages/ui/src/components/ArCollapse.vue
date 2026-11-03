@@ -53,7 +53,7 @@ function onKey(e: KeyboardEvent, i: number) {
           @click="toggle(it)"
           @keydown="onKey($event, i)"
         >
-          <ArIcon name="cr" size="sm" data-part="arrow" />
+          <ArIcon line name="cr" size="sm" data-part="arrow" />
           <ArIcon v-if="it.icon" :name="it.icon" size="sm" data-part="icon" />
           <span data-part="title">{{ it.title }}</span>
           <span v-if="it.extra || $slots[`extra-${it.key}`]" data-part="extra">

@@ -19,3 +19,7 @@
 [data-ar="table"] td>[data-part="actions"]{display:inline-flex;align-items:center;justify-content:flex-end;vertical-align:middle}
 @media (prefers-reduced-motion: reduce){[data-ar="table"] td>[data-part="expand-toggle"]>[data-ar="icon"]{transition:none}}
 [data-ar="table"] tfoot [data-part="foot-label"],[data-ar="table"] tfoot [data-part="foot-value"]{display:block}
+/* 行の並べ替え：つまみは1列目の頭。つかむ所は上下に動かす形のカーソル */
+[data-ar="table"] td>[data-part="drag-handle"]{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:ns-resize;touch-action:none}
+[data-ar="table"] td>[data-part="drag-handle"]:focus-visible{outline:revert}
+[data-ar="table"] [data-part="row"][data-state~="dragging"]{opacity:.5}

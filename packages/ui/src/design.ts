@@ -7,6 +7,7 @@ import {
   type ArTokenValues,
 } from "@arrow/ui-tokens";
 import { designedComponents, type ArComponentName } from "./contracts";
+import type { ArIconName } from "./icons";
 
 /**
  * デザインのライブラリ（見た目の実装）。持つのは「トークンの値」「部位に当てる CSS」「対応した部品と契約の版」だけ。
@@ -30,6 +31,13 @@ export interface ArDesign {
    * 例：{ ArTimeInput: { fields: "split" } }。選べる名前と値は各部品の契約（contract.ts）に書く。
    */
   forms?: Partial<Record<ArComponentName, Record<string, string>>>;
+  /**
+   * アイコンの絵。ArIcon の名前 → そのときに描く絵（SVG の文字列。`<svg viewBox="…">…</svg>`）。
+   * 渡した名前は、ライブラリの線のアイコンの代わりにこの絵を描く（渡さない名前は線のアイコンのまま）。
+   * 色の指定がない所は文字の色（currentColor）で塗る。色が決まっている所（白・2色の絵など）はその色のまま。
+   * 絵の中に `<style>`・`<script>` は書かない（ページ全体に効いてしまう）。色は属性（fill="…"）で書く。
+   */
+  icons?: Partial<Record<ArIconName, string>>;
 }
 
 export class ArDesignError extends Error {
@@ -48,6 +56,11 @@ export function defineDesign(design: ArDesign): ArDesign {
     if (missing.length) problems.push(`テーマ色「${p}」の値がありません: ${missing.join(", ")}`);
   }
   const notCovered = designedComponents.filter((c) => !design.covers?.[c]);
+  for (const [name, svg] of Object.entries(design.icons ?? {})) {
+    if (typeof svg !== "string" || !/^<svg\b[^>]*\bviewBox="[^"]+"[^>]*>[\s\S]*<\/svg>$/.test(svg.trim()))
+      problems.push(`アイコン「${name}」の絵が <svg viewBox="…">…</svg> の形ではありません`);
+    else if (/<(style|script|foreignObject)\b|\son\w+=/i.test(svg)) problems.push(`アイコン「${name}」の絵に <style>・<script>・on… は書けません`);
+  }
   if (notCovered.length) problems.push(`見た目を用意していない部品があります: ${notCovered.join(", ")}`);
   if (problems.length) throw new ArDesignError(`design「${design.id}」を登録できません。\n- ${problems.join("\n- ")}`);
   return Object.freeze({ ...design });

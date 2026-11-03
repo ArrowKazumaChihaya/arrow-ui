@@ -323,7 +323,7 @@ const dayText = (c: ArCalendarCell) =>
         >
           <template v-if="(c.inMonth || showAdjacent) && variant === 'board'">
             <span data-part="day" :data-size="dayText(c).length > 2 ? 'sm' : undefined">{{ dayText(c) }}</span>
-            <ArIcon v-if="marksOf(c)?.locked" name="lock" data-part="lock" />
+            <ArIcon line v-if="marksOf(c)?.locked" name="lock" data-part="lock" />
             <ArIcon v-if="marksOf(c)?.unpublished" name="eyeoff" data-part="unpublished" />
             <span
               v-for="(ev, k) in c.inMonth ? eventsOf(c.date) : []"

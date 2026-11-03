@@ -150,7 +150,7 @@ defineExpose({
       @mousedown.prevent
       @click="clear"
     >
-      <ArIcon name="x" size="sm" />
+      <ArIcon line name="x" size="sm" />
     </button>
     <span v-if="showCount" data-part="count" aria-live="polite">{{ count }}</span>
     <span v-if="suffix" data-part="suffix" data-kind="text">{{ suffix }}</span>
@@ -165,7 +165,7 @@ defineExpose({
       @mousedown.prevent
       @click="revealed = !revealed"
     >
-      <ArIcon :name="revealed ? 'eye' : 'eyeoff'" size="sm" />
+      <ArIcon line :name="revealed ? 'eye' : 'eyeoff'" size="sm" />
     </button>
     <span v-if="addonAfter" data-part="addon" data-side="end">{{ addonAfter }}</span>
   </span>

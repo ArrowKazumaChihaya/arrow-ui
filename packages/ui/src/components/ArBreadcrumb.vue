@@ -25,7 +25,7 @@ const emit = defineEmits<{ click: [index: number, event: MouseEvent]; select: [i
               <button type="button" data-part="link" v-bind="attrs" :aria-label="it.iconOnly ? it.label : undefined">
                 <ArIcon v-if="it.icon" :name="it.icon" data-part="icon" size="sm" />
                 <template v-if="!it.iconOnly">{{ it.label }}</template>
-                <ArIcon name="cd" data-part="icon" size="sm" />
+                <ArIcon line name="cd" data-part="icon" size="sm" />
               </button>
             </template>
           </ArDropdown>

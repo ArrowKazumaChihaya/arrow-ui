@@ -124,8 +124,8 @@ onBeforeUnmount(() => open.value && document.documentElement.removeAttribute("da
     @click="canPreview && setOpen(true)"
   >
     <img v-if="shownSrc" :key="shownSrc" data-part="img" :src="shownSrc" :alt="canPreview ? '' : alt" @load="loaded = true" @error="onError" />
-    <span v-else data-part="placeholder" aria-hidden="true"><ArIcon name="image" /></span>
-    <span v-if="canPreview" data-part="mask" aria-hidden="true"><ArIcon name="zoom" size="sm" />{{ labels.preview }}</span>
+    <span v-else data-part="placeholder" aria-hidden="true"><ArIcon line name="image" /></span>
+    <span v-if="canPreview" data-part="mask" aria-hidden="true"><ArIcon line name="zoom" size="sm" />{{ labels.preview }}</span>
   </component>
   <Teleport :to="target" :disabled="!open" defer>
     <div
@@ -143,14 +143,14 @@ onBeforeUnmount(() => open.value && document.documentElement.removeAttribute("da
       <div data-part="stage" @click.self="setOpen(false)" @wheel="onWheel">
         <img data-part="picture" :src="previewSrc ?? shownSrc" :alt="alt" :style="{ transform: `scale(${scale})` }" />
       </div>
-      <button type="button" data-part="close" :aria-label="labels.close" @click="setOpen(false)"><ArIcon name="x" /></button>
+      <button type="button" data-part="close" :aria-label="labels.close" @click="setOpen(false)"><ArIcon line name="x" /></button>
       <div data-part="toolbar">
         <button type="button" data-part="tool" :aria-label="labels.zoomOut" :disabled="scale <= 0.25" aria-keyshortcuts="-" @click="zoom(-1)">
           <ArGlyph name="zoom-out" />
         </button>
         <button type="button" data-part="scale" :aria-label="labels.reset" aria-keyshortcuts="0" @click="scale = 1">{{ Math.round(scale * 100) }}%</button>
         <button type="button" data-part="tool" :aria-label="labels.zoomIn" :disabled="scale >= 4" aria-keyshortcuts="+" @click="zoom(1)">
-          <ArIcon name="zoom" />
+          <ArIcon line name="zoom" />
         </button>
       </div>
     </div>

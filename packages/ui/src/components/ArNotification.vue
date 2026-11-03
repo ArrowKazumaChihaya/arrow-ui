@@ -36,7 +36,7 @@ const line = computed(() => {
       <div v-if="description || $slots.default" data-part="description"><slot>{{ description }}</slot></div>
     </div>
     <button v-if="closable" type="button" data-part="close" :aria-label="closeLabel" @click="emit('close')">
-      <ArIcon name="x" size="sm" />
+      <ArIcon line name="x" size="sm" />
     </button>
     <div v-if="$slots.actions || actions?.length" data-part="actions">
       <slot name="actions">

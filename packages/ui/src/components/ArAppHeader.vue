@@ -167,9 +167,9 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
         @keydown="onAccountKey"
       >
         <span v-if="account.initial" data-part="avatar" aria-hidden="true">{{ account.initial }}</span>
-        <ArIcon name="bld" data-part="account-icon" />
+        <ArIcon line name="bld" data-part="account-icon" />
         <span data-part="account-label">{{ account.label }}</span>
-        <ArIcon v-if="hasMenu" name="cd" size="sm" data-part="account-arrow" />
+        <ArIcon line v-if="hasMenu" name="cd" size="sm" data-part="account-arrow" />
       </button>
       <ArFloat :id="menuId" :open="menuOpen" :anchor="accountBtn" ar="app-account-menu" placement="bottom-end" role="menu" :label="account?.label" @close="(r) => closeMenu(r === 'escape')">
         <button
@@ -183,11 +183,11 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
           @click="choose(a.key)"
           @keydown="onMenuKey"
         >
-          <span>{{ a.label }}</span><ArIcon name="cr" size="sm" data-part="menu-arrow" />
+          <span>{{ a.label }}</span><ArIcon line name="cr" size="sm" data-part="menu-arrow" />
         </button>
       </ArFloat>
       <button v-if="collapsible && collapsed" type="button" data-part="expand" :aria-label="L.expand" :title="L.expand" @click="emit('update:collapsed', false)">
-        <ArIcon name="plus" size="sm" />
+        <ArIcon line name="plus" size="sm" />
       </button>
     </div>
     <div v-if="(domains.length || collapsible) && !collapsed" data-part="domains">
@@ -207,7 +207,7 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
         </button>
       </div>
       <button v-if="collapsible" type="button" data-part="toggle" @click="emit('update:collapsed', true)">
-        <ArIcon name="minus" size="sm" /><span>{{ L.collapse }}</span>
+        <ArIcon line name="minus" size="sm" /><span>{{ L.collapse }}</span>
       </button>
     </div>
     <nav v-if="menus.length || menusEnd.length" data-part="nav" :aria-label="labels.nav">

@@ -96,8 +96,8 @@ defineExpose({ focusAt });
         :aria-disabled="!usable(r.item) || undefined"
         @click="choose(r.item, $event)"
       >
-        <span v-if="rich && (r.item.icon || r.item.locked)" data-part="icon-box"><ArIcon :name="r.item.locked ? 'lock' : r.item.icon!" size="sm" /></span>
-        <ArIcon v-else-if="r.item.icon || r.item.locked" :name="r.item.locked ? 'lock' : r.item.icon!" data-part="icon" size="sm" />
+        <span v-if="rich && (r.item.icon || r.item.locked)" data-part="icon-box"><ArIcon :line="!!r.item.locked" :name="r.item.locked ? 'lock' : r.item.icon!" size="sm" /></span>
+        <ArIcon v-else-if="r.item.icon || r.item.locked" :line="!!r.item.locked" :name="r.item.locked ? 'lock' : r.item.icon!" data-part="icon" size="sm" />
         <span v-if="rich" data-part="text"><span data-part="label">{{ r.item.label }}</span><span v-if="r.item.description" data-part="description">{{ r.item.description }}</span></span>
         <span v-else data-part="label">{{ r.item.label }}</span>
       </component>

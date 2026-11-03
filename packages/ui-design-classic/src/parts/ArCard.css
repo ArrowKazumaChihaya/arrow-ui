@@ -7,6 +7,8 @@
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:16px}
 /* 帯の中の操作は今の Title の slot と同じく、見出しの文字のすぐ右に続ける（帯の中の h2 の中：白・太さ600） */
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{gap:3px;margin-left:10px;color:#fff;font-weight:600}
+/* 今の Title は見出しの行（18px・行の高さ36）に 13px の補足を並べると、行の高さがそろわず帯が 38px になる */
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]){height:38px}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding-top:15px}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="body"]{--ar-card-pad-x:0px;padding:15px 0 0}
 /* タブの下の本文は今のシフトカレンダーの囲み（上に 2px のテーマ色の線・淡いテーマ色の地・余白15） */

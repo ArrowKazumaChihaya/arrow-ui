@@ -1,8 +1,9 @@
 /* @covers ArTitle 1.0.0 */
-/* ArTitle：ant-design-vue 4 の Typography.Title（38/30/24/20/16px・600） */
+/* ArTitle：ant-design-vue 4 の Typography.Title（38/–/24/20/16px・600）。2段目だけは今の ARROW の Title（type="text"）の 22px */
 [data-ar-design="classic"] [data-ar="title"]{margin:0 0 .5em;font-weight:600;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="title"][data-level="1"]{font-size:38px;line-height:1.2105}
-[data-ar-design="classic"] [data-ar="title"][data-level="2"]{font-size:30px;line-height:1.2667}
+/* 2段目は今の ARROW の Title（type="text"）：22px・行の高さ 22px・600・黒・前後の余白なし（今の ARROW は antd の Typography を使っていない） */
+[data-ar-design="classic"] [data-ar="title"][data-level="2"]{margin:0;color:#000;font-size:22px;line-height:22px}@media (max-width:499px){[data-ar-design="classic"] [data-ar="title"][data-level="2"]{font-size:18px}}
 [data-ar-design="classic"] [data-ar="title"][data-level="3"]{font-size:24px;line-height:1.3333}
 [data-ar-design="classic"] [data-ar="title"][data-level="4"]{font-size:20px;line-height:1.4}
 [data-ar-design="classic"] [data-ar="title"][data-level="5"]{font-size:16px;line-height:1.5}

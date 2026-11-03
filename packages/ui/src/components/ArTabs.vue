@@ -67,18 +67,18 @@ function onKeydown(e: KeyboardEvent, key: string) {
         <ArIcon v-if="t.icon" :name="t.icon" data-part="icon" size="sm" />
         <span data-part="label">{{ t.label }}</span>
         <span v-if="t.count !== undefined" data-part="count">{{ t.count }}</span>
-        <span v-if="t.alert" data-part="alert" role="img" :aria-label="alertLabel"><ArIcon name="alert" size="sm" /></span>
+        <span v-if="t.alert" data-part="alert" role="img" :aria-label="alertLabel"><ArIcon line name="alert" size="sm" /></span>
         <span
           v-if="variant === 'card' && t.closable"
           data-part="close"
           aria-hidden="true"
           :title="`${t.label}を閉じる`"
           @click.stop="!t.disabled && emit('close', t.key)"
-        ><ArIcon name="x" size="sm" /></span>
+        ><ArIcon line name="x" size="sm" /></span>
       </button>
     </div>
     <button v-if="variant === 'card' && addable" type="button" data-part="add" :aria-label="addLabel" :title="addLabel" @click="emit('add')">
-      <ArIcon name="plus" size="sm" />
+      <ArIcon line name="plus" size="sm" />
     </button>
   </div>
 </template>

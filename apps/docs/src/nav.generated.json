@@ -436,6 +436,11 @@
         "slug": "tree",
         "name": "ArTree",
         "ja": "ツリー"
+      },
+      {
+        "slug": "tree-table",
+        "name": "ArTreeTable",
+        "ja": "木の表"
       }
     ]
   },
@@ -553,9 +558,19 @@
         "ja": "小さな札（チップ）"
       },
       {
+        "slug": "date-view",
+        "name": "ArDateView",
+        "ja": "日付の表示"
+      },
+      {
         "slug": "day-summary",
         "name": "ArDaySummary",
         "ja": "日の要約"
+      },
+      {
+        "slug": "document-block",
+        "name": "ArDocumentBlock",
+        "ja": "書類のまとまり"
       },
       {
         "slug": "ellipsis",
@@ -586,6 +601,11 @@
         "slug": "kana-text",
         "name": "ArKanaText",
         "ja": "フリガナつきの氏名"
+      },
+      {
+        "slug": "logo-spin",
+        "name": "ArLogoSpin",
+        "ja": "ロゴの読み込み中"
       },
       {
         "slug": "mobile-header",

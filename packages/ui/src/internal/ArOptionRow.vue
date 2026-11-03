@@ -77,7 +77,7 @@ const avatarStyle = computed(() =>
       ><slot name="after-label"
     /></span>
     <small v-if="description" data-part="option-desc" :data-tone="descriptionTone === 'default' ? undefined : descriptionTone">{{ description }}</small>
-    <ArIcon v-if="check && selected && !more" name="check" size="sm" data-part="option-check" />
-    <ArIcon v-if="more" name="cr" size="sm" data-part="option-more" />
+    <ArIcon line v-if="check && selected && !more" name="check" size="sm" data-part="option-check" />
+    <ArIcon line v-if="more" name="cr" size="sm" data-part="option-more" />
   </div>
 </template>

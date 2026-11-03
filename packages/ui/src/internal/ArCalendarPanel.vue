@@ -150,9 +150,9 @@ defineExpose({ focusCell, goTo: setFocus });
 
 <template>
   <div data-part="head">
-    <button type="button" data-part="nav" data-dir="prev" :aria-label="labels.prev" @click="move(-1)"><ArIcon name="cl" size="sm" /></button>
+    <button type="button" data-part="nav" data-dir="prev" :aria-label="labels.prev" @click="move(-1)"><ArIcon line name="cl" size="sm" /></button>
     <b :id="`${baseId}-title`" data-part="title" aria-live="polite">{{ labels.title(view.y, view.m) }}</b>
-    <button type="button" data-part="nav" data-dir="next" :aria-label="labels.next" @click="move(1)"><ArIcon name="cr" size="sm" /></button>
+    <button type="button" data-part="nav" data-dir="next" :aria-label="labels.next" @click="move(1)"><ArIcon line name="cr" size="sm" /></button>
   </div>
   <div ref="grid" data-part="grid" role="grid" :aria-labelledby="`${baseId}-title`" @keydown="onKey" @mouseleave="hover = null">
     <div role="row" data-part="row">

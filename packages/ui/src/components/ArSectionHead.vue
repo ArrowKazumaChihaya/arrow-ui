@@ -30,7 +30,7 @@ const emit = defineEmits<{ "update:open": [open: boolean] }>();
       <span v-if="icon" data-part="icon" aria-hidden="true"><ArIcon :name="icon" size="sm" /></span>
       <component :is="`h${headingLevel}`" data-part="title">{{ title }}</component>
       <span v-if="count !== undefined" data-part="count">{{ count }}</span>
-      <ArIcon v-if="collapsible" name="cd" size="sm" data-part="caret" />
+      <ArIcon line v-if="collapsible" name="cd" size="sm" data-part="caret" />
     </component>
     <div v-if="$slots.actions" data-part="actions"><slot name="actions" /></div>
     <div v-if="$slots.end" data-part="end"><slot name="end" /></div>
