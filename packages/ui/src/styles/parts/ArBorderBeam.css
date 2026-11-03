@@ -1,0 +1,8 @@
+/* ArBorderBeam の形：後ろで回る光（beam）を、中身の面（content）がふちの幅だけ残して隠す。 */
+[data-ar="border-beam"]{position:relative;isolation:isolate;overflow:hidden}
+[data-ar="border-beam"]>[data-part="beam"]{position:absolute;inset:-60%;z-index:-2;pointer-events:none}
+[data-ar="border-beam"][data-active]>[data-part="beam"]{animation:ar-beam var(--ar-beam-duration,4s) linear infinite}
+[data-ar="border-beam"]::after{content:"";position:absolute;z-index:-1;pointer-events:none}
+[data-ar="border-beam"]>[data-part="content"]{position:relative}
+@keyframes ar-beam{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){[data-ar="border-beam"][data-active]>[data-part="beam"]{animation:none}}

@@ -1,0 +1,10 @@
+/* @covers ArPopconfirm 1.0.0 */
+/* ArPopconfirm（ant-design-vue 4 の Popconfirm：白・角丸8・印は #FAAD14・ボタンは小さい24px） */
+[data-ar-design="classic"] [data-ar="popconfirm"]{max-width:320px;padding:12px;border-radius:8px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:var(--ar-color-text);font-size:14px;line-height:1.5715}
+[data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="arrow"]{width:10px;height:10px;background:#fff}
+[data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="question"]{gap:8px;font-weight:600}
+[data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="question"]>[data-part="icon"]{width:14px;height:14px;margin-top:4px;color:#FAAD14}
+[data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="question"]>[data-part="icon"][data-tone="danger"]{color:var(--classic-error)}
+[data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="question"]>[data-part="icon"][data-tone="info"]{color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="description"]{margin:8px 0 0 22px;color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="footer"]{gap:8px;margin-top:12px}

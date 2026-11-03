@@ -1,0 +1,11 @@
+/* @covers ArInfo 1.0.0 */
+/* 今の Info（small：11px #5F5F5F・行15／mark：？の印 #4F92C2／detail：11px のリンク）と Attention（15px 600 #D10C1D・行20） */
+[data-ar-design="classic"] [data-ar="info"][data-kind="note"]{font-size:11px;line-height:15px;color:#5F5F5F}
+[data-ar-design="classic"] [data-ar="info"][data-kind="attention"]{display:inline-flex;font-size:15px;font-weight:600;line-height:20px;color:#D10C1D}
+[data-ar-design="classic"] [data-ar="info"][data-kind="attention"]>[data-part="icon"]{display:none}
+[data-ar-design="classic"] [data-ar="info"][data-kind="mark"]{color:#4F92C2}
+[data-ar-design="classic"] [data-ar="info"][data-kind="mark"]>[data-part="icon"]{width:14px;height:14px;stroke-width:2}
+[data-ar-design="classic"] [data-ar="info"][data-kind="mark"]:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="info"][data-kind="detail"]{font-size:11px;line-height:15px;color:#4F92C2}
+[data-ar-design="classic"] [data-ar="info"][data-kind="detail"]:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="info"]:is([data-kind="mark"],[data-kind="detail"]):focus-visible{outline:1px solid #4096FF;outline-offset:1px}

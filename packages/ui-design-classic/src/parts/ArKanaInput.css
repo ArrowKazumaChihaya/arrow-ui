@@ -1,0 +1,7 @@
+/* @covers ArKanaInput 1.0.0, ArKanaText 1.0.0 */
+/* 今の 氏名（Split 150px を Space で並べる：間8）と Kana（名前の 15px 上に 10px のフリガナを重ねる） */
+[data-ar-design="classic"] [data-ar="kana-input"]{gap:8px}
+[data-ar-design="classic"] [data-ar="kana-input"]>[data-part="row"]{gap:8px}
+[data-ar-design="classic"] [data-ar="kana-input"]>[data-part="row"]>[data-ar="text-input"]{width:150px}
+[data-ar-design="classic"] [data-ar="kana-text"]>[data-part="stack"]{position:relative}
+[data-ar-design="classic"] [data-ar="kana-text"]>[data-part="stack"]>[data-part="kana"]{position:absolute;top:-15px;left:0;font-size:10px;white-space:nowrap}

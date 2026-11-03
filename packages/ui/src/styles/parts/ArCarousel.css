@@ -1,0 +1,11 @@
+/* ArCarousel の構造：横に並べた1枚ずつを動かす。前後のボタンは左右の中央、点は下の中央。 */
+[data-ar="carousel"]{position:relative;overflow:hidden;box-sizing:border-box}
+[data-ar="carousel"]>[data-part="viewport"]{position:absolute;inset:0;overflow:hidden}
+[data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]{display:flex;height:100%;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+[data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]{flex:0 0 100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;box-sizing:border-box;text-align:center}
+[data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]){position:absolute;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+[data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):disabled{cursor:default}
+[data-ar="carousel"]>[data-part="dots"]{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center}
+[data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]{position:relative;padding:0;border:0;cursor:pointer}
+[data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]::before{content:"";position:absolute;inset:-8px -3px}
+@media (prefers-reduced-motion:reduce){[data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]{transition:none}}

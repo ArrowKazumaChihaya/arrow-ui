@@ -1,0 +1,17 @@
+/* @covers ArWeekdayPicker 1.0.0, ArPills 1.0.0 */
+/* ArWeekdayPicker（仮：ant のボタン。32×32・枠 #d9d9d9・角丸6、選ぶと主色の塗り） */
+[data-ar-design="classic"] [data-ar="weekday-picker"]{gap:4px}
+[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]{width:32px;height:32px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px}
+[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"][data-kind="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"][data-kind="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]:hover:not([data-state~="on"]){border-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"][data-state~="on"]{background:var(--classic-blue);border-color:var(--classic-blue);color:#fff}
+[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]:focus-visible{outline:4px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="sm"]{gap:2px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="sm"]>[data-part="day"]{width:20px;height:24px;font-size:12px;border-radius:4px}
+/* ArPills（仮：ant の CheckableTag。高さ24・角丸4、選ぶと主色の塗り） */
+[data-ar-design="classic"] [data-ar="pills"]{gap:8px}
+[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]{gap:4px;height:24px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;background:#fff;color:rgba(0,0,0,.88);font-size:12px}
+[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]:hover:not([data-state~="on"]){color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"][data-state~="on"]{background:var(--classic-blue);border-color:var(--classic-blue);color:#fff}
+[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]>[data-part="count"]{font-size:12px;opacity:.75}

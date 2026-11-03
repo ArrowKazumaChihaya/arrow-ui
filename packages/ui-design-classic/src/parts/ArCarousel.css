@@ -1,0 +1,13 @@
+/* @covers ArCarousel 1.0.0 */
+/* 仮：ant-design-vue 4 の Carousel の既定（地はテーマ色・白い文字・点は 16×3 の白 .3、今は 24 幅の白・下12px）。前後の矢印は白い線の矢印。参照ができたら合わせ直す。 */
+[data-ar-design="classic"] [data-ar="carousel"]{height:160px;background:var(--ar-accent);color:#fff}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]{padding:0 48px}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="title"]{font-size:16px;font-weight:600;line-height:1.5}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="description"]{margin-top:4px;font-size:14px;opacity:.9}
+[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]){width:24px;height:24px;border:0;background:none;color:#fff;opacity:.6}
+[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):hover{opacity:1}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="prev"]{left:12px}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="next"]{right:12px}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]{bottom:12px;gap:8px}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]{width:16px;height:3px;border-radius:1px;background:rgba(255,255,255,.3);transition:all .3s}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"][data-state~="current"]{width:24px;background:#fff}

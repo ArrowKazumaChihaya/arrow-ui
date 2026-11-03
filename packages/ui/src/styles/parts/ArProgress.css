@@ -1,0 +1,13 @@
+/* ArProgress の形：線は左から伸びる、刻みは等分、円は上から時計回り。 */
+[data-ar="progress"]{display:flex;align-items:center;min-width:0}
+[data-ar="progress"]>[data-part="track"]{flex:1;min-width:0;overflow:hidden;display:flex}
+[data-ar="progress"]>[data-part="track"]>[data-part="bar"]{display:block;height:100%;transition:width .3s}
+[data-ar="progress"]>[data-part="track"]>[data-part="step"]{display:block;flex:1;height:100%}
+[data-ar="progress"]>[data-part="info"]{flex:none;display:inline-flex;align-items:center;white-space:nowrap}
+[data-ar="progress"][data-type="circle"]{position:relative;display:inline-flex;justify-content:center;flex:none}
+[data-ar="progress"][data-type="circle"]>[data-part="ring"]{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+[data-ar="progress"][data-type="circle"]>[data-part="ring"]>[data-part="ring-bar"]{transition:stroke-dashoffset .3s}
+[data-ar="progress"][data-type="circle"]>[data-part="info"]{position:relative}
+[data-ar="progress"][data-status="active"]>[data-part="track"]>[data-part="bar"]{background-repeat:no-repeat;animation:ar-progress-shine 1.6s ease infinite}
+@keyframes ar-progress-shine{from{background-position:-60% 0}to{background-position:160% 0}}
+@media (prefers-reduced-motion:reduce){[data-ar="progress"][data-status="active"]>[data-part="track"]>[data-part="bar"]{animation:none}}

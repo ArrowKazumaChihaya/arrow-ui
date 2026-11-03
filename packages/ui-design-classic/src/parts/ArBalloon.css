@@ -1,0 +1,10 @@
+/* @covers ArBalloon 1.0.0 */
+/* bubble：ant-design-vue の Tooltip（rgba(0,0,0,.85)・14px・角丸6・しっぽ8）。dot：今の Balloon（丸・既定 #FF8E9D・白い文字） */
+[data-ar-design="classic"] [data-ar="balloon"]{--ar-balloon-tail:8px}
+[data-ar-design="classic"] [data-ar="balloon"][data-shape="bubble"]{max-width:250px;padding:6px 8px;border-radius:6px;font-size:14px;line-height:1.5715}
+[data-ar-design="classic"] [data-ar="balloon"][data-tone="ink"]{background:rgba(0,0,0,.85);color:#fff}
+[data-ar-design="classic"] [data-ar="balloon"][data-tone="accent"]{background:var(--ar-accent);color:#fff}
+[data-ar-design="classic"] [data-ar="balloon"][data-tone="danger"]{background:#D10C1D;color:#fff;font-weight:600}
+[data-ar-design="classic"] [data-ar="balloon"][data-tone="warn"]{background:#FFFBE6;color:#D46B08;font-weight:600}
+[data-ar-design="classic"] [data-ar="balloon"][data-shape="dot"]{--ar-balloon-tail:calc(var(--ar-balloon-size) / 3);color:#fff;font-size:calc(var(--ar-balloon-size) * .5);line-height:var(--ar-balloon-size);text-align:center}
+[data-ar-design="classic"] [data-ar="balloon"][data-shape="dot"][data-tone="ink"]{background:#FF8E9D}

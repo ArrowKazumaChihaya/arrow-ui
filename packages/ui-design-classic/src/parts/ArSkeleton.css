@@ -1,0 +1,12 @@
+/* @covers ArSkeleton 1.0.0 */
+/* ArSkeleton（ant-design-vue 4 の Skeleton：地 rgba(0,0,0,.06)・行16px・角丸4） */
+[data-ar-design="classic"] [data-ar="skeleton"]{gap:16px}
+[data-ar-design="classic"] [data-ar="skeleton"]>[data-part="avatar"]{width:32px;height:32px}
+[data-ar-design="classic"] [data-ar="skeleton"]>[data-part="lines"]>[data-part="line"]{height:16px;margin-bottom:16px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="skeleton"]>[data-part="lines"]>[data-part="line"]:last-child{margin-bottom:0}
+[data-ar-design="classic"] [data-ar="skeleton"]>[data-part="block"]{border-radius:6px}
+[data-ar-design="classic"] [data-ar="skeleton"]>:is([data-part="avatar"],[data-part="block"]),[data-ar-design="classic"] [data-ar="skeleton"]>[data-part="lines"]>[data-part="line"]{background:linear-gradient(90deg,rgba(0,0,0,.06) 25%,rgba(0,0,0,.15) 37%,rgba(0,0,0,.06) 63%);background-size:400% 100%}
+[data-ar-design="classic"] [data-ar="skeleton"][data-shape="button"]>[data-part="block"]{width:64px;height:32px}
+[data-ar-design="classic"] [data-ar="skeleton"][data-shape="input"]>[data-part="block"]{width:160px;height:32px}
+[data-ar-design="classic"] [data-ar="skeleton"][data-shape="avatar"]>[data-part="block"]{width:32px;height:32px;border-radius:50%}
+[data-ar-design="classic"] [data-ar="skeleton"][data-shape="block"]>[data-part="block"]{width:100%;height:120px}

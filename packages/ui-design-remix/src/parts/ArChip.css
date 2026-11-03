@@ -1,0 +1,5 @@
+/* @covers ArChip 1.0.0 */
+/* .v-chip（11px の太字・角丸6・高さ20）。s1 の見た目ではテーマ色の淡い面 */
+[data-ar-design="remix"] [data-ar="chip"]{padding:0 6px;border-radius:6px;font-size:11px;font-weight:700;line-height:20px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="chip"][data-tone="event"]{background:#EDE7F7;color:#6A4BA3}
+[data-ar-design="remix"] [data-ar="chip"][data-tone="neutral"]{background:#EEF1F5;color:var(--ar-color-text-secondary)}

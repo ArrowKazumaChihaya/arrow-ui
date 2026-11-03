@@ -1,0 +1,16 @@
+/* ArImage の構造：箱に画像を収める。幕は乗せる・フォーカスで出す。プレビューは画面いっぱいに重ね、真ん中に画像、右上に閉じる、下に道具。 */
+[data-ar="image"][data-part="root"]{position:relative;display:inline-flex;flex:none;overflow:hidden;margin:0;padding:0;border:0;box-sizing:border-box;vertical-align:middle;font:inherit;color:inherit;text-align:inherit}
+button[data-ar="image"][data-part="root"]{cursor:zoom-in}
+[data-ar="image"][data-part="root"]>[data-part="img"]{display:block;width:100%;height:100%;object-fit:cover}
+[data-ar="image"][data-part="root"][data-fit="contain"]>[data-part="img"]{object-fit:contain}
+[data-ar="image"][data-part="root"]>[data-part="placeholder"]{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+[data-ar="image"][data-part="root"]>[data-part="mask"]{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+[data-ar="image"][data-part="root"]:is(:hover,:focus-visible)>[data-part="mask"]{opacity:1}
+[data-ar="image"][data-part="viewer"]{position:fixed;inset:0;z-index:1080}
+[data-ar="image"][data-part="viewer"]>[data-part="scrim"]{position:absolute;inset:0}
+[data-ar="image"][data-part="viewer"]>[data-part="stage"]{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box}
+[data-ar="image"][data-part="viewer"]>[data-part="stage"]>[data-part="picture"]{display:block;max-width:100%;max-height:100%;object-fit:contain;user-select:none;transition:transform .2s}
+[data-ar="image"][data-part="viewer"]>[data-part="close"]{position:absolute;display:inline-flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+[data-ar="image"][data-part="viewer"]>[data-part="toolbar"]{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center}
+[data-ar="image"][data-part="viewer"]>[data-part="toolbar"]>:is([data-part="tool"],[data-part="scale"]){display:inline-flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+[data-ar="image"][data-part="viewer"]>[data-part="toolbar"]>[data-part="tool"]:disabled{cursor:default}

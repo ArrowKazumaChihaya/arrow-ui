@@ -1,4 +1,4 @@
-/* @covers ArCheckbox 1.0.0, ArRadioGroup 1.0.0 */
+/* @covers ArCheckbox 1.0.0, ArCheckboxGroup 1.0.0, ArRadioGroup 1.0.0 */
 /* ArCheckbox・ArRadioGroup（ant-design-vue の青。今のチェックは枠が灰色 #808080） */
 [data-ar-design="classic"] [data-ar="checkbox"],[data-ar-design="classic"] [data-ar="radio-group"]>[data-part="item"]{gap:5px;font-size:14px;color:var(--ar-color-text);line-height:30px}
 [data-ar-design="classic"] [data-ar="checkbox"]{padding-right:10px}
@@ -12,3 +12,21 @@
 [data-ar-design="classic"] [data-ar="checkbox"]>[data-part="control"]>[data-part="input"]:focus-visible+[data-part="box"],[data-ar-design="classic"] [data-ar="radio-group"]>[data-part="item"]>[data-part="control"]>[data-part="input"]:focus-visible+[data-part="mark"]{outline:2px solid #91CAFF;outline-offset:1px}
 [data-ar-design="classic"] [data-ar="checkbox"][data-state~="disabled"],[data-ar-design="classic"] [data-ar="radio-group"]>[data-part="item"][data-state~="disabled"]{color:var(--ar-color-text-faint)}
 [data-ar-design="classic"] [data-ar="checkbox"][data-state~="disabled"]>[data-part="control"]>[data-part="box"],[data-ar-design="classic"] [data-ar="radio-group"]>[data-part="item"][data-state~="disabled"]>[data-part="control"]>[data-part="mark"]{background:rgba(0,0,0,.04);border-color:#D9D9D9}
+[data-ar-design="classic"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]>[data-part="mark"][data-kind="dash"]{width:8px;height:8px;border-radius:0;background:#fff}
+[data-ar-design="classic"] [data-ar="checkbox"][data-state~="indeterminate"]>[data-part="control"]>[data-part="box"]{background:#fff;border-color:#D9D9D9}
+[data-ar-design="classic"] [data-ar="checkbox"][data-state~="indeterminate"]>[data-part="control"]>[data-part="box"]>[data-part="mark"][data-kind="dash"]{background:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="checkbox"]:hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="box"]{border-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="checkbox"][data-state~="disabled"][data-state~="checked"]>[data-part="control"]>[data-part="box"]{color:rgba(0,0,0,.25)}
+/* ArCheckboxGroup（仮：ant-design-vue の既定。横は 8px あけ、縦は行の高さで並べる） */
+[data-ar-design="classic"] [data-ar="checkbox-group"]>[data-part="list"]{gap:0 8px}
+[data-ar-design="classic"] [data-ar="checkbox-group"][data-direction="vertical"]>[data-part="list"]{gap:0}
+[data-ar-design="classic"] [data-ar="checkbox-group"]>[data-ar="checkbox"]{margin-bottom:4px}
+/* ArRadioGroup の button（仮：Radio.Button。高さ32・枠 #d9d9d9・端の角丸6・選ぶと枠と文字が主色） */
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]{gap:0}
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]{height:32px;padding:0 15px;border:1px solid #D9D9D9;margin-left:-1px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;line-height:30px;transition:all var(--ar-motion-fast)}
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]:first-child{margin-left:0;border-radius:6px 0 0 6px}
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]:last-child{border-radius:0 6px 6px 0}
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]:hover:not([data-state~="disabled"]){color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]>[data-part="item"][data-state~="checked"]{z-index:1;border-color:var(--classic-blue);color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]>[data-part="item"]:has([data-part="input"]:focus-visible){outline:4px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="radio-group"][data-type="button"]>[data-part="item"][data-state~="disabled"]{background:rgba(0,0,0,.04);color:rgba(0,0,0,.25)}

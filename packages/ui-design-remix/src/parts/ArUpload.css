@@ -1,0 +1,38 @@
+/* @covers ArUpload 1.0.0 */
+/* ArUpload：置き場 .ad-up（点線1.5 acc-line・角丸14・acc-25・余白22）、一覧 .ad-file（行34・角丸8・13px、名前は acc-ink）、
+   進み具合 .ad-bar（3px・テーマ色）、失敗は赤と理由、写真 .ad-upc（96px・点線 field・角丸12）。 */
+[data-ar-design="remix"] [data-ar="upload"]{gap:12px 22px}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]{flex:0 1 300px;gap:6px;padding:22px;border:1.5px dashed var(--ar-accent-line);border-radius:14px;background:var(--ar-accent-faint);font-size:13.5px;line-height:1.5;color:var(--ar-color-text-secondary);outline:0;transition:background var(--ar-motion-fast),border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]:hover{background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]:focus-visible{box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="upload"][data-state~="dragover"]>[data-part="drop"]{border-color:var(--ar-accent);background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="upload"][data-state~="disabled"]>[data-part="drop"]{border-color:var(--ar-color-field);background:var(--ar-color-surface-alt);color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]>[data-part="icon"]{width:30px;height:30px;color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="upload"][data-state~="disabled"]>[data-part="drop"]>[data-part="icon"]{color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]>[data-part="title"]{color:var(--ar-color-text);font-weight:700}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]>[data-part="hint"]>[data-part="pick"]{color:var(--ar-accent-ink);text-decoration:underline;text-underline-offset:2px}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]{flex:0 1 280px}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]{gap:8px;height:34px;padding:0 8px;border-radius:8px;font-size:13px;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]:hover{background:var(--ar-color-hover)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="name"]{color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="status"]{font-size:11px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-ar="icon"][data-part="status"]{color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="error"]>[data-part="row"]>[data-part="name"],[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="error"]>[data-part="row"]>[data-part="kind"]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]{width:24px;height:24px;margin-right:-4px;border-radius:6px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]:hover{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]>[data-part="remove"]{display:none}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]:is(:hover,:focus-within)>[data-part="remove"]{display:inline-flex}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]:is(:hover,:focus-within)>[data-part="status"]{display:none}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]{height:3px;margin:-4px 8px 4px 34px;border-radius:2px;background:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]>i{background:var(--ar-accent);transition:width .3s}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]{gap:8px}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"],[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]{width:96px;height:96px;border-radius:12px}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"]{gap:4px;border:1.5px dashed var(--ar-color-field);background:var(--ar-color-surface-alt);color:var(--ar-color-text-secondary);font:12px var(--ar-font-family);transition:border-color var(--ar-motion-fast),background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"]:hover:not(:disabled),[data-ar-design="remix"] [data-ar="upload"][data-state~="dragover"]>[data-part="cards"]>[data-part="add"]{border-color:var(--ar-accent-line);background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="add"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]{background:linear-gradient(135deg,var(--ar-accent-muted),var(--ar-accent-hi));font-size:11px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"][data-status="error"]{background:var(--ar-color-danger-subtle);box-shadow:inset 0 0 0 1.5px var(--ar-color-danger);color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="card-name"]{padding:0 8px;text-align:center;word-break:break-all}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="remove"]{top:4px;right:4px;width:22px;height:22px;border-radius:6px;background:rgba(31,41,51,.55);color:#fff}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="remove"]:hover{background:rgba(31,41,51,.75)}

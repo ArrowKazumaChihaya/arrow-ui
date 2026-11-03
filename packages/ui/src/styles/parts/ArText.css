@@ -1,0 +1,15 @@
+/* ArTitle・ArText・ArParagraph・ArLink の構造（「…」で切る・コピーのボタン） */
+[data-ar="title"][data-ellipsis]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="text"]{display:inline;min-width:0}
+[data-ar="text"][data-ellipsis]{display:inline-flex;align-items:baseline;max-width:100%;vertical-align:bottom}
+[data-ar="text"][data-ellipsis]>[data-part="content"]{display:inline-block;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+[data-ar="text"]>[data-part="copy"]{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin:0;padding:0;border:0;background:none;cursor:pointer;font:inherit;flex:none}
+[data-ar="paragraph"][data-ellipsis="line"]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="paragraph"][data-ellipsis="rows"]{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+[data-ar="link"]{display:inline-flex;align-items:center;cursor:pointer}
+[data-ar="link"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="divider"][data-orientation="horizontal"]{display:flex;align-items:center;width:100%;box-sizing:border-box}
+[data-ar="divider"][data-orientation="horizontal"]::before,[data-ar="divider"][data-orientation="horizontal"]::after{content:"";flex:1 1 0}
+[data-ar="divider"][data-orientation="horizontal"]:not([data-with-text])::after{display:none}
+[data-ar="divider"]>[data-part="text"]{flex:none;white-space:nowrap}
+[data-ar="divider"][data-orientation="vertical"]{display:inline-block;vertical-align:middle}

@@ -1,0 +1,19 @@
+/* ArDrawer の形：横から出る板と後ろの幕。 */
+[data-ar="drawer"]{position:fixed;inset:0;z-index:1000}
+[data-ar="drawer"][data-contained]{position:absolute;z-index:10}
+[data-ar="drawer"]>[data-part="scrim"]{position:absolute;inset:0}
+[data-ar="drawer"]>[data-part="panel"]{position:absolute;top:0;bottom:0;right:0;display:flex;flex-direction:column;max-width:100%;box-sizing:border-box;outline:0}
+[data-ar="drawer"][data-placement="left"]>[data-part="panel"]{right:auto;left:0}
+[data-ar="drawer"]>[data-part="panel"]>[data-part="header"]{display:flex;align-items:center;flex:none}
+[data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"]{flex:none}
+[data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="title"]{margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="extra"]{display:flex;align-items:center;flex:none}
+[data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{display:inline-flex;align-items:center;justify-content:center;flex:none;cursor:pointer}
+[data-ar="drawer"]>[data-part="panel"]>[data-part="body"]{flex:1;min-height:0;overflow:auto}
+[data-ar="drawer"]>[data-part="panel"]>[data-part="footer"]{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;flex:none}
+.ar-drawer-enter-active,.ar-drawer-leave-active{transition:opacity .2s}
+.ar-drawer-enter-active>[data-part="panel"],.ar-drawer-leave-active>[data-part="panel"]{transition:transform .24s cubic-bezier(.2,.8,.3,1)}
+.ar-drawer-enter-from,.ar-drawer-leave-to{opacity:0}
+.ar-drawer-enter-from>[data-part="panel"],.ar-drawer-leave-to>[data-part="panel"]{transform:translateX(100%)}
+.ar-drawer-enter-from[data-placement="left"]>[data-part="panel"],.ar-drawer-leave-to[data-placement="left"]>[data-part="panel"]{transform:translateX(-100%)}
+@media (prefers-reduced-motion:reduce){.ar-drawer-enter-active,.ar-drawer-leave-active,.ar-drawer-enter-active>[data-part="panel"],.ar-drawer-leave-active>[data-part="panel"]{transition:none}}

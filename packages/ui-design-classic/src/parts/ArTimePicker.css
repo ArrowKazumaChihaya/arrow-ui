@@ -1,0 +1,15 @@
+/* @covers ArTimePicker 1.0.0 */
+/* ArTimePicker（仮：ant-design-vue 4 の TimePicker。列56・行28・選ぶと #E6F4FF） */
+[data-ar-design="classic"] [data-ar="time-picker"]{gap:6px}
+[data-ar-design="classic"] [data-ar="time-picker"]>[data-part="trigger"]{width:32px;height:var(--ar-size-control-md);border:1px solid var(--ar-color-field);border-radius:var(--ar-radius-control);background:#fff;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="time-picker"]>[data-part="trigger"]:hover:not(:disabled),[data-ar-design="classic"] [data-ar="time-picker"][data-state~="open"]>[data-part="trigger"]{border-color:var(--classic-blue);color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="time-picker"]>[data-part="trigger"]:focus-visible{outline:0;box-shadow:0 0 0 2px var(--classic-blue-ring)}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]{background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);font-size:14px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="time-picker-panel"][data-inline]{box-shadow:inset 0 0 0 1px #F0F0F0}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]{height:224px}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]{width:56px;padding:4px 0;border-left:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]:first-child{border-left:0}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]{height:28px;line-height:28px;margin:0 4px;text-align:center;border-radius:4px}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]:hover{background:rgba(0,0,0,.04)}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"][data-state~="selected"]{background:#E6F4FF}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="foot"]{padding:4px 8px;border-top:1px solid rgba(5,5,5,.06)}

@@ -1,0 +1,6 @@
+/* @covers ArChangedValue 1.0.0 */
+/* 変更前は薄い打ち消し線、矢印は mute、変更後は太字の橙（直した所が目に入る） */
+[data-ar-design="remix"] [data-ar="changed-value"]{font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="changed-value"]>[data-part="before"]{color:var(--ar-color-text-muted);text-decoration:line-through;text-decoration-color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="changed-value"]>[data-part="arrow"]{margin:0 6px;color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="changed-value"][data-state~="changed"]>[data-part="after"]{padding:1px 6px;border-radius:5px;background:var(--ar-color-warn-subtle);color:var(--ar-color-warn);font-weight:700}

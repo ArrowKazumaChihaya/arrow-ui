@@ -29,3 +29,34 @@ export function clampDate(y: number, m: number, d: number): string {
   const dd = Math.min(daysInMonth(y, mm), Math.max(1, d));
   return formatDate(y, mm, dd);
 }
+
+/** "YYYY-MM-DD" の日の通し番号（1970-01-01 からの日数）。比べる・差を出すのに使う。 */
+export function dayNumber(value: string): number {
+  const s = splitDate(value);
+  return s ? Math.round(Date.UTC(s.y, s.m - 1, s.d) / 86400000) : NaN;
+}
+
+/** 日を足す。 */
+export function addDays(value: string, days: number): string {
+  const d = new Date((dayNumber(value) + days) * 86400000);
+  return formatDate(d.getUTCFullYear(), d.getUTCMonth() + 1, d.getUTCDate());
+}
+
+/** 月を足す（日は末日に寄せる）。 */
+export function addMonths(value: string, months: number): string {
+  const s = splitDate(value)!;
+  const t = s.y * 12 + (s.m - 1) + months;
+  return clampDate(Math.floor(t / 12), (t % 12) + 1, s.d);
+}
+
+/** 今日（端末の時計の日付）。 */
+export function todayString(now = new Date()): string {
+  return formatDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
+}
+
+/** 両端を含む日数（2026-11-01〜2026-11-30 は 30）。どちらかが無い・逆なら null。 */
+export function inclusiveDays(start: string | null, end: string | null): number | null {
+  if (!start || !end) return null;
+  const n = dayNumber(end) - dayNumber(start) + 1;
+  return Number.isFinite(n) && n > 0 ? n : null;
+}

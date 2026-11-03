@@ -1,0 +1,4 @@
+/* ArAlert 1.1 の形（structure.css に足す）。 */
+[data-ar="alert"]>[data-part="icon"]{flex:none}
+[data-ar="alert"]>[data-part="action"]{display:flex;align-items:center;flex:none}
+[data-ar="alert"]>[data-part="close"]{align-items:center;justify-content:center}

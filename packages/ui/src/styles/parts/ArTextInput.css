@@ -1,0 +1,11 @@
+/* ArTextInput の構造（並び・押せる部位の形だけ） */
+[data-ar="text-input"][data-block]{display:flex;width:100%}
+[data-ar="text-input"]{cursor:text}
+[data-ar="text-input"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="text-input"]>[data-part="input"]:disabled{cursor:not-allowed}
+[data-ar="text-input"]>[data-part="input"]::-ms-reveal{display:none}
+[data-ar="text-input"]>[data-part="input"][type="search"]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+[data-ar="text-input"]>[data-part="prefix"],[data-ar="text-input"]>[data-part="suffix"],[data-ar="text-input"]>[data-part="count"]{display:inline-flex;align-items:center;flex:none;white-space:nowrap}
+[data-ar="text-input"]>[data-part="clear"],[data-ar="text-input"]>[data-part="reveal"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+[data-ar="text-input"]>[data-part="reveal"]:disabled{cursor:not-allowed}
+[data-ar="text-input"]>[data-part="addon"]{display:inline-flex;align-items:center;align-self:stretch;flex:none;white-space:nowrap;box-sizing:border-box}

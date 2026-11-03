@@ -1,0 +1,15 @@
+/* ArNotification・ArNotificationHost の形：右上に縦に並べる。残り時間の線は左から縮む。 */
+[data-ar="notification-host"]{position:fixed;right:24px;z-index:1100;display:flex;flex-direction:column;align-items:flex-end;pointer-events:none;max-width:calc(100vw - 32px)}
+[data-ar="notification-host"]>[data-ar="notification"]{pointer-events:auto}
+[data-ar="notification"]{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;box-sizing:border-box;max-width:100%;overflow:hidden}
+[data-ar="notification"]>[data-part="content"]>[data-part="title"]{display:block}
+[data-ar="notification"]>[data-part="close"]{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;cursor:pointer}
+[data-ar="notification"]>[data-part="actions"]{grid-column:2;display:flex;justify-content:flex-end;flex-wrap:wrap}
+[data-ar="notification"]>[data-part="actions"]>[data-part="action"]{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font:inherit;white-space:nowrap}
+[data-ar="notification"]>[data-part="progress"]{position:absolute;left:0;bottom:0}
+[data-ar="notification"]>[data-part="progress"][data-animated]{width:100%;animation:ar-notification-left linear forwards}
+@keyframes ar-notification-left{from{width:100%}to{width:0}}
+.ar-notification-enter-active,.ar-notification-leave-active{transition:opacity .2s,transform .2s}
+.ar-notification-enter-from,.ar-notification-leave-to{opacity:0;transform:translateX(24px)}
+@media (max-width:640px){[data-ar="notification-host"]{right:16px;left:16px;align-items:stretch}}
+@media (prefers-reduced-motion:reduce){.ar-notification-enter-active,.ar-notification-leave-active{transition:none}}

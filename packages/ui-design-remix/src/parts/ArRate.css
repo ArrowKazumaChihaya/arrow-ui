@@ -1,0 +1,10 @@
+/* @covers ArRate 1.0.0 */
+/* ArRate：.ad-rate（星 20px・間 3px）。星は黄 #F2B33D（決まった色）、空きは line。 */
+[data-ar-design="remix"] [data-ar="rate"]{gap:3px;border-radius:6px}
+[data-ar-design="remix"] [data-ar="rate"]>[data-part="star"]>svg{width:20px;height:20px;fill:currentColor;stroke:none;display:block}
+[data-ar-design="remix"] [data-ar="rate"]>[data-part="star"]>[data-part="bg"]{color:var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="rate"]>[data-part="star"]>[data-part="fg"]{color:#F2B33D}
+[data-ar-design="remix"] [data-ar="rate"]:not([data-state])>[data-part="star"]{transition:transform var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="rate"]:not([data-state])>[data-part="star"]:hover{transform:scale(1.1)}
+[data-ar-design="remix"] [data-ar="rate"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="rate"][data-state~="disabled"]{opacity:.5}

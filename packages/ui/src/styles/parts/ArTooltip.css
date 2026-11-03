@@ -1,0 +1,5 @@
+/* ArTooltip の構造：基準の包みは中身の形のまま。吹き出しの矢印は吹き出しの中に重ねる。 */
+[data-ar="tooltip"][data-part="trigger"]{display:inline-flex;max-width:100%;vertical-align:middle}
+[data-ar="tooltip"][data-part="root"]>[data-part="panel"]{position:relative;display:block;box-sizing:border-box}
+[data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{position:absolute;pointer-events:none}
+[data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"]{position:relative;display:block}

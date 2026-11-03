@@ -1,0 +1,16 @@
+/* ArSelect の構造（ネイティブの select は使わない。右の印・消すボタンは右に重ねる） */
+[data-ar="select"]{box-sizing:border-box;cursor:pointer;user-select:none;-webkit-user-select:none;outline:0}
+[data-ar="select"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="select"]>[data-part="value"],[data-ar="select"]>[data-part="placeholder"]{display:flex;align-items:center;flex:1;min-width:0;overflow:hidden;white-space:nowrap}
+[data-ar="select"]>[data-part="value"]>[data-part="value-text"]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+[data-ar="select"]>[data-part="value"]>[data-part="avatar"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="select"]>[data-part="tags"]{display:flex;flex-wrap:wrap;align-items:center;flex:1;min-width:0}
+[data-ar="select"]>[data-part="tags"]>[data-part="tag"]{display:inline-flex;align-items:center;max-width:100%;white-space:nowrap;box-sizing:border-box}
+[data-ar="select"]>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]{display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+[data-ar="select"]>[data-part="icon"]{flex:none}
+[data-ar="select"]>[data-part="arrow"],[data-ar="select"]>[data-part="clear"],[data-ar="select"]>[data-part="spinner"]{position:absolute;top:50%;transform:translateY(-50%)}
+[data-ar="select"]>[data-part="arrow"]{pointer-events:none}
+[data-ar="select"]>[data-part="clear"]{z-index:1;display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;cursor:pointer;opacity:0}
+[data-ar="select"]:hover>[data-part="clear"],[data-ar="select"]:focus-visible>[data-part="clear"],[data-ar="select"]>[data-part="clear"]:focus-visible{opacity:1}
+[data-ar="select"]:hover>[data-part="clear"]~[data-part="arrow"]{opacity:0}
+[data-ar="select"]>[data-part="spinner"]{box-sizing:border-box;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:ar-spin .8s linear infinite}

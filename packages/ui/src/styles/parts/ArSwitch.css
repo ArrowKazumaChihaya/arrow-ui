@@ -1,0 +1,7 @@
+/* ArSwitch：文字は「入」「切」を同じ升に重ね、幅は長い方に合わせる */
+[data-ar="switch"]>[data-part="track"]>[data-part="text"]{display:grid;white-space:nowrap}
+[data-ar="switch"]>[data-part="track"]>[data-part="text"]>[data-part="on"],[data-ar="switch"]>[data-part="track"]>[data-part="text"]>[data-part="off"]{grid-area:1/1}
+[data-ar="switch"][data-state~="on"]>[data-part="track"]>[data-part="text"]>[data-part="off"],[data-ar="switch"][data-state~="off"]>[data-part="track"]>[data-part="text"]>[data-part="on"]{visibility:hidden}
+[data-ar="switch"]>[data-part="track"]>[data-part="thumb"]{display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+[data-ar="switch"]>[data-part="track"]>[data-part="thumb"]>[data-part="spinner"]{display:block;box-sizing:border-box;border-radius:50%;animation:ar-spin .8s linear infinite}
+[data-ar="switch"][data-state~="loading"]{cursor:progress}

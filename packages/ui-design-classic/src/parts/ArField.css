@@ -1,12 +1,12 @@
 /* @covers ArField 1.0.0 */
-/* ArField（ant-design-vue のフォームに合わせる：必須は赤い * ） */
-[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]{font-size:14px;color:var(--ar-color-text);line-height:22px}
+/* ArField（ant-design-vue 4 の Form.Item：ラベル14px・必須は赤い *・横はラベルの後ろに「：」・間違いは下に赤い14px） */
+[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]{display:block;font-size:14px;color:rgba(0,0,0,.88);line-height:22px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="stacked"]>[data-part="label"]{padding-bottom:8px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]{column-gap:8px}
-[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{text-align:right;line-height:32px}
-[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]::after{content:"："}
-[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]:has([data-part="required"])::before{content:"*";display:inline-block;margin-right:4px;color:var(--classic-error);font-family:SimSun,sans-serif;font-size:14px;line-height:1}
+[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{text-align:right;line-height:32px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]::after{content:":";margin-inline:2px 0}
+[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]:has(>[data-part="required"])::before{content:"*";display:inline-block;margin-right:4px;color:var(--classic-error);font-family:SimSun,sans-serif;font-size:14px;line-height:1}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{font-size:14px;color:var(--ar-color-text-muted);line-height:22px}
+[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{font-size:14px;color:rgba(0,0,0,.45);line-height:22px}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{font-size:14px;color:var(--classic-error);line-height:22px}
-[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"] [data-ar="icon"]{display:none}
+[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"]>[data-ar="icon"]{display:none}

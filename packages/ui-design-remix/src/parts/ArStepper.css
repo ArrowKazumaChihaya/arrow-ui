@@ -1,0 +1,27 @@
+/* @covers ArStepper 1.0.0 */
+/* ArStepper：joined＝.stp（枠 field・角丸10・−＋は30px の #F1F4F7 の地・数は44px 600 の等幅）。
+   split＝.btn.sec.sq.sm（30px 角丸9・白に線 ln）で数（30px 700）を挟み、単位は mute 11.7px。 */
+[data-ar-design="remix"] [data-ar="stepper"]{color:var(--ar-color-text);font-size:14px}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]{height:38px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]:focus-within{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]>:is([data-part="decrement"],[data-part="increment"]){width:30px;background:#F1F4F7;color:var(--ar-color-text-secondary);transition:background-color var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]>:is([data-part="decrement"],[data-part="increment"]):hover:not(:disabled){background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]>:is([data-part="decrement"],[data-part="increment"]) [data-ar="icon"]{width:13px;height:13px;stroke-width:2.4}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]>[data-part="value"]{width:44px;font-weight:600}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]>[data-part="value"]:has(+[data-part="unit"]){width:auto;min-width:24px;padding-left:10px;text-align:right}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="joined"]>[data-part="unit"]{display:flex;align-items:center;padding:0 10px 0 2px;color:var(--ar-color-text-muted);font-size:11.67px}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="split"]{gap:4px}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="split"]>:is([data-part="decrement"],[data-part="increment"]){width:30px;height:30px;border-radius:9px;background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-border);color:var(--ar-color-text-secondary);transition:background-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="split"]>:is([data-part="decrement"],[data-part="increment"]):hover:not(:disabled){background:var(--ar-color-surface-alt);box-shadow:inset 0 0 0 1px #CBD5DF}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="split"]>[data-part="value"]{width:30px;height:30px;border-radius:7px;font-weight:700}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="split"]>[data-part="value"]:focus-visible{box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="stepper"][data-variant="split"]>[data-part="unit"]{color:var(--ar-color-text-muted);font-size:11.67px}
+[data-ar-design="remix"] [data-ar="stepper"]>:is([data-part="decrement"],[data-part="increment"]):focus-visible{outline:2px solid var(--ar-accent);outline-offset:-2px}
+[data-ar-design="remix"] [data-ar="stepper"]>:is([data-part="decrement"],[data-part="increment"]):disabled{color:#CBD5DF}
+[data-ar-design="remix"] [data-ar="stepper"][data-size="sm"][data-variant="joined"]{height:30px;border-radius:9px;font-size:13px}
+[data-ar-design="remix"] [data-ar="stepper"][data-size="sm"][data-variant="joined"]>:is([data-part="decrement"],[data-part="increment"]){width:26px}
+[data-ar-design="remix"] [data-ar="stepper"][data-size="sm"][data-variant="joined"]>[data-part="value"]{width:36px}
+[data-ar-design="remix"] [data-ar="stepper"][data-size="sm"][data-variant="split"]>:is([data-part="decrement"],[data-part="increment"]){width:26px;height:26px;border-radius:8px}
+[data-ar-design="remix"] [data-ar="stepper"][data-state~="invalid"][data-variant="joined"]{border-color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="stepper"][data-state~="disabled"]{color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="stepper"][data-state~="disabled"][data-variant="joined"]{background:#F8FAFC}

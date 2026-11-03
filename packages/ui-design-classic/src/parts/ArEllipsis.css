@@ -1,0 +1,4 @@
+/* @covers ArEllipsis 1.0.0 */
+/* 全文の吹き出しは ant-design-vue の Tooltip（rgba(0,0,0,.85)・14px・角丸6・余白 6px 8px） */
+[data-ar-design="classic"] [data-ar="ellipsis"][data-state~="cut"]:focus-visible{outline:1px solid #4096FF}
+[data-ar-design="classic"] [data-ar="ellipsis-tip"]{max-width:250px;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font-size:14px;line-height:1.5715;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}

@@ -1,0 +1,7 @@
+/* @covers ArSpin 1.0.0 */
+/* ArSpin（ant-design-vue 4 の Spin に近い輪。幕は白50%） */
+[data-ar-design="classic"] [data-ar="spin"]{gap:8px;color:var(--classic-blue);font-size:14px;line-height:1.5715}
+[data-ar-design="classic"] [data-ar="spin"]>[data-part="spinner"],[data-ar-design="classic"] [data-ar="spin"]>[data-part="mask"]>[data-part="spinner"]{width:20px;height:20px;border-width:2px;border-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="spin"][data-size="sm"]>[data-part="spinner"],[data-ar-design="classic"] [data-ar="spin"][data-size="sm"]>[data-part="mask"]>[data-part="spinner"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="spin"][data-size="lg"]>[data-part="spinner"],[data-ar-design="classic"] [data-ar="spin"][data-size="lg"]>[data-part="mask"]>[data-part="spinner"]{width:32px;height:32px;border-width:3px}
+[data-ar-design="classic"] [data-ar="spin"]>[data-part="mask"]{gap:8px;background:rgba(255,255,255,.5)}

@@ -1,0 +1,31 @@
+/* @covers ArColorPicker 1.0.0, ArColorSwatches 1.0.0 */
+/* ArColorSwatches：.sws（26px・角丸6・間6）。選んでいる色は白と ink の2重の輪。 */
+[data-ar-design="remix"] [data-ar="color-swatches"]{gap:6px}
+[data-ar-design="remix"] [data-ar="color-swatches"]>[data-part="swatch"]{width:26px;height:26px;border-radius:6px;outline:0;transition:box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-size="sm"]>[data-part="swatch"]{width:22px;height:22px;border-radius:5px}
+[data-ar-design="remix"] [data-ar="color-swatches"]>[data-part="swatch"]:hover:not([data-state~="selected"]):not(:disabled){box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-field)}
+[data-ar-design="remix"] [data-ar="color-swatches"]>[data-part="swatch"]:focus-visible{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="color-swatches"]>[data-part="swatch"][data-state~="selected"]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="color-swatches"]>[data-part="swatch"][data-state~="selected"]:focus-visible{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-text),0 0 0 7px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="color-swatches"]>[data-part="swatch"]:disabled{opacity:.45}
+/* ArColorPicker：.ad-cp（高さ34・角丸10・600 13px、色は 24px 角丸7）。パネルは .pop.ad-cpp（幅240・余白12・間10）。 */
+[data-ar-design="remix"] [data-ar="color-picker"]>[data-part="chip"]{gap:8px;height:34px;padding:0 10px 0 5px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font:600 13px var(--ar-font-family-numeric);transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="color-picker"]>[data-part="chip"]:hover:not(:disabled){border-color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="color-picker"]>[data-part="chip"]:focus-visible,[data-ar-design="remix"] [data-ar="color-picker"][data-state~="open"]>[data-part="chip"]{outline:0;border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="color-picker"]>[data-part="chip"]:disabled{background:var(--ar-color-surface-alt);color:var(--ar-color-text-faint);border-color:var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="color-picker"]>[data-part="chip"]>[data-part="swatch"]{width:24px;height:24px;border-radius:7px;box-shadow:inset 0 0 0 1px rgba(31,41,51,.1)}
+[data-ar-design="remix"] [data-ar="color-picker"]>[data-part="chip"]>[data-part="swatch"][data-empty]{background:repeating-linear-gradient(135deg,#fff 0 4px,#F0F3F6 4px 8px)!important}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]{width:240px;padding:12px;gap:10px;background:#fff;border-radius:12px;box-shadow:var(--ar-shadow-pop);font-family:var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="sv"]{height:120px;border-radius:10px;background:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,var(--ar-color-hue,var(--ar-accent)));outline:0}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="sv"]>[data-part="sv-knob"]{width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.3)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="sv"]:focus-visible>[data-part="sv-knob"],[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="hue"]:focus-visible>[data-part="hue-knob"]{box-shadow:0 0 0 1px rgba(0,0,0,.3),0 0 0 4px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="hue"]{height:10px;border-radius:5px;background:linear-gradient(to right,red,#ff0,lime,cyan,blue,#f0f,red);outline:0}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="hue"]>[data-part="hue-knob"]{top:-2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="hex"]{gap:8px}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="hex"]>[data-part="hex-label"]{font-size:11.5px;font-weight:700;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="hex"]>[data-part="hex-input"]{height:30px;padding:0 8px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text);font:600 13px var(--ar-font-family-numeric);text-transform:uppercase;outline:0}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="hex"]>[data-part="hex-input"]:focus{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="detail"]{gap:4px;height:24px;padding:0 4px;border:0;border-radius:6px;background:none;color:var(--ar-accent-ink);font:600 12px var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="detail"]:hover{background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="detail"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="detail"]>[data-ar="icon"]{width:13px;height:13px}

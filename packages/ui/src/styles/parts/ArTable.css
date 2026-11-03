@@ -1,0 +1,21 @@
+/* ArTable の構造（形・並び・動き）。色や角丸はデザインが持つ。 */
+[data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td){box-sizing:border-box;vertical-align:middle}
+[data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td)[data-col="select"],[data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td)[data-col="expand"]{text-align:center;line-height:0}
+[data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td)[data-col="actions"]{width:1%;white-space:nowrap}
+[data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]{flex:none;display:block}
+[data-ar="table"] th>[data-part="sort"]:focus-visible{outline:revert}
+[data-ar="table"] [data-part="check"]{position:relative;display:inline-flex;vertical-align:middle}
+[data-ar="table"] [data-part="check"]>[data-part="select"]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+[data-ar="table"] [data-part="check"]>[data-part="select"]:disabled{cursor:not-allowed}
+[data-ar="table"] [data-part="check"]>[data-part="check-box"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:none}
+[data-ar="table"] td>[data-part="expand-toggle"]>[data-ar="icon"]{transition:transform .15s}
+[data-ar="table"] [data-part="row"][data-state~="expanded"]>td>[data-part="expand-toggle"]>[data-ar="icon"]{transform:rotate(90deg)}
+[data-ar="table"] td>[data-part="person"]{display:inline-flex;align-items:center;min-width:0;max-width:100%;vertical-align:middle}
+[data-ar="table"] td>[data-part="person"]>[data-part="name"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="table"] td>[data-part="person"]>[data-part="name"]>*{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]{display:flex;align-items:center}
+[data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{flex:none;display:block}
+[data-ar="table"] td>[data-part="lines"]{display:inline-flex;flex-direction:column;vertical-align:middle}
+[data-ar="table"] td>[data-part="actions"]{display:inline-flex;align-items:center;justify-content:flex-end;vertical-align:middle}
+@media (prefers-reduced-motion: reduce){[data-ar="table"] td>[data-part="expand-toggle"]>[data-ar="icon"]{transition:none}}
+[data-ar="table"] tfoot [data-part="foot-label"],[data-ar="table"] tfoot [data-part="foot-value"]{display:block}

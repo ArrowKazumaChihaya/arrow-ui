@@ -1,19 +1,18 @@
-<!-- いろいろな入力 | icon・suffix・maxlength・読み取りのみ・押せない。 -->
+<!-- 基本 | 高さ38・角丸10・枠は field。フォーカスするとテーマ色の枠と淡い輪。ArField の中に置くとラベル・必須・間違いと結ばれる。 -->
 <script setup lang="ts">
-import { ArTextInput, ArGrid } from "@arrow/ui";
+import { ArTextInput, ArField, ArGrid } from "@arrow/ui";
 import { ref } from "vue";
-const q = ref("");
-const wage = ref("1200");
+const title = ref("朝礼");
 const memo = ref("");
 </script>
 
 <template>
-<ArGrid min-item="sm" :gap="3">
-  <ArTextInput v-model="q" icon="search" placeholder="名前で探す" label="名前で探す" />
-  <ArTextInput v-model="wage" suffix="円" inputmode="numeric" label="時給" />
-  <ArTextInput v-model="memo" :maxlength="20" placeholder="20文字まで" label="メモ" />
-  <ArTextInput model-value="ARR-00123" readonly label="社員番号" />
-  <ArTextInput model-value="入れられない" disabled label="押せない" />
-  <ArTextInput model-value="abc" invalid label="エラー" />
+<ArGrid min-item="md" :gap="5">
+  <ArField label="タイトル" required>
+    <template #default="f"><ArTextInput v-model="title" v-bind="f" block /></template>
+  </ArField>
+  <ArField label="メモ" help="従業員にも見えます">
+    <template #default="f"><ArTextInput v-model="memo" v-bind="f" placeholder="例：本日の売上目標を共有" block /></template>
+  </ArField>
 </ArGrid>
 </template>

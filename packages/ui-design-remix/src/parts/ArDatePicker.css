@@ -1,0 +1,34 @@
+/* @covers ArDatePicker 1.0.0 */
+/* ArDatePicker：入力欄は .dti、右にカレンダーのボタン（36×36・角丸9）。パネルは .pop.ad-calp（幅270・余白12・角丸12）。 */
+[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]{gap:6px 10px}
+[data-ar-design="remix"] [data-ar="date-picker"]:not([data-range])>[data-part="row"]{gap:6px}
+[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="separator"]{color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="days"]{font-size:12.5px;font-weight:600;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]{width:36px;height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text-muted);transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]:hover:not(:disabled){border-color:var(--ar-color-text-faint);color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]:focus-visible,[data-ar-design="remix"] [data-ar="date-picker"][data-state~="open"]>[data-part="row"]>[data-part="trigger"]{outline:0;border-color:var(--ar-accent);color:var(--ar-accent-ink);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="date-picker"][data-state~="disabled"]>[data-part="row"]>[data-part="trigger"]{background:var(--ar-color-surface-alt);border-color:var(--ar-color-border);color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="date-picker"][data-state~="invalid"]>[data-part="row"]>[data-part="trigger"]{border-color:var(--ar-color-danger)}
+/* パネル */
+[data-ar-design="remix"] [data-ar="date-picker-panel"]{width:270px;padding:12px;background:#fff;border-radius:12px;box-shadow:var(--ar-shadow-pop);font-family:var(--ar-font-family);color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]{gap:4px;margin-bottom:8px;font-size:14px;font-weight:700}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]{width:30px;height:30px;border:0;border-radius:9px;background:none;color:var(--ar-color-text-muted);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]:hover{background:#F1F4F7;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]{gap:2px;font-size:12.5px;font-weight:500}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{height:24px;line-height:24px;font-size:11.5px;font-weight:700;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-kind="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-kind="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]{height:30px;line-height:30px;border-radius:8px;background:none;color:var(--ar-color-text);font:inherit;font-family:var(--ar-font-family-numeric)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-kind="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-kind="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="outside"]{color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]:hover:not([data-state~="selected"]):not([data-state~="disabled"]){background:var(--ar-color-hover)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="today"]{box-shadow:inset 0 0 0 1px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="in-range"]{background:var(--ar-accent-subtle);border-radius:0}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="selected"]{background:var(--ar-accent);color:var(--ar-on-accent);font-weight:700;text-shadow:var(--ar-on-accent-shadow)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="disabled"]{color:var(--ar-color-text-faint);text-decoration:line-through}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]:focus-visible{outline:2px solid var(--ar-accent-ring);outline-offset:-2px}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="selected"]:focus-visible{outline-color:var(--ar-accent-strong)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="foot"]{margin-top:8px;padding-top:8px;border-top:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"][data-inline]{box-shadow:inset 0 0 0 1px var(--ar-color-border)}

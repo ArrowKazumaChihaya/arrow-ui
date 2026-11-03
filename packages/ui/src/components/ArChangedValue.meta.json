@@ -1,0 +1,7 @@
+{
+  "name": "ArChangedValue",
+  "version": "1.0.0",
+  "group": "ARROW",
+  "ja": "変更前→変更後",
+  "slug": "changed-value"
+}

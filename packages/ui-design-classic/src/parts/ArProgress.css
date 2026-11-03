@@ -1,0 +1,19 @@
+/* @covers ArProgress 1.0.0 */
+/* ArProgress（ant-design-vue 4 の Progress：線8px・地 rgba(0,0,0,.06)・進行は青、終わりは緑、失敗は赤） */
+[data-ar-design="classic"] [data-ar="progress"]{gap:8px;color:var(--ar-color-text);font-size:14px;line-height:1.5715}
+[data-ar-design="classic"] [data-ar="progress"]>[data-part="track"]{height:8px;border-radius:100px;background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="progress"]>[data-part="track"]>[data-part="bar"]{border-radius:100px;background-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="progress"][data-status="success"]>[data-part="track"]>[data-part="bar"]{background-color:#52C41A}
+[data-ar-design="classic"] [data-ar="progress"][data-status="exception"]>[data-part="track"]>[data-part="bar"]{background-color:var(--classic-error)}
+[data-ar-design="classic"] [data-ar="progress"][data-status="active"]>[data-part="track"]>[data-part="bar"]{background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);background-size:60% 100%}
+[data-ar-design="classic"] [data-ar="progress"][data-status="success"]>[data-part="info"]{color:#52C41A}
+[data-ar-design="classic"] [data-ar="progress"][data-status="exception"]>[data-part="info"]{color:var(--classic-error)}
+[data-ar-design="classic"] [data-ar="progress"][data-type="steps"]>[data-part="track"]{gap:2px;background:none;border-radius:0}
+[data-ar-design="classic"] [data-ar="progress"][data-type="steps"]>[data-part="track"]>[data-part="step"]{background:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="progress"][data-type="steps"]>[data-part="track"]>[data-part="step"][data-state="on"]{background:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="progress"][data-type="circle"]{width:120px;height:120px;font-size:24px}
+[data-ar-design="classic"] [data-ar="progress"][data-type="circle"][data-size="sm"]{width:80px;height:80px;font-size:18px}
+[data-ar-design="classic"] [data-ar="progress"][data-type="circle"]>[data-part="ring"]>[data-part="ring-track"]{stroke:rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="progress"][data-type="circle"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="progress"][data-type="circle"][data-status="success"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:#52C41A}
+[data-ar-design="classic"] [data-ar="progress"][data-type="circle"][data-status="exception"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:var(--classic-error)}

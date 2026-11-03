@@ -1,0 +1,8 @@
+/* @covers ArMessage 1.0.0 */
+/* 上の真ん中に短く出る白い札（.ad-msg）。印は意味の色、info はテーマ色。 */
+[data-ar-design="remix"] [data-ar="message"]{gap:8px;padding:9px 14px;border-radius:var(--ar-radius-control);background:var(--ar-color-surface);box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font-size:var(--ar-font-size-body);line-height:1.5;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="message"]>[data-part="icon"]{color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="message"][data-tone="ok"]>[data-part="icon"]{color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="message"][data-tone="warn"]>[data-part="icon"]{color:#E39A2D}
+[data-ar-design="remix"] [data-ar="message"][data-tone="danger"]>[data-part="icon"]{color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="message"]>[data-part="spinner"]{width:16px;height:16px;border-width:2px;color:var(--ar-accent);border-color:currentColor}

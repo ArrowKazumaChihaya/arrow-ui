@@ -1,0 +1,12 @@
+/* @covers ArTooltip 1.0.0 */
+/* ArTooltip：デザインシステムの .ad-tip（ink の地・白い 12.5px 中太・角丸8・余白 6/10・幅240まで）と .ad-arr（10px の四角を45度）。 */
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]{max-width:240px;padding:6px 10px;border-radius:8px;background:var(--ar-color-text);color:#fff;font:500 12.5px/1.5 var(--ar-font-family);animation:ar-tooltip-in .12s ease-out}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"][data-tone="accent"]{background:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{width:10px;height:10px;background:inherit;transform:rotate(45deg)}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]:is([data-placement^="top"],[data-placement^="bottom"])>[data-part="panel"]>[data-part="arrow"]{left:clamp(8px,calc(var(--ar-float-arrow,24px) - 5px),calc(100% - 18px))}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]:is([data-placement^="left"],[data-placement^="right"])>[data-part="panel"]>[data-part="arrow"]{top:clamp(6px,calc(var(--ar-float-arrow,16px) - 5px),calc(100% - 16px))}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="top"]>[data-part="panel"]>[data-part="arrow"]{bottom:-5px}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-5px}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5px}
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5px}
+@keyframes ar-tooltip-in{from{opacity:0}to{opacity:1}}

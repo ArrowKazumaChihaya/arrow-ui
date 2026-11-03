@@ -1,0 +1,10 @@
+/* ArPopconfirm の形：きっかけはそのまま、問いの札は ArFloat で浮かべ、矢印をきっかけの中央に向ける。 */
+[data-ar="popconfirm-trigger"]{display:inline-flex;vertical-align:middle}
+[data-ar="popconfirm"]{position:fixed}
+[data-ar="popconfirm"]>[data-part="arrow"]{position:absolute;transform:rotate(45deg);left:calc(var(--ar-float-arrow, 29px) - 5px)}
+[data-ar="popconfirm"][data-placement^="top"]>[data-part="arrow"]{bottom:-5px}
+[data-ar="popconfirm"][data-placement^="bottom"]>[data-part="arrow"]{top:-5px}
+[data-ar="popconfirm"][data-placement^="left"]>[data-part="arrow"],[data-ar="popconfirm"][data-placement^="right"]>[data-part="arrow"]{display:none}
+[data-ar="popconfirm"]>[data-part="question"]{display:flex;align-items:flex-start}
+[data-ar="popconfirm"]>[data-part="question"]>[data-part="icon"]{flex:none}
+[data-ar="popconfirm"]>[data-part="footer"]{display:flex;justify-content:flex-end;flex-wrap:wrap}

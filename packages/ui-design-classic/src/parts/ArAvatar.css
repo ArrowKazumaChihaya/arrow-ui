@@ -1,0 +1,16 @@
+/* @covers ArAvatar 1.0.0, ArAvatarGroup 1.0.0 */
+/* ArAvatar（ant-design-vue の Avatar：32・丸・灰色の地に白い文字）。仮：本番の参照ができたら合わせる */
+[data-ar-design="classic"] [data-ar="avatar"]{width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-size:14px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="xs"]{width:24px;height:24px;font-size:12px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="sm"]{width:24px;height:24px;font-size:12px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="lg"]{width:40px;height:40px;font-size:18px}
+[data-ar-design="classic"] [data-ar="avatar"][data-size="xl"]{width:64px;height:64px;font-size:24px}
+[data-ar-design="classic"] [data-ar="avatar"][data-shape="square"]{border-radius:6px}
+[data-ar-design="classic"] [data-ar="avatar"]>[data-part="icon"]{width:16px;height:16px}
+[data-ar-design="classic"] [data-ar="avatar"]:is([data-tone="accent"],[data-tone="blue"],[data-tone="orange"],[data-tone="green"],[data-tone="purple"],[data-tone="yellow"]){background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="ok"]{background:#52C41A}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="warn"]{background:#FAAD14}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="danger"]{background:#FF4D4F}
+[data-ar-design="classic"] [data-ar="avatar"][data-tone="event"]{background:#722ED1}
+[data-ar-design="classic"] [data-ar="avatar-group"]>[data-ar="avatar"]{border:1px solid #fff}
+[data-ar-design="classic"] [data-ar="avatar-group"]>[data-ar="avatar"]+[data-ar="avatar"]{margin-left:-8px}

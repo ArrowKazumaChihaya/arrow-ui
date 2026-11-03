@@ -1,0 +1,4 @@
+/* @covers ArChangedValue 1.0.0 */
+/* 今の ChangedValue：変わったときは「前 → 後」をまとめて #C53030 の 600 */
+[data-ar-design="classic"] [data-ar="changed-value"][data-state~="changed"]{color:#C53030;font-weight:600}
+[data-ar-design="classic"] [data-ar="changed-value"]>[data-part="arrow"]{margin:0 .25em}

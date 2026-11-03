@@ -1,0 +1,8 @@
+/* ArInputNumber の構造 */
+[data-ar="input-number"]{display:inline-flex;align-items:stretch;box-sizing:border-box;overflow:hidden;vertical-align:middle;min-width:0;cursor:text}
+[data-ar="input-number"][data-block]{display:flex;width:100%}
+[data-ar="input-number"]>[data-part="input"]{flex:1 1 70px;width:70px;min-width:0;margin:0;border:0;outline:0;background:transparent;font:inherit;color:inherit;font-variant-numeric:tabular-nums;box-sizing:border-box}
+[data-ar="input-number"]>[data-part="prefix"],[data-ar="input-number"]>[data-part="suffix"]{display:flex;align-items:center;flex:none;white-space:nowrap}
+[data-ar="input-number"]>[data-part="steps"]{display:flex;flex-direction:column;flex:none}
+[data-ar="input-number"]>[data-part="steps"]>button{flex:1;display:flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;cursor:pointer;line-height:1;touch-action:none}
+[data-ar="input-number"]>[data-part="steps"]>button:disabled{cursor:not-allowed}

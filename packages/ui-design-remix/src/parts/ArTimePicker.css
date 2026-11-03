@@ -1,0 +1,19 @@
+/* @covers ArTimePicker 1.0.0 */
+/* ArTimePicker：入力欄は .tin、右に時計のボタン。パネルは .ad-tp（列 56px・高さ196・行28・角丸12）。 */
+[data-ar-design="remix"] [data-ar="time-picker"]{gap:6px}
+[data-ar-design="remix"] [data-ar="time-picker"]>[data-part="trigger"]{width:36px;height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text-muted);transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="time-picker"][data-size="sm"]>[data-part="trigger"]{width:32px;height:32px}
+[data-ar-design="remix"] [data-ar="time-picker"][data-size="lg"]>[data-part="trigger"]{width:40px;height:40px}
+[data-ar-design="remix"] [data-ar="time-picker"]>[data-part="trigger"]:hover:not(:disabled){border-color:var(--ar-color-text-faint);color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="time-picker"]>[data-part="trigger"]:focus-visible,[data-ar-design="remix"] [data-ar="time-picker"][data-state~="open"]>[data-part="trigger"]{outline:0;border-color:var(--ar-accent);color:var(--ar-accent-ink);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="time-picker"][data-state~="disabled"]>[data-part="trigger"]{background:#F4F6F9;border-color:var(--ar-color-border);color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]{background:#fff;border-radius:12px;box-shadow:var(--ar-shadow-pop);font-family:var(--ar-font-family);color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"][data-inline]{box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]{height:196px}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]{width:56px;padding:4px;gap:2px;border-right:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]:last-child{border-right:0}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]{height:28px;line-height:28px;text-align:center;border-radius:7px;font:500 13px var(--ar-font-family-numeric)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]:hover:not([data-state~="selected"]){background:var(--ar-color-hover)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"][data-state~="selected"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="foot"]{padding:8px;border-top:1px solid var(--ar-color-border-subtle)}

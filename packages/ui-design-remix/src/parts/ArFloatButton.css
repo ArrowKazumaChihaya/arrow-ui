@@ -1,0 +1,14 @@
+/* @covers ArFloatButton 1.0.0 */
+/* ArFloatButton：.ad-fab（46pxの丸・白・sh-pop）、主なものはテーマ色。件数は赤の丸。グループは縦につないだ白い帯。 */
+[data-ar-design="remix"] [data-ar="float-button"]:not([data-shape="group"]){width:46px;height:46px;border-radius:50%;background:#fff;color:var(--ar-color-text-secondary);box-shadow:var(--ar-shadow-pop);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="float-button"]:not([data-shape="group"]):hover{background:var(--ar-color-hover);color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="float-button"][data-tone="primary"]{background:var(--ar-accent);color:var(--ar-on-accent)}
+[data-ar-design="remix"] [data-ar="float-button"][data-tone="primary"]:hover{background:var(--ar-accent-strong);color:var(--ar-on-accent)}
+[data-ar-design="remix"] [data-ar="float-button"]:not([data-shape="group"]):focus-visible{outline:0;box-shadow:var(--ar-shadow-pop),0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]{border-radius:23px;background:#fff;box-shadow:var(--ar-shadow-pop)}
+[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]{width:46px;height:44px;background:none;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]+[data-part="item"]{border-top:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]:hover{background:var(--ar-color-hover);color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="float-button"]>[data-part="badge"]{top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-color-danger);color:#fff;font-size:11px;font-weight:700;line-height:18px;box-shadow:0 0 0 2px #fff}
+[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]>[data-part="badge"]{top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--ar-color-danger);color:#fff;font-size:10px;font-weight:700;line-height:16px;box-shadow:0 0 0 2px #fff}

@@ -1,0 +1,10 @@
+/* 年・年月・月日の入力の構造（並び・プルダウンの開き方）。見た目はデザイン。 */
+[data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"]{display:inline-flex;align-items:center;flex-wrap:nowrap;white-space:nowrap;vertical-align:middle}
+[data-ar="year-input"]>[data-part="year"],[data-ar="year-month-input"]>[data-part="year"]{position:relative;display:inline-flex;align-items:center;margin:0;cursor:pointer;box-sizing:border-box;text-align:left;font:inherit}
+[data-ar="year-input"]>[data-part="year"]:disabled,[data-ar="year-month-input"]>[data-part="year"]:disabled{cursor:not-allowed}
+[data-ar="year-input"]>[data-part="year"]>[data-part="value"],[data-ar="year-month-input"]>[data-part="year"]>[data-part="value"]{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+[data-ar="year-input"]>[data-part="year"]>[data-part="arrow"],[data-ar="year-month-input"]>[data-part="year"]>[data-part="arrow"]{position:absolute;top:50%;transform:translateY(-50%);pointer-events:none}
+[data-ar="year-month-input"]>input,[data-ar="month-day-input"]>input{margin:0;box-sizing:border-box;min-width:0}
+[data-ar="year-list"]{overflow-y:auto;overscroll-behavior:contain}
+[data-ar="year-list"]>[data-part="option"]{display:flex;align-items:center;cursor:pointer;white-space:nowrap;user-select:none}
+[data-ar="year-list"]>[data-part="option"]>[data-part="check"]{margin-left:auto}

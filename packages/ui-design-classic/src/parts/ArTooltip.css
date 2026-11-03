@@ -1,0 +1,11 @@
+/* @covers ArTooltip 1.0.0 */
+/* 仮：ant-design-vue 4 の Tooltip の既定（地 rgba(0,0,0,.85)・白い 14px・角丸6・余白 6/8・最小の高さ32・幅250まで・矢印8px）。参照ができたら合わせ直す。 */
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]{max-width:250px;min-width:32px;min-height:32px;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font-size:14px;line-height:1.5714;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"][data-tone="accent"]{background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{width:8px;height:8px;background:inherit;transform:rotate(45deg)}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]:is([data-placement^="top"],[data-placement^="bottom"])>[data-part="panel"]>[data-part="arrow"]{left:clamp(8px,calc(var(--ar-float-arrow,16px) - 4px),calc(100% - 16px))}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]:is([data-placement^="left"],[data-placement^="right"])>[data-part="panel"]>[data-part="arrow"]{top:clamp(6px,calc(var(--ar-float-arrow,16px) - 4px),calc(100% - 14px))}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"][data-placement^="top"]>[data-part="panel"]>[data-part="arrow"]{bottom:-4px}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-4px}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-4px}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-4px}

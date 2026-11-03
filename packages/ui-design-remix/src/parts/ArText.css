@@ -1,0 +1,22 @@
+/* @covers ArText 1.0.0 */
+/* ArText：Text type は意味の色。mark・code・kbd・del・underline・strong。copyable はテーマ色のコピーアイコン。 */
+[data-ar-design="remix"] [data-ar="text"]{font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="text"][data-size="sm"]{font-size:12.5px}
+[data-ar-design="remix"] [data-ar="text"][data-size="md"]{font-size:13.5px}
+[data-ar-design="remix"] [data-ar="text"][data-type="secondary"]{color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="text"][data-type="muted"]{color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="text"][data-type="success"]{color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="text"][data-type="warning"]{color:var(--ar-color-warn)}
+[data-ar-design="remix"] [data-ar="text"][data-type="danger"]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="text"][data-type="disabled"]{color:var(--ar-color-text-faint);cursor:not-allowed}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="content"][data-strong]{font-weight:700}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="content"][data-underline]{text-decoration:underline}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="content"][data-del]{text-decoration:line-through}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="content"][data-underline][data-del]{text-decoration:underline line-through}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="content"][data-mark]{background:#FFF3B0;color:inherit;padding:0 2px;border-radius:3px}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="content"][data-code]{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--ar-color-surface-alt);border:1px solid var(--ar-color-border);border-radius:6px;padding:1px 6px}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="content"][data-kbd]{font:600 11.5px var(--ar-font-family);color:var(--ar-color-text-secondary);background:#fff;border:1px solid var(--ar-color-field);border-bottom-width:2px;border-radius:5px;padding:1px 6px}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="copy"]{margin-left:4px;color:var(--ar-accent-ink);border-radius:4px}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="copy"]:hover{color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="copy"][data-state~="copied"]{color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="text"]>[data-part="copy"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}

@@ -1,0 +1,24 @@
+/* @covers ArThumbnail 1.0.0 */
+/* 顔写真：四角は角丸14・丸、写真がないときは淡い灰の面に人の形。カメラは右下の白い丸（32）にテーマ色の線 */
+[data-ar-design="remix"] [data-ar="thumbnail"]>:is([data-part="image"],[data-part="silhouette"]){border-radius:14px;box-shadow:inset 0 0 0 1px rgba(31,41,51,.06)}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="image"]{border:1px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="thumbnail"][data-shape="circle"]>:is([data-part="image"],[data-part="silhouette"]){border-radius:50%}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="silhouette"]{background:#E8EEF4;color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="silhouette"]>[data-ar="icon"]{stroke-width:1.4}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="camera"]{right:-4px;bottom:-4px;width:32px;height:32px;border:0;border-radius:50%;background:#fff;color:var(--ar-accent-ink);box-shadow:0 2px 8px rgba(31,41,51,.16),0 0 0 1px rgba(31,41,51,.06);transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="thumbnail"][data-shape="circle"]>[data-part="camera"]{right:0;bottom:0}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="camera"]:hover{background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="camera"]:focus-visible{outline:0;box-shadow:0 0 0 1px var(--ar-accent),0 0 0 4px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="camera"]>[data-part="camera-icon"]{width:17px;height:17px}
+/* 切り抜きのポップアップ */
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]{gap:14px}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="hint"]{align-self:stretch;padding:10px 12px;border-radius:10px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12.5px;line-height:1.7}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]{border-radius:12px;background:#F3F6F9;outline:0}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="empty"]{border:1.5px dashed var(--ar-accent-line);background:var(--ar-accent-faint);transition:background var(--ar-motion-fast),border-color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="empty"]:hover,[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="drag-over"]{background:var(--ar-accent-subtle);border-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]:focus-visible{box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="empty"]{gap:8px;color:var(--ar-accent-ink);font-size:13px;font-weight:700}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="empty"]>[data-ar="icon"]{width:26px;height:26px}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="mask"]{border-radius:12px;box-shadow:inset 0 0 0 1.5px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-shape="circle"]>[data-part="mask"]{border-radius:50%;box-shadow:0 0 0 999px rgba(31,41,51,.42),inset 0 0 0 1.5px #fff}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="tools"]{gap:6px}

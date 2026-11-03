@@ -1,0 +1,9 @@
+/* ArToast の形：画面の下の真ん中。 */
+[data-ar="toast"]{position:fixed;left:50%;transform:translateX(-50%);z-index:1090;display:flex;align-items:center;box-sizing:border-box;max-width:calc(100vw - 32px)}
+[data-ar="toast"][data-contained]{position:absolute}
+[data-ar="toast"]>[data-part="icon"]{flex:none}
+[data-ar="toast"]>[data-part="text"]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+[data-ar="toast"]>[data-part="undo"],[data-ar="toast"]>[data-part="close"]{flex:none;cursor:pointer;margin:0}
+.ar-toast-enter-active,.ar-toast-leave-active{transition:opacity .2s,transform .2s}
+.ar-toast-enter-from,.ar-toast-leave-to{opacity:0;transform:translate(-50%,8px)}
+@media (prefers-reduced-motion:reduce){.ar-toast-enter-active,.ar-toast-leave-active{transition:none}}

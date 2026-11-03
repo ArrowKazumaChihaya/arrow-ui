@@ -1,4 +1,4 @@
-/* @covers ArTimeInput 1.0.0 */
+/* @covers ArTimeInput 1.0.0, ArTimeRange 1.0.0 */
 /* ArTimeInput（今は「時：分」の小さな箱と、左の「前／当」の文字） */
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="input"]{width:56px;padding:0 4px;text-align:center;font-size:14px;color:var(--ar-color-text)}
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="input"]::placeholder{color:rgba(0,0,0,.25)}
@@ -9,3 +9,10 @@
 [data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]>[data-part="input"]{width:48px;font-size:12px}
 [data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]{height:var(--ar-size-control-lg);border-radius:8px}
 [data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]>[data-part="input"]{width:64px;font-size:16px}
+[data-ar-design="classic"] [data-ar="time-input"][data-state~="note"]{border-style:dashed}
+[data-ar-design="classic"] [data-ar="time-input"]>[data-part="note"]{padding:0 8px;font-size:12px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="time-input"][data-block]>[data-part="input"]{width:auto}
+/* ArTimeRange（仮） */
+[data-ar-design="classic"] [data-ar="time-range"]>[data-part="row"]{gap:6px}
+[data-ar-design="classic"] [data-ar="time-range"]>[data-part="row"]>[data-part="separator"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="time-range"]>[data-part="error"]{gap:4px;margin-top:4px;font-size:14px;color:var(--classic-error)}

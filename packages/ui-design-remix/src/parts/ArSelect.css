@@ -1,10 +1,43 @@
 /* @covers ArSelect 1.0.0 */
-[data-ar-design="remix"] [data-ar="select"]>[data-part="select"]{height:var(--ar-size-control-md);padding:0 34px 0 12px;border:1px solid var(--ar-color-field);border-radius:var(--ar-radius-control);background:var(--ar-color-surface);color:var(--ar-color-text);font-size:13.5px;font-weight:600;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="select"]>[data-part="select"]:hover{border-color:var(--ar-color-text-faint)}
-[data-ar-design="remix"] [data-ar="select"]>[data-part="select"]:focus{outline:0;border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="select"]>[data-part="arrow"]{right:11px;color:var(--ar-color-text-muted)}
-[data-ar-design="remix"] [data-ar="select"][data-state~="empty"]>[data-part="select"]{color:var(--ar-color-text-faint);font-weight:400}
-[data-ar-design="remix"] [data-ar="select"][data-size="sm"]>[data-part="select"]{height:var(--ar-size-control-sm);font-size:12.5px;border-radius:9px}
-[data-ar-design="remix"] [data-ar="select"][data-size="lg"]>[data-part="select"]{height:44px;font-size:15px;border-radius:11px}
-[data-ar-design="remix"] [data-ar="select"][data-state~="invalid"]>[data-part="select"]{border-color:var(--ar-color-danger)}
-[data-ar-design="remix"] [data-ar="select"][data-state~="disabled"]>[data-part="select"]{background:var(--ar-color-surface-alt);color:var(--ar-color-text-faint);cursor:not-allowed}
+/* ArSelect：field＝入力と同じ枠（.inp・右に下向きの印）、selbox＝店舗の選択（.selbox）。プルダウンは _picker.css。 */
+[data-ar-design="remix"] [data-ar="select"]{height:38px;gap:8px;padding:0 34px 0 12px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font-size:14px;font-weight:500;line-height:normal;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="select"]:hover{border-color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="select"]:is(:focus,[data-state~="open"]){border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="placeholder"]{color:#7B8794}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="value"]{gap:8px}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="value"]>[data-part="avatar"]{width:24px;height:24px;border-radius:50%;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:11px;font-weight:700}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="icon"]{color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="arrow"]{right:9px;width:16px;height:16px;stroke-width:2;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="clear"]{right:9px;width:18px;height:18px;border-radius:50%;background:#fff;color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="clear"]:hover{color:var(--ar-color-text-secondary);background:var(--ar-color-hover)}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="clear"] [data-ar="icon"]{width:13px;height:13px}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="spinner"]{right:11px;width:14px;height:14px;color:var(--ar-accent)}
+/* 複数（.ad-tsel ＋ .ad-chip） */
+[data-ar-design="remix"] [data-ar="select"][data-multiple]{height:auto;min-height:38px;padding:5px 34px 5px 5px}
+[data-ar-design="remix"] [data-ar="select"][data-multiple]>[data-part="placeholder"]{padding-left:7px}
+[data-ar-design="remix"] [data-ar="select"][data-multiple]>[data-part="icon"]{margin-left:7px}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="tags"]{gap:4px}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="tags"]>[data-part="tag"]{gap:4px;height:26px;padding:0 4px 0 9px;border-radius:7px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12.5px;font-weight:600}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="tags"]>[data-part="tag"][data-kind="more"]{padding:0 7px}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]{opacity:.7;border-radius:4px}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]:hover{opacity:1}
+/* 店舗の選択（.selbox） */
+[data-ar-design="remix"] [data-ar="select"][data-variant="selbox"]{min-width:180px;padding:0 33px 0 11px;border-color:var(--ar-color-border);border-radius:11px;font-size:13.5px;font-weight:600}
+[data-ar-design="remix"] [data-ar="select"][data-variant="selbox"]:hover{border-color:#C9D3DD}
+[data-ar-design="remix"] [data-ar="select"][data-variant="selbox"]:is(:focus,[data-state~="open"]){border-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="select"][data-variant="selbox"]>[data-part="icon"]{color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="select"][data-variant="selbox"]>[data-part="arrow"]{right:10px;width:15px;height:15px;stroke-width:1.8}
+[data-ar-design="remix"] [data-ar="select"][data-variant="selbox"]>[data-part="placeholder"]{font-weight:500}
+/* 大きさ */
+[data-ar-design="remix"] [data-ar="select"][data-size="sm"]{height:30px;min-height:30px;font-size:13px;border-radius:9px;padding-left:10px}
+[data-ar-design="remix"] [data-ar="select"][data-size="sm"][data-multiple]{height:auto;padding:3px 34px 3px 3px}
+[data-ar-design="remix"] [data-ar="select"][data-size="sm"]>[data-part="tags"]>[data-part="tag"]{height:22px;border-radius:6px;font-size:12px}
+[data-ar-design="remix"] [data-ar="select"][data-size="lg"]{height:44px;min-height:44px;font-size:15px;border-radius:11px}
+[data-ar-design="remix"] [data-ar="select"][data-size="lg"][data-multiple]{height:auto;padding:7px 34px 7px 7px}
+/* 状態 */
+[data-ar-design="remix"] [data-ar="select"][data-state~="invalid"]{border-color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="select"][data-state~="invalid"]:is(:focus,[data-state~="open"]){box-shadow:0 0 0 3px rgba(192,50,43,.16)}
+[data-ar-design="remix"] [data-ar="select"][data-state~="disabled"]{background:#F8FAFC;border-color:var(--ar-color-field);color:#A3AEB9;box-shadow:none}
+[data-ar-design="remix"] [data-ar="select"][data-variant="selbox"][data-state~="disabled"]{border-color:var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="select"][data-state~="disabled"]>:is([data-part="icon"],[data-part="arrow"],[data-part="placeholder"]){color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="select"][data-state~="disabled"]>[data-part="tags"]>[data-part="tag"]{background:var(--ar-color-border-subtle);color:#A3AEB9}

@@ -1,0 +1,13 @@
+/* @covers ArDrawer 1.0.0 */
+/* 右から出る板（.ad-drw）：幕は ink の42%、頭は白（下に line-2）、足は bg-2。 */
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="scrim"]{background:var(--ar-color-overlay)}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]{background:var(--ar-color-surface);color:var(--ar-color-text);box-shadow:-12px 0 40px rgba(31,41,51,.2);font-size:14px;line-height:1.5;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="drawer"][data-placement="left"]>[data-part="panel"]{box-shadow:12px 0 40px rgba(31,41,51,.2)}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]{gap:8px;padding:14px 16px;border-bottom:1px solid var(--ar-color-border-subtle);font-size:15px;font-weight:var(--ar-font-weight-strong)}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="title"]{font-size:15px;font-weight:var(--ar-font-weight-strong);line-height:1.5}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="extra"]{gap:6px}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{width:30px;height:30px;padding:0;border:0;border-radius:9px;background:none;color:var(--ar-color-text-muted);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]:hover{background:#F1F4F7;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="body"]{display:flex;flex-direction:column;gap:12px;padding:14px 16px}
+[data-ar-design="remix"] [data-ar="drawer"]>[data-part="panel"]>[data-part="footer"]{gap:8px;padding:10px 16px;border-top:1px solid var(--ar-color-border-subtle);background:var(--ar-color-surface-alt)}

@@ -1,0 +1,18 @@
+/* @covers ArColorPicker 1.0.0, ArColorSwatches 1.0.0 */
+/* ArColorSwatches・ArColorPicker（仮：ant-design-vue 4 の ColorPicker。色の四角は角丸4、選ぶと主色の輪） */
+[data-ar-design="classic"] [data-ar="color-swatches"]{gap:8px}
+[data-ar-design="classic"] [data-ar="color-swatches"]>[data-part="swatch"]{width:24px;height:24px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="color-swatches"][data-size="sm"]>[data-part="swatch"]{width:20px;height:20px}
+[data-ar-design="classic"] [data-ar="color-swatches"]>[data-part="swatch"][data-state~="selected"]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="color-swatches"]>[data-part="swatch"]:focus-visible{outline:2px solid #91CAFF;outline-offset:2px}
+[data-ar-design="classic"] [data-ar="color-picker"]>[data-part="chip"]{gap:8px;height:32px;padding:0 11px 0 3px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px}
+[data-ar-design="classic"] [data-ar="color-picker"]>[data-part="chip"]:hover:not(:disabled),[data-ar-design="classic"] [data-ar="color-picker"][data-state~="open"]>[data-part="chip"]{border-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="color-picker"]>[data-part="chip"]>[data-part="swatch"]{width:24px;height:24px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]{width:234px;padding:12px;gap:12px;background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="sv"]{height:160px;border-radius:4px;background:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,var(--ar-color-hue,#1677FF))}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="sv"]>[data-part="sv-knob"]{width:16px;height:16px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 1px rgba(0,0,0,.3)}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hue"]{height:8px;border-radius:4px;background:linear-gradient(to right,red,#ff0,lime,cyan,blue,#f0f,red)}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hue"]>[data-part="hue-knob"]{top:-4px;width:16px;height:16px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 1px rgba(0,0,0,.3)}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hex"]{gap:6px;font-size:12px}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hex"]>[data-part="hex-input"]{height:24px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;font-size:12px}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="detail"]{gap:4px;padding:0;border:0;background:none;color:var(--classic-blue);font-size:12px}

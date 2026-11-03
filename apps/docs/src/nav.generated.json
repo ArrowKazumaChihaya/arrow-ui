@@ -23,6 +23,11 @@
         "ja": "横に並べる"
       },
       {
+        "slug": "divider",
+        "name": "ArDivider",
+        "ja": "区切り線"
+      },
+      {
         "slug": "grid",
         "name": "ArGrid",
         "ja": "格子に並べる"
@@ -48,9 +53,39 @@
         "ja": "ボタン"
       },
       {
+        "slug": "float-button",
+        "name": "ArFloatButton",
+        "ja": "浮かぶボタン"
+      },
+      {
         "slug": "icon",
         "name": "ArIcon",
         "ja": "アイコン"
+      },
+      {
+        "slug": "link",
+        "name": "ArLink",
+        "ja": "リンク"
+      },
+      {
+        "slug": "paragraph",
+        "name": "ArParagraph",
+        "ja": "段落"
+      },
+      {
+        "slug": "segmented",
+        "name": "ArSegmented",
+        "ja": "切り替え（セグメント）"
+      },
+      {
+        "slug": "text",
+        "name": "ArText",
+        "ja": "文字"
+      },
+      {
+        "slug": "title",
+        "name": "ArTitle",
+        "ja": "見出し"
       }
     ]
   },
@@ -73,9 +108,34 @@
         "ja": "チェック"
       },
       {
+        "slug": "checkbox-group",
+        "name": "ArCheckboxGroup",
+        "ja": "チェックのまとまり"
+      },
+      {
+        "slug": "color-picker",
+        "name": "ArColorPicker",
+        "ja": "色の選択"
+      },
+      {
+        "slug": "color-swatches",
+        "name": "ArColorSwatches",
+        "ja": "色の丸"
+      },
+      {
         "slug": "date-input",
         "name": "ArDateInput",
         "ja": "日付の入力"
+      },
+      {
+        "slug": "date-picker",
+        "name": "ArDatePicker",
+        "ja": "日付の選択"
+      },
+      {
+        "slug": "date-range",
+        "name": "ArDateRange",
+        "ja": "日付の範囲"
       },
       {
         "slug": "field",
@@ -83,9 +143,24 @@
         "ja": "入力の項目"
       },
       {
+        "slug": "input-number",
+        "name": "ArInputNumber",
+        "ja": "数の入力"
+      },
+      {
+        "slug": "pills",
+        "name": "ArPills",
+        "ja": "選ぶ札"
+      },
+      {
         "slug": "radio-group",
         "name": "ArRadioGroup",
         "ja": "ラジオ"
+      },
+      {
+        "slug": "rate",
+        "name": "ArRate",
+        "ja": "評価"
       },
       {
         "slug": "select",
@@ -93,9 +168,24 @@
         "ja": "セレクト"
       },
       {
+        "slug": "slider",
+        "name": "ArSlider",
+        "ja": "スライダー"
+      },
+      {
+        "slug": "stepper",
+        "name": "ArStepper",
+        "ja": "数の増減"
+      },
+      {
         "slug": "switch",
         "name": "ArSwitch",
         "ja": "スイッチ"
+      },
+      {
+        "slug": "textarea",
+        "name": "ArTextarea",
+        "ja": "複数行の入力"
       },
       {
         "slug": "text-input",
@@ -106,6 +196,31 @@
         "slug": "time-input",
         "name": "ArTimeInput",
         "ja": "時刻の入力"
+      },
+      {
+        "slug": "time-picker",
+        "name": "ArTimePicker",
+        "ja": "時刻の選択"
+      },
+      {
+        "slug": "time-range",
+        "name": "ArTimeRange",
+        "ja": "時刻の範囲"
+      },
+      {
+        "slug": "transfer",
+        "name": "ArTransfer",
+        "ja": "トランスファー"
+      },
+      {
+        "slug": "upload",
+        "name": "ArUpload",
+        "ja": "アップロード"
+      },
+      {
+        "slug": "weekday-picker",
+        "name": "ArWeekdayPicker",
+        "ja": "曜日の選択"
       }
     ]
   },
@@ -113,9 +228,44 @@
     "title": "表示",
     "items": [
       {
+        "slug": "avatar",
+        "name": "ArAvatar",
+        "ja": "アバター（頭文字の丸）"
+      },
+      {
+        "slug": "avatar-group",
+        "name": "ArAvatarGroup",
+        "ja": "アバターを重ねる"
+      },
+      {
+        "slug": "calendar",
+        "name": "ArCalendar",
+        "ja": "カレンダー"
+      },
+      {
         "slug": "card",
         "name": "ArCard",
         "ja": "カード"
+      },
+      {
+        "slug": "carousel",
+        "name": "ArCarousel",
+        "ja": "カルーセル"
+      },
+      {
+        "slug": "empty",
+        "name": "ArEmpty",
+        "ja": "空の状態"
+      },
+      {
+        "slug": "image",
+        "name": "ArImage",
+        "ja": "画像"
+      },
+      {
+        "slug": "popover",
+        "name": "ArPopover",
+        "ja": "ポップオーバー"
       },
       {
         "slug": "table",
@@ -126,6 +276,11 @@
         "slug": "tag",
         "name": "ArTag",
         "ja": "札（タグ）"
+      },
+      {
+        "slug": "tooltip",
+        "name": "ArTooltip",
+        "ja": "ツールチップ"
       }
     ]
   },
@@ -138,9 +293,154 @@
         "ja": "お知らせ"
       },
       {
+        "slug": "border-beam",
+        "name": "ArBorderBeam",
+        "ja": "ボーダービーム"
+      },
+      {
+        "slug": "drawer",
+        "name": "ArDrawer",
+        "ja": "ドロワー"
+      },
+      {
+        "slug": "message",
+        "name": "ArMessage",
+        "ja": "メッセージ"
+      },
+      {
+        "slug": "message-host",
+        "name": "ArMessageHost",
+        "ja": "メッセージの入れ物"
+      },
+      {
         "slug": "modal",
         "name": "ArModal",
         "ja": "ポップアップ"
+      },
+      {
+        "slug": "notification",
+        "name": "ArNotification",
+        "ja": "通知"
+      },
+      {
+        "slug": "notification-host",
+        "name": "ArNotificationHost",
+        "ja": "通知の入れ物"
+      },
+      {
+        "slug": "popconfirm",
+        "name": "ArPopconfirm",
+        "ja": "その場の確認"
+      },
+      {
+        "slug": "progress",
+        "name": "ArProgress",
+        "ja": "プログレス"
+      },
+      {
+        "slug": "result",
+        "name": "ArResult",
+        "ja": "結果"
+      },
+      {
+        "slug": "skeleton",
+        "name": "ArSkeleton",
+        "ja": "スケルトン"
+      },
+      {
+        "slug": "spin",
+        "name": "ArSpin",
+        "ja": "スピン"
+      },
+      {
+        "slug": "toast",
+        "name": "ArToast",
+        "ja": "トースト"
+      },
+      {
+        "slug": "watermark",
+        "name": "ArWatermark",
+        "ja": "透かし"
+      }
+    ]
+  },
+  {
+    "title": "ARROW",
+    "items": [
+      {
+        "slug": "balloon",
+        "name": "ArBalloon",
+        "ja": "吹き出し"
+      },
+      {
+        "slug": "changed-value",
+        "name": "ArChangedValue",
+        "ja": "変更前→変更後"
+      },
+      {
+        "slug": "chip",
+        "name": "ArChip",
+        "ja": "小さな札（チップ）"
+      },
+      {
+        "slug": "day-summary",
+        "name": "ArDaySummary",
+        "ja": "日の要約"
+      },
+      {
+        "slug": "ellipsis",
+        "name": "ArEllipsis",
+        "ja": "切り詰め（…）"
+      },
+      {
+        "slug": "flag-group",
+        "name": "ArFlagGroup",
+        "ja": "ビットのチェック"
+      },
+      {
+        "slug": "flag-view",
+        "name": "ArFlagView",
+        "ja": "ビットの表示"
+      },
+      {
+        "slug": "info",
+        "name": "ArInfo",
+        "ja": "説明・注意"
+      },
+      {
+        "slug": "kana-input",
+        "name": "ArKanaInput",
+        "ja": "氏名とフリガナの入力"
+      },
+      {
+        "slug": "kana-text",
+        "name": "ArKanaText",
+        "ja": "フリガナつきの氏名"
+      },
+      {
+        "slug": "month-day-input",
+        "name": "ArMonthDayInput",
+        "ja": "月日の入力"
+      },
+      {
+        "slug": "thumbnail",
+        "name": "ArThumbnail",
+        "ja": "顔写真（サムネイル）"
+      },
+      {
+        "slug": "year-input",
+        "name": "ArYearInput",
+        "ja": "年の入力"
+      },
+      {
+        "slug": "year-month-input",
+        "name": "ArYearMonthInput",
+        "ja": "年月の入力"
+      },
+      {
+        "slug": "zip-input",
+        "name": "ArZipInput",
+        "ja": "郵便番号の入力"
       }
     ]
   }

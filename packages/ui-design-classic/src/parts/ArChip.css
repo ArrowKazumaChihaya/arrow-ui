@@ -1,0 +1,5 @@
+/* @covers ArChip 1.0.0 */
+/* ant-design-vue の小さな Tag（12px・高さ20・角丸4・枠つき） */
+[data-ar-design="classic"] [data-ar="chip"]{padding:0 7px;border:1px solid var(--ar-accent-line);border-radius:4px;font-size:12px;line-height:18px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="classic"] [data-ar="chip"][data-tone="event"]{background:#F9F0FF;border-color:#D3ADF7;color:#531DAB}
+[data-ar-design="classic"] [data-ar="chip"][data-tone="neutral"]{background:#FAFAFA;border-color:#D9D9D9;color:rgba(0,0,0,.88)}

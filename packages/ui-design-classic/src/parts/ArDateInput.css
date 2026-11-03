@@ -1,10 +1,19 @@
-/* @covers ArDateInput 1.0.0 */
-/* ArDateInput（今の「2026 ▾ 年 10 月 21 日」） */
+/* @covers ArDateInput 1.0.0, ArDateRange 1.0.0 */
+/* ArDateInput（今の「2026 ▾ 年 10 月 21 日」）。年はボタン＋プルダウン（一覧は year-list）。 */
 [data-ar-design="classic"] [data-ar="date-input"]{gap:3px}
-[data-ar-design="classic"] [data-ar="date-input"] select{padding:0 6px 0 11px}
-[data-ar-design="classic"] [data-ar="date-input"] input{width:34px;padding:0;text-align:center}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]{height:var(--ar-size-control-md);min-width:76px;padding:0 26px 0 11px;border:1px solid var(--ar-color-field);border-radius:var(--ar-radius-control);background:#fff;color:var(--ar-color-text);font-size:14px;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]{right:9px;width:12px;height:12px;color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]:hover:not(:disabled){border-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]:focus-visible,[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"][data-state~="open"]{outline:0;border-color:var(--classic-blue);box-shadow:0 0 0 2px var(--classic-blue-ring)}
+[data-ar-design="classic"] [data-ar="date-input"][data-state~="invalid"]>[data-part="year"]{border-color:var(--classic-error)}
+[data-ar-design="classic"] [data-ar="date-input"][data-state~="disabled"]>:is([data-part="year"],input){background:rgba(0,0,0,.04);border-color:#D9D9D9;color:var(--ar-color-text-faint);cursor:not-allowed}
+[data-ar-design="classic"] [data-ar="date-input"]>input{width:34px;padding:0;text-align:center}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="unit"]{font-size:16px;color:var(--ar-color-text)}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"]{margin-left:2px;font-size:14px;color:var(--ar-color-text-secondary)}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sun"]{color:var(--ar-color-sun)}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sat"]{color:var(--ar-color-sat)}
-[data-ar-design="classic"] [data-ar="date-input"][data-state~="disabled"]{opacity:.6}
+/* ArDateRange（仮） */
+[data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]{gap:6px 8px}
+[data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]>[data-part="separator"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]>[data-part="days"]{font-size:14px;color:var(--ar-color-text-secondary)}
+[data-ar-design="classic"] [data-ar="date-range"]>[data-part="error"]{gap:4px;margin-top:4px;font-size:14px;color:var(--classic-error)}

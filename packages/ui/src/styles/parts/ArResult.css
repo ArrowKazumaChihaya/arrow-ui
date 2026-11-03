@@ -1,0 +1,5 @@
+/* ArResult の形：縦に真ん中そろえ。 */
+[data-ar="result"]{display:flex;flex-direction:column;align-items:center;text-align:center}
+[data-ar="result"]>[data-part="badge"]{display:flex;align-items:center;justify-content:center;flex:none}
+[data-ar="result"]>[data-part="title"],[data-ar="result"]>[data-part="description"]{margin:0}
+[data-ar="result"]>[data-part="actions"]{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}

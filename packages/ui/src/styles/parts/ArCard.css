@@ -1,0 +1,5 @@
+/* ArCard の構造（cover・footer の並び） */
+[data-ar="card"]>[data-part="cover"]{flex:none;overflow:hidden}
+[data-ar="card"]>[data-part="tabs"]{flex:none;min-width:0}
+[data-ar="card"]>[data-part="footer"]{flex:none}
+[data-ar="card"]>[data-part="footer"]>*{display:flex;align-items:center;justify-content:center;min-width:0}

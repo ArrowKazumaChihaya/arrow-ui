@@ -1,0 +1,6 @@
+/* ArRadioGroup のボタン型：本物のラジオを項目いっぱいに重ねる */
+[data-ar="radio-group"][data-type="button"]{display:inline-flex;flex-wrap:nowrap}
+[data-ar="radio-group"][data-type="button"][data-block]{display:flex}
+[data-ar="radio-group"][data-type="button"][data-block]>[data-part="item"]{flex:1}
+[data-ar="radio-group"][data-type="button"]>[data-part="item"]{position:relative;justify-content:center;white-space:nowrap}
+[data-ar="radio-group"][data-type="button"]>[data-part="item"]>[data-part="control"]{position:static}

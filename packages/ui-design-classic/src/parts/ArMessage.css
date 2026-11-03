@@ -1,0 +1,8 @@
+/* @covers ArMessage 1.0.0 */
+/* ArMessage（ant-design-vue 4 の message） */
+[data-ar-design="classic"] [data-ar="message"]{gap:8px;padding:9px 12px;border-radius:8px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:var(--ar-color-text);font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="message"]>[data-part="icon"]{width:16px;height:16px;color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="message"][data-tone="ok"]>[data-part="icon"]{color:#52C41A}
+[data-ar-design="classic"] [data-ar="message"][data-tone="warn"]>[data-part="icon"]{color:#FAAD14}
+[data-ar-design="classic"] [data-ar="message"][data-tone="danger"]>[data-part="icon"]{color:var(--classic-error)}
+[data-ar-design="classic"] [data-ar="message"]>[data-part="spinner"]{width:16px;height:16px;border-width:2px;color:var(--classic-blue);border-color:currentColor}

@@ -1,10 +1,19 @@
-/* @covers ArAlert 1.0.0 */
-[data-ar-design="remix"] [data-ar="alert"]{gap:10px;padding:10px 12px;border-radius:var(--ar-radius-cell);font-size:13px;line-height:1.6}
-[data-ar-design="remix"] [data-ar="alert"]>[data-part="icon"]{margin-top:2px}
+/* @covers ArAlert 1.1.0 */
+/* .alert：info はテーマ色の淡い面、ok・warn・danger は意味の色。neutral はロック中の帯（.v-lock）。banner は角丸なし。 */
+[data-ar-design="remix"] [data-ar="alert"]{gap:10px;padding:10px 12px;border-radius:var(--ar-radius-cell);font-size:13px;line-height:1.6;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="alert"]>[data-part="content"]>[data-part="title"]{font-weight:var(--ar-font-weight-strong)}
-[data-ar-design="remix"] [data-ar="alert"]>[data-part="close"]{border:0;background:none;padding:2px;color:inherit;opacity:.6;border-radius:6px}
+[data-ar-design="remix"] [data-ar="alert"]>[data-part="content"]>[data-part="body"] a{color:inherit;font-weight:var(--ar-font-weight-strong)}
+[data-ar-design="remix"] [data-ar="alert"]>[data-part="action"]{align-self:center;gap:6px;margin:-4px 0}
+[data-ar-design="remix"] [data-ar="alert"]>[data-part="close"]{align-self:flex-start;border:0;background:none;padding:0;color:inherit;opacity:.6;border-radius:4px;transition:opacity var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="alert"]>[data-part="close"]:hover{opacity:1}
+[data-ar-design="remix"] [data-ar="alert"]>[data-part="close"]:focus-visible{outline:0;opacity:1;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="alert"][data-tone="info"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="alert"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:var(--ar-color-ok)}
-[data-ar-design="remix"] [data-ar="alert"][data-tone="warn"]{background:var(--ar-color-warn-subtle);color:var(--ar-color-warn)}
-[data-ar-design="remix"] [data-ar="alert"][data-tone="danger"]{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="alert"][data-tone="warn"]{background:var(--ar-color-warn-subtle);color:#6B4300}
+[data-ar-design="remix"] [data-ar="alert"][data-tone="danger"]{background:var(--ar-color-danger-subtle);color:#8F231E}
+/* ロック中・権限の帯（.v-lock）：灰の面、見出しは ink、説明は小さく */
+[data-ar-design="remix"] [data-ar="alert"][data-tone="neutral"]{gap:8px;padding:8px 12px;border-radius:var(--ar-radius-control);background:#F4F6F9;color:#5B6672;font-size:12.5px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="alert"][data-tone="neutral"]>[data-part="icon"]{margin-top:2px}
+[data-ar-design="remix"] [data-ar="alert"][data-tone="neutral"]>[data-part="content"]>[data-part="title"]{color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="alert"][data-tone="neutral"][data-titled]>[data-part="content"]>[data-part="body"]{font-size:var(--ar-font-size-caption);color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="alert"][data-banner]{border-radius:0}

@@ -1,0 +1,17 @@
+/* @covers ArCarousel 1.0.0 */
+/* ArCarousel：デザインシステムの .ad-car（高さ150・角丸14・帯と同じ 120deg のグラデーション acc-hi→acc 45%→acc-2・白い 18px 太字）、
+   .nv（30px の白い丸 .85・ink の矢印・左右10px）、.dots（下12px・間6・16×3 の白 .5、今は 26 幅の白）。 */
+[data-ar-design="remix"] [data-ar="carousel"]{height:150px;border-radius:14px;background:linear-gradient(120deg,var(--ar-accent-hi),var(--ar-accent) 45%,var(--ar-accent-strong));color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]{padding:0 56px}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="title"]{font:700 18px/1.5 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="description"]{margin-top:2px;font-size:13px;line-height:1.6;opacity:.92}
+[data-ar-design="remix"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]){width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.85);color:var(--ar-color-text);text-shadow:none;transition:background var(--ar-motion-fast),opacity var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="prev"]{left:10px}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="next"]{right:10px}
+[data-ar-design="remix"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):hover:not(:disabled){background:#fff}
+[data-ar-design="remix"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):disabled{opacity:.45}
+[data-ar-design="remix"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):focus-visible{outline:0;box-shadow:0 0 0 3px rgba(255,255,255,.6)}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="dots"]{bottom:12px;gap:6px}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]{width:16px;height:3px;border-radius:2px;background:rgba(255,255,255,.5);transition:width .25s,background .25s}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"][data-state~="current"]{width:26px;background:#fff}
+[data-ar-design="remix"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]:focus-visible{outline:2px solid #fff;outline-offset:3px}

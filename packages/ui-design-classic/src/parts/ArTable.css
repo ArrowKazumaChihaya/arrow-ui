@@ -1,17 +1,34 @@
 /* @covers ArTable 1.0.0 */
-/* ArTable（今の表：見出しはテーマ色の枠・中央・灰色の太字、行は下の線だけ） */
-[data-ar-design="classic"] [data-ar="table"]{background:#fff}
-[data-ar-design="classic"] [data-ar="table"] th{padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:var(--ar-color-text-secondary);font-size:14px;font-weight:700;line-height:20px;text-align:center!important;white-space:nowrap}
-[data-ar-design="classic"] [data-ar="table"] th:last-child{border-right:1px solid var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="table"] td{padding:12px 8px;border-bottom:1px solid var(--ar-color-border-subtle);background:#fff;color:var(--ar-color-text-secondary);font-size:13px;transition:background .3s}
-[data-ar-design="classic"] [data-ar="table"][data-density="compact"] td{padding:6px 8px}
-[data-ar-design="classic"] [data-ar="table"] tbody [data-part="row"]:hover td{background:#FAFAFA}
-[data-ar-design="classic"] [data-ar="table"] tbody [data-part="row"][data-state="selected"] td{background:var(--ar-accent-faint)}
+/* ArTable（今の表：見出しはテーマ色の枠・中央・灰色の太字、行は下の線だけ。チェックは ant-design-vue の青）。仮：本番の参照ができたら合わせる */
+[data-ar-design="classic"] [data-ar="table"]{color:var(--ar-color-text-secondary);font-size:13px}
+[data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]{background:#fff}
+[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]{padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:var(--ar-color-text-secondary);font-size:14px;font-weight:700;line-height:20px;text-align:center!important;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]:last-child{border-right:1px solid var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"]{padding:12px 8px;border-bottom:1px solid var(--ar-color-border-subtle);background:#fff;transition:background .3s}
+[data-ar-design="classic"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="select"]{width:32px}
+[data-ar-design="classic"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="expand"]{width:32px}
+[data-ar-design="classic"] [data-ar="table"][data-density="compact"] [data-part="cell"]{padding:6px 8px}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-numeric]{font-variant-numeric:tabular-nums}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-emphasis="strong"]{font-weight:700;color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-emphasis="muted"]{color:var(--ar-color-text-muted)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="row"]:hover>td{background:#FAFAFA}
+[data-ar-design="classic"] [data-ar="table"] [data-part="row"][data-state~="selected"]>td{background:var(--ar-accent-faint)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="row"][data-state~="off"]>td{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="table"] [data-sticky-edge]{box-shadow:inset -10px 0 8px -8px rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"] td{background:#FAFAFA;color:var(--ar-color-text);font-weight:600}
-[data-ar-design="classic"] [data-ar="table"] td[data-part="empty"]{padding:16px;text-align:center;color:var(--ar-color-text-faint);font-size:14px}
-[data-ar-design="classic"] [data-ar="table"] tr[data-part="expanded-row"] td{background:#FAFAFA}
-[data-ar-design="classic"] [data-ar="table"] :is(th,td)>[data-part="select"]{width:16px;height:16px;margin:0;accent-color:var(--classic-blue);vertical-align:middle;cursor:pointer}
-[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"] [data-ar="icon"]{color:var(--ar-color-text-faint)}
-[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order] [data-ar="icon"]{color:var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="table"] td>[data-part="expand-toggle"]{color:var(--ar-color-text-muted)}
+[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"] [data-part="cell"]{background:#FAFAFA;color:var(--ar-color-text);font-weight:600}
+[data-ar-design="classic"] [data-ar="table"] td[data-part="empty"]{padding:16px;color:var(--ar-color-text-faint)}
+[data-ar-design="classic"] [data-ar="table"] tr[data-part="expanded-row"]>td{padding:12px 8px;background:#FAFAFA;border-bottom:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="classic"] [data-ar="table"] tbody[data-part="before-rows"]>tr>td{padding:8px 0}
+[data-ar-design="classic"] [data-ar="table"]>[data-part="below"]{margin-top:16px}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]{gap:8px}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]{font-size:12px;color:var(--ar-color-text-muted)}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"]{gap:4px}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]{gap:4px}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]{width:12px;height:12px;color:var(--ar-color-text-faint)}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="asc"]>[data-part="sort-icon"]>[data-dir="asc"],[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="desc"]>[data-part="sort-icon"]>[data-dir="desc"]{color:var(--ar-accent);stroke:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="check-box"]{width:16px;height:16px;border:1px solid #D9D9D9;border-radius:4px;background:#fff;color:#fff}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="check-box"]>[data-ar="icon"]{width:12px;height:12px;stroke-width:3}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]:is([data-state="checked"],[data-state="indeterminate"])>[data-part="check-box"]{background:var(--classic-blue);border-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="select"]:hover+[data-part="check-box"]{border-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="select"]:focus-visible+[data-part="check-box"]{box-shadow:0 0 0 2px var(--classic-blue-ring)}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="expand-toggle"]{width:17px;height:17px;align-items:center;justify-content:center;border:1px solid #F0F0F0;border-radius:4px;color:var(--ar-color-text-muted)}
