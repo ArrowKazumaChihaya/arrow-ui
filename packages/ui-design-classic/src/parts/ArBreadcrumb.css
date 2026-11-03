@@ -1,1 +1,11 @@
 /* @covers ArBreadcrumb 1.0.0 */
+/* ArBreadcrumb：今の ARROW のパンくず（UI/Bread）。上の階層は 12px の #1677FF のリンクと「>」、今のページは次の行に 22px・600 の大見出し。 */
+[data-ar-design="classic"] [data-ar="breadcrumb"]{color:#000;font-size:12px;line-height:13px}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]{gap:0;row-gap:0}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="separator"]{font-size:0;color:#000}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="separator"]::before{content:">";font-size:12px;padding:0 1px}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]>[data-part="link"],[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]>[data-ar="dropdown"]>[data-part="slot"]>[data-part="link"]{gap:2px;padding:0;color:var(--classic-blue);font-size:12px;line-height:13px}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]>[data-part="link"]:hover,[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]>[data-ar="dropdown"]>[data-part="slot"]>[data-part="link"]:hover{color:#69B1FF}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]>[data-part="link"]:focus-visible,[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]>[data-ar="dropdown"]>[data-part="slot"]>[data-part="link"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]:last-child{flex-basis:100%;margin-top:4px}
+[data-ar-design="classic"] [data-ar="breadcrumb"]>[data-part="list"]>[data-part="item"]>[data-part="current"]{gap:6px;color:#000;font-size:22px;font-weight:600;line-height:1}

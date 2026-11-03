@@ -1,8 +1,8 @@
 /* @covers ArLink 1.0.0 */
 /* ArLink：ant-design-vue 4 の Typography.Link（テーマ色・下線なし） */
-[data-ar-design="classic"] [data-ar="link"]{gap:4px;color:var(--ar-accent);text-decoration:none;transition:color .3s}
-[data-ar-design="classic"] [data-ar="link"]:hover{color:var(--ar-accent-hi)}
-[data-ar-design="classic"] [data-ar="link"]:not([data-underline]){text-decoration:underline}
+[data-ar-design="classic"] [data-ar="link"]{gap:4px;color:var(--classic-blue);text-decoration:none;transition:color .3s}
+[data-ar-design="classic"] [data-ar="link"]:hover{color:#69B1FF}
+[data-ar-design="classic"] [data-ar="link"]:not([data-underline]):hover{text-decoration:underline}
 [data-ar-design="classic"] [data-ar="link"][data-type="secondary"]{color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="link"][data-type="danger"]{color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="link"][data-state~="disabled"]{color:rgba(0,0,0,.25);text-decoration:none}

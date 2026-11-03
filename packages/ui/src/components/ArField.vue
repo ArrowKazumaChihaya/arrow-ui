@@ -82,7 +82,7 @@ function onFocusOut(e: FocusEvent) {
     :data-state="error ? 'invalid' : undefined"
     @focusout="onFocusOut"
   >
-    <label :id="labelId" data-part="label" :for="id" @click="onLabelClick"
+    <label :id="labelId" data-part="label" :for="id" :data-empty="!label || undefined" @click="onLabelClick"
       >{{ label }}<span v-if="required" data-part="required">{{ requiredText }}</span></label
     >
     <div data-part="control">

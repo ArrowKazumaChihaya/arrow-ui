@@ -11,7 +11,7 @@
 /* 今の ARROW では項目の文字は div のグローバル指定で 13px・400（選んだ行も太くならない） */
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-label"]{font-size:13px;font-weight:400}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"][data-state~="disabled"]{background:none;color:rgba(0,0,0,.25);font-weight:400}
-[data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-label"]>[data-part="match"]{color:var(--classic-blue);font-weight:600}
+[data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-label"]>[data-part="match"]{color:inherit;font-weight:inherit}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-check"]{width:14px;height:14px;color:var(--classic-blue);stroke-width:2.4}
 [data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"]:not([aria-multiselectable]) [data-part="option"]>[data-part="option-check"]{display:none}
 [data-ar-design="classic"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-more"]{width:12px;height:12px;color:rgba(0,0,0,.45)}

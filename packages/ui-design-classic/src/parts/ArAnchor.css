@@ -1,1 +1,11 @@
 /* @covers ArAnchor 1.0.0 */
+/* ArAnchor：ant-design-vue 4 の Anchor（左に2pxの線、今いるところは #1677FF の線と文字。項目 4px 0 4px 16px・13px）。 */
+[data-ar-design="classic"] [data-ar="anchor"]{border-left:2px solid rgba(5,5,5,.06);font-size:13px;line-height:13px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]{padding:4px 0 4px 16px;margin-left:-2px;border-left:2px solid transparent;color:rgba(0,0,0,.88);transition:color .3s}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]:hover{color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"][data-level="2"]{padding-left:32px}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"][data-state~="active"]{color:var(--classic-blue);border-left-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]:focus-visible{outline:2px solid #91CAFF;outline-offset:-2px}
+[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]{gap:16px;border-left:0;border-bottom:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"]{padding:4px 0;margin:0 0 -1px;border-left:0;border-bottom:2px solid transparent}
+[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"][data-state~="active"]{border-bottom-color:var(--classic-blue)}

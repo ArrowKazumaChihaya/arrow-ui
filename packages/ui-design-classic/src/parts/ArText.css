@@ -13,6 +13,6 @@
 [data-ar-design="classic"] [data-ar="text"]>[data-part="content"][data-mark]{background:#FFE58F;color:inherit;padding:0}
 [data-ar-design="classic"] [data-ar="text"]>[data-part="content"][data-code]{margin:0 .2em;padding:.2em .4em .1em;font-size:85%;font-family:SFMono-Regular,Consolas,Menlo,Courier,monospace;background:rgba(150,150,150,.1);border:1px solid rgba(100,100,100,.2);border-radius:3px}
 [data-ar-design="classic"] [data-ar="text"]>[data-part="content"][data-kbd]{margin:0 .2em;padding:.15em .4em .1em;font-size:90%;font-family:SFMono-Regular,Consolas,Menlo,Courier,monospace;background:rgba(150,150,150,.06);border:1px solid rgba(100,100,100,.2);border-bottom-width:2px;border-radius:3px}
-[data-ar-design="classic"] [data-ar="text"]>[data-part="copy"]{margin-left:4px;color:var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="text"]>[data-part="copy"]:hover{color:var(--ar-accent-hi)}
+[data-ar-design="classic"] [data-ar="text"]>[data-part="copy"]{margin-left:4px;color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="text"]>[data-part="copy"]:hover{color:#69B1FF}
 [data-ar-design="classic"] [data-ar="text"]>[data-part="copy"][data-state~="copied"]{color:#52C41A}
