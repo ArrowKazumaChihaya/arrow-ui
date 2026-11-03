@@ -1,1 +1,7 @@
 /* @covers ArAffix 1.0.0 */
+/* ArAffix：ant-design-vue 4 の Affix は見た目を持たない。帯として使うときは白地に下の線（rgba(5,5,5,.06)）。 */
+[data-ar-design="classic"] [data-ar="affix"]{gap:8px;padding:8px 12px}
+[data-ar-design="classic"] [data-ar="affix"]:is([data-band="always"],[data-state~="affixed"]){background:#fff}
+[data-ar-design="classic"] [data-ar="affix"][data-position="top"]:is([data-band="always"],[data-state~="affixed"]){border-bottom:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="affix"][data-position="bottom"]:is([data-band="always"],[data-state~="affixed"]){border-top:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="affix"][data-state~="affixed"]{box-shadow:0 6px 16px 0 rgba(0,0,0,.08)}

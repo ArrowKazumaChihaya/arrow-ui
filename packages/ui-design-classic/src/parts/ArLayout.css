@@ -1,2 +1,9 @@
 /* @covers ArLayout 1.0.0 */
-[data-ar-design="classic"] [data-ar="layout"]{background:#F5F5F5;color:rgba(0,0,0,.88)}
+/* ArLayout：今の ARROW の画面の枠（MenuLayout）。ヘッダーは #EDF3F7 に下の線6px、横のメニューは白（ui-Menu の左）、中身は白、フッターは #72AEDB に白い太字。 */
+[data-ar-design="classic"] [data-ar="layout"]{background:#fff;color:#000;font-size:13px}
+[data-ar-design="classic"] [data-ar="layout"][data-bordered]{border:1px solid #D9D9D9;border-radius:6px}
+[data-ar-design="classic"] [data-ar="layout"]>[data-part="header"]{gap:10px;min-height:48px;padding:10px 40px;background:#EDF3F7;border-bottom:6px solid var(--ar-accent);box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="layout"]>[data-part="sider"]{padding:8px 0;background:#fff;border-right:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="layout"][data-has-sider="end"]>[data-part="sider"]{border-right:0;border-left:1px solid rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="layout"]>[data-part="content"]{background:#fff}
+[data-ar-design="classic"] [data-ar="layout"]>[data-part="footer"]{min-height:29px;padding:0 40px;background:#72AEDB;color:#fff;font-size:14px;font-weight:700}

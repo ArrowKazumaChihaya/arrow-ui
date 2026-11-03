@@ -10,7 +10,7 @@
 [data-ar-design="classic"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="select"]{width:16px}
 [data-ar-design="classic"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="expand"]{width:17px}
 [data-ar-design="classic"] [data-ar="table"][data-density="compact"] [data-part="cell"]{line-height:24px}
-[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-emphasis="strong"]{font-weight:600}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-emphasis="strong"]{font-weight:400}
 [data-ar-design="classic"] [data-ar="table"] [data-part="row"][data-state~="off"]>td{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="table"] [data-sticky-edge]{box-shadow:inset -10px 0 8px -8px rgba(5,5,5,.06)}
 /* 名前の列・何行にも並ぶ値・行の操作（ボタンの間は3px） */
