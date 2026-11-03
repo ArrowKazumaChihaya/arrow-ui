@@ -13,10 +13,15 @@ export interface ArColorSwatchesProps {
   /** sm：22px（狭い所）。md：26px。 */
   size?: "sm" | "md";
   disabled?: boolean;
+  /**
+   * 色をこの数ずつ縦にまとめて並べる（同じ色の濃さ違いを縦に。今の ARROW の「色選択」は 4）。
+   * まとまりは横に並び、入りきらなければ次の段へ折り返す。省くと1列に並べて折り返す。
+   */
+  groupSize?: number;
   /** まとまりの名前（読み上げ。例：「イベントの色」）。 */
   label: string;
 }
 export interface ArColorSwatchesEmits {
   "update:modelValue": [value: string];
 }
-export type ArColorSwatchesPart = "root" | "swatch";
+export type ArColorSwatchesPart = "root" | "group" | "swatch";

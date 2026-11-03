@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<ArPaginationProps>(), {
   showSizeChanger: false,
   showTotal: false,
   size: "md",
+  simple: false,
   disabled: false,
   hideOnSinglePage: false,
   labels: () => ({}),
@@ -37,6 +38,12 @@ const list = computed<(number | "prev-more" | "next-more")[]>(() => {
   if (c >= n - 3) return [1, "prev-more", n - 4, n - 3, n - 2, n - 1, n];
   return [1, "prev-more", c - 1, c, c + 1, "next-more", n];
 });
+function jump(e: Event) {
+  const el = e.target as HTMLInputElement;
+  const n = Number(el.value.replace(/[^0-9]/g, ""));
+  if (n) go(n);
+  el.value = String(cur.value);
+}
 function go(p: number) {
   const v = Math.min(Math.max(1, p), last.value);
   if (props.disabled || v === cur.value) return;
@@ -60,13 +67,26 @@ function setSize(v: unknown) {
     data-ar="pagination"
     data-part="root"
     :data-size="size"
+    :data-simple="simple || undefined"
     :data-state="disabled ? 'disabled' : undefined"
     :aria-label="L.nav"
   >
     <button type="button" data-part="prev" :disabled="disabled || cur <= 1" :aria-label="L.prev" :title="L.prev" @click="go(cur - 1)">
       <ArIcon name="cl" size="sm" />
     </button>
-    <template v-for="p in list" :key="p">
+    <span v-if="simple" data-part="simple">
+      <input
+        data-part="jump"
+        type="text"
+        inputmode="numeric"
+        :value="cur"
+        :disabled="disabled"
+        :aria-label="L.page(cur)"
+        @keydown.enter.prevent="jump"
+        @change="jump"
+      /><span data-part="slash" aria-hidden="true">／</span><span data-part="last">{{ last }}</span>
+    </span>
+    <template v-for="p in simple ? [] : list" :key="p">
       <span v-if="typeof p === 'string'" data-part="ellipsis" aria-hidden="true">…</span>
       <button
         v-else

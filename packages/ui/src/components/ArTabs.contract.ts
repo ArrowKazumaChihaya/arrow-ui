@@ -12,6 +12,8 @@ export interface ArTabItem {
   count?: number;
   /** 押せないタブ。 */
   disabled?: boolean;
+  /** 文字の右に「!」の注意の印を出す（確かめてほしいことがあるタブ。今の Tab の isExclamation）。 */
+  alert?: boolean;
   /** 閉じる×を出す（variant="card" のとき）。Delete キーでも閉じられる。 */
   closable?: boolean;
 }
@@ -34,6 +36,8 @@ export interface ArTabsProps {
   addable?: boolean;
   /** 「＋」のボタンの読み上げの名前。 */
   addLabel?: string;
+  /** 注意の印（alert）の読み上げの名前。 */
+  alertLabel?: string;
 }
 
 export interface ArTabsEmits {
@@ -43,4 +47,4 @@ export interface ArTabsEmits {
   /** 「＋」を押した。 */
   add: [];
 }
-export type ArTabsPart = "root" | "list" | "tab" | "icon" | "label" | "count" | "close" | "add";
+export type ArTabsPart = "root" | "list" | "tab" | "icon" | "label" | "count" | "alert" | "close" | "add";

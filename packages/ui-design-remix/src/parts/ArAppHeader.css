@@ -54,3 +54,18 @@
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]>[data-part="icon"]{width:22px;height:22px}
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+/* ピルの一覧・領域のタブ・畳む・子のメニュー（remix）：白い面と淡い線、テーマ色の文字 */
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]{padding:6px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]{padding:8px 10px;border-radius:8px;color:var(--ar-color-text);font-size:13px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]:hover{background:var(--ar-accent-faint);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="top-extra"]{margin-left:12px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="expand"]{width:32px;height:32px;margin-left:8px;padding:0;border:1px solid var(--ar-color-border);border-radius:10px;background:#fff;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]{gap:12px;padding:0 24px;border-bottom:1px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]{gap:4px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"]{gap:6px;height:38px;padding:0 14px;border:0;border-bottom:2px solid transparent;background:none;color:var(--ar-color-text-secondary);font-size:13px;font-weight:600}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"][data-state="on"]{border-bottom-color:var(--ar-accent);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"] [data-ar="icon"]{width:16px;height:16px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="toggle"]{gap:4px;height:28px;padding:0 10px;border:1px solid var(--ar-color-border);border-radius:8px;background:#fff;color:var(--ar-color-text-secondary);font-size:12px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]{gap:2px;margin-top:4px;padding:4px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]{padding:8px 6px;border:0;border-radius:8px;background:none;color:var(--ar-color-text);font-size:13px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]:hover{background:var(--ar-accent-faint);color:var(--ar-accent-ink)}

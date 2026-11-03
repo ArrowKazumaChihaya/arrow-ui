@@ -84,6 +84,22 @@ export const classicDesign = defineDesign({
     teal: section("#6CB1B7", "#7CC4CA"), // 会社情報・社員情報・設定
   },
   covers,
+  forms: {
+    ArTimeInput: { fields: "split", dayToggle: "link" }, // 時と分が別々の箱と「:」、前日は「当／前」の文字のリンク（今の ui-Time）
+    ArSelect: { search: "off" }, // 今の Select はプルダウンに探す欄がない
+    ArDateInput: { invalidDate: "message", pad: "zero", yearEmpty: "option", yearOrder: "desc" }, // 今の Dates：ありえない日は「無効な日付」、月日は2桁、年は新しい順で先頭に「未選択」
+    ArUpload: { trigger: "button" }, // 今の Upload は「ファイルを選択」のボタンと、その下のファイル名（置き場はない）
+    ArColorPicker: { panel: "dialog" }, // 今の Colorpicker は真ん中のダイアログ「色選択」で選ぶ
+    ArProgress: { stepsInfo: "percent" }, // antd の Progress の刻みは右に「60%」
+    ArSkeleton: { title: "line" }, // antd の Skeleton は行の上に幅半分の見出しの行がある
+    ArNotificationHost: { order: "newest-last" }, // antd の notification は新しいものを下に足す
+    ArTour: { nextCount: "none" }, // antd の Tour の「次へ」に数は付かない
+    ArMentions: { popup: "caret" }, // antd の Mentions：候補は打っている「@」の右下に、中身の幅（最小100px）で出る
+    ArModal: { buttonText: "antd" }, // 足のボタンは antd の Button：2 文字の漢字・かなは「登 録」と間を空ける（今の ui-Modal）
+    ArCalendar: { firstDay: "always" }, // 今の Calendar は 1 日をいつも「11/1」「12/1」と月を添えて書く（期間の外の日も）
+    ArThumbnail: { editor: "arrow" }, // 今の画像のアップロード：大きな「ファイルを選択」・ファイル名・左右の回すボタン・真ん中の大きな「登録」
+    ArTable: { selectHead: "label" }, // 今の SelectTable：見出しのチェックの左に「全選択」
+  },
   styles: () => import("@arrow/ui-design-classic/styles.css"),
 });
 

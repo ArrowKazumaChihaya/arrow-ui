@@ -8,7 +8,7 @@
 import { computed, nextTick, onMounted, ref, useAttrs, watch } from "vue";
 import ArFloat from "../internal/ArFloat.vue";
 import ArOptionRow from "../internal/ArOptionRow.vue";
-import { useId } from "../provider/context";
+import { useDesignForm, useId } from "../provider/context";
 import { firstEnabled, fold, initialOf, splitByReading, splitMatch, step, type ArTextPiece } from "../internal/options";
 import type { ArMentionsOption, ArMentionsProps } from "./ArMentions.contract";
 
@@ -47,6 +47,10 @@ const root = ref<HTMLElement | null>(null);
 const ta = ref<HTMLTextAreaElement | null>(null);
 const mirror = ref<HTMLElement | null>(null);
 const listEl = ref<HTMLElement | null>(null);
+/** 候補の出る場所（デザインが選ぶ）：field＝入力の下に入力と同じ幅、caret＝打っている「@」のすぐ後ろの下に中身の幅で。 */
+const popupForm = useDesignForm<"field" | "caret">("ArMentions", "popup", "field");
+const caret = ref<HTMLElement | null>(null);
+const caretPos = ref({ left: 0, top: 0 });
 const opts = computed<ArMentionsOption[]>(() => props.options.map((o) => (typeof o === "string" ? { value: o, label: o } : o)));
 
 /** 今打っている「@…」（カーソルの前）。 */
@@ -88,7 +92,7 @@ const optionId = (i: number) => `${uid}-opt-${i}`;
 const pieces = computed(() => {
   const text = props.modelValue ?? "";
   const names = opts.value.map((o) => props.prefix + o.label).sort((a, b) => b.length - a.length);
-  const out: { text: string; mention: boolean }[] = [];
+  const out: { text: string; mention: boolean; typing?: boolean }[] = [];
   let i = 0;
   let plain = "";
   while (i < text.length) {
@@ -97,7 +101,7 @@ const pieces = computed(() => {
     if (hit) {
       if (plain) out.push({ text: plain, mention: false });
       plain = "";
-      out.push({ text: hit, mention: true });
+      out.push({ text: hit, mention: true, typing: !!typing });
       i += hit.length;
     } else plain += text[i++];
   }
@@ -106,6 +110,28 @@ const pieces = computed(() => {
   if (text.endsWith("\n")) out.push({ text: " ", mention: false });
   return out;
 });
+
+/** caret の形：打っている「@」の右下に、候補の基準の点を置く（重ねた文字から位置を測る）。 */
+function placeCaret() {
+  if (popupForm.value !== "caret" || !open.value || !root.value || !mirror.value) return;
+  const mark = mirror.value.querySelector<HTMLElement>("[data-typing]");
+  const node = mark?.firstChild;
+  if (!mark || !node || typeof document.createRange !== "function") return;
+  const range = document.createRange();
+  range.setStart(node, 0);
+  range.setEnd(node, Math.min(props.prefix.length, node.textContent?.length ?? 0));
+  const r = range.getBoundingClientRect?.();
+  if (!r) return;
+  const box = root.value.getBoundingClientRect();
+  const line = parseFloat(getComputedStyle(mirror.value).lineHeight) || r.height;
+  // 位置の基準は枠の内側（position:absolute）なので、枠の太さを引く
+  const el = root.value;
+  caretPos.value = {
+    left: Math.floor(r.right - box.left - el.clientLeft),
+    top: r.top - box.top - el.clientTop - (line - r.height) / 2 + line,
+  };
+}
+watch([open, () => token.value?.query, () => props.modelValue, popupForm], () => nextTick(placeCaret));
 
 function fit() {
   const t = ta.value;
@@ -179,10 +205,17 @@ defineExpose({ focus: () => ta.value?.focus() });
   >
     <div ref="mirror" data-part="mirror" aria-hidden="true"
       ><template v-for="(p, i) in pieces" :key="i"
-        ><mark v-if="p.mention" data-part="mention">{{ p.text }}</mark
+        ><mark v-if="p.mention" data-part="mention" :data-typing="p.typing || undefined">{{ p.text }}</mark
         ><template v-else>{{ p.text }}</template></template
       ></div
     >
+    <span
+      v-if="popupForm === 'caret'"
+      ref="caret"
+      data-part="caret"
+      aria-hidden="true"
+      :style="{ position: 'absolute', left: `${caretPos.left}px`, top: `${caretPos.top}px`, width: 0, height: 0 }"
+    />
     <textarea
       :id="id"
       ref="ta"
@@ -209,8 +242,15 @@ defineExpose({ focus: () => ta.value?.focus() });
       @blur="token = null"
     />
   </div>
-  <ArFloat ar="select-panel" :open="open" :anchor="root" :match-width="true" :offset="6" @close="close">
-    <div :id="listId" ref="listEl" data-part="list" role="listbox" aria-label="呼ぶ人" style="max-height: 232px" @mousedown.prevent>
+  <ArFloat
+    ar="select-panel"
+    :open="open"
+    :anchor="popupForm === 'caret' ? caret : root"
+    :match-width="popupForm !== 'caret'"
+    :offset="6"
+    @close="close"
+  >
+    <div :id="listId" ref="listEl" data-part="list" :data-form="popupForm" role="listbox" aria-label="呼ぶ人" style="max-height: 232px" @mousedown.prevent>
       <ArOptionRow
         v-for="(r, i) in hits"
         :id="optionId(i)"

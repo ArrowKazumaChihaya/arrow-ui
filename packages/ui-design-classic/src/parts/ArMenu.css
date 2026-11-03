@@ -15,7 +15,8 @@
 [data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"]{position:relative;margin-left:24px;padding:8px 0 8px 10px;border-radius:0 18px 18px 0;background:none}
 [data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#E8EAED}
 [data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"][data-state~="selected"]{background:none;color:#1A73E8}
-[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"][data-state~="selected"]::before{background:#1A73E8}
+/* 選んだ子の線は文字の高さ（19.5px）だけ #1A73E8（今の a の border-left）。上下の灰色の線は出さない */
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"][data-state~="selected"]::before{background:linear-gradient(#1A73E8,#1A73E8) center/2px 19.5px no-repeat}
 [data-ar-design="classic"] [data-ar="menu"]>[data-part="item"]>[data-part="arrow"] [data-ar="icon"]{width:12px;height:12px;stroke-width:2.4}
 [data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-state~="open"]>[data-part="arrow"]{transform:rotate(180deg)}
 [data-ar-design="classic"] [data-ar="menu"]>[data-part="item"]:is([data-state~="disabled"],[data-state~="locked"]){color:rgba(0,0,0,.25)}
@@ -25,3 +26,6 @@
 [data-ar-design="classic"] [data-ar="menu"][data-mode="horizontal"]{gap:0;border-bottom:1px solid rgba(5,5,5,.06)}
 [data-ar-design="classic"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]{gap:10px;height:35.5px;padding:0 16px;border-radius:0 18px 18px 0;transition:background .3s,color .3s}
 [data-ar-design="classic"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]:is([data-state~="selected"],[data-state~="active"]){background:#E8F0FE;color:var(--classic-blue)}
+/* antd の inline Menu は項目の上下に 4px（隣どうしは重なって 4px）、上下の端にも 4px。子の項目どうしは間をあけない */
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]{padding:4px 0}
+[data-ar-design="classic"] [data-ar="menu"][data-mode="inline"]>[data-part="item"][data-level="1"]+[data-part="item"][data-level="1"]{margin-top:-4px}

@@ -16,3 +16,7 @@
 [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]::-webkit-scrollbar{display:none}
 [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]{flex:none;cursor:pointer;font-variant-numeric:tabular-nums}
 [data-ar="time-picker-panel"]>[data-part="foot"]{display:flex;justify-content:space-between;align-items:center}
+/* 時と分が別々の箱（split）・プルダウン（select） */
+[data-ar="time-input"]:is([data-fields="split"],[data-fields="select"]){align-items:center;flex-wrap:nowrap;white-space:nowrap;overflow:visible}
+[data-ar="time-input"]>input:is([data-part="hour"],[data-part="minute"]){flex:none;margin:0;min-width:0;box-sizing:border-box;outline:0;font-variant-numeric:tabular-nums}
+[data-ar="time-input"]>:is([data-part="separator"],[data-part="unit"],[data-ar="select"]){flex:none}

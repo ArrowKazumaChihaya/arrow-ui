@@ -7,7 +7,7 @@ import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
 import ArButton from "./ArButton.vue";
 import ArIcon from "./ArIcon.vue";
 import ArFloat from "../internal/ArFloat.vue";
-import { useArUi, useId } from "../provider/context";
+import { useArUi, useDesignForm, useId } from "../provider/context";
 import type { ArTourProps, ArTourStep } from "./ArTour.contract";
 
 const props = withDefaults(defineProps<ArTourProps>(), {
@@ -17,6 +17,8 @@ const props = withDefaults(defineProps<ArTourProps>(), {
   closable: false,
   labels: () => ({ prev: "前へ", next: "次へ", finish: "完了", close: "閉じる" }),
 });
+/** 「次へ」の後ろの数（デザインが選ぶ）：count＝「次へ（2/3）」、none＝「次へ」だけ（antd と同じ。どこにいるかは下の点で分かる）。 */
+const nextCount = useDesignForm<"count" | "none">("ArTour", "nextCount", "count");
 const emit = defineEmits<{ "update:open": [open: boolean]; "update:current": [index: number]; finish: []; close: [] }>();
 defineSlots<{ default?: (p: { step: ArTourStep; index: number; total: number }) => unknown }>();
 
@@ -179,7 +181,7 @@ const placement = computed(() => (rect.value ? (step.value?.placement ?? "bottom
         <span data-part="actions">
           <ArButton v-if="index > 0" tone="muted" size="sm" @click="prev">{{ labels.prev }}</ArButton>
           <ArButton tone="primary" size="sm" @click="next">
-            {{ last ? labels.finish : `${labels.next}（${index + 1}/${steps.length}）` }}
+            {{ last ? labels.finish : nextCount === "none" ? labels.next : `${labels.next}（${index + 1}/${steps.length}）` }}
           </ArButton>
         </span>
       </div>

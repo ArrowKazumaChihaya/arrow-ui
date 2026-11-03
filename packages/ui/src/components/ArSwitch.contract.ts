@@ -10,6 +10,16 @@ export interface ArSwitchProps {
   /** md：36×20（文字ありは高さ22）。sm：28×16（文字は出さない）。 */
   size?: "sm" | "md";
   disabled?: boolean;
+  /**
+   * 入っているときの色。default：部品の既定の色（classic は antd の青 #1677FF＝今の ARROW の Toggle、remix はテーマ色）。
+   * accent：ページのテーマ色（今の ARROW の theme を付けた Toggle）。
+   */
+  tone?: "default" | "accent";
+  /**
+   * 2択の切り替え（今の ARROW の alwaysValid）。切れているときも色を付け、どちらの側も「選んでいる」ように見せる（一覧／カレンダーなど）。
+   * 両側の意味は before・after スロット（アイコンなど）で示す。
+   */
+  twoWay?: boolean;
   /** 保存中。つまみの中で回る印を出し、押せなくする。 */
   loading?: boolean;
   id?: string;
@@ -17,4 +27,5 @@ export interface ArSwitchProps {
 export interface ArSwitchEmits {
   "update:modelValue": [value: boolean];
 }
-export type ArSwitchPart = "root" | "track" | "text" | "on" | "off" | "thumb" | "spinner";
+/** スロット：before＝左（切れている側の印）、after＝右（入っている側の印）、default＝右の文字（例：「有効」）。 */
+export type ArSwitchPart = "root" | "before" | "track" | "text" | "on" | "off" | "thumb" | "spinner" | "after" | "caption";

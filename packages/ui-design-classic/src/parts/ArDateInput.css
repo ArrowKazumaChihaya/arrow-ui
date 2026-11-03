@@ -17,3 +17,15 @@
 [data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]{gap:4px 8px;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
 [data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]>[data-part="days"]{color:#000}
 [data-ar-design="classic"] [data-ar="date-range"]>[data-part="error"]{gap:4px;margin-top:2px;font:600 13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#D10C1D}
+/* 和暦（era）：年のプルダウンは幅135px（今の ARROW の isNendo） */
+[data-ar-design="classic"] [data-ar="date-input"][data-era]>[data-part="year"]{width:135px}
+/* 未選択の年は antd の薄い文字 */
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"][data-state~="empty"]>[data-part="value"]{color:rgba(0,0,0,.25)}
+/* ありえない日（invalidDate: "message"）：月日の枠を #D10C1D に、右に5px空けて「無効な日付」（13px 600 #D10C1D） */
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="error"]{margin-left:5px;color:#D10C1D;font-size:13px;font-weight:600;line-height:13px;white-space:nowrap}
+/* 年のプルダウンの先頭の「未選択」は #C4C4C4 */
+[data-ar-design="classic"] [data-ar="year-list"]>[data-part="option"][data-kind="null"]>[data-part="option-label"]{color:#C4C4C4}
+/* 年の ∨ は antd の DownOutlined（ArSelect.css の --classic-down）。開いている間は値が薄い（antd） */
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]{background:currentColor;-webkit-mask:var(--classic-down) center/12px 12px no-repeat;mask:var(--classic-down) center/12px 12px no-repeat}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]>*{display:none}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"][data-state~="open"]>[data-part="value"]{color:rgba(0,0,0,.25)}

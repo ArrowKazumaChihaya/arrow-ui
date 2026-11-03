@@ -1,0 +1,7 @@
+[data-ar="item"]{display:flex;align-items:flex-start;width:100%;box-sizing:border-box}
+[data-ar="item"]>[data-part="title"]{flex:none;width:var(--ar-item-title,200px);min-width:var(--ar-item-title,200px);box-sizing:border-box}
+[data-ar="item"]>[data-part="title"]>[data-part="label"]>[data-part="label-text"]{white-space:pre-wrap}
+[data-ar="item"]>[data-part="content"]{position:relative;flex:1;min-width:0}
+[data-ar="item"]>[data-part="content"]>[data-part="info"]{margin:0}
+[data-ar="item"]>[data-part="content"]>[data-part="info"]>button[data-part="detail"]{margin:0;padding:0;border:0;background:none;font:inherit;cursor:pointer}
+@media (max-width:768px){[data-ar="item"]{flex-direction:column}[data-ar="item"]>[data-part="title"]{width:auto}[data-ar="item"]>[data-part="content"]{width:100%}}

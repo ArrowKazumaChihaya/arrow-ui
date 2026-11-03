@@ -10,7 +10,12 @@ export interface ArTourStep {
   placement?: ArPlacement;
 }
 
-/** ArTour 1.0 の契約。初めての人への案内（周りは暗い幕、説明は白いカード、今の点はテーマ色）。 */
+/**
+ * ArTour 1.0 の契約。初めての人への案内（周りは暗い幕、説明は白いカード、今の点はテーマ色）。
+ *
+ * デザインが選ぶ形（ArDesign.forms.ArTour）。
+ * - `nextCount`：`"count"`（既定）＝「次へ（2/3）」。`"none"`＝「次へ」だけ（antd の Tour と同じ）。
+ */
 export interface ArTourProps {
   steps: readonly ArTourStep[];
   /** 出しているか（v-model:open）。 */

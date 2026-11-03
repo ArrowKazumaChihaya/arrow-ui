@@ -1,5 +1,5 @@
 /* @covers ArBadge 1.0.0, ArRibbon 1.0.0 */
-/* ArBadge（素の ant-design-vue 4 の Badge：件数 20・角丸10・#FF4D4F・12px・白い1pxの縁、右上に半分はみ出す。点 6px。状態の点 6px＋8px の間・14px） */
+/* ArBadge（素の ant-design-vue 4 の Badge：件数 20・角丸10・#FF4D4F・12px・白い1pxの縁、右上に半分はみ出す。点 6px。状態の点 6px＋8px の間・14px・行の高さ 1（参照 antd-Badge：1行 14px・間 8px）。既定の点は rgba(0,0,0,.25)、処理中はテーマ色＋波紋） */
 [data-ar-design="classic"] [data-ar="badge"]{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
 [data-ar-design="classic"] [data-ar="badge"]>[data-part="count"]{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:12px;font-weight:400;line-height:20px;box-shadow:0 0 0 1px #fff}
 [data-ar-design="classic"] [data-ar="badge"]>[data-part="count"][data-multi]{padding:0 8px}
@@ -8,10 +8,12 @@
 [data-ar-design="classic"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="dot"]{top:0;right:0;transform:translate(50%,-50%)}
 [data-ar-design="classic"] [data-ar="badge"][data-tone="accent"]>:is([data-part="count"],[data-part="dot"]){background:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="badge"][data-tone="neutral"]>:is([data-part="count"],[data-part="dot"]){background:#D9D9D9;color:rgba(0,0,0,.88)}
-[data-ar-design="classic"] [data-ar="badge"][data-mode="status"]{gap:8px;color:rgba(0,0,0,.88);font-size:14px;line-height:22px}
-[data-ar-design="classic"] [data-ar="badge"][data-mode="status"]>[data-part="status-dot"]{width:6px;height:6px;border-radius:50%;background:#D9D9D9}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"]{gap:8px;color:rgba(0,0,0,.88);font-size:14px;line-height:1}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"]>[data-part="status-dot"]{position:relative;width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="ok"]>[data-part="status-dot"]{background:#52C41A}
-[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="accent"]>[data-part="status-dot"]{background:#1677FF}
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="accent"]>[data-part="status-dot"]{background:var(--ar-accent);color:var(--ar-accent)}
+/* 処理中：antd と同じ波紋（1px の輪が 0.8→2.4 倍に広がって消える） */
+[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="accent"]>[data-part="status-dot"]::after{content:"";position:absolute;inset:0;border:1px solid currentColor;border-radius:50%;animation:ar-classic-badge-ripple 1.2s ease-in-out infinite}@keyframes ar-classic-badge-ripple{0%{transform:scale(.8);opacity:.5}100%{transform:scale(2.4);opacity:0}}@media (prefers-reduced-motion:reduce){[data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="accent"]>[data-part="status-dot"]::after{animation:none;opacity:0}}
 [data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="warn"]>[data-part="status-dot"]{background:#FAAD14}
 [data-ar-design="classic"] [data-ar="badge"][data-mode="status"][data-tone="danger"]>[data-part="status-dot"]{background:#FF4D4F}
 /* ArRibbon（Badge.Ribbon：上8・右-8、高さ22・角丸4 4 0 4・14px 白、折り返しの三角） */

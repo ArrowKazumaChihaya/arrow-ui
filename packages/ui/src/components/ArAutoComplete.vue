@@ -15,6 +15,7 @@ import type { ArAutoCompleteOption, ArAutoCompleteProps } from "./ArAutoComplete
 defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArAutoCompleteProps>(), {
   placeholder: undefined,
+  resetOption: false,
   icon: undefined,
   avatar: false,
   filter: true,
@@ -34,6 +35,8 @@ const emit = defineEmits<{
   select: [value: string | number, option: ArAutoCompleteOption];
   /** 打ったとき（サーバーで探すときに使う）。 */
   search: [query: string];
+  /** 「リセット」を選んだとき。 */
+  reset: [];
 }>();
 
 const attrs = useAttrs();
@@ -48,6 +51,8 @@ const active = ref(-1);
 const opts = computed<ArAutoCompleteOption[]>(() =>
   props.options.map((o) => (typeof o === "string" ? { value: o, label: o } : o)),
 );
+/** 「リセット」の行の値。 */
+const RESET = "\u0000ar-reset";
 interface Row {
   opt: ArAutoCompleteOption;
   pieces: ArTextPiece[];
@@ -66,6 +71,8 @@ const rows = computed<Row[]>(() => {
     if (byReading) out.push({ opt, pieces: byReading });
     else if (!props.filter) out.push({ opt, pieces: [{ text: opt.label, match: false }] });
   }
+  if (props.resetOption !== false)
+    out.unshift({ opt: { value: RESET, label: typeof props.resetOption === "string" ? props.resetOption : "リセット" }, pieces: [] });
   return out;
 });
 const enabled = (i: number) => !!rows.value[i] && !rows.value[i]!.opt.disabled;
@@ -75,7 +82,8 @@ const showPanel = computed(() => open.value && (rows.value.length > 0 || props.e
 function openIfReady() {
   if (props.disabled) return;
   open.value = [...(props.modelValue ?? "")].length >= props.minChars;
-  active.value = firstEnabled(rows.value.length, enabled);
+  // 「リセット」があるときは、どの行も選ばずに開く（↓で先頭へ）
+  active.value = props.resetOption !== false ? -1 : firstEnabled(rows.value.length, enabled);
 }
 watch(active, () =>
   nextTick(() => document.getElementById(optionId(active.value))?.scrollIntoView?.({ block: "nearest" })),
@@ -89,6 +97,13 @@ function onInput(v: string) {
 function choose(i: number) {
   const r = rows.value[i];
   if (!r || r.opt.disabled) return;
+  if (r.opt.value === RESET) {
+    emit("update:modelValue", "");
+    emit("search", "");
+    emit("reset");
+    open.value = false;
+    return;
+  }
   emit("update:modelValue", r.opt.label);
   emit("select", r.opt.value, r.opt);
   open.value = false;
@@ -157,7 +172,8 @@ defineExpose({ focus: () => input.value?.focus() });
         v-for="(r, i) in rows"
         :id="optionId(i)"
         :key="String(r.opt.value)"
-        :pieces="r.pieces"
+        :pieces="r.opt.value === RESET ? [{ text: r.opt.label, match: false }] : r.pieces"
+        :data-kind="r.opt.value === RESET ? 'null' : undefined"
         :active="i === active"
         :disabled="r.opt.disabled"
         :avatar="avatarOf(r.opt)"

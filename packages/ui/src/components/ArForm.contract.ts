@@ -23,10 +23,12 @@ export interface ArFormProps {
   model: Record<string, unknown>;
   /** name ごとの検証の決まり。 */
   rules?: Record<string, ArFormRule | readonly ArFormRule[]>;
-  /** stacked：ラベルが上（ポップアップ）。inline：ラベルが左・120px 右寄せ（設定の画面）。中の ArField に配る。 */
-  layout?: "stacked" | "inline";
+  /** stacked：ラベルが上（ポップアップ）。inline：ラベルが左・120px 右寄せ（設定の画面）。中の ArField に配る。horizontal は inline、vertical は stacked の別名（ant-design-vue と同じ名前）。 */
+  layout?: "stacked" | "inline" | "horizontal" | "vertical";
   /** inline のラベルの幅。sm＝88px・md＝120px・lg＝168px。 */
   labelSize?: "sm" | "md" | "lg";
+  /** inline のラベルの幅（CSS の長さ。例："25%"＝今の ARROW の Form の label-col 6/24）。labelSize より優先。 */
+  labelWidth?: string;
   /** いつ確かめるか。submit：送るときだけ。blur：項目から出たとき。change：打つたび（一度送ったあとは常に change）。 */
   validateOn?: "submit" | "blur" | "change";
   /** 送って間違いがあったとき、上に間違いのまとめを出す（押すとその項目へ）。 */

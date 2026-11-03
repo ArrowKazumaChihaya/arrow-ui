@@ -29,3 +29,6 @@
 [data-ar-design="remix"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:18px;height:18px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;line-height:1;text-shadow:none}
 [data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"]>[data-part="count"]{background:var(--ar-accent-muted)}
 [data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"][data-state~="selected"]>[data-part="count"]{background:rgba(255,255,255,.28);color:inherit}
+/* 注意の印（alert）：文字の右に小さな赤い三角 */
+[data-ar-design="remix"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]>[data-part="alert"]{display:inline-flex;color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]>[data-part="alert"]>[data-ar="icon"]{width:14px;height:14px}

@@ -9,3 +9,5 @@
 [data-ar="text-input"]>[data-part="clear"],[data-ar="text-input"]>[data-part="reveal"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
 [data-ar="text-input"]>[data-part="reveal"]:disabled{cursor:not-allowed}
 [data-ar="text-input"]>[data-part="addon"]{display:inline-flex;align-items:center;align-self:stretch;flex:none;white-space:nowrap;box-sizing:border-box}
+[data-ar="text-input"]>[data-part="input"][data-align="right"]{text-align:right}
+[data-ar="text-input"]>[data-part="input"][data-align="center"]{text-align:center}

@@ -29,3 +29,14 @@
 [data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="detail"]:hover{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="detail"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="color-picker-panel"]>[data-part="detail"]>[data-ar="icon"]{width:13px;height:13px}
+/* groupSize（同じ色の濃さ違いを縦にまとめる）：まとまりの中は間2px、まとまりどうしは間8px。panel: "dialog" の中身は余白なしで並べる。 */
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]{display:flex;flex-wrap:wrap;gap:8px}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]{display:flex;flex-direction:column;gap:2px}
+[data-ar-design="remix"] [data-ar="color-picker-dialog"]{display:flex;justify-content:center}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]{width:26px;height:26px;border-radius:6px;outline:0;transition:box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-size="sm"][data-grouped]>[data-part="group"]>[data-part="swatch"]{width:22px;height:22px;border-radius:5px}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]:hover:not([data-state~="selected"]):not(:disabled){box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-field)}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]:focus-visible{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"][data-state~="selected"]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"][data-state~="selected"]:focus-visible{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-text),0 0 0 7px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]:disabled{opacity:.45}

@@ -1,9 +1,12 @@
 /* @covers ArDivider 1.0.0 */
-/* ArDivider：ant-design-vue 4 の Divider（線 rgba(5,5,5,.06)・上下24・文字16px） */
-[data-ar-design="classic"] [data-ar="divider"][data-orientation="horizontal"]{margin:24px 0;color:rgba(0,0,0,.88);font-size:16px;font-weight:500;line-height:1.5}
+/* ArDivider：ant-design-vue 4 の Divider（線 rgba(5,5,5,.06)・上下24、文字つきは上下16・文字16px/500・行の高さ 25.1。縦は 14px の .9em・左右8） */
+[data-ar-design="classic"] [data-ar="divider"][data-orientation="horizontal"]{margin:24px 0;color:rgba(0,0,0,.88);font-size:16px;font-weight:500;line-height:1.5714285714}
 [data-ar-design="classic"] [data-ar="divider"][data-with-text]{margin:16px 0}
 [data-ar-design="classic"] [data-ar="divider"][data-orientation="horizontal"]::before,[data-ar-design="classic"] [data-ar="divider"][data-orientation="horizontal"]::after{border-top:1px solid rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="divider"][data-align="start"]::before,[data-ar-design="classic"] [data-ar="divider"][data-align="end"]::after{flex:0 0 5%}
+/* 文字つき：線は左右 50%（寄せたときは 5% と 95%）を文字の幅のぶん縮める（antd と同じ配分。左寄せの文字は左から約 34px）。 */
+[data-ar-design="classic"] [data-ar="divider"][data-with-text]::before,[data-ar-design="classic"] [data-ar="divider"][data-with-text]::after{flex:0 1 50%}
+[data-ar-design="classic"] [data-ar="divider"][data-align="start"]::before,[data-ar-design="classic"] [data-ar="divider"][data-align="end"]::after{flex:0 1 5%}
+[data-ar-design="classic"] [data-ar="divider"][data-align="start"]::after,[data-ar-design="classic"] [data-ar="divider"][data-align="end"]::before{flex:0 1 95%}
 [data-ar-design="classic"] [data-ar="divider"]>[data-part="text"]{padding:0 1em}
 [data-ar-design="classic"] [data-ar="divider"][data-dashed]::before,[data-ar-design="classic"] [data-ar="divider"][data-dashed]::after{border-top-style:dashed}
 [data-ar-design="classic"] [data-ar="divider"][data-plain]{font-size:14px;font-weight:400}

@@ -1,3 +1,8 @@
+/**
+ * デザインが選べる形（ArDesign.forms.ArThumbnail）：
+ * - editor："tools"（既定。枠の下に －＋・左右に回す・画像を選ぶ・消す、足にキャンセルと登録）／"arrow"（今の ARROW の画像のアップロード：
+ *   幅500、「ファイルを選択」の大きなボタンの下に選んだファイルの名前、左右の端に回すボタン、真ん中に大きな「登録」。キャンセルは × で閉じる）。
+ */
 /** ArThumbnail 1.0 の契約。顔写真などの画像と、変えるためのカメラのボタン・切り抜きのポップアップ（今の ARROW の Thumbnail）。 */
 export interface ArThumbnailProps {
   /** 画像（data URL か URL）。無ければ人の形の絵を出す。v-model。 */
@@ -22,6 +27,8 @@ export interface ArThumbnailProps {
   /** 画像の説明（読み上げ）。 */
   alt?: string;
   labels?: {
+    /** editor="arrow" の、まだファイルを選んでいないときの文字（既定「ファイル未選択」）。 */
+    noFile?: string;
     change: string;
     title: string;
     hint: string;
@@ -43,4 +50,4 @@ export interface ArThumbnailEmits {
   /** 読めない・大きすぎる画像を選んだとき。 */
   "invalid-image": [reason: "type" | "bytes" | "pixels" | "load"];
 }
-export type ArThumbnailPart = "root" | "image" | "silhouette" | "camera" | "editor" | "hint" | "frame" | "picture" | "empty" | "tools";
+export type ArThumbnailPart = "root" | "image" | "silhouette" | "camera" | "editor" | "hint" | "frame" | "picture" | "empty" | "tools" | "file" | "submit";

@@ -36,3 +36,5 @@
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="card-name"]{padding:0 8px;text-align:center;word-break:break-all}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="remove"]{top:4px;right:4px;width:22px;height:22px;border-radius:6px;background:rgba(31,41,51,.55);color:#fff}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="remove"]:hover{background:rgba(31,41,51,.75)}
+/* trigger: "button" を選んだとき：ボタンの下に 12px mute の選んだファイルの名前 */
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="chosen"]{margin:6px 0 0;color:var(--ar-color-text-muted);font-size:12px}

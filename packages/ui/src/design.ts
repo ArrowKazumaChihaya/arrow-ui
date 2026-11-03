@@ -24,6 +24,12 @@ export interface ArDesign {
   styles?: () => Promise<unknown>;
   /** 移行中だけのデザインなら、その旨（起動時に警告を出さない・文書に出すため）。 */
   deprecated?: string;
+  /**
+   * 部品の「形の違い」。見た目だけでは表せない違い（例：今の ARROW の時刻は「時」と「分」が別々の箱）を、
+   * 部品が用意した選択肢の中から選ぶ。値の受け渡しと動き（props・events）はどの形でも同じ。
+   * 例：{ ArTimeInput: { fields: "split" } }。選べる名前と値は各部品の契約（contract.ts）に書く。
+   */
+  forms?: Partial<Record<ArComponentName, Record<string, string>>>;
 }
 
 export class ArDesignError extends Error {

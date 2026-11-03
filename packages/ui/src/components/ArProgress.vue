@@ -4,6 +4,7 @@
  */
 import { computed } from "vue";
 import ArIcon from "./ArIcon.vue";
+import { useDesignForm } from "../provider/context";
 import type { ArProgressProps } from "./ArProgress.contract";
 
 const props = withDefaults(defineProps<ArProgressProps>(), {
@@ -19,7 +20,13 @@ const props = withDefaults(defineProps<ArProgressProps>(), {
 const pct = computed(() => Math.max(0, Math.min(100, Number.isFinite(props.percent) ? props.percent : 0)));
 const state = computed(() => props.status ?? (pct.value >= 100 ? "success" : "normal"));
 const onSteps = computed(() => Math.round((pct.value / 100) * props.steps));
-const info = computed(() => props.label ?? (props.type === "steps" ? `${onSteps.value}/${props.steps}` : `${Math.round(pct.value)}%`));
+/** 刻みの右の数（デザインが選ぶ）：count＝「3/5」、percent＝「60%」（antd）。 */
+const stepsInfo = useDesignForm<"count" | "percent">("ArProgress", "stepsInfo", "count");
+const info = computed(
+  () =>
+    props.label ??
+    (props.type === "steps" && stepsInfo.value === "count" ? `${onSteps.value}/${props.steps}` : `${Math.round(pct.value)}%`),
+);
 /** 円：md は 96px（半径42・太さ8）、sm は 56px（半径23・太さ6）。 */
 const ring = computed(() => (props.size === "sm" ? { box: 56, r: 23, w: 6 } : { box: 96, r: 42, w: 8 }));
 const icon = computed(() => (state.value === "success" ? "check" : state.value === "exception" ? "alert" : null));

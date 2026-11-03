@@ -23,3 +23,8 @@
 [data-ar-design="remix"] [data-ar="switch"]>[data-part="track"]>[data-part="thumb"]>[data-part="spinner"]{width:10px;height:10px;border:1.5px solid var(--ar-accent);border-right-color:transparent}
 [data-ar-design="remix"] [data-ar="switch"][data-state~="off"]>[data-part="track"]>[data-part="thumb"]>[data-part="spinner"]{border-color:var(--ar-color-text-muted);border-right-color:transparent}
 [data-ar-design="remix"] [data-ar="switch"][data-size="sm"]>[data-part="track"]>[data-part="thumb"]>[data-part="spinner"]{width:8px;height:8px;border-width:1.5px}
+/* 2択の切り替え（twoWay）：切れていてもテーマ色。左右の印・右の文字は 8px 空けて並べる（12.5px 600 の sub 色）。 */
+[data-ar-design="remix"] [data-ar="switch"][data-two-way]>[data-part="track"]{background:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="switch"]>[data-part="before"]{margin-right:8px;display:inline-flex}
+[data-ar-design="remix"] [data-ar="switch"]>[data-part="after"]{margin-left:8px;display:inline-flex}
+[data-ar-design="remix"] [data-ar="switch"]>[data-part="caption"]{margin-left:8px;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600}

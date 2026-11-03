@@ -32,3 +32,15 @@
 [data-ar="bottom-nav"][data-fixed]{position:fixed;left:0;right:0;bottom:0;z-index:900}
 [data-ar="bottom-nav"]>[data-part="item"]{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;margin:0;border:0;cursor:pointer;text-align:center;text-decoration:none;font-family:inherit;box-sizing:border-box}
 [data-ar="bottom-nav"]>[data-part="item"]>[data-part="label"]{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* ピルの一覧・子のメニューは、指している物の真下に同じ幅で重ねる（位置は部品が測って入れる）。領域のタブの段。 */
+[data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]{position:absolute;z-index:6;margin:0;padding:0;list-style:none;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]{all:unset;display:block;box-sizing:border-box;width:100%;cursor:pointer}
+[data-ar="app-header"]>[data-part="top"]>[data-part="top-extra"]{display:flex;align-items:center;flex:none}
+[data-ar="app-header"]>[data-part="top"]>[data-part="expand"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;cursor:pointer;font-family:inherit;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="domains"]{display:flex;align-items:flex-end;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]{display:flex;align-items:flex-end;min-width:0}
+[data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"]{display:flex;align-items:center;margin:0;cursor:pointer;white-space:nowrap;font-family:inherit;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="domains"]>[data-part="toggle"]{display:inline-flex;align-items:center;margin:0 0 0 auto;align-self:center;cursor:pointer;white-space:nowrap;font-family:inherit;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="nav"]{position:relative}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]{position:absolute;z-index:6;display:flex;flex-direction:column;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]{display:block;margin:0;cursor:pointer;text-decoration:none;text-align:center;font-family:inherit;box-sizing:border-box}

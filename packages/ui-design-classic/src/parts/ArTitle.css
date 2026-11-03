@@ -11,3 +11,5 @@
 [data-ar-design="classic"] [data-ar="title"][data-type="warning"]{color:#FAAD14}
 [data-ar-design="classic"] [data-ar="title"][data-type="danger"]{color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="title"][data-type="disabled"]{color:rgba(0,0,0,.25)}
+/* 見出しや段落のすぐ後の見出しは上に 1.2em（antd と同じ。前の下 .5em とは重なって大きい方になる） */
+[data-ar-design="classic"] :is([data-ar="title"],[data-ar="paragraph"])+[data-ar="title"]{margin-top:1.2em}

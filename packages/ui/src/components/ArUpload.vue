@@ -6,6 +6,8 @@
  */
 import { computed, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArButton from "./ArButton.vue";
+import { useDesignForm } from "../provider/context";
 import type { ArIconName } from "../icons";
 import type { ArUploadFile, ArUploadProps } from "./ArUpload.contract";
 
@@ -16,6 +18,8 @@ const props = withDefaults(defineProps<ArUploadProps>(), {
   multiple: false,
   listType: "text",
   hint: undefined,
+  buttonTone: "primary",
+  buttonSize: "md",
   disabled: false,
   label: undefined,
   labels: () => ({
@@ -35,6 +39,7 @@ const emit = defineEmits<{
   remove: [file: ArUploadFile];
 }>();
 
+const trigger = useDesignForm<"drop" | "button">("ArUpload", "trigger", "drop");
 const input = ref<HTMLInputElement | null>(null);
 const over = ref(false);
 const pick = () => !props.disabled && input.value?.click();
@@ -80,7 +85,21 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
 <template>
   <div data-ar="upload" data-part="root" :data-list="listType" :data-state="state" role="group" :aria-label="label">
     <input ref="input" data-part="input" type="file" hidden :accept="accept" :multiple="multiple" :disabled="disabled" @change="onChange" />
-    <template v-if="listType === 'text'">
+    <template v-if="listType === 'text' && trigger === 'button'">
+      <ArButton
+        data-part="button"
+        :tone="buttonTone"
+        :size="buttonSize"
+        icon="upload"
+        block
+        :disabled="disabled"
+        :aria-label="label ? `${label}：${labels.choose ?? 'ファイルを選択'}` : undefined"
+        @click="pick"
+        >{{ labels.choose ?? "ファイルを選択" }}</ArButton
+      >
+      <p data-part="chosen" aria-live="polite">{{ files.length ? files.map((f) => f.name).join("、") : (labels.none ?? "ファイル未選択") }}</p>
+    </template>
+    <template v-else-if="listType === 'text'">
       <div
         data-part="drop"
         role="button"

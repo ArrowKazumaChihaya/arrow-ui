@@ -8,7 +8,8 @@ import { computed, nextTick, ref, watch } from "vue";
 import ArFloat from "../internal/ArFloat.vue";
 import ArColorSwatches from "./ArColorSwatches.vue";
 import ArIcon from "./ArIcon.vue";
-import { useId } from "../provider/context";
+import ArModal from "./ArModal.vue";
+import { useDesignForm, useId } from "../provider/context";
 import { arEventColors, hexToHsv, hsvToHex, normalizeHex, type Hsv } from "./color";
 import type { ArColorPickerProps } from "./ArColorPicker.contract";
 
@@ -16,11 +17,14 @@ const props = withDefaults(defineProps<ArColorPickerProps>(), {
   colors: () => arEventColors,
   custom: true,
   detailOpen: false,
+  groupSize: undefined,
+  readonly: false,
   disabled: false,
   labels: () => ({ detail: "自由な色を選ぶ", hide: "決まった色だけにする", hex: "HEX", saturation: "鮮やかさと明るさ", hue: "色相", empty: "未選択" }),
 });
 const emit = defineEmits<{ "update:modelValue": [value: string]; "update:open": [open: boolean] }>();
 
+const panel = useDesignForm<"popover" | "dialog">("ArColorPicker", "panel", "popover");
 const baseId = useId("ar-color");
 const chip = ref<HTMLButtonElement | null>(null);
 const open = ref(false);
@@ -103,12 +107,21 @@ function pickSwatch(v: string) {
   hsv.value = hexToHsv(v);
   hexText.value = v;
   emit("update:modelValue", v);
+  if (panel.value === "dialog") setOpen(false);
 }
 </script>
 
 <template>
-  <span data-ar="color-picker" data-part="root" :data-state="[open && 'open', disabled && 'disabled'].filter(Boolean).join(' ') || undefined">
+  <span
+    data-ar="color-picker"
+    data-part="root"
+    :data-state="[open && 'open', disabled && 'disabled', readonly && 'readonly'].filter(Boolean).join(' ') || undefined"
+  >
+    <span v-if="readonly" data-part="chip" role="img" :aria-label="`${label}：${modelValue ?? labels.empty}`">
+      <i data-part="swatch" :style="{ background: modelValue ?? 'transparent' }" :data-empty="modelValue ? undefined : ''" aria-hidden="true" />
+    </span>
     <button
+      v-else
       ref="chip"
       type="button"
       data-part="chip"
@@ -122,7 +135,20 @@ function pickSwatch(v: string) {
       <i data-part="swatch" :style="{ background: modelValue ?? 'transparent' }" :data-empty="modelValue ? undefined : ''" aria-hidden="true" />
       <span data-part="value">{{ modelValue ? modelValue.toUpperCase() : labels.empty }}</span>
     </button>
-    <ArFloat :id="`${baseId}-panel`" :open="open" :anchor="chip" ar="color-picker-panel" role="dialog" :label="label" @close="setOpen(false)">
+    <template v-if="readonly" />
+    <ArModal
+      v-else-if="panel === 'dialog'"
+      :open="open"
+      :title="labels.title ?? '色選択'"
+      :width="372"
+      size="sm"
+      @close="setOpen(false)"
+    >
+      <div :id="`${baseId}-panel`" data-ar="color-picker-dialog">
+        <ArColorSwatches data-part="swatches" :model-value="modelValue" :colors="colors" :group-size="groupSize" :label="label" @update:model-value="pickSwatch" />
+      </div>
+    </ArModal>
+    <ArFloat v-else :id="`${baseId}-panel`" :open="open" :anchor="chip" ar="color-picker-panel" role="dialog" :label="label" @close="setOpen(false)">
       <template v-if="custom && detail">
         <div
           data-part="sv"
@@ -154,7 +180,7 @@ function pickSwatch(v: string) {
           <input v-model="hexText" data-part="hex-input" maxlength="7" spellcheck="false" autocomplete="off" @keydown.enter.prevent="commitHex" @blur="commitHex" />
         </label>
       </template>
-      <ArColorSwatches data-part="swatches" :model-value="modelValue" :colors="colors" :label="label" @update:model-value="pickSwatch" />
+      <ArColorSwatches data-part="swatches" :model-value="modelValue" :colors="colors" :group-size="groupSize" :label="label" @update:model-value="pickSwatch" />
       <button v-if="custom" type="button" data-part="detail" :aria-expanded="detail" @click="detail = !detail">
         <ArIcon :name="detail ? 'minus' : 'plus'" size="sm" />{{ detail ? labels.hide : labels.detail }}
       </button>

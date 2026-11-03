@@ -34,7 +34,7 @@ function pick(i: number) {
   <ol data-ar="steps" data-part="root" :data-direction="size === 'mini' ? 'horizontal' : direction" :data-size="size" :aria-label="label">
     <template v-for="s in steps" :key="s.i">
       <li v-if="size === 'mini' && s.i > 0" data-part="connector" aria-hidden="true" />
-      <li data-part="step" :data-status="s.status" :aria-current="s.i === current ? 'step' : undefined">
+      <li data-part="step" :data-status="s.status" :data-disabled="s.disabled || undefined" :aria-current="s.i === current ? 'step' : undefined">
         <component
           :is="s.canClick ? 'button' : 'div'"
           :type="s.canClick ? 'button' : undefined"

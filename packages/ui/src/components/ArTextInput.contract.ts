@@ -43,6 +43,8 @@ export interface ArTextInputProps {
   maxlength?: number;
   /** 幅を親いっぱいにする。 */
   block?: boolean;
+  /** 文字の寄せ。数・金額は right（今の ARROW では style で右寄せにしている所）。 */
+  align?: "left" | "center" | "right";
   /** 読み上げの名前（ArField の中では不要）。 */
   label?: string;
   /** input の id（ArField の中ではスロットの id を渡す）。 */

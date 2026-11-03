@@ -4,7 +4,7 @@
  * 選んでいる項目：上の段はテーマ色の塗り（白文字）、子は淡い面とテーマ色の文字。権限がない項目は鍵と灰色。
  * ↑↓（horizontal は ←→）で移り、Enter・Space で選ぶ・子メニューを開く。→ で子メニューを開き、← で閉じる。
  */
-import { computed, nextTick, ref } from "vue";
+import { computed, nextTick, ref, onMounted, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
 import ArFloat from "../internal/ArFloat.vue";
 import ArMenuPanel from "../internal/ArMenuPanel.vue";
@@ -70,6 +70,16 @@ function closeFly(refocus: boolean) {
   flyout.value = null;
   if (refocus && k) void nextTick(() => focusKey(k));
 }
+/** vertical・horizontal でも openKeys を渡せば、その子メニューを浮かせて出す（開いた形を見せる・保つため）。 */
+function syncFly() {
+  if (props.mode === "inline" || !props.openKeys) return;
+  const key = props.openKeys.find((k) => props.items.some((i) => i.key === k && isParent(i)));
+  if (!key) return;
+  const el = root.value?.querySelector<HTMLElement>(`[data-part="item"][data-key="${key.replace(/["\\]/g, "\\$&")}"]`);
+  if (el) openFly(props.items.find((i) => i.key === key)!, el);
+}
+onMounted(syncFly);
+watch(() => [props.openKeys, props.mode], () => void nextTick(syncFly));
 const flyItems = computed(() => props.items.find((i) => i.key === flyout.value)?.children ?? []);
 
 function focusKey(key: string) {

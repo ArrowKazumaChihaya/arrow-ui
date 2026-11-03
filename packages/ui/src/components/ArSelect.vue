@@ -11,9 +11,13 @@ import ArIcon from "./ArIcon.vue";
 import ArTextInput from "./ArTextInput.vue";
 import ArFloat from "../internal/ArFloat.vue";
 import ArOptionRow from "../internal/ArOptionRow.vue";
-import { useId } from "../provider/context";
+import ArButton from "./ArButton.vue";
+import { useDesignForm, useId } from "../provider/context";
 import { createTypeahead, firstEnabled, fold, isPrintableKey, splitMatch, step } from "../internal/options";
 import type { ArSelectGroup, ArSelectOption, ArSelectProps, ArSelectValue } from "./ArSelect.contract";
+
+/** 「未選択」の行の値（選ぶと null を出す）。 */
+const NULL_VALUE = "\u0000ar-null";
 
 defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArSelectProps>(), {
@@ -32,9 +36,11 @@ const props = withDefaults(defineProps<ArSelectProps>(), {
   emptyText: "選べるものがありません",
   loadingText: "読み込み中…",
   block: false,
-  listHeight: 264,
+  listHeight: undefined,
   label: undefined,
   id: undefined,
+  nullOption: false,
+  actions: undefined,
 });
 const emit = defineEmits<{
   "update:modelValue": [value: ArSelectValue | null | ArSelectValue[]];
@@ -44,7 +50,10 @@ const emit = defineEmits<{
   "open-change": [open: boolean];
   /** 探す欄に打ったとき。 */
   search: [query: string];
+  /** actions のボタンを押した（値は action の value）。 */
+  action: [value: string];
 }>();
+const searchForm = useDesignForm<"auto" | "off">("ArSelect", "search", "auto");
 
 const uid = useId("ar-select");
 const rootId = computed(() => props.id ?? uid);
@@ -57,10 +66,15 @@ const query = ref("");
 const active = ref(-1);
 
 const isGroup = (o: ArSelectOption | ArSelectGroup): o is ArSelectGroup => "options" in o;
+const nullRow = computed<ArSelectOption | null>(() =>
+  props.nullOption === false ? null : { value: NULL_VALUE, label: typeof props.nullOption === "string" ? props.nullOption : props.placeholder },
+);
+/** 「未選択」の行を頭に足した選択肢。 */
+const rows = computed<readonly (ArSelectOption | ArSelectGroup)[]>(() => (nullRow.value ? [nullRow.value, ...props.options] : props.options));
 const allOptions = computed(() => props.options.flatMap((o) => (isGroup(o) ? o.options : [o])));
 /** 人を選ぶ（頭文字の丸がある）ときは、シフト画面の名前の選択と同じ形（行38px・丸26px・探す欄は灰色の地）。 */
 const people = computed(() => allOptions.value.some((o) => o.avatar !== undefined));
-const showSearch = computed(() => props.searchable ?? allOptions.value.length >= 7);
+const showSearch = computed(() => props.searchable ?? (searchForm.value === "off" ? false : allOptions.value.length >= 7));
 const matches = (o: ArSelectOption) => {
   const q = fold(query.value.trim());
   return !q || fold(o.label).includes(q) || (o.keywords !== undefined && fold(o.keywords).includes(q));
@@ -70,7 +84,7 @@ const sections = computed(() => {
   const out: { label?: string; key: string; items: { opt: ArSelectOption; index: number }[] }[] = [];
   let index = 0;
   let loose: (typeof out)[number] | null = null;
-  props.options.forEach((o, gi) => {
+  rows.value.forEach((o, gi) => {
     if (isGroup(o)) {
       loose = null;
       const items = o.options.filter(matches).map((opt) => ({ opt, index: index++ }));
@@ -88,7 +102,7 @@ const enabled = (i: number) => !!flat.value[i] && !flat.value[i]!.disabled;
 const values = computed<ArSelectValue[]>(() =>
   props.multiple ? (Array.isArray(props.modelValue) ? [...props.modelValue] : []) : props.modelValue == null ? [] : [props.modelValue as ArSelectValue],
 );
-const isSelected = (o: ArSelectOption) => values.value.includes(o.value);
+const isSelected = (o: ArSelectOption) => o.value !== NULL_VALUE && values.value.includes(o.value);
 const selectedOptions = computed(() =>
   values.value.map((v) => allOptions.value.find((o) => o.value === v) ?? { value: v, label: String(v) }),
 );
@@ -125,6 +139,11 @@ function commit(v: ArSelectValue | null | ArSelectValue[]) {
 function choose(i: number) {
   const o = flat.value[i];
   if (!o || o.disabled) return;
+  if (o.value === NULL_VALUE) {
+    if (props.modelValue != null) commit(props.multiple ? [] : null);
+    close();
+    return;
+  }
   if (props.multiple) {
     const next = isSelected(o) ? values.value.filter((v) => v !== o.value) : [...values.value, o.value];
     active.value = i;
@@ -215,6 +234,10 @@ const state = computed(
       .filter(Boolean)
       .join(" ") || undefined,
 );
+function onAction(v: string) {
+  emit("action", v);
+  close();
+}
 defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), close: () => setOpen(false) });
 </script>
 
@@ -317,7 +340,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       :aria-label="label"
       :aria-labelledby="label ? undefined : rootId"
       :aria-multiselectable="multiple || undefined"
-      :style="{ maxHeight: `${listHeight}px` }"
+      :style="listHeight ? { maxHeight: `${listHeight}px` } : undefined"
       @mousedown.prevent
     >
       <template v-for="s in sections" :key="s.key">
@@ -356,11 +379,15 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             :avatar-ink="it.opt.avatarInk"
             :description="it.opt.description"
             :description-tone="it.opt.descriptionTone"
+            :data-kind="it.opt.value === NULL_VALUE ? 'null' : undefined"
             @click="choose(it.index)"
             @mousemove="!it.opt.disabled && (active = it.index)"
           />
         </template>
       </template>
+      <div v-for="a in actions ?? []" :key="a.value" data-part="action">
+        <ArButton tone="primary" block :icon="a.icon" @click="onAction(a.value)">{{ a.label }}</ArButton>
+      </div>
       <div v-if="loading && !flat.length" data-part="empty" data-kind="loading" role="status">
         <span data-part="spinner" aria-hidden="true" />{{ loadingText }}
       </div>

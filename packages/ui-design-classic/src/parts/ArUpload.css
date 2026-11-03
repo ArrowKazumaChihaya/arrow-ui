@@ -31,3 +31,13 @@
 [data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>img{border-radius:4px}
 [data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"][data-status="error"]{border-color:#FF4D4F;color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="upload"]>[data-part="cards"]>[data-part="card"]>[data-part="remove"]{top:4px;right:4px;width:22px;height:22px;border-radius:4px;background:rgba(0,0,0,.45);color:#fff}
+/* trigger: "button"（今の ARROW の Upload：ui-Upload）：antd の Button に雲のアイコン（13px・白。白地のボタンでは見えないのも今と同じ）と「ファイルを選択」
+   （13px 行の高さ13・アイコンとの間8px）。下に5px空けて選んだファイルの名前（13px の黒・なければ「ファイル未選択」）。
+   buttonTone="muted"（type=cancel）は枠も地もない antd の既定のボタン。xl は高さ50・文字 16px 600・アイコン24・間6px。 */
+[data-ar-design="classic"] [data-ar="upload"]:has(>[data-part="button"]){display:inline-block;color:#000;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="upload"]>[data-ar="button"]>[data-ar="icon"]{width:13px;height:13px}
+[data-ar-design="classic"] [data-ar="upload"]>[data-ar="button"]>[data-ar="icon"]+[data-part="label"]{margin-left:8px;line-height:13px}
+[data-ar-design="classic"] [data-ar="upload"]>[data-ar="button"][data-size="xl"]>[data-ar="icon"]{width:24px;height:24px}
+[data-ar-design="classic"] [data-ar="upload"]>[data-ar="button"][data-size="xl"]>[data-ar="icon"]+[data-part="label"]{margin-left:6px;font-size:16px}
+[data-ar-design="classic"] [data-ar="upload"]>[data-ar="button"][data-tone="muted"]:not(:disabled):hover{background:none;color:#4096FF}
+[data-ar-design="classic"] [data-ar="upload"]>[data-part="chosen"]{margin:5px 0 0;color:#000;font-size:13px;line-height:13px}

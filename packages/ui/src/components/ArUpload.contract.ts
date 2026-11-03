@@ -12,6 +12,12 @@ export interface ArUploadFile {
   /** 写真の見本（listType="picture"）。 */
   url?: string;
 }
+/**
+ * ArUpload 1.0 の契約。
+ *
+ * デザインが選ぶ形（ArDesign.forms.ArUpload）。値の受け渡し（select・reject・remove）はどの形でも同じ。
+ * - `trigger`：`"drop"`（既定）＝置き場（点線の枠）とファイルの一覧。`"button"`＝「ファイルを選択」のボタンと、その下に選んだファイルの名前（なければ「ファイル未選択」）（今の ARROW の Upload）。listType="text" のときだけ効く。
+ */
 export interface ArUploadProps {
   /** 一覧に出すファイル。送る処理は親が行い、状態をここに入れる。 */
   files?: readonly ArUploadFile[];
@@ -22,12 +28,29 @@ export interface ArUploadProps {
   multiple?: boolean;
   /** text：置き場とファイルの一覧（Excel登録）。picture：96px の四角（写真）。 */
   listType?: "text" | "picture";
+  /** trigger="button" のときのボタンの種類（今の ARROW の Upload の type：add→primary、cancel→muted）。 */
+  buttonTone?: "primary" | "secondary" | "muted";
+  /** trigger="button" のときのボタンの大きさ（xl＝今の ARROW の xlarge）。 */
+  buttonSize?: "md" | "xl";
   /** 置き場の下の説明（例：「.xlsx・10MBまで」）。 */
   hint?: string;
   disabled?: boolean;
   /** 読み上げ用の名前（例：「シフトの Excel」）。 */
   label?: string;
-  labels?: { drop: string; or: string; pick: string; add: string; remove: string; retry: string; tooLarge: string; wrongType: string };
+  labels?: {
+    drop: string;
+    or: string;
+    pick: string;
+    add: string;
+    remove: string;
+    retry: string;
+    tooLarge: string;
+    wrongType: string;
+    /** trigger="button" のボタンの文字。 */
+    choose?: string;
+    /** trigger="button" で、まだ何も選んでいないときの文字。 */
+    none?: string;
+  };
 }
 export interface ArUploadEmits {
   /** 選んだ・置いたファイルのうち、accept と maxSize に合うもの。 */
@@ -37,4 +60,4 @@ export interface ArUploadEmits {
   /** 一覧のごみ箱を押した。 */
   remove: [file: ArUploadFile];
 }
-export type ArUploadPart = "root" | "drop" | "icon" | "title" | "hint" | "pick" | "files" | "file" | "name" | "status" | "bar" | "card";
+export type ArUploadPart = "root" | "button" | "chosen" | "drop" | "icon" | "title" | "hint" | "pick" | "files" | "file" | "name" | "status" | "bar" | "card";

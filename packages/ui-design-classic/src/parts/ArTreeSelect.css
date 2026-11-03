@@ -3,7 +3,7 @@
    行は高さ34・字下げ24px、名前は余白 5px 12px・角丸6・14px、選んだ行は #e6f4ff。チェックは 16px・角丸4・枠 #d9d9d9、チェックは #1677ff。 */
 [data-ar-design="classic"] [data-ar="tree-select-panel"]{padding:8px 4px}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]{gap:4px;height:34px;padding:0 0 0 calc(var(--ar-tree-level,0) * 24px);font-size:14px;line-height:24px;color:rgba(0,0,0,.88)}
-[data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="node-label"]{padding:5px 12px;border-radius:6px;transition:background .2s}
+[data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="node-label"]{flex:1;min-width:0;padding:5px 12px;border-radius:6px;transition:background .2s}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="active"]>[data-part="node-label"]{background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="selected"]>[data-part="node-label"]{background:#E6F4FF}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="disabled"]{color:rgba(0,0,0,.25)}

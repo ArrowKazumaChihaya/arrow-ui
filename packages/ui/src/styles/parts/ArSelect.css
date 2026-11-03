@@ -15,3 +15,5 @@
 :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):hover>[data-part="clear"],:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):focus-visible>[data-part="clear"],:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="clear"]:focus-visible{opacity:1}
 :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):hover>[data-part="clear"]~[data-part="arrow"]{opacity:0}
 :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="spinner"]{box-sizing:border-box;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:ar-spin .8s linear infinite}
+[data-ar="select-panel"]>[data-part="list"]{max-height:264px}
+[data-ar="select-panel"]>[data-part="list"]>[data-part="action"]{display:flex;align-items:center;box-sizing:border-box}

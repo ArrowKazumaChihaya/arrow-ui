@@ -16,15 +16,17 @@ withDefaults(defineProps<ArPeriodNavProps>(), {
   todayDisabled: false,
   prevDisabled: false,
   nextDisabled: false,
+  arrows: true,
+  inverse: false,
   labels: () => ({ prev: "前へ", next: "次へ", pick: "期間を選ぶ" }),
 });
 const emit = defineEmits<{ prev: []; next: []; pick: [event: MouseEvent]; today: [] }>();
 </script>
 
 <template>
-  <div data-ar="period-nav" data-part="root" :data-size="size">
+  <div data-ar="period-nav" data-part="root" :data-size="size" :data-arrows="arrows ? undefined : 'none'" :data-inverse="inverse || undefined">
     <div data-part="center">
-      <button type="button" data-part="arrow" data-dir="prev" :aria-label="labels.prev" :title="labels.prev" :disabled="prevDisabled" @click="emit('prev')">
+      <button v-if="arrows" type="button" data-part="arrow" data-dir="prev" :aria-label="labels.prev" :title="labels.prev" :disabled="prevDisabled" @click="emit('prev')">
         <ArIcon name="cl" size="sm" />
       </button>
       <button
@@ -43,7 +45,7 @@ const emit = defineEmits<{ prev: []; next: []; pick: [event: MouseEvent]; today:
         <span data-part="text">{{ label }}</span>
         <em v-if="weekday" data-part="weekday" :data-tone="weekdayTone">{{ weekday }}</em>
       </b>
-      <button type="button" data-part="arrow" data-dir="next" :aria-label="labels.next" :title="labels.next" :disabled="nextDisabled" @click="emit('next')">
+      <button v-if="arrows" type="button" data-part="arrow" data-dir="next" :aria-label="labels.next" :title="labels.next" :disabled="nextDisabled" @click="emit('next')">
         <ArIcon name="cr" size="sm" />
       </button>
     </div>

@@ -14,7 +14,7 @@
 [data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-state="pending"]>[data-part="dot"]:empty{border-color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]{position:relative;top:-7px}
 [data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]>[data-part="title"]{font-weight:400;line-height:13px}
-[data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"][data-state="pending"]>[data-part="content"]>[data-part="title"]{color:rgba(0,0,0,.45)}
+/* まだ（pending）：antd の color="gray" と同じく点だけ灰色、見出しはふつうの色 */
 [data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]>[data-part="content"]>[data-part="description"]{color:rgba(0,0,0,.45);margin-top:6px;font-size:12px;line-height:12px;font-variant-numeric:tabular-nums}
 [data-ar-design="classic"] [data-ar="timeline"]>[data-part="item"]:last-child>[data-part="content"]{min-height:48px}
 [data-ar-design="classic"] [data-ar="timeline"][data-mode="alternate"]>[data-part="item"]{grid-template-columns:minmax(0,1fr) 10px minmax(0,1fr);column-gap:16px}

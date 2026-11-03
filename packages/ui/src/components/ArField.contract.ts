@@ -12,11 +12,14 @@ export interface ArFieldProps {
   name?: string;
   /**
    * stacked：ラベルが上（ポップアップ）。inline：ラベルが左・右寄せ（設定の画面）。ArForm の中では ArForm の layout。
+   * horizontal は inline、vertical は stacked の別名（ant-design-vue の Form の layout と同じ名前でも書ける）。
    * toolbar：小さな灰色のラベルを左に添える（カードの頭の「店舗」「表示モード」など。幅は文字なり）。
    */
-  layout?: "stacked" | "inline" | "toolbar";
+  layout?: "stacked" | "inline" | "toolbar" | "horizontal" | "vertical";
   /** inline のラベルの幅。sm＝88px・md＝120px・lg＝168px。 */
   labelSize?: "sm" | "md" | "lg";
+  /** inline のラベルの幅（CSS の長さ。例："25%"）。labelSize より優先。ArForm の中では ArForm の labelWidth。 */
+  labelWidth?: string;
   /** 必須の札の文字。 */
   requiredText?: string;
   /** 入力の id を決める（省くと自動）。 */

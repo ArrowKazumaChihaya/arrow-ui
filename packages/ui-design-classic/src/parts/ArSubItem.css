@@ -1,0 +1,8 @@
+/* @covers ArSubItem 1.0.0 */
+/* ArSubItem（今の ARROW の SubItem：ui-SubItem）。上に項目名（#595D61 14px 600・行の高さ30）、下に中身（14px・行の高さ30）。
+   必須の「※」は ArItem と同じ（ArItem.css）。小さな項目どうしの間は25px（最後は0）。 */
+[data-ar-design="classic"] [data-ar="sub-item"]{color:#000;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="sub-item"]:not(:last-child){margin-bottom:25px}
+[data-ar-design="classic"] [data-ar="sub-item"]>[data-part="title"]{line-height:30px;text-align:left}
+[data-ar-design="classic"] [data-ar="sub-item"]>[data-part="title"]>[data-part="label"]{color:#595D61}
+[data-ar-design="classic"] [data-ar="sub-item"]>[data-part="content"]{color:#000;font-size:14px;line-height:30px;text-align:left}

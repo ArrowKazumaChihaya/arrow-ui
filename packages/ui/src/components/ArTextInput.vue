@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<ArTextInputProps>(), {
   type: "text",
   placeholder: undefined,
   size: "md",
+  align: undefined,
   variant: "outlined",
   invalid: false,
   warning: false,
@@ -123,6 +124,7 @@ defineExpose({
       ref="input"
       v-bind="inputAttrs"
       data-part="input"
+      :data-align="align && align !== 'left' ? align : undefined"
       :type="inputType"
       :name="name"
       :value="modelValue"

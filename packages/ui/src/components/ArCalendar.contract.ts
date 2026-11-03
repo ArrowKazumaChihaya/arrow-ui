@@ -1,4 +1,8 @@
-/** ArCalendar 1.0 の契約。月の表示（マスの中身は cell slot）と、年の表示（12か月）。 */
+/**
+ * ArCalendar 1.0 の契約。月の表示（マスの中身は cell slot）と、年の表示（12か月）。
+ * デザインが選べる形（ArDesign.forms.ArCalendar）：
+ * - firstDay："inMonth"（既定。board の月の1日だけ「10/1」と月を添える）／"always"（形によらず、前後の月の1日も「12/1」と月を添える。今の ARROW の Calendar。classic）。
+ */
 export interface ArCalendarProps {
   /**
    * 形。sheet＝線で区切った1枚の表（デザインシステムのカレンダー）。
@@ -9,6 +13,11 @@ export interface ArCalendarProps {
   cellMarks?: (date: string) => ArCalendarCellMarks | undefined;
   /** 選んでいる日（"YYYY-MM-DD"）。選ばないなら null。 */
   modelValue?: string | null;
+  /**
+   * 締め日で区切った期間（"YYYY-MM-DD"。今の ARROW の Calendar の started_on〜ended_on）。
+   * 渡すと、その期間を含む週だけを並べ、期間の外の日は前後の月と同じ扱い（灰色・印なし）にする。月の切り替えは製品が期間を渡し直す。
+   */
+  range?: { start: string; end: string };
   /** 表示している月（"YYYY-MM"、v-model:month）。渡さなければ選んでいる日の月（なければ今日の月）から始める。 */
   month?: string;
   /** month：月の表示（日のマス）。year：年の表示（12か月のマス）。v-model:mode。 */

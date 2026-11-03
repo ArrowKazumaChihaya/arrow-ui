@@ -20,3 +20,7 @@
 [data-ar-design="remix"] [data-ar="date-range"]>[data-part="row"]>[data-part="days"]{font-size:12.5px;font-weight:600;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="date-range"]>[data-part="error"]{gap:6px;margin-top:6px;font-size:12.5px;font-weight:600;color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] :is([data-ar="date-range"],[data-ar="date-picker"],[data-ar="time-range"]){font-feature-settings:"palt" 1}
+/* ありえない日（invalidDate: "message" を選んだとき）：.derr と同じ赤い 12.5px 600 */
+[data-ar-design="remix"] [data-ar="date-input"]>[data-part="error"]{margin-left:8px;color:var(--ar-color-danger-ink);font-size:12.5px;font-weight:600;white-space:nowrap}
+/* 和暦（era）：年のプルダウンは文字なりの幅（ArYearInput と同じ） */
+[data-ar-design="remix"] [data-ar="date-input"][data-era]>[data-part="year"]{width:auto;min-width:136px}

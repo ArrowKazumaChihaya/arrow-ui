@@ -23,6 +23,8 @@ export interface ArAutoCompleteProps {
   /** 候補。文字だけの配列でもよい。 */
   options: readonly (ArAutoCompleteOption | string)[];
   placeholder?: string;
+  /** 候補の先頭に「リセット」の行を出す（選ぶと入力を空にする。今の ARROW の Candidate）。true なら「リセット」、文字を渡せばその文字。 */
+  resetOption?: boolean | string;
   /** 入力の頭のアイコン（例：search）。 */
   icon?: ArIconName;
   /** 候補に頭文字の丸を出す（名前の選択）。 */

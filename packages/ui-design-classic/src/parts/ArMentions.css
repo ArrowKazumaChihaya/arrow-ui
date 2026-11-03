@@ -8,3 +8,14 @@
 [data-ar-design="classic"] [data-ar="mentions"]>[data-part="input"]::placeholder{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="mentions"][data-state~="invalid"]{border-color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="mentions"][data-state~="disabled"]{background:rgba(0,0,0,.04);color:rgba(0,0,0,.25)}
+/* 候補（forms.ArMentions.popup = "caret"）：打っている「@」の右下に 7px あけて出る、最小幅 100・角丸8・余白なしの一覧。
+   行は li（今の画面は游ゴシック 13px・行の高さ 20.4）・余白 5px 12px＝高さ 30.4、先頭の行だけ上の角丸8・最後の行は下の角丸8、
+   今の行は rgba(0,0,0,.04)。丸（頭文字）や合っている文字の強調は antd にないので出さない。 */
+[data-ar-design="classic"] [data-ar="select-panel"]:has(>[data-part="list"][data-form="caret"]){min-width:100px;padding:0;margin-top:1px;border-radius:8px}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"][data-form="caret"] [data-part="option"]{min-height:0;gap:0;padding:5px 12px;border-radius:0;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:20.4286px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"][data-form="caret"] [data-part="option"]:first-child{border-radius:8px 8px 0 0}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"][data-form="caret"] [data-part="option"]:last-child{border-radius:0 0 8px 8px}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"][data-form="caret"] [data-part="option"]:only-child{border-radius:8px}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"][data-form="caret"] [data-part="option"]>[data-part="option-label"]{font-size:13px;line-height:20.4286px}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"][data-form="caret"] [data-part="option"]>[data-part="avatar"]{display:none}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"][data-form="caret"] [data-part="option"]>[data-part="option-label"]>[data-part="match"]{color:inherit;font-weight:inherit}

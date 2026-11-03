@@ -8,13 +8,14 @@ import { computed, nextTick, ref, watch } from "vue";
 import ArSelect from "./ArSelect.vue";
 import ArIcon from "./ArIcon.vue";
 import { daysInMonth, formatDate, splitDate, weekdayOf } from "./date";
-import { useId } from "../provider/context";
+import { useDesignForm, useId } from "../provider/context";
 import type { ArCalendarCell, ArCalendarEvent, ArCalendarProps } from "./ArCalendar.contract";
 
 const props = withDefaults(defineProps<ArCalendarProps>(), {
   variant: "sheet",
   cellMarks: undefined,
   modelValue: null,
+  range: undefined,
   month: undefined,
   mode: undefined,
   today: undefined,
@@ -104,9 +105,21 @@ function addMonths(date: string, n: number): string {
 const weekdays = computed(() => Array.from({ length: 7 }, (_, i) => (i + props.weekStart) % 7));
 const weeks = computed<ArCalendarCell[][]>(() => {
   const { y, m } = ym.value;
-  const lead = (weekdayOf(y, m, 1) - props.weekStart + 7) % 7;
-  const first = shift(formatDate(y, m, 1), -lead);
-  const total = Math.ceil((lead + daysInMonth(y, m)) / 7) * 7;
+  const r = props.range && splitDate(props.range.start) && splitDate(props.range.end) ? props.range : undefined;
+  let first: string;
+  let total: number;
+  if (r) {
+    const s = splitDate(r.start)!;
+    const e = splitDate(r.end)!;
+    const lead = (weekdayOf(s.y, s.m, s.d) - props.weekStart + 7) % 7;
+    first = shift(r.start, -lead);
+    const days = Math.round((Date.UTC(e.y, e.m - 1, e.d) - Date.UTC(s.y, s.m - 1, s.d)) / 86400000) + 1;
+    total = Math.ceil((lead + Math.max(days, 1)) / 7) * 7;
+  } else {
+    const lead = (weekdayOf(y, m, 1) - props.weekStart + 7) % 7;
+    first = shift(formatDate(y, m, 1), -lead);
+    total = Math.ceil((lead + daysInMonth(y, m)) / 7) * 7;
+  }
   const out: ArCalendarCell[][] = [];
   for (let i = 0; i < total; i++) {
     const date = shift(first, i);
@@ -117,7 +130,7 @@ const weeks = computed<ArCalendarCell[][]>(() => {
       month: p.m,
       day: p.d,
       weekday: weekdayOf(p.y, p.m, p.d),
-      inMonth: p.m === m && p.y === y,
+      inMonth: r ? date >= r.start && date <= r.end : p.m === m && p.y === y,
       isToday: date === todayStr.value,
       selected: date === props.modelValue,
       disabled: !!props.disabledDate?.(date),
@@ -239,7 +252,9 @@ const cellLabel = (c: ArCalendarCell) => {
   return `${c.year}${L.year}${c.month}${L.month}${c.day}日${extra.length ? `（${extra.join("・")}）` : ""}`;
 };
 /** board の日付：月の1日は「10/1」のように月を添える。 */
-const dayText = (c: ArCalendarCell) => (props.variant === "board" && c.inMonth && c.day === 1 ? `${c.month}/${c.day}` : String(c.day));
+const firstDay = useDesignForm<"inMonth" | "always">("ArCalendar", "firstDay", "inMonth");
+const dayText = (c: ArCalendarCell) =>
+  c.day === 1 && (firstDay.value === "always" || (props.variant === "board" && c.inMonth)) ? `${c.month}/${c.day}` : String(c.day);
 </script>
 
 <template>
@@ -322,7 +337,7 @@ const dayText = (c: ArCalendarCell) => (props.variant === "board" && c.inMonth &
             <div v-if="c.inMonth && $slots.cell" data-part="foot"><slot name="cell" v-bind="c" /></div>
           </template>
           <template v-else-if="c.inMonth || showAdjacent">
-            <span data-part="day">{{ c.day }}</span>
+            <span data-part="day" :data-size="dayText(c).length > 2 ? 'sm' : undefined">{{ dayText(c) }}</span>
             <div v-if="$slots.cell || eventsOf(c.date).length" data-part="content">
               <span v-for="(ev, k) in eventsOf(c.date)" :key="k" data-part="event" :data-tone="ev.tone ?? 'event'">{{ ev.label }}</span>
               <slot name="cell" v-bind="c" />

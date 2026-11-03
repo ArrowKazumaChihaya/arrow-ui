@@ -14,6 +14,8 @@ export interface ArPaginationProps {
   showTotal?: boolean;
   /** 大きさ。sm は枠のない小さなページ送り（カードの中・スマホ）。 */
   size?: "sm" | "md";
+  /** 簡単な形：前へ・今のページの入力欄・「／ 全ページ数」・次へ（antd の simple。カードの中・小さな一覧）。入力して Enter で移る。 */
+  simple?: boolean;
   /** 全部を押せなくする。 */
   disabled?: boolean;
   /** 1ページしかないときは出さない。 */
@@ -27,4 +29,4 @@ export interface ArPaginationEmits {
   /** ページか件数を変えた。 */
   change: [page: number, pageSize: number];
 }
-export type ArPaginationPart = "root" | "prev" | "next" | "page" | "ellipsis" | "size" | "total";
+export type ArPaginationPart = "root" | "prev" | "next" | "page" | "ellipsis" | "size" | "total" | "simple" | "jump" | "slash" | "last";

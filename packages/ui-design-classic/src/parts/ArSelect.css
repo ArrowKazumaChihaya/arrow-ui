@@ -1,7 +1,7 @@
 /* @covers ArSelect 1.0.0 */
 /* 押す所（トリガー）は ArCascader・ArTreeSelect も同じ形なので、ここで3つまとめて当てる。 */
 /* ArSelect（ant-design-vue 4 の Select：高さ32・角丸6・枠 #d9d9d9・右に12pxの下向き・フォーカスは #4096FF と淡い輪） */
-[data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]){height:var(--ar-size-control-md);gap:8px;padding:0 30px 0 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;line-height:22px;transition:border-color .2s,box-shadow .2s}
+[data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]){height:var(--ar-size-control-md);gap:8px;padding:0 29px 0 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;line-height:22px;transition:border-color .2s,box-shadow .2s}
 [data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):hover{border-color:#4096FF}
 [data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):is(:focus,[data-state~="open"]){border-color:#4096FF;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
 [data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="placeholder"]{color:rgba(0,0,0,.25)}
@@ -33,3 +33,16 @@
 [data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-state~="invalid"]{border-color:#FF4D4F}
 [data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-state~="invalid"]:is(:focus,[data-state~="open"]){border-color:#FF7875;box-shadow:0 0 0 2px rgba(255,38,5,.06)}
 [data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-state~="disabled"]{background:rgba(0,0,0,.04);border-color:#D9D9D9;color:rgba(0,0,0,.25);box-shadow:none}
+/* 右の下向きの印は antd の DownOutlined（12px・rgba(0,0,0,.25)）をそのまま描く */
+[data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="arrow"]{background:currentColor;-webkit-mask:var(--classic-down) center/12px 12px no-repeat;mask:var(--classic-down) center/12px 12px no-repeat}
+[data-ar-design="classic"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="arrow"]>*{display:none}
+[data-ar-design="classic"]{--classic-down:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='64 64 896 896'%3E%3Cpath d='M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z'/%3E%3C/svg%3E")}
+/* 開いている間は、選んでいる値を薄く（antd：rgba(0,0,0,.25)） */
+[data-ar-design="classic"] :is([data-ar="select"],[data-ar="tree-select"])[data-state~="open"]>[data-part="value"]{color:rgba(0,0,0,.25)}
+/* プルダウン：押す所の4px下（antd の既定）・一覧の高さは256px（8行） */
+[data-ar-design="classic"] [data-ar="select-panel"]{margin-top:-2px}
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"]{max-height:256px}
+/* 先頭の「未選択」（nullOption）は #C4C4C4 の文字 */
+[data-ar-design="classic"] [data-ar="select-panel"] [data-part="option"][data-kind="null"]>[data-part="option-label"]{color:#C4C4C4}
+/* 下の操作のボタン（actions）：今の ARROW の button_option（高さ42・余白 5px 12px の行に、幅いっぱいの add のボタン） */
+[data-ar-design="classic"] [data-ar="select-panel"]>[data-part="list"]>[data-part="action"]{min-height:42px;padding:5px 12px}

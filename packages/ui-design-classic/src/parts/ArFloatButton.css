@@ -5,9 +5,13 @@
 [data-ar-design="classic"] [data-ar="float-button"][data-tone="primary"]{background:var(--ar-accent);color:#fff}
 [data-ar-design="classic"] [data-ar="float-button"][data-tone="primary"]:hover{background:var(--ar-accent-hi)}
 [data-ar-design="classic"] [data-ar="float-button"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
-[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]{border-radius:20px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
-[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]{width:40px;height:40px;background:none;color:rgba(0,0,0,.88)}
-[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]+[data-part="item"]{border-top:1px solid rgba(5,5,5,.06)}
+/* 右下に固定するときは antd と同じ 右24・下48 */
+[data-ar-design="classic"] [data-ar="float-button"][data-fixed]{bottom:48px}
+/* アイコンは 18px（antd の FloatButton） */
+[data-ar-design="classic"] [data-ar="float-button"] [data-part="icon"]{width:18px;height:18px}
+/* 並び（グループ）：antd の FloatButton.Group（丸）と同じく、丸を 16px あけて縦に並べる（つないだ1本にはしない） */
+[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]{gap:16px;overflow:visible;border-radius:0;background:none;box-shadow:none}
+[data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]{width:40px;height:40px;border-radius:50%;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);transition:background .2s}
 [data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]:hover{background:rgba(0,0,0,.06)}
 [data-ar-design="classic"] [data-ar="float-button"]>[data-part="badge"],[data-ar-design="classic"] [data-ar="float-button"]>[data-part="item"]>[data-part="badge"]{top:-4px;right:-4px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:12px;line-height:20px;box-shadow:0 0 0 1px #fff}
 [data-ar-design="classic"] [data-ar="float-button"]>[data-part="item"]>[data-part="badge"]{top:0;right:0}

@@ -114,3 +114,4 @@
 /* board の行の右端の操作：上にそろえ、文字のボタン（「シフトに入れる」）とアイコンのボタンの間は 4px */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]{align-items:flex-start}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]>[data-ar="button"]:not([data-icon-only])+[data-ar="button"]{margin-left:2px}
+[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"][data-col="select"]>[data-part="select-text"]{margin-right:6px;font-size:12px}
