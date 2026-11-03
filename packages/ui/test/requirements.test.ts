@@ -27,11 +27,11 @@ describe("必要な部品の宣言", () => {
   });
 
   it("ライブラリにない部品・足りない版は止める", () => {
-    const r = defineRequirements({ components: { ArButton: "^2.0", ArTimeChart: "^1.0" } as never });
+    const r = defineRequirements({ components: { ArButton: "^2.0", ArNotInLibrary: "^1.0" } as never });
     const res = checkRequirements(r);
     expect(res.ok).toBe(false);
-    expect(res.problems.map((p) => `${p.component}@${p.where}`)).toEqual(["ArButton@library", "ArTimeChart@library"]);
-    expect(formatProblems(res)).toContain("ArTimeChart：^1.0 が必要 → ライブラリ は なし");
+    expect(res.problems.map((p) => `${p.component}@${p.where}`)).toEqual(["ArButton@library", "ArNotInLibrary@library"]);
+    expect(formatProblems(res)).toContain("ArNotInLibrary：^1.0 が必要 → ライブラリ は なし");
   });
 
   it("design が対応していない部品も止める（並べる基礎は design を問わない）", () => {

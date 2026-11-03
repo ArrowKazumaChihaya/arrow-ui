@@ -1,4 +1,4 @@
-/* @covers ArDrawer 1.0.0 */
+/* @covers ArDrawer 1.1.0 */
 /* ArDrawer（antd Drawer：幅378・幕 rgba(0,0,0,.45)・頭 16px 24px と下線・閉じるは題の左・題16px/600・中身 padding 24・足は左寄せ 8px 16px と上線） */
 [data-ar-design="classic"] [data-ar="drawer"]>[data-part="scrim"]{background:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="drawer"]>[data-part="panel"]{width:378px;background:#fff;color:#000;box-shadow:-6px 0 16px 0 rgba(0,0,0,.08),-3px 0 6px -4px rgba(0,0,0,.12),-9px 0 28px 8px rgba(0,0,0,.05);font-size:13px;line-height:13px;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
@@ -13,3 +13,5 @@
 [data-ar-design="classic"] [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="extra"]{gap:8px}
 [data-ar-design="classic"] [data-ar="drawer"]>[data-part="panel"]>[data-part="body"]{padding:24px}
 [data-ar-design="classic"] [data-ar="drawer"]>[data-part="panel"]>[data-part="footer"]{justify-content:flex-start;gap:8px;padding:8px 16px;border-top:1px solid rgba(5,5,5,.06)}
+/* 下から出る（placement="bottom"）：antd の Drawer の placement="bottom"（高さ378・角なし・上へ影）。頭・中身・足は横と同じ */
+[data-ar-design="classic"] [data-ar="drawer"][data-placement="bottom"]>[data-part="panel"]{width:100%;height:378px;box-shadow:0 -6px 16px 0 rgba(0,0,0,.08),0 -3px 6px -4px rgba(0,0,0,.12),0 -9px 28px 8px rgba(0,0,0,.05)}

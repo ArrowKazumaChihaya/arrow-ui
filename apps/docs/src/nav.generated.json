@@ -148,6 +148,11 @@
         "ja": "手順（ステップ）"
       },
       {
+        "slug": "step-select",
+        "name": "ArStepSelect",
+        "ja": "段階式の選択"
+      },
+      {
         "slug": "tabs",
         "name": "ArTabs",
         "ja": "タブ"
@@ -176,6 +181,11 @@
         "slug": "checkbox-group",
         "name": "ArCheckboxGroup",
         "ja": "チェックのまとまり"
+      },
+      {
+        "slug": "choice-card",
+        "name": "ArChoiceCard",
+        "ja": "選ぶカード"
       },
       {
         "slug": "color-picker",
@@ -238,6 +248,11 @@
         "ja": "メンション"
       },
       {
+        "slug": "otp-input",
+        "name": "ArOtpInput",
+        "ja": "認証コードの欄"
+      },
+      {
         "slug": "pills",
         "name": "ArPills",
         "ja": "選ぶ札"
@@ -251,6 +266,11 @@
         "slug": "rate",
         "name": "ArRate",
         "ja": "評価"
+      },
+      {
+        "slug": "rich-text-editor",
+        "name": "ArRichTextEditor",
+        "ja": "文章の入力"
       },
       {
         "slug": "select",
@@ -316,6 +336,11 @@
         "slug": "upload",
         "name": "ArUpload",
         "ja": "アップロード"
+      },
+      {
+        "slug": "variable-panel",
+        "name": "ArVariablePanel",
+        "ja": "変数のパネル"
       },
       {
         "slug": "weekday-picker",
@@ -386,6 +411,21 @@
         "slug": "list",
         "name": "ArList",
         "ja": "リスト"
+      },
+      {
+        "slug": "map-preview",
+        "name": "ArMapPreview",
+        "ja": "地図の見本"
+      },
+      {
+        "slug": "org-chart",
+        "name": "ArOrgChart",
+        "ja": "組織図"
+      },
+      {
+        "slug": "pdf-viewer",
+        "name": "ArPdfViewer",
+        "ja": "PDF の表示"
       },
       {
         "slug": "popover",
@@ -538,6 +578,11 @@
         "ja": "画面の頭（PC）"
       },
       {
+        "slug": "approval-flow",
+        "name": "ArApprovalFlow",
+        "ja": "承認の流れ"
+      },
+      {
         "slug": "balloon",
         "name": "ArBalloon",
         "ja": "吹き出し"
@@ -578,6 +623,11 @@
         "ja": "切り詰め（…）"
       },
       {
+        "slug": "example",
+        "name": "ArExample",
+        "ja": "例の箱"
+      },
+      {
         "slug": "flag-group",
         "name": "ArFlagGroup",
         "ja": "ビットのチェック"
@@ -608,6 +658,11 @@
         "ja": "ロゴの読み込み中"
       },
       {
+        "slug": "menu-tile",
+        "name": "ArMenuTile",
+        "ja": "メニューのタイル"
+      },
+      {
         "slug": "mobile-header",
         "name": "ArMobileHeader",
         "ja": "画面の頭（スマホ）"
@@ -618,9 +673,24 @@
         "ja": "月日の入力"
       },
       {
+        "slug": "payslip",
+        "name": "ArPayslip",
+        "ja": "明細書"
+      },
+      {
         "slug": "period-nav",
         "name": "ArPeriodNav",
         "ja": "期間の切り替え"
+      },
+      {
+        "slug": "punch-button",
+        "name": "ArPunchButton",
+        "ja": "打刻のボタン"
+      },
+      {
+        "slug": "save-bar",
+        "name": "ArSaveBar",
+        "ja": "保存バー"
       },
       {
         "slug": "section-head",
@@ -631,6 +701,11 @@
         "slug": "thumbnail",
         "name": "ArThumbnail",
         "ja": "顔写真（サムネイル）"
+      },
+      {
+        "slug": "time-chart",
+        "name": "ArTimeChart",
+        "ja": "時間のチャート"
       },
       {
         "slug": "view-options",

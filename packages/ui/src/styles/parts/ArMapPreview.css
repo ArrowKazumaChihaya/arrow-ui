@@ -1,0 +1,8 @@
+/* ArMapPreview の構造：地図（slot）を敷き、真ん中に円とピン、左下に札、右上に出典。親より広くならない。 */
+[data-ar="map-preview"]{position:relative;max-width:100%;overflow:hidden;box-sizing:border-box;isolation:isolate}
+[data-ar="map-preview"]>[data-part="map"]{position:absolute;inset:0;z-index:0}
+[data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]{position:absolute;inset:0;overflow:hidden}
+[data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>span{position:absolute;display:block}
+[data-ar="map-preview"]>[data-part="range"]{position:absolute;left:50%;top:50%;z-index:1;transform:translate(-50%,-50%);border-radius:50%;box-sizing:border-box;pointer-events:none}
+[data-ar="map-preview"]>[data-part="pin"]{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-92%);pointer-events:none}
+[data-ar="map-preview"]>:is([data-part="caption"],[data-part="source"]){position:absolute;z-index:3;white-space:nowrap}

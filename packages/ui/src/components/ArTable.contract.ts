@@ -1,9 +1,19 @@
 /**
- * ArTable 1.0 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
+ * ArTable 1.1 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
  * デザインが選べる形（ArDesign.forms.ArTable）：
  * - selectHead："check"（既定。見出しはチェックだけ）／"label"（チェックの左に「全選択」の文字。今の ARROW の SelectTable。classic）。
  * - dragHandle："column"（既定。並べ替えのつまみを左の専用の列に）／"cell"（1列目のセルの頭に。今の ARROW の SortableTable。classic）。
+ * - groupToggle："chevron"（既定。まとまりを開け閉めする見出しに ∨／›、列の見出しから開くのは ＋／−）／"menu"（今の ARROW の Th の isToggle の menu の絵。classic）。
  * 行の並べ替え（sortableRows）：1列目のつまみをドラッグするか、つまみで Alt+↑↓。並べた行は update:rows（v-model:rows）と reorder で渡す。
+ *
+ * 1.1 で、給与・年調・勤怠の集計表のために足した：
+ * - 右に止める列（sticky: "end"）。左右とも止めた列の端に影。
+ * - 2段の見出し（columnGroups と列の group）。見出しを押すと列のまとまりが開く（collapsible・v-model:openGroups）、列の show で開いた／閉じたときだけ出す。
+ *   ほかの列の見出しから開くこともできる（列の toggles：年調の「合計」を押すと月ごとの列が開く）。
+ * - 行をまたぐセル（列の rowSpan）。
+ * - 表の中の小さな金額の入力（列の edit・v-model:edits・invalidCells）。直した欄はテーマ色の淡い地（給与のページでは黄色）。
+ * - 3段の金額のセル（列の stack：値の配列を 24px の行に縦に並べる。課税支給／社会保険料等／所得税）。edit と合わせると3つの入力。
+ * - 数字の下の小さな行（列の delta：前月との差「+12,000（前月比）」）。
  */
 import type { ArIconName } from "../icons";
 import type { ArAvatarTone } from "./ArAvatar.contract";
@@ -29,8 +39,11 @@ export interface ArTableColumn<Row> {
   align?: "start" | "center" | "end";
   /** px。データに合わせた幅は数で渡してよい。省くと中身に合わせる。 */
   width?: number;
-  /** 横にスクロールしても左に残す。左から続けて指定する。 */
-  sticky?: boolean;
+  /**
+   * 横にスクロールしても残す。true・"start"＝左に（左から続けて指定する）、"end"＝右に（右から続けて指定する。年調の「反映」）。
+   * 止めた列は2段の見出しのまとまり（group）に入れない。
+   */
+  sticky?: boolean | "start" | "end";
   /** 見出しを押すと並べ替えの印が変わり update:sort を出す。 */
   sortable?: boolean;
   /** セルに出す値。省くと row[key]。配列を返すと1行ずつ並べる（1日に2つの時間帯など）。 */
@@ -43,6 +56,42 @@ export interface ArTableColumn<Row> {
   avatar?: boolean | ((row: Row) => ArTableAvatar);
   /** 名前の下の小さな灰色の文字（「通常勤務2」など）。color を渡すと文字の前に色の小さな四角（パターンの色）。 */
   sub?: (row: Row) => string | { text: string; color?: string } | undefined;
+  /** 2段の見出しのまとまり（columnGroups の key）。同じまとまりの列は続けて並べる。 */
+  group?: string;
+  /** まとまりが開いているとき（open）・閉じているとき（closed）だけ出す。省くといつも出す。 */
+  show?: "open" | "closed";
+  /** まとまりの合計の列（淡いテーマ色の地。見出しは少し濃く）。 */
+  total?: boolean;
+  /** この列の見出しを、まとまりを開け閉めするボタンにする（columnGroups の key。年調の「合計」→ 月ごとの列）。 */
+  toggles?: string | readonly string[];
+  /** 行をまたぐ。数を返すとその行数ぶん下へつなぎ、0 を返すとその行のセルを出さない（上の行のセルがまたいでいる）。 */
+  rowSpan?: (row: Row, index: number) => number;
+  /**
+   * 表の中の小さな金額の入力にする（高さ24・右寄せ）。値は v-model:edits の「行のkey:列のkey」（stack のときは「:段の番号」を足す）に入る。
+   * 関数を渡すと行ごとに入力にするかを決める（ロック中の店舗の人は入力にしない、など）。
+   */
+  edit?: boolean | ((row: Row) => boolean);
+  /** 入力の読み上げの名前（「末永 修也さんの残業手当」）。段の番号は stack のとき。 */
+  editLabel?: (row: Row, line?: number) => string;
+  /** 値の配列を 24px の行に縦に並べる（3段の金額のセル）。 */
+  stack?: boolean;
+  /** 値の下の小さな行（前月との差など）。tone：warn＝目立たせる（10%以上の差）、muted＝灰色（既定）。 */
+  delta?: (row: Row) => string | { text: string; tone?: "warn" | "muted" | "danger" } | undefined;
+  /** 手で直した値の印（値の後ろの小さな鉛筆。読み上げ「手で直した金額」）。 */
+  marked?: (row: Row) => boolean;
+}
+
+/** 2段の見出しのまとまり（「支給」「控除」「給与」「賞与」）。 */
+export interface ArTableColumnGroup {
+  key: string;
+  /** 上の段の見出し。 */
+  title: string;
+  /** 見出しを押すと開け閉めできる。閉じると show:"closed" の列（合計）だけが1段で出る。 */
+  collapsible?: boolean;
+  /** 開いているときの見出しの横の小さな文字（既定「閉じる」）。 */
+  openHint?: string;
+  /** 閉じているときの見出しの横の小さな文字（既定「内訳」）。 */
+  closedHint?: string;
 }
 
 /**
@@ -127,6 +176,14 @@ export interface ArTableProps<Row> {
    * マウスはつまみをつかんで上下へ、キーボードはつまみで Alt+↑↓。並べた行は update:rows（v-model:rows）と reorder で渡す。
    */
   sortableRows?: boolean;
+  /** 2段の見出しのまとまり。 */
+  columnGroups?: readonly ArTableColumnGroup[];
+  /** 開いているまとまりの key（v-model:openGroups）。 */
+  openGroups?: readonly string[];
+  /** 表の中の入力の値（v-model:edits）。key は「行のkey:列のkey」（stack は「:段」）。ここにある値を入力に出し、元の値と違えば「直した欄」にする。 */
+  edits?: Readonly<Record<string, string>>;
+  /** 間違いのある入力の key（赤い枠）。 */
+  invalidCells?: readonly string[];
 }
 
 export interface ArTableEmits<Row> {
@@ -138,6 +195,10 @@ export interface ArTableEmits<Row> {
   "update:rows": [rows: Row[]];
   /** 並べ替えた1行。 */
   reorder: [move: ArTableReorder];
+  /** 開いているまとまり（v-model:openGroups）。 */
+  "update:openGroups": [keys: string[]];
+  /** 表の中の入力の値（v-model:edits）。 */
+  "update:edits": [edits: Record<string, string>];
 }
 
 /**
@@ -177,4 +238,11 @@ export type ArTablePart =
   | "empty"
   | "below"
   | "drag-handle"
-  | "status";
+  | "status"
+  | "group-cell"
+  | "group-toggle"
+  | "toggle-hint"
+  | "stack"
+  | "cell-input"
+  | "delta"
+  | "mark";

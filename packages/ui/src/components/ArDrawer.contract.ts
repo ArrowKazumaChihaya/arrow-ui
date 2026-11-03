@@ -1,15 +1,19 @@
 import type { ArIconName } from "../icons";
 
-/** ArDrawer 1.0 の契約。 */
+/** ArDrawer 1.1 の契約。 */
 export interface ArDrawerProps {
   open: boolean;
   title: string;
   /** 題の左のアイコン（人なら user など）。 */
   icon?: ArIconName;
-  /** 出てくる側。 */
-  placement?: "right" | "left";
+  /**
+   * 出てくる側。bottom＝スマホの下から出る一覧（ボトムシート。上の角だけ丸く、題は真ん中。高さは中身なり・最大 82%）。
+   */
+  placement?: "right" | "left" | "bottom";
   /** 幅（px か CSS の長さ）。省くとデザインの既定（remix 340・classic 378）。 */
   width?: number | string;
+  /** 高さ（placement="bottom" のとき。px か CSS の長さ）。省くと中身なり（最大は画面の 82%）。 */
+  height?: number | string;
   /** 右上の × と Esc で閉じられる。 */
   closable?: boolean;
   /** 幕を押して閉じる。 */

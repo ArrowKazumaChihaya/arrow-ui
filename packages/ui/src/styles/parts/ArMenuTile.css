@@ -1,0 +1,7 @@
+/* ArMenuTile の構造：縦に四角・名前・一言。件数は四角の右上に重ねる。 */
+[data-ar="menu-tile"]{display:flex;flex-direction:column;align-items:center;box-sizing:border-box;min-width:0;margin:0;border:0;font:inherit;text-align:center;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+[data-ar="menu-tile"][data-state~="disabled"]{cursor:not-allowed}
+[data-ar="menu-tile"]>[data-part="icon"]{position:relative;display:flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
+[data-ar="menu-tile"]>[data-part="icon"]>[data-ar="icon"]{display:block;flex:none}
+[data-ar="menu-tile"]>[data-part="icon"]>[data-part="count"]{position:absolute;display:flex;align-items:center;justify-content:center;box-sizing:border-box;white-space:nowrap;pointer-events:none}
+[data-ar="menu-tile"]>[data-part="label"],[data-ar="menu-tile"]>[data-part="note"]{display:block;max-width:100%}

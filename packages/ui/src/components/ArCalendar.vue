@@ -2,6 +2,7 @@
 /**
  * ArCalendar 1.0 — 月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。
  * マスの中身は cell slot（イベント・不足など）。年の表示（12か月）にも切り替えられる。
+ * size="mini" は小さなカレンダー（設定のシフトテンプレートの「カレンダーで確かめる」）：見出しは絵と題だけ、マスに札と小さな文字、下に footer slot。
  * キーボード：←→↑↓ で日を移り、PageUp / PageDown で月（Shift で年）、Home / End で週の端、Enter / Space で選ぶ。
  */
 import { computed, nextTick, ref, watch } from "vue";
@@ -13,6 +14,8 @@ import type { ArCalendarCell, ArCalendarEvent, ArCalendarProps } from "./ArCalen
 
 const props = withDefaults(defineProps<ArCalendarProps>(), {
   variant: "sheet",
+  size: "default",
+  title: undefined,
   cellMarks: undefined,
   modelValue: null,
   range: undefined,
@@ -49,6 +52,7 @@ defineSlots<{
   cell?: (p: ArCalendarCell) => unknown;
   "month-cell"?: (p: { year: number; month: number; current: boolean; selected: boolean }) => unknown;
   extra?: () => unknown;
+  footer?: () => unknown;
 }>();
 
 const id = useId("ar-calendar");
@@ -219,7 +223,8 @@ function onModeKey(e: KeyboardEvent) {
 }
 
 const title = computed(() =>
-  mode.value === "month" ? `${ym.value.y}${props.labels.year}${ym.value.m}${props.labels.month}` : `${ym.value.y}${props.labels.year}`,
+  props.title ??
+  (mode.value === "month" ? `${ym.value.y}${props.labels.year}${ym.value.m}${props.labels.month}` : `${ym.value.y}${props.labels.year}`),
 );
 const eventMap = computed(() => {
   const m = new Map<string, ArCalendarEvent[]>();
@@ -228,6 +233,8 @@ const eventMap = computed(() => {
 });
 const eventsOf = (date: string) => eventMap.value.get(date) ?? [];
 const weekendOf = (wd: number) => (props.weekendColors ? (wd === 0 ? "sun" : wd === 6 ? "sat" : undefined) : undefined);
+const dayTone = (c: ArCalendarCell) => (props.weekendColors && marksOf(c)?.holiday ? "sun" : weekendOf(c.weekday));
+const mini = computed(() => props.size === "mini");
 const marksOf = (c: ArCalendarCell) => (c.inMonth || props.variant === "sheet" ? props.cellMarks?.(c.date) : undefined);
 const cellState = (c: ArCalendarCell) => {
   const m = marksOf(c);
@@ -258,10 +265,12 @@ const dayText = (c: ArCalendarCell) =>
 </script>
 
 <template>
-  <div data-ar="calendar" data-part="root" :data-mode="mode" :data-variant="variant">
+  <div data-ar="calendar" data-part="root" :data-mode="mode" :data-variant="variant" :data-size="mini ? 'mini' : undefined">
     <div v-if="showHeader" data-part="header">
+      <ArIcon v-if="mini" line name="cal" data-part="heading-icon" />
       <div :id="`${id}-title`" data-part="title" aria-live="polite">{{ title }}</div>
-      <div data-part="extra">
+      <div v-if="mini" data-part="extra"><slot name="extra" /></div>
+      <div v-else data-part="extra">
         <slot name="extra" />
         <div data-part="year">
           <ArSelect :model-value="ym.y" :options="years" size="sm" block :label="labels.yearSelect" @update:model-value="onYear" />
@@ -312,7 +321,7 @@ const dayText = (c: ArCalendarCell) =>
           role="gridcell"
           :data-date="c.date"
           :data-state="cellState(c)"
-          :data-weekend="weekendOf(c.weekday)"
+          :data-weekend="dayTone(c)"
           :aria-selected="c.selected"
           :aria-disabled="c.disabled || undefined"
           :aria-current="c.isToday ? 'date' : undefined"
@@ -335,6 +344,19 @@ const dayText = (c: ArCalendarCell) =>
               <i data-part="dot" aria-hidden="true" /><span>{{ ev.label }}</span>
             </span>
             <div v-if="c.inMonth && $slots.cell" data-part="foot"><slot name="cell" v-bind="c" /></div>
+          </template>
+          <template v-else-if="mini && (c.inMonth || showAdjacent)">
+            <span data-part="day">{{ dayText(c) }}</span>
+            <template v-for="(ev, k) in c.inMonth ? eventsOf(c.date) : []" :key="k">
+              <span
+                data-part="event"
+                :data-tone="ev.tone ?? 'event'"
+                :title="ev.title"
+                :style="ev.color || ev.background ? { color: ev.color, background: ev.background } : undefined"
+              >{{ ev.label }}</span>
+              <span v-if="ev.note" data-part="note">{{ ev.note }}</span>
+            </template>
+            <slot v-if="c.inMonth" name="cell" v-bind="c" />
           </template>
           <template v-else-if="c.inMonth || showAdjacent">
             <span data-part="day" :data-size="dayText(c).length > 2 ? 'sm' : undefined">{{ dayText(c) }}</span>
@@ -370,5 +392,6 @@ const dayText = (c: ArCalendarCell) =>
         </div>
       </div>
     </div>
+    <div v-if="$slots.footer" data-part="footer"><slot name="footer" /></div>
   </div>
 </template>

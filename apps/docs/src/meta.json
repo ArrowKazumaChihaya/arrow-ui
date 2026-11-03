@@ -529,13 +529,13 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "文字の前のアイコン。"
    },
    {
     "name": "iconEnd",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "文字の後ろのアイコン（メニューを開くボタンの cd など）。"
    },
@@ -626,7 +626,7 @@
   "props": [
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "アイコン（backTop のときは up を使う）。"
    },
@@ -711,7 +711,7 @@
   "props": [
    {
     "name": "name",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": true,
     "description": ""
    },
@@ -773,7 +773,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "文字の前のアイコン。"
    },
@@ -1224,7 +1224,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "押すボタンの頭のアイコン。"
    },
@@ -1588,6 +1588,67 @@
   "dataAr": "steps"
  },
  {
+  "name": "ArStepSelect",
+  "version": "1.0.0",
+  "description": "段階式の選択。上から段の箱を並べ、間に「下へ進む」矢印。済みの段は丸にチェック、今の段は枠を強める、次の段は番号。\n上の道しるべの札（「種類 給与関連 › 書類 給与明細書 › …」）を押すとその段へ戻る（jump を出し、箱へスクロールしてフォーカス）。",
+  "props": [
+   {
+    "name": "steps",
+    "type": "ArStepSelectStep[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "crumbs",
+    "type": "boolean",
+    "required": false,
+    "description": "上に道しるべの札を出す（札が2つ以上のとき）。",
+    "default": "true"
+   },
+   {
+    "name": "connectors",
+    "type": "boolean",
+    "required": false,
+    "description": "段の間に「下へ進む」矢印を出す。",
+    "default": "true"
+   },
+   {
+    "name": "labels",
+    "type": "{ crumbs?: string | undefined; done?: string | undefined; current?: string | undefined; }",
+    "required": false,
+    "description": "読み上げの文言。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "jump",
+    "payload": "[key: string]",
+    "description": "道しるべの札を押したとき（その段へ戻る）。箱へは自動でスクロールしてフォーカスする。"
+   }
+  ],
+  "slots": [
+   "`extra-<key>`",
+   "`step-<key>`"
+  ],
+  "parts": [
+   "root",
+   "crumbs",
+   "separator",
+   "crumb",
+   "crumb-label",
+   "connector",
+   "step",
+   "head",
+   "marker",
+   "title",
+   "count",
+   "extra",
+   "body"
+  ],
+  "dataAr": "step-select"
+ },
+ {
   "name": "ArTabs",
   "version": "1.0.0",
   "description": "タブ。中身の出し分けは使う側が modelValue で行う。\nvariant：band はカードの頭（帯）に置くタブ、line はカードの中の下線のタブ、card は閉じられる・足せるタブ。\n←→ で移り、Home / End で端へ。閉じられるタブは Delete で close。",
@@ -1708,7 +1769,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "入力の頭のアイコン（例：search）。"
    },
@@ -1850,7 +1911,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "頭に出すアイコン（例：store）。"
    },
@@ -2077,6 +2138,109 @@
    "list"
   ],
   "dataAr": "checkbox-group"
+ },
+ {
+  "name": "ArChoiceCard",
+  "version": "1.0.0",
+  "description": "選ぶカード。プラン・支払い方法（card）、社員を追加の4択（option）、書類の種類（tile）、年調の なし／あり（radio）。\nvalue と v-model を渡すと1つを選ぶ組（role=\"radio\"・←→↑↓で隣へ動いて選ぶ）。並べ方は使う側の ArGrid や role=\"radiogroup\" の箱が決める。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": "名前（「Cプラン」「口座振替」「なし」「入社メールを送信」）。"
+   },
+   {
+    "name": "description",
+    "type": "string",
+    "required": false,
+    "description": "名前の下の説明。"
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": "アイコン。card は名前の上、option はテーマ色の四角、tile は淡い四角。radio は使わない。"
+   },
+   {
+    "name": "variant",
+    "type": "'card' | 'option' | 'tile' | 'radio'",
+    "required": false,
+    "description": "形。\ncard＝大きな選択のカード（プラン・支払い方法。右上に丸いチェック、選ぶとテーマ色の枠と淡い地）。\noption＝やり方を選ぶカード（社員を追加の4択。左にテーマ色の四角のアイコン。押すと次へ進む）。\ntile＝選ぶタイル（書類の種類・書類。選ぶとテーマ色の面）。\nradio＝ラジオカード（年末調整の なし／あり。左にラジオの丸）。",
+    "default": "\"card\""
+   },
+   {
+    "name": "value",
+    "type": "ArChoiceValue",
+    "required": false,
+    "description": "1つを選ぶ組で使うときの、この札の値。v-model（modelValue）と同じなら選ばれている。渡すと role=\"radio\"。"
+   },
+   {
+    "name": "modelValue",
+    "type": "ArChoiceValue | null",
+    "required": false,
+    "description": "組の今の値（v-model）。"
+   },
+   {
+    "name": "selected",
+    "type": "boolean",
+    "required": false,
+    "description": "組を使わずに選ばれているか（aria-pressed）。",
+    "default": "false"
+   },
+   {
+    "name": "tag",
+    "type": "string",
+    "required": false,
+    "description": "名前の横の札（「推奨」「ご利用中のプラン」「7種類」）。"
+   },
+   {
+    "name": "tagTone",
+    "type": "'ok' | 'accent' | 'neutral'",
+    "required": false,
+    "description": "札の色。ok＝緑（推奨）・accent＝テーマ色（ご利用中）・neutral＝灰。",
+    "default": "\"accent\""
+   },
+   {
+    "name": "reason",
+    "type": "string",
+    "required": false,
+    "description": "選べないときの理由（鍵の印と一緒に下に出す）。"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: ArChoiceValue]",
+    "description": ""
+   },
+   {
+    "name": "select",
+    "payload": "[value: ArChoiceValue | undefined]",
+    "description": "押したとき（option はこれで次へ進む）。"
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "check",
+   "icon",
+   "body",
+   "title",
+   "tag",
+   "description",
+   "reason"
+  ],
+  "dataAr": "choice-card"
  },
  {
   "name": "ArColorPicker",
@@ -2994,8 +3158,8 @@
  },
  {
   "name": "ArItem",
-  "version": "1.0.0",
-  "description": "項目の行（設定の画面の1行）。左に項目名（幅 titleWidth・必須の印）、右に入力と、その下の補足・「詳細」。\n中の入力とは default スロットの値（id・aria-*）を v-bind して結ぶ。項目名を押すと入力へ。",
+  "version": "1.1.0",
+  "description": "項目の行（設定の画面の1行）。左に項目名（幅 titleWidth・必須の印・？の説明・項目名の下の補足）、\n右に入力と、その下の間違い・補足・「詳細」。row の形では行の上に区切りの線、右に「変更あり／元に戻す」。\n中の入力とは default スロットの値（id・aria-*）を v-bind して結ぶ。項目名を押すと入力へ。",
   "props": [
    {
     "name": "title",
@@ -3047,7 +3211,7 @@
     "name": "titleWidth",
     "type": "string",
     "required": false,
-    "description": "項目名の幅（CSS の長さ）。",
+    "description": "項目名の幅（CSS の長さ）。長い項目名（「シフトテーブルに勤務時間と日数を表示」など）は 230px・236px などに広げる。",
     "default": "\"200px\""
    },
    {
@@ -3055,6 +3219,86 @@
     "type": "string",
     "required": false,
     "description": "入力の id（省くと自動）。default スロットの値で入力に渡す。"
+   },
+   {
+    "name": "variant",
+    "type": "'form' | 'row'",
+    "required": false,
+    "description": "形。form＝線のない入力の行（ポップアップ・入力の画面。今までの形）。\nrow＝上に区切りの線がある行（社員情報・会社情報・設定の画面の「項目名｜値＋説明」。右に「変更あり／元に戻す」の欄）。",
+    "default": "\"form\""
+   },
+   {
+    "name": "help",
+    "type": "string",
+    "required": false,
+    "description": "項目名の右の「？」で開く説明の文。押すと吹き出しで出し、help も出す。"
+   },
+   {
+    "name": "helpLabel",
+    "type": "string",
+    "required": false,
+    "description": "「？」の読み上げの名前（省くと「<項目名>の説明」）。"
+   },
+   {
+    "name": "caption",
+    "type": "string",
+    "required": false,
+    "description": "項目名の下の小さな補足（「登録するとマイページのシフトで表示名が…」）。"
+   },
+   {
+    "name": "error",
+    "type": "string",
+    "required": false,
+    "description": "間違いの文（直し方まで書く）。入力の下に赤で出し、入力に aria-invalid を付ける。"
+   },
+   {
+    "name": "unregistered",
+    "type": "string | boolean",
+    "required": false,
+    "description": "値がまだ登録されていない。true で「未登録」、文字を渡すとその横に理由の札（「源泉徴収票・法定調書合計表に必要です」）。\n値の代わりに出す（default スロットは出さない）。",
+    "default": "false"
+   },
+   {
+    "name": "unregisteredText",
+    "type": "string",
+    "required": false,
+    "description": "「未登録」の文字。",
+    "default": "\"未登録\""
+   },
+   {
+    "name": "changed",
+    "type": "boolean",
+    "required": false,
+    "description": "保存していない変更がある。行を淡いテーマ色にし、右に「変更あり」と「元に戻す」を出す。",
+    "default": "false"
+   },
+   {
+    "name": "changedText",
+    "type": "string",
+    "required": false,
+    "description": "「変更あり」の文字。",
+    "default": "\"変更あり\""
+   },
+   {
+    "name": "revertable",
+    "type": "boolean",
+    "required": false,
+    "description": "「元に戻す」を出す（changed のとき）。押すと revert を出す。",
+    "default": "true"
+   },
+   {
+    "name": "revertText",
+    "type": "string",
+    "required": false,
+    "description": "「元に戻す」の文字。",
+    "default": "\"元に戻す\""
+   },
+   {
+    "name": "highlight",
+    "type": "boolean",
+    "required": false,
+    "description": "探して移ってきた行を光らせる（設定を探す）。",
+    "default": "false"
    }
   ],
   "emits": [
@@ -3062,12 +3306,23 @@
     "name": "detail",
     "payload": "[event: MouseEvent]",
     "description": "「詳細」を押した。"
+   },
+   {
+    "name": "help",
+    "payload": "[event: MouseEvent]",
+    "description": "「？」を押した。"
+   },
+   {
+    "name": "revert",
+    "payload": "[event: MouseEvent]",
+    "description": "「元に戻す」を押した。"
    }
   ],
   "slots": [
    "title",
    "default",
-   "info"
+   "info",
+   "aside"
   ],
   "parts": [
    "root",
@@ -3075,10 +3330,18 @@
    "label",
    "label-text",
    "required",
+   "help",
+   "caption",
    "content",
+   "unregistered",
+   "unregistered-text",
+   "unregistered-why",
+   "error",
    "info",
    "info-text",
-   "detail"
+   "detail",
+   "aside",
+   "changed"
   ],
   "dataAr": "item"
  },
@@ -3201,6 +3464,108 @@
    "empty"
   ],
   "dataAr": "mentions"
+ },
+ {
+  "name": "ArOtpInput",
+  "version": "1.0.0",
+  "description": "認証コードの欄。6桁を1桁ずつの箱で入れる（打つと次へ・Backspace で前へ・←→で動く・貼り付けで全部の箱に入る）。\n数字だけを受け取る。全部入ると complete。resendable で下に「認証コードを再送（あと45秒）」を出し、秒数を数える。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "string",
+    "required": true,
+    "description": "入っている数字（つなげた文字列）。v-model で受け渡す。"
+   },
+   {
+    "name": "length",
+    "type": "number",
+    "required": false,
+    "description": "桁の数。",
+    "default": "6"
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "間違いの枠（赤）。ArField の中では自動で付く。",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前（箱ごとに「認証コード 1桁目」のように読む）。",
+    "default": "\"認証コード\""
+   },
+   {
+    "name": "autofocus",
+    "type": "boolean",
+    "required": false,
+    "description": "出たときに最初の箱へフォーカスする。",
+    "default": "false"
+   },
+   {
+    "name": "resendable",
+    "type": "boolean",
+    "required": false,
+    "description": "下に「認証コードを再送」のボタンを出す。",
+    "default": "false"
+   },
+   {
+    "name": "resendIn",
+    "type": "number",
+    "required": false,
+    "description": "再送を押せるようになるまでの秒数（送った直後なら 60 など）。変わるたびに数え直す。0 ならすぐ押せる。",
+    "default": "0"
+   },
+   {
+    "name": "cooldown",
+    "type": "number",
+    "required": false,
+    "description": "再送したあと、次に押せるまでの秒数。",
+    "default": "60"
+   },
+   {
+    "name": "labels",
+    "type": "{ resend?: string | undefined; wait?: string | undefined; }",
+    "required": false,
+    "description": "文言。{s} は残りの秒数。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: string]",
+    "description": ""
+   },
+   {
+    "name": "complete",
+    "payload": "[value: string]",
+    "description": "全部の桁が入ったとき。"
+   },
+   {
+    "name": "resend",
+    "payload": "[]",
+    "description": "再送を押したとき（このあと cooldown 秒は押せない）。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "fields",
+   "input",
+   "cell",
+   "resend"
+  ],
+  "dataAr": "otp-input"
  },
  {
   "name": "ArPills",
@@ -3402,6 +3767,239 @@
   "dataAr": "rate"
  },
  {
+  "name": "ArRichTextEditor",
+  "version": "1.0.0",
+  "description": "書式のツールバー・変数のメニュー・文字数のある文章の入力（書類集計の自作書類・通知のメールテンプレート）。\n依存を増やさず contenteditable で作る。値は HTML（v-model）。危ないタグと属性は入るときも出すときも消す。\n変数（`{{ $employee_name }}`）は本文の中で札に見せる（値はただの文字のまま）。plain なら文字と改行だけ。\nキーボード：ツールバーは ←→ Home End で道具を移り（Tab で止まるのは1つ）、メニューは ↑↓ Enter Escape。\n本文では Ctrl/⌘+B・I・U・Z・Shift+Z（ブラウザの編集の操作）。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "string",
+    "required": false,
+    "description": "本文の HTML（v-model）。plain のときは文字と `<br>` だけ。",
+    "default": "\"\""
+   },
+   {
+    "name": "toolbar",
+    "type": "readonly ArRichTextTool[]",
+    "required": false,
+    "description": "ツールバーに並べる道具（左から）。\"|\" は区切り。\n\"spacer\" は区切りと同じ。デザインによっては、以降を右に寄せる（classic：今の ARROW の Froala は「元に戻す・やり直す・ヘルプ」を右端に置く）。\n既定は書類の形：変数｜文字の大きさ・太字・斜体・下線・文字の色｜揃え・段落・箇条書き｜表・改ページ｜（spacer）元に戻す・やり直す・ヘルプ。\nメールの形は [\"variables\", \"|\", \"undo\", \"redo\"]（plain と合わせる）。",
+    "default": "[\"variables\", \"|\", \"fontSize\", \"bold\", \"italic\", \"underline\", \"color\", \"|\", \"align\", \"paragraph\", \"list\", \"|\", \"table\", \"pageBreak\", \"spacer\", \"undo\", \"redo\", \"help\"] as const"
+   },
+   {
+    "name": "plain",
+    "type": "boolean",
+    "required": false,
+    "description": "文字と改行（`<br>`）だけにする（メールの本文。今の ARROW の htmlAllowedTags: [\"br\"]・pastePlain）。貼り付けも文字だけ。",
+    "default": "false"
+   },
+   {
+    "name": "variables",
+    "type": "readonly ArVariableGroup[]",
+    "required": false,
+    "description": "「ARROWの変数」で入れられる変数のまとまり。",
+    "default": "[]"
+   },
+   {
+    "name": "variablesLabel",
+    "type": "string",
+    "required": false,
+    "description": "変数のボタンの文字（「ARROWの変数」「ARROW 差し込み項目」など）。",
+    "default": "\"ARROWの変数\""
+   },
+   {
+    "name": "variablesPlacement",
+    "type": "'menu' | 'inline'",
+    "required": false,
+    "description": "変数の選び方。省くとデザインの形（forms.ArRichTextEditor.variables）。"
+   },
+   {
+    "name": "variablesOpen",
+    "type": "boolean",
+    "required": false,
+    "description": "inline のとき、変数のパネルを開いておく（v-model:variablesOpen）。"
+   },
+   {
+    "name": "variablesNote",
+    "type": "string",
+    "required": false,
+    "description": "inline のパネルの下の説明（「押すと、入力していた場所に差し込みます」など）。"
+   },
+   {
+    "name": "tokenPattern",
+    "type": "RegExp",
+    "required": false,
+    "description": "本文の中で札に見せる変数の形。既定は `{{ $名前 }}`。g を付けた正規表現。"
+   },
+   {
+    "name": "counter",
+    "type": "boolean",
+    "required": false,
+    "description": "文字数を出す。",
+    "default": "true"
+   },
+   {
+    "name": "countPlacement",
+    "type": "'toolbar' | 'footer'",
+    "required": false,
+    "description": "文字数を出す場所。footer＝下の段（書類）、toolbar＝ツールバーの右端（メール）。デザインの形（forms.ArRichTextEditor.count）が footer ならいつも下の段。",
+    "default": "\"footer\""
+   },
+   {
+    "name": "maxLength",
+    "type": "number",
+    "required": false,
+    "description": "文字数の上限。越えると数を赤くし、invalid と同じ見た目にする（入力は止めない）。"
+   },
+   {
+    "name": "placeholder",
+    "type": "string",
+    "required": false,
+    "description": "空のときの薄い字。"
+   },
+   {
+    "name": "paper",
+    "type": "boolean",
+    "required": false,
+    "description": "書類の紙の形で編集する（灰色の地に白い紙。書類集計の自作書類）。",
+    "default": "false"
+   },
+   {
+    "name": "paperWidth",
+    "type": "string",
+    "required": false,
+    "description": "紙の幅（paper のとき。既定 560px）。",
+    "default": "\"560px\""
+   },
+   {
+    "name": "minHeight",
+    "type": "string",
+    "required": false,
+    "description": "本文の高さの下限（例：\"240px\"）。"
+   },
+   {
+    "name": "maxHeight",
+    "type": "string",
+    "required": false,
+    "description": "本文の高さの上限（例：\"560px\"）。越えたら中だけ巻き取る。"
+   },
+   {
+    "name": "fontSizes",
+    "type": "readonly number[]",
+    "required": false,
+    "description": "文字の大きさの選択肢（px）。",
+    "default": "[8, 9, 10, 11, 12, 14, 18, 24, 30, 36, 48, 60, 72, 96]"
+   },
+   {
+    "name": "colors",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "文字の色の選択肢。",
+    "default": "[ \"#61BD6D\", \"#1ABC9C\", \"#54ACD2\", \"#2C82C9\", \"#9365B8\", \"#475577\", \"#CCCCCC\", \"#41A85F\", \"#00A885\", \"#3D8EB9\", \"#2969B0\", \"#553982\", \"#28324E\", \"#000000\", \"#F7DA64\", \"#FBA026\", \"#EB6B56\", \"#E25041\", \"#A38F84\", \"#EFEFEF\", \"#FFFFFF\", \"#FAC51C\", \"#F37934\", \"#D14841\", \"#B8312F\", \"#7C706B\", \"#D1D5D8\", ]"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "書き換えられない（ツールバーも押せない）。",
+    "default": "false"
+   },
+   {
+    "name": "readonly",
+    "type": "boolean",
+    "required": false,
+    "description": "読むだけ（ツールバーを隠す）。",
+    "default": "false"
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "入力に誤りがある（赤い枠）。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前（「書類内容」など）。"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArRichTextEditorLabels>",
+    "required": false,
+    "description": "画面の文字。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[html: string]",
+    "description": ""
+   },
+   {
+    "name": "update:variablesOpen",
+    "payload": "[open: boolean]",
+    "description": ""
+   },
+   {
+    "name": "help",
+    "payload": "[]",
+    "description": "ヘルプの道具を押したとき（使い方の画面は製品が出す）。"
+   },
+   {
+    "name": "focus",
+    "payload": "[event: FocusEvent]",
+    "description": ""
+   },
+   {
+    "name": "blur",
+    "payload": "[event: FocusEvent]",
+    "description": ""
+   },
+   {
+    "name": "insert-variable",
+    "payload": "[token: string]",
+    "description": "変数を入れたとき。"
+   }
+  ],
+  "slots": [
+   "toolbar-end",
+   "footer-extra"
+  ],
+  "parts": [
+   "root",
+   "toolbar",
+   "separator",
+   "tool",
+   "glyph",
+   "tool-label",
+   "caret",
+   "tool-value",
+   "spacer",
+   "count",
+   "variables",
+   "body",
+   "paper",
+   "content",
+   "placeholder",
+   "footer",
+   "words",
+   "footer-extra",
+   "menu",
+   "list",
+   "option",
+   "swatches",
+   "option-label",
+   "groups",
+   "group",
+   "group-icon",
+   "group-count",
+   "items"
+  ],
+  "dataAr": "rich-text-editor"
+ },
+ {
   "name": "ArSelect",
   "version": "1.0.0",
   "description": "選択肢から選ぶ（ネイティブの select は使わない。押すとプルダウンが開く）。\n1つ選ぶ・複数（札で並べ、多いと「+n」）・探す欄（7つ以上で既定で出す）・まとまりの見出し・使えない項目・\n選んだ項目は淡いテーマ色＋チェック・消す・読み込み中・空のとき。\nキーボード：↓↑ Home End で動く、Enter・Space で選ぶ、Escape で閉じる、文字を打つとその文字で始まる項目へ飛ぶ。\nvariant=\"selbox\" は店舗の選択のような見た目（アイコン＋名前＋下向きの印）。",
@@ -3461,7 +4059,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "頭に出すアイコン（selbox の store・bld など）。"
    },
@@ -4163,7 +4761,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "入力の頭に出すアイコン（例：search・user・lock）。"
    },
@@ -4193,7 +4791,7 @@
    },
    {
     "name": "suffixIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "入力の後ろに出すアイコン（例：info）。"
    },
@@ -4796,7 +5394,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "頭に出すアイコン（例：bld）。"
    },
@@ -5045,6 +5643,119 @@
   "dataAr": "upload"
  },
  {
+  "name": "ArVariablePanel",
+  "version": "1.0.0",
+  "description": "差し込む変数を探して、押すと入れるパネル（書類集計の「ARROWの変数」・通知の「ARROW 差し込み項目」）。\nlist：まとまりの見出しと「＋ 名前」の行。chips：まとまりのタブ・探す欄・「＋ 名前」の札。\n押すと insert（入れる文字・変数・まとまり）を出す。入れる先は製品（または ArRichTextEditor）が決める。\nキーボード：タブは ←→ Home End で選び直し、札・行は Tab で移って Enter / Space で入れる。",
+  "props": [
+   {
+    "name": "groups",
+    "type": "readonly ArVariableGroup[]",
+    "required": true,
+    "description": "変数のまとまり。"
+   },
+   {
+    "name": "layout",
+    "type": "'list' | 'chips'",
+    "required": false,
+    "description": "形。\nlist：まとまりの見出しの下に「＋ 名前」の行を並べる縦のパネル（書類集計の自作書類の右の「ARROWの変数」）。\nchips：上にまとまりのタブと探す欄、下に「＋ 名前」の札を並べる（通知のメールテンプレートの「ARROW 差し込み項目」）。",
+    "default": "\"list\""
+   },
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "上の題（list の「ARROWの変数」）。chips では出さない。"
+   },
+   {
+    "name": "description",
+    "type": "string",
+    "required": false,
+    "description": "題の下の説明（「押すと、本文のカーソルの位置に入ります。」など）。chips では札の下に出す。"
+   },
+   {
+    "name": "tab",
+    "type": "string",
+    "required": false,
+    "description": "chips の選んでいるまとまり（v-model:tab）。渡さなければ中で持ち、最初のまとまりから始める。"
+   },
+   {
+    "name": "query",
+    "type": "string",
+    "required": false,
+    "description": "探す言葉（v-model:query）。渡さなければ中で持つ。"
+   },
+   {
+    "name": "searchable",
+    "type": "boolean",
+    "required": false,
+    "description": "探す欄を出す。",
+    "default": "true"
+   },
+   {
+    "name": "maxHeight",
+    "type": "string",
+    "required": false,
+    "description": "札・行の入る部分の高さの上限（例：\"112px\"）。越えたらその中だけ巻き取る。"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "押せない。",
+    "default": "false"
+   },
+   {
+    "name": "labels",
+    "type": "{ search: string; searchPlaceholder: string; empty: string; tabs: string; insert: string; }",
+    "required": false,
+    "description": "画面の文字。empty の {q} は探した言葉に置き換える。",
+    "default": "{ search: \"変数を探す\", searchPlaceholder: \"変数を探す（例：入社）\", empty: \"「{q}」に合う変数はありません\", tabs: \"変数のまとまり\", insert: \"{label}を差し込む\", }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "insert",
+    "payload": "[token: string, item: ArVariableItem, group: ArVariableGroup]",
+    "description": "変数を押したとき。token は入れる文字（item.token か `{{ $key }}`）。"
+   },
+   {
+    "name": "update:tab",
+    "payload": "[key: string]",
+    "description": ""
+   },
+   {
+    "name": "update:query",
+    "payload": "[query: string]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "head",
+   "note"
+  ],
+  "parts": [
+   "root",
+   "head",
+   "title",
+   "description",
+   "search",
+   "search-icon",
+   "search-input",
+   "tabs",
+   "tab",
+   "tab-count",
+   "body",
+   "group",
+   "group-label",
+   "item",
+   "item-icon",
+   "item-label",
+   "empty",
+   "note"
+  ],
+  "dataAr": "variable-panel"
+ },
+ {
   "name": "ArWeekdayPicker",
   "version": "1.0.0",
   "description": "曜日をいくつでも選ぶ（繰り返し・一括登録の決まり）。\n選んだ曜日はテーマ色の塗り、選んでいない日・祝は赤、土は青の文字。各ボタンは押すたびに切り替わる（aria-pressed）。",
@@ -5130,7 +5841,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "文字の代わりのアイコン（人の印など）。"
    },
@@ -5249,7 +5960,7 @@
    },
    {
     "name": "status",
-    "type": "'danger' | 'accent' | 'neutral' | 'ok' | 'warn'",
+    "type": "'danger' | 'ok' | 'accent' | 'neutral' | 'warn'",
     "required": false,
     "description": "状態の点（出勤中・処理中・未提出・エラー）。渡すと件数ではなく「点＋言葉」の形になる。\nok＝緑、accent＝テーマ色（淡い輪つき＝処理中）、warn＝橙、danger＝赤、neutral＝灰色。"
    },
@@ -5281,8 +5992,8 @@
  },
  {
   "name": "ArCalendar",
-  "version": "1.0.0",
-  "description": "月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。\nマスの中身は cell slot（イベント・不足など）。年の表示（12か月）にも切り替えられる。\nキーボード：←→↑↓ で日を移り、PageUp / PageDown で月（Shift で年）、Home / End で週の端、Enter / Space で選ぶ。",
+  "version": "1.1.0",
+  "description": "月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。\nマスの中身は cell slot（イベント・不足など）。年の表示（12か月）にも切り替えられる。\nsize=\"mini\" は小さなカレンダー（設定のシフトテンプレートの「カレンダーで確かめる」）：見出しは絵と題だけ、マスに札と小さな文字、下に footer slot。\nキーボード：←→↑↓ で日を移り、PageUp / PageDown で月（Shift で年）、Home / End で週の端、Enter / Space で選ぶ。",
   "props": [
    {
     "name": "variant",
@@ -5290,6 +6001,19 @@
     "required": false,
     "description": "形。sheet＝線で区切った1枚の表（デザインシステムのカレンダー）。\nboard＝角の丸いマスを並べた形（シフト画面のカレンダー。日付は真ん中の丸、イベントは色の点と名前、cell slot はマスの下の段）。",
     "default": "\"sheet\""
+   },
+   {
+    "name": "size",
+    "type": "'default' | 'mini'",
+    "required": false,
+    "description": "大きさ。mini＝小さなカレンダー（設定のシフトテンプレートの「カレンダーで確かめる」）：\n見出しはカレンダーの絵と title と extra slot だけ（年の選択・月／年の切り替えはない）、マスは角の丸い淡い地に日付・印（events の札）・小さな文字（events の note）、下に footer slot（凡例）。",
+    "default": "\"default\""
+   },
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "見出しの文字（省くと「2026年11月」）。"
    },
    {
     "name": "cellMarks",
@@ -5420,11 +6144,13 @@
   "slots": [
    "extra",
    "cell",
-   "month-cell"
+   "month-cell",
+   "footer"
   ],
   "parts": [
    "root",
    "header",
+   "heading-icon",
    "title",
    "extra",
    "year",
@@ -5440,7 +6166,9 @@
    "event",
    "dot",
    "foot",
-   "content"
+   "note",
+   "content",
+   "footer"
   ],
   "dataAr": "calendar"
  },
@@ -5457,7 +6185,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "見出しの前の線のアイコン。"
    },
@@ -5784,7 +6512,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "線のアイコン（inbox・search など）。絵は使わない。省くと文字だけ。"
    },
@@ -5982,6 +6710,343 @@
   "dataAr": "list"
  },
  {
+  "name": "ArMapPreview",
+  "version": "1.0.0",
+  "description": "地図の見本（ピンと打刻範囲の円）。会社情報の店舗の GPS。\n地図そのものは製品が default slot で渡す。無ければ見本の地の絵（道と区画）。読み上げは「{住所} を中心に半径{r}メートルの打刻範囲を表す地図」。",
+  "props": [
+   {
+    "name": "radius",
+    "type": "number | null",
+    "required": false,
+    "description": "打刻範囲の半径（m）。10〜9999 の外なら円を出さず、caption に案内を出す。",
+    "default": "null"
+   },
+   {
+    "name": "radiusPx",
+    "type": "number",
+    "required": false,
+    "description": "円の直径（px）。地図の縮尺に合わせるときに製品が渡す。"
+   },
+   {
+    "name": "restriction",
+    "type": "'none' | 'warn' | 'strict'",
+    "required": false,
+    "description": "範囲の強さ。strict＝範囲内でのみ打刻できる（テーマ色の実線）、warn＝勤怠エラーのみ（橙の点線）、none＝制限なし（円を出さない）。",
+    "default": "\"strict\""
+   },
+   {
+    "name": "latitude",
+    "type": "number | null",
+    "required": false,
+    "description": "緯度・経度（読み上げと title に使う）。",
+    "default": "null"
+   },
+   {
+    "name": "longitude",
+    "type": "number | null",
+    "required": false,
+    "description": "",
+    "default": "null"
+   },
+   {
+    "name": "address",
+    "type": "string",
+    "required": false,
+    "description": "住所（読み上げに使う）。"
+   },
+   {
+    "name": "caption",
+    "type": "string",
+    "required": false,
+    "description": "左下の札。省くと「半径 {r}m の打刻範囲」（範囲外なら「打刻範囲を入れると円が出ます」）。空文字で出さない。"
+   },
+   {
+    "name": "source",
+    "type": "string",
+    "required": false,
+    "description": "右上の出典の札（「地図（Google マップ）」）。空文字で出さない。",
+    "default": "\"地図（Google マップ）\""
+   },
+   {
+    "name": "width",
+    "type": "string",
+    "required": false,
+    "description": "幅（既定 560px。親より広くはならない）。",
+    "default": "\"560px\""
+   },
+   {
+    "name": "height",
+    "type": "string",
+    "required": false,
+    "description": "高さ（既定 250px）。",
+    "default": "\"250px\""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArMapPreviewLabels>",
+    "required": false,
+    "description": "画面の文字。",
+    "default": "{}"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "map",
+   "sample",
+   "block",
+   "road",
+   "range",
+   "pin",
+   "caption",
+   "source"
+  ],
+  "dataAr": "map-preview"
+ },
+ {
+  "name": "ArOrgChart",
+  "version": "1.0.0",
+  "description": "組織図（部署・店舗の階層の図）。会社情報の「部署/店舗階層構造」。\n札を押すと select。子のある札の下の丸い印で開け閉め。地をドラッグで動かし、ホイールで拡大縮小、右下で −・＋・「全体を表示」。\nキーボード：札は Tab で移って Enter。図にフォーカスして ←→↑↓ で動かし、+ − で大きさ、0 で全体を表示。",
+  "props": [
+   {
+    "name": "nodes",
+    "type": "readonly ArOrgNode[]",
+    "required": true,
+    "description": "いちばん上の部署・店舗（横に並ぶ）。"
+   },
+   {
+    "name": "expanded",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "開いている札の key（v-model:expanded）。省くと全部開いた状態から始める。"
+   },
+   {
+    "name": "zoom",
+    "type": "number",
+    "required": false,
+    "description": "大きさ（1＝100%。v-model:zoom）。"
+   },
+   {
+    "name": "minZoom",
+    "type": "number",
+    "required": false,
+    "description": "大きさの下限・上限・1回の変化。",
+    "default": "0.3"
+   },
+   {
+    "name": "maxZoom",
+    "type": "number",
+    "required": false,
+    "description": "",
+    "default": "2"
+   },
+   {
+    "name": "zoomStep",
+    "type": "number",
+    "required": false,
+    "description": "",
+    "default": "0.1"
+   },
+   {
+    "name": "selected",
+    "type": "string | null",
+    "required": false,
+    "description": "選んでいる札の key。",
+    "default": "null"
+   },
+   {
+    "name": "height",
+    "type": "string",
+    "required": false,
+    "description": "図の高さ（既定 560px）。",
+    "default": "\"560px\""
+   },
+   {
+    "name": "hint",
+    "type": "boolean",
+    "required": false,
+    "description": "左下の操作の案内を出す。",
+    "default": "true"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前。"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArOrgChartLabels>",
+    "required": false,
+    "description": "画面の文字。count は {n}、open・close は {label} を置き換える。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "select",
+    "payload": "[node: ArOrgNode]",
+    "description": "札を押したとき（その部署/店舗の情報を開く）。"
+   },
+   {
+    "name": "update:expanded",
+    "payload": "[keys: string[]]",
+    "description": ""
+   },
+   {
+    "name": "update:zoom",
+    "payload": "[zoom: number]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "viewport",
+   "canvas",
+   "hint",
+   "controls",
+   "zoom-out",
+   "zoom-value",
+   "zoom-in",
+   "fit"
+  ],
+  "dataAr": "org-chart"
+ },
+ {
+  "name": "ArPdfViewer",
+  "version": "1.0.0",
+  "description": "PDF の表示（ページ送り・拡大縮小・何人目か）。中身は製品が渡すページの画像・iframe の src・page slot の HTML。\ntoolbar を消すと見本の枠（灰色の地に白い紙）だけ。\nキーボード：紙の部分にフォーカスして ←→ PageUp PageDown でページ、+ − で大きさ、0 で 100%。",
+  "props": [
+   {
+    "name": "pages",
+    "type": "readonly ArPdfPage[]",
+    "required": false,
+    "description": "ページごとの画像。",
+    "default": "[]"
+   },
+   {
+    "name": "src",
+    "type": "string",
+    "required": false,
+    "description": "iframe で出す PDF の URL（ブラウザの PDF 表示）。ページと大きさは `#page=n&zoom=z` で渡す。"
+   },
+   {
+    "name": "pageCount",
+    "type": "number",
+    "required": false,
+    "description": "page slot（HTML の見本）を使うときのページ数。pages があればその数。"
+   },
+   {
+    "name": "page",
+    "type": "number",
+    "required": false,
+    "description": "出しているページ（1から。v-model:page）。"
+   },
+   {
+    "name": "zoom",
+    "type": "number",
+    "required": false,
+    "description": "大きさ（%。v-model:zoom）。"
+   },
+   {
+    "name": "zoomSteps",
+    "type": "readonly number[]",
+    "required": false,
+    "description": "大きさの段階（%）。",
+    "default": "[70, 85, 100, 125, 150]"
+   },
+   {
+    "name": "people",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "ページごとの人（給与明細書なら1ページ＝1人）。「末永 修也（1人目）」と出す。"
+   },
+   {
+    "name": "pageLabel",
+    "type": "((page: number) => string)",
+    "required": false,
+    "description": "ページの横の文字を自分で作る（people より優先）。"
+   },
+   {
+    "name": "toolbar",
+    "type": "boolean",
+    "required": false,
+    "description": "上の段（ページ送り・大きさ）を出す。false で見本の枠だけ。",
+    "default": "true"
+   },
+   {
+    "name": "paperWidth",
+    "type": "string",
+    "required": false,
+    "description": "紙の幅（100% のとき）。",
+    "default": "\"560px\""
+   },
+   {
+    "name": "paperMinHeight",
+    "type": "string",
+    "required": false,
+    "description": "紙の高さの下限（100% のとき。A4 の見本なら 780px）。"
+   },
+   {
+    "name": "height",
+    "type": "string",
+    "required": false,
+    "description": "全体の高さ（例：\"640px\"）。省くと中身の高さ。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前（「給与明細書のプレビュー」など）。"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArPdfViewerLabels>",
+    "required": false,
+    "description": "画面の文字。page は {page} {count}、person は {name} {n} を置き換える。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:page",
+    "payload": "[page: number]",
+    "description": ""
+   },
+   {
+    "name": "update:zoom",
+    "payload": "[zoom: number]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "toolbar-end",
+   "page"
+  ],
+  "parts": [
+   "root",
+   "bar",
+   "prev",
+   "counter",
+   "next",
+   "who",
+   "spacer",
+   "zoom",
+   "zoom-out",
+   "zoom-value",
+   "zoom-in",
+   "viewport",
+   "frame",
+   "paper",
+   "image"
+  ],
+  "dataAr": "pdf-viewer"
+ },
+ {
   "name": "ArPopover",
   "version": "1.0.0",
   "description": "白い吹き出し（見出し・中身・操作）。押す、または乗せると出る。\nvariant=\"cell\" はシフトのマスに乗せたときの時間の表示（濃い地・矢印なし・行ごとに改行）。\n押して開いたときは吹き出しにフォーカスを移し、Escape・外を押す で閉じて基準の要素へ戻す。",
@@ -6157,7 +7222,7 @@
    },
    {
     "name": "tone",
-    "type": "'danger' | 'accent' | 'ok' | 'warn'",
+    "type": "'danger' | 'ok' | 'accent' | 'warn'",
     "required": false,
     "description": "色。accent＝テーマ色の塗りに白文字。",
     "default": "\"accent\""
@@ -6195,7 +7260,7 @@
    },
    {
     "name": "titleIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "見出しの後ろのアイコン（説明があることを示す info など）。"
    },
@@ -6269,8 +7334,8 @@
  },
  {
   "name": "ArTable",
-  "version": "1.0.0",
-  "description": "表。\nbox（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。\n見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。\n並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。\nページ送りは #below に ArPagination を置く。\nsortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。",
+  "version": "1.1.0",
+  "description": "表。\nbox（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。\n見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。\n並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。\nページ送りは #below に ArPagination を置く。\nsortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。\n1.1：右に止める列・2段の見出し（押すとまとまりが開く）・行をまたぐセル・表の中の小さな金額の入力・3段の金額・数字の下の差の行。",
   "props": [
    {
     "name": "columns",
@@ -6368,7 +7433,7 @@
    },
    {
     "name": "emptyIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "行がないときの線のアイコン。"
    },
@@ -6398,6 +7463,34 @@
     "required": false,
     "description": "行をドラッグで並べ替えられるようにする（今の ARROW の SortableTable）。つまみは左の列か1列目の頭（デザインが選ぶ）。\nマウスはつまみをつかんで上下へ、キーボードはつまみで Alt+↑↓。並べた行は update:rows（v-model:rows）と reorder で渡す。",
     "default": "false"
+   },
+   {
+    "name": "columnGroups",
+    "type": "readonly ArTableColumnGroup[]",
+    "required": false,
+    "description": "2段の見出しのまとまり。",
+    "default": "[]"
+   },
+   {
+    "name": "openGroups",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "開いているまとまりの key（v-model:openGroups）。",
+    "default": "[]"
+   },
+   {
+    "name": "edits",
+    "type": "Readonly<Record<string, string>>",
+    "required": false,
+    "description": "表の中の入力の値（v-model:edits）。key は「行のkey:列のkey」（stack は「:段」）。ここにある値を入力に出し、元の値と違えば「直した欄」にする。",
+    "default": "{}"
+   },
+   {
+    "name": "invalidCells",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "間違いのある入力の key（赤い枠）。",
+    "default": "[]"
    }
   ],
   "emits": [
@@ -6430,6 +7523,16 @@
     "name": "reorder",
     "payload": "[move: ArTableReorder]",
     "description": "並べ替えた1行。"
+   },
+   {
+    "name": "update:openGroups",
+    "payload": "[keys: string[]]",
+    "description": "開いているまとまり（v-model:openGroups）。"
+   },
+   {
+    "name": "update:edits",
+    "payload": "[edits: Record<string, string>]",
+    "description": "表の中の入力の値（v-model:edits）。"
    }
   ],
   "slots": [
@@ -6452,6 +7555,8 @@
    "check",
    "select",
    "check-box",
+   "group-toggle",
+   "toggle-hint",
    "sort",
    "sort-icon",
    "before-rows",
@@ -6461,11 +7566,15 @@
    "cell",
    "drag-handle",
    "expand-toggle",
+   "stack",
+   "cell-input",
    "person",
    "name",
    "sub",
    "sub-mark",
    "lines",
+   "mark",
+   "delta",
    "actions",
    "expanded-row",
    "foot",
@@ -6483,7 +7592,7 @@
   "props": [
    {
     "name": "tone",
-    "type": "'danger' | 'accent' | 'neutral' | 'ok' | 'warn' | 'event' | 'solid'",
+    "type": "'danger' | 'ok' | 'accent' | 'neutral' | 'warn' | 'event' | 'solid'",
     "required": false,
     "description": "意味の色。neutral＝標準・変更なし、accent＝種類（テーマ色の淡い札）、solid＝テーマ色の塗り、\nok＝提出済、warn＝未提出・非公開、danger＝エラー・不足、event＝イベント。色だけで伝えず、必ず言葉を入れる。",
     "default": "\"neutral\""
@@ -6504,7 +7613,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "文字の前の線のアイコン。"
    },
@@ -7056,7 +8165,7 @@
   "props": [
    {
     "name": "tone",
-    "type": "'danger' | 'info' | 'neutral' | 'ok' | 'warn'",
+    "type": "'danger' | 'info' | 'ok' | 'neutral' | 'warn'",
     "required": false,
     "description": "info：案内（テーマ色の淡い面）。ok：終わったこと（緑）。warn：注意（橙）。danger：間違い（赤）。\nneutral：ロック中・権限など、操作できないことの帯（灰）。",
     "default": "\"info\""
@@ -7069,7 +8178,7 @@
    },
    {
     "name": "icon",
-    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "先頭のアイコン。既定は種類ごと（info・ok は info・check、warn・danger は alert、neutral は lock）。false で出さない。"
    },
@@ -7151,8 +8260,8 @@
  },
  {
   "name": "ArDrawer",
-  "version": "1.0.0",
-  "description": "横から出る板。幕は ink の42%、頭は白、足は bg-2。\nARROW のシフト画面では日の詳細は横から出さない（配置を変えない）。設定の細かい項目などに使う。\n開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所に戻す。",
+  "version": "1.1.0",
+  "description": "横から出る板（placement=\"bottom\" でスマホの下から出る一覧）。幕は ink の42%、頭は白、足は bg-2。\nARROW のシフト画面では日の詳細は横から出さない（配置を変えない）。設定の細かい項目などに使う。\n開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所に戻す。",
   "props": [
    {
     "name": "open",
@@ -7168,15 +8277,15 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "題の左のアイコン（人なら user など）。"
    },
    {
     "name": "placement",
-    "type": "'left' | 'right'",
+    "type": "'left' | 'right' | 'bottom'",
     "required": false,
-    "description": "出てくる側。",
+    "description": "出てくる側。bottom＝スマホの下から出る一覧（ボトムシート。上の角だけ丸く、題は真ん中。高さは中身なり・最大 82%）。",
     "default": "\"right\""
    },
    {
@@ -7184,6 +8293,12 @@
     "type": "string | number",
     "required": false,
     "description": "幅（px か CSS の長さ）。省くとデザインの既定（remix 340・classic 378）。"
+   },
+   {
+    "name": "height",
+    "type": "string | number",
+    "required": false,
+    "description": "高さ（placement=\"bottom\" のとき。px か CSS の長さ）。省くと中身なり（最大は画面の 82%）。"
    },
    {
     "name": "closable",
@@ -7402,7 +8517,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "題の左の印（confirm の既定は alert）。"
    },
@@ -7440,7 +8555,7 @@
    },
    {
     "name": "okIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": ""
    },
@@ -7568,7 +8683,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "印。既定は種類ごと（info・ok は info・check、warn・danger は alert）。提出などのお知らせは bell。"
    },
@@ -7701,7 +8816,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "問いの左の印。",
     "default": "\"alert\""
@@ -7862,7 +8977,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "丸の中の印を変える。"
    }
@@ -8013,7 +9128,7 @@
    },
    {
     "name": "icon",
-    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "先頭の印。既定は check。false で出さない。",
     "default": "\"check\""
@@ -8327,6 +9442,65 @@
   "dataAr": "app-header"
  },
  {
+  "name": "ArApprovalFlow",
+  "version": "1.0.0",
+  "description": "承認の流れ。済み・あなたの番・まだ（差し戻し・飛ばした）を段ごとに。\nrow は横の札を › でつなぎ（設定の承認フロー）、list は番号の丸と状態の札の縦の一覧（勤怠・社員情報の承認）。",
+  "props": [
+   {
+    "name": "steps",
+    "type": "readonly ArApprovalStep[]",
+    "required": true,
+    "description": "段。並んでいる順に承認する。"
+   },
+   {
+    "name": "layout",
+    "type": "'list' | 'row'",
+    "required": false,
+    "description": "形。row＝横に並んだ丸い札を ›（→）でつなぐ（設定の承認フロー .cf-flow。step スロットでセレクトに差し替えて編集もできる）。\nlist＝番号の丸・段の名前と承認する人・状態の札を縦に並べる（勤怠・社員情報の承認の画面）。",
+    "default": "\"list\""
+   },
+   {
+    "name": "start",
+    "type": "string",
+    "required": false,
+    "description": "row の先頭の札（「申請」）。省くと出さない。"
+   },
+   {
+    "name": "startIcon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": "先頭の札のアイコン。",
+    "default": "\"note\""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArApprovalFlowLabels>",
+    "required": false,
+    "description": "状態の札の既定の文字と読み上げ。",
+    "default": "{}"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "step",
+   "append"
+  ],
+  "parts": [
+   "root",
+   "item",
+   "start",
+   "sep",
+   "step",
+   "title",
+   "who",
+   "status",
+   "append",
+   "mark",
+   "body"
+  ],
+  "dataAr": "approval-flow"
+ },
+ {
   "name": "ArBalloon",
   "version": "1.0.0",
   "description": "吹き出し。その場に置く（浮かばない）注意や目印。\n物に重ねて浮かべる説明は ArEllipsis などの吹き出し（ArFloat）を使う。",
@@ -8427,8 +9601,8 @@
  },
  {
   "name": "ArChangedValue",
-  "version": "1.0.0",
-  "description": "変更前→変更後。変わっていなければ今の値だけを出す。\n読み上げでは「変更前 … 変更後 …」と読む（矢印は飾り）。",
+  "version": "1.1.0",
+  "description": "変更前→変更後。変わっていなければ今の値だけを出す。\nitems を渡すと「項目｜変更前｜変更後」の表（table）か、1列の一覧（list）にまとめる（保存前の確認・変更履歴の詳細）。\n読み上げでは「変更前 … 変更後 …」と読む（矢印は飾り）。",
   "props": [
    {
     "name": "before",
@@ -8464,13 +9638,53 @@
     "required": false,
     "description": "",
     "default": "{ before: \"変更前\", after: \"変更後\" }"
+   },
+   {
+    "name": "items",
+    "type": "readonly ArChangedValueItem[] | null",
+    "required": false,
+    "description": "まとめて見せる項目（渡すと表か一覧になる）。",
+    "default": "null"
+   },
+   {
+    "name": "layout",
+    "type": "'list' | 'inline' | 'table'",
+    "required": false,
+    "description": "形。inline＝文の中の「前 → 後」（items を渡さないとき）。\ntable＝「項目｜変更前｜変更後」の表。list＝「項目」の下に「前 → 後」を並べる1列の一覧。items を渡して省くと table。"
+   },
+   {
+    "name": "headers",
+    "type": "Partial<ArChangedValueHeaders>",
+    "required": false,
+    "description": "表の見出しの文字（既定「項目」「変更前」「変更後」。list の見出しは「項目（変更前 → 変更後）」）。",
+    "default": "{}"
+   },
+   {
+    "name": "numeric",
+    "type": "boolean",
+    "required": false,
+    "description": "金額などの数。変更前・変更後を右に寄せ、等幅の数字にする。",
+    "default": "false"
+   },
+   {
+    "name": "caption",
+    "type": "string",
+    "required": false,
+    "description": "表の名前（読み上げ）。",
+    "default": "\"変更する項目\""
    }
   ],
   "emits": [],
   "slots": [],
   "parts": [
    "root",
+   "head",
+   "head-cell",
+   "row",
+   "label",
+   "cell",
    "before",
+   "change",
    "arrow",
    "after"
   ],
@@ -8658,6 +9872,79 @@
    "text"
   ],
   "dataAr": "ellipsis"
+ },
+ {
+  "name": "ArExample",
+  "version": "1.0.0",
+  "description": "例の箱。設定がどう効くかを例で見せる（例を入れると結果が出る）。\nbox は見出しと「項目｜値」の行、inline は「例で確かめる｜入力 → 結果」の1行。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "見出し（box は「時給1,100円の人の1時間あたり（例）」など、inline は既定「例で確かめる」）。"
+   },
+   {
+    "name": "tag",
+    "type": "string",
+    "required": false,
+    "description": "見出しの横の小さな札（「提案」「11月分」など）。"
+   },
+   {
+    "name": "rows",
+    "type": "readonly ArExampleRow[]",
+    "required": false,
+    "description": "例の行（左に項目、右に太字の値）。",
+    "default": "[]"
+   },
+   {
+    "name": "variant",
+    "type": "'inline' | 'box'",
+    "required": false,
+    "description": "形。box＝見出しと「項目｜値」の行を並べた箱（割増・支払設定の流れ・社員コードの次の番号）。\ninline＝1行の箱：見出し・例の入力（default スロット）・→・結果の札（丸め）。",
+    "default": "\"box\""
+   },
+   {
+    "name": "result",
+    "type": "string",
+    "required": false,
+    "description": "inline の結果（→ の右の札）。result スロットでも渡せる。入力が変わるたびに読み上げる。"
+   },
+   {
+    "name": "resultIcon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": "結果の札の頭のアイコン。"
+   },
+   {
+    "name": "resultTone",
+    "type": "'danger' | 'accent' | 'warn'",
+    "required": false,
+    "description": "結果の色（accent＝ふつう、warn＝注意、danger＝間違い）。",
+    "default": "\"accent\""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "title",
+   "default",
+   "result"
+  ],
+  "parts": [
+   "root",
+   "title",
+   "inputs",
+   "arrow",
+   "result",
+   "head",
+   "head-icon",
+   "tag",
+   "rows",
+   "row",
+   "label",
+   "value"
+  ],
+  "dataAr": "example"
  },
  {
   "name": "ArFlagGroup",
@@ -8982,6 +10269,86 @@
   "dataAr": "logo-spin"
  },
  {
+  "name": "ArMenuTile",
+  "version": "1.0.0",
+  "description": "メニュー画面のタイル。テーマ色の四角に線のアイコン、下に名前、右上に件数（と名前の下の赤い一言）。\n並べ方（7列・4列など）は使う側の ArGrid が決める。読み上げは「名前（一言）」、件数は「〜件」と読む。",
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "名前（「シフト」「勤怠」など）。四角の下に出す。"
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": true,
+    "description": "四角の中のアイコン。classic は今の ARROW のメニューの絵（白い地に灰色の線）を描く。"
+   },
+   {
+    "name": "palette",
+    "type": "'blue' | 'green' | 'yellow' | 'pink' | 'orange' | 'teal' | 'amber'",
+    "required": false,
+    "description": "四角の色（テーマ色の組）。省くと外の ArThemeScope の色。シフト＝blue・勤怠＝green・給与＝yellow・書類＝pink・通知＝orange・会社情報など＝teal。"
+   },
+   {
+    "name": "count",
+    "type": "string | number",
+    "required": false,
+    "description": "右上の件数（やること・未読の数）。0・空なら出さない。100 以上は「99+」。「!」などの文字も渡せる。"
+   },
+   {
+    "name": "note",
+    "type": "string",
+    "required": false,
+    "description": "名前の下の赤い一言（「12月分 未提出」「エラー 2日」）。件数の理由を書く。"
+   },
+   {
+    "name": "variant",
+    "type": "'card' | 'plain'",
+    "required": false,
+    "description": "形（remix）。card＝白い札の中に四角（共通のメニュー・管理者）。plain＝札なしで四角だけ（マイページのメニュー。四角はテーマ色の濃淡）。\nclassic はどちらも今の ARROW のタイル（角丸10の四角と下の小さな名前）。",
+    "default": "\"card\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。md＝四角60（PC）。sm＝四角54（スマホ）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "href",
+    "type": "string",
+    "required": false,
+    "description": "行き先。渡すと a（リンク）になる。省くと button。"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "押せない（契約していない機能など）。",
+    "default": "false"
+   }
+  ],
+  "emits": [
+   {
+    "name": "click",
+    "payload": "[event: MouseEvent]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "icon",
+   "count",
+   "label",
+   "note"
+  ],
+  "dataAr": "menu-tile"
+ },
+ {
   "name": "ArMobileHeader",
   "version": "1.0.0",
   "description": "スマホの画面の頭。左にロゴ（slot）、右にお知らせのボタンと件数の丸。下端にテーマ色の線。",
@@ -9002,7 +10369,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "ベルのアイコン。既定は speaker。",
     "default": "\"speaker\""
@@ -9102,6 +10469,100 @@
    "day"
   ],
   "dataAr": "month-day-input"
+ },
+ {
+  "name": "ArPayslip",
+  "version": "1.0.0",
+  "description": "明細書の紙の形。上に書類名・支給分・会社や氏名、4列の表（勤怠／支給／控除／その他）、下に合計の箱。\ncompare で前回と比べる（差は自動で計算。文字の差も渡せる）。値の並べ方は渡した順のまま。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": "書類の名前（「給与明細書」「賞与明細書」「報酬明細書」）。"
+   },
+   {
+    "name": "period",
+    "type": "string",
+    "required": false,
+    "description": "支給分（「2026年11月25日支給分」）。"
+   },
+   {
+    "name": "meta",
+    "type": "ArPayslipMeta[]",
+    "required": false,
+    "description": "右上の項目（会社・所属・氏名・社員コード）。classic は今の ARROW と同じく、1つ目（会社）を札なしの大きな会社名として上に出す。",
+    "default": "[]"
+   },
+   {
+    "name": "columns",
+    "type": "(ArPayslipSection | ArPayslipSection[])[]",
+    "required": true,
+    "description": "列。1つの列に表を1つ、または上から並べる表の配列（その他・差引支給額・振込支給額…）。ふつうは 勤怠／支給／控除／その他 の4列。"
+   },
+   {
+    "name": "totals",
+    "type": "ArPayslipTotal[]",
+    "required": false,
+    "description": "下に並べる合計の箱。",
+    "default": "[]"
+   },
+   {
+    "name": "compare",
+    "type": "'off' | 'diff' | 'prev'",
+    "required": false,
+    "description": "前回と比べる。off＝比べない。diff＝値の下に差だけ（マイページ）。prev＝値の右に「前 ○○」と差（管理者の「前月と比べる」）。\n差が + は茶、− は青（prev）。合計の箱の差は − が緑・+ が茶。",
+    "default": "\"off\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "行の高さ。md＝38（マイページ）・sm＝34（管理者。勤怠の列は30）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "zeroDiff",
+    "type": "string",
+    "required": false,
+    "description": "差が0のときの文字。",
+    "default": "\"±0\""
+   },
+   {
+    "name": "prevLabel",
+    "type": "string",
+    "required": false,
+    "description": "「前」の文字。",
+    "default": "\"前\""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "toolbar"
+  ],
+  "parts": [
+   "root",
+   "head",
+   "title",
+   "period",
+   "meta",
+   "toolbar",
+   "columns",
+   "column",
+   "section",
+   "section-title",
+   "row",
+   "label",
+   "value",
+   "amount",
+   "edited",
+   "diff",
+   "prev",
+   "totals",
+   "total",
+   "unit"
+  ],
+  "dataAr": "payslip"
  },
  {
   "name": "ArPeriodNav",
@@ -9225,6 +10686,191 @@
   "dataAr": "period-nav"
  },
  {
+  "name": "ArPunchButton",
+  "version": "1.0.0",
+  "description": "打刻の大きいボタン（出勤・退勤・休憩開始・休憩終了）。\n押せないときは灰色にして、下に理由（今の状態）を書く。押すと punch を出す（確認・記録は使う側）。",
+  "props": [
+   {
+    "name": "kind",
+    "type": "'out' | 'in' | 'break-in' | 'break-out'",
+    "required": true,
+    "description": "どの打刻か。in＝出勤・out＝退勤・break-in＝休憩開始・break-out＝休憩終了。名前・アイコン・色・大きさの既定が決まる。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "ボタンの名前。省くと kind の名前（出勤・退勤・休憩開始・休憩終了）。"
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": "アイコン。省くと kind のアイコン（remix：出勤＝walk・退勤＝out・休憩開始＝coffee・休憩終了＝check）。"
+   },
+   {
+    "name": "palette",
+    "type": "'blue' | 'green' | 'yellow' | 'pink' | 'orange' | 'teal' | 'amber'",
+    "required": false,
+    "description": "色。省くと 出勤・休憩開始＝blue、退勤・休憩終了＝green（今の ARROW の MyPC 打刻と同じ）。"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさ。lg＝高さ170（PC の出勤・退勤）・md＝136（スマホの出勤・退勤）・sm＝56（休憩）。省くと 出勤・退勤＝lg、休憩＝sm。"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "押せない（今の状態では打刻できない）。",
+    "default": "false"
+   },
+   {
+    "name": "reason",
+    "type": "string",
+    "required": false,
+    "description": "ボタンの下の一言。押せない理由（「出勤してから押せます」）や今の状態（「出勤済み（13:02）」「休憩中（17:00〜）」）。読み上げはボタンの説明になる。"
+   },
+   {
+    "name": "loading",
+    "type": "boolean",
+    "required": false,
+    "description": "記録している途中（押せない・aria-busy）。",
+    "default": "false"
+   }
+  ],
+  "emits": [
+   {
+    "name": "punch",
+    "payload": "[kind: 'out' | 'in' | 'break-in' | 'break-out']",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "button",
+   "icon",
+   "label",
+   "reason"
+  ],
+  "dataAr": "punch-button"
+ },
+ {
+  "name": "ArSaveBar",
+  "version": "1.0.0",
+  "description": "保存バー。保存していない変更の件数と項目名、直すところへ飛ぶボタン、「変更を取り消す」「この内容で保存」。\n置く場所（ページの下・ポップアップの足）は製品が決める。sticky で画面の下に貼りつく。",
+  "props": [
+   {
+    "name": "count",
+    "type": "number",
+    "required": true,
+    "description": "保存していない変更の数。"
+   },
+   {
+    "name": "items",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "変えた項目の名前（「・」でつないで1行で出す。入らない分は「…」）。",
+    "default": "[]"
+   },
+   {
+    "name": "errorCount",
+    "type": "number",
+    "required": false,
+    "description": "直すところ（間違い）の数。1以上で「直すところ N件」のボタンを出し、押すと jump を出す。",
+    "default": "0"
+   },
+   {
+    "name": "saving",
+    "type": "boolean",
+    "required": false,
+    "description": "保存中（保存のボタンを回る印にして押せなくする）。",
+    "default": "false"
+   },
+   {
+    "name": "saveDisabled",
+    "type": "boolean",
+    "required": false,
+    "description": "保存のボタンを押せなくする（errorCount があるときも押せるかは製品が決める）。",
+    "default": "false"
+   },
+   {
+    "name": "sticky",
+    "type": "boolean",
+    "required": false,
+    "description": "画面の下に貼りつける（スクロールしても下に残す。position: sticky）。",
+    "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。md＝PC、sm＝スマホ（「未保存 N件」「取り消す」「保存」の小さなボタン・項目名なし）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "countText",
+    "type": "string",
+    "required": false,
+    "description": "件数の札の文字。{n} は件数（既定 md「未保存の変更 {n}件」、sm「未保存 {n}件」）。"
+   },
+   {
+    "name": "errorText",
+    "type": "string",
+    "required": false,
+    "description": "直すところのボタンの文字。{n} は件数（既定「直すところ {n}件」）。",
+    "default": "\"直すところ {n}件\""
+   },
+   {
+    "name": "discardText",
+    "type": "string",
+    "required": false,
+    "description": "取り消すボタンの文字。"
+   },
+   {
+    "name": "saveText",
+    "type": "string",
+    "required": false,
+    "description": "保存のボタンの文字。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "まとまりの名前（読み上げ）。",
+    "default": "\"保存していない変更\""
+   }
+  ],
+  "emits": [
+   {
+    "name": "save",
+    "payload": "[event: MouseEvent]",
+    "description": "保存のボタンを押した。"
+   },
+   {
+    "name": "discard",
+    "payload": "[event: MouseEvent]",
+    "description": "取り消すボタンを押した。"
+   },
+   {
+    "name": "jump",
+    "payload": "[event: MouseEvent]",
+    "description": "「直すところ」を押した（最初の間違いへ移る）。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "count",
+   "items",
+   "spacer"
+  ],
+  "dataAr": "save-bar"
+ },
+ {
   "name": "ArSectionHead",
   "version": "1.0.0",
   "description": "カードの中のまとまりの見出しの段。四角い箱のアイコン・見出し・件数の札・操作（actions）・右端（end）。\ncollapsible なら見出しの部分がボタンになり、押すと下の中身を開け閉めする（aria-expanded）。",
@@ -9237,7 +10883,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
     "description": "見出しの前の四角い箱のアイコン（淡いテーマ色の地）。"
    },
@@ -9417,6 +11063,109 @@
    "tools-gap"
   ],
   "dataAr": "thumbnail"
+ },
+ {
+  "name": "ArTimeChart",
+  "version": "1.0.0",
+  "description": "時間の横棒のチャート。month は1日＝1行の1か月（勤怠の種類ごとの色の帯・上の線がシフト・下の線が深夜）、day は1日の内容ごとの行。\n帯に乗せると「種類・時間帯・時間数」の吹き出し。month の日付は押せる（select。その日の大きなチャートを開く）。\nキーボード：month の日付は Tab で移って Enter。行の読み上げに帯の中身（種類・時間帯）を含める。",
+  "props": [
+   {
+    "name": "mode",
+    "type": "'month' | 'day'",
+    "required": false,
+    "description": "month：1行＝1日（日付を押せる）。day：1行＝1つの内容。",
+    "default": "\"month\""
+   },
+   {
+    "name": "rows",
+    "type": "readonly ArTimeChartRow[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "range",
+    "type": "readonly [number, number]",
+    "required": false,
+    "description": "横軸の範囲（分）。既定は month が [-60, 1680]（前日23時〜翌4時）、day は帯から決める（前後1時間）。"
+   },
+   {
+    "name": "tickStep",
+    "type": "number",
+    "required": false,
+    "description": "目盛りの間（分）。省くとデザインの形（forms.ArTimeChart.tick）。day は 60。"
+   },
+   {
+    "name": "headLabel",
+    "type": "string",
+    "required": false,
+    "description": "左上の見出し（「日付・形態」「内容」）。"
+   },
+   {
+    "name": "legend",
+    "type": "boolean | readonly ArTimeChartKind[]",
+    "required": false,
+    "description": "凡例を出す（true は出てくる種類だけ。並びを渡すとその種類）。",
+    "default": "false"
+   },
+   {
+    "name": "hint",
+    "type": "string",
+    "required": false,
+    "description": "凡例の右の案内（「帯に乗せると時間帯と時間数が出ます」）。"
+   },
+   {
+    "name": "minBarWidth",
+    "type": "number",
+    "required": false,
+    "description": "帯の最小の幅（%。狭すぎて見えなくならないように）。",
+    "default": "0.4"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前。"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArTimeChartLabels>",
+    "required": false,
+    "description": "画面の文字。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "select",
+    "payload": "[row: ArTimeChartRow]",
+    "description": "month の日付を押したとき。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "legend",
+   "legend-item",
+   "swatch",
+   "hint",
+   "grid",
+   "head",
+   "head-label",
+   "ticks",
+   "tick",
+   "row",
+   "row-label",
+   "date",
+   "weekday",
+   "sub",
+   "lane",
+   "gridline",
+   "bar",
+   "bar-text",
+   "tip",
+   "note"
+  ],
+  "dataAr": "time-chart"
  },
  {
   "name": "ArViewOptions",

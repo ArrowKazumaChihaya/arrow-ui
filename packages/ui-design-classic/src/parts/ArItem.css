@@ -1,4 +1,4 @@
-/* @covers ArItem 1.0.0 */
+/* @covers ArItem 1.1.0 */
 /* ArItem（今の ARROW の Item：ui-Item）。項目名は幅200px（titleWidth）・#90959A 14px 600・行の高さ30。中身は 14px・行の高さ30。
    必須は項目名の後ろの「※」（#D10C1D の地・白 12px 700・角丸3・余白2・左に3px）。補足は 11px #5F5F5F 行の高さ15、「詳細」は antd のリンク（#1677FF）11px・左に5px。
    行と行の間は25px（最後の行は0）。 */
@@ -13,3 +13,20 @@
 [data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]{display:inline-block;margin-left:5px;color:#1677FF;font-size:11px;line-height:11px;text-decoration:none;transition:color .3s}
 [data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]:hover{color:#69B1FF}
 [data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]:focus-visible{outline:1px solid #1677FF;outline-offset:1px}@media (max-width:768px){[data-ar-design="classic"] [data-ar="item"]:not(:last-child){margin-bottom:15px}[data-ar-design="classic"] [data-ar="item"]>[data-part="title"]{line-height:20px}[data-ar-design="classic"] [data-ar="item"]>[data-part="content"]{padding-left:10px;box-sizing:border-box}}
+/* 1.1：今の ARROW の Item に無いものは、ARROW の部品と素の antd の材料で。
+   ？＝Info の mark（QuestionCircleOutlined 11px #4F92C2・左に5px。押すと説明）。項目名の下の補足＝small_info と同じ 11px #5F5F5F。
+   間違い＝antd の Form のエラー（#FF4D4F 14px・行の高さ 22px）。未登録＝薄い文字 rgba(0,0,0,.45)＋antd の Tag（warning）。
+   変更あり＝antd の Tag（processing の青）、元に戻す＝ARROW の Button（muted）。row は Item と同じ並び（線なし・行の間は25px）。 */
+[data-ar-design="classic"] [data-ar="item"]>[data-part="title"] [data-part="help"]{margin-left:5px;color:#4F92C2;vertical-align:1px}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="title"] [data-part="help"]>[data-ar="icon"]{width:11px;height:11px}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="title"] [data-part="help"]:focus-visible{outline:1px solid #4F92C2;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="title"]>[data-part="caption"]{color:#5F5F5F;font-size:11px;font-weight:400;line-height:15px;white-space:pre-wrap}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="error"]{color:#FF4D4F;font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="error"]>[data-ar="icon"]{display:none}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="unregistered"]{gap:8px;line-height:30px}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="unregistered"]>[data-part="unregistered-text"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="content"]>[data-part="unregistered"]>[data-part="unregistered-why"],[data-ar-design="classic"] [data-ar="item"]>[data-part="aside"]>[data-part="changed"]{display:inline-block;height:auto;padding:0 7px;border:1px solid #FFE58F;border-radius:4px;background:#FFFBE6;color:#D48806;font-size:12px;line-height:20px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="aside"]{gap:4px}
+[data-ar-design="classic"] [data-ar="item"]>[data-part="aside"]>[data-part="changed"]{border-color:#91CAFF;background:#E6F4FF;color:#0958D9}
+[data-ar-design="classic"] [data-ar="item"][data-variant="row"]{column-gap:0}
+[data-ar-design="classic"] [data-ar="item"][data-variant="row"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]>[data-ar="icon"]{display:none}

@@ -1,1 +1,11 @@
 [data-ar="changed-value"]>[data-part="before"]{text-decoration:none}
+/* 1.1：表（table）と一覧（list） */
+[data-ar="changed-value"][data-layout="table"]{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+[data-ar="changed-value"][data-layout="table"] :is(th,td){box-sizing:border-box;text-align:left;vertical-align:top;font-weight:inherit}
+[data-ar="changed-value"][data-layout="table"] thead th{vertical-align:middle}
+[data-ar="changed-value"][data-layout="table"][data-numeric] :is([data-col="before"],[data-col="after"]){text-align:right;font-variant-numeric:tabular-nums}
+[data-ar="changed-value"][data-layout="table"] td[data-col="after"]>[data-part="change"]{display:flex;flex-wrap:wrap;align-items:baseline}
+[data-ar="changed-value"][data-layout="table"][data-numeric] td[data-col="after"]>[data-part="change"]{justify-content:flex-end;flex-wrap:nowrap}
+[data-ar="changed-value"][data-layout="list"]{display:flex;flex-direction:column}
+[data-ar="changed-value"][data-layout="list"]>[data-part="row"]>[data-part="change"]{display:flex;flex-wrap:wrap;align-items:baseline}
+[data-ar="changed-value"][data-layout="list"]>[data-part="row"]>[data-part="change"]>[data-part="label"]{width:100%}

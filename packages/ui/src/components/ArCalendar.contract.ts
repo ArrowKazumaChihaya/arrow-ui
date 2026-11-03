@@ -9,6 +9,13 @@ export interface ArCalendarProps {
    * board＝角の丸いマスを並べた形（シフト画面のカレンダー。日付は真ん中の丸、イベントは色の点と名前、cell slot はマスの下の段）。
    */
   variant?: "sheet" | "board";
+  /**
+   * 大きさ。mini＝小さなカレンダー（設定のシフトテンプレートの「カレンダーで確かめる」）：
+   * 見出しはカレンダーの絵と title と extra slot だけ（年の選択・月／年の切り替えはない）、マスは角の丸い淡い地に日付・印（events の札）・小さな文字（events の note）、下に footer slot（凡例）。
+   */
+  size?: "default" | "mini";
+  /** 見出しの文字（省くと「2026年11月」）。 */
+  title?: string;
   /** 日ごとの状態の印（ロック中＝斜線と鍵・非公開＝目の印・注意＝赤い枠）。 */
   cellMarks?: (date: string) => ArCalendarCellMarks | undefined;
   /** 選んでいる日（"YYYY-MM-DD"）。選ばないなら null。 */
@@ -69,8 +76,14 @@ export interface ArCalendarEvent {
   date: string;
   label: string;
   tone?: "event" | "danger" | "accent" | "ok";
-  /** board の点の色（イベントに登録した色）。省くと tone の色。 */
+  /** board の点の色（イベントに登録した色）。省くと tone の色。mini は札の文字の色。 */
   color?: string;
+  /** mini の札の地の色（省くと tone の色）。 */
+  background?: string;
+  /** mini の札の下の小さな文字（「9:00-18:00」「休み」）。 */
+  note?: string;
+  /** 乗せたときの説明。 */
+  title?: string;
 }
 /** 日ごとの状態の印（cellMarks が返す）。 */
 export interface ArCalendarCellMarks {
@@ -80,6 +93,8 @@ export interface ArCalendarCellMarks {
   unpublished?: boolean;
   /** 注意（人が足りないなど。赤い枠。色だけに頼らず cell slot に「不足1」などの文字を添える）。 */
   alert?: boolean;
+  /** 祝日（日付を日曜と同じ赤にする。weekendColors のとき）。 */
+  holiday?: boolean;
 }
 /** cell slot が受け取る値。 */
 export interface ArCalendarCell {
@@ -113,4 +128,7 @@ export type ArCalendarPart =
   | "dot"
   | "foot"
   | "lock"
-  | "unpublished";
+  | "unpublished"
+  | "heading-icon"
+  | "note"
+  | "footer";

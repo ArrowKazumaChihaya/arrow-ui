@@ -1,0 +1,26 @@
+/* ArOrgChart の構造：地（巻き取らず、ドラッグで中の図を動かす）・図は上の真ん中から下へ枝分かれ・右下に拡大縮小・左下に案内。 */
+[data-ar="org-chart"]{position:relative;display:flex;flex-direction:column;min-width:0;box-sizing:border-box;overflow:hidden}
+[data-ar="org-chart"]>[data-part="viewport"]{position:relative;flex:1;min-height:0;overflow:hidden;cursor:grab;touch-action:none;outline:0}
+[data-ar="org-chart"]>[data-part="viewport"][data-state~="dragging"]{cursor:grabbing}
+[data-ar="org-chart"]>[data-part="viewport"]>[data-part="canvas"]{position:absolute;left:50%;top:40px;display:flex;align-items:flex-start;width:max-content;transform-origin:50% 0;user-select:none}
+[data-ar="org-chart"] [data-part="branch"]{display:flex;flex-direction:column;align-items:center}
+[data-ar="org-chart"] [data-part="node-wrap"]{position:relative;display:flex;flex-direction:column;align-items:center}
+[data-ar="org-chart"] [data-part="node"]{display:flex;flex-direction:column;align-items:stretch;box-sizing:border-box;text-align:left;cursor:pointer;min-width:0}
+[data-ar="org-chart"] [data-part="node-head"]{display:flex;align-items:center;min-width:0}
+[data-ar="org-chart"] [data-part="name"]{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="org-chart"] [data-part="count"]{display:flex;align-items:center}
+[data-ar="org-chart"] [data-part="toggle"]{position:absolute;left:50%;top:100%;z-index:1;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;transform:translateX(-50%);cursor:pointer}
+[data-ar="org-chart"] [data-part="children"]{position:relative;display:flex;align-items:flex-start}
+[data-ar="org-chart"] [data-part="children"]::before{content:"";position:absolute;left:50%;top:0}
+[data-ar="org-chart"] [data-part="child"]{position:relative}
+[data-ar="org-chart"] [data-part="child"]::before,[data-ar="org-chart"] [data-part="child"]::after{content:"";position:absolute;top:0}
+[data-ar="org-chart"] [data-part="child"]::before{left:0;right:0}
+[data-ar="org-chart"] [data-part="child"]::after{left:50%}
+[data-ar="org-chart"] [data-part="child"]:first-child::before{left:50%}
+[data-ar="org-chart"] [data-part="child"]:last-child::before{right:50%}
+[data-ar="org-chart"] [data-part="child"]:only-child::before{display:none}
+[data-ar="org-chart"]>[data-part="controls"]{position:absolute;right:14px;bottom:12px;z-index:2;display:flex;align-items:center}
+[data-ar="org-chart"]>[data-part="controls"]>button{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap}
+[data-ar="org-chart"]>[data-part="controls"]>button:disabled{cursor:not-allowed}
+[data-ar="org-chart"]>[data-part="controls"]>button>svg{flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+[data-ar="org-chart"]>[data-part="hint"]{position:absolute;left:14px;bottom:12px;z-index:2;display:flex;align-items:center;pointer-events:none}

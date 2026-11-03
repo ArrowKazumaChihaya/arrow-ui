@@ -1,0 +1,13 @@
+/* ArApprovalFlow の構造：row は横に並べて折り返す、list は「丸｜名前｜札」の3列。 */
+[data-ar="approval-flow"]{margin:0;padding:0;list-style:none;box-sizing:border-box}
+[data-ar="approval-flow"]>[data-part="item"]{display:flex;align-items:center;margin:0}
+[data-ar="approval-flow"][data-layout="row"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="approval-flow"][data-layout="row"] [data-part="sep"]{display:inline-flex;flex:none}
+[data-ar="approval-flow"][data-layout="row"] :is([data-part="start"],[data-part="step"]){display:inline-flex;align-items:center;white-space:nowrap}
+[data-ar="approval-flow"][data-layout="row"] [data-part="step"]>[data-part="title"]{display:inline-flex;align-items:center}
+[data-ar="approval-flow"][data-layout="row"] [data-part="step"]>[data-part="status"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+[data-ar="approval-flow"][data-layout="list"]{display:flex;flex-direction:column}
+[data-ar="approval-flow"][data-layout="list"]>[data-part="item"]{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center}
+[data-ar="approval-flow"][data-layout="list"] [data-part="mark"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="approval-flow"][data-layout="list"] [data-part="body"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="approval-flow"][data-layout="list"] [data-part="status"]{display:inline-flex;align-items:center;white-space:nowrap}

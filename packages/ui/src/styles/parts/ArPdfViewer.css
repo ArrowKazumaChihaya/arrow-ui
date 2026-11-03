@@ -1,0 +1,13 @@
+/* ArPdfViewer の構造：上の段（横並び）と、巻き取る紙の場所（真ん中に紙）。 */
+[data-ar="pdf-viewer"]{display:flex;flex-direction:column;min-width:0;min-height:0;box-sizing:border-box}
+[data-ar="pdf-viewer"]>[data-part="bar"]{display:flex;align-items:center;flex-wrap:wrap;flex:none;min-width:0}
+[data-ar="pdf-viewer"]>[data-part="bar"]>:is([data-part="prev"],[data-part="next"]){display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box;cursor:pointer}
+[data-ar="pdf-viewer"]>[data-part="bar"]>:is([data-part="prev"],[data-part="next"]):disabled{cursor:not-allowed}
+[data-ar="pdf-viewer"]>[data-part="bar"]>[data-part="spacer"]{flex:1}
+[data-ar="pdf-viewer"]>[data-part="bar"]>[data-part="zoom"]{display:inline-flex;align-items:center;flex:none}
+[data-ar="pdf-viewer"]>[data-part="bar"]>[data-part="zoom"]>button{display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+[data-ar="pdf-viewer"]>[data-part="bar"]>[data-part="zoom"]>button:disabled{cursor:not-allowed}
+[data-ar="pdf-viewer"]>[data-part="viewport"]{flex:1;min-height:0;overflow:auto;display:flex;justify-content:safe center;align-items:flex-start;box-sizing:border-box;outline:0}
+[data-ar="pdf-viewer"]>[data-part="viewport"]>[data-part="paper"]{flex:none;box-sizing:border-box;max-width:none}
+[data-ar="pdf-viewer"]>[data-part="viewport"]>[data-part="paper"]>[data-part="image"]{display:block;width:100%;height:auto;user-select:none}
+[data-ar="pdf-viewer"]>[data-part="viewport"]>[data-part="frame"]{flex:1;align-self:stretch;width:100%;min-height:480px;border:0}

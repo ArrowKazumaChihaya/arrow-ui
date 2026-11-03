@@ -1,0 +1,7 @@
+{
+  "name": "ArOtpInput",
+  "version": "1.0.0",
+  "group": "入力",
+  "ja": "認証コードの欄",
+  "slug": "otp-input"
+}

@@ -1,0 +1,7 @@
+/* ArSaveBar の構造：横に並べ、項目名は1行で切る。sticky で画面の下に貼りつく。 */
+[data-ar="save-bar"]{display:flex;align-items:center;flex-wrap:wrap;box-sizing:border-box;min-width:0}
+[data-ar="save-bar"]>[data-part="count"]{flex:none;display:inline-flex;align-items:center;white-space:nowrap}
+[data-ar="save-bar"]>[data-part="items"]{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="save-bar"]>[data-part="spacer"]{flex:1}
+[data-ar="save-bar"][data-sticky]{position:sticky;bottom:16px;z-index:20}
+[data-ar="save-bar"][data-summary="hidden"]>:is([data-part="count"],[data-part="items"]){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
