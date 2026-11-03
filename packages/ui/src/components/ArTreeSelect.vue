@@ -308,7 +308,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
         <span v-for="n in selectedNodes.slice(0, maxTags)" :key="String(n.value)" data-part="tag"
           >{{ n.label
           }}<button type="button" data-part="tag-remove" tabindex="-1" :aria-label="`${n.label}を外す`" :disabled="disabled" @mousedown.prevent @click.stop="removeTag(n.value)">
-            <ArIcon name="x" size="sm" /></button
+            <ArIcon line name="x" size="sm" /></button
         ></span>
         <span v-if="selectedNodes.length > maxTags" data-part="tag" data-kind="more">+{{ selectedNodes.length - maxTags }}</span>
       </span>
@@ -319,9 +319,9 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       <span v-else data-part="placeholder">{{ placeholder }}</span>
     </template>
     <button v-if="canClear" type="button" data-part="clear" tabindex="-1" aria-label="選んだものを消す" @mousedown.prevent @click.stop="clear">
-      <ArIcon name="x" size="sm" />
+      <ArIcon line name="x" size="sm" />
     </button>
-    <ArIcon name="cd" size="sm" data-part="arrow" />
+    <ArIcon line name="cd" size="sm" data-part="arrow" />
   </div>
   <ArFloat ar="tree-select-panel" :open="open" :anchor="root" match-width="min" :offset="6" @close="(r) => close(r === 'escape')">
     <div v-if="searchable" data-part="search">
@@ -379,10 +379,10 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
         @mousemove="!r.node.disabled && (active = r.node.value)"
       >
         <span data-part="switch" :data-open="r.isOpen || undefined" @click.stop="r.hasChildren && setExpanded(r.node.value, !r.isOpen)">
-          <ArIcon v-if="r.hasChildren" :name="r.isOpen ? 'cd' : 'cr'" size="sm" />
+          <ArIcon line v-if="r.hasChildren" :name="r.isOpen ? 'cd' : 'cr'" size="sm" />
         </span>
         <span v-if="multiple" data-part="check" :data-state="checkState(r.node)" aria-hidden="true">
-          <ArIcon v-if="checkState(r.node) === 'on'" name="check" size="sm" />
+          <ArIcon line v-if="checkState(r.node) === 'on'" name="check" size="sm" />
           <span v-else-if="checkState(r.node) === 'mixed'" data-part="dash" />
         </span>
         <span data-part="node-label"

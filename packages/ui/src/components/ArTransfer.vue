@@ -77,7 +77,7 @@ function move(from: 0 | 1) {
         </div>
         <div data-part="body">
           <label v-if="searchable" data-part="search">
-            <ArIcon name="search" size="sm" />
+            <ArIcon line name="search" size="sm" />
             <input v-model="query[side]" type="search" :placeholder="labels.search" :aria-label="`${titles[side]}を${labels.search}`" :disabled="disabled" />
           </label>
           <div data-part="items" role="list">

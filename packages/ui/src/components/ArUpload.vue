@@ -113,7 +113,7 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
         @dragleave="over = false"
         @drop.prevent="onDrop"
       >
-        <ArIcon name="upload" data-part="icon" />
+        <ArIcon line name="upload" data-part="icon" />
         <b data-part="title">{{ labels.drop }}</b>
         <span data-part="hint">{{ labels.or }} <span data-part="pick">{{ labels.pick }}</span><template v-if="hint">（{{ hint }}）</template></span>
       </div>
@@ -122,10 +122,10 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
           <div data-part="row">
             <ArIcon :name="iconOf(f)" size="sm" data-part="kind" />
             <span data-part="name" :title="f.name">{{ f.name }}<template v-if="f.status === 'error' && f.error">（{{ f.error }}）</template></span>
-            <ArIcon v-if="f.status === 'done'" name="check" size="sm" data-part="status" :label="'済み'" />
+            <ArIcon line v-if="f.status === 'done'" name="check" size="sm" data-part="status" :label="'済み'" />
             <small v-else-if="f.status === 'uploading'" data-part="status">{{ Math.round(f.percent ?? 0) }}%</small>
             <button v-if="f.status !== 'uploading'" type="button" data-part="remove" :aria-label="`${f.name}を${labels.remove}`" :title="labels.remove" @click="emit('remove', f)">
-              <ArIcon name="trash" size="sm" />
+              <ArIcon line name="trash" size="sm" />
             </button>
           </div>
           <div
@@ -147,7 +147,7 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
         <img v-if="f.url" :src="f.url" :alt="f.name" />
         <span v-else data-part="card-name">{{ f.name }}</span>
         <button type="button" data-part="remove" :aria-label="`${f.name}を${labels.remove}`" :title="labels.remove" @click="emit('remove', f)">
-          <ArIcon name="x" size="sm" />
+          <ArIcon line name="x" size="sm" />
         </button>
       </div>
       <button
@@ -160,7 +160,7 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
         @dragleave="over = false"
         @drop.prevent="onDrop"
       >
-        <ArIcon name="plus" size="sm" />{{ label ?? labels.add }}
+        <ArIcon line name="plus" size="sm" />{{ label ?? labels.add }}
       </button>
     </div>
   </div>

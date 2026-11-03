@@ -192,7 +192,7 @@ function setRange(key: "start" | "end", v: string | null) {
         :disabled="disabled"
         @click="setOpen(!open)"
       >
-        <ArIcon name="cal" size="sm" />
+        <ArIcon line name="cal" size="sm" />
       </button>
       <span v-if="range && showDays && days" data-part="days" aria-live="polite">{{ labels.days(days) }}</span>
     </div>

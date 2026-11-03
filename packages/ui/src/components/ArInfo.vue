@@ -21,7 +21,7 @@ const emit = defineEmits<{ open: [] }>();
     <span data-part="text"><slot>{{ text }}</slot></span>
   </p>
   <div v-else-if="kind === 'attention'" data-ar="info" data-part="root" data-kind="attention" role="note">
-    <ArIcon name="alert" data-part="icon" />
+    <ArIcon line name="alert" data-part="icon" />
     <span data-part="text"><slot>{{ text }}</slot></span>
   </div>
   <component
@@ -38,7 +38,7 @@ const emit = defineEmits<{ open: [] }>();
     :title="kind === 'mark' ? (props.text ?? labels.mark) : undefined"
     @click="href || emit('open')"
   >
-    <ArIcon v-if="kind === 'mark'" name="help" data-part="icon" />
+    <ArIcon line v-if="kind === 'mark'" name="help" data-part="icon" />
     <span v-else data-part="text"><slot>{{ text ?? labels.detail }}</slot></span>
   </component>
 </template>

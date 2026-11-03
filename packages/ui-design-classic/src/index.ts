@@ -7,6 +7,7 @@
  */
 import { defineDesign } from "@arrow/ui/design";
 import { covers } from "./covers.generated";
+import { classicIcons } from "./icons";
 import { derivePalette, mixHex, type ArPalette } from "@arrow/ui-tokens";
 
 /** 今のページの色（section-*）と、押したときの明るい色（section-*-hover）。 */
@@ -100,6 +101,7 @@ export const classicDesign = defineDesign({
     ArThumbnail: { editor: "arrow" }, // 今の画像のアップロード：大きな「ファイルを選択」・ファイル名・左右の回すボタン・真ん中の大きな「登録」
     ArTable: { selectHead: "label" }, // 今の SelectTable：見出しのチェックの左に「全選択」
   },
+  icons: classicIcons, // 今の ARROW の塗りの絵（public/icons）。ここに無い名前は線のアイコン
   styles: () => import("@arrow/ui-design-classic/styles.css"),
 });
 

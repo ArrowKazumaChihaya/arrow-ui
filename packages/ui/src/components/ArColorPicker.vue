@@ -182,7 +182,7 @@ function pickSwatch(v: string) {
       </template>
       <ArColorSwatches data-part="swatches" :model-value="modelValue" :colors="colors" :group-size="groupSize" :label="label" @update:model-value="pickSwatch" />
       <button v-if="custom" type="button" data-part="detail" :aria-expanded="detail" @click="detail = !detail">
-        <ArIcon :name="detail ? 'minus' : 'plus'" size="sm" />{{ detail ? labels.hide : labels.detail }}
+        <ArIcon line :name="detail ? 'minus' : 'plus'" size="sm" />{{ detail ? labels.hide : labels.detail }}
       </button>
     </ArFloat>
   </span>

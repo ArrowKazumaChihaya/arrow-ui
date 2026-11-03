@@ -272,15 +272,15 @@ onUpdated(untab);
       @dragleave="over?.key === r.node.key && (over = null)"
       @dragend="onDragEnd"
     >
-      <span v-if="draggable && r.branch && !r.node.fixed" data-part="handle" aria-hidden="true"><ArIcon name="grip" size="sm" /></span>
+      <span v-if="draggable && r.branch && !r.node.fixed" data-part="handle" aria-hidden="true"><ArIcon line name="grip" size="sm" /></span>
       <span
         data-part="switcher"
         :data-state="r.branch ? (expandedSet.has(r.node.key) ? 'open' : 'closed') : 'leaf'"
         aria-hidden="true"
         @click.stop="r.branch ? setExpanded(r.node.key, !expandedSet.has(r.node.key)) : choose(r)"
       >
-        <ArIcon v-if="r.branch" :name="expandedSet.has(r.node.key) ? 'cd' : 'cr'" size="sm" />
-        <ArIcon v-else-if="draggable && !r.node.fixed" name="grip" size="sm" data-part="grip" />
+        <ArIcon line v-if="r.branch" :name="expandedSet.has(r.node.key) ? 'cd' : 'cr'" size="sm" />
+        <ArIcon line v-else-if="draggable && !r.node.fixed" name="grip" size="sm" data-part="grip" />
       </span>
       <span v-if="checkable" data-part="check" @click.stop>
         <ArCheckbox

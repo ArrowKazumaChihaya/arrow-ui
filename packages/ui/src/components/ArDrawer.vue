@@ -61,7 +61,7 @@ const { onKeydown, palette } = useDialog({
             <h2 :id="`${id}-title`" data-part="title">{{ title }}</h2>
             <div v-if="$slots.extra" data-part="extra"><slot name="extra" /></div>
             <button v-if="closable" type="button" data-part="close" :aria-label="labels.close" @click="close">
-              <ArIcon name="x" size="sm" />
+              <ArIcon line name="x" size="sm" />
             </button>
           </header>
           <div data-part="body"><slot /></div>

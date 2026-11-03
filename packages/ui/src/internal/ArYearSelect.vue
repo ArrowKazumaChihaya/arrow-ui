@@ -135,7 +135,7 @@ defineExpose({ focus: () => button.value?.focus() });
     @keydown="onKey"
   >
     <span data-part="value">{{ text }}</span>
-    <ArIcon name="cd" size="sm" data-part="arrow" />
+    <ArIcon line name="cd" size="sm" data-part="arrow" />
   </button>
   <ArFloat :open="open" :anchor="button" ar="year-list" placement="bottom-start" match-width="min" role="listbox" :id="listId" :label="label" @close="close">
     <div
@@ -152,7 +152,7 @@ defineExpose({ focus: () => button.value?.focus() });
       @click="choose(i)"
     >
       <span data-part="option-label">{{ y === null ? placeholder || " " : labelOf(y) }}</span>
-      <ArIcon v-if="i === selectedIndex" name="check" size="sm" data-part="check" />
+      <ArIcon line v-if="i === selectedIndex" name="check" size="sm" data-part="check" />
     </div>
   </ArFloat>
 </template>

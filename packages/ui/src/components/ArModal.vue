@@ -121,7 +121,7 @@ const { onKeydown, palette } = useDialog({
             <p v-if="description" :id="`${id}-desc`" data-part="description">{{ description }}</p>
           </div>
           <button v-if="closable && !confirm" type="button" data-part="close" :aria-label="labels.close" @click="close">
-            <ArIcon name="x" />
+            <ArIcon line name="x" />
           </button>
         </header>
         <div v-if="steps?.length || $slots.toolbar" data-part="nav" :data-toolbar="$slots.toolbar ? '' : undefined">
@@ -140,7 +140,7 @@ const { onKeydown, palette } = useDialog({
                 data-part="step-label"
                 @click="pickStep(i)"
               >
-                <span data-part="step-mark" aria-hidden="true"><ArIcon v-if="i < currentStep" name="check" size="sm" /><template v-else>{{ i + 1 }}</template></span>{{ s }}
+                <span data-part="step-mark" aria-hidden="true"><ArIcon line v-if="i < currentStep" name="check" size="sm" /><template v-else>{{ i + 1 }}</template></span>{{ s }}
               </component>
             </li>
           </ol>

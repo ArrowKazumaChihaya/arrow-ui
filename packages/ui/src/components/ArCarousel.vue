@@ -104,10 +104,10 @@ const heightStyle = computed(() =>
     </div>
     <template v-if="arrows && count > 1">
       <button type="button" data-part="prev" :aria-label="labels.prev" :disabled="!canPrev" @click="prev">
-        <ArIcon name="cl" size="sm" />
+        <ArIcon line name="cl" size="sm" />
       </button>
       <button type="button" data-part="next" :aria-label="labels.next" :disabled="!canNext" @click="next">
-        <ArIcon name="cr" size="sm" />
+        <ArIcon line name="cr" size="sm" />
       </button>
     </template>
     <div v-if="dots && count > 1" data-part="dots">

@@ -58,7 +58,7 @@ function onClick(e: MouseEvent) {
       :disabled="disabled"
       @click.stop="emit('close', $event)"
     >
-      <ArIcon name="x" size="sm" />
+      <ArIcon line name="x" size="sm" />
     </button>
   </component>
 </template>

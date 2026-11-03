@@ -37,7 +37,7 @@ function toggle() {
       :title="publishDisabled ? undefined : labels.toggleHint"
       @click="toggle"
     >
-      <ArIcon :name="published ? 'eye' : 'eyeoff'" data-part="icon" />
+      <ArIcon line :name="published ? 'eye' : 'eyeoff'" data-part="icon" />
       <span data-part="label">{{ published ? labels.published : labels.unpublished }}</span>
     </button>
   </div>

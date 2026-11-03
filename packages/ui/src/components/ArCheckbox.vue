@@ -48,7 +48,7 @@ function onChange(e: Event) {
       />
       <span data-part="box" aria-hidden="true">
         <span v-if="indeterminate" data-part="mark" data-kind="dash" />
-        <ArIcon v-else-if="modelValue" name="check" size="sm" data-part="mark" />
+        <ArIcon line v-else-if="modelValue" name="check" size="sm" data-part="mark" />
       </span>
     </span>
     <span v-if="$slots.default" data-part="label"><slot /></span>

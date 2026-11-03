@@ -72,7 +72,7 @@ onBeforeUnmount(stop);
       @focusin="pause"
       @focusout="resume"
     >
-      <ArIcon v-if="icon" :name="icon" data-part="icon" />
+      <ArIcon v-if="icon" line :name="icon" data-part="icon" />
       <span data-part="text"><slot>{{ message }}</slot></span>
       <button v-if="undoText" type="button" data-part="undo" @click="undo">{{ undoText }}</button>
       <button v-if="closeText" type="button" data-part="close" @click="close">{{ closeText }}</button>

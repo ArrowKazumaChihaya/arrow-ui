@@ -206,8 +206,8 @@ const colspan = computed(
                   @change="toggleAll"
                 />
                 <span data-part="check-box" aria-hidden="true">
-                  <ArIcon v-if="allState === 'some'" name="minus" size="sm" />
-                  <ArIcon v-else-if="allState === 'all'" name="check" size="sm" />
+                  <ArIcon line v-if="allState === 'some'" name="minus" size="sm" />
+                  <ArIcon line v-else-if="allState === 'all'" name="check" size="sm" />
                 </span>
               </span>
             </th>
@@ -281,7 +281,7 @@ const colspan = computed(
                     @change="toggleRow(row)"
                   />
                   <span data-part="check-box" aria-hidden="true">
-                    <ArIcon v-if="selectedSet.has(keyOf(row))" name="check" size="sm" />
+                    <ArIcon line v-if="selectedSet.has(keyOf(row))" name="check" size="sm" />
                   </span>
                 </span>
               </td>
@@ -300,7 +300,7 @@ const colspan = computed(
                   :aria-label="isOpen(row) ? L.collapse : L.expand"
                   @click="toggleExpand(row)"
                 >
-                  <ArIcon name="cr" size="sm" />
+                  <ArIcon line name="cr" size="sm" />
                 </button>
               </td>
               <td

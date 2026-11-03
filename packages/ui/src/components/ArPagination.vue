@@ -72,7 +72,7 @@ function setSize(v: unknown) {
     :aria-label="L.nav"
   >
     <button type="button" data-part="prev" :disabled="disabled || cur <= 1" :aria-label="L.prev" :title="L.prev" @click="go(cur - 1)">
-      <ArIcon name="cl" size="sm" />
+      <ArIcon line name="cl" size="sm" />
     </button>
     <span v-if="simple" data-part="simple">
       <input
@@ -100,7 +100,7 @@ function setSize(v: unknown) {
       >{{ p }}</button>
     </template>
     <button type="button" data-part="next" :disabled="disabled || cur >= last" :aria-label="L.next" :title="L.next" @click="go(cur + 1)">
-      <ArIcon name="cr" size="sm" />
+      <ArIcon line name="cr" size="sm" />
     </button>
     <span v-if="showSizeChanger" data-part="size">
       <ArSelect :model-value="pageSize" :options="sizeOptions" size="sm" :disabled="disabled" label="1ページの件数" @update:model-value="setSize" />

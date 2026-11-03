@@ -118,7 +118,7 @@ onMounted(() => props.inline && panel.value?.scrollOn());
       :disabled="disabled"
       @click="setOpen(!open)"
     >
-      <ArIcon name="clock" size="sm" />
+      <ArIcon line name="clock" size="sm" />
     </button>
     <ArFloat
       :id="`${baseId}-panel`"

@@ -11,7 +11,7 @@ import { ArButton } from "@arrow/ui";
   <div><small>edit+edit</small><ArButton tone="edit" icon="pen" block>編集</ArButton></div>
   <div><small>delete+cancel</small><ArButton tone="danger" icon="x" block>削除</ArButton></div>
   <div><small>lock+lock</small><ArButton tone="dark" icon="lock" block>ロック</ArButton></div>
-  <div><small>lock+unlock</small><ArButton tone="dark" icon="lock" block>ロック解除</ArButton></div>
+  <div><small>lock+unlock</small><ArButton tone="dark" icon="unlock" block>ロック解除</ArButton></div>
   <div><small>add+excel</small><ArButton tone="primary" icon="xls" block>Excel出力</ArButton></div>
   <div><small>bordered+plus</small><span><ArButton tone="dashed" icon="plus">シフトを追加</ArButton></span></div>
   <div><small>bordered+minus</small><span><ArButton tone="dashed" icon="minus">閉じる</ArButton></span></div>

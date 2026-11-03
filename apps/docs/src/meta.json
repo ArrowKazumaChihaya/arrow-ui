@@ -504,7 +504,7 @@
  {
   "name": "ArButton",
   "version": "1.0.0",
-  "description": "ボタン。種類（tone）・大きさ・形・アイコン・読み込み中・押せない・幅いっぱい。\nhref を渡すとリンク（a 要素）として出す。",
+  "description": "ボタン。種類（tone）・大きさ・形・アイコン・読み込み中・押せない・幅いっぱい。\nhref を渡すとリンク（a 要素）として出す。\n後ろのアイコン（iconEnd：開く∨など）はいつも線で描く（今の ARROW のボタンには後ろのアイコンが無く、開く印は antd の∨のため）。",
   "props": [
    {
     "name": "tone",
@@ -529,13 +529,13 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "文字の前のアイコン。"
    },
    {
     "name": "iconEnd",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "文字の後ろのアイコン（メニューを開くボタンの cd など）。"
    },
@@ -626,7 +626,7 @@
   "props": [
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "アイコン（backTop のときは up を使う）。"
    },
@@ -707,11 +707,11 @@
  {
   "name": "ArIcon",
   "version": "1.0.0",
-  "description": "ARROW の線のアイコン。\nlabel を渡すと読み上げられる画像、渡さなければ飾り（aria-hidden）。",
+  "description": "ARROW のアイコン。ふだんはライブラリの線のアイコン。\nデザインがその名前の絵（ArDesign.icons）を持っていれば、その絵を描く（例：classic は今の ARROW の塗りの絵）。\n部品の中の印（開閉の∨・閉じる×・チェックの✓・ページ送りの‹› など）は line を付けて、いつも線で描く\n（classic でも今の ARROW はそこに antd の印を使っていて、ARROW の塗りの絵ではないため）。\nlabel を渡すと読み上げられる画像、渡さなければ飾り（aria-hidden）。",
   "props": [
    {
     "name": "name",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": true,
     "description": ""
    },
@@ -727,6 +727,13 @@
     "type": "string",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "line",
+    "type": "boolean",
+    "required": false,
+    "description": "デザインの絵（ArDesign.icons）を使わず、いつもライブラリの線で描く。部品の中の印に使う。",
+    "default": "false"
    }
   ],
   "emits": [],
@@ -766,7 +773,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "文字の前のアイコン。"
    },
@@ -1217,7 +1224,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "押すボタンの頭のアイコン。"
    },
@@ -1599,7 +1606,7 @@
    },
    {
     "name": "variant",
-    "type": "'band' | 'line' | 'card'",
+    "type": "'card' | 'band' | 'line'",
     "required": false,
     "description": "形。band：カードの頭（帯）に置くテーマ色のタブ（画面の切り替え）。\nline：カードの中の下線のタブ（中身の切り替え）。card：閉じられる・足せるタブ（10月分・11月分など）。",
     "default": "\"line\""
@@ -1701,7 +1708,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "入力の頭のアイコン（例：search）。"
    },
@@ -1843,7 +1850,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "頭に出すアイコン（例：store）。"
    },
@@ -3454,7 +3461,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "頭に出すアイコン（selbox の store・bld など）。"
    },
@@ -4156,7 +4163,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "入力の頭に出すアイコン（例：search・user・lock）。"
    },
@@ -4186,7 +4193,7 @@
    },
    {
     "name": "suffixIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "入力の後ろに出すアイコン（例：info）。"
    },
@@ -4789,7 +4796,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "頭に出すアイコン（例：bld）。"
    },
@@ -5123,7 +5130,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "文字の代わりのアイコン（人の印など）。"
    },
@@ -5450,7 +5457,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "見出しの前の線のアイコン。"
    },
@@ -5777,7 +5784,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "線のアイコン（inbox・search など）。絵は使わない。省くと文字だけ。"
    },
@@ -6188,7 +6195,7 @@
    },
    {
     "name": "titleIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "見出しの後ろのアイコン（説明があることを示す info など）。"
    },
@@ -6361,7 +6368,7 @@
    },
    {
     "name": "emptyIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "行がないときの線のアイコン。"
    },
@@ -6478,7 +6485,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "文字の前の線のアイコン。"
    },
@@ -6897,7 +6904,7 @@
    },
    {
     "name": "icon",
-    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "先頭のアイコン。既定は種類ごと（info・ok は info・check、warn・danger は alert、neutral は lock）。false で出さない。"
    },
@@ -6996,7 +7003,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "題の左のアイコン（人なら user など）。"
    },
@@ -7230,7 +7237,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "題の左の印（confirm の既定は alert）。"
    },
@@ -7268,7 +7275,7 @@
    },
    {
     "name": "okIcon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": ""
    },
@@ -7396,7 +7403,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "印。既定は種類ごと（info・ok は info・check、warn・danger は alert）。提出などのお知らせは bell。"
    },
@@ -7529,7 +7536,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "問いの左の印。",
     "default": "\"alert\""
@@ -7690,7 +7697,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "丸の中の印を変える。"
    }
@@ -7841,7 +7848,7 @@
    },
    {
     "name": "icon",
-    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "先頭の印。既定は check。false で出さない。",
     "default": "\"check\""
@@ -8712,7 +8719,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "ベルのアイコン。既定は speaker。",
     "default": "\"speaker\""
@@ -8947,7 +8954,7 @@
    },
    {
     "name": "icon",
-    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons'",
     "required": false,
     "description": "見出しの前の四角い箱のアイコン（淡いテーマ色の地）。"
    },
