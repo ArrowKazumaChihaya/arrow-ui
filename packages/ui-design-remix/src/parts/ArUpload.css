@@ -1,7 +1,7 @@
 /* @covers ArUpload 1.0.0 */
 /* ArUpload：置き場 .ad-up（点線1.5 acc-line・角丸14・acc-25・余白22）、一覧 .ad-file（行34・角丸8・13px、名前は acc-ink）、
    進み具合 .ad-bar（3px・テーマ色）、失敗は赤と理由、写真 .ad-upc（96px・点線 field・角丸12）。 */
-[data-ar-design="remix"] [data-ar="upload"]{gap:12px 22px}
+[data-ar-design="remix"] [data-ar="upload"]{gap:12px 22px;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]{flex:0 1 300px;gap:6px;padding:22px;border:1.5px dashed var(--ar-accent-line);border-radius:14px;background:var(--ar-accent-faint);font-size:13.5px;line-height:1.5;color:var(--ar-color-text-secondary);outline:0;transition:background var(--ar-motion-fast),border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]:hover{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]:focus-visible{box-shadow:0 0 0 3px var(--ar-accent-ring)}

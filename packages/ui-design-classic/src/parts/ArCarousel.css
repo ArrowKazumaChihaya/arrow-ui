@@ -1,13 +1,18 @@
 /* @covers ArCarousel 1.0.0 */
-/* 仮：ant-design-vue 4 の Carousel の既定（地はテーマ色・白い文字・点は 16×3 の白 .3、今は 24 幅の白・下12px）。前後の矢印は白い線の矢印。参照ができたら合わせ直す。 */
-[data-ar-design="classic"] [data-ar="carousel"]{height:160px;background:var(--ar-accent);color:#fff}
-[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]{padding:0 48px}
+/* ArCarousel：antd の Carousel（今の ARROW にはない）。点は下12px・16×3・角丸1・白 .3、今は 24 幅の白・間8（refs/classic/antd-Carousel.png を実測）。
+   地は antd の見本の濃い色の代わりにページのテーマ色、文字は白（ARROW の div の 13px・游ゴシック、見出しは 16px 太さ600）。前後は antd の白い矢印（16px・.3、乗せると 1）。 */
+[data-ar-design="classic"] [data-ar="carousel"]{height:140px;background:var(--ar-accent);color:#fff;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]{padding:0 40px}
 [data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="title"]{font-size:16px;font-weight:600;line-height:1.5}
-[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="description"]{margin-top:4px;font-size:14px;opacity:.9}
-[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]){width:24px;height:24px;border:0;background:none;color:#fff;opacity:.6}
-[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):hover{opacity:1}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="description"]{margin-top:6px;line-height:20px}
+[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]){width:16px;height:16px;border:0;background:none;color:#fff;opacity:.3;transition:opacity .3s}
+[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):hover:not(:disabled){opacity:1}
+[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):disabled{opacity:.15}
+[data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]):focus-visible{opacity:1;outline:1px solid #fff}
 [data-ar-design="classic"] [data-ar="carousel"]>[data-part="prev"]{left:12px}
 [data-ar-design="classic"] [data-ar="carousel"]>[data-part="next"]{right:12px}
 [data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]{bottom:12px;gap:8px}
-[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]{width:16px;height:3px;border-radius:1px;background:rgba(255,255,255,.3);transition:all .3s}
-[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"][data-state~="current"]{width:24px;background:#fff}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]{width:16px;height:3px;border-radius:1px;background:#fff;opacity:.3;transition:all .3s}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]:hover{opacity:.75}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"][data-state~="current"]{width:24px;opacity:1}
+[data-ar-design="classic"] [data-ar="carousel"]>[data-part="dots"]>[data-part="dot"]:focus-visible{outline:1px solid #fff;outline-offset:2px}

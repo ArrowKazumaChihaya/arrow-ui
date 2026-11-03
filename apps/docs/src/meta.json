@@ -1044,6 +1044,120 @@
   "dataAr": "affix"
  },
  {
+  "name": "ArAnchor",
+  "version": "1.0.0",
+  "description": "長いページ（社員情報のフォームなど）の目次。押すとその場所へスクロールし、今いるところはテーマ色の線と文字。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArAnchorItem[]",
+    "required": true,
+    "description": "目次の並び。"
+   },
+   {
+    "name": "modelValue",
+    "type": "string",
+    "required": false,
+    "description": "今いるところの key。v-model（スクロールに合わせて変わる）。"
+   },
+   {
+    "name": "direction",
+    "type": "'horizontal' | 'vertical'",
+    "required": false,
+    "description": "vertical：左に線の縦の目次。horizontal：下に線の横の目次。",
+    "default": "\"vertical\""
+   },
+   {
+    "name": "container",
+    "type": "string | HTMLElement",
+    "required": false,
+    "description": "スクロールする箱（要素か CSS セレクタ）。渡さなければ画面。"
+   },
+   {
+    "name": "offset",
+    "type": "number",
+    "required": false,
+    "description": "上に固定のヘッダーなどがあるときの、上からの距離（px）。",
+    "default": "0"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前。",
+    "default": "\"目次\""
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[key: string]",
+    "description": ""
+   },
+   {
+    "name": "click",
+    "payload": "[key: string, event: MouseEvent]",
+    "description": "項目を押した。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "link"
+  ],
+  "dataAr": "anchor"
+ },
+ {
+  "name": "ArBreadcrumb",
+  "version": "1.0.0",
+  "description": "パンくず。区切りは「/」か「›」、今のページは太字（aria-current=\"page\"）。メニュー付きの項目は cd のアイコン。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArBreadcrumbItem[]",
+    "required": true,
+    "description": "上の階層から順に。最後が今のページ（太字）。"
+   },
+   {
+    "name": "separator",
+    "type": "'/' | '›'",
+    "required": false,
+    "description": "区切り。「/」か「›」。",
+    "default": "\"/\""
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前。",
+    "default": "\"パンくず\""
+   }
+  ],
+  "emits": [
+   {
+    "name": "click",
+    "payload": "[index: number, event: MouseEvent]",
+    "description": "項目を押した（href があるときは移動の前に出る）。"
+   },
+   {
+    "name": "select",
+    "payload": "[index: number, key: string]",
+    "description": "メニューの項目を選んだ。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "list",
+   "separator",
+   "item",
+   "current",
+   "icon",
+   "link"
+  ],
+  "dataAr": "breadcrumb"
+ },
+ {
   "name": "ArDropdown",
   "version": "1.0.0",
   "description": "押すとメニュー。項目にアイコン・説明・見出し・区切り・危ない項目（赤）・使えない・鍵（権限なし）。\n押すもの：default slot（自由）か、label で「操作」ボタン（variant=\"ops\"）・ArButton・Dropdown.Button（split）。\n↓ Enter Space で開き、メニューの中は ↑↓ で移る。Escape・外を押す・Tab で閉じ、押したものにフォーカスを戻す。",
@@ -1237,6 +1351,188 @@
    "arrow"
   ],
   "dataAr": "menu"
+ },
+ {
+  "name": "ArPagination",
+  "version": "1.0.0",
+  "description": "ページ送り。今のページはテーマ色。件数の選択はセレクト。表の下・右寄せに置く。",
+  "props": [
+   {
+    "name": "page",
+    "type": "number",
+    "required": true,
+    "description": "今のページ（1 から）。v-model:page。"
+   },
+   {
+    "name": "total",
+    "type": "number",
+    "required": true,
+    "description": "全部の件数。"
+   },
+   {
+    "name": "pageSize",
+    "type": "number",
+    "required": false,
+    "description": "1ページの件数。v-model:pageSize。",
+    "default": "20"
+   },
+   {
+    "name": "pageSizeOptions",
+    "type": "readonly number[]",
+    "required": false,
+    "description": "件数の選択肢。",
+    "default": "[10, 20, 50, 100]"
+   },
+   {
+    "name": "showSizeChanger",
+    "type": "boolean",
+    "required": false,
+    "description": "件数のセレクトを出す。",
+    "default": "false"
+   },
+   {
+    "name": "showTotal",
+    "type": "boolean",
+    "required": false,
+    "description": "「全 386 件」を出す。",
+    "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさ。sm は枠のない小さなページ送り（カードの中・スマホ）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "全部を押せなくする。",
+    "default": "false"
+   },
+   {
+    "name": "hideOnSinglePage",
+    "type": "boolean",
+    "required": false,
+    "description": "1ページしかないときは出さない。",
+    "default": "false"
+   },
+   {
+    "name": "labels",
+    "type": "{ nav?: string | undefined; prev?: string | undefined; next?: string | undefined; page?: ((n: number) => string) | undefined; perPage?: ((n: number) => string) | undefined; total?: ((n: number) => string) | undefined; }",
+    "required": false,
+    "description": "読み上げ・文字（日本語の既定を変えるとき）。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:page",
+    "payload": "[page: number]",
+    "description": ""
+   },
+   {
+    "name": "update:pageSize",
+    "payload": "[size: number]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "payload": "[page: number, pageSize: number]",
+    "description": "ページか件数を変えた。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "prev",
+   "ellipsis",
+   "page",
+   "next",
+   "size",
+   "total"
+  ],
+  "dataAr": "pagination"
+ },
+ {
+  "name": "ArSteps",
+  "version": "1.0.0",
+  "description": "手順。横・縦（承認の流れ）・mini（ポップアップの上の小さな手順）。\n今はテーマ色、済みは淡い面（mini は緑の丸にチェック）、エラーは赤。clickable なら済んだ手順を押して戻れる。",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArStepItem[]",
+    "required": true,
+    "description": "手順の並び。"
+   },
+   {
+    "name": "current",
+    "type": "number",
+    "required": false,
+    "description": "今の手順（0 から）。v-model:current。",
+    "default": "0"
+   },
+   {
+    "name": "status",
+    "type": "'process' | 'error'",
+    "required": false,
+    "description": "今の手順の状態（error で赤）。",
+    "default": "\"process\""
+   },
+   {
+    "name": "direction",
+    "type": "'horizontal' | 'vertical'",
+    "required": false,
+    "description": "horizontal：横（ページの手順）。vertical：縦（承認の流れ）。",
+    "default": "\"horizontal\""
+   },
+   {
+    "name": "size",
+    "type": "'default' | 'mini'",
+    "required": false,
+    "description": "default：ふつう。mini：ポップアップの上の小さな手順（.stpr）。",
+    "default": "\"default\""
+   },
+   {
+    "name": "clickable",
+    "type": "boolean",
+    "required": false,
+    "description": "済んだ手順を押して戻れる。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げの名前。",
+    "default": "\"手順\""
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:current",
+    "payload": "[index: number]",
+    "description": ""
+   },
+   {
+    "name": "change",
+    "payload": "[index: number]",
+    "description": "手順を押した。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "connector",
+   "step",
+   "body",
+   "icon",
+   "content",
+   "title",
+   "description"
+  ],
+  "dataAr": "steps"
  },
  {
   "name": "ArTabs",

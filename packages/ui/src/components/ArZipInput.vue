@@ -46,7 +46,7 @@ function onInput(v: string) {
   emit("update:modelValue", z === "" ? null : z);
   // 数字以外を打ったときなど、値が変わらなくても欄の文字を整えた形に戻す
   void nextTick(() => {
-    const el = root.value?.querySelector("input");
+    const el = (root.value as HTMLElement | null)?.querySelector("input");
     if (el && el.value !== (props.modelValue ?? "")) el.value = props.modelValue ?? "";
   });
   seq++;
