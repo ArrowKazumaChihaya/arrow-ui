@@ -1,5 +1,5 @@
 import { contracts as libraryContracts, structuralComponents, type ArComponentName } from "../contracts";
-import type { ArSkin } from "../skin";
+import type { ArDesign } from "../design";
 import { satisfies } from "./semver";
 
 export { satisfies, parseVersion } from "./semver";
@@ -10,8 +10,8 @@ export { satisfies, parseVersion } from "./semver";
  */
 export interface ArRequirements {
   components: Partial<Record<ArComponentName, string>>;
-  /** 製品が起動時に選ぶかもしれない skin。CI ではすべてを確かめる。 */
-  skins?: readonly Pick<ArSkin, "id" | "covers">[];
+  /** 製品が起動時に選ぶかもしれない デザイン。CI ではすべてを確かめる。 */
+  designs?: readonly Pick<ArDesign, "id" | "covers">[];
 }
 
 export function defineRequirements(r: ArRequirements): ArRequirements {
@@ -21,7 +21,7 @@ export function defineRequirements(r: ArRequirements): ArRequirements {
 export interface ArRequirementProblem {
   component: string;
   need: string;
-  /** 足りない場所。"library" か "skin:<id>" */
+  /** 足りない場所。"library" か "design:<id>" */
   where: string;
   have: string | null;
 }
@@ -32,29 +32,29 @@ export interface ArRequirementResult {
 }
 
 /**
- * 宣言をライブラリと skin が満たすか確かめる。
+ * 宣言をライブラリと デザイン が満たすか確かめる。
  * contracts を渡さなければ、このライブラリ自身の契約で確かめる。
  */
 export function checkRequirements(
   requirements: ArRequirements,
   options: {
     contracts?: Readonly<Record<string, string>>;
-    skins?: readonly Pick<ArSkin, "id" | "covers">[];
+    designs?: readonly Pick<ArDesign, "id" | "covers">[];
   } = {},
 ): ArRequirementResult {
   const contracts: Readonly<Record<string, string>> = options.contracts ?? libraryContracts;
-  const skins = options.skins ?? requirements.skins ?? [];
+  const designs = options.designs ?? requirements.designs ?? [];
   const problems: ArRequirementProblem[] = [];
   for (const [component, need] of Object.entries(requirements.components)) {
     if (!need) continue;
     const have = contracts[component] ?? null;
     if (!have || !satisfies(have, need)) problems.push({ component, need, where: "library", have });
-    for (const skin of skins) {
-      const covered = (skin.covers as Record<string, string | undefined>)[component];
-      const structural = !(component in skin.covers) && isStructural(component);
+    for (const design of designs) {
+      const covered = (design.covers as Record<string, string | undefined>)[component];
+      const structural = !(component in design.covers) && isStructural(component);
       if (structural) continue;
       if (!covered || !satisfies(covered, need))
-        problems.push({ component, need, where: `skin:${skin.id}`, have: covered ?? null });
+        problems.push({ component, need, where: `design:${design.id}`, have: covered ?? null });
     }
   }
   return { ok: problems.length === 0, problems };
@@ -68,7 +68,7 @@ export function formatProblems(result: ArRequirementResult): string {
   if (result.ok) return "宣言した部品はすべてそろっています。";
   const lines = result.problems.map(
     (p) =>
-      `- ${p.component}：${p.need} が必要 → ${p.where === "library" ? "ライブラリ" : p.where.replace("skin:", "skin ")} は ${p.have ?? "なし"}`,
+      `- ${p.component}：${p.need} が必要 → ${p.where === "library" ? "ライブラリ" : p.where.replace("design:", "デザイン ")} は ${p.have ?? "なし"}`,
   );
   return `足りない部品があります（${result.problems.length}件）。\n${lines.join("\n")}`;
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * arrow-ui check [--requires <file>]
- * 製品の arrow-ui.requires.ts を読み、入れたライブラリと skin が宣言を満たすか確かめる。
+ * 製品の arrow-ui.requires.ts を読み、入れたライブラリと デザイン が宣言を満たすか確かめる。
  * 足りなければ一覧を出して 1 で終わる（CI でビルドを止める）。
  */
 import { createJiti } from "jiti";
@@ -29,7 +29,7 @@ if (!requirements?.components) {
   process.exit(1);
 }
 const result = checkRequirements(requirements);
-const skins = (requirements.skins ?? []).map((s) => s.id).join("・") || "なし";
-console.log(`arrow-ui check：宣言 ${Object.keys(requirements.components).length} 部品・確かめた skin ${skins}`);
+const designs = (requirements.designs ?? []).map((s) => s.id).join("・") || "なし";
+console.log(`arrow-ui check：宣言 ${Object.keys(requirements.components).length} 部品・確かめたデザイン ${designs}`);
 console.log(formatProblems(result));
 process.exit(result.ok ? 0 : 1);

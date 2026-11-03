@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: { index: "src/index.ts", skin: "src/skin-entry.ts", requirements: "src/requirements/index.ts" },
+      entry: { index: "src/index.ts", design: "src/design-entry.ts", requirements: "src/requirements/index.ts" },
       formats: ["es"],
     },
     cssCodeSplit: false,

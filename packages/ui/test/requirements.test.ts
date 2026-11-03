@@ -1,10 +1,10 @@
 import { mount } from "@vue/test-utils";
 import { h } from "vue";
 import { checkRequirements, defineRequirements, formatProblems, satisfies } from "../src/requirements";
-import { defineSkin, ArSkinError, type ArSkin } from "../src/skin";
+import { defineDesign, ArDesignError, type ArDesign } from "../src/design";
 import ArUiProvider from "../src/provider/ArUiProvider.vue";
-import { remixSkin } from "@arrow/ui-skin-remix";
-import { classicSkin } from "@arrow/ui-skin-classic";
+import { remixDesign } from "@arrow/ui-design-remix";
+import { classicDesign } from "@arrow/ui-design-classic";
 
 describe("satisfies", () => {
   it.each([
@@ -21,8 +21,8 @@ describe("satisfies", () => {
 });
 
 describe("必要な部品の宣言", () => {
-  it("ライブラリと skin が満たせば ok", () => {
-    const r = defineRequirements({ components: { ArButton: "^1.0", ArTimeInput: "^1.0", ArStack: "^1.0" }, skins: [remixSkin, classicSkin] });
+  it("部品のライブラリとデザインのライブラリが満たせば ok", () => {
+    const r = defineRequirements({ components: { ArButton: "^1.0", ArTimeInput: "^1.0", ArStack: "^1.0" }, designs: [remixDesign, classicDesign] });
     expect(checkRequirements(r).ok).toBe(true);
   });
 
@@ -34,17 +34,17 @@ describe("必要な部品の宣言", () => {
     expect(formatProblems(res)).toContain("ArTimeChart：^1.0 が必要 → ライブラリ は なし");
   });
 
-  it("skin が対応していない部品も止める（並べる基礎は skin を問わない）", () => {
+  it("design が対応していない部品も止める（並べる基礎は design を問わない）", () => {
     const partial = { id: "half", covers: { ArButton: "1.0.0" } };
     const r = defineRequirements({ components: { ArButton: "^1.0", ArTable: "^1.0", ArStack: "^1.0" } });
-    const res = checkRequirements(r, { skins: [partial] });
-    expect(res.problems).toEqual([{ component: "ArTable", need: "^1.0", where: "skin:half", have: null }]);
+    const res = checkRequirements(r, { designs: [partial] });
+    expect(res.problems).toEqual([{ component: "ArTable", need: "^1.0", where: "design:half", have: null }]);
   });
 
   it("Provider は足りなければ画面を出さない", () => {
     const r = defineRequirements({ components: { ArButton: "^9.0" } });
     const err = vi.spyOn(console, "error").mockImplementation(() => {});
-    const w = mount(ArUiProvider, { props: { skin: remixSkin, requires: r }, slots: { default: () => h("p", "画面") } });
+    const w = mount(ArUiProvider, { props: { design: remixDesign, requires: r }, slots: { default: () => h("p", "画面") } });
     expect(w.find("p").exists()).toBe(false);
     expect(w.get('[data-ar="requirements-error"]').text()).toContain("ArButton");
     expect(err).toHaveBeenCalled();
@@ -52,10 +52,10 @@ describe("必要な部品の宣言", () => {
     w.unmount();
   });
 
-  it("Provider は skin のトークンを html に置く", () => {
-    const w = mount(ArUiProvider, { props: { skin: remixSkin, palette: "green" }, slots: { default: () => h("p", "画面") } });
+  it("Provider は design のトークンを html に置く", () => {
+    const w = mount(ArUiProvider, { props: { design: remixDesign, palette: "green" }, slots: { default: () => h("p", "画面") } });
     expect(w.text()).toBe("画面");
-    expect(document.documentElement.getAttribute("data-ar-skin")).toBe("remix");
+    expect(document.documentElement.getAttribute("data-ar-design")).toBe("remix");
     expect(document.documentElement.getAttribute("data-ar-palette")).toBe("green");
     const css = document.querySelector("style[data-ar-tokens]")?.textContent ?? "";
     expect(css).toContain("--ar-color-text:#1F2933");
@@ -65,19 +65,19 @@ describe("必要な部品の宣言", () => {
   });
 });
 
-describe("defineSkin", () => {
-  it("トークン・テーマ色・部品が欠けた skin は登録できない", () => {
-    const broken = { ...remixSkin, id: "broken", tokens: { ...remixSkin.tokens, "color.text": "" }, covers: { ArButton: "1.0.0" } } as ArSkin;
-    expect(() => defineSkin(broken)).toThrow(ArSkinError);
+describe("defineDesign", () => {
+  it("トークン・テーマ色・部品が欠けた design は登録できない", () => {
+    const broken = { ...remixDesign, id: "broken", tokens: { ...remixDesign.tokens, "color.text": "" }, covers: { ArButton: "1.0.0" } } as ArDesign;
+    expect(() => defineDesign(broken)).toThrow(ArDesignError);
     try {
-      defineSkin(broken);
+      defineDesign(broken);
     } catch (e) {
       expect(String(e)).toContain("color.text");
       expect(String(e)).toContain("ArTable");
     }
   });
   it("remix と classic はどちらもそろっている", () => {
-    expect(remixSkin.id).toBe("remix");
-    expect(classicSkin.deprecated).toBeTruthy();
+    expect(remixDesign.id).toBe("remix");
+    expect(classicDesign.deprecated).toBeTruthy();
   });
 });

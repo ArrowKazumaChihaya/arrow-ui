@@ -1,0 +1,106 @@
+/**
+ * classic — 今の ARROW の見た目のデザインライブラリ。
+ * 今の画面（ant-design-vue 4 の既定に、ARROW の色・ボタン・表・タイトルの帯・灰色のタブを重ねたもの）に合わせる。
+ * 今の画面にない部品（日付の曜日・表の固定列や合計・ポップアップの手順など）は、同じ雰囲気で作る。
+ * 参考：docs/reference/current-*.png（ARROW_front の実際の部品を描いたもの）。
+ * 全画面を新しい部品へ移し、remix を全社に出したら、このパッケージごと外して廃止する。
+ */
+import { defineDesign } from "@arrow/ui/design";
+import { derivePalette, mixHex, type ArPalette } from "@arrow/ui-tokens";
+
+/** 今のページの色（section-*）と、押したときの明るい色（section-*-hover）。 */
+const section = (base: string, hover: string, ink = mixHex(base, 0.72, "#000000")): ArPalette => ({
+  ...derivePalette(base, ink),
+  "accent-hi": hover,
+});
+
+export const classicDesign = defineDesign({
+  id: "classic",
+  label: "ARROW（今の見た目）",
+  deprecated: "移行中だけ使う。全画面の移行と remix の全社公開のあとに廃止する。",
+  tokens: {
+    "color.text": "rgba(0,0,0,.88)",
+    "color.text-secondary": "rgba(0,0,0,.65)",
+    "color.text-muted": "rgba(0,0,0,.45)",
+    "color.text-faint": "rgba(0,0,0,.25)",
+    "color.border": "#D9D9D9",
+    "color.border-subtle": "#E8E8E8",
+    "color.field": "#D9D9D9",
+    "color.surface": "#FFFFFF",
+    "color.surface-alt": "#FAFAFA",
+    "color.bg": "#FFFFFF",
+    "color.hover": "#F5F5F5",
+    "color.overlay": "rgba(0,0,0,.45)",
+    "color.danger": "#CA3A31",
+    "color.danger-ink": "#CF1322",
+    "color.danger-subtle": "#FFF2F0",
+    "color.warn": "#D46B08",
+    "color.warn-subtle": "#FFFBE6",
+    "color.warn-line": "#FFE58F",
+    "color.ok": "#389E0D",
+    "color.ok-subtle": "#F6FFED",
+    "color.sun": "#D10C1D",
+    "color.sat": "#1677FF",
+    "color.event": "#722ED1",
+    "color.event-subtle": "#F9F0FF",
+    "font.family": "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Hiragino Kaku Gothic ProN',Meiryo,sans-serif",
+    "font.family-numeric": "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif",
+    "font.size-caption": "12px",
+    "font.size-label": "14px",
+    "font.size-body": "14px",
+    "font.size-control": "14px",
+    "font.size-heading": "16px",
+    "font.size-title": "18px",
+    "font.weight-regular": "400",
+    "font.weight-strong": "600",
+    "space.1": "4px",
+    "space.2": "8px",
+    "space.3": "12px",
+    "space.4": "16px",
+    "space.5": "20px",
+    "space.6": "24px",
+    "space.7": "28px",
+    "space.8": "32px",
+    "radius.chip": "4px",
+    "radius.control": "6px",
+    "radius.cell": "6px",
+    "radius.card": "5px",
+    "shadow.card": "none",
+    "shadow.pop": "0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)",
+    "shadow.modal": "0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)",
+    "size.control-sm": "24px",
+    "size.control-md": "32px",
+    "size.control-lg": "40px",
+    "motion.fast": ".2s",
+  },
+  palettes: {
+    blue: section("#4395D4", "#56AEEC", "#4F92C2"), // シフト（文字は今のリンクの色）
+    green: section("#4EB187", "#5ECF9A"), // 勤怠
+    yellow: section("#D1AA00", "#E0C000"), // 給与賞与報酬年調
+    amber: section("#EE751B", "#F58F3A"), // 集計
+    pink: section("#E389B7", "#E89FCF"), // 書類
+    orange: section("#EB9142", "#EFA35F"), // 通知
+    teal: section("#6CB1B7", "#7CC4CA"), // 会社情報・社員情報・設定
+  },
+  covers: {
+    ArIcon: "1.0.0",
+    ArButton: "1.0.0",
+    ArField: "1.0.0",
+    ArTimeInput: "1.0.0",
+    ArDateInput: "1.0.0",
+    ArTable: "1.0.0",
+    ArModal: "1.0.0",
+    ArTextInput: "1.0.0",
+    ArSelect: "1.0.0",
+    ArCheckbox: "1.0.0",
+    ArRadioGroup: "1.0.0",
+    ArSwitch: "1.0.0",
+    ArTabs: "1.0.0",
+    ArCard: "1.0.0",
+    ArAlert: "1.0.0",
+    ArTag: "1.0.0",
+  },
+  styles: () => import("@arrow/ui-design-classic/styles.css"),
+});
+
+export default classicDesign;

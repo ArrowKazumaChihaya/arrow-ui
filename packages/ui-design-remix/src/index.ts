@@ -2,12 +2,12 @@
  * remix — ARROW リミックスの見た目。
  * 落ち着いた青を基本に、ページごとのテーマ色・やわらかい帯・角丸10の部品。テーマ色の上の文字はすべて白。
  */
-import { defineSkin } from "@arrow/ui/skin";
+import { defineDesign } from "@arrow/ui/design";
 import { derivePalette } from "@arrow/ui-tokens";
 
 const shadow = (rgba: string) => `0 1px 2px ${rgba}`;
 
-export const remixSkin = defineSkin({
+export const remixDesign = defineDesign({
   id: "remix",
   label: "ARROW リミックス",
   tokens: {
@@ -83,8 +83,17 @@ export const remixSkin = defineSkin({
     ArDateInput: "1.0.0",
     ArTable: "1.0.0",
     ArModal: "1.0.0",
+    ArTextInput: "1.0.0",
+    ArSelect: "1.0.0",
+    ArCheckbox: "1.0.0",
+    ArRadioGroup: "1.0.0",
+    ArSwitch: "1.0.0",
+    ArTabs: "1.0.0",
+    ArCard: "1.0.0",
+    ArAlert: "1.0.0",
+    ArTag: "1.0.0",
   },
-  styles: () => import("@arrow/ui-skin-remix/styles.css"),
+  styles: () => import("@arrow/ui-design-remix/styles.css"),
 });
 
-export default remixSkin;
+export default remixDesign;

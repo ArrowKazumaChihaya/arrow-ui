@@ -1,7 +1,7 @@
 {
-  "name": "@arrow/ui-skin-classic",
+  "name": "@arrow/ui-design-remix",
   "version": "0.1.0",
-  "description": "ARROW UI の skin：classic",
+  "description": "ARROW UI の design：remix",
   "type": "module",
   "sideEffects": ["**/*.css"],
   "exports": {

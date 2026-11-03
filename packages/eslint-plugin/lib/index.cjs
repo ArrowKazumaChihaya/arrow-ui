@@ -83,7 +83,7 @@ const declaredComponents = {
     schema: [{ type: "object", properties: { requires: { type: "string" } }, additionalProperties: false }],
     messages: {
       undeclared:
-        "{{name}} は arrow-ui.requires.ts に宣言されていません。宣言に足してから使ってください（ライブラリと skin が満たすかは arrow-ui check で確かめます）。",
+        "{{name}} は arrow-ui.requires.ts に宣言されていません。宣言に足してから使ってください（部品のライブラリとデザインのライブラリが満たすかは arrow-ui check で確かめます）。",
       noFile: "{{file}} が見つからないか、components を読めません。",
     },
   },

@@ -1,19 +1,19 @@
 <script setup lang="ts">
 /**
  * ArUiProvider 1.0
- * アプリに1つ置く。skin のトークンとテーマ色を html に配り、宣言した部品がそろっているかを確かめる。
- * どの skin を使うかは製品が起動時に決めて渡す（利用者が選ぶ仕組みは持たない）。
+ * アプリに1つ置く。デザイン のトークンとテーマ色を html に配り、宣言した部品がそろっているかを確かめる。
+ * どの デザイン を使うかは製品が起動時に決めて渡す（利用者が選ぶ仕組みは持たない）。
  */
 import { computed, onBeforeUnmount, provide, toRef, watch } from "vue";
 import type { ArPaletteName } from "@arrow/ui-tokens";
-import type { ArSkin } from "../skin";
+import type { ArDesign } from "../design";
 import { checkRequirements, formatProblems, type ArRequirements } from "../requirements";
 import { arUiContextKey } from "./context";
-import { skinCss } from "./css";
+import { designCss } from "./css";
 
 const props = withDefaults(
   defineProps<{
-    skin: ArSkin;
+    design: ArDesign;
     /** 画面全体の既定のテーマ色。ページごとの色は ArThemeScope で変える。 */
     palette?: ArPaletteName;
     /** 製品の arrow-ui.requires.ts。渡すと起動時に確かめ、足りなければ画面を出さない。 */
@@ -22,10 +22,10 @@ const props = withDefaults(
   { palette: "blue", requires: undefined },
 );
 
-provide(arUiContextKey, { skin: toRef(props, "skin"), palette: toRef(props, "palette") });
+provide(arUiContextKey, { design: toRef(props, "design"), palette: toRef(props, "palette") });
 
 const check = computed(() =>
-  props.requires ? checkRequirements(props.requires, { skins: [props.skin] }) : { ok: true, problems: [] },
+  props.requires ? checkRequirements(props.requires, { designs: [props.design] }) : { ok: true, problems: [] },
 );
 const message = computed(() => formatProblems(check.value));
 
@@ -33,17 +33,17 @@ const hasDom = typeof document !== "undefined";
 let styleEl: HTMLStyleElement | null = null;
 
 watch(
-  () => props.skin,
-  (skin) => {
+  () => props.design,
+  (design) => {
     if (!hasDom) return;
     if (!styleEl) {
       styleEl = document.createElement("style");
       styleEl.setAttribute("data-ar-tokens", "");
       document.head.appendChild(styleEl);
     }
-    styleEl.textContent = skinCss(skin);
-    document.documentElement.setAttribute("data-ar-skin", skin.id);
-    void skin.styles?.();
+    styleEl.textContent = designCss(design);
+    document.documentElement.setAttribute("data-ar-design", design.id);
+    void design.styles?.();
   },
   { immediate: true },
 );

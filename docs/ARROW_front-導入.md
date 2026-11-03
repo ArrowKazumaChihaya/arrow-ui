@@ -4,10 +4,10 @@
 
 ## 段階1：土台
 
-1. `.npmrc` に `@arrow:registry=https://npm.pkg.github.com` を足し、`@arrow/ui`・`@arrow/ui-skin-remix`・`@arrow/ui-skin-classic`・`@arrow/eslint-plugin-ui` を入れる。
+1. `.npmrc` に `@arrow:registry=https://npm.pkg.github.com` を足し、`@arrow/ui`・`@arrow/ui-design-remix`・`@arrow/ui-design-classic`・`@arrow/eslint-plugin-ui` を入れる。
 2. `arrow-ui.requires.ts` をリポジトリ直下に置く（README の例）。最初はシフト画面で使う部品だけ。
-3. `src/main.ts` で `@arrow/ui/style.css` を読み、`App.vue` を `ArUiProvider` で包む。skin は環境変数 `VITE_ARROW_SKIN` で決める（移行中は classic、全社公開で remix）。
-4. 今の切り替えの仕組みを外す：`DesignSwitcher.vue`、`Logic/Design.ts`、`State/DesignState.ts`、localStorage の `arrow.ui-design`。`DesignProvider.vue` は classic の CSS を読むだけにして、`ArUiProvider` の内側に置く。
+3. `src/main.ts` で `@arrow/ui/style.css` を読み、`App.vue` を `ArUiProvider` で包む。デザインのライブラリは `vite.config.ts` の `@arrow/ui-design` の行き先で決める（移行中は classic、全画面を移したら remix に替えて全社に一度に出す）。
+4. 今の切り替えの仕組みを外す（使わない）：`DesignSwitcher.vue`、`Logic/Design.ts`、`State/DesignState.ts`、localStorage の `arrow.ui-design`。`DesignProvider.vue` は classic の CSS を読むだけにして、`ArUiProvider` の内側に置く。
 5. `package.json` の verify に `arrow-ui check` を足す。`.eslintrc` に `plugin:@arrow/ui/recommended` を足す。
 6. `check:design` は、View の style・class・生の HTML タグの禁止をそのまま続ける。
 

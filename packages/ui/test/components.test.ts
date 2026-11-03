@@ -27,7 +27,7 @@ describe("ArButton", () => {
     expect(w.attributes("aria-label")).toBe("変更");
     expect(w.attributes("data-icon-only")).toBeDefined();
   });
-  it("部品・種類・大きさを属性で出す（skin はこれだけを見る）", () => {
+  it("部品・種類・大きさを属性で出す（design はこれだけを見る）", () => {
     const w = mount(ArButton, { props: { tone: "danger", size: "sm" }, slots: { default: "削除" } });
     expect(w.attributes("data-ar")).toBe("button");
     expect(w.attributes("data-tone")).toBe("danger");

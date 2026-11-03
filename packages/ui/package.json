@@ -1,7 +1,7 @@
 {
   "name": "@arrow/ui",
   "version": "0.1.0",
-  "description": "ARROW シリーズ共通の Vue 3 デザインライブラリ（部品・契約・skin の仕組み）",
+  "description": "ARROW シリーズ共通の Vue 3 デザインライブラリ（部品・契約・デザインの差し替えの仕組み）",
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -11,9 +11,9 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./skin": {
-      "types": "./dist/types/skin-entry.d.ts",
-      "import": "./dist/skin.js"
+    "./design": {
+      "types": "./dist/types/design-entry.d.ts",
+      "import": "./dist/design.js"
     },
     "./requirements": {
       "types": "./dist/types/requirements/index.d.ts",

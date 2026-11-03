@@ -1,11 +1,11 @@
 import { paletteNames, paletteSlots, tokenNames, toDeclarations } from "@arrow/ui-tokens";
-import type { ArSkin } from "../skin";
+import type { ArDesign } from "../design";
 
-/** skin のトークンとテーマ色を CSS にする（Provider が html に置く）。 */
-export function skinCss(skin: ArSkin): string {
-  const root = `:root{${toDeclarations(tokenNames, skin.tokens)}}`;
+/** デザイン のトークンとテーマ色を CSS にする（Provider が html に置く）。 */
+export function designCss(design: ArDesign): string {
+  const root = `:root{${toDeclarations(tokenNames, design.tokens)}}`;
   const palettes = paletteNames
-    .map((p) => `[data-ar-palette="${p}"]{${toDeclarations(paletteSlots, skin.palettes[p])}}`)
+    .map((p) => `[data-ar-palette="${p}"]{${toDeclarations(paletteSlots, design.palettes[p])}}`)
     .join("\n");
   return `${root}\n${palettes}`;
 }

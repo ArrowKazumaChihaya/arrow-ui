@@ -15,14 +15,14 @@
       "@arrow/ui/requirements": [
         "packages/ui/src/requirements/index.ts"
       ],
-      "@arrow/ui-skin-remix": [
-        "packages/ui-skin-remix/src/index.ts"
+      "@arrow/ui-design-remix": [
+        "packages/ui-design-remix/src/index.ts"
       ],
-      "@arrow/ui-skin-classic": [
-        "packages/ui-skin-classic/src/index.ts"
+      "@arrow/ui-design-classic": [
+        "packages/ui-design-classic/src/index.ts"
       ],
-      "@arrow/ui/skin": [
-        "packages/ui/src/skin-entry.ts"
+      "@arrow/ui/design": [
+        "packages/ui/src/design-entry.ts"
       ]
     }
   },

@@ -1,6 +1,6 @@
 /**
  * ARROW UI のトークン。
- * 名前はライブラリが決め、値は skin が決める。部品の CSS と製品のレイアウト層は名前だけを使う。
+ * 名前はライブラリが決め、値はデザインのライブラリが決める。部品の CSS と製品のレイアウト層は名前だけを使う。
  * CSS 変数は `--ar-<名前の . を - に>`（例：color.text → --ar-color-text）。
  */
 export const tokenNames = [
@@ -109,7 +109,7 @@ export function toDeclarations<K extends string>(names: readonly K[], values: Re
   return names.map((n) => `${cssVar(n as ArTokenName)}:${values[n]}`).join(";");
 }
 
-/** #RRGGBB 同士を混ぜる（t = a の割合）。skin がテーマ色の段階を作るのに使う。 */
+/** #RRGGBB 同士を混ぜる（t = a の割合）。デザインのライブラリがテーマ色の段階を作るのに使う。 */
 export function mixHex(a: string, t: number, b: string): string {
   const p = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
   const x = p(a);

@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import {
+  ArAlert,
+  ArCard,
+  ArCheckbox,
+  ArRadioGroup,
+  ArSelect,
+  ArSwitch,
+  ArTabs,
+  ArTag,
+  ArTextInput,
   ArButton,
   ArCluster,
   ArDateInput,
@@ -17,15 +26,15 @@ import {
   type ArTimeValue,
 } from "@arrow/ui";
 import { ArUiProvider } from "@arrow/ui";
-import { remixSkin } from "@arrow/ui-skin-remix";
-import { classicSkin } from "@arrow/ui-skin-classic";
+import { remixDesign } from "@arrow/ui-design-remix";
+import { classicDesign } from "@arrow/ui-design-classic";
 import { paletteNames } from "@arrow/ui-tokens";
 
 const params = new URLSearchParams(location.search);
-const skins = { remix: remixSkin, classic: classicSkin } as const;
-const skinId = ref<keyof typeof skins>((params.get("skin") as keyof typeof skins) ?? "remix");
+const designs = { remix: remixDesign, classic: classicDesign } as const;
+const designId = ref<keyof typeof designs>((params.get("design") as keyof typeof designs) ?? "remix");
 const palette = ref<ArPaletteName>((params.get("palette") as ArPaletteName) ?? "blue");
-const skin = computed(() => skins[skinId.value] ?? remixSkin);
+const design = computed(() => designs[designId.value] ?? remixDesign);
 
 const shiftStart = ref<ArTimeValue>({ time: "09:00", day: "same" });
 const clockIn = ref<ArTimeValue>({ time: "08:58", day: "same" });
@@ -66,6 +75,30 @@ const footer = computed(() => ({
   cost: yen(rows.value.reduce((s, r) => s + r.cost, 0)),
 }));
 
+const tab = ref("member");
+const tabs = [
+  { key: "member", label: "勤務メンバー", icon: "users" as const, count: 4 },
+  { key: "available", label: "勤務可能な人" },
+  { key: "event", label: "イベント" },
+];
+const pageTab = ref("cal");
+const pageTabs = [
+  { key: "cal", label: "カレンダー", icon: "cal" as const },
+  { key: "table", label: "テーブル", icon: "grid" as const },
+  { key: "view", label: "閲覧", icon: "eye" as const },
+];
+const title = ref("朝礼");
+const search = ref("");
+const store = ref<string | number | null>(1);
+const stores = [
+  { label: "東京", options: [{ value: 1, label: "渋谷店" }, { value: 2, label: "新宿店" }] },
+  { label: "大阪", options: [{ value: 3, label: "梅田店" }] },
+];
+const manager = ref(true);
+const some = ref(false);
+const scope = ref<string | number | boolean | null>("next");
+const published = ref(true);
+
 const modalOpen = ref(params.get("modal") === "1");
 const step = ref(1);
 const eventDate = ref<string | null>("2026-10-21");
@@ -77,18 +110,18 @@ const eventInvalid = computed(
 </script>
 
 <template>
-  <ArUiProvider :skin="skin" :palette="palette">
+  <ArUiProvider :design="design" :palette="palette">
     <div class="cat">
       <div class="cat-head">
         <div>
           <h1>ARROW UI カタログ</h1>
-          <p>@arrow/ui の部品を、skin とテーマ色を替えて確かめる画面です。</p>
+          <p>@arrow/ui の部品を、デザイン とテーマ色を替えて確かめる画面です。</p>
         </div>
         <div class="cat-ctrl">
-          <label>skin
-            <select v-model="skinId" data-test="skin">
+          <label>デザイン
+            <select v-model="designId" data-test="design">
               <option value="remix">remix</option>
-              <option value="classic">classic（移行中だけ）</option>
+              <option value="classic">classic（今の見た目）</option>
             </select>
           </label>
           <label>テーマ色
@@ -98,6 +131,66 @@ const eventInvalid = computed(
           </label>
         </div>
       </div>
+
+      <section class="cat-sec" id="screen">
+        <h2>画面の例（シフト詳細）</h2>
+        <p>配置は製品のレイアウト層、見た目はデザインのライブラリが持ちます。右上でデザインを替えても、並びと動きはそのままです。</p>
+        <ArStack :gap="4">
+          <ArTabs v-model="pageTab" :items="pageTabs" variant="band" label="表示" />
+          <ArCard title="シフト詳細" icon="users" variant="band">
+            <template #actions><ArButton tone="ghost" icon="help" label="使い方" /></template>
+            <ArStack :gap="5">
+              <ArCluster :gap="2">
+                <ArTag tone="accent">人件費 ¥31,500</ArTag>
+                <ArTag tone="ok" icon="eye">公開中</ArTag>
+                <ArTag tone="danger">不足1</ArTag>
+                <ArTag tone="event">朝礼</ArTag>
+                <ArSwitch v-model="published" label="この日を公開する" on-text="公開" off-text="非公開" />
+              </ArCluster>
+              <ArTabs v-model="tab" :items="tabs" variant="line" label="詳細" />
+              <ArCluster justify="between" :gap="2">
+                <ArCluster :gap="2">
+                  <ArButton tone="primary" icon="plus">シフト追加</ArButton>
+                  <ArButton tone="subtle" icon="yen">日毎人件費</ArButton>
+                </ArCluster>
+                <ArTextInput v-model="search" icon="search" placeholder="名前で探す" label="名前で探す" />
+              </ArCluster>
+              <ArTable :columns="columns" :rows="sortedRows" row-key="id" caption="勤務メンバー" :footer="footer" v-model:sort="sort" density="compact" />
+              <ArAlert tone="warn" title="勤怠ロック中">10月20日までの勤怠はロックされています。変更は管理者に依頼してください。</ArAlert>
+            </ArStack>
+          </ArCard>
+        </ArStack>
+      </section>
+
+      <section class="cat-sec" id="form">
+        <h2>入力（ArTextInput・ArSelect・ArCheckbox・ArRadioGroup・ArSwitch）</h2>
+        <p>どれも ArField の中で id とラベルが結ばれる。</p>
+        <ArGrid min-item="md" :gap="5">
+          <ArField label="タイトル" required>
+            <template #default="f"><ArTextInput v-model="title" :id="f.id" /></template>
+          </ArField>
+          <ArField label="店舗">
+            <template #default="f"><ArSelect v-model="store" :id="f.id" :options="stores" placeholder="選んでください" block /></template>
+          </ArField>
+          <ArField label="時給" help="半角の数字">
+            <template #default="f"><ArTextInput model-value="1200" :id="f.id" suffix="円" inputmode="numeric" /></template>
+          </ArField>
+          <ArField label="権限">
+            <template #default><ArCluster :gap="3"><ArCheckbox v-model="manager">店舗管理者</ArCheckbox><ArCheckbox v-model="some" indeterminate>一部の店舗</ArCheckbox><ArCheckbox :model-value="false" disabled>本部</ArCheckbox></ArCluster></template>
+          </ArField>
+          <ArField label="変更する範囲">
+            <template #default><ArRadioGroup v-model="scope" label="変更する範囲" :options="[{ value: 'next', label: '次の回だけ' }, { value: 'after', label: 'これ以降' }, { value: 'all', label: 'すべて' }]" /></template>
+          </ArField>
+          <ArField label="通知">
+            <template #default><ArCluster :gap="3"><ArSwitch v-model="published" label="通知する" /><ArSwitch :model-value="false" label="小さい" size="sm" /><ArSwitch :model-value="true" label="保存中" loading /></ArCluster></template>
+          </ArField>
+        </ArGrid>
+        <ArStack :gap="2" style="margin-top: 16px">
+          <ArAlert tone="info">曜日とパターンで決めた時間と人数は、次のページで1日ごとに確認・編集できます。</ArAlert>
+          <ArAlert tone="ok" title="取り込みました" closable>32件のシフトを登録しました。</ArAlert>
+          <ArAlert tone="danger">エラーの2行は取り込まれません。</ArAlert>
+        </ArStack>
+      </section>
 
       <section class="cat-sec" id="button">
         <h2>ArButton</h2>

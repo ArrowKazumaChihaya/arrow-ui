@@ -10,7 +10,7 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "build": "npm run build -w @arrow/ui-tokens && npm run build -w @arrow/ui && npm run build -w @arrow/ui-skin-remix -w @arrow/ui-skin-classic -w @arrow/eslint-plugin-ui",
+    "build": "npm run build -w @arrow/ui-tokens && npm run build -w @arrow/ui && npm run build -w @arrow/ui-design-remix -w @arrow/ui-design-classic -w @arrow/eslint-plugin-ui",
     "typecheck": "vue-tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "catalog": "npm run dev -w @arrow/catalog",

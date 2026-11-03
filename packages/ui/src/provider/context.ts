@@ -1,15 +1,15 @@
 import { inject, type InjectionKey, type Ref } from "vue";
 import type { ArPaletteName } from "@arrow/ui-tokens";
-import type { ArSkin } from "../skin";
+import type { ArDesign } from "../design";
 
 export interface ArUiContext {
-  skin: Ref<ArSkin>;
+  design: Ref<ArDesign>;
   palette: Ref<ArPaletteName>;
 }
 
 export const arUiContextKey: InjectionKey<ArUiContext> = Symbol("ArUi");
 
-/** 部品の中から今の skin とテーマ色を読む。Provider の外では null。 */
+/** 部品の中から今の デザイン とテーマ色を読む。Provider の外では null。 */
 export function useArUi(): ArUiContext | null {
   return inject(arUiContextKey, null);
 }
