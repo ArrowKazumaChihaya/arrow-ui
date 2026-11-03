@@ -310,8 +310,14 @@ const dayText = (c: ArCalendarCell) => (props.variant === "board" && c.inMonth &
             <span data-part="day" :data-size="dayText(c).length > 2 ? 'sm' : undefined">{{ dayText(c) }}</span>
             <ArIcon v-if="marksOf(c)?.locked" name="lock" data-part="lock" />
             <ArIcon v-if="marksOf(c)?.unpublished" name="eyeoff" data-part="unpublished" />
-            <span v-for="(ev, k) in c.inMonth ? eventsOf(c.date) : []" :key="k" data-part="event" :data-tone="ev.tone ?? 'event'">
-              <i data-part="dot" :style="ev.color ? { background: ev.color } : undefined" aria-hidden="true" /><span>{{ ev.label }}</span>
+            <span
+              v-for="(ev, k) in c.inMonth ? eventsOf(c.date) : []"
+              :key="k"
+              data-part="event"
+              :data-tone="ev.tone ?? 'event'"
+              :style="ev.color ? { '--ar-event-color': ev.color } : undefined"
+            >
+              <i data-part="dot" aria-hidden="true" /><span>{{ ev.label }}</span>
             </span>
             <div v-if="c.inMonth && $slots.cell" data-part="foot"><slot name="cell" v-bind="c" /></div>
           </template>

@@ -19,3 +19,4 @@
 [data-ar-design="classic"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]:disabled{color:var(--ar-color-text-faint)}
 [data-ar-design="classic"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]:focus-visible,[data-ar-design="classic"] [data-ar="tabs"]>[data-part="add"]:focus-visible{outline:2px solid #91CAFF;outline-offset:-2px}
 [data-ar-design="classic"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]>[data-part="count"]{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:12px;font-weight:400;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"]>[data-part="icon"]{display:none}

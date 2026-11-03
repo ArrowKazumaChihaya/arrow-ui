@@ -1,6 +1,6 @@
 /* @covers ArDropdown 1.0.0 */
 /* ArDropdown：シフトの「操作」メニューと同じ形（.pop .mi）。説明つきの項目は .v-pop .r-mi（アイコンの箱・2行）。 */
-[data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]{gap:7px;height:38px;padding:0 10px 0 14px;border:0;border-radius:11px;background:var(--ar-accent);color:var(--ar-on-accent);font-size:13.5px;font-weight:700;text-shadow:var(--ar-on-accent-shadow);box-shadow:0 6px 14px -6px color-mix(in srgb,var(--ar-accent) 80%,transparent);transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]{gap:7px;height:38px;padding:0 10px 0 14px;border:0;border-radius:11px;background:var(--ar-accent);color:var(--ar-on-accent);font-size:13.5px;font-weight:700;line-height:normal;text-shadow:var(--ar-on-accent-shadow);box-shadow:0 6px 14px -6px color-mix(in srgb,var(--ar-accent) 80%,transparent);transition:background var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]:hover:not(:disabled),[data-ar-design="remix"] [data-ar="dropdown"][data-state~="open"]>[data-part="trigger"]{background:var(--ar-accent-strong)}
 [data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]:focus-visible{outline:0;box-shadow:0 6px 14px -6px color-mix(in srgb,var(--ar-accent) 80%,transparent),0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]:disabled{background:#EEF1F5;color:var(--ar-color-text-faint);box-shadow:none;text-shadow:none}

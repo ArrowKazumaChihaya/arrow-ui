@@ -8,3 +8,7 @@
 [data-ar-design="remix"] [data-ar="divider"][data-plain]{font-weight:400;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="divider"][data-orientation="vertical"]{width:1px;height:14px;margin:0 8px;background:var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="divider"][data-orientation="vertical"][data-dashed]{width:0;background:none;border-left:1px dashed var(--ar-color-field)}
+/* subtle：カードの中のまとまりどうしの区切り（シフト画面の .v-sep・.v-hr：ln-2 の 1px） */
+[data-ar-design="remix"] [data-ar="divider"][data-subtle][data-orientation="horizontal"]::before,[data-ar-design="remix"] [data-ar="divider"][data-subtle][data-orientation="horizontal"]::after{background:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="divider"][data-subtle][data-orientation="vertical"]{background:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="divider"][data-bleed][data-orientation="horizontal"]{width:auto;margin-inline:calc(var(--ar-card-pad-x,0px) * -1)}

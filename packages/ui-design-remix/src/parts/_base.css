@@ -1,2 +1,4 @@
 /* remix の見た目。部品（data-ar）・部位（data-part）・状態（data-state）の属性だけを使う。 */
 [data-ar-design="remix"] [data-ar]{font-family:var(--ar-font-family);font-feature-settings:"palt" 1}
+/* 正解（Claude Design）ではボタンは文字の詰め（palt）を引き継がない（ブラウザのボタンは font をまとめて決め直すため）。同じ文字幅にする。 */
+[data-ar-design="remix"] [data-ar] button,[data-ar-design="remix"] button[data-ar]{font-feature-settings:normal}

@@ -27,27 +27,25 @@ ARROW シリーズで共通に使う Vue 3 のデザインライブラリです�
 | `@arrow/eslint-plugin-ui` | 宣言していない部品を使わせない・View で並べる基礎を使わせない |
 | `apps/catalog` | 部品をデザインとテーマ色を替えて確かめる画面（公開しない） |
 
-## 今ある部品（契約 1.0.0）
+## 今ある部品（115）
 
-| 部品 | 役目 |
+Ant Design の全種類と、ARROW 特有の部品です。どの部品も remix と classic の両方の見た目があります。
+見本・コード・指定できることは説明のサイト（https://arrowkazumachihaya.github.io/arrow-ui/）で見られます。
+この一覧は `scripts/gen-registry.mjs` が作る目次と同じです。
+
+| 分類 | 部品 |
 | --- | --- |
-| `ArUiProvider` | デザインのトークンとテーマ色を配り、宣言した部品がそろっているか確かめる |
-| `ArThemeScope` | 中の部品のテーマ色（accent 系）を切り替える |
-| `ArStack`・`ArCluster`・`ArGrid`・`ArSplit` | 並べるための基礎。間は余白トークンの段階（0〜8）だけ。**製品のレイアウト層で使い、View では使わない** |
-| `ArIcon` | ARROW の線のアイコン（64個） |
-| `ArButton` | ボタン。tone は primary / secondary / subtle / ghost / danger / danger-subtle / dashed |
-| `ArField` | ラベル・必須・説明・間違いをまとめ、中の入力と id で結ぶ |
-| `ArTextInput`・`ArSelect` | 1行の文字・選択肢から1つ |
-| `ArTimeInput` | 時刻。キー入力が基本（「930」→ 09:30）。`day-shift` で枠と一体の［当日⇄前日］ |
-| `ArDateInput` | 日付。年はセレクト、月日は数字、曜日は自動 |
-| `ArCheckbox`・`ArRadioGroup`・`ArSwitch` | チェック・ラジオ・すぐ効く切り替え |
-| `ArTabs` | タブ（band：カードの頭／line：カードの中）。←→で移る |
-| `ArCard` | まとまり（band：テーマ色の帯の見出し／plain） |
-| `ArTable` | 表。見出しと左の列の固定、選択、展開、合計の行。並べ替えは update:sort を出すだけ |
-| `ArModal` | ポップアップ。手順、フォーカスの閉じ込め、Esc で閉じる |
-| `ArAlert`・`ArTag` | お知らせ・状態の札 |
+| しくみ | `ArThemeScope`（ページの色を替える枠）・`ArUiProvider`（デザインを当てる枠） |
+| 並べる | `ArCluster`（横に並べる）・`ArCompact`（つなげる（Compact））・`ArDivider`（区切り線）・`ArGrid`（格子に並べる）・`ArLayout`（画面の枠（レイアウト））・`ArMasonry`（メイソンリー）・`ArSplit`（左右に分ける）・`ArSplitter`（分割パネル）・`ArStack`（縦に並べる） |
+| 基本 | `ArButton`（ボタン）・`ArFloatButton`（浮かぶボタン）・`ArIcon`（アイコン）・`ArLink`（リンク）・`ArParagraph`（段落）・`ArSegmented`（切り替え（セグメント））・`ArText`（文字）・`ArTitle`（見出し） |
+| 移動 | `ArAffix`（固定（Affix））・`ArAnchor`（目次（アンカー））・`ArBreadcrumb`（パンくず）・`ArDropdown`（ドロップダウン）・`ArMenu`（メニュー）・`ArPagination`（ページ送り）・`ArSteps`（手順（ステップ））・`ArTabs`（タブ） |
+| 入力 | `ArAutoComplete`（入力の候補）・`ArCascader`（階層の選択）・`ArCheckbox`（チェック）・`ArCheckboxGroup`（チェックのまとまり）・`ArColorPicker`（色の選択）・`ArColorSwatches`（色の丸）・`ArDateInput`（日付の入力）・`ArDatePicker`（日付の選択）・`ArDateRange`（日付の範囲）・`ArField`（入力の項目）・`ArForm`（フォーム）・`ArInputNumber`（数の入力）・`ArMentions`（メンション）・`ArPills`（選ぶ札）・`ArRadioGroup`（ラジオ）・`ArRate`（評価）・`ArSelect`（セレクト）・`ArSlider`（スライダー）・`ArStepper`（数の増減）・`ArSwitch`（スイッチ）・`ArTextarea`（複数行の入力）・`ArTextInput`（文字の入力）・`ArTimeInput`（時刻の入力）・`ArTimePicker`（時刻の選択）・`ArTimeRange`（時刻の範囲）・`ArTransfer`（トランスファー）・`ArTreeSelect`（ツリーセレクト）・`ArUpload`（アップロード）・`ArWeekdayPicker`（曜日の選択） |
+| 表示 | `ArAvatar`（アバター（頭文字の丸））・`ArAvatarGroup`（アバターを重ねる）・`ArBadge`（バッジ（件数・点））・`ArCalendar`（カレンダー）・`ArCard`（カード）・`ArCarousel`（カルーセル）・`ArCollapse`（折りたたみ）・`ArCountdown`（しめきりまでの残り）・`ArDescriptions`（説明リスト）・`ArEmpty`（空の状態）・`ArImage`（画像）・`ArList`（リスト）・`ArPopover`（ポップオーバー）・`ArQRCode`（QRコード）・`ArRibbon`（リボン）・`ArStatistic`（統計（大きな数字））・`ArTable`（表）・`ArTag`（札（タグ））・`ArTimeline`（タイムライン）・`ArTooltip`（ツールチップ）・`ArTour`（ツアー）・`ArTree`（ツリー） |
+| 知らせる | `ArAlert`（お知らせ）・`ArBorderBeam`（ボーダービーム）・`ArDrawer`（ドロワー）・`ArMessage`（メッセージ）・`ArMessageHost`（メッセージの入れ物）・`ArModal`（ポップアップ）・`ArNotification`（通知）・`ArNotificationHost`（通知の入れ物）・`ArPopconfirm`（その場の確認）・`ArProgress`（プログレス）・`ArResult`（結果）・`ArSkeleton`（スケルトン）・`ArSpin`（スピン）・`ArToast`（トースト）・`ArWatermark`（透かし） |
+| ARROW | `ArAppFooter`（画面の足（PC））・`ArAppHeader`（画面の頭（PC））・`ArBalloon`（吹き出し）・`ArBottomNav`（下のメニュー（スマホ））・`ArChangedValue`（変更前→変更後）・`ArChip`（小さな札（チップ））・`ArDaySummary`（日の要約）・`ArEllipsis`（切り詰め（…））・`ArFlagGroup`（ビットのチェック）・`ArFlagView`（ビットの表示）・`ArInfo`（説明・注意）・`ArKanaInput`（氏名とフリガナの入力）・`ArKanaText`（フリガナつきの氏名）・`ArMobileHeader`（画面の頭（スマホ））・`ArMonthDayInput`（月日の入力）・`ArPeriodNav`（期間の切り替え）・`ArSectionHead`（まとまりの見出し）・`ArThumbnail`（顔写真（サムネイル））・`ArViewOptions`（表示内容の選択）・`ArYearInput`（年の入力）・`ArYearMonthInput`（年月の入力）・`ArZipInput`（郵便番号の入力） |
 
-この先、設計書の一覧（`ArCalendarGrid`・`ArTimeGrid`・`ArTimeChart` など）を順に足します。足すときは、すべてのデザインのライブラリで見た目も作ります。
+`ArStack`・`ArCluster`・`ArGrid`・`ArSplit`・`ArMasonry` は並べるための基礎です。**製品のレイアウト層で使い、View では使いません。**
+部品を足すときは、すべてのデザインのライブラリで見た目も作ります（`parts/<部品>.css` の1行目に `/* @covers <部品> <版> */`）。
 
 ## 使い方（製品の側）
 

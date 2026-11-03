@@ -12,3 +12,5 @@
 [data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"][data-icon-only]{width:32px;padding:0}
 [data-ar-design="classic"] [data-ar="segmented"][data-size="sm"]>[data-part="item"]{height:24px;padding:0 8px;font-size:12px}
 [data-ar-design="classic"] [data-ar="segmented"][data-size="lg"]>[data-part="item"]{height:40px;padding:0 15px;font-size:14px}
+/* 件数の丸（今の「備考 3」：約19×20・角丸10・テーマ色の地・白い 1px の縁・白い 12px） */
+[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"]{min-width:20px;height:20px;padding:0 5px;border:1px solid #fff;border-radius:10px;background:var(--ar-accent);color:#fff;font-size:12px;line-height:1}

@@ -181,6 +181,20 @@
     "required": false,
     "description": "文字を太字にしない（補足の文字）。",
     "default": "false"
+   },
+   {
+    "name": "subtle",
+    "type": "boolean",
+    "required": false,
+    "description": "淡い線（カードの中のまとまりどうしの区切り。シフト画面の月の切り替えの下など）。",
+    "default": "false"
+   },
+   {
+    "name": "bleed",
+    "type": "boolean",
+    "required": false,
+    "description": "カードの本文の中で、左右の余白の外（カードの端から端）まで線を伸ばす（横の線のとき）。",
+    "default": "false"
    }
   ],
   "emits": [],
@@ -501,9 +515,9 @@
    },
    {
     "name": "size",
-    "type": "'sm' | 'md' | 'lg'",
+    "type": "'sm' | 'md' | 'lg' | 'xs'",
     "required": false,
-    "description": "大きさ。sm＝小さい・md＝ふつう・lg＝大きい。",
+    "description": "大きさ。xs＝表の行の中の小さな操作（「シフトに入れる」）・sm＝小さい・md＝ふつう・lg＝大きい。",
     "default": "\"md\""
    },
    {
@@ -865,7 +879,8 @@
    "root",
    "item",
    "icon",
-   "label"
+   "label",
+   "count"
   ],
   "dataAr": "segmented"
  },
@@ -2446,9 +2461,9 @@
    },
    {
     "name": "layout",
-    "type": "'inline' | 'stacked'",
+    "type": "'inline' | 'stacked' | 'toolbar'",
     "required": false,
-    "description": "stacked：ラベルが上（ポップアップ）。inline：ラベルが左・右寄せ（設定の画面）。ArForm の中では ArForm の layout。"
+    "description": "stacked：ラベルが上（ポップアップ）。inline：ラベルが左・右寄せ（設定の画面）。ArForm の中では ArForm の layout。\ntoolbar：小さな灰色のラベルを左に添える（カードの頭の「店舗」「表示モード」など。幅は文字なり）。"
    },
    {
     "name": "labelSize",
@@ -4781,6 +4796,19 @@
   "description": "月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。\nマスの中身は cell slot（イベント・不足など）。年の表示（12か月）にも切り替えられる。\nキーボード：←→↑↓ で日を移り、PageUp / PageDown で月（Shift で年）、Home / End で週の端、Enter / Space で選ぶ。",
   "props": [
    {
+    "name": "variant",
+    "type": "'sheet' | 'board'",
+    "required": false,
+    "description": "形。sheet＝線で区切った1枚の表（デザインシステムのカレンダー）。\nboard＝角の丸いマスを並べた形（シフト画面のカレンダー。日付は真ん中の丸、イベントは色の点と名前、cell slot はマスの下の段）。",
+    "default": "\"sheet\""
+   },
+   {
+    "name": "cellMarks",
+    "type": "((date: string) => ArCalendarCellMarks | undefined)",
+    "required": false,
+    "description": "日ごとの状態の印（ロック中＝斜線と鍵・非公開＝目の印・注意＝赤い枠）。"
+   },
+   {
     "name": "modelValue",
     "type": "string | null",
     "required": false,
@@ -4866,10 +4894,10 @@
    },
    {
     "name": "labels",
-    "type": "{ weekdays: readonly string[]; month: string; year: string; yearSelect: string; modeSwitch: string; }",
+    "type": "{ weekdays: readonly string[]; month: string; year: string; yearSelect: string; modeSwitch: string; locked?: string | undefined; unpublished?: string | undefined; alert?: string | undefined; }",
     "required": false,
     "description": "画面の文字。",
-    "default": "{ weekdays: [\"日\", \"月\", \"火\", \"水\", \"木\", \"金\", \"土\"], month: \"月\", year: \"年\", yearSelect: \"年\", modeSwitch: \"表示の切り替え\", }"
+    "default": "{ weekdays: [\"日\", \"月\", \"火\", \"水\", \"木\", \"金\", \"土\"], month: \"月\", year: \"年\", yearSelect: \"年\", modeSwitch: \"表示の切り替え\", locked: \"ロック中\", unpublished: \"非公開\", alert: \"注意\", }"
    }
   ],
   "emits": [
@@ -4912,8 +4940,12 @@
    "weekday",
    "cell",
    "day",
-   "content",
-   "event"
+   "lock",
+   "unpublished",
+   "event",
+   "dot",
+   "foot",
+   "content"
   ],
   "dataAr": "calendar"
  },
@@ -5771,7 +5803,7 @@
    },
    {
     "name": "variant",
-    "type": "'box' | 'board'",
+    "type": "'board' | 'box'",
     "required": false,
     "description": "形。box＝外枠（角丸12・線）の中に見出しと行（ポップアップ・一覧の表）。\nboard＝外枠なし・見出しは角の丸い淡いテーマ色の帯・行は高め（シフト画面の「勤務メンバー」「勤務可能な人」）。",
     "default": "\"box\""
@@ -8238,6 +8270,187 @@
   "dataAr": "month-day-input"
  },
  {
+  "name": "ArPeriodNav",
+  "version": "1.0.0",
+  "description": "期間（月・日）の切り替え。前へ・今の期間・次へを真ん中にそろえ、右端に「今日」。\nsize=\"md\" は月（「2026年10月 ▾」、押すと pick）、size=\"lg\" は日（「10月21日」と曜日の札）。\n今の期間が変わると読み上げる（aria-live）。前へ・次へはアイコンだけのボタンなので labels で名前を付ける。",
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "真ん中に出す今の期間（「2026年10月」「10月21日」）。変わると読み上げる。"
+   },
+   {
+    "name": "weekday",
+    "type": "string",
+    "required": false,
+    "description": "文字の右の曜日の札（「水」）。日の切り替えで使う。"
+   },
+   {
+    "name": "weekdayTone",
+    "type": "'sun' | 'sat'",
+    "required": false,
+    "description": "曜日の札の色。sun＝日曜・祝日（赤）、sat＝土曜（青）。"
+   },
+   {
+    "name": "size",
+    "type": "'md' | 'lg'",
+    "required": false,
+    "description": "大きさ。md＝月の切り替え（20px・高さ40）、lg＝日の切り替え（28px・高さ42）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "pickable",
+    "type": "boolean",
+    "required": false,
+    "description": "真ん中の文字を押せるボタンにし、右に下向きの印を出す（押すと pick。年月の選択を開くなど）。",
+    "default": "false"
+   },
+   {
+    "name": "todayLabel",
+    "type": "string",
+    "required": false,
+    "description": "右端の「今日」のボタンの文字。渡したときだけ出す。"
+   },
+   {
+    "name": "todayDisabled",
+    "type": "boolean",
+    "required": false,
+    "description": "「今日」のボタンを押せなくする（今の期間に今日が入っているとき）。",
+    "default": "false"
+   },
+   {
+    "name": "prevDisabled",
+    "type": "boolean",
+    "required": false,
+    "description": "前へ・次へを押せなくする。",
+    "default": "false"
+   },
+   {
+    "name": "nextDisabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "labels",
+    "type": "{ prev: string; next: string; pick: string; }",
+    "required": false,
+    "description": "読み上げの名前。",
+    "default": "{ prev: \"前へ\", next: \"次へ\", pick: \"期間を選ぶ\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "prev",
+    "payload": "[]",
+    "description": "前の期間へ（← のボタン）。"
+   },
+   {
+    "name": "next",
+    "payload": "[]",
+    "description": "次の期間へ（→ のボタン）。"
+   },
+   {
+    "name": "pick",
+    "payload": "[event: MouseEvent]",
+    "description": "真ん中の文字を押した（pickable のとき）。"
+   },
+   {
+    "name": "today",
+    "payload": "[]",
+    "description": "「今日」を押した。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "center",
+   "arrow",
+   "label",
+   "text",
+   "weekday",
+   "caret",
+   "today"
+  ],
+  "dataAr": "period-nav"
+ },
+ {
+  "name": "ArSectionHead",
+  "version": "1.0.0",
+  "description": "カードの中のまとまりの見出しの段。四角い箱のアイコン・見出し・件数の札・操作（actions）・右端（end）。\ncollapsible なら見出しの部分がボタンになり、押すと下の中身を開け閉めする（aria-expanded）。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": "見出しの文字。"
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera'",
+    "required": false,
+    "description": "見出しの前の四角い箱のアイコン（淡いテーマ色の地）。"
+   },
+   {
+    "name": "count",
+    "type": "string | number",
+    "required": false,
+    "description": "見出しの右の件数の札（「4名」「0件」）。"
+   },
+   {
+    "name": "headingLevel",
+    "type": "2 | 3 | 4",
+    "required": false,
+    "description": "見出しの段階（読み上げの見出しの深さ）。",
+    "default": "3"
+   },
+   {
+    "name": "collapsible",
+    "type": "boolean",
+    "required": false,
+    "description": "見出しを押して下の中身を開け閉めできるようにする（右に下向きの印）。",
+    "default": "false"
+   },
+   {
+    "name": "open",
+    "type": "boolean",
+    "required": false,
+    "description": "開いているか（v-model:open。collapsible のとき）。",
+    "default": "true"
+   },
+   {
+    "name": "controls",
+    "type": "string",
+    "required": false,
+    "description": "開け閉めする中身の id（aria-controls）。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:open",
+    "payload": "[open: boolean]",
+    "description": "開け閉めした（collapsible のとき）。"
+   }
+  ],
+  "slots": [
+   "actions",
+   "end"
+  ],
+  "parts": [
+   "root",
+   "toggle",
+   "icon",
+   "title",
+   "count",
+   "caret",
+   "actions",
+   "end"
+  ],
+  "dataAr": "section-head"
+ },
+ {
   "name": "ArThumbnail",
   "version": "1.0.0",
   "description": "顔写真などの画像（丸／四角）と、右下のカメラのボタン。\nボタンでポップアップを開き、画像を選んで（押す・落とす）、ドラッグで動かし、＋−・ホイールで拡大縮小、左右に90°回して切り抜く。\n切り抜きは canvas だけで行う（ほかのライブラリは使わない）。キーボードでは枠にフォーカスして矢印で動かし、＋−で拡大縮小。",
@@ -8355,6 +8568,104 @@
    "file"
   ],
   "dataAr": "thumbnail"
+ },
+ {
+  "name": "ArViewOptions",
+  "version": "1.0.0",
+  "description": "表示内容の選択。押すと、見出しごとのチェックの並び（名前・1行の説明・見え方の見本）が開く。\nボタンには選んでいる数（6/7）。下に「すべて表示」「閉じる」。項目は menuitemcheckbox で、↑↓ で移り Space / Enter で切り替える。\nEscape・外を押すと閉じ、ボタンにフォーカスを戻す。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "readonly string[]",
+    "required": true,
+    "description": "出すものの key の並び（v-model）。"
+   },
+   {
+    "name": "groups",
+    "type": "readonly ArViewOptionGroup[]",
+    "required": true,
+    "description": "選べるもの（見出しごとのまとまり）。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "ボタンの文字（「表示内容」「カレンダーに表示」）。",
+    "default": "\"表示内容\""
+   },
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "プルダウンの上の見出し（「テーブルに出すもの」）。"
+   },
+   {
+    "name": "open",
+    "type": "boolean",
+    "required": false,
+    "description": "開いているか（v-model:open。渡さなければ中で持つ）。"
+   },
+   {
+    "name": "placement",
+    "type": "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'",
+    "required": false,
+    "description": "出す向き。表の下に置くときは top-start（上に開く）。",
+    "default": "\"bottom-start\""
+   },
+   {
+    "name": "width",
+    "type": "number",
+    "required": false,
+    "description": "プルダウンの幅（px）。",
+    "default": "300"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "labels",
+    "type": "{ all: string; close: string; }",
+    "required": false,
+    "description": "下の2つのボタンの文字。",
+    "default": "{ all: \"すべて表示\", close: \"閉じる\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[keys: string[]]",
+    "description": ""
+   },
+   {
+    "name": "update:open",
+    "payload": "[open: boolean]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "trigger",
+   "icon",
+   "label",
+   "count",
+   "caret",
+   "panel",
+   "title",
+   "group",
+   "group-title",
+   "option",
+   "box",
+   "text",
+   "description",
+   "sample",
+   "foot"
+  ],
+  "dataAr": "view-options"
  },
  {
   "name": "ArYearInput",

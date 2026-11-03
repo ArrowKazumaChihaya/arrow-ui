@@ -12,8 +12,8 @@
 [data-ar-design="classic"] [data-ar="button"][data-tone="danger-subtle"]{background:#fff;border-color:var(--ar-color-danger);color:var(--ar-color-danger);font-weight:700}
 [data-ar-design="classic"] [data-ar="button"][data-tone="dashed"]{background:#fff;border:1px dashed var(--ar-accent);color:var(--ar-accent-ink);font-weight:700}
 [data-ar-design="classic"] [data-ar="button"][data-tone="secondary"]:not(:disabled):hover::after,[data-ar-design="classic"] [data-ar="button"][data-tone="subtle"]:not(:disabled):hover::after,[data-ar-design="classic"] [data-ar="button"][data-tone="ghost"]:not(:disabled):hover::after,[data-ar-design="classic"] [data-ar="button"][data-tone="danger-subtle"]:not(:disabled):hover::after,[data-ar-design="classic"] [data-ar="button"][data-tone="dashed"]:not(:disabled):hover::after{background:var(--ar-accent);opacity:.06}
-[data-ar-design="classic"] [data-ar="button"][data-size="sm"]{height:var(--ar-size-control-sm);padding:0 7px;font-size:12px;border-radius:4px}
-[data-ar-design="classic"] [data-ar="button"][data-size="sm"] [data-ar="icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"]){height:var(--ar-size-control-sm);padding:0 7px;font-size:12px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"]) [data-ar="icon"]{width:14px;height:14px}
 [data-ar-design="classic"] [data-ar="button"][data-size="lg"]{height:var(--ar-size-control-lg);padding:0 15px;font-size:14px;font-weight:600;border-radius:8px}
 [data-ar-design="classic"] [data-ar="button"][data-icon-only]{width:var(--ar-size-control-md);padding:0}
 [data-ar-design="classic"] [data-ar="button"][data-icon-only][data-size="sm"]{width:var(--ar-size-control-sm)}

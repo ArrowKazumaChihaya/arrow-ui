@@ -39,10 +39,11 @@
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]{color:var(--ar-color-text);font-size:14px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]{gap:4px}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]{gap:4px}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"][data-row="head"]{gap:0}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{height:30px;color:var(--ar-color-text);font-size:12px;font-weight:700;letter-spacing:.08em}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-weekend="sun"]{color:var(--ar-color-sun)}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-weekend="sat"]{color:var(--ar-color-sat)}
-[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{min-height:88px;gap:4px;padding:6px 4px;border-radius:12px;background:#F7F9FB;color:var(--ar-color-text);outline:0;transition:background .12s}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{min-height:88px;gap:4px;padding:6px 4px;border-radius:12px;background:#F7F9FB;color:var(--ar-color-text);font-feature-settings:normal;outline:0;transition:background .12s}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]:hover{background:#EEF3F8}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-weekend]{background:#F3F6F9}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-weekend="sun"]>[data-part="day"]{color:var(--ar-color-sun)}
@@ -62,8 +63,8 @@
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="lock"]{right:7px}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="unpublished"]{left:7px}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]{gap:4px;color:#6A4BA3;font-size:10.5px;font-weight:700;line-height:normal}
-[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{width:6px;height:6px;border-radius:50%;background:var(--ar-color-event)}
-[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="danger"]>[data-part="dot"]{background:var(--ar-color-danger)}
-[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="accent"]>[data-part="dot"]{background:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="ok"]>[data-part="dot"]{background:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{width:6px;height:6px;border-radius:50%;background:var(--ar-event-color,var(--ar-color-event))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="danger"]>[data-part="dot"]{background:var(--ar-event-color,var(--ar-color-danger))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="accent"]>[data-part="dot"]{background:var(--ar-event-color,var(--ar-accent))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="ok"]>[data-part="dot"]{background:var(--ar-event-color,var(--ar-color-ok))}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="foot"]{gap:3px;min-height:16px;color:var(--ar-color-text-secondary);font-size:10.5px;font-weight:700;line-height:16px;font-variant-numeric:tabular-nums}

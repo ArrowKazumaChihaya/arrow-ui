@@ -35,3 +35,16 @@
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="content"]>[data-part="event"][data-tone="ok"]{background:#43A047}
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="grid"][data-grid="year"]>[data-part="row"]>[data-part="cell"][data-state~="current"]{padding:.5px;border:3px solid var(--ar-accent);background:var(--classic-cal-active)}
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="grid"][data-grid="year"]>[data-part="row"]>[data-part="cell"]>[data-part="day"]{width:auto;padding:0 12px;border-radius:15px}
+/* board（シフト画面の形）：今の ARROW では同じ Calendar.vue なので、マス・日付・行事の形は上と同じ。行事は登録した色の帯（点は出さない）、
+   下の段（foot）は小さな札と人数、ロック中は右上の鍵、非公開は左上の invisible（14px・灰色。今の画面は右下だが、下の段の人数と重ならないよう左上）。 */
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{gap:3px}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"][data-size="sm"]{font-size:11px}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="locked"]{background:repeating-linear-gradient(135deg,#fff 0 6px,#F5F5F5 6px 12px)}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"][data-state~="alert"]>[data-part="day"]{background:#ED5454;color:#fff}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>:is([data-part="lock"],[data-part="unpublished"]){width:14px;height:14px;color:#8C8C8C}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="lock"]{top:4px;right:4px}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="unpublished"]{top:4px;left:4px}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]{align-self:stretch;height:18px;padding:4px;border-radius:4px;background:var(--ar-event-color,#2196F3);color:#fff;font-size:10px;font-weight:400;line-height:10px;text-align:left}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="danger"]{background:var(--ar-event-color,#E03838)}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{display:none}
+[data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="foot"]{gap:3px;color:rgba(0,0,0,.65);font-size:12px;font-weight:400;line-height:16px}

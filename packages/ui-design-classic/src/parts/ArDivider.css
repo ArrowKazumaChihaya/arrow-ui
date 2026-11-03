@@ -9,3 +9,7 @@
 [data-ar-design="classic"] [data-ar="divider"][data-plain]{font-size:14px;font-weight:400}
 [data-ar-design="classic"] [data-ar="divider"][data-orientation="vertical"]{height:.9em;margin:0 8px;border-left:1px solid rgba(5,5,5,.06)}
 [data-ar-design="classic"] [data-ar="divider"][data-orientation="vertical"][data-dashed]{border-left-style:dashed}
+[data-ar-design="classic"] [data-ar="divider"][data-bleed][data-orientation="horizontal"]{width:auto;margin-inline:calc(var(--ar-card-pad-x,0px) * -1)}
+/* subtle：今のシフトカレンダーの年月の下の区切り（灰色の点線）。bleed は今の画面では余白の内側に収める。 */
+[data-ar-design="classic"] [data-ar="divider"][data-subtle][data-orientation="horizontal"]::before,[data-ar-design="classic"] [data-ar="divider"][data-subtle][data-orientation="horizontal"]::after{border-top:1px dashed #C8C8C8}
+[data-ar-design="classic"] [data-ar="divider"][data-bleed][data-subtle][data-orientation="horizontal"]{margin-inline:0}

@@ -227,6 +227,7 @@ const colspan = computed(
               :data-sticky-edge="c.key === lastSticky || undefined"
               :style="colSticky(c) ? stick(c.key) : undefined"
               :aria-sort="ariaSort(c)"
+              :data-person="c.avatar ? (c.sub ? 'with-sub' : 'single') : undefined"
             >
               <slot :name="`head-${c.key}`" :column="c">
                 <button v-if="c.sortable" type="button" data-part="sort" :data-order="orderOf(c)" @click="cycleSort(c)">
@@ -311,7 +312,7 @@ const colspan = computed(
                 :style="colSticky(c) ? stick(c.key) : undefined"
               >
                 <slot :name="`cell-${c.key}`" :row="row" :value="valueOf(row, c)" :index="i">
-                  <span v-if="c.avatar" data-part="person">
+                  <span v-if="c.avatar" data-part="person" :data-single="!c.sub || undefined">
                     <ArAvatar v-bind="avatarOf(row, c, i)" :size="variant === 'board' ? 'md' : 'sm'" />
                     <span data-part="name">
                       <b>{{ valueOf(row, c) }}</b>

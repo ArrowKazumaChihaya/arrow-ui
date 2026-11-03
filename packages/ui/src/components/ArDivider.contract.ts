@@ -8,5 +8,9 @@ export interface ArDividerProps {
   dashed?: boolean;
   /** 文字を太字にしない（補足の文字）。 */
   plain?: boolean;
+  /** 淡い線（カードの中のまとまりどうしの区切り。シフト画面の月の切り替えの下など）。 */
+  subtle?: boolean;
+  /** カードの本文の中で、左右の余白の外（カードの端から端）まで線を伸ばす（横の線のとき）。 */
+  bleed?: boolean;
 }
 export type ArDividerPart = "root" | "text";

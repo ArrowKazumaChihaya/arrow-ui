@@ -169,7 +169,7 @@ const availCols: ArTableColumn<Avail>[] = [
   { key: "name", title: "名前", width: 192, avatar: (r) => ({ tone: r.tone }) },
   { key: "start", title: "開始", width: 60, emphasis: "strong", numeric: true, align: "start" },
   { key: "end", title: "終了", width: 60, emphasis: "strong", numeric: true, align: "start" },
-  { key: "note", title: "備考" },
+  { key: "note", title: "備考", emphasis: "note" },
 ];
 const availOpen = ref(true);
 const availShown = ref(["av", "time", "note"]);
@@ -230,7 +230,7 @@ const supports = [
             @next="shiftMonth(1)"
             @today="month = '2026-10'"
           />
-          <ArDivider class="shift-bleed" />
+          <ArDivider class="shift-bleed" subtle bleed />
           <div class="shift-bar">
             <ArField label="店舗" layout="toolbar" v-slot="f">
               <ArSelect v-bind="f" v-model="store" :options="stores" variant="selbox" icon="store" />
@@ -275,7 +275,7 @@ const supports = [
 
           <section class="shift-section">
             <ArSectionHead title="勤務メンバー" icon="users" count="4名">
-              <template #actions><ArButton tone="subtle" icon="yen">日毎人件費</ArButton></template>
+              <template #actions><ArButton tone="subtle" icon="calc">日毎人件費</ArButton></template>
               <template #end>
                 <ArField label="表示モード" layout="toolbar">
                   <ArSegmented
@@ -298,15 +298,15 @@ const supports = [
             </ArTable>
           </section>
 
-          <ArDivider class="shift-rule" />
+          <ArDivider class="shift-rule" subtle />
 
           <section class="shift-section">
             <ArSectionHead v-model:open="availOpen" title="勤務可能な人" icon="inbox" count="2名" collapsible controls="shift-avail" />
             <div v-show="availOpen" id="shift-avail">
               <ArTable :columns="availCols" :rows="avails" row-key="id" caption="勤務可能な人" variant="board">
                 <template #actions="{ row }">
-                  <ArButton v-if="row.added" tone="subtle" size="sm" icon="plus" disabled>登録済み</ArButton>
-                  <ArButton v-else tone="subtle" size="sm" icon="plus">シフトに入れる</ArButton>
+                  <ArButton v-if="row.added" tone="subtle" size="xs" icon="plus" disabled>登録済み</ArButton>
+                  <ArButton v-else tone="subtle" size="xs" icon="plus">シフトに入れる</ArButton>
                   <ArButton tone="muted" size="sm" icon="eyeoff" :label="`${row.name}を隠す`" />
                 </template>
                 <template #below>
@@ -316,7 +316,7 @@ const supports = [
             </div>
           </section>
 
-          <ArDivider class="shift-rule" />
+          <ArDivider class="shift-rule" subtle />
 
           <section class="shift-section">
             <ArSectionHead title="イベント" icon="note" count="0件">
@@ -338,11 +338,11 @@ const supports = [
 .shift-screen { min-width: 1440px; background: var(--ar-color-bg); }
 .shift-main { display: grid; grid-template-columns: 2fr 3fr; align-items: start; gap: 24px; padding: 26px 32px 0; }
 .shift-col { display: flex; flex-direction: column; }
-.shift-col > .shift-bleed { margin: 14px -18px; }
+.shift-screen .shift-col > .shift-bleed { margin-block: 14px; }
 .shift-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .shift-legend { margin-top: 12px; }
 .shift-summary { margin-top: 12px; }
 .shift-section { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
-.shift-col > .shift-rule { margin: 28px 0 0; }
+.shift-screen .shift-col > .shift-rule { margin: 28px 0 0; }
 .shift-col > .shift-rule + .shift-section { margin-top: 28px; }
 </style>

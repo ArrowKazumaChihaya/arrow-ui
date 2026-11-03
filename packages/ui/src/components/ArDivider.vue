@@ -8,6 +8,8 @@ withDefaults(defineProps<ArDividerProps>(), {
   orientation: "horizontal",
   align: "center",
   dashed: false,
+  subtle: false,
+  bleed: false,
   plain: false,
 });
 </script>
@@ -21,6 +23,7 @@ withDefaults(defineProps<ArDividerProps>(), {
     role="separator"
     aria-orientation="vertical"
     :data-dashed="dashed || undefined"
+    :data-subtle="subtle || undefined"
   />
   <div
     v-else
@@ -31,6 +34,8 @@ withDefaults(defineProps<ArDividerProps>(), {
     :data-align="$slots.default ? align : undefined"
     :data-dashed="dashed || undefined"
     :data-plain="plain || undefined"
+    :data-subtle="subtle || undefined"
+    :data-bleed="bleed || undefined"
     :data-with-text="$slots.default ? '' : undefined"
   >
     <span v-if="$slots.default" data-part="text"><slot /></span>

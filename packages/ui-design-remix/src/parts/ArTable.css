@@ -13,6 +13,7 @@
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-numeric]{font-variant-numeric:tabular-nums;font-family:var(--ar-font-family-numeric)}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="strong"]{font-weight:700}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="muted"]{color:var(--ar-color-text-muted);font-size:12.5px}
+[data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="note"]{color:var(--ar-color-text-secondary);font-size:12.5px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-blank]{color:var(--ar-color-text-muted);font-weight:400}
 
 /* 外枠（box）。見出しと色のついた行は枠の線の上に塗る（.lst と同じ） */
@@ -70,6 +71,7 @@
 [data-ar-design="remix"] [data-ar="table"] tbody[data-part="before-rows"]>tr>td{padding:8px 0 4px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="before-rows"]>tr>td{padding:8px 12px;border-bottom:1px solid var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="below"]{margin-top:8px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"]>[data-part="below"]{margin-top:20px}
 
 /* 左に固定した列 */
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-sticky]{background:var(--ar-color-surface)}
@@ -90,7 +92,7 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] :is([data-part="header-cell"],[data-part="cell"]):last-child{padding-right:8px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="row"]:hover>td{background:#FAFBFD}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-col="actions"]{padding-left:0}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="strong"]{font-size:14.5px;line-height:1.45}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="strong"]{font-size:14.5px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="lines"]{line-height:1.45}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="muted"]{font-size:13.5px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-blank]{color:var(--ar-color-text)}
@@ -104,3 +106,11 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"][data-density="compact"] tbody[data-part="body"]>tr[data-part="row"]{height:46px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"][data-density="compact"] [data-part="cell"]{font-size:13px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td[data-part="empty"]{border-bottom:1px solid var(--ar-color-border-subtle)}
+/* board の名前だけの列（勤務可能な人）：丸は 28px・12px、間8px、名前はさらに太く。見出しは左に 12px。 */
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] th[data-person="single"]:first-child{padding-left:12px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="person"][data-single]{gap:8px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="person"][data-single]>[data-ar="avatar"]{width:28px;height:28px;font-size:12px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="person"][data-single]>[data-part="name"]>b{font-weight:900}
+/* board の行の右端の操作：上にそろえ、文字のボタン（「シフトに入れる」）とアイコンのボタンの間は 4px */
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]{align-items:flex-start}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]>[data-ar="button"]:not([data-icon-only])+[data-ar="button"]{margin-left:2px}

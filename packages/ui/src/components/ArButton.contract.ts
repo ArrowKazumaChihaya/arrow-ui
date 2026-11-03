@@ -31,8 +31,8 @@ export interface ArButtonProps {
    * danger-ghost：削除（赤い文字だけ）。
    */
   tone?: ArButtonTone;
-  /** 大きさ。sm＝小さい・md＝ふつう・lg＝大きい。 */
-  size?: "sm" | "md" | "lg";
+  /** 大きさ。xs＝表の行の中の小さな操作（「シフトに入れる」）・sm＝小さい・md＝ふつう・lg＝大きい。 */
+  size?: "xs" | "sm" | "md" | "lg";
   /** 形。round は両端が丸い、circle は丸（アイコンだけのボタン向け）。 */
   shape?: "default" | "round" | "circle";
   /** 文字の前のアイコン。 */

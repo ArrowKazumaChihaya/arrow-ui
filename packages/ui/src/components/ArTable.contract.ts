@@ -31,8 +31,8 @@ export interface ArTableColumn<Row> {
   value?: (row: Row) => unknown;
   /** 数字の列。等幅の数字にし、align を省くと右寄せにする。 */
   numeric?: boolean;
-  /** 文字の強さ。strong＝太字（時刻など）、muted＝灰色（区分・休憩など）。 */
-  emphasis?: "strong" | "muted";
+  /** 文字の強さ。strong＝太字（時刻など）、muted＝灰色（区分・休憩など）、note＝少し小さな補足の文（備考など）。 */
+  emphasis?: "strong" | "muted" | "note";
   /** 名前の列：頭文字の丸を名前の前に付ける。true なら値の1文字目と人ごとの色。 */
   avatar?: boolean | ((row: Row) => ArTableAvatar);
   /** 名前の下の小さな灰色の文字（「通常勤務2」など）。color を渡すと文字の前に色の小さな四角（パターンの色）。 */

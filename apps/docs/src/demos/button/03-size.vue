@@ -1,4 +1,4 @@
-<!-- 大きさ・形・アイコンだけ | sm 30・md 34・lg 42。アイコンだけのボタンは label で読み上げの名前を付ける。shape は round（両端が丸い）と circle（丸）。 -->
+<!-- 大きさ・形・アイコンだけ | xs 28（表の行の中の小さな操作）・sm 30・md 34・lg 42。アイコンだけのボタンは label で読み上げの名前を付ける。shape は round（両端が丸い）と circle（丸）。 -->
 <script setup lang="ts">
 import { ArButton, ArCluster, ArStack } from "@arrow/ui";
 </script>
@@ -6,6 +6,8 @@ import { ArButton, ArCluster, ArStack } from "@arrow/ui";
 <template>
 <ArStack :gap="4">
   <ArCluster :gap="3" align="center">
+    <ArButton tone="subtle" size="xs" icon="plus">シフトに入れる</ArButton>
+    <ArButton tone="subtle" size="xs" icon="plus" disabled>登録済み</ArButton>
     <ArButton tone="primary" size="sm">小さい</ArButton>
     <ArButton tone="primary">ふつう</ArButton>
     <ArButton tone="primary" size="lg">大きい</ArButton>

@@ -1,7 +1,7 @@
 /* @covers ArSegmented 1.0.0 */
 /* ArSegmented：.seg / .v-sg（地は ln-2、選んでいるものは白い面にテーマ色の文字と小さな影） */
 [data-ar-design="remix"] [data-ar="segmented"]{gap:2px;padding:3px;border-radius:10px;background:var(--ar-color-border-subtle)}
-[data-ar-design="remix"] [data-ar="segmented"]>[data-part="item"]{gap:6px;height:28px;padding:0 12px;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600;transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="segmented"]>[data-part="item"]{gap:6px;height:28px;padding:0 12px;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600;line-height:normal;transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="segmented"]>[data-part="item"]:hover:not(:disabled):not([data-state~="selected"]){color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="segmented"]>[data-part="item"][data-state~="selected"]{background:#fff;color:var(--ar-accent-ink);box-shadow:0 1px 3px rgba(31,41,51,.14)}
 [data-ar-design="remix"] [data-ar="segmented"]>[data-part="item"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}

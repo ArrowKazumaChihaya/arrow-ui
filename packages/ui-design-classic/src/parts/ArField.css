@@ -13,3 +13,7 @@
 [data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{font-size:14px;color:rgba(0,0,0,.45);line-height:22px}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{font-size:13px;color:#FF4D4F;line-height:13px}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"]>[data-ar="icon"]{display:none}
+/* toolbar：今の画面の「店舗：」「表示」（13px・黒・コロン） */
+[data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]{gap:4px}
+[data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{min-height:0;color:#000;font-size:13px;font-weight:400;line-height:32px}
+[data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]::after{content:"："}

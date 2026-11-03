@@ -16,8 +16,8 @@
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:18px;height:18px}
 /* 帯のすぐ下のタブの帯（acc-50 の地・下に acc-100 の線）は ArTabs（variant="band"）が持つ。ここは隙間なくつなぐだけ */
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding:0}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="body"]{padding:18px 18px 20px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="body"]{padding:12px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="body"]{--ar-card-pad-x:18px;padding:18px 18px 20px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="body"]{--ar-card-pad-x:12px;padding:12px}
 
 /* elevated・outlined：白・角丸18（影か線）。見出しの行は下に線、本文は灰色の13px */
 [data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"]){border-radius:18px;overflow:hidden}
@@ -27,9 +27,9 @@
 [data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="head"]>[data-part="title"]{gap:8px;font-size:14.5px;font-weight:700;line-height:1.5}
 [data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:16px;height:16px;color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="head"]>[data-part="actions"]{gap:4px;margin-left:auto;font-size:12.5px;font-weight:600;color:var(--ar-accent-ink)}
-[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="body"]{padding:14px 16px;font-size:13px;line-height:1.7;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])>[data-part="body"]{--ar-card-pad-x:16px;padding:14px 16px;font-size:13px;line-height:1.7;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])[data-size="sm"]>[data-part="head"]{padding:10px 14px}
-[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])[data-size="sm"]>[data-part="body"]{padding:12px 14px}
+[data-ar-design="remix"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"])[data-size="sm"]>[data-part="body"]{--ar-card-pad-x:14px;padding:12px 14px}
 [data-ar-design="remix"] [data-ar="card"]>[data-part="cover"]{min-height:90px;background:linear-gradient(120deg,var(--ar-accent-hi),var(--ar-accent) 45%,var(--ar-accent-strong))}
 [data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]{display:flex;border-top:1px solid var(--ar-color-border-subtle);color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>*{flex:1;height:40px;border-radius:0}
@@ -43,4 +43,4 @@
 [data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="actions"]{gap:4px;margin-left:auto}
 [data-ar-design="remix"] [data-ar="card"][data-variant="plain"][data-size="sm"]{padding:8px 10px}
 
-[data-ar-design="remix"] [data-ar="card"][data-flush]>[data-part="body"]{padding:0}
+[data-ar-design="remix"] [data-ar="card"][data-flush]>[data-part="body"]{--ar-card-pad-x:0px;padding:0}

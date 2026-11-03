@@ -5,7 +5,7 @@
 [data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]{padding:6px;background:var(--ar-accent-subtle);border-bottom:1px solid var(--ar-accent-muted);border-radius:12px}
 [data-ar-design="remix"] [data-ar="card"]>[data-part="tabs"]>[data-ar="tabs"][data-variant="band"]{border-radius:0}
 [data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]{gap:4px}
-[data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"]{flex:0 1 150px;gap:6px;height:36px;padding:0 12px;border:0;border-radius:10px;background:none;color:var(--ar-accent-ink);font-size:13.5px;font-weight:700;transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"]{flex:0 1 150px;gap:6px;height:36px;padding:0 12px;border:0;border-radius:10px;background:none;color:var(--ar-accent-ink);font-size:13.5px;font-weight:700;line-height:normal;font-feature-settings:normal;transition:background var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"]:hover:not([data-state~="selected"]):not(:disabled){background:color-mix(in srgb,var(--ar-accent) 10%,transparent)}
 [data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"][data-state~="selected"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow);box-shadow:0 4px 10px -4px color-mix(in srgb,var(--ar-accent) 70%,transparent)}
 [data-ar-design="remix"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"]:disabled{color:var(--ar-color-text-faint)}
