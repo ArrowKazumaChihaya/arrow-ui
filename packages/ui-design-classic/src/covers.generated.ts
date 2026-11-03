@@ -66,6 +66,7 @@ export const covers = {
   ArPopconfirm: "1.0.0",
   ArPopover: "1.0.0",
   ArProgress: "1.0.0",
+  ArQRCode: "1.0.0",
   ArRadioGroup: "1.0.0",
   ArRate: "1.0.0",
   ArResult: "1.0.0",

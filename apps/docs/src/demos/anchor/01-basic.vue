@@ -19,6 +19,6 @@ const h = ref("basic");
   <div id="anc-box" style="height: 200px; width: 320px; overflow: auto; border-radius: 12px; box-shadow: inset 0 0 0 1px #E6EBF0; padding: 0 14px; font-size: 13px; color: #4A5562">
     <section v-for="it in items" :id="it.href.slice(1)" :key="it.key" style="padding: 12px 0 60px"><b style="color: #1F2933">{{ it.label }}</b><br>ここに項目が並ぶ…</section>
   </div>
-  <ArAnchor v-model="h" :items="items.filter((i) => i.key !== 'salary').slice(0, 3)" direction="horizontal" />
+  <ArAnchor v-model="h" :items="items.filter((i) => i.key !== 'salary').slice(0, 3)" direction="horizontal" container="#anc-box" />
 </ArCluster>
 </template>

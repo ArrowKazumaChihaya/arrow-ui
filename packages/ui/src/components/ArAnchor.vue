@@ -47,7 +47,10 @@ function onScroll() {
     const t = targetOf(it.href);
     if (t && t.getBoundingClientRect().top - top <= props.offset + 5) found = it.key;
   }
-  const atEnd = b instanceof Window ? window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2 : b.scrollTop + b.clientHeight >= b.scrollHeight - 2;
+  const atEnd =
+    b instanceof Window
+      ? window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+      : b.scrollTop > 0 && b.scrollTop + b.clientHeight >= b.scrollHeight - 2;
   if (atEnd) found = props.items.at(-1)?.key ?? found;
   if (found) setCurrent(found);
 }
