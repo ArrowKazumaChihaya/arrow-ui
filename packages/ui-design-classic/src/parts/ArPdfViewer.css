@@ -1,0 +1,16 @@
+/* @covers ArPdfViewer 1.0.0 */
+/* ArPdfViewer：今の ARROW の PdfViewer.vue（PdfViewerModal の中・幅600のモーダル）。全体は幅いっぱい（最大 759px）で真ん中寄せ。
+   2ページ以上のときだけ、上の真ん中に「‹ 1 / 5 ›」（.page_selector_wrap：下に5px。ボタンは Button type="add" の 32×32・角丸6・#4395D4 の塗りに白い ARROW の矢印 16px、数は 13px で左右15px）。
+   PDF は黒い1pxの枠（.pdfviewer_background：黒の地に余白1px）の中に幅いっぱい（fit-parent）。大きさの切り替え・何人目は今の ARROW にない（forms.ArPdfViewer.bar = "pager"）。 */
+[data-ar-design="classic"] [data-ar="pdf-viewer"]{width:100%;max-width:759px;margin:0 auto;text-align:center;color:#000;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="bar"]{justify-content:center;margin-bottom:5px}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="bar"]>:is([data-part="prev"],[data-part="next"]){position:relative;width:32px;height:32px;padding:0 7px;border:1px solid #4395D4;border-radius:6px;background:#4395D4;color:#fff;box-shadow:0 2px 0 rgba(5,145,255,.1);transition:all .2s cubic-bezier(.645,.045,.355,1)}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="bar"]>:is([data-part="prev"],[data-part="next"])>[data-ar="icon"]{width:16px;height:16px}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="bar"]>:is([data-part="prev"],[data-part="next"]):not(:disabled):hover::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#fff;opacity:.1}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="bar"]>:is([data-part="prev"],[data-part="next"]):focus-visible{outline:4px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="bar"]>:is([data-part="prev"],[data-part="next"]):disabled{cursor:pointer}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="bar"]>[data-part="counter"]{margin:0 15px;font-weight:400}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="viewport"]{display:block;padding:1px;background:#000}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="viewport"]:focus-visible{outline:4px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="viewport"]>[data-part="paper"]{width:100%!important;zoom:1!important;background:#fff;color:#222;text-align:left}
+[data-ar-design="classic"] [data-ar="pdf-viewer"]>[data-part="viewport"]>[data-part="frame"]{display:block}

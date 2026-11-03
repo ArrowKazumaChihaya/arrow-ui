@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArDrawer 1.0 — 横から出る板。幕は ink の42%、頭は白、足は bg-2。
+ * ArDrawer 1.1 — 横から出る板（placement="bottom" でスマホの下から出る一覧）。幕は ink の42%、頭は白、足は bg-2。
  * ARROW のシフト画面では日の詳細は横から出さない（配置を変えない）。設定の細かい項目などに使う。
  * 開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所に戻す。
  */
@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<ArDrawerProps>(), {
   icon: undefined,
   placement: "right",
   width: undefined,
+  height: undefined,
   closable: true,
   closeOnScrim: true,
   teleportTo: "body",
@@ -26,7 +27,11 @@ const id = useId("ar-drawer");
 const ui = useArUi();
 const target = computed(() => (props.teleportTo === "body" && ui?.portal.value ? ui.portal.value : (props.teleportTo ?? "body")));
 const panel = ref<HTMLElement | null>(null);
-const panelStyle = computed(() => (props.width === undefined ? undefined : { width: typeof props.width === "number" ? `${props.width}px` : props.width }));
+const len = (v: number | string) => (typeof v === "number" ? `${v}px` : v);
+const panelStyle = computed(() => {
+  if (props.placement === "bottom") return props.height === undefined ? undefined : { height: len(props.height) };
+  return props.width === undefined ? undefined : { width: len(props.width) };
+});
 
 function close() {
   emit("update:open", false);

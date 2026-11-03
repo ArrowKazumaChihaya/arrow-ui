@@ -1,4 +1,4 @@
-/* @covers ArItem 1.0.0 */
+/* @covers ArItem 1.1.0 */
 /* ArItem：設定の画面の行（.ad-form と同じ材料）。項目名は 13.5px 600 の sub 色・行の高さ38（入力の高さにそろえる）、
    必須は .req（11px 700・赤い淡い地・角丸4）。補足は .ad-help（12px mute）、「詳細」はテーマ色の 12px 700。行と行の間は20px。 */
 [data-ar-design="remix"] [data-ar="item"]{column-gap:14px;color:var(--ar-color-text);font-family:var(--ar-font-family)}
@@ -11,3 +11,36 @@
 [data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]{margin-left:6px;color:var(--ar-accent-ink);font-size:12px;font-weight:700;text-decoration:none}
 [data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]:hover{text-decoration:underline}
 [data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]:focus-visible{outline:2px solid var(--ar-accent-ring);outline-offset:2px;border-radius:3px}
+/* 1.1 共通：？（.v-ib 24・角丸7・テーマ色）、項目名の下の補足（11.5px mute）、間違い（.derr 12.5px 600 赤・15px の！）、
+   未登録（mute の文字＋ .badge.b-warn 20px・11px 700）。 */
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"]{flex-wrap:wrap;column-gap:6px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"] [data-part="help"]{width:24px;height:24px;border-radius:7px;color:var(--ar-accent-ink);transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"] [data-part="help"]:hover{background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"] [data-part="help"]:focus-visible{outline:2px solid var(--ar-accent-ring);outline-offset:1px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"] [data-part="help"]>[data-ar="icon"]{width:15px;height:15px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"]>[data-part="caption"]{flex-basis:100%;margin-top:3px;color:var(--ar-color-text-muted);font-size:11.5px;font-weight:500;line-height:1.5}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="error"]{gap:6px;align-items:flex-start;margin-top:4px;color:var(--ar-color-danger-ink);font-size:12.5px;font-weight:600;line-height:18.75px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="error"]>[data-ar="icon"]{width:15px;height:15px;margin-top:2px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="unregistered"]{gap:8px;min-height:22px;font-size:14px;line-height:1.65}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="unregistered"]>[data-part="unregistered-text"]{color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="unregistered"]>[data-part="unregistered-why"]{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:11px;background:var(--ar-color-warn-subtle);color:var(--ar-color-warn);font-size:11px;font-weight:700;line-height:1}
+
+/* row：設定の行（.cf-it）。項目名｜値＋説明｜変更あり。行の間は上の線（line-2）、角丸12、変更ありは acc-25、探して移った行は acc-50＋acc-line の線 */
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]{gap:4px 22px;padding:16px 10px;border-top:1px solid var(--ar-color-border-subtle);border-radius:12px;transition:background .2s,box-shadow .2s}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]:not(:last-child){margin-bottom:0}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]:first-child{border-top:0}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"][data-state~="changed"]{background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"][data-state~="invalid"]:not([data-state~="changed"]){background:#FFF8F7}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"][data-state~="highlight"]{background:var(--ar-accent-subtle);box-shadow:inset 0 0 0 1.5px var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="title"]{display:flex;align-items:center;align-content:flex-start;min-height:0;padding-top:7px;gap:0 6px}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="title"]>[data-part="label"]{color:var(--ar-color-text);font-size:13.5px;font-weight:700;line-height:1.5}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="title"]>[data-part="label"]>[data-part="required"]{height:18px}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="title"] [data-part="help"]{margin:-2px 0}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="content"]{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;min-height:0;font-size:14px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="content"]>[data-part="error"]{margin-top:0}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="content"]>[data-part="info"]{margin-top:0;font-size:12.5px;line-height:1.6;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]{display:inline-flex;align-items:center;gap:3px;margin-left:4px;padding:1px 5px;border-radius:6px;font-size:12.5px;font-weight:700;line-height:19px;vertical-align:middle}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]:hover{background:var(--ar-accent-subtle);text-decoration:none}
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]>[data-ar="icon"]{width:15px;height:15px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="aside"]{gap:4px;padding-top:6px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="aside"]>[data-part="changed"]{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;line-height:18px;white-space:nowrap}@media (max-width:768px){[data-ar-design="remix"] [data-ar="item"][data-variant="row"]{gap:8px;padding:14px 4px}[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="title"]{padding-top:0}[data-ar-design="remix"] [data-ar="item"]>[data-part="aside"]{padding-top:0}}

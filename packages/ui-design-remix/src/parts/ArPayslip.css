@@ -1,0 +1,54 @@
+/* @covers ArPayslip 1.0.0 */
+/* ArPayslip（マイページ・給与賞与報酬の明細書：白い紙・角丸14・線と下の1px・padding 18・間14。見出しは 20px/700・字間.1em、下にテーマ色の2pxの線。
+   表（.lst）は角丸12・線、頭は acc-50 の地に acc-ink の 11.5px/700。行は高さ38・名前 12.5px ink-2・値は太字の数字。合計の行は acc-25 の地。下の箱（.stat）は角丸12・線・名前11.5px・値15px（差引支給額は22px と acc-50 の地）） */
+[data-ar-design="remix"] [data-ar="payslip"]{gap:14px;padding:18px;border-radius:14px;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--ar-color-border),0 1px 0 var(--ar-color-border);color:var(--ar-color-text);font-family:var(--ar-font-family);font-size:13px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]{gap:12px;padding-bottom:10px;border-bottom:2px solid var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]>[data-part="title"]{font-size:20px;font-weight:700;letter-spacing:.1em;line-height:1.5}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]>[data-part="period"]{color:var(--ar-color-text-secondary);font-size:13px;font-weight:600;font-feature-settings:"tnum" 1;line-height:1.9}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]{gap:12px;line-height:1.9}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div{gap:1em}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"] dt{color:var(--ar-color-text-secondary);font-size:12px}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"] dd{color:var(--ar-color-text);font-size:13px;font-weight:700}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="head"]>[data-part="toolbar"]{gap:8px}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="columns"]{gap:12px}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="columns"]>[data-part="column"]{gap:12px}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="section"]{overflow:hidden;border-radius:12px;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="section-title"]{display:flex;align-items:center;min-height:34px;padding:0 12px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11.5px;font-weight:700;letter-spacing:.1em}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="row"]{min-height:38px;gap:8px;padding:0 12px;border-bottom:1px solid var(--ar-color-border-subtle);transition:background-color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="row"]:last-child{border-bottom:0}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="row"]:hover{background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="label"]{color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:400;line-height:1.35}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="value"]{font-size:13px;font-weight:700;font-feature-settings:"tnum" 1}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="value"][data-negative]>[data-part="amount"]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="amount"]{gap:3px}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="edited"]{width:12px;height:12px;color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="row"][data-state~="total"]{background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="row"][data-state~="total"]>[data-part="label"]{color:var(--ar-color-text);font-weight:700}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="row"][data-state~="total"]>[data-part="value"]{font-size:14px}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="row"][data-state~="big"]>[data-part="value"]{font-size:17px}
+/* 前回と比べる：diff＝値の下に灰色の小さな差（マイページ）。prev＝右に「前 ○○」と色の付いた差（管理者） */
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="diff"]{color:#5B6672;font-size:11px;font-weight:700;line-height:1.35}
+[data-ar-design="remix"] [data-ar="payslip"][data-compare="prev"] [data-part="row"]{gap:6px}
+[data-ar-design="remix"] [data-ar="payslip"][data-compare="prev"] [data-part="value"]{gap:6px}
+[data-ar-design="remix"] [data-ar="payslip"][data-compare="prev"] [data-part="value"]>[data-part="diff"]{width:78px;font-size:11.5px;line-height:1.25;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="payslip"][data-compare="prev"] [data-part="diff"][data-sign="up"]{color:#8A4F00}
+[data-ar-design="remix"] [data-ar="payslip"][data-compare="prev"] [data-part="diff"][data-sign="down"]{color:#1F5F99}
+[data-ar-design="remix"] [data-ar="payslip"][data-compare="prev"] [data-part="diff"][data-sign="zero"]{color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="payslip"] [data-part="diff"]>[data-part="prev"]{color:var(--ar-color-text-muted);font-weight:500}
+/* 管理者の明細（sm）：行34・頭32 */
+[data-ar-design="remix"] [data-ar="payslip"][data-size="sm"]{padding:20px 22px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--ar-color-border),0 2px 10px rgba(31,41,51,.05)}
+[data-ar-design="remix"] [data-ar="payslip"][data-size="sm"] [data-part="section-title"]{min-height:32px;letter-spacing:.04em}
+[data-ar-design="remix"] [data-ar="payslip"][data-size="sm"] [data-part="row"]{min-height:34px}
+/* 下の合計の箱 */
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]{padding:10px 12px;border-radius:12px;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dt{color:var(--ar-color-text-secondary);font-size:11.5px}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd{font-size:15px;font-weight:700;font-feature-settings:"tnum" 1;line-height:1.5}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd[data-negative]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="unit"]{font-size:12px}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="diff"]{margin-left:6px;color:#B45E13;font-size:11px;font-weight:700}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="diff"][data-sign="down"]{color:#2E7D59}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="diff"][data-sign="zero"]{color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]{background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]>dd{font-size:22px}
+@media (max-width:767px){[data-ar-design="remix"] [data-ar="payslip"]{padding:14px 12px}[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{order:-1}}

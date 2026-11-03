@@ -4,6 +4,7 @@
 [data-ar="drawer"]>[data-part="scrim"]{position:absolute;inset:0}
 [data-ar="drawer"]>[data-part="panel"]{position:absolute;top:0;bottom:0;right:0;display:flex;flex-direction:column;max-width:100%;box-sizing:border-box;outline:0}
 [data-ar="drawer"][data-placement="left"]>[data-part="panel"]{right:auto;left:0}
+[data-ar="drawer"][data-placement="bottom"]>[data-part="panel"]{top:auto;left:0;right:0;width:100%;max-height:82%}
 [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]{display:flex;align-items:center;flex:none}
 [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"]{flex:none}
 [data-ar="drawer"]>[data-part="panel"]>[data-part="header"]>[data-part="title"]{margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -16,4 +17,5 @@
 .ar-drawer-enter-from,.ar-drawer-leave-to{opacity:0}
 .ar-drawer-enter-from>[data-part="panel"],.ar-drawer-leave-to>[data-part="panel"]{transform:translateX(100%)}
 .ar-drawer-enter-from[data-placement="left"]>[data-part="panel"],.ar-drawer-leave-to[data-placement="left"]>[data-part="panel"]{transform:translateX(-100%)}
+.ar-drawer-enter-from[data-placement="bottom"]>[data-part="panel"],.ar-drawer-leave-to[data-placement="bottom"]>[data-part="panel"]{transform:translateY(100%)}
 @media (prefers-reduced-motion:reduce){.ar-drawer-enter-active,.ar-drawer-leave-active,.ar-drawer-enter-active>[data-part="panel"],.ar-drawer-leave-active>[data-part="panel"]{transition:none}}

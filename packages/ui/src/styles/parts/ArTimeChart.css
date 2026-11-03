@@ -1,0 +1,22 @@
+/* ArTimeChart の構造：凡例の行、見出しの行と日・内容の行（左の名前と右の帯の場所の2列）。帯は右の場所の中で左と幅を % で置く。 */
+[data-ar="time-chart"]{display:flex;flex-direction:column;min-width:0;box-sizing:border-box}
+[data-ar="time-chart"]>[data-part="legend"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="time-chart"]>[data-part="legend"]>[data-part="legend-item"]{display:inline-flex;align-items:center}
+[data-ar="time-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"]{display:inline-block;flex:none}
+[data-ar="time-chart"]>[data-part="legend"]>[data-part="hint"]{display:inline-flex;align-items:center;margin-left:auto}
+[data-ar="time-chart"]>[data-part="legend"]>[data-part="hint"]>svg{flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+[data-ar="time-chart"]>[data-part="grid"]{display:grid;min-width:0;overflow-x:auto}
+[data-ar="time-chart"]>[data-part="grid"]>:is([data-part="head"],[data-part="row"]){display:contents}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="ticks"]{position:relative;min-width:0}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="ticks"]>[data-part="tick"]{position:absolute;white-space:nowrap}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]{display:flex;align-items:center;min-width:0;box-sizing:border-box;text-align:left}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>button[data-part="row-label"]{cursor:pointer}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]>[data-part="date"]{white-space:nowrap}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]>[data-part="date"]>[data-part="weekday"]{font-style:normal}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]{position:relative;min-width:0}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-part="gridline"]{position:absolute;top:0;bottom:0;width:1px}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-ar="tooltip"]{position:absolute;display:block}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-ar="tooltip"]>[data-part="bar"]{display:flex;align-items:center;width:100%;height:100%;box-sizing:border-box;overflow:hidden}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-ar="tooltip"]>[data-part="bar"]>[data-part="bar-text"]{white-space:nowrap}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-part="note"]{position:absolute;white-space:nowrap}
+[data-ar="tooltip"] [data-part="tip"]{white-space:pre-line}

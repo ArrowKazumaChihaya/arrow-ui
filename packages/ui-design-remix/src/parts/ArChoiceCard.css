@@ -1,0 +1,58 @@
+/* @covers ArChoiceCard 1.0.0 */
+/* ArChoiceCard
+   card（設定のプラン・支払い方法 .cf-card）：白・1.5pxの線・角丸16・padding 16px 18px・高さ112以上。名前18px/700、説明12.5px。右上に22pxの丸、選ぶとテーマ色の丸に白いチェック・テーマ色の枠・acc-25 の地・3pxの輪。選べないと bg-2 の地。
+   option（社員を追加の4択）：角丸14・内側1.5pxの線・padding 16・間14。左にテーマ色の44pxの四角（角丸12）。名前15px/700、説明12.5px・行1.6。
+   tile（書類集計の種類・書類 .tile）：高さ52・角丸12・内側1pxの線・padding 9px 12px・13.5px/700。左に淡いテーマ色の30pxの四角。選ぶとテーマ色の面に白い字。
+   radio（年調の なし／あり）：角丸12・padding 12px 14px・14px/600。左に18pxのラジオ。選ぶとテーマ色の2pxの枠と acc-50 の地。 */
+[data-ar-design="remix"] [data-ar="choice-card"]{color:var(--ar-color-text);font-family:var(--ar-font-family);background:#FFFFFF;transition:background-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),border-color var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="choice-card"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
+[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="title"]{gap:8px}
+[data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"]{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;letter-spacing:0;white-space:nowrap}
+[data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"][data-tone="ok"]{background:#E6F3EC;color:#1E7A4C}
+[data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"][data-tone="neutral"]{background:#EEF1F5;color:#525E6B}
+[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="description"]{color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:400;line-height:1.6}
+[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]{gap:6px;color:var(--ar-color-text-secondary);font-size:12px;font-weight:400;line-height:1.55}
+[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]>[data-ar="icon"]{width:15px;height:15px;margin-top:1px;color:var(--ar-color-text-muted)}
+/* card */
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]{gap:8px;min-height:112px;padding:16px 18px;border:1.5px solid var(--ar-color-border);border-radius:16px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="body"]{gap:8px;padding-right:28px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]:hover:not(:disabled){border-color:var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-state~="on"]{border-color:var(--ar-accent);background:var(--ar-accent-faint);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]:disabled{border-color:var(--ar-color-border);background:var(--ar-color-surface-alt);color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="check"]{top:14px;right:14px;width:22px;height:22px;border:1.5px solid var(--ar-color-field);border-radius:50%;background:#FFFFFF;color:#FFFFFF}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-state~="on"]>[data-part="check"]{border-color:var(--ar-accent);background:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="check"]>[data-ar="icon"]{width:13px;height:13px;stroke-width:3}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="icon"]{color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="icon"]>[data-ar="icon"]{width:18px;height:18px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="body"]>[data-part="title"]{font-size:18px;font-weight:700;line-height:1.5}
+/* option */
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]{gap:14px;padding:16px;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]:hover:not(:disabled),[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-state~="on"]{background:var(--ar-accent-faint);box-shadow:inset 0 0 0 1.5px var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]:disabled{background:var(--ar-color-surface-alt);color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="icon"]{width:44px;height:44px;border-radius:12px;background:var(--ar-accent);color:var(--ar-on-accent)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="icon"]>[data-ar="icon"]{width:18px;height:18px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]:disabled>[data-part="icon"]{background:#EEF1F5;color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="body"]{gap:4px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="body"]>[data-part="title"]{font-size:15px;font-weight:700;line-height:1.5}
+/* tile */
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]{gap:10px;min-height:52px;padding:9px 12px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);font-size:13.5px;font-weight:700;line-height:1.35}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]:hover:not(:disabled){background:var(--ar-accent-faint);box-shadow:inset 0 0 0 1px var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]{background:var(--ar-accent);color:var(--ar-on-accent);box-shadow:none}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]:disabled{background:#FAFBFC;color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="icon"]{width:30px;height:30px;border-radius:9px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="icon"]>[data-ar="icon"]{width:15px;height:15px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]>[data-part="icon"]{background:rgba(255,255,255,.24);color:#FFFFFF}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="title"]{width:100%;flex-wrap:nowrap}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="title"]>[data-part="tag"]{flex:none;height:auto;margin-left:auto;padding:1px 6px;border-radius:6px;background:#F1F3F5;color:#5B6672;font-size:11px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]>[data-part="body"]>[data-part="title"]>[data-part="tag"]{background:rgba(255,255,255,.24);color:#FFFFFF}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="description"]{margin-top:1px;color:var(--ar-color-text-muted);font-size:11.5px;font-weight:500;line-height:1.35}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]>[data-part="body"]>[data-part="description"]{color:rgba(255,255,255,.88)}
+/* radio */
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"]{gap:10px;padding:12px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);font-size:14px;font-weight:600;line-height:normal}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"]:hover:not(:disabled){box-shadow:inset 0 0 0 1px var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"][data-state~="on"]{background:var(--ar-accent-subtle);box-shadow:inset 0 0 0 2px var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"]:disabled{background:var(--ar-color-surface-alt);color:#A3AEB9}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"]>[data-part="check"]{width:18px;height:18px;border:1.5px solid #AEB9C4;border-radius:50%;background:#FFFFFF}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"][data-state~="on"]>[data-part="check"]{border:5px solid var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"]:disabled>[data-part="check"]{background:var(--ar-color-surface-alt);border-color:var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="radio"]>[data-part="body"]>[data-part="description"]{font-size:12px;line-height:1.5}

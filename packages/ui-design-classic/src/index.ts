@@ -100,7 +100,15 @@ export const classicDesign = defineDesign({
     ArCalendar: { firstDay: "always" }, // 今の Calendar は 1 日をいつも「11/1」「12/1」と月を添えて書く（期間の外の日も）
     ArThumbnail: { editor: "arrow" }, // 今の画像のアップロード：大きな「ファイルを選択」・ファイル名・左右の回すボタン・真ん中の大きな「登録」
     ArTreeTable: { toggle: "box" }, // 今の TreeTable は antd の Tree（showLine）：開け閉めは四角の中の −／＋
-    ArTable: { selectHead: "label", dragHandle: "cell" }, // 今の SelectTable：見出しのチェックの左に「全選択」。今の SortableTable：並べ替えの ⠿ は1列目のセルの頭
+    ArSaveBar: { summary: "hidden", buttonText: "arrow" }, // 今の設定：変えると「キャンセル」「実行」のボタンだけが並ぶ（件数・項目名はない）
+    ArApprovalFlow: { list: "row" }, // 今の承認フロー（AdmitFlowView）は横に並んだ丸い札と「→」だけ
+    ArTable: { selectHead: "label", dragHandle: "cell", groupToggle: "menu" }, // 今の SelectTable：見出しのチェックの左に「全選択」。今の SortableTable：並べ替えの ⠿ は1列目のセルの頭。まとまりを開くのは Th の isToggle（menu の絵）
+    ArPunchButton: { icons: "punch" }, // 今の MyPC 打刻：出勤・退勤は人の大きな絵（punch_in・punch_out）、休憩は絵なし
+    ArOtpInput: { fields: "single" }, // 今のログインの認証コードは1つの欄（maxlength 6・placeholder 000000）
+    ArRichTextEditor: { variables: "menu", icons: "froala", variableButton: "icon", count: "footer" }, // 今の Froala：ARROW の印のボタンからまとまりのメニュー、Froala の塗りの絵、文字数はいつも下の段
+    ArVariablePanel: { search: "off" }, // 今の変数のメニュー（Froala）に探す欄はない
+    ArPdfViewer: { bar: "pager" }, // 今の PdfViewer：PDF の上の真ん中に「‹ 1 / 5 ›」だけ（大きさ・何人目はない）、PDF は黒い1pxの枠
+    ArTimeChart: { tick: "60" }, // 今の勤怠の月のチャート（MonthlyChart）は1時間ごとの線と時刻
   },
   icons: classicIcons, // 今の ARROW の塗りの絵（public/icons）。ここに無い名前は線のアイコン
   styles: () => import("@arrow/ui-design-classic/styles.css"),

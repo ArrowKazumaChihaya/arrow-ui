@@ -1,0 +1,7 @@
+/* ArPunchButton の構造：ボタンは幅いっぱい、中は縦にアイコンと名前（休憩は横）。下に理由。 */
+[data-ar="punch-button"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="punch-button"]>[data-part="button"]{display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;width:100%;margin:0;border:0;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+[data-ar="punch-button"][data-size="sm"]>[data-part="button"]{flex-direction:row}
+[data-ar="punch-button"]>[data-part="button"]:disabled{cursor:not-allowed}
+[data-ar="punch-button"]>[data-part="button"]>[data-part="icon"]{display:block;flex:none}
+[data-ar="punch-button"]>[data-part="reason"]{margin:0}

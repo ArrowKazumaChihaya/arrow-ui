@@ -1,18 +1,29 @@
 <script setup lang="ts" generic="Row extends object">
 /**
- * ArTable 1.0 — 表。
+ * ArTable 1.1 — 表。
  * box（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。
  * 見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。
  * 並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。
  * ページ送りは #below に ArPagination を置く。
  * sortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。
+ * 1.1：右に止める列・2段の見出し（押すとまとまりが開く）・行をまたぐセル・表の中の小さな金額の入力・3段の金額・数字の下の差の行。
  */
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch } from "vue";
 import ArAvatar from "./ArAvatar.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
 import { useDesignForm } from "../provider/context";
-import type { ArRowKey, ArTableAvatar, ArTableColumn, ArTableFooterValue, ArTableLabels, ArTableProps, ArTableReorder, ArTableSort } from "./ArTable.contract";
+import type {
+  ArRowKey,
+  ArTableAvatar,
+  ArTableColumn,
+  ArTableColumnGroup,
+  ArTableFooterValue,
+  ArTableLabels,
+  ArTableProps,
+  ArTableReorder,
+  ArTableSort,
+} from "./ArTable.contract";
 
 const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   variant: "box",
@@ -30,6 +41,10 @@ const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   rowOff: undefined,
   labels: () => ({}),
   sortableRows: false,
+  columnGroups: () => [],
+  openGroups: () => [],
+  edits: () => ({}),
+  invalidCells: () => [],
 });
 const emit = defineEmits<{
   "update:selected": [keys: ArRowKey[]];
@@ -38,14 +53,91 @@ const emit = defineEmits<{
   "row-click": [row: Row, index: number];
   "update:rows": [rows: Row[]];
   reorder: [move: ArTableReorder];
+  "update:openGroups": [keys: string[]];
+  "update:edits": [edits: Record<string, string>];
 }>();
 const slots = useSlots();
+
+/* ---- 2段の見出し・開け閉めするまとまり ---- */
+const openSet = computed(() => new Set(props.openGroups));
+const groupMap = computed(() => new Map(props.columnGroups.map((g) => [g.key, g])));
+const groupOf = (c: ArTableColumn<Row>): ArTableColumnGroup | undefined => (c.group ? groupMap.value.get(c.group) : undefined);
+const isGroupOpen = (k?: string) => !!k && openSet.value.has(k);
+/** いま出す列（まとまりの開け閉めで出る列が変わる）。 */
+const cols = computed(() => props.columns.filter((c) => !c.show || (c.show === "open") === isGroupOpen(c.group)));
+type HeadCell =
+  | { kind: "col"; key: string; col: ArTableColumn<Row>; rowspan: number; collapsed?: ArTableColumnGroup }
+  | { kind: "group"; key: string; group: ArTableColumnGroup; colspan: number };
+const head = computed(() => {
+  const list = cols.value;
+  const banded = (c: ArTableColumn<Row>) => {
+    const g = groupOf(c);
+    return !!g && (!g.collapsible || isGroupOpen(g.key));
+  };
+  const two = list.some(banded);
+  const top: HeadCell[] = [];
+  const bottom: HeadCell[] = [];
+  for (let i = 0; i < list.length; i++) {
+    const c = list[i]!;
+    const g = groupOf(c);
+    if (g && banded(c)) {
+      let n = 0;
+      while (i + n < list.length && list[i + n]!.group === g.key) n++;
+      top.push({ kind: "group", key: `g:${g.key}:${i}`, group: g, colspan: n });
+      for (let j = 0; j < n; j++) bottom.push({ kind: "col", key: list[i + j]!.key, col: list[i + j]!, rowspan: 1 });
+      i += n - 1;
+    } else top.push({ kind: "col", key: c.key, col: c, rowspan: two ? 2 : 1, collapsed: g?.collapsible ? g : undefined });
+  }
+  return { two, top, bottom };
+});
+const headSpan = computed(() => (head.value.two ? 2 : undefined));
+/** まとまりの最初の列（左に線）。 */
+const groupStart = (c: ArTableColumn<Row>) => {
+  const g = groupOf(c);
+  if (!g || (g.collapsible && !isGroupOpen(g.key))) return false;
+  const i = cols.value.indexOf(c);
+  return i === 0 || cols.value[i - 1]!.group !== c.group;
+};
+function toggleGroups(keys: string | readonly string[]) {
+  const ks = typeof keys === "string" ? [keys] : [...keys];
+  const anyOpen = ks.some((k) => openSet.value.has(k));
+  const next = new Set(props.openGroups);
+  for (const k of ks) anyOpen ? next.delete(k) : next.add(k);
+  emit("update:openGroups", [...next]);
+}
+const togglesOpen = (c: ArTableColumn<Row>) => (typeof c.toggles === "string" ? [c.toggles] : [...(c.toggles ?? [])]).some((k) => openSet.value.has(k));
+
+/* ---- 表の中の入力・3段・差の行 ---- */
+const editKey = (row: Row, c: ArTableColumn<Row>, line?: number) => `${String(keyOf(row))}:${c.key}${line === undefined ? "" : `:${line}`}`;
+const canEdit = (row: Row, c: ArTableColumn<Row>) => (typeof c.edit === "function" ? c.edit(row) : !!c.edit);
+const asText = (v: unknown) => (v === null || v === undefined ? "" : String(v));
+const editValue = (row: Row, c: ArTableColumn<Row>, raw: unknown, line?: number) => {
+  const k = editKey(row, c, line);
+  return k in props.edits ? props.edits[k]! : asText(raw);
+};
+const editState = (row: Row, c: ArTableColumn<Row>, raw: unknown, line?: number) => {
+  const k = editKey(row, c, line);
+  const s = [props.invalidCells.includes(k) && "invalid", k in props.edits && props.edits[k] !== asText(raw) && "changed"].filter(Boolean).join(" ");
+  return s || undefined;
+};
+function onEdit(row: Row, c: ArTableColumn<Row>, e: Event, line?: number) {
+  emit("update:edits", { ...props.edits, [editKey(row, c, line)]: (e.target as HTMLInputElement).value });
+}
+const linesOf = (v: unknown): unknown[] => (Array.isArray(v) ? v : [v]);
+const deltaOf = (row: Row, c: ArTableColumn<Row>) => {
+  const d = c.delta?.(row);
+  if (d === undefined || d === "") return null;
+  return typeof d === "string" ? { text: d, tone: "muted" as const } : { tone: "muted" as const, ...d };
+};
+const spanOf = (row: Row, c: ArTableColumn<Row>, i: number) => (c.rowSpan ? c.rowSpan(row, i) : 1);
 
 /** 形（ArDesign.forms.ArTable.selectHead）：label は見出しのチェックの左に「全選択」の文字を出す。 */
 const selectHead = useDesignForm<"check" | "label">("ArTable", "selectHead", "check");
 /** 形（ArDesign.forms.ArTable.dragHandle）：column は並べ替えのつまみを左の専用の列に、cell は1列目のセルの頭に置く。 */
 const handleForm = useDesignForm<"column" | "cell">("ArTable", "dragHandle", "column");
 const handleColumn = computed(() => props.sortableRows && handleForm.value === "column");
+/** 形（ArDesign.forms.ArTable.groupToggle）：chevron は開け閉めのボタンに ∨／›、menu は今の ARROW の Th の isToggle と同じ menu の絵。 */
+const groupToggle = useDesignForm<"chevron" | "menu">("ArTable", "groupToggle", "chevron");
 const L = computed<ArTableLabels>(() => ({
   selectAll: "すべて選ぶ",
   selectRow: "この行を選ぶ",
@@ -76,12 +168,12 @@ const subOf = (row: Row, col: ArTableColumn<Row>) => {
 /** 合計の行のセル（span でつないだ列は飛ばす）。 */
 const footCells = computed(() => {
   const out: { col: ArTableColumn<Row>; span: number; raw: ArTableFooterValue | undefined; label?: string; value: string | number }[] = [];
-  const cols = props.columns;
-  for (let i = 0; i < cols.length; i++) {
-    const col = cols[i]!;
+  const list = cols.value;
+  for (let i = 0; i < list.length; i++) {
+    const col = list[i]!;
     const raw = props.footer?.[col.key];
     const obj = raw !== null && typeof raw === "object" ? raw : null;
-    const span = Math.max(1, Math.min(obj?.span ?? 1, cols.length - i));
+    const span = Math.max(1, Math.min(obj?.span ?? 1, list.length - i));
     const value: string | number = obj ? obj.value : typeof raw === "string" || typeof raw === "number" ? raw : "";
     out.push({ col, span, raw, label: obj?.label, value });
     i += span - 1;
@@ -93,30 +185,55 @@ const hasActions = computed(() => !!slots.actions);
 /* ---- 左に固定する列：見出しのセルの位置を測って left にする ---- */
 const tableEl = ref<HTMLTableElement | null>(null);
 const lefts = ref<Record<string, number>>({});
+const isStart = (c: ArTableColumn<Row>) => c.sticky === true || c.sticky === "start";
 const stickyKeys = computed(() => {
   const out: string[] = [];
-  for (const c of props.columns) {
-    if (!c.sticky) break;
+  for (const c of cols.value) {
+    if (!isStart(c)) break;
     out.push(c.key);
   }
   return out;
 });
+const endKeys = computed(() => {
+  const out: string[] = [];
+  for (const c of [...cols.value].reverse()) {
+    if (c.sticky !== "end") break;
+    out.unshift(c.key);
+  }
+  return out;
+});
 const anySticky = computed(() => stickyKeys.value.length > 0);
+const anyEnd = computed(() => endKeys.value.length > 0);
 const lastSticky = computed(() => stickyKeys.value.at(-1));
+const firstEnd = computed(() => endKeys.value[0]);
+const rights = ref<Record<string, number>>({});
 function measure() {
   const t = tableEl.value;
-  if (!t || !anySticky.value) return;
-  // 左の列の幅を足していく（スクロール中でも固定の位置に左右されない）
+  if (t && head.value.two) {
+    // 2段の見出しの下の段を、上の段の高さだけ下に貼りつける
+    const top = t.querySelector<HTMLElement>("thead > tr")?.getBoundingClientRect().height ?? 0;
+    rootEl.value?.style.setProperty("--ar-table-head-top", `${Math.round(top * 100) / 100}px`);
+  }
+  if (!t || (!anySticky.value && !anyEnd.value)) return;
+  // 止める列の見出しの幅を端から足していく（スクロール中でも固定の位置に左右されない）
+  const widthOf = (k: string) => t.querySelector<HTMLElement>(`thead th[data-sticky-key="${k}"]`)?.getBoundingClientRect().width ?? 0;
   const out: Record<string, number> = {};
   let x = 0;
-  for (const th of Array.from(t.querySelectorAll<HTMLElement>("thead > tr > th"))) {
-    const k = th.dataset.stickyKey;
-    if (!k) break;
-    out[k] = Math.round(x * 100) / 100;
-    x += th.getBoundingClientRect().width;
+  if (anySticky.value)
+    for (const k of [...(props.selectable ? ["__select"] : []), ...(props.expandable ? ["__expand"] : []), ...stickyKeys.value]) {
+      out[k] = Math.round(x * 100) / 100;
+      x += widthOf(k);
+    }
+  const outR: Record<string, number> = {};
+  let r = 0;
+  for (const k of [...endKeys.value].reverse()) {
+    outR[k] = Math.round(r * 100) / 100;
+    r += widthOf(k);
   }
-  const same = Object.keys(out).length === Object.keys(lefts.value).length && Object.entries(out).every(([k, v]) => lefts.value[k] === v);
-  if (!same) lefts.value = out;
+  const same = (a: Record<string, number>, b: Record<string, number>) =>
+    Object.keys(a).length === Object.keys(b).length && Object.entries(a).every(([k, v]) => b[k] === v);
+  if (!same(out, lefts.value)) lefts.value = out;
+  if (!same(outR, rights.value)) rights.value = outR;
 }
 let ro: ResizeObserver | null = null;
 /** 列の幅は文字や見た目の CSS が読み込まれたあとにも変わるので、見出しのセルの大きさを見張って測り直す。 */
@@ -134,11 +251,15 @@ onMounted(() => {
 });
 onBeforeUnmount(() => ro?.disconnect());
 watch(
-  () => [props.columns, props.selectable, props.expandable, !!slots.actions],
+  () => [cols.value, props.selectable, props.expandable, !!slots.actions],
   () => nextTick(() => (measure(), observe())),
 );
 const stick = (key: string) => (anySticky.value ? { left: `${lefts.value[key] ?? 0}px` } : undefined);
 const colSticky = (c: ArTableColumn<Row>) => stickyKeys.value.includes(c.key);
+const colEnd = (c: ArTableColumn<Row>) => endKeys.value.includes(c.key);
+const stickAttr = (c: ArTableColumn<Row>) => (colSticky(c) ? "start" : colEnd(c) ? "end" : undefined);
+const edgeAttr = (c: ArTableColumn<Row>) => (c.key === lastSticky.value ? "start" : c.key === firstEnd.value ? "end" : undefined);
+const stickStyle = (c: ArTableColumn<Row>) => (colSticky(c) ? stick(c.key) : colEnd(c) ? { right: `${rights.value[c.key] ?? 0}px` } : undefined);
 
 /* ---- 選ぶ・開く・並べ替え ---- */
 const selectedSet = computed(() => new Set(props.selected));
@@ -235,7 +356,7 @@ function endDrag() {
 }
 const colspan = computed(
   () =>
-    props.columns.length + (props.selectable ? 1 : 0) + (props.expandable ? 1 : 0) + (hasActions.value ? 1 : 0) + (handleColumn.value ? 1 : 0),
+    cols.value.length + (props.selectable ? 1 : 0) + (props.expandable ? 1 : 0) + (hasActions.value ? 1 : 0) + (handleColumn.value ? 1 : 0),
 );
 </script>
 
@@ -256,12 +377,12 @@ const colspan = computed(
           <col v-if="handleColumn" data-col="drag" />
           <col v-if="selectable" data-col="select" />
           <col v-if="expandable" data-col="expand" />
-          <col v-for="c in columns" :key="c.key" :style="c.width ? { width: `${c.width}px` } : undefined" />
+          <col v-for="c in cols" :key="c.key" :style="c.width ? { width: `${c.width}px` } : undefined" />
           <col v-if="hasActions" data-col="actions" />
         </colgroup>
-        <thead data-part="head">
+        <thead data-part="head" :data-tiers="head.two ? 2 : undefined">
           <tr>
-            <th v-if="handleColumn" data-part="header-cell" data-col="drag" scope="col"><span data-ar-visually-hidden>{{ L.dragHandle }}</span></th>
+            <th v-if="handleColumn" data-part="header-cell" data-col="drag" scope="col" :rowspan="headSpan"><span data-ar-visually-hidden>{{ L.dragHandle }}</span></th>
             <th
               v-if="selectable"
               data-part="header-cell"
@@ -270,6 +391,7 @@ const colspan = computed(
               :data-sticky-key="anySticky ? '__select' : undefined"
               :style="stick('__select')"
               scope="col"
+              :rowspan="headSpan"
             >
               <span v-if="selectHead === 'label'" data-part="select-text" aria-hidden="true">{{ L.selectAllText ?? "全選択" }}</span>
               <span data-part="check" :data-state="allState === 'all' ? 'checked' : allState === 'some' ? 'indeterminate' : undefined">
@@ -296,36 +418,100 @@ const colspan = computed(
               :data-sticky-key="anySticky ? '__expand' : undefined"
               :style="stick('__expand')"
               scope="col"
+              :rowspan="headSpan"
             />
-            <th
-              v-for="c in columns"
-              :key="c.key"
-              data-part="header-cell"
-              scope="col"
-              :data-align="alignOf(c)"
-              :data-sticky="colSticky(c) ? 'start' : undefined"
-              :data-sticky-key="colSticky(c) ? c.key : undefined"
-              :data-sticky-edge="c.key === lastSticky || undefined"
-              :style="colSticky(c) ? stick(c.key) : undefined"
-              :aria-sort="ariaSort(c)"
-              :data-person="c.avatar ? (c.sub ? 'with-sub' : 'single') : undefined"
-            >
-              <slot :name="`head-${c.key}`" :column="c">
-                <button v-if="c.sortable" type="button" data-part="sort" :data-order="orderOf(c)" @click="cycleSort(c)">
-                  <span>{{ c.title }}</span>
-                  <svg data-part="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path data-dir="asc" data-shape="chevron" d="m8 9 4-4 4 4" />
-                    <path data-dir="desc" data-shape="chevron" d="m8 15 4 4 4-4" />
-                    <path data-dir="asc" data-shape="caret" d="M12 2.5 20 11H4Z" />
-                    <path data-dir="desc" data-shape="caret" d="M12 21.5 4 13h16Z" />
-                  </svg>
+            <template v-for="h in head.top" :key="h.key">
+              <th
+                v-if="h.kind === 'group'"
+                data-part="header-cell"
+                data-group-cell
+                scope="colgroup"
+                :colspan="h.colspan"
+                :data-collapsible="h.group.collapsible || undefined"
+                :data-group-start="true"
+              >
+                <button
+                  v-if="h.group.collapsible"
+                  type="button"
+                  data-part="group-toggle"
+                  aria-expanded="true"
+                  @click="toggleGroups(h.group.key)"
+                >
+                  <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon v-else line name="cd" size="sm" />{{ h.group.title }}<span data-part="toggle-hint">{{ h.group.openHint ?? "閉じる" }}</span>
                 </button>
-                <template v-else>{{ c.title }}</template>
-              </slot>
-            </th>
-            <th v-if="hasActions" data-part="header-cell" data-col="actions" data-align="end" scope="col">
+                <template v-else>{{ h.group.title }}</template>
+              </th>
+              <th
+                v-else
+                data-part="header-cell"
+                scope="col"
+                :rowspan="h.rowspan > 1 ? h.rowspan : undefined"
+                :data-align="alignOf(h.col)"
+                :data-sticky="stickAttr(h.col)"
+                :data-sticky-key="stickAttr(h.col) ? h.col.key : undefined"
+                :data-sticky-edge="edgeAttr(h.col)"
+                :style="stickStyle(h.col)"
+                :aria-sort="ariaSort(h.col)"
+                :data-person="h.col.avatar ? (h.col.sub ? 'with-sub' : 'single') : undefined"
+                :data-total="h.col.total || undefined"
+                :data-collapsed="h.collapsed ? true : undefined"
+              >
+                <slot :name="`head-${h.col.key}`" :column="h.col">
+                  <button v-if="h.collapsed" type="button" data-part="group-toggle" aria-expanded="false" @click="toggleGroups(h.collapsed.key)">
+                    <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon v-else line name="cr" size="sm" />{{ h.col.title }}<span data-part="toggle-hint">{{ h.collapsed.closedHint ?? "内訳" }}</span>
+                  </button>
+                  <button
+                    v-else-if="h.col.toggles"
+                    type="button"
+                    data-part="group-toggle"
+                    data-toggle="column"
+                    :aria-expanded="togglesOpen(h.col)"
+                    @click="toggleGroups(h.col.toggles)"
+                  >
+                    <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon v-else line :name="togglesOpen(h.col) ? 'minus' : 'plus'" size="sm" />{{ h.col.title }}
+                  </button>
+                  <button v-else-if="h.col.sortable" type="button" data-part="sort" :data-order="orderOf(h.col)" @click="cycleSort(h.col)">
+                    <span>{{ h.col.title }}</span>
+                    <svg data-part="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path data-dir="asc" data-shape="chevron" d="m8 9 4-4 4 4" />
+                      <path data-dir="desc" data-shape="chevron" d="m8 15 4 4 4-4" />
+                      <path data-dir="asc" data-shape="caret" d="M12 2.5 20 11H4Z" />
+                      <path data-dir="desc" data-shape="caret" d="M12 21.5 4 13h16Z" />
+                    </svg>
+                  </button>
+                  <template v-else>{{ h.col.title }}</template>
+                </slot>
+              </th>
+            </template>
+            <th v-if="hasActions" data-part="header-cell" data-col="actions" data-align="end" scope="col" :rowspan="headSpan">
               <span data-ar-visually-hidden>{{ L.actions }}</span>
             </th>
+          </tr>
+          <tr v-if="head.two" data-tier="2">
+            <template v-for="h in head.bottom" :key="h.key">
+              <th
+                v-if="h.kind === 'col'"
+                data-part="header-cell"
+                scope="col"
+                :data-align="alignOf(h.col)"
+                :data-total="h.col.total || undefined"
+                :data-group-start="groupStart(h.col) || undefined"
+                :aria-sort="ariaSort(h.col)"
+              >
+                <slot :name="`head-${h.col.key}`" :column="h.col">
+                  <button v-if="h.col.sortable" type="button" data-part="sort" :data-order="orderOf(h.col)" @click="cycleSort(h.col)">
+                    <span>{{ h.col.title }}</span>
+                    <svg data-part="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path data-dir="asc" data-shape="chevron" d="m8 9 4-4 4 4" />
+                      <path data-dir="desc" data-shape="chevron" d="m8 15 4 4 4-4" />
+                      <path data-dir="asc" data-shape="caret" d="M12 2.5 20 11H4Z" />
+                      <path data-dir="desc" data-shape="caret" d="M12 21.5 4 13h16Z" />
+                    </svg>
+                  </button>
+                  <template v-else>{{ h.col.title }}</template>
+                </slot>
+              </th>
+            </template>
           </tr>
         </thead>
         <tbody v-if="$slots['before-rows']" data-part="before-rows">
@@ -405,20 +591,25 @@ const colspan = computed(
                   <ArIcon line name="cr" size="sm" />
                 </button>
               </td>
+              <template v-for="c in cols" :key="c.key">
               <td
-                v-for="c in columns"
-                :key="c.key"
+                v-if="spanOf(row, c, i) > 0"
                 data-part="cell"
+                :rowspan="spanOf(row, c, i) > 1 ? spanOf(row, c, i) : undefined"
                 :data-align="alignOf(c)"
                 :data-numeric="c.numeric || undefined"
                 :data-emphasis="c.emphasis"
-                :data-blank="isBlank(valueOf(row, c)) || undefined"
-                :data-sticky="colSticky(c) ? 'start' : undefined"
-                :data-sticky-edge="c.key === lastSticky || undefined"
-                :style="colSticky(c) ? stick(c.key) : undefined"
+                :data-blank="(!canEdit(row, c) && isBlank(valueOf(row, c))) || undefined"
+                :data-sticky="stickAttr(c)"
+                :data-sticky-edge="edgeAttr(c)"
+                :data-total="c.total || undefined"
+                :data-group-start="groupStart(c) || undefined"
+                :data-editing="canEdit(row, c) || undefined"
+                :data-edge="c === cols[0] ? 'first' : c === cols[cols.length - 1] ? 'last' : undefined"
+                :style="stickStyle(c)"
               >
                 <button
-                  v-if="sortableRows && !handleColumn && c === columns[0]"
+                  v-if="sortableRows && !handleColumn && c === cols[0]"
                   type="button"
                   data-part="drag-handle"
                   :data-key="keyOf(row)"
@@ -432,7 +623,36 @@ const colspan = computed(
                   <ArIcon name="grip" size="sm" />
                 </button>
                 <slot :name="`cell-${c.key}`" :row="row" :value="valueOf(row, c)" :index="i">
-                  <span v-if="c.avatar" data-part="person" :data-single="!c.sub || undefined">
+                  <span v-if="canEdit(row, c) && c.stack" data-part="stack" @click.stop>
+                    <input
+                      v-for="(v, j) in linesOf(valueOf(row, c))"
+                      :key="j"
+                      data-part="cell-input"
+                      type="text"
+                      inputmode="numeric"
+                      :value="editValue(row, c, v, j)"
+                      :data-state="editState(row, c, v, j)"
+                      :aria-invalid="invalidCells.includes(editKey(row, c, j)) || undefined"
+                      :aria-label="c.editLabel?.(row, j) ?? `${c.title} ${j + 1}`"
+                      @input="onEdit(row, c, $event, j)"
+                    />
+                  </span>
+                  <input
+                    v-else-if="canEdit(row, c)"
+                    data-part="cell-input"
+                    type="text"
+                    inputmode="numeric"
+                    :value="editValue(row, c, valueOf(row, c))"
+                    :data-state="editState(row, c, valueOf(row, c))"
+                    :aria-invalid="invalidCells.includes(editKey(row, c)) || undefined"
+                    :aria-label="c.editLabel?.(row) ?? c.title"
+                    @click.stop
+                    @input="onEdit(row, c, $event)"
+                  />
+                  <span v-else-if="c.stack" data-part="stack">
+                    <span v-for="(v, j) in linesOf(valueOf(row, c))" :key="j">{{ isBlank(v) ? "" : v }}</span>
+                  </span>
+                  <span v-else-if="c.avatar" data-part="person" :data-single="!c.sub || undefined">
                     <ArAvatar v-bind="avatarOf(row, c, i)" :size="variant === 'board' ? 'md' : 'sm'" />
                     <span data-part="name">
                       <b>{{ valueOf(row, c) }}</b>
@@ -445,8 +665,11 @@ const colspan = computed(
                     <span v-for="(v, j) in valueOf(row, c) as unknown[]" :key="j">{{ v }}</span>
                   </span>
                   <template v-else>{{ isBlank(valueOf(row, c)) ? blank : valueOf(row, c) }}</template>
+                  <ArIcon v-if="c.marked?.(row)" line name="pen" size="sm" data-part="mark" label="手で直した金額" />
+                  <small v-if="deltaOf(row, c)" data-part="delta" :data-tone="deltaOf(row, c)!.tone">{{ deltaOf(row, c)!.text }}</small>
                 </slot>
               </td>
+              </template>
               <td v-if="hasActions" data-part="cell" data-col="actions" data-align="end" @click.stop>
                 <span data-part="actions"><slot name="actions" :row="row" :index="i" /></span>
               </td>
@@ -470,9 +693,11 @@ const colspan = computed(
               :colspan="f.span > 1 ? f.span : undefined"
               :data-align="alignOf(f.col)"
               :data-numeric="f.col.numeric || undefined"
-              :data-sticky="colSticky(f.col) ? 'start' : undefined"
-              :data-sticky-edge="f.col.key === lastSticky || undefined"
-              :style="colSticky(f.col) ? stick(f.col.key) : undefined"
+              :data-sticky="stickAttr(f.col)"
+              :data-sticky-edge="edgeAttr(f.col)"
+              :data-total="f.col.total || undefined"
+              :data-group-start="groupStart(f.col) || undefined"
+              :style="stickStyle(f.col)"
             >
               <slot :name="`foot-${f.col.key}`" :value="f.raw">
                 <template v-if="f.label !== undefined">

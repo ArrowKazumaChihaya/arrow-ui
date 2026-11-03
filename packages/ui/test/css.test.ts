@@ -44,7 +44,7 @@ describe("デザインの CSS", () => {
   it("デザインの CSS は自分のデザインの中だけに効く", () => {
     for (const [f, id] of [...remixParts.map((f) => [f, "remix"] as const), ...classicParts.map((f) => [f, "classic"] as const)]) {
       const css = fs.readFileSync(f, "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
-      const selectors = [...css.matchAll(/(^|})\s*([^@{}][^{}]*)\{/g)].map((m) => m[2]!.trim()).filter((s) => !/^(from|to|\d+%)/.test(s));
+      const selectors = [...css.matchAll(/(^|})\s*([^@{}\s][^{}]*)\{/g)].map((m) => m[2]!.trim()).filter((s) => !/^(from|to|\d+%)/.test(s));
       const outside = selectors.flatMap(splitTop).map((s) => s.trim()).filter((s) => !s.startsWith(`[data-ar-design="${id}"]`));
       expect(outside).toEqual([]);
     }

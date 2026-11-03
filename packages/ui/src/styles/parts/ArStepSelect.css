@@ -1,0 +1,13 @@
+/* ArStepSelect の構造：道しるべの札（横に折り返す）、段の箱（縦）、間の矢印。 */
+[data-ar="step-select"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="step-select"]>[data-part="crumbs"]{display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]{display:inline-flex;align-items:center;margin:0;border:0;font:inherit;cursor:pointer;white-space:nowrap}
+[data-ar="step-select"]>[data-part="crumbs"]>[data-part="separator"]{flex:none}
+[data-ar="step-select"]>[data-part="connector"]{display:flex;flex-direction:column;align-items:center;justify-content:center}
+[data-ar="step-select"]>[data-part="step"]{display:flex;flex-direction:column;min-width:0;outline:0;scroll-margin-top:16px}
+[data-ar="step-select"]>[data-part="step"]>[data-part="head"]{display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="marker"]{display:flex;align-items:center;justify-content:center;flex:none}
+[data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{margin:0}
+[data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="count"]{display:inline-flex;align-items:center}
+[data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="extra"]{display:flex;align-items:center;flex-wrap:wrap;margin-left:auto}
+[data-ar="step-select"]>[data-part="step"]>[data-part="body"]{min-width:0}

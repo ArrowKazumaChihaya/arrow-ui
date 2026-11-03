@@ -1,0 +1,18 @@
+/* @covers ArMapPreview 1.0.0 */
+/* ArMapPreview：会社情報キャンバスの店舗の位置情報の地図（幅560・高さ250・角丸14・#E9EFEC の地と line の内側の線、
+   公園 #D8E8DE・建物 #E1E6EA の区画と白い道4本、円は直径 40+log10(r)×62px でテーマ色 26% の地と 2px の実線（勤怠エラーのみは橙 #E58A2E の点線と 16% の地）、
+   ピンは 30px の acc-ink の塗りに白い線、左下の白い札 11.5px 700・右上の「地図（Google マップ）」11px）。 */
+[data-ar-design="remix"] [data-ar="map-preview"]{font-feature-settings:"palt" 1;border-radius:14px;background:#E9EFEC;box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]{border-radius:inherit;overflow:hidden}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-kind="park"]{left:6%;top:8%;width:20%;height:24%;border-radius:8px;background:#D8E8DE}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-kind="building"]{left:66%;top:62%;width:24%;height:30%;border-radius:6px;background:#E1E6EA}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"]{background:#fff}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="1"]{left:-10%;right:-10%;top:40%;height:14px;transform:rotate(-7deg)}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="2"]{top:-10%;bottom:-10%;left:31%;width:12px;transform:rotate(13deg)}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="3"]{top:-10%;bottom:-10%;left:74%;width:9px;transform:rotate(-4deg)}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="4"]{left:-10%;right:-10%;top:76%;height:8px;transform:rotate(4deg)}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="range"]{border:2px solid var(--ar-accent);background:color-mix(in srgb,var(--ar-accent) 26%,transparent)}
+[data-ar-design="remix"] [data-ar="map-preview"][data-restriction="warn"]>[data-part="range"]{border:2px dashed #E58A2E;background:rgba(235,145,66,.16)}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="pin"]{width:30px;height:30px;color:#fff;fill:var(--ar-accent-ink);stroke-width:1.4}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="caption"]{left:10px;bottom:10px;padding:3px 9px;border-radius:8px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.14);color:var(--ar-color-text-secondary);font:700 11.5px/1.5 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="map-preview"]>[data-part="source"]{right:10px;top:10px;padding:3px 9px;border-radius:8px;background:rgba(255,255,255,.92);color:var(--ar-color-text-muted);font:400 11px/1.5 var(--ar-font-family)}

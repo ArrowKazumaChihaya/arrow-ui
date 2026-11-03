@@ -107,5 +107,10 @@ export const icons = {
   "hierarchy": "<rect x=\"9\" y=\"2\" width=\"6\" height=\"5\" rx=\"1\"></rect><rect x=\"2\" y=\"17\" width=\"6\" height=\"5\" rx=\"1\"></rect><rect x=\"9\" y=\"17\" width=\"6\" height=\"5\" rx=\"1\"></rect><rect x=\"16\" y=\"17\" width=\"6\" height=\"5\" rx=\"1\"></rect><path d=\"M12 7v10M5 17v-3h14v3\"></path>", // 階層図
   "status": "<path d=\"m15 5 4 4\"></path><path d=\"M13 7 8.7 2.7a2.4 2.4 0 0 0-3.4 0L2.7 5.3a2.4 2.4 0 0 0 0 3.4L7 13\"></path><path d=\"m8 6 2-2\"></path><path d=\"m2 22 5.5-1.5L21.2 6.8a2.8 2.8 0 0 0-4-4L3.5 16.5z\"></path><path d=\"m18 16 2-2\"></path><path d=\"m17 11 4.3 4.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L11 17\"></path>", // 状態・設定の項目（鉛筆と定規）
   "chevrons": "<path d=\"m6 4 6 5 6-5M6 10l6 5 6-5M6 16l6 5 6-5\"></path>", // 下へ進む（三重の下向き矢印。書類の流れ）
+  "umbrella": "<path d=\"M22 12a10 10 0 0 0-20 0z\"></path><path d=\"M12 12v8a2 2 0 0 0 4 0M12 2v1\"></path>", // 有給（傘）
+  "contract": "<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><path d=\"M14 2v6h6M8 9h2M8 13h8\"></path><path d=\"M8 18c1-1.4 2-1.4 2.6 0s1.6 1.4 2.4 0M15.5 18H17\"></path>", // 契約（署名のある書類）
+  "switch-user": "<circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M2 21v-1a6 6 0 0 1 6-6h2\"></path><path d=\"M14 14h7M18.5 11.5 21 14l-2.5 2.5M21 19h-7M16.5 16.5 14 19l2.5 2.5\"></path>", // マイページ／管理ページの切り替え
+  "globe": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18\"></path>", // 言葉の切り替え（地球）
+  "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"></circle><path d=\"m9 20 3-6 3 3v4M7 12l3-4 4 1 3 3M10 8l-1 6\"></path>", // 出勤（歩く人。打刻の出勤ボタン）
 } as const;
 export type ArIconName = keyof typeof icons;

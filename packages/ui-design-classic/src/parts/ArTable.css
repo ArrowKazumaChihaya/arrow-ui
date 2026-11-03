@@ -1,4 +1,4 @@
-/* @covers ArTable 1.0.0 */
+/* @covers ArTable 1.1.0 */
 /* ArTable（今の ARROW の表 Component/Table：見出しは白地・テーマ色の1px枠・中央・13px、行は上に #E8E8E8 の線だけ、行高32。並べ替えは ▲▼（#BFBFBF・向きだけ #1677FF）。チェックは灰枠 #808080） */
 [data-ar-design="classic"] [data-ar="table"]{color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
 /* 今の表は table-layout:fixed・幅100%（幅を決めない列は同じ幅に分ける。行の操作の列も1列として数える）。操作のボタンは左に寄せる */
@@ -69,3 +69,26 @@
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="drag-handle"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
 [data-ar-design="classic"] [data-ar="table"] [data-part="row"][data-drop="before"]>td{box-shadow:inset 0 2px 0 #1677FF}
 [data-ar-design="classic"] [data-ar="table"] [data-part="row"][data-drop="after"]>td{box-shadow:inset 0 -2px 0 #1677FF}
+
+/* ---- 1.1：今の ARROW の給与一覧（Payment/Table.vue）・年調・勤怠の集計表 ---- */
+/* 2段の見出し：まとまりの見出しは Th の isToggle（左に menu の絵 14px・押せる・乗せると不透明度 .7）。上下の段とも同じ枠（テーマ色の 1px） */
+[data-ar-design="classic"] [data-ar="table"] th[data-group-cell]{text-align:center}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="group-toggle"]{gap:0;color:rgba(0,0,0,.65);font-weight:400}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="group-toggle"]:hover{opacity:.7}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="group-toggle"]>[data-ar="icon"]{width:14px;height:14px;margin-right:0;vertical-align:-3px;color:#000}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="group-toggle"]>[data-part="toggle-hint"]{display:none}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="group-toggle"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="table"] thead tr[data-tier="2"]>th{border-top:0}
+/* 右に止めた列：今の表は影なし */
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-sticky="end"]{background:#fff}
+/* 表の中の入力：今の MoneyInput（ARROW の Input：antd の Input 32px・角丸6・#D9D9D9・14px・左寄せ）。手で直した金額は .money.custom の緑 */
+[data-ar-design="classic"] [data-ar="table"] td [data-part="cell-input"]{width:100%;height:32px;padding:4px 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;line-height:1.5714;outline:0;transition:all .2s}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="cell-input"]:hover{border-color:#4096FF}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="cell-input"]:focus{border-color:#4096FF;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="cell-input"][data-state~="changed"]{color:green}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="cell-input"][data-state~="invalid"]{border-color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="stack"]{gap:4px;line-height:20px}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="mark"]{display:none}
+[data-ar-design="classic"] [data-ar="table"] td:has(>[data-part="mark"]){color:green}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="delta"]{font-size:11px;line-height:15px;color:#5F5F5F}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="delta"]:is([data-tone="warn"],[data-tone="danger"]){color:#D10C1D}

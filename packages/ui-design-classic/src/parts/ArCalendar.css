@@ -1,4 +1,4 @@
-/* @covers ArCalendar 1.0.0 */
+/* @covers ArCalendar 1.1.0 */
 /* ArCalendar：今の ARROW の Calendar.vue（シフト・勤怠のカレンダー）。7列、曜日の見出しは高さ30・15px 太さ600・淡いテーマ色の地（シフト #F2F8FC）・日は赤 / 土は青、
    マスは高さ100・余白3・枠 0.5px lightgray・中央寄せ、日付は 30px の丸（#F0F0F0・14px 太さ600）、今日はテーマ色の丸に白、選んだ日は 3px のテーマ色の枠と #D9EEFF の地、
    乗せると #E6F3FC、前後の月は lightgray、行事は高さ18・角丸4・色の帯に白い 10px（refs/classic/arrow-Calendar*.png・rules/arrow-Calendar.css を実測）。
@@ -55,3 +55,15 @@
 [data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="danger"]{background:var(--ar-event-color,#E03838)}
 [data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{display:none}
 [data-ar-design="classic"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="foot"]{gap:3px;color:rgba(0,0,0,.65);font-size:12px;font-weight:400;line-height:16px}
+/* mini：今の ARROW に小さなカレンダーはない（シフトテンプレートの「カレンダーで確かめる」も無い）。今の Calendar と同じ見た目（曜日の段・lightgray の線・日付の丸・行事の色の帯）を
+   小さくする：上に15pxあけない、見出しは 14px 600 の題とカレンダーの絵、マスは高さ60・余白3、日付の丸は 24px・13px、札は高さ18・角丸4・10px、下の文字は 11px。 */
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]{margin-top:0}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="header"]{gap:8px;flex-wrap:wrap;padding:0 0 10px}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="header"]>[data-part="heading-icon"]{width:16px;height:16px;color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="header"]>[data-part="title"]{font-size:14px;line-height:20px}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="header"]>[data-part="extra"]{margin-left:0;gap:8px;font-size:12px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{min-height:60px;height:auto;gap:2px}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="day"]{width:24px;height:24px;font-size:13px}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]{align-self:center;height:18px;padding:0 4px;border-radius:4px;background:var(--ar-accent);color:#fff;font-size:10px;line-height:18px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="note"]{align-self:center;max-width:100%;overflow:hidden;color:#000;font-size:11px;line-height:14px;white-space:nowrap;text-overflow:ellipsis}
+[data-ar-design="classic"] [data-ar="calendar"][data-size="mini"]>[data-part="footer"]{display:flex;flex-wrap:wrap;gap:12px;padding-top:10px;font-size:12px;line-height:18px}

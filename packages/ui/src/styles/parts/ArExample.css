@@ -1,0 +1,12 @@
+/* ArExample の構造。box は縦に、行は「項目｜値」の2列。inline は横に並べて折り返す。 */
+[data-ar="example"]{box-sizing:border-box;min-width:0}
+[data-ar="example"][data-variant="box"]{display:flex;flex-direction:column}
+[data-ar="example"][data-variant="box"]>[data-part="head"]{display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="example"][data-variant="box"]>[data-part="head"]>[data-part="head-icon"]{flex:none}
+[data-ar="example"][data-variant="box"]>[data-part="rows"]{display:flex;flex-direction:column;margin:0}
+[data-ar="example"][data-variant="box"]>[data-part="rows"]>[data-part="row"]{display:grid;grid-template-columns:var(--ar-example-label,170px) minmax(0,1fr)}
+[data-ar="example"][data-variant="box"]>[data-part="rows"]>[data-part="row"]>*{margin:0;min-width:0}
+[data-ar="example"][data-variant="inline"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="example"][data-variant="inline"]>[data-part="inputs"]{display:inline-flex;flex-wrap:wrap;align-items:center}
+[data-ar="example"][data-variant="inline"]>[data-part="result"]{display:inline-flex;align-items:center;white-space:nowrap}
+@media (max-width:768px){[data-ar="example"][data-variant="box"]>[data-part="rows"]>[data-part="row"]{grid-template-columns:minmax(0,1fr)}}

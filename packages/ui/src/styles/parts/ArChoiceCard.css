@@ -1,0 +1,12 @@
+/* ArChoiceCard の構造：ボタンの中に 印・アイコン・本文。card は縦（右上にチェック）、ほかは横。 */
+[data-ar="choice-card"]{position:relative;display:flex;align-items:center;box-sizing:border-box;min-width:0;margin:0;border:0;font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+[data-ar="choice-card"]:disabled{cursor:not-allowed}
+[data-ar="choice-card"][data-variant="card"]{flex-direction:column;align-items:flex-start}
+[data-ar="choice-card"][data-variant="option"]{align-items:flex-start}
+[data-ar="choice-card"]>[data-part="check"]{display:flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
+[data-ar="choice-card"][data-variant="card"]>[data-part="check"]{position:absolute}
+[data-ar="choice-card"]>[data-part="icon"]{display:flex;align-items:center;justify-content:center;flex:none}
+[data-ar="choice-card"]>[data-part="body"]{display:flex;flex-direction:column;align-items:flex-start;min-width:0;flex:1}
+[data-ar="choice-card"]>[data-part="body"]>[data-part="title"]{display:flex;align-items:center;flex-wrap:wrap;max-width:100%}
+[data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]{display:flex;align-items:flex-start}
+[data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]>[data-ar="icon"]{flex:none}

@@ -1,0 +1,17 @@
+/* @covers ArMapPreview 1.0.0 */
+/* ArMapPreview：今の ARROW には地図の見本がない（「マップで確認」は外の Google マップを開くリンク）。素の antd 4 の材料で作る：
+   枠は #D9D9D9 の1px・角丸8・地は #F5F5F5（区画は #E9F2EB と #EBEBEB、道は白）。円はページのテーマ色の 2px の実線と 15% の地（勤怠エラーのみは antd の warning #FAAD14 の点線）。
+   ピンはテーマ色の塗り 30px、左下の札は antd の Tag（#FAFAFA・#D9D9D9 の枠・角丸4・12px 行20）、右上の出典は 12px rgba(0,0,0,.45)。 */
+[data-ar-design="classic"] [data-ar="map-preview"]{border:1px solid #D9D9D9;border-radius:8px;background:#F5F5F5}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-kind="park"]{left:6%;top:8%;width:20%;height:24%;border-radius:4px;background:#E9F2EB}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-kind="building"]{left:66%;top:62%;width:24%;height:30%;border-radius:4px;background:#EBEBEB}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"]{background:#fff}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="1"]{left:-10%;right:-10%;top:40%;height:14px;transform:rotate(-7deg)}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="2"]{top:-10%;bottom:-10%;left:31%;width:12px;transform:rotate(13deg)}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="3"]{top:-10%;bottom:-10%;left:74%;width:9px;transform:rotate(-4deg)}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="map"]>[data-part="sample"]>[data-part="road"][data-kind="4"]{left:-10%;right:-10%;top:76%;height:8px;transform:rotate(4deg)}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="range"]{border:2px solid var(--ar-accent);background:color-mix(in srgb,var(--ar-accent) 15%,transparent)}
+[data-ar-design="classic"] [data-ar="map-preview"][data-restriction="warn"]>[data-part="range"]{border:2px dashed #FAAD14;background:rgba(250,173,20,.12)}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="pin"]{width:30px;height:30px;color:#fff;fill:var(--ar-accent);stroke-width:1.4}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="caption"]{left:10px;bottom:10px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;background:#FAFAFA;color:rgba(0,0,0,.88);font:400 12px/20px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+[data-ar-design="classic"] [data-ar="map-preview"]>[data-part="source"]{right:10px;top:10px;padding:0 6px;border-radius:4px;background:rgba(255,255,255,.85);color:rgba(0,0,0,.45);font:400 12px/20px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}

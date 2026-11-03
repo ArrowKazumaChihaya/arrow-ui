@@ -1,5 +1,18 @@
-/* @covers ArChangedValue 1.0.0 */
+/* @covers ArChangedValue 1.1.0 */
 /* 今の ChangedValue（ui-ChangedValue）：13px の黒。変わったときは「前 → 後」をまとめて red の 600 */
 [data-ar-design="classic"] [data-ar="changed-value"]{font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
 [data-ar-design="classic"] [data-ar="changed-value"][data-state~="changed"]{color:red;font-weight:600}
 [data-ar-design="classic"] [data-ar="changed-value"]>[data-part="arrow"]{margin:0 .3em}
+/* 1.1 表と一覧：今の ARROW の確認の画面には変わる項目の表がないので、antd の Table（small・枠つき）の材料で。
+   見出しは #FAFAFA・600・下に #F0F0F0、行は padding 8px、変更前は打ち消し線の rgba(0,0,0,.45)、変更後は ChangedValue と同じ red 600。 */
+[data-ar-design="classic"] [data-ar="changed-value"]:is([data-layout="table"],[data-layout="list"]){border:1px solid #F0F0F0;border-radius:8px;overflow:hidden;color:rgba(0,0,0,.88);font:14px/1.5714 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+[data-ar-design="classic"] [data-ar="changed-value"][data-layout="table"] :is(th,td){padding:8px;border-bottom:1px solid #F0F0F0}
+[data-ar-design="classic"] [data-ar="changed-value"][data-layout="table"] thead th,[data-ar-design="classic"] [data-ar="changed-value"][data-layout="list"]>[data-part="head"]{background:#FAFAFA;font-weight:600}
+[data-ar-design="classic"] [data-ar="changed-value"][data-layout="table"] tbody>tr:last-child>*{border-bottom:0}
+[data-ar-design="classic"] [data-ar="changed-value"]:is([data-layout="table"],[data-layout="list"]) [data-part="before"]{color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="changed-value"]:is([data-layout="table"],[data-layout="list"]) [data-part="arrow"]{margin:0 .3em;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="changed-value"]:is([data-layout="table"],[data-layout="list"]) b[data-part="after"]{color:red;font-weight:600}
+[data-ar-design="classic"] [data-ar="changed-value"][data-layout="list"]>[data-part="head"]{padding:8px;border-bottom:1px solid #F0F0F0}
+[data-ar-design="classic"] [data-ar="changed-value"][data-layout="list"]>[data-part="row"]{padding:8px;border-bottom:1px solid #F0F0F0}
+[data-ar-design="classic"] [data-ar="changed-value"][data-layout="list"]>[data-part="row"]:last-child{border-bottom:0}
+[data-ar-design="classic"] [data-ar="changed-value"][data-layout="list"]>[data-part="row"]>[data-part="change"]{gap:4px 0}

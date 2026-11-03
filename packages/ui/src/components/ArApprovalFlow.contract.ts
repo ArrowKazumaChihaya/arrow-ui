@@ -1,0 +1,54 @@
+import type { ArIconName } from "../icons";
+
+/**
+ * ArApprovalFlow 1.0 の契約。承認の流れ（設定の申請設定・勤怠の承認・社員情報の申請）。
+ * 段ごとに 済み（done）・あなたの番／いまの番（current）・まだ（todo）・差し戻し（denied）・飛ばした（skipped）。
+ * デザインが選べる形（ArDesign.forms.ArApprovalFlow）：
+ * - list："list"（既定。layout="list" をそのまま縦の一覧で）／"row"（list も横の札で出す。今の ARROW の AdmitFlowView は横に並んだ丸い札と「→」だけ。classic）。
+ */
+export type ArApprovalState = "done" | "current" | "todo" | "denied" | "skipped";
+
+export interface ArApprovalStep {
+  /** 見分ける値（省くと順番）。 */
+  key?: string | number;
+  /** 段の名前（「店長の承認」「人事部」）。 */
+  title: string;
+  /** 承認する人（「末永 修也」「千速 一真（あなた）」）。 */
+  who?: string;
+  /** 状態。 */
+  state: ArApprovalState;
+  /** 状態の札の文字（省くと状態ごとの既定。done に日時を足すなら「承認済　10/31 18:02」）。 */
+  status?: string;
+}
+
+export interface ArApprovalFlowLabels {
+  done: string;
+  current: string;
+  todo: string;
+  denied: string;
+  skipped: string;
+  /** 流れの名前（読み上げ）。 */
+  flow: string;
+}
+
+export interface ArApprovalFlowProps {
+  /** 段。並んでいる順に承認する。 */
+  steps: readonly ArApprovalStep[];
+  /**
+   * 形。row＝横に並んだ丸い札を ›（→）でつなぐ（設定の承認フロー .cf-flow。step スロットでセレクトに差し替えて編集もできる）。
+   * list＝番号の丸・段の名前と承認する人・状態の札を縦に並べる（勤怠・社員情報の承認の画面）。
+   */
+  layout?: "row" | "list";
+  /** row の先頭の札（「申請」）。省くと出さない。 */
+  start?: string;
+  /** 先頭の札のアイコン。 */
+  startIcon?: ArIconName;
+  /** 状態の札の既定の文字と読み上げ。 */
+  labels?: Partial<ArApprovalFlowLabels>;
+}
+
+/**
+ * slot：step（{ step, index }：row の段の札の中身を差し替える。編集の画面ではここに ArSelect を置く）、
+ * append（row の最後の › の後ろ。「ステップを足す」のボタン）。
+ */
+export type ArApprovalFlowPart = "root" | "item" | "start" | "step" | "sep" | "mark" | "body" | "title" | "who" | "status" | "append";

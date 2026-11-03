@@ -1,4 +1,4 @@
-/* @covers ArTable 1.0.0 */
+/* @covers ArTable 1.1.0 */
 /* ArTable（box＝.lst/.lr：外枠 角丸12・線、見出し34・行44。board＝シフト画面の .v-tr：外枠なし、角の丸い見出し・行50・合計の帯） */
 [data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
@@ -124,3 +124,50 @@
 [data-ar-design="remix"] [data-ar="table"] [data-part="row"][data-state~="dragging"]>td{background:var(--ar-accent-faint)}
 [data-ar-design="remix"] [data-ar="table"] [data-part="row"][data-drop="before"]>td{box-shadow:inset 0 2px 0 var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="table"] [data-part="row"][data-drop="after"]>td{box-shadow:inset 0 -2px 0 var(--ar-accent)}
+
+/* ---- 1.1：給与・年調・勤怠の集計表 ---- */
+/* 右に止めた列：左の端に影（年調の「反映」） */
+[data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-sticky="end"]{background:var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ar="table"] [data-sticky-edge="end"]{box-shadow:-6px 0 6px -6px rgba(31,41,51,.18)}
+[data-ar-design="remix"] [data-ar="table"] tfoot [data-part="cell"][data-sticky]{background:var(--ar-color-surface-alt)}
+/* 2段の見出し（給与一覧）：上の段のまとまりは中央・左に acc-line の線・下に acc-line、下の段は右寄せの 600。合計の列の見出しは acc-100、セルは acc-25。
+   2段の見出しの行は 34px ずつ。押すと開くボタンは ∨／› 14px＋名前＋10.5px 600 mute の「閉じる／内訳」 */
+[data-ar-design="remix"] [data-ar="table"] thead[data-tiers="2"]>tr{height:38px}
+[data-ar-design="remix"] [data-ar="table"] th[data-group-cell]{padding:0 8px;border-bottom:1px solid var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="table"] :is(th,td)[data-group-start]{border-left:1px solid var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="table"] :is(tbody,tfoot) td[data-group-start]{border-left-color:var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th{font-weight:600}
+[data-ar-design="remix"] [data-ar="table"] th[data-total]{background:var(--ar-accent-muted);font-weight:700}
+[data-ar-design="remix"] [data-ar="table"] tbody td[data-total]{background:var(--ar-accent-faint);font-weight:700}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]{gap:4px;border-radius:4px}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]>[data-ar="icon"]{width:14px;height:14px}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]>[data-part="toggle-hint"]{color:var(--ar-color-text-muted);font-size:10.5px;font-weight:600;letter-spacing:0}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]:hover{color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
+/* 見出しの列から開くボタン（年調の「＋ 合計」：.btn.tint.sm 24px・11.5px） */
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"][data-toggle="column"]{height:24px;padding:0 8px;border-radius:7px;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:11.5px;font-weight:700}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"][data-toggle="column"]:hover{background:var(--ar-accent-line)}
+/* 行をまたぐセルは上にそろえ、上下に余白（年調の1人3段の行） */
+[data-ar-design="remix"] [data-ar="table"] td[rowspan]{vertical-align:middle}
+/* 3段の金額（年調：課税支給／社会保険料等／所得税）：1段 24px・間 2px・12.5px */
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="stack"]{gap:2px;padding:8px 0}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="stack"]>*{height:24px;font-size:12.5px;font-variant-numeric:tabular-nums}
+/* 表の中の小さな金額の入力（高さ24・右寄せ・12.5px 500・角丸6・線 field）。直した欄はテーマ色の線と acc-50（給与のページでは黄色）、間違いは赤い線 */
+[data-ar-design="remix"] [data-ar="table"] td[data-editing]{padding-top:4px;padding-bottom:4px}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"]{width:100%;max-width:108px;height:24px;padding:0 6px;border:1px solid var(--ar-color-field);border-radius:6px;background:#fff;color:var(--ar-color-text);font-size:12.5px;font-weight:500;text-align:right;font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"]:hover{border-color:var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"]:focus{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"][data-state~="changed"]{border-color:var(--ar-accent);background:var(--ar-accent-subtle);font-weight:700}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"][data-state~="invalid"]{border-color:var(--ar-color-danger);background:#FFF6F5}
+[data-ar-design="remix"] [data-ar="table"] td[data-align="end"]>[data-part="cell-input"]{display:block;margin-left:auto}
+/* 数字の下の小さな行（前月との差）：11px 700・行の高さ1.3。目立たせる差は #8A4F00 */
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"]{font-size:11px;font-weight:700;line-height:1.3;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"][data-tone="warn"]{color:var(--ar-color-warn)}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"][data-tone="danger"]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="mark"]{width:12px;height:12px;margin-left:3px;color:var(--ar-accent-ink)}
+/* 上の行のセルがまたいでいる行では、行の最初・最後のセルが表の端の列ではない（端の余白を付けない） */
+[data-ar-design="remix"] [data-ar="table"] tbody td[data-part="cell"]:not([data-col]):first-child:not([data-edge="first"]){padding-left:4px}
+[data-ar-design="remix"] [data-ar="table"] tbody td[data-part="cell"]:not([data-col]):last-child:not([data-edge="last"]){padding-right:4px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-part="cell"]:not([data-col]):first-child:not([data-edge="first"]),[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-part="cell"]:not([data-col]):last-child:not([data-edge="last"]){padding-left:8px;padding-right:8px}
+[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th:first-child{padding-left:4px}
+[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th:last-child{padding-right:4px}

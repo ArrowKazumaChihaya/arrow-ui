@@ -1,0 +1,23 @@
+/* ArPayslip の構造：見出しの行、列の格子（列の数は --ar-payslip-cols）、下の合計の箱。表は幅いっぱいで左に名前・右に値。 */
+[data-ar="payslip"]{display:flex;flex-direction:column;box-sizing:border-box;min-width:0}
+[data-ar="payslip"]>[data-part="head"]{display:flex;align-items:flex-end;flex-wrap:wrap}
+[data-ar="payslip"]>[data-part="head"]>[data-part="title"]{margin:0}
+[data-ar="payslip"]>[data-part="head"]>[data-part="meta"]{display:flex;flex-wrap:wrap;margin:0 0 0 auto}
+[data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div{display:flex;align-items:baseline}
+[data-ar="payslip"]>[data-part="head"]>[data-part="meta"] :is(dt,dd){margin:0}
+[data-ar="payslip"]>[data-part="head"]>[data-part="toolbar"]{display:flex;align-items:center}
+[data-ar="payslip"]>[data-part="columns"]{display:grid;grid-template-columns:repeat(var(--ar-payslip-cols,4),minmax(0,1fr));align-items:start}
+[data-ar="payslip"]>[data-part="columns"]>[data-part="column"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="payslip"] [data-part="section"]{display:block;width:100%;box-sizing:border-box;border-collapse:separate;border-spacing:0}
+[data-ar="payslip"] [data-part="section"]>:is(thead,tbody){display:block}
+[data-ar="payslip"] [data-part="section"] tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}
+[data-ar="payslip"] [data-part="section"] thead tr{grid-template-columns:minmax(0,1fr)}
+[data-ar="payslip"] [data-part="section"] :is(th,td){padding:0;text-align:left;font-weight:inherit}
+[data-ar="payslip"] [data-part="section"] [data-part="value"]{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;text-align:right;white-space:nowrap}
+[data-ar="payslip"][data-compare="prev"] [data-part="section"] [data-part="value"]{flex-direction:row;align-items:center;justify-content:flex-end}
+[data-ar="payslip"] [data-part="section"] [data-part="amount"]{display:inline-flex;align-items:center;justify-content:flex-end}
+[data-ar="payslip"] [data-part="section"] [data-part="diff"]{display:block}
+[data-ar="payslip"] [data-part="section"] [data-part="prev"]{display:block}
+[data-ar="payslip"]>[data-part="totals"]{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:0}
+[data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>:is(dt,dd){margin:0}
+@media (max-width:767px){[data-ar="payslip"]>[data-part="columns"]{grid-template-columns:minmax(0,1fr)}}

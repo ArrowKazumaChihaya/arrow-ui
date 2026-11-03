@@ -1,0 +1,7 @@
+/* ArOtpInput の構造：箱は横に並べる。再送は下。 */
+[data-ar="otp-input"]{display:inline-flex;flex-direction:column;max-width:100%}
+[data-ar="otp-input"]>[data-part="fields"]{display:flex}
+[data-ar="otp-input"]>[data-part="fields"]>[data-part="cell"]{flex:none;box-sizing:border-box;min-width:0;margin:0;padding:0;text-align:center;outline:0;font:inherit}
+[data-ar="otp-input"]>[data-part="fields"]>[data-part="input"]{flex:1;box-sizing:border-box;min-width:0;margin:0;outline:0;font:inherit}
+[data-ar="otp-input"]>[data-part="resend"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;margin:0;border:0;font:inherit;cursor:pointer}
+[data-ar="otp-input"]>[data-part="resend"]:disabled{cursor:not-allowed}
