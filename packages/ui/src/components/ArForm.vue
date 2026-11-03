@@ -124,7 +124,7 @@ function onReset() {
 }
 
 provide(arFormKey, {
-  layout: toRef(props, "layout"),
+  layout: computed(() => (props.layout === "horizontal" ? "inline" : props.layout === "vertical" ? "stacked" : props.layout)),
   labelSize: toRef(props, "labelSize"),
   labelWidth: toRef(props, "labelWidth"),
   errorOf,
@@ -141,7 +141,7 @@ defineExpose({ validate, validateField, clearErrors, submit: onSubmit, errors: e
 </script>
 
 <template>
-  <form data-ar="form" data-part="root" :data-layout="layout" novalidate @submit.prevent="onSubmit" @reset="onReset">
+  <form data-ar="form" data-part="root" :data-layout="layout === 'horizontal' ? 'inline' : layout === 'vertical' ? 'stacked' : layout" novalidate @submit.prevent="onSubmit" @reset="onReset">
     <div v-if="summary && submitted && ordered.length" ref="summaryEl" data-part="summary" role="alert" tabindex="-1">
       <p data-part="summary-title"><ArIcon name="alert" size="sm" />{{ summaryTitle.replace("{n}", String(ordered.length)) }}</p>
       <ul data-part="summary-list">

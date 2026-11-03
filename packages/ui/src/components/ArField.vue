@@ -29,7 +29,11 @@ const id = computed(() => props.id ?? auto);
 const labelId = `${auto}-label`;
 const helpId = `${auto}-help`;
 const errorId = `${auto}-error`;
-const layout = computed(() => props.layout ?? form?.layout.value ?? "stacked");
+/** ant-design-vue の名前（horizontal・vertical）も受ける。 */
+const layout = computed(() => {
+  const l = props.layout ?? form?.layout.value ?? "stacked";
+  return l === "horizontal" ? "inline" : l === "vertical" ? "stacked" : l;
+});
 const labelSize = computed(() => props.labelSize ?? form?.labelSize.value ?? "md");
 const labelWidth = computed(() => props.labelWidth ?? form?.labelWidth.value);
 const error = computed(() => props.error ?? (props.name && form ? form.errorOf(props.name) : undefined));
