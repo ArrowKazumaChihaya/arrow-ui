@@ -3,7 +3,7 @@ import DemoBox from "../DemoBox.vue";
 import CodeBlock from "../CodeBlock.vue";
 import { demosOf } from "../demos";
 import * as s from "../snippets";
-const hero = demosOf("_hero")[0]!;
+const screen = demosOf("_screen")[0]!;
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const hero = demosOf("_hero")[0]!;
       同じ画面に、どちらの見た目でも着せ替えられます。右上で切り替えて見比べられます。
     </p>
 
-    <DemoBox :demo="hero" both />
+    <DemoBox :demo="screen" screen />
 
     <h2 id="layers">3つに分けているもの</h2>
     <div class="layers">

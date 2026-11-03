@@ -123,6 +123,10 @@ a { color: inherit; }
   font-size: var(--ar-font-size-body);
 }
 .demo-stage.is-both .demo-canvas { padding-top: 36px; }
+/* 画面の例：余白なしの大きな1枚（横は流す）。両方の見た目のときは上下に重ねる。 */
+.demo.is-screen .demo-canvas { padding: 0; min-height: 0; }
+.demo-stage.is-stack .demo-pane + .demo-pane { border-top: 1px dashed var(--d-line); }
+.demo-stage.is-stack .demo-pane-label { top: 10px; right: 12px; }
 .demo-meta { position: relative; border-top: 1px solid var(--d-line); padding: 16px 20px 12px; }
 .demo-title { position: absolute; top: -12px; left: 16px; margin: 0 !important; font-size: 13px !important; background: var(--d-surface); padding: 0 8px; line-height: 22px; }
 .demo-title a { text-decoration: none; }

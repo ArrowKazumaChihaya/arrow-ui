@@ -52,6 +52,7 @@
 @import "./parts/ArNotificationHost.css";
 @import "./parts/ArPagination.css";
 @import "./parts/ArParagraph.css";
+@import "./parts/ArPeriodNav.css";
 @import "./parts/ArPopconfirm.css";
 @import "./parts/ArPopover.css";
 @import "./parts/ArProgress.css";
@@ -59,6 +60,7 @@
 @import "./parts/ArRadioGroup.css";
 @import "./parts/ArRate.css";
 @import "./parts/ArResult.css";
+@import "./parts/ArSectionHead.css";
 @import "./parts/ArSegmented.css";
 @import "./parts/ArSelect.css";
 @import "./parts/ArSkeleton.css";
@@ -87,6 +89,7 @@
 @import "./parts/ArTree.css";
 @import "./parts/ArTreeSelect.css";
 @import "./parts/ArUpload.css";
+@import "./parts/ArViewOptions.css";
 @import "./parts/ArWatermark.css";
 @import "./parts/ArWeekdayPicker.css";
 @import "./parts/ArYearInput.css";

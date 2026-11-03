@@ -1,0 +1,13 @@
+/* @covers ArSectionHead 1.0.0 */
+/* ArSectionHead：今のシフト詳細の見出し（太字 16px の文字・件数はテーマ色の文字）。箱のアイコンは出さず線のアイコンだけ。 */
+[data-ar-design="classic"] [data-ar="section-head"]{gap:8px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]{gap:6px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="section-head"]>button[data-part="toggle"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:1px}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="icon"]{color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="icon"]>[data-ar="icon"]{width:16px;height:16px}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="title"]{font-size:16px;font-weight:700;line-height:24px}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="count"]{color:var(--ar-accent);font-size:14px;font-weight:700}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="caret"]{color:rgba(0,0,0,.45);transition:transform .2s}
+[data-ar-design="classic"] [data-ar="section-head"][data-state="closed"]>[data-part="toggle"]>[data-part="caret"]{transform:rotate(-90deg)}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="actions"]{gap:8px;margin-left:8px}
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="end"]{gap:8px}

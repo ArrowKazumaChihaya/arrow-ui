@@ -578,9 +578,24 @@
         "ja": "月日の入力"
       },
       {
+        "slug": "period-nav",
+        "name": "ArPeriodNav",
+        "ja": "期間の切り替え"
+      },
+      {
+        "slug": "section-head",
+        "name": "ArSectionHead",
+        "ja": "まとまりの見出し"
+      },
+      {
         "slug": "thumbnail",
         "name": "ArThumbnail",
         "ja": "顔写真（サムネイル）"
+      },
+      {
+        "slug": "view-options",
+        "name": "ArViewOptions",
+        "ja": "表示内容の選択"
       },
       {
         "slug": "year-input",
