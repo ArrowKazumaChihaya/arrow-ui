@@ -13,6 +13,7 @@ const affixed = ref(false);
 const bottom = computed(() => props.offsetBottom !== undefined);
 const style = computed(() => (bottom.value ? { bottom: `${props.offsetBottom}px` } : { top: `${props.offsetTop}px` }));
 
+const isWin = (x: unknown): x is Window => x === window;
 function scroller(node: HTMLElement | null): HTMLElement | Window {
   for (let p = node?.parentElement; p; p = p.parentElement) {
     const o = getComputedStyle(p).overflowY;
@@ -25,10 +26,10 @@ function check() {
   const e = el.value;
   if (!e || !target) return;
   const r = e.getBoundingClientRect();
-  const box = target instanceof Window ? { top: 0, bottom: window.innerHeight } : target.getBoundingClientRect();
+  const box = isWin(target) ? { top: 0, bottom: window.innerHeight } : target.getBoundingClientRect();
   const now = bottom.value
-    ? Math.abs(box.bottom - (props.offsetBottom ?? 0) - r.bottom) < 1 && (target instanceof Window ? document.documentElement.scrollHeight > window.innerHeight : target.scrollHeight > target.clientHeight)
-    : Math.abs(r.top - box.top - props.offsetTop) < 1 && (target instanceof Window ? window.scrollY > 0 : target.scrollTop > 0);
+    ? Math.abs(box.bottom - (props.offsetBottom ?? 0) - r.bottom) < 1 && (isWin(target) ? document.documentElement.scrollHeight > window.innerHeight : target.scrollHeight > target.clientHeight)
+    : Math.abs(r.top - box.top - props.offsetTop) < 1 && (isWin(target) ? window.scrollY > 0 : target.scrollTop > 0);
   if (now !== affixed.value) {
     affixed.value = now;
     emit("change", now);

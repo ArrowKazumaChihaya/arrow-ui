@@ -73,7 +73,7 @@ function closeFly(refocus: boolean) {
 const flyItems = computed(() => props.items.find((i) => i.key === flyout.value)?.children ?? []);
 
 function focusKey(key: string) {
-  root.value?.querySelector<HTMLElement>(`[data-part="item"][data-key="${CSS.escape(key)}"]`)?.focus();
+  root.value?.querySelector<HTMLElement>(`[data-part="item"][data-key="${key.replace(/["\\]/g, "\\$&")}"]`)?.focus();
 }
 const tabStop = computed(() => {
   const items = rows.value.filter((r): r is Extract<Row, { kind: "item" }> => r.kind === "item" && usable(r.item));

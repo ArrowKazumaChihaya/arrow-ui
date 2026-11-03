@@ -1,2 +1,2 @@
 /* remix の見た目。部品（data-ar）・部位（data-part）・状態（data-state）の属性だけを使う。 */
-[data-ar-design="remix"] [data-ar]{font-family:var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar]{font-family:var(--ar-font-family);font-feature-settings:"palt" 1}

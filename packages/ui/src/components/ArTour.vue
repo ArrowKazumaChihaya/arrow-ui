@@ -142,7 +142,7 @@ const placement = computed(() => (rect.value ? (step.value?.placement ?? "bottom
 <template>
   <Teleport :to="portal" :disabled="!open" defer>
     <div v-if="open" data-ar="tour" data-part="overlay" :data-mask="mask || undefined" :data-ar-palette="palette">
-      <div ref="spot" data-part="spot" :data-target="rect ? undefined : 'none'" :style="spotStyle" />
+      <div ref="spot" data-part="spot" :data-target="rect ? undefined : 'none'" :style="spotStyle" @transitionend="float?.place()" />
     </div>
   </Teleport>
   <ArFloat

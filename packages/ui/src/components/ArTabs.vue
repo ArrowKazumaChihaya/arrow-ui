@@ -18,7 +18,7 @@ const emit = defineEmits<{ "update:modelValue": [key: string]; close: [key: stri
 const list = ref<HTMLElement | null>(null);
 
 function focusKey(key: string) {
-  void nextTick(() => list.value?.querySelector<HTMLElement>(`[data-key="${CSS.escape(key)}"]`)?.focus());
+  void nextTick(() => list.value?.querySelector<HTMLElement>(`[data-key="${key.replace(/["\\]/g, "\\$&")}"]`)?.focus());
 }
 function move(from: string, delta: number | "first" | "last") {
   const enabled = props.items.filter((t) => !t.disabled);

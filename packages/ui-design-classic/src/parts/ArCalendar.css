@@ -10,9 +10,9 @@
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="title"]{font-size:18px;font-weight:600;line-height:32px}
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]{gap:8px}
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="year"]{width:100px}
-[data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]{height:32px;padding:0 15px;border:1px solid #d9d9d9;background:#fff;color:rgba(0,0,0,.88);font:400 14px/30px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;transition:color .2s,border-color .2s}
-[data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:first-child{border-radius:6px 0 0 6px}
-[data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:last-child{margin-left:-1px;border-radius:0 6px 6px 0}
+[data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]{height:24px;padding:0 7px;border:1px solid #d9d9d9;background:#fff;color:rgba(0,0,0,.88);font:400 14px/22px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;transition:color .2s,border-color .2s}
+[data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:first-child{border-radius:4px 0 0 4px}
+[data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:last-child{margin-left:-1px;border-radius:0 4px 4px 0}
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:hover{color:#4096FF}
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"][data-state~="selected"]{position:relative;z-index:1;border-color:#1677FF;color:#1677FF}
 [data-ar-design="classic"] [data-ar="calendar"]>[data-part="header"]>[data-part="extra"]>[data-part="modes"]>[data-part="mode"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}

@@ -5,7 +5,7 @@
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]{gap:0;min-height:28px;padding:0 0 4px calc(var(--ar-tree-depth,0) * 24px);outline:0}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>:is([data-part="switcher"],[data-part="handle"]){width:24px;height:24px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>[data-part="switcher"]>[data-ar="icon"]:not([data-part="grip"]){display:none}
-[data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>[data-part="switcher"]:not([data-state="leaf"])::before{content:"";width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid currentColor;border-radius:1px;transition:transform .3s}
+[data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>[data-part="switcher"]:not([data-state="leaf"])::before{content:"";width:0;height:0;border-left:4.5px solid transparent;border-right:4.5px solid transparent;border-top:5px solid currentColor;border-radius:1px;transition:transform .3s}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>[data-part="switcher"][data-state="closed"]::before{transform:rotate(-90deg)}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>:is([data-part="handle"],[data-part="switcher"])>[data-ar="icon"]{width:14px;height:14px;color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>[data-part="check"]{margin:0 8px 0 0}

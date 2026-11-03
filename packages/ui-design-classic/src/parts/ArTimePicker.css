@@ -7,7 +7,7 @@
 [data-ar-design="classic"] [data-ar="time-picker"]>[data-part="trigger"]:hover:not(:disabled){border-color:#4096FF;color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="time-picker"]>[data-part="trigger"]:focus-visible,[data-ar-design="classic"] [data-ar="time-picker"][data-state~="open"]>[data-part="trigger"]{outline:0;border-color:#4096FF;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
 [data-ar-design="classic"] [data-ar="time-picker"][data-state~="disabled"]>[data-part="trigger"]{background:rgba(0,0,0,.04)}
-[data-ar-design="classic"] [data-ar="time-picker-panel"]{background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:rgba(0,0,0,.88);font-size:14px;font-family:var(--ar-font-family)}
+[data-ar-design="classic"] [data-ar="time-picker-panel"]{background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:rgba(0,0,0,.88);font-size:13px;font-family:var(--ar-font-family)}
 [data-ar-design="classic"] [data-ar="time-picker-panel"][data-inline]{box-shadow:0 0 0 1px rgba(5,5,5,.06)}
 [data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]{height:224px}
 [data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]{width:56px;padding:4px 0;border-left:1px solid rgba(5,5,5,.06)}

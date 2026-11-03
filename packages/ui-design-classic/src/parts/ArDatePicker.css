@@ -17,7 +17,7 @@
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]:focus-visible{outline:2px solid #91CAFF;outline-offset:-2px}
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]{grid-template-columns:repeat(7,36px);padding:8px 18px}
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{height:32px;line-height:32px;font-size:13px;font-weight:400;color:rgba(0,0,0,.88)}
-[data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]{position:relative;z-index:0;height:32px;background:none;color:rgba(0,0,0,.88);font:inherit;font-size:14px;line-height:24px}
+[data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]{position:relative;z-index:0;height:32px;background:none;color:rgba(0,0,0,.88);font:inherit;font-size:13px;line-height:24px}
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]::before{content:"";position:absolute;z-index:-1;top:4px;left:6px;width:24px;height:24px;border-radius:4px;transition:background .2s}
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"][data-state~="outside"]{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]:hover:not([data-state~="selected"]):not([data-state~="disabled"])::before{background:rgba(0,0,0,.04)}

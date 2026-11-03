@@ -21,6 +21,7 @@ watch(
 const current = computed(() => inner.value ?? props.items[0]?.key);
 let lock = 0;
 
+const isWin = (x: unknown): x is Window => x === window;
 function box(): HTMLElement | Window {
   if (!props.container) return window;
   if (typeof props.container === "string") return document.querySelector<HTMLElement>(props.container) ?? window;
@@ -28,7 +29,7 @@ function box(): HTMLElement | Window {
 }
 function targetOf(href: string): HTMLElement | null {
   try {
-    return href.startsWith("#") ? document.querySelector<HTMLElement>(`#${CSS.escape(href.slice(1))}`) : null;
+    return href.startsWith("#") ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
   } catch {
     return null;
   }
@@ -41,14 +42,14 @@ function setCurrent(key: string) {
 function onScroll() {
   if (Date.now() < lock) return;
   const b = box();
-  const top = b instanceof Window ? 0 : b.getBoundingClientRect().top;
+  const top = isWin(b) ? 0 : b.getBoundingClientRect().top;
   let found: string | undefined;
   for (const it of props.items) {
     const t = targetOf(it.href);
     if (t && t.getBoundingClientRect().top - top <= props.offset + 5) found = it.key;
   }
   const atEnd =
-    b instanceof Window
+    isWin(b)
       ? window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
       : b.scrollTop > 0 && b.scrollTop + b.clientHeight >= b.scrollHeight - 2;
   if (atEnd) found = props.items.at(-1)?.key ?? found;
@@ -62,7 +63,7 @@ function go(key: string, href: string, e: MouseEvent) {
   const b = box();
   const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
   const behavior = reduce ? "auto" : "smooth";
-  if (b instanceof Window) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - props.offset, behavior });
+  if (isWin(b)) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - props.offset, behavior });
   else b.scrollTo({ top: t.getBoundingClientRect().top - b.getBoundingClientRect().top + b.scrollTop - props.offset, behavior });
   lock = Date.now() + 600;
   setCurrent(key);
