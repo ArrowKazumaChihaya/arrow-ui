@@ -25,7 +25,7 @@ async function copy() {
   <section class="demo" :id="demo.id">
     <div class="demo-stage" :class="{ 'is-both': list.length > 1 }">
       <div v-for="d in list" :key="d.id" class="demo-pane">
-        <div v-if="list.length > 1" class="demo-pane-label">{{ d.id }}</div>
+        <div v-if="list.length > 1" class="demo-pane-label">{{ d.id === "remix" ? "新しい見た目" : "今の見た目" }}</div>
         <ArUiProvider :design="d" :palette="palette" scope="self">
           <div class="demo-canvas"><component :is="demo.comp" /></div>
         </ArUiProvider>

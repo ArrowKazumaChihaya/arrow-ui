@@ -7,7 +7,7 @@ const at = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 // 説明の画面はライブラリのソースを直接読む。ビルドは1つの JS と1つの CSS にまとめる（artifact.mjs で1枚の HTML にする）
 export default defineConfig({
   plugins: [vue()],
-  base: "./",
+  base: process.env.DOCS_BASE ?? "./",
   resolve: {
     alias: [
       { find: /^@arrow\/ui-tokens$/, replacement: at("../../packages/ui-tokens/src/index.ts") },

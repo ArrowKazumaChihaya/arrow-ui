@@ -2,7 +2,7 @@
 export interface NavItem {
   slug: string;
   name: string;
-  /** 日本語の短い説明（目次の2行目）。 */
+  /** 日本語の名前（目次と見出しに大きく出す）。 */
   ja: string;
 }
 export interface NavGroup {
@@ -11,17 +11,17 @@ export interface NavGroup {
 }
 
 export const guides: NavItem[] = [
-  { slug: "intro", name: "はじめに", ja: "しくみと使い方" },
-  { slug: "designs", name: "デザイン", ja: "トークンとテーマ色" },
-  { slug: "requires", name: "部品の宣言", ja: "足りないデザインは使えない" },
+  { slug: "intro", name: "", ja: "はじめに" },
+  { slug: "designs", name: "", ja: "デザインの値と色" },
+  { slug: "requires", name: "", ja: "使う部品の宣言" },
 ];
 
 export const groups: NavGroup[] = [
   {
     title: "しくみ",
     items: [
-      { slug: "provider", name: "ArUiProvider", ja: "デザインを配る" },
-      { slug: "theme-scope", name: "ArThemeScope", ja: "ページの色" },
+      { slug: "provider", name: "ArUiProvider", ja: "デザインを当てる枠" },
+      { slug: "theme-scope", name: "ArThemeScope", ja: "ページの色を替える枠" },
     ],
   },
   {
@@ -29,8 +29,8 @@ export const groups: NavGroup[] = [
     items: [
       { slug: "stack", name: "ArStack", ja: "縦に並べる" },
       { slug: "cluster", name: "ArCluster", ja: "横に並べる" },
-      { slug: "grid", name: "ArGrid", ja: "格子" },
-      { slug: "split", name: "ArSplit", ja: "2つに分ける" },
+      { slug: "grid", name: "ArGrid", ja: "格子に並べる" },
+      { slug: "split", name: "ArSplit", ja: "左右に分ける" },
     ],
   },
   {
@@ -38,17 +38,17 @@ export const groups: NavGroup[] = [
     items: [
       { slug: "button", name: "ArButton", ja: "ボタン" },
       { slug: "icon", name: "ArIcon", ja: "アイコン" },
-      { slug: "tag", name: "ArTag", ja: "札" },
+      { slug: "tag", name: "ArTag", ja: "札（タグ）" },
     ],
   },
   {
     title: "入力",
     items: [
-      { slug: "field", name: "ArField", ja: "項目の枠" },
-      { slug: "text-input", name: "ArTextInput", ja: "文字" },
-      { slug: "select", name: "ArSelect", ja: "選ぶ" },
-      { slug: "time-input", name: "ArTimeInput", ja: "時刻" },
-      { slug: "date-input", name: "ArDateInput", ja: "日付" },
+      { slug: "field", name: "ArField", ja: "入力の項目" },
+      { slug: "text-input", name: "ArTextInput", ja: "文字の入力" },
+      { slug: "select", name: "ArSelect", ja: "一覧から選ぶ" },
+      { slug: "time-input", name: "ArTimeInput", ja: "時刻の入力" },
+      { slug: "date-input", name: "ArDateInput", ja: "日付の入力" },
       { slug: "checkbox", name: "ArCheckbox", ja: "チェック" },
       { slug: "radio-group", name: "ArRadioGroup", ja: "1つを選ぶ" },
       { slug: "switch", name: "ArSwitch", ja: "切り替え" },

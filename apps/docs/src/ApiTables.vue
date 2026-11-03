@@ -27,11 +27,11 @@ const slots = computed(() => props.meta.slots.map((s) => s.replaceAll("`", "")))
 
 <template>
   <div class="api">
-    <h2 id="api">API</h2>
-    <h3>Props</h3>
+    <h2 id="api">指定できること</h2>
+    <h3>属性（部品に渡す値）</h3>
     <div v-if="meta.props.length" class="tbl-wrap">
       <table class="tbl">
-        <thead><tr><th>名前</th><th>説明</th><th>型</th><th>既定</th></tr></thead>
+        <thead><tr><th>名前</th><th>説明</th><th>値の種類</th><th>何も渡さないとき</th></tr></thead>
         <tbody>
           <tr v-for="p in meta.props" :key="p.name">
             <td class="nm"><code>{{ kebab(p.name) }}</code><span v-if="p.required" class="req">必須</span></td>
@@ -45,10 +45,10 @@ const slots = computed(() => props.meta.slots.map((s) => s.replaceAll("`", "")))
     <p v-else class="mute">なし</p>
 
     <template v-if="emits.length">
-      <h3>Events</h3>
+      <h3>イベント（部品から届く知らせ）</h3>
       <div class="tbl-wrap">
         <table class="tbl">
-          <thead><tr><th>名前</th><th>説明</th><th>渡す値</th></tr></thead>
+          <thead><tr><th>名前</th><th>説明</th><th>一緒に届く値</th></tr></thead>
           <tbody>
             <tr v-for="e in emits" :key="e.name">
               <td class="nm"><code>{{ e.name }}</code></td>
@@ -62,15 +62,15 @@ const slots = computed(() => props.meta.slots.map((s) => s.replaceAll("`", "")))
 
     <div class="api-cols">
       <div>
-        <h3>Slots</h3>
+        <h3>差し込める場所（スロット）</h3>
         <ul v-if="slots.length" class="chips"><li v-for="s in slots" :key="s"><code>#{{ s }}</code></li></ul>
         <p v-else class="mute">なし</p>
       </div>
       <div>
-        <h3>部位（data-part）</h3>
+        <h3>見た目を当てる部位</h3>
         <ul v-if="meta.parts.length" class="chips"><li v-for="p in meta.parts" :key="p"><code>{{ p }}</code></li></ul>
         <p v-else class="mute">なし</p>
-        <p class="hint">デザインの CSS が見た目を当てる場所。<code>[data-ar="{{ meta.dataAr }}"] &gt; [data-part="…"]</code> のように書く。</p>
+        <p class="hint">見た目のライブラリ（remix・classic）が色や形を当てる場所の名前。<code>[data-ar="{{ meta.dataAr }}"] &gt; [data-part="…"]</code> のように書く。</p>
       </div>
     </div>
   </div>

@@ -35,10 +35,11 @@ watch(
 );
 
 const modes: { value: ViewMode; label: string }[] = [
-  { value: "remix", label: "remix" },
-  { value: "classic", label: "classic" },
+  { value: "remix", label: "新しい見た目" },
+  { value: "classic", label: "今の見た目" },
   { value: "both", label: "並べて比べる" },
 ];
+const paletteJa: Record<string, string> = { blue: "青", green: "緑", yellow: "黄", pink: "桃", orange: "橙", teal: "青緑", amber: "琥珀" };
 const accentOf = (p: (typeof paletteNames)[number]) => designs[0].palettes[p].accent;
 const query = ref("");
 const filtered = computed(() => {
@@ -59,10 +60,10 @@ const filtered = computed(() => {
       <a class="brand" href="#intro">
         <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18L12 5l8 13M8 13h8" /></svg></span>
         <span class="brand-name">ARROW UI</span>
-        <span class="brand-ver">0.1</span>
+        <span class="brand-ver">部品集</span>
       </a>
       <div class="top-ctrl">
-        <div class="seg" role="radiogroup" aria-label="見本のデザイン">
+        <div class="seg" role="radiogroup" aria-label="見本の見た目">
           <button
             v-for="m in modes"
             :key="m.value"
@@ -80,8 +81,8 @@ const filtered = computed(() => {
             type="button"
             role="radio"
             :aria-checked="palette === p"
-            :aria-label="p"
-            :title="p"
+            :aria-label="paletteJa[p]"
+            :title="paletteJa[p]"
             :class="{ on: palette === p }"
             :style="{ '--c': accentOf(p) }"
             @click="palette = p"
@@ -91,14 +92,14 @@ const filtered = computed(() => {
     </header>
 
     <nav class="side" aria-label="目次">
-      <input v-model="query" class="side-search" type="search" placeholder="部品を探す" aria-label="部品を探す" />
+      <input v-model="query" class="side-search" type="search" placeholder="部品を探す（例：ボタン）" aria-label="部品を探す" />
       <div class="side-group">
-        <a v-for="g in guides" :key="g.slug" :href="`#${g.slug}`" class="side-link" :class="{ on: item.slug === g.slug }">{{ g.name }}</a>
+        <a v-for="g in guides" :key="g.slug" :href="`#${g.slug}`" class="side-link" :class="{ on: item.slug === g.slug }">{{ g.ja }}</a>
       </div>
       <div v-for="g in filtered" :key="g.title" class="side-group">
         <p class="side-title">{{ g.title }}</p>
         <a v-for="i in g.items" :key="i.slug" :href="`#${i.slug}`" class="side-link" :class="{ on: item.slug === i.slug }">
-          <span>{{ i.name }}</span><small>{{ i.ja }}</small>
+          <span>{{ i.ja }}</span><small>{{ i.name }}</small>
         </a>
       </div>
     </nav>
@@ -111,11 +112,11 @@ const filtered = computed(() => {
       <ComponentPage v-else :key="item.slug" :item="item" />
 
       <nav class="pager" aria-label="前後のページ">
-        <a v-if="prev" :href="`#${prev.slug}`" class="pager-link"><small>前へ</small>{{ prev.name }}</a>
+        <a v-if="prev" :href="`#${prev.slug}`" class="pager-link"><small>前へ</small>{{ prev.ja }}</a>
         <span v-else />
-        <a v-if="next" :href="`#${next.slug}`" class="pager-link next"><small>次へ</small>{{ next.name }}</a>
+        <a v-if="next" :href="`#${next.slug}`" class="pager-link next"><small>次へ</small>{{ next.ja }}</a>
       </nav>
-      <footer class="foot">arrow-ui · Vue 3 · 部品のライブラリ @arrow/ui ／ デザインのライブラリ remix・classic</footer>
+      <footer class="foot">ARROW UI ・ ARROW シリーズ共通の部品と見た目</footer>
     </main>
   </div>
 </template>

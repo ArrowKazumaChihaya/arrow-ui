@@ -19,17 +19,17 @@ const isLayout = computed(() => ["ArStack", "ArCluster", "ArGrid", "ArSplit"].in
 
 <template>
   <article class="page">
-    <p class="eyebrow">{{ item.ja }}</p>
-    <h1 class="page-title">{{ item.name }}</h1>
+    <p class="eyebrow"><code class="eyebrow-code">{{ item.name }}</code></p>
+    <h1 class="page-title">{{ item.ja }}</h1>
     <p class="lede pre">{{ meta.description }}</p>
     <ul class="facts">
-      <li><span>契約の版</span><code>{{ meta.version }}</code></li>
-      <li v-if="meta.dataAr"><span>data-ar</span><code>{{ meta.dataAr }}</code></li>
-      <li v-if="structural"><span>見た目</span>デザインに依らない（構造だけ）</li>
+      <li><span>決まりの版</span><code>{{ meta.version }}</code></li>
+      <li v-if="meta.dataAr"><span>CSS の目印</span><code>{{ meta.dataAr }}</code></li>
+      <li v-if="structural"><span>見た目</span>どの見た目でも同じ（形だけ持つ）</li>
       <li v-else v-for="c in covered" :key="c.id">
-        <span>{{ c.id }}</span>
-        <template v-if="c.v">対応 <code>{{ c.v }}</code></template>
-        <template v-else><em class="ng">未対応</em></template>
+        <span>{{ c.id === "remix" ? "新しい見た目" : "今の見た目" }}</span>
+        <template v-if="c.v">対応済み</template>
+        <template v-else><em class="ng">まだ</em></template>
       </li>
     </ul>
     <p v-if="isLayout" class="callout">
