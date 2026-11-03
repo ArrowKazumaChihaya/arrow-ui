@@ -10,6 +10,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch } 
 import ArAvatar from "./ArAvatar.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
+import { useDesignForm } from "../provider/context";
 import type { ArRowKey, ArTableAvatar, ArTableColumn, ArTableFooterValue, ArTableLabels, ArTableProps, ArTableSort } from "./ArTable.contract";
 
 const props = withDefaults(defineProps<ArTableProps<Row>>(), {
@@ -36,6 +37,8 @@ const emit = defineEmits<{
 }>();
 const slots = useSlots();
 
+/** 形（ArDesign.forms.ArTable.selectHead）：label は見出しのチェックの左に「全選択」の文字を出す。 */
+const selectHead = useDesignForm<"check" | "label">("ArTable", "selectHead", "check");
 const L = computed<ArTableLabels>(() => ({
   selectAll: "すべて選ぶ",
   selectRow: "この行を選ぶ",
@@ -191,6 +194,7 @@ const colspan = computed(
               :style="stick('__select')"
               scope="col"
             >
+              <span v-if="selectHead === 'label'" data-part="select-text" aria-hidden="true">{{ L.selectAllText ?? "全選択" }}</span>
               <span data-part="check" :data-state="allState === 'all' ? 'checked' : allState === 'some' ? 'indeterminate' : undefined">
                 <input
                   ref="headCheck"

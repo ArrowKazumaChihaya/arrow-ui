@@ -1,4 +1,9 @@
-/** ArProgress 1.0 の契約。 */
+/**
+ * ArProgress 1.0 の契約。
+ *
+ * デザインが選ぶ形（ArDesign.forms.ArProgress）。値の受け渡しはどの形でも同じ。
+ * - `stepsInfo`：刻み（type="steps"）の右の数。`"count"`（既定）＝「3/5」。`"percent"`＝「60%」（antd と同じ）。
+ */
 export interface ArProgressProps {
   /** line：線。circle：円。steps：刻み（いくつ中いくつ）。 */
   type?: "line" | "circle" | "steps";

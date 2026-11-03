@@ -7,6 +7,8 @@ import type { ComputedRef, InjectionKey, Ref } from "vue";
 export interface ArFormContext {
   layout: Ref<"stacked" | "inline">;
   labelSize: Ref<"sm" | "md" | "lg">;
+  /** inline のラベルの幅（CSS の長さ。labelSize より優先）。 */
+  labelWidth: Ref<string | undefined>;
   /** name ごとの間違いの文（なければ undefined）。 */
   errorOf: (name: string) => string | undefined;
   /** name に必須の決まりがあるか。 */

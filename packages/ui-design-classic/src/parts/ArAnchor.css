@@ -1,11 +1,14 @@
 /* @covers ArAnchor 1.0.0 */
-/* ArAnchor：ant-design-vue 4 の Anchor（左に2pxの線、今いるところは #1677FF の線と文字。項目 4px 0 4px 16px・13px）。 */
+/* ArAnchor：ant-design-vue 4 の Anchor（参照 antd-Anchor）。
+   縦：左に 2px の線 rgba(5,5,5,.06)、項目 4px 0 4px 16px・13px（行の高さ 13px）・rgba(0,0,0,.88)、今いるところはテーマ色の線（2px）と文字。
+   横：下に 1px の線、項目の間 16px・4px 0、今いるところは下に 2px のテーマ色。高さ 21。
+   今の ARROW は Anchor を使っていないので、主色（antd は #1677FF）はページのテーマ色にする。 */
 [data-ar-design="classic"] [data-ar="anchor"]{border-left:2px solid rgba(5,5,5,.06);font-size:13px;line-height:13px;color:rgba(0,0,0,.88)}
-[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]{padding:4px 0 4px 16px;margin-left:-2px;border-left:2px solid transparent;color:rgba(0,0,0,.88);transition:color .3s}
-[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]:hover{color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]{padding:4px 0 4px 16px;margin-left:-2px;border-left:2px solid transparent;color:rgba(0,0,0,.88);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]:hover{color:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"][data-level="2"]{padding-left:32px}
-[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"][data-state~="active"]{color:var(--classic-blue);border-left-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"][data-state~="active"]{color:var(--ar-accent);border-left-color:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]:focus-visible{outline:2px solid #91CAFF;outline-offset:-2px}
-[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]{gap:16px;border-left:0;border-bottom:1px solid rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"]{padding:4px 0;margin:0 0 -1px;border-left:0;border-bottom:2px solid transparent}
-[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"][data-state~="active"]{border-bottom-color:var(--classic-blue)}
+[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]{gap:16px;padding-left:2px;border-left:0;box-shadow:inset 0 -1px 0 rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"]{padding:4px 0;margin:0;border-left:0}
+[data-ar-design="classic"] [data-ar="anchor"][data-direction="horizontal"]>[data-part="link"][data-state~="active"]{box-shadow:inset 0 -2px 0 var(--ar-accent)}

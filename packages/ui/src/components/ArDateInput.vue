@@ -7,13 +7,16 @@
  */
 import { computed, ref, watch } from "vue";
 import ArYearSelect from "../internal/ArYearSelect.vue";
-import { clampDate, daysInMonth, splitDate, toNumber, weekdayOf } from "./date";
+import { eraLabel } from "../internal/yearParts";
+import { useDesignForm } from "../provider/context";
+import { clampDate, daysInMonth, formatDate, splitDate, toNumber, weekdayOf } from "./date";
 import type { ArDateInputProps } from "./ArDateInput.contract";
 
 const thisYear = new Date().getFullYear();
 const props = withDefaults(defineProps<ArDateInputProps>(), {
   minYear: undefined,
   maxYear: undefined,
+  era: false,
   showWeekday: true,
   invalid: false,
   disabled: false,
@@ -23,10 +26,17 @@ const props = withDefaults(defineProps<ArDateInputProps>(), {
 });
 const emit = defineEmits<{ "update:modelValue": [value: string | null] }>();
 
+const invalidForm = useDesignForm<"clamp" | "message">("ArDateInput", "invalidDate", "clamp");
+const padForm = useDesignForm<"none" | "zero">("ArDateInput", "pad", "none");
+const yearEmpty = useDesignForm<"none" | "option">("ArDateInput", "yearEmpty", "none");
+const show = (n: number) => (padForm.value === "zero" ? String(n).padStart(2, "0") : String(n));
 const parts = ref({ y: "", m: "", d: "" });
+/** 打った月日がありえない日（message の形のときだけ）。 */
+const badDate = ref(false);
 function syncFromValue(v: string | null) {
   const s = splitDate(v);
-  parts.value = s ? { y: String(s.y), m: String(s.m), d: String(s.d) } : { y: parts.value.y || String(thisYear), m: "", d: "" };
+  if (!s && badDate.value) return; // 「無効な日付」のときは打った数字を残す
+  parts.value = s ? { y: String(s.y), m: show(s.m), d: show(s.d) } : { y: parts.value.y || String(thisYear), m: "", d: "" };
 }
 syncFromValue(props.modelValue);
 watch(() => props.modelValue, syncFromValue);
@@ -35,7 +45,8 @@ const years = computed(() => {
   const cur = Number(parts.value.y) || thisYear;
   const from = Math.min(props.minYear ?? thisYear - 5, cur);
   const to = Math.max(props.maxYear ?? thisYear + 5, cur);
-  return Array.from({ length: to - from + 1 }, (_, i) => from + i);
+  // 新しい年が上（今の ARROW・ArYearInput と同じ）
+  return Array.from({ length: to - from + 1 }, (_, i) => to - i);
 });
 
 const weekday = computed(() => {
@@ -49,9 +60,19 @@ function commit() {
   const y = toNumber(parts.value.y);
   const m = toNumber(parts.value.m);
   const d = toNumber(parts.value.d);
-  const next = y && m && d ? clampDate(y, m, d) : null;
+  let next = y && m && d ? clampDate(y, m, d) : null;
+  badDate.value = false;
+  if (invalidForm.value === "message" && y && m && d && next !== formatDate(y, m, d)) {
+    badDate.value = true;
+    next = null;
+  }
   if (next !== props.modelValue) emit("update:modelValue", next);
   else syncFromValue(next);
+  if (!badDate.value && next) {
+    const s = splitDate(next)!;
+    parts.value.m = show(s.m);
+    parts.value.d = show(s.d);
+  }
 }
 
 function step(which: "m" | "d", e: KeyboardEvent) {
@@ -73,7 +94,11 @@ function step(which: "m" | "d", e: KeyboardEvent) {
 }
 
 function setYear(y: number | null) {
-  if (y === null) return;
+  if (y === null) {
+    parts.value.y = "";
+    commit();
+    return;
+  }
   parts.value.y = String(y);
   commit();
 }
@@ -85,12 +110,16 @@ function setYear(y: number | null) {
     data-part="root"
     role="group"
     :aria-label="label"
-    :data-state="[invalid && 'invalid', disabled && 'disabled'].filter(Boolean).join(' ') || undefined"
+    :data-era="era || undefined"
+    :data-state="[(invalid || badDate) && 'invalid', badDate && 'bad-date', disabled && 'disabled'].filter(Boolean).join(' ') || undefined"
   >
     <ArYearSelect
       :id="id"
       :model-value="Number(parts.y) || null"
       :years="years"
+      :label-of="era ? eraLabel : undefined"
+      :allow-empty="yearEmpty === 'option'"
+      :placeholder="labels.empty ?? '未選択'"
       :invalid="invalid"
       :disabled="disabled"
       :label="`${label ?? ''}${labels.year}`"
@@ -105,7 +134,7 @@ function setYear(y: number | null) {
       maxlength="2"
       :disabled="disabled"
       :aria-label="`${label ?? ''}${labels.month}`"
-      :aria-invalid="invalid || undefined"
+      :aria-invalid="invalid || badDate || undefined"
       @blur="commit"
       @keydown="step('m', $event)"
     />
@@ -118,11 +147,12 @@ function setYear(y: number | null) {
       maxlength="2"
       :disabled="disabled"
       :aria-label="`${label ?? ''}${labels.day}`"
-      :aria-invalid="invalid || undefined"
+      :aria-invalid="invalid || badDate || undefined"
       @blur="commit"
       @keydown="step('d', $event)"
     />
     <span data-part="unit" aria-hidden="true">{{ labels.day }}</span>
-    <span v-if="showWeekday" data-part="weekday" :data-kind="weekday?.kind">{{ weekday ? `（${weekday.text}）` : "" }}</span>
+    <span v-if="badDate" data-part="error" role="alert">{{ labels.invalidDate ?? "無効な日付" }}</span>
+    <span v-else-if="showWeekday" data-part="weekday" :data-kind="weekday?.kind">{{ weekday ? `（${weekday.text}）` : "" }}</span>
   </span>
 </template>

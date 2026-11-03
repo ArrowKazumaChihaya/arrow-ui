@@ -1,6 +1,10 @@
 import type { ArIconName } from "../icons";
 
-/** ArModal 1.1 の契約。 */
+/**
+ * ArModal 1.1 の契約。
+ * デザインが選べる形（ArDesign.forms.ArModal）：
+ * - buttonText："plain"（既定。ボタンの文字はそのまま）／"antd"（ant-design-vue と同じく、2 文字の漢字・かなの文字の間に空白を入れる：「登録」→「登 録」。classic）。
+ */
 export interface ArModalProps {
   open: boolean;
   title: string;

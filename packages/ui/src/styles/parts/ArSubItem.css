@@ -1,0 +1,2 @@
+[data-ar="sub-item"]{display:block;width:100%;box-sizing:border-box}
+[data-ar="sub-item"]>[data-part="title"],[data-ar="sub-item"]>[data-part="content"]{display:block;position:relative}

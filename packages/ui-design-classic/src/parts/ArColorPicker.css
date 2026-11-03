@@ -25,3 +25,13 @@
 [data-ar-design="classic"] [data-ar="color-swatches"]>[data-part="swatch"][data-state~="selected"]::after{content:"";position:absolute;left:50%;top:45%;width:10px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:translate(-50%,-50%) rotate(-45deg)}
 [data-ar-design="classic"] [data-ar="color-swatches"]>[data-part="swatch"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
 [data-ar-design="classic"] [data-ar="color-swatches"]>[data-part="swatch"]:disabled{opacity:.5}
+/* panel: "dialog"（今の ARROW の Colorpicker：ui-Colorpicker-open）：真ん中のダイアログ（幅372・題「色選択」）に、
+   同じ色の濃さ違い4つを縦にまとめた升（40×24・間1px・まとまりの上下の角は2px）を横に6つずつ（間10px）。選んだ色は白いレ点。 */
+[data-ar-design="classic"] [data-ar="color-picker-dialog"]{display:flex;justify-content:center;padding:16px 0 0}
+[data-ar-design="classic"] [data-ar="color-picker-dialog"]>[data-ar="color-swatches"][data-grouped]{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:0 10px;width:290px}
+[data-ar-design="classic"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]{display:flex;flex-direction:column;gap:1px;padding-bottom:10px}
+[data-ar-design="classic"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]{position:relative;width:40px;height:24px;margin:0;padding:0;border:0;border-radius:0;cursor:pointer}
+[data-ar-design="classic"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]:first-child{border-radius:2px 2px 0 0}
+[data-ar-design="classic"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]:last-child{border-radius:0 0 2px 2px}
+[data-ar-design="classic"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"][data-state~="selected"]::after{content:"";position:absolute;left:50%;top:44%;width:12px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:translate(-50%,-50%) rotate(-45deg)}
+[data-ar-design="classic"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px;z-index:1}

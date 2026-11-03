@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<ArFormProps>(), {
   rules: () => ({}),
   layout: "stacked",
   labelSize: "md",
+  labelWidth: undefined,
   validateOn: "blur",
   summary: false,
   summaryTitle: "入力に間違いが{n}件あります",
@@ -125,6 +126,7 @@ function onReset() {
 provide(arFormKey, {
   layout: toRef(props, "layout"),
   labelSize: toRef(props, "labelSize"),
+  labelWidth: toRef(props, "labelWidth"),
   errorOf,
   isRequired: (name) => rulesOf(name).some((r) => r.required),
   register: (name, id, label) => fields.set(name, { id, label }),

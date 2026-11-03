@@ -12,3 +12,7 @@
 [data-ar-design="remix"] [data-ar="pagination"][data-size="sm"]>:is([data-part="prev"],[data-part="next"],[data-part="page"]){min-width:26px;height:26px;border-radius:7px;font-size:12px;box-shadow:none}
 [data-ar-design="remix"] [data-ar="pagination"][data-size="sm"]>:is([data-part="prev"],[data-part="next"],[data-part="page"]):hover:not(:disabled):not([data-state~="selected"]){box-shadow:none;background:var(--ar-color-hover)}
 [data-ar-design="remix"] [data-ar="pagination"][data-size="sm"]>:is([data-part="prev"],[data-part="next"]):disabled{background:none}
+/* simple：入力欄と「／ 全ページ数」 */
+[data-ar-design="remix"] [data-ar="pagination"][data-simple]>[data-part="simple"]{gap:6px;margin:0 4px;font-size:13px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="pagination"][data-simple]>[data-part="simple"]>[data-part="jump"]{width:48px;height:28px;padding:0 6px;border:1px solid var(--ar-color-field);border-radius:8px;background:#fff;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="pagination"][data-simple]>[data-part="simple"]>[data-part="jump"]:focus{outline:0;border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}

@@ -33,7 +33,7 @@ const emit = defineEmits<{ select: [key: string, event: MouseEvent] }>();
           :type="s.href ? undefined : 'button'"
           @click="emit('select', s.key, $event)"
         >
-          <ArIcon v-if="s.icon" :name="s.icon" data-part="support-icon" />
+          <ArIcon v-if="s.icon" :name="s.icon" data-part="support-icon" :data-icon="s.icon" />
           <span data-part="support-label">{{ s.label }}</span>
         </component>
       </div>

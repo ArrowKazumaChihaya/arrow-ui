@@ -5,7 +5,8 @@
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:18px;font-weight:600;line-height:36px;white-space:nowrap}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{display:none}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:16px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:absolute;right:8px;top:50%;transform:translateY(-50%);gap:3px}
+/* 帯の中の操作は今の Title の slot と同じく、見出しの文字のすぐ右に続ける（帯の中の h2 の中：白・太さ600） */
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{gap:3px;margin-left:10px;color:#fff;font-weight:600}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding-top:15px}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="body"]{--ar-card-pad-x:0px;padding:15px 0 0}
 /* タブの下の本文は今のシフトカレンダーの囲み（上に 2px のテーマ色の線・淡いテーマ色の地・余白15） */
@@ -22,3 +23,4 @@
 [data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>*+*{border-left:1px solid #9B9A9B}
 [data-ar-design="classic"] [data-ar="card"][data-flush]>[data-part="body"]{padding:0}
 [data-ar-design="classic"] [data-ar="card"][data-flush]:not([data-variant="band"]){padding:0}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="body"]:empty{display:none}

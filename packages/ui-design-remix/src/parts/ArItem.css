@@ -1,0 +1,13 @@
+/* @covers ArItem 1.0.0 */
+/* ArItem：設定の画面の行（.ad-form と同じ材料）。項目名は 13.5px 600 の sub 色・行の高さ38（入力の高さにそろえる）、
+   必須は .req（11px 700・赤い淡い地・角丸4）。補足は .ad-help（12px mute）、「詳細」はテーマ色の 12px 700。行と行の間は20px。 */
+[data-ar-design="remix"] [data-ar="item"]{column-gap:14px;color:var(--ar-color-text);font-family:var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="item"]:not(:last-child){margin-bottom:20px}
+[data-ar-design="remix"] :is([data-ar="item"],[data-ar="sub-item"])>[data-part="title"]>[data-part="label"]{display:inline-flex;align-items:center;gap:6px;color:var(--ar-color-text-secondary);font-size:13.5px;font-weight:600;line-height:20.25px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"]{display:flex;align-items:center;min-height:38px;padding-top:0}
+[data-ar-design="remix"] :is([data-ar="item"],[data-ar="sub-item"])>[data-part="title"]>[data-part="label"]>[data-part="required"]{flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:11px;font-weight:700;line-height:18px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:38px;font-size:14px}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]{margin-top:4px;color:var(--ar-color-text-muted);font-size:12px;line-height:18px;white-space:pre-wrap}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]{margin-left:6px;color:var(--ar-accent-ink);font-size:12px;font-weight:700;text-decoration:none}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]:hover{text-decoration:underline}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]:focus-visible{outline:2px solid var(--ar-accent-ring);outline-offset:2px;border-radius:3px}

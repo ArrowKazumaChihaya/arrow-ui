@@ -12,6 +12,8 @@ export interface ArAppNavItem {
   href?: string;
   /** この項目のテーマ色（classic では指したときにこの色で塗る。シフト＝blue・勤怠＝green…）。 */
   palette?: ArPaletteName;
+  /** 指す・フォーカスすると項目の真下に同じ幅で出す子のメニュー（社員情報 → 社員一覧・有給管理）。選ぶと navigate に子の key。 */
+  children?: readonly ArAppNavItem[];
 }
 
 /** 1段目のピル（「システムからのお知らせ」「やることリスト」）。 */
@@ -23,6 +25,8 @@ export interface ArAppHeaderPill {
   icon?: ArIconName;
   /** notice：灰色（お知らせ）。todo：淡い赤（やること）。 */
   tone?: "notice" | "todo";
+  /** 指す・フォーカスするとピルが下に伸びて出す一覧（お知らせの題・やることの中身）。押すと pill-item。 */
+  items?: readonly { key: string; label: string }[];
 }
 
 /** 管理ページのメニューの1行（契約状況・個人ページへ・ログアウトなど）。 */
@@ -43,12 +47,25 @@ export interface ArAppHeaderProps {
   account?: { label: string; initial?: string };
   /** 右上を押したときに開くメニュー。無ければ押すと account を key "" で出す。 */
   accountMenu?: readonly ArAppAccountAction[];
-  labels?: { nav: string; count: string };
+  /** メニューの上の領域のタブ（「人事・労務」「経費精算」）。渡すと1段目とメニューの間に並べる。 */
+  domains?: readonly ArAppNavItem[];
+  /** 今の領域の key（domains のどれか）。 */
+  domain?: string;
+  /** 領域のタブの段を畳めるようにする（右に「ヘッダーを閉じる」、畳むと右上に「＋」）。 */
+  collapsible?: boolean;
+  /** 畳んでいるか（v-model:collapsed）。 */
+  collapsed?: boolean;
+  labels?: { nav: string; count: string; collapse?: string; expand?: string; domains?: string };
 }
 export interface ArAppHeaderEmits {
   navigate: [key: string, event: MouseEvent];
+  /** 領域のタブを押した。 */
+  domain: [key: string];
+  "update:collapsed": [collapsed: boolean];
+  /** ピルの一覧の項目を押した。 */
+  "pill-item": [pill: string, item: string];
   pill: [key: string];
   account: [key: string];
 }
-/** slot：logo（ロゴの絵。製品が渡す）。 */
-export type ArAppHeaderPart = "root" | "top" | "logo" | "pill" | "count" | "account" | "avatar" | "nav" | "item" | "spacer" | "account-menu";
+/** slot：logo（ロゴの絵。製品が渡す）、top（1段目のピルの右に置くもの。「デザインを選択」など）。 */
+export type ArAppHeaderPart = "root" | "top" | "logo" | "pill" | "count" | "account" | "avatar" | "nav" | "item" | "spacer" | "account-menu" | "pill-list" | "pill-item" | "top-extra" | "domains" | "domain" | "toggle" | "expand" | "submenu" | "submenu-item";

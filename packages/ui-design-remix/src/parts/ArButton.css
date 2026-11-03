@@ -38,3 +38,14 @@
 [data-ar-design="remix"] [data-ar="button"][aria-disabled="true"]{cursor:not-allowed}
 /* xs の押せない形（表の行の中の「登録済み」：.r-put:disabled） */
 [data-ar-design="remix"] [data-ar="button"][data-size="xs"]:is(:disabled,[aria-disabled="true"]):not([data-state~="loading"]){background:#F3F5F8;color:#A9B2BC}
+/* 今の ARROW の種類に合わせて足したもの：edit は subtle と同じ（.btn.tint）、dark は secondary と同じ（ふつうの .btn）、overlay は写真の上の半透明の丸。
+   xl は lg と同じ大きさ。blink は文字とアイコンが1秒で点滅。 */
+[data-ar-design="remix"] [data-ar="button"][data-tone="edit"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);box-shadow:none}
+[data-ar-design="remix"] [data-ar="button"][data-tone="edit"]:hover:not(:disabled){background:var(--ar-accent-muted)}
+[data-ar-design="remix"] [data-ar="button"][data-tone="overlay"]{width:34px;padding:0;border-radius:50%;background:rgba(15,23,32,.55);color:#fff;box-shadow:none}
+[data-ar-design="remix"] [data-ar="button"][data-tone="overlay"]:hover:not(:disabled){background:rgba(15,23,32,.7)}
+[data-ar-design="remix"] [data-ar="button"][data-size="xl"]{height:42px;padding:0 18px;font-size:14px;border-radius:11px}
+[data-ar-design="remix"] [data-ar="button"][data-icon-only][data-size="xl"],[data-ar-design="remix"] [data-ar="button"][data-shape="circle"][data-size="xl"]{width:42px}
+[data-ar-design="remix"] [data-ar="button"][data-state~="blink"]>:is([data-part="label"],[data-ar="icon"]){animation:ar-btn-blink 1s ease-in infinite alternate}
+@keyframes ar-btn-blink{0%{opacity:.35}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){[data-ar-design="remix"] [data-ar="button"][data-state~="blink"]>:is([data-part="label"],[data-ar="icon"]){animation:none}}

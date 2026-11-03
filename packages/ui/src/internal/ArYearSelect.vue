@@ -144,13 +144,14 @@ defineExpose({ focus: () => button.value?.focus() });
       :key="y ?? 'empty'"
       role="option"
       data-part="option"
+      :data-kind="y === null ? 'null' : undefined"
       :aria-selected="i === selectedIndex ? 'true' : 'false'"
       :data-state="[i === selectedIndex && 'selected', i === active && 'active'].filter(Boolean).join(' ') || undefined"
       @pointerdown.prevent
       @pointermove="active = i"
       @click="choose(i)"
     >
-      <span data-part="option-label">{{ y === null ? " " : labelOf(y) }}</span>
+      <span data-part="option-label">{{ y === null ? placeholder || " " : labelOf(y) }}</span>
       <ArIcon v-if="i === selectedIndex" name="check" size="sm" data-part="check" />
     </div>
   </ArFloat>

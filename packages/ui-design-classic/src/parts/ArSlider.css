@@ -1,9 +1,9 @@
 /* @covers ArSlider 1.0.0 */
-/* ArSlider（素の antd 4 の Slider をテーマ色に）：線4px rgba(0,0,0,.04)（hover .06）、帯は淡いテーマ色（hover で濃く）、
+/* ArSlider（素の antd 4 の Slider をテーマ色に）：上下10・左右5の外の余白（目盛りがあれば下28）、線4px rgba(0,0,0,.04)（hover .06）、帯は淡いテーマ色（hover で濃く）、
    つまみは白10px に 2px の輪（hover・フォーカスで 4px のテーマ色）、目盛りの点8px、目盛りの文字 14px rgba(0,0,0,.45)。 */
-[data-ar-design="classic"] [data-ar="slider"]{padding:0 5px}
+[data-ar-design="classic"] [data-ar="slider"]{margin:10px 5px;padding:0}
 [data-ar-design="classic"] [data-ar="slider"][data-tooltip="always"]{padding-top:40px}
-[data-ar-design="classic"] [data-ar="slider"][data-marks]{padding-bottom:24px}
+[data-ar-design="classic"] [data-ar="slider"][data-marks]{margin-bottom:28px}
 [data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]{height:12px}
 [data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]>[data-part="line"]{height:4px;border-radius:2px;background:rgba(0,0,0,.04);transition:background .2s}
 [data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]:hover>[data-part="line"]{background:rgba(0,0,0,.06)}
@@ -14,7 +14,9 @@
 [data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"]>[data-part="tooltip"]{bottom:calc(100% + 10px);padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font-size:14px;line-height:22px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
 [data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]>[data-part="dot"]{width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #F0F0F0}
 [data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]>[data-part="dot"][data-state~="on"]{box-shadow:inset 0 0 0 2px var(--ar-accent-line)}
-[data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]>[data-part="mark"]{top:14px;font-size:14px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]>[data-part="mark"]{top:12px;font-size:14px;line-height:14px;color:rgba(0,0,0,.45)}
+/* 今の値までの目盛りの文字は濃く（antd の mark-text-active） */
+[data-ar-design="classic"] [data-ar="slider"]>[data-part="rail"]>[data-part="dot"][data-state~="on"]+[data-part="mark"]{color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="slider"][data-state~="disabled"]>[data-part="rail"]>[data-part="track"]{background:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="slider"][data-state~="disabled"]>[data-part="rail"]>[data-part="handle"]{box-shadow:0 0 0 2px #BFBFBF}
 [data-ar-design="classic"] [data-ar="slider"][data-state~="disabled"]>[data-part="rail"]>[data-part="dot"][data-state~="on"]{box-shadow:inset 0 0 0 2px #BFBFBF}

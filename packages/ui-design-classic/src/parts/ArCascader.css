@@ -6,3 +6,8 @@
 [data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]>[data-part="option"]{min-height:23px;height:23px;padding:5px 12px;gap:12px;font-size:13px;line-height:13px}
 [data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]>[data-part="option"]>[data-part="option-label"]{line-height:13px}
 [data-ar-design="classic"] [data-ar="cascader-panel"]>[data-part="column"]>[data-part="option"]>[data-part="option-check"]{display:none}
+/* 開いているあいだ、押す所の値は antd と同じく薄い文字（rgba(0,0,0,.25)）。 */
+[data-ar-design="classic"] [data-ar="cascader"][data-state~="open"]>[data-part="value"]{color:rgba(0,0,0,.25)}
+/* プルダウンと押す所の間は antd と同じ 4px（部品は 6px で置くので 2px 寄せる）。 */
+[data-ar-design="classic"] [data-ar="cascader-panel"][data-placement^="bottom"]{margin-top:-2px}
+[data-ar-design="classic"] [data-ar="cascader-panel"][data-placement^="top"]{margin-top:2px}

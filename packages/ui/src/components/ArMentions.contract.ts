@@ -39,4 +39,4 @@ export interface ArMentionsProps {
   id?: string;
 }
 
-export type ArMentionsPart = "root" | "mirror" | "mention" | "input";
+export type ArMentionsPart = "root" | "mirror" | "mention" | "caret" | "input";

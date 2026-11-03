@@ -2,7 +2,9 @@
 /* ArRate（素の antd 4 の Rate）：星 13px（5つで幅97）・間8・#FADB14、空きは rgba(0,0,0,.06)。hover で 1.1 倍。 */
 [data-ar-design="classic"] [data-ar="rate"]{gap:8px}
 [data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]{transition:transform .2s}
-[data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]>svg{width:13px;height:13px;fill:currentColor;stroke:none;display:block}
+/* 部品の星の形は 24 の箱の中で約 17 なので、antd の星（13px の箱いっぱい）と同じ大きさに見えるよう 18px で描いて 13px の箱に収める。 */
+[data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]{width:13px;height:14px;align-items:center;justify-content:center}
+[data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]>svg{width:18px;height:18px;margin:-2px -2.5px;flex:none;fill:currentColor;stroke:none;display:block}
 [data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]>[data-part="bg"]{color:rgba(0,0,0,.06)}
 [data-ar-design="classic"] [data-ar="rate"]>[data-part="star"]>[data-part="fg"]{color:#FADB14}
 [data-ar-design="classic"] [data-ar="rate"]:not([data-state])>[data-part="star"]:hover{transform:scale(1.1)}

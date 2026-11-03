@@ -1,4 +1,8 @@
-/** ArTable 1.0 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。 */
+/**
+ * ArTable 1.0 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
+ * デザインが選べる形（ArDesign.forms.ArTable）：
+ * - selectHead："check"（既定。見出しはチェックだけ）／"label"（チェックの左に「全選択」の文字。今の ARROW の SelectTable。classic）。
+ */
 import type { ArIconName } from "../icons";
 import type { ArAvatarTone } from "./ArAvatar.contract";
 
@@ -53,6 +57,8 @@ export interface ArTableSort {
 export interface ArTableLabels {
   /** 見出しのチェックの名前。 */
   selectAll: string;
+  /** 見出しのチェックの左に出す文字（selectHead="label" の形のとき。既定「全選択」）。 */
+  selectAllText?: string;
   /** 行のチェックの名前。 */
   selectRow: string;
   /** 開くボタンの名前。 */
@@ -138,6 +144,7 @@ export type ArTablePart =
   | "check"
   | "select"
   | "check-box"
+  | "select-text"
   | "expand-toggle"
   | "expanded-row"
   | "before-rows"

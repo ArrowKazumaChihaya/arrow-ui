@@ -2,7 +2,8 @@
 /* ArCarousel：antd の Carousel（今の ARROW にはない）。点は下12px・16×3・角丸1・白 .3、今は 24 幅の白・間8（refs/classic/antd-Carousel.png を実測）。
    地は antd の見本の濃い色の代わりにページのテーマ色、文字は白（ARROW の div の 13px・游ゴシック、見出しは 16px 太さ600）。前後は antd の白い矢印（16px・.3、乗せると 1）。 */
 [data-ar-design="classic"] [data-ar="carousel"]{height:140px;background:var(--ar-accent);color:#fff;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
-[data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]{padding:0 40px}
+/* antd の 1枚は余白なし（中身が幅いっぱい）。前後のボタンがあるときだけ、ボタンに文字がかからないよう左右を 40px あける。 */
+[data-ar-design="classic"] [data-ar="carousel"]:has(>[data-part="prev"])>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]{padding:0 40px}
 [data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="title"]{font-size:16px;font-weight:600;line-height:1.5}
 [data-ar-design="classic"] [data-ar="carousel"]>[data-part="viewport"]>[data-part="track"]>[data-part="slide"]>[data-part="description"]{margin-top:6px;line-height:20px}
 [data-ar-design="classic"] [data-ar="carousel"]>:is([data-part="prev"],[data-part="next"]){width:16px;height:16px;border:0;background:none;color:#fff;opacity:.3;transition:opacity .3s}

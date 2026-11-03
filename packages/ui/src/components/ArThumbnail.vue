@@ -9,6 +9,7 @@ import ArButton from "./ArButton.vue";
 import ArModal from "./ArModal.vue";
 import ArIcon from "./ArIcon.vue";
 import type { ArThumbnailProps } from "./ArThumbnail.contract";
+import { useDesignForm } from "../provider/context";
 
 const props = withDefaults(defineProps<ArThumbnailProps>(), {
   shape: "square",
@@ -40,6 +41,10 @@ const props = withDefaults(defineProps<ArThumbnailProps>(), {
 const emit = defineEmits<{ "update:modelValue": [value: string | null]; "invalid-image": [reason: "type" | "bytes" | "pixels" | "load"] }>();
 
 const open = ref(false);
+/** 形（ArDesign.forms.ArThumbnail.editor）。arrow は今の ARROW の画像のアップロードの並び。 */
+const editor = useDesignForm<"tools" | "arrow">("ArThumbnail", "editor", "tools");
+/** 選んだファイルの名前（editor="arrow" で出す）。 */
+const fileName = ref("");
 const fileInput = ref<HTMLInputElement | null>(null);
 /** 編集中の画像。 */
 const src = ref<string | null>(null);
@@ -89,6 +94,7 @@ onBeforeUnmount(revoke);
 function startEdit() {
   revoke();
   src.value = props.modelValue;
+  fileName.value = "";
   natural.value = { w: 0, h: 0 };
   open.value = true;
 }
@@ -119,6 +125,7 @@ async function load(file: File | undefined | null) {
     revoke();
     objectUrl = url;
     src.value = url;
+    fileName.value = file.name;
   };
   probe.onerror = () => {
     URL.revokeObjectURL(url);
@@ -249,8 +256,8 @@ defineExpose({ edit: startEdit });
     <button v-if="editable" type="button" data-part="camera" :aria-label="labels.change" :title="labels.change" @click="startEdit">
       <ArIcon name="camera" data-part="camera-icon" />
     </button>
-    <ArModal v-model:open="open" :title="labels.title" size="sm">
-      <div data-ar="thumbnail-editor" data-part="root">
+    <ArModal v-model:open="open" :title="labels.title" size="sm" :width="editor === 'arrow' ? 500 : undefined">
+      <div data-ar="thumbnail-editor" data-part="root" :data-form="editor">
         <p data-part="hint">{{ labels.hint }}</p>
         <div
           data-part="frame"
@@ -275,7 +282,15 @@ defineExpose({ edit: startEdit });
           <span v-else data-part="empty"><ArIcon name="upload" /><span>{{ labels.choose }}</span></span>
           <span v-if="src" data-part="mask" aria-hidden="true" />
         </div>
-        <div data-part="tools">
+        <template v-if="editor === 'arrow'">
+          <p data-part="file">{{ fileName || (labels.noFile ?? "ファイル未選択") }}</p>
+          <div data-part="tools">
+            <ArButton tone="primary" icon="undo" :label="labels.rotateLeft" @click="src && turn(-90)" />
+            <ArButton tone="primary" icon="redo" :label="labels.rotateRight" @click="src && turn(90)" />
+          </div>
+          <div data-part="submit"><ArButton tone="primary" size="xl" @click="submit">{{ labels.ok }}</ArButton></div>
+        </template>
+        <div v-else data-part="tools">
           <ArButton size="sm" icon="minus" :label="labels.zoomOut" :disabled="!src" @click="zoom(1 / 1.15)" />
           <ArButton size="sm" icon="plus" :label="labels.zoomIn" :disabled="!src" @click="zoom(1.15)" />
           <ArButton size="sm" icon="undo" :label="labels.rotateLeft" :disabled="!src" @click="turn(-90)" />
@@ -286,7 +301,7 @@ defineExpose({ edit: startEdit });
         </div>
         <input ref="fileInput" type="file" accept="image/png,image/jpeg,image/gif" data-part="file" hidden @change="onFile" />
       </div>
-      <template #footer>
+      <template v-if="editor !== 'arrow'" #footer>
         <ArButton @click="open = false">{{ labels.cancel }}</ArButton>
         <ArButton tone="primary" @click="submit">{{ labels.ok }}</ArButton>
       </template>

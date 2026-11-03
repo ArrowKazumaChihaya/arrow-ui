@@ -21,3 +21,7 @@
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:hover:not(:disabled){border-color:var(--ar-accent-line);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:disabled{opacity:.45}
+/* 帯の上（inverse）：白い文字、前へ・次へは白の淡い丸 */
+[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{border-color:transparent;background:none;color:var(--ar-on-accent)}
+[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="arrow"]{border-color:transparent;background:rgba(255,255,255,.2);color:var(--ar-on-accent)}
+[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="arrow"]:disabled{visibility:hidden}

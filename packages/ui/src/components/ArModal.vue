@@ -6,7 +6,7 @@
  * スマホ（幅640px以下）では画面いっぱいになる（mobileFullscreen）。確かめは variant="confirm" か useArConfirm()。
  */
 import { computed, ref, useSlots } from "vue";
-import { useArUi, useId } from "../provider/context";
+import { useArUi, useDesignForm, useId } from "../provider/context";
 import { useDialog } from "../internal/dialog";
 import ArIcon from "./ArIcon.vue";
 import ArButton from "./ArButton.vue";
@@ -61,6 +61,9 @@ const tone = computed(() => props.iconTone ?? (confirm.value ? "warn" : "info"))
 const panelStyle = computed(() =>
   props.width === undefined ? undefined : { maxWidth: typeof props.width === "number" ? `${props.width}px` : props.width },
 );
+/** 形（ArDesign.forms.ArModal.buttonText）：antd は 2 文字の漢字・かなのボタンの間に空白を入れる（「登 録」）。plain はそのまま。 */
+const buttonText = useDesignForm<"plain" | "antd">("ArModal", "buttonText", "plain");
+const label = (t: string) => (buttonText.value === "antd" && /^[\u3040-\u30ff\u3400-\u9fff]{2}$/.test(t) ? `${t[0]} ${t[1]}` : t);
 const builtIn = computed(() => !slots.footer && !!props.okText);
 const hasStart = computed(() => !!slots["footer-start"] || !!props.backText || (!!props.footerNote && props.footerNoteAlign === "start"));
 const hasEnd = computed(() => !!slots.footer || builtIn.value || (!!props.footerNote && props.footerNoteAlign === "end"));
@@ -112,7 +115,7 @@ const { onKeydown, palette } = useDialog({
         :style="panelStyle"
       >
         <header data-part="header">
-          <span v-if="iconName" data-part="icon" :data-tone="tone"><ArIcon :name="iconName" /></span>
+          <span v-if="iconName" data-part="icon" :data-tone="tone" :data-icon="iconName"><ArIcon :name="iconName" /></span>
           <div data-part="heading">
             <h2 :id="`${id}-title`" data-part="title"><slot name="title">{{ title }}</slot></h2>
             <p v-if="description" :id="`${id}-desc`" data-part="description">{{ description }}</p>
@@ -153,7 +156,7 @@ const { onKeydown, palette } = useDialog({
             <span v-if="footerNote && footerNoteAlign === 'end'" data-part="note">{{ footerNote }}</span>
             <slot name="footer">
               <template v-if="builtIn">
-                <ArButton v-if="cancelText" tone="secondary" @click="cancel">{{ cancelText }}</ArButton>
+                <ArButton v-if="cancelText" tone="secondary" @click="cancel">{{ label(cancelText) }}</ArButton>
                 <ArButton
                   :tone="okTone"
                   :icon="okIcon"
@@ -161,7 +164,7 @@ const { onKeydown, palette } = useDialog({
                   :loading="okLoading"
                   data-ok=""
                   @click="emit('ok')"
-                >{{ okText }}</ArButton>
+                >{{ label(okText ?? "") }}</ArButton>
               </template>
             </slot>
           </div>

@@ -14,6 +14,10 @@ export interface ArPeriodNavProps {
   todayLabel?: string;
   /** 「今日」のボタンを押せなくする（今の期間に今日が入っているとき）。 */
   todayDisabled?: boolean;
+  /** テーマ色の帯の上に置く形（白い文字・枠なし。押せない前へ・次へは出さずに場所だけ空ける）。今の EmployeeChanger（社員の切り替え）。 */
+  inverse?: boolean;
+  /** 前へ・次へのボタンを出さない（期間を見せるだけ。今の MonthChanger の isPagenation=false・DateChanger の isChange=false）。 */
+  arrows?: boolean;
   /** 前へ・次へを押せなくする。 */
   prevDisabled?: boolean;
   nextDisabled?: boolean;

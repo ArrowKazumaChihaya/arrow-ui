@@ -510,14 +510,14 @@
     "name": "tone",
     "type": "ArButtonTone",
     "required": false,
-    "description": "種類。\nprimary：そのまとまりで一番大事な操作（1つだけ）。テーマ色で塗る。\nsecondary：やめる・戻る（白地に枠）。\nsubtle：見出しの横の補助の操作（淡いテーマ色の地）。\nghost：表の上の小さな操作（テーマ色の文字だけ）。\nmuted：目立たせない操作・アイコンだけのボタン（灰色の文字だけ）。\nlink：文中のリンクのような操作（下線）。\ndashed：行や項目を足す（点線。block と合わせると表の上の「シフト追加」）。\ndanger：削除（塗り）。確かめの画面で最後に押すときだけ。danger-fill も同じ。\ndanger-subtle：削除（白地に赤い枠）。danger-outline も同じ。\ndanger-ghost：削除（赤い文字だけ）。",
+    "description": "種類。\nprimary：そのまとまりで一番大事な操作（1つだけ）。テーマ色で塗る。\nsecondary：やめる・戻る（白地に枠）。\nsubtle：見出しの横の補助の操作（淡いテーマ色の地）。\nghost：表の上の小さな操作（テーマ色の文字だけ）。\nmuted：目立たせない操作・アイコンだけのボタン（灰色の文字だけ）。\nlink：文中のリンクのような操作（下線）。\ndashed：行や項目を足す（点線。block と合わせると表の上の「シフト追加」）。\ndanger：削除（塗り）。確かめの画面で最後に押すときだけ。danger-fill も同じ。\ndanger-subtle：削除（白地に赤い枠）。danger-outline も同じ。\ndanger-ghost：削除（赤い文字だけ）。\nedit：編集・見出しの横の補助の操作（今の ARROW の edit：classic は緑の塗り、remix は subtle と同じ）。\ndark：ロックなど、色の意味を持たない塗り（今の ARROW の lock・unlock・種類なし：classic は黒の塗り、remix は secondary と同じ）。\noverlay：写真の上に重ねる丸いアイコンのボタン（今の ARROW の transround：半透明の黒い丸に白いアイコン）。\n\n今の ARROW の Button の type との対応：add→primary、cancel→secondary、info→subtle、edit→edit、delete→danger、\nlock・unlock・movie・なし→dark、bordered→dashed、text→ghost、transround→overlay。",
     "default": "\"secondary\""
    },
    {
     "name": "size",
-    "type": "'sm' | 'md' | 'lg' | 'xs'",
+    "type": "'sm' | 'md' | 'lg' | 'xl' | 'xs'",
     "required": false,
-    "description": "大きさ。xs＝表の行の中の小さな操作（「シフトに入れる」）・sm＝小さい・md＝ふつう・lg＝大きい。",
+    "description": "大きさ。xs＝表の行の中の小さな操作（「シフトに入れる」）・sm＝小さい・md＝ふつう・lg＝大きい・xl＝手順の「次へ」「戻る」などのいちばん大きい操作。\n今の ARROW の size との対応：small→sm、なし→md、large→lg、xlarge→xl、square→アイコンだけ（label を渡す）。",
     "default": "\"md\""
    },
    {
@@ -557,6 +557,26 @@
     "type": "boolean",
     "required": false,
     "description": "押せない。",
+    "default": "false"
+   },
+   {
+    "name": "disabledReason",
+    "type": "string",
+    "required": false,
+    "description": "押せない理由（今の ARROW の disabledReason）。disabled と一緒に渡すと、押せない見た目のまま押せて、押すと理由のダイアログ（題は disabledReasonTitle・OK だけ）を出す。"
+   },
+   {
+    "name": "disabledReasonTitle",
+    "type": "string",
+    "required": false,
+    "description": "押せない理由のダイアログの題。",
+    "default": "\"エラー\""
+   },
+   {
+    "name": "blink",
+    "type": "boolean",
+    "required": false,
+    "description": "文字とアイコンを1秒ごとに点滅させて注意を引く（今の ARROW の blink）。",
     "default": "false"
    },
    {
@@ -1420,6 +1440,13 @@
     "default": "\"md\""
    },
    {
+    "name": "simple",
+    "type": "boolean",
+    "required": false,
+    "description": "簡単な形：前へ・今のページの入力欄・「／ 全ページ数」・次へ（antd の simple。カードの中・小さな一覧）。入力して Enter で移る。",
+    "default": "false"
+   },
+   {
     "name": "disabled",
     "type": "boolean",
     "required": false,
@@ -1462,6 +1489,10 @@
   "parts": [
    "root",
    "prev",
+   "simple",
+   "jump",
+   "slash",
+   "last",
    "ellipsis",
    "page",
    "next",
@@ -1598,6 +1629,13 @@
     "required": false,
     "description": "「＋」のボタンの読み上げの名前。",
     "default": "\"追加\""
+   },
+   {
+    "name": "alertLabel",
+    "type": "string",
+    "required": false,
+    "description": "注意の印（alert）の読み上げの名前。",
+    "default": "\"要確認\""
    }
   ],
   "emits": [
@@ -1625,6 +1663,7 @@
    "icon",
    "label",
    "count",
+   "alert",
    "close",
    "add"
   ],
@@ -1652,6 +1691,13 @@
     "type": "string",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "resetOption",
+    "type": "string | boolean",
+    "required": false,
+    "description": "候補の先頭に「リセット」の行を出す（選ぶと入力を空にする。今の ARROW の Candidate）。true なら「リセット」、文字を渡せばその文字。",
+    "default": "false"
    },
    {
     "name": "icon",
@@ -1749,6 +1795,11 @@
     "name": "search",
     "payload": "[query: string]",
     "description": "打ったとき（サーバーで探すときに使う）。"
+   },
+   {
+    "name": "reset",
+    "payload": "[]",
+    "description": "「リセット」を選んだとき。"
    }
   ],
   "slots": [],
@@ -2053,10 +2104,23 @@
     "default": "false"
    },
    {
+    "name": "groupSize",
+    "type": "number",
+    "required": false,
+    "description": "色を何色ずつ縦にまとめて並べるか（ArColorSwatches の groupSize。今の ARROW の「色選択」は 4）。"
+   },
+   {
     "name": "disabled",
     "type": "boolean",
     "required": false,
     "description": "",
+    "default": "false"
+   },
+   {
+    "name": "readonly",
+    "type": "boolean",
+    "required": false,
+    "description": "見るだけ（今の ARROW の Colorviewer）。色の見本だけを出し、押しても開かない。",
     "default": "false"
    },
    {
@@ -2067,7 +2131,7 @@
    },
    {
     "name": "labels",
-    "type": "{ detail: string; hide: string; hex: string; saturation: string; hue: string; empty: string; }",
+    "type": "{ detail: string; hide: string; hex: string; saturation: string; hue: string; empty: string; title?: string | undefined; }",
     "required": false,
     "description": "",
     "default": "{ detail: \"自由な色を選ぶ\", hide: \"決まった色だけにする\", hex: \"HEX\", saturation: \"鮮やかさと明るさ\", hue: \"色相\", empty: \"未選択\" }"
@@ -2091,6 +2155,7 @@
    "chip",
    "swatch",
    "value",
+   "swatches",
    "sv",
    "sv-knob",
    "hue",
@@ -2098,7 +2163,6 @@
    "hex",
    "hex-label",
    "hex-input",
-   "swatches",
    "detail"
   ],
   "dataAr": "color-picker"
@@ -2136,6 +2200,12 @@
     "default": "false"
    },
    {
+    "name": "groupSize",
+    "type": "number",
+    "required": false,
+    "description": "色をこの数ずつ縦にまとめて並べる（同じ色の濃さ違いを縦に。今の ARROW の「色選択」は 4）。\nまとまりは横に並び、入りきらなければ次の段へ折り返す。省くと1列に並べて折り返す。"
+   },
+   {
     "name": "label",
     "type": "string",
     "required": true,
@@ -2152,6 +2222,7 @@
   "slots": [],
   "parts": [
    "root",
+   "group",
    "swatch"
   ],
   "dataAr": "color-swatches"
@@ -2178,6 +2249,13 @@
     "type": "number",
     "required": false,
     "description": "年のプルダウンの最後の年。既定は今年の5年後。"
+   },
+   {
+    "name": "era",
+    "type": "boolean",
+    "required": false,
+    "description": "年に和暦を添える（「2026(令和8)」。今の ARROW の isNendo）。",
+    "default": "false"
    },
    {
     "name": "showWeekday",
@@ -2214,7 +2292,7 @@
    },
    {
     "name": "labels",
-    "type": "{ year: string; month: string; day: string; weekdays: readonly string[]; }",
+    "type": "{ year: string; month: string; day: string; weekdays: readonly string[]; invalidDate?: string | undefined; empty?: string | undefined; }",
     "required": false,
     "description": "",
     "default": "{ year: \"年\", month: \"月\", day: \"日\", weekdays: [\"日\", \"月\", \"火\", \"水\", \"木\", \"金\", \"土\"] }"
@@ -2233,6 +2311,7 @@
    "unit",
    "month",
    "day",
+   "error",
    "weekday"
   ],
   "dataAr": "date-input"
@@ -2425,6 +2504,170 @@
   "dataAr": "date-range"
  },
  {
+  "name": "ArDateTimeInput",
+  "version": "1.0.0",
+  "description": "日時の入力。日付（年のプルダウン＋月日）と、時と分のプルダウンを並べる。\n値は \"YYYY-MM-DD HH:mm:ss\"（秒は 00）。日付か時刻のどちらかが空なら null。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "string | null",
+    "required": true,
+    "description": "\"YYYY-MM-DD HH:mm:ss\"（今の ARROW と同じ。秒は 00）。日付か時刻のどちらかが空なら null。"
+   },
+   {
+    "name": "minYear",
+    "type": "number",
+    "required": false,
+    "description": "年のプルダウンの最初の年。"
+   },
+   {
+    "name": "maxYear",
+    "type": "number",
+    "required": false,
+    "description": "年のプルダウンの最後の年。"
+   },
+   {
+    "name": "era",
+    "type": "boolean",
+    "required": false,
+    "description": "年に和暦を添える。",
+    "default": "false"
+   },
+   {
+    "name": "minuteStep",
+    "type": "number",
+    "required": false,
+    "description": "分のプルダウンの刻み（今の ARROW は 5 分）。",
+    "default": "5"
+   },
+   {
+    "name": "showWeekday",
+    "type": "boolean",
+    "required": false,
+    "description": "右に曜日を出す。",
+    "default": "false"
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前（例：「公開日時」）。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "{ hour: string; minute: string; }",
+    "required": false,
+    "description": "時と分の単位の文字。",
+    "default": "{ hour: \"時\", minute: \"分\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: string | null]",
+    "description": "日付か時刻を変えたときに出す。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root"
+  ],
+  "dataAr": "date-time-input"
+ },
+ {
+  "name": "ArDurationInput",
+  "version": "1.0.0",
+  "description": "時間の長さの入力（「1 時間 30 分」）。値は分。\n時間と分の2つの箱を単位の文字でつなぐ。分を2桁（または6〜9）打つと次の入力へ移る。空の分で Backspace・端の ←→ で隣の箱へ。\n値の確定は箱からフォーカスが外れたとき・Enter だけ。分が空なら null、時間だけ空なら 0 時間。",
+  "props": [
+   {
+    "name": "modelValue",
+    "type": "number | null",
+    "required": true,
+    "description": "分。未入力は null。"
+   },
+   {
+    "name": "maxHours",
+    "type": "number",
+    "required": false,
+    "description": "時間の上限（既定 999）。",
+    "default": "999"
+   },
+   {
+    "name": "invalid",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げ用の名前（例：「休憩の長さ」）。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "labels",
+    "type": "{ hour: string; minute: string; }",
+    "required": false,
+    "description": "単位の文字。",
+    "default": "{ hour: \"時間\", minute: \"分\" }"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:modelValue",
+    "payload": "[value: number | null]",
+    "description": "箱からフォーカスが外れた・Enter のときに出す（分。分の箱が空なら null）。"
+   },
+   {
+    "name": "commit",
+    "payload": "[value: number | null]",
+    "description": ""
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "hour",
+   "unit",
+   "minute"
+  ],
+  "dataAr": "duration-input"
+ },
+ {
   "name": "ArField",
   "version": "1.0.0",
   "description": "入力の項目（ラベル・必須の札・説明・間違い）。\nラベルが上（.lbl 12.5px 太字）と横（120px 右寄せ）。間違いは入力の下に赤い文字で、直し方まで書く（.derr）。\n中の入力とは default slot の値（id・aria-*・invalid）を v-bind して結ぶ。ArForm の中では name で検証の結果を受け取る。",
@@ -2470,6 +2713,12 @@
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
     "description": "inline のラベルの幅。sm＝88px・md＝120px・lg＝168px。"
+   },
+   {
+    "name": "labelWidth",
+    "type": "string",
+    "required": false,
+    "description": "inline のラベルの幅（CSS の長さ。例：\"25%\"）。labelSize より優先。ArForm の中では ArForm の labelWidth。"
    },
    {
     "name": "requiredText",
@@ -2530,6 +2779,12 @@
     "required": false,
     "description": "inline のラベルの幅。sm＝88px・md＝120px・lg＝168px。",
     "default": "\"md\""
+   },
+   {
+    "name": "labelWidth",
+    "type": "string",
+    "required": false,
+    "description": "inline のラベルの幅（CSS の長さ。例：\"25%\"＝今の ARROW の Form の label-col 6/24）。labelSize より優先。"
    },
    {
     "name": "validateOn",
@@ -2731,6 +2986,96 @@
   "dataAr": "input-number"
  },
  {
+  "name": "ArItem",
+  "version": "1.0.0",
+  "description": "項目の行（設定の画面の1行）。左に項目名（幅 titleWidth・必須の印）、右に入力と、その下の補足・「詳細」。\n中の入力とは default スロットの値（id・aria-*）を v-bind して結ぶ。項目名を押すと入力へ。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "項目名。改行（\\n）はそのまま改行する。title スロットでも渡せる。"
+   },
+   {
+    "name": "required",
+    "type": "boolean",
+    "required": false,
+    "description": "必須の印を出す（今の ARROW の isNeed）。",
+    "default": "false"
+   },
+   {
+    "name": "requiredText",
+    "type": "string",
+    "required": false,
+    "description": "必須の印の文字（読み上げにも使う）。",
+    "default": "\"必須\""
+   },
+   {
+    "name": "info",
+    "type": "string",
+    "required": false,
+    "description": "入力の下に出す補足の文字（info スロットでも渡せる）。"
+   },
+   {
+    "name": "detail",
+    "type": "boolean",
+    "required": false,
+    "description": "補足の後ろに「詳細」を出す。押すと detail を出す（説明のポップアップを開くなど）。",
+    "default": "false"
+   },
+   {
+    "name": "detailHref",
+    "type": "string",
+    "required": false,
+    "description": "「詳細」をリンクにする（別のページの説明へ）。"
+   },
+   {
+    "name": "detailText",
+    "type": "string",
+    "required": false,
+    "description": "「詳細」の文字。",
+    "default": "\"詳細\""
+   },
+   {
+    "name": "titleWidth",
+    "type": "string",
+    "required": false,
+    "description": "項目名の幅（CSS の長さ）。",
+    "default": "\"200px\""
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "入力の id（省くと自動）。default スロットの値で入力に渡す。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "detail",
+    "payload": "[event: MouseEvent]",
+    "description": "「詳細」を押した。"
+   }
+  ],
+  "slots": [
+   "title",
+   "default",
+   "info"
+  ],
+  "parts": [
+   "root",
+   "title",
+   "label",
+   "label-text",
+   "required",
+   "content",
+   "info",
+   "info-text",
+   "detail"
+  ],
+  "dataAr": "item"
+ },
+ {
   "name": "ArMentions",
   "version": "1.0.0",
   "description": "＠で人を呼べる複数行の入力（通知・お知らせ）。\n「@」に続けて打つと、合う人の候補（頭文字の丸・合っている文字はテーマ色の太字）が出る。\n呼んだ名前は淡いテーマ色の札で見せる（textarea の後ろに同じ文字を重ねて色を付ける）。\nキーボード：↓↑で候補を動く、Enter・Tab で選ぶ、Escape で閉じる。",
@@ -2843,6 +3188,7 @@
    "root",
    "mirror",
    "mention",
+   "caret",
    "input",
    "list",
    "empty"
@@ -3080,6 +3426,19 @@
     "default": "2"
    },
    {
+    "name": "nullOption",
+    "type": "string | boolean",
+    "required": false,
+    "description": "先頭に「何も選ばない」行を出す（選ぶと null。今の ARROW の Select の「未選択」）。\ntrue なら placeholder の文字、文字を渡せばその文字。",
+    "default": "false"
+   },
+   {
+    "name": "actions",
+    "type": "readonly ArSelectAction[]",
+    "required": false,
+    "description": "プルダウンの下に出す操作のボタン（「新規作成」など）。押すと action を出して閉じる。"
+   },
+   {
     "name": "placeholder",
     "type": "string",
     "required": false,
@@ -3172,8 +3531,7 @@
     "name": "listHeight",
     "type": "number",
     "required": false,
-    "description": "プルダウンの高さの上限（px）。",
-    "default": "264"
+    "description": "プルダウンの高さの上限（px）。省くとデザインの既定（remix 264・classic 256）。"
    },
    {
     "name": "label",
@@ -3208,6 +3566,11 @@
     "name": "search",
     "payload": "[query: string]",
     "description": "探す欄に打ったとき。"
+   },
+   {
+    "name": "action",
+    "payload": "[value: string]",
+    "description": "actions のボタンを押した（値は action の value）。"
    }
   ],
   "slots": [],
@@ -3228,6 +3591,7 @@
    "list",
    "group",
    "group-label",
+   "action",
    "empty"
   ],
   "dataAr": "select"
@@ -3439,6 +3803,60 @@
   "dataAr": "stepper"
  },
  {
+  "name": "ArSubItem",
+  "version": "1.0.0",
+  "description": "小さな項目（上に項目名・必須の印、下に入力）。項目の中で入力を名前つきで並べるときに使う。\n中の入力とは default スロットの値（id・aria-*）を v-bind して結ぶ。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "項目名。title スロットでも渡せる。"
+   },
+   {
+    "name": "required",
+    "type": "boolean",
+    "required": false,
+    "description": "必須の印を出す（今の ARROW の isNeed）。",
+    "default": "false"
+   },
+   {
+    "name": "requiredText",
+    "type": "string",
+    "required": false,
+    "description": "必須の印の文字（読み上げにも使う）。",
+    "default": "\"必須\""
+   },
+   {
+    "name": "showTitle",
+    "type": "boolean",
+    "required": false,
+    "description": "項目名を出す（false なら入力だけ。今の ARROW の isShowTitle）。",
+    "default": "true"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "入力の id（省くと自動）。default スロットの値で入力に渡す。"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "title",
+   "default"
+  ],
+  "parts": [
+   "root",
+   "title",
+   "label",
+   "label-text",
+   "required",
+   "content"
+  ],
+  "dataAr": "sub-item"
+ },
+ {
   "name": "ArSwitch",
   "version": "1.0.0",
   "description": "すぐ効く切り替え（公開中／非公開など）。押したら保存まで行うときは loading を出す。\n文字ありのときは「入」と「切」の文字を同じ場所に重ねて置き、見えるのは片方だけ。幅は長い方に合わせて変わらない。",
@@ -3482,6 +3900,20 @@
     "default": "false"
    },
    {
+    "name": "tone",
+    "type": "'default' | 'accent'",
+    "required": false,
+    "description": "入っているときの色。default：部品の既定の色（classic は antd の青 #1677FF＝今の ARROW の Toggle、remix はテーマ色）。\naccent：ページのテーマ色（今の ARROW の theme を付けた Toggle）。",
+    "default": "\"default\""
+   },
+   {
+    "name": "twoWay",
+    "type": "boolean",
+    "required": false,
+    "description": "2択の切り替え（今の ARROW の alwaysValid）。切れているときも色を付け、どちらの側も「選んでいる」ように見せる（一覧／カレンダーなど）。\n両側の意味は before・after スロット（アイコンなど）で示す。",
+    "default": "false"
+   },
+   {
     "name": "loading",
     "type": "boolean",
     "required": false,
@@ -3502,15 +3934,22 @@
     "description": ""
    }
   ],
-  "slots": [],
+  "slots": [
+   "before",
+   "default",
+   "after"
+  ],
   "parts": [
    "root",
+   "before",
    "track",
    "text",
    "on",
    "off",
    "thumb",
-   "spinner"
+   "spinner",
+   "caption",
+   "after"
   ],
   "dataAr": "switch"
  },
@@ -3779,6 +4218,12 @@
     "default": "false"
    },
    {
+    "name": "align",
+    "type": "'center' | 'left' | 'right'",
+    "required": false,
+    "description": "文字の寄せ。数・金額は right（今の ARROW では style で右寄せにしている所）。"
+   },
+   {
     "name": "label",
     "type": "string",
     "required": false,
@@ -3872,7 +4317,7 @@
  {
   "name": "ArTimeInput",
   "version": "1.0.0",
-  "description": "時刻の入力（高さ36・角丸9）。ARROW の時刻はこれを使う（パネルで選ぶ ArTimePicker は補助）。\n- キー入力が基本：「930」「9:30」「０９３０」は 09:30 になる。↑↓で step 分ずつ動く。\n- dayShift なら枠と一体の［当日］ボタン。押すたびに［前日］（橙）と切り替わる。Tab では止まらない。\n- 値の確定は Enter・フォーカスが外れたとき・切り替えのときだけ。\n- note を渡すと入力の代わりに点線の枠で文字を出す（「打刻と同じ」など）。",
+  "description": "時刻の入力。ARROW の時刻はこれを使う（パネルで選ぶ ArTimePicker は補助）。\n- 形はデザインが選ぶ（fields）：1つの箱に「09:30」と打つ（single）／時と分が別々の箱を「:」でつなぐ（split＝今の ARROW）。\n- キー入力が基本：single は「930」「9:30」「０９３０」が 09:30。↑↓で step 分ずつ動く。\n- dayShift なら［当日⇄前日］の切り替え（形はデザインが選ぶ：枠と一体のボタン／1文字のリンク「当」「前」）。Tab では止まらない。\n- select なら時と分のプルダウン（今の ARROW の isSelect。先頭に「未選択」）。\n- 値の確定は Enter・箱からフォーカスが外れたとき・切り替え・プルダウンで選んだときだけ。\n- note を渡すと入力の代わりに点線の枠で文字を出す（「打刻と同じ」など）。",
   "props": [
    {
     "name": "modelValue",
@@ -3884,7 +4329,7 @@
     "name": "dayShift",
     "type": "boolean",
     "required": false,
-    "description": "枠と一体の［当日⇄前日］を出す（出勤・退勤・休始・休終）。シフトの開始・終了は false。",
+    "description": "前日をまたぐ切り替え（［当日⇄前日］）を出す（出勤・退勤・休始・休終）。シフトの開始・終了は false。今の ARROW の isYesterday。",
     "default": "false"
    },
    {
@@ -3902,6 +4347,20 @@
     "default": "5"
    },
    {
+    "name": "select",
+    "type": "boolean",
+    "required": false,
+    "description": "時と分をプルダウンで選ぶ（今の ARROW の isSelect。日時の入力で使う）。どのデザインでも時と分の2つのプルダウンと「:」になる。\n先頭に「未選択」（値を消す）が付く。",
+    "default": "false"
+   },
+   {
+    "name": "minuteStep",
+    "type": "number",
+    "required": false,
+    "description": "select のときの分の刻み（今の ARROW の minuteUnit）。",
+    "default": "1"
+   },
+   {
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
@@ -3912,7 +4371,7 @@
     "name": "block",
     "type": "boolean",
     "required": false,
-    "description": "親の幅いっぱい（時間の表の列など）。",
+    "description": "親の幅いっぱい（時間の表の列など）。fields が single のときだけ効く。",
     "default": "false"
    },
    {
@@ -3956,17 +4415,17 @@
    },
    {
     "name": "labels",
-    "type": "{ same: string; prev: string; toggleHint: string; }",
+    "type": "ArTimeInputLabels",
     "required": false,
     "description": "",
-    "default": "{ same: \"当日\", prev: \"前日\", toggleHint: \"押すと当日と前日が切り替わります\" }"
+    "default": "{ same: \"当日\", prev: \"前日\", sameShort: \"当\", prevShort: \"前\", toggleHint: \"押すと当日と前日が切り替わります\", hour: \"時\", minute: \"分\" }"
    }
   ],
   "emits": [
    {
     "name": "update:modelValue",
     "payload": "[value: ArTimeValue]",
-    "description": "確定したとき（Enter・フォーカスが外れた・切り替えを押した）だけ出す。入力中には出さない。"
+    "description": "確定したとき（Enter・箱からフォーカスが外れた・切り替えを押した・プルダウンで選んだ）だけ出す。入力中には出さない。"
    },
    {
     "name": "commit",
@@ -3979,11 +4438,18 @@
     "description": "読めない文字で確定しようとした。値は変えない。"
    }
   ],
-  "slots": [],
+  "slots": [
+   "hour-unit",
+   "minute-unit"
+  ],
   "parts": [
    "root",
    "day-toggle",
    "note",
+   "separator",
+   "unit",
+   "hour",
+   "minute",
    "input"
   ],
   "dataAr": "time-input"
@@ -4488,6 +4954,20 @@
     "default": "\"text\""
    },
    {
+    "name": "buttonTone",
+    "type": "'primary' | 'secondary' | 'muted'",
+    "required": false,
+    "description": "trigger=\"button\" のときのボタンの種類（今の ARROW の Upload の type：add→primary、cancel→muted）。",
+    "default": "\"primary\""
+   },
+   {
+    "name": "buttonSize",
+    "type": "'md' | 'xl'",
+    "required": false,
+    "description": "trigger=\"button\" のときのボタンの大きさ（xl＝今の ARROW の xlarge）。",
+    "default": "\"md\""
+   },
+   {
     "name": "hint",
     "type": "string",
     "required": false,
@@ -4508,7 +4988,7 @@
    },
    {
     "name": "labels",
-    "type": "{ drop: string; or: string; pick: string; add: string; remove: string; retry: string; tooLarge: string; wrongType: string; }",
+    "type": "{ drop: string; or: string; pick: string; add: string; remove: string; retry: string; tooLarge: string; wrongType: string; choose?: string | undefined; none?: string | undefined; }",
     "required": false,
     "description": "",
     "default": "{ drop: \"ファイルをここに置く\", or: \"または\", pick: \"選ぶ\", add: \"追加\", remove: \"消す\", retry: \"もう一度\", tooLarge: \"大きすぎます\", wrongType: \"形式が違います\", }"
@@ -4535,6 +5015,8 @@
   "parts": [
    "root",
    "input",
+   "button",
+   "chosen",
    "drop",
    "icon",
    "title",
@@ -4814,6 +5296,12 @@
     "required": false,
     "description": "選んでいる日（\"YYYY-MM-DD\"）。選ばないなら null。",
     "default": "null"
+   },
+   {
+    "name": "range",
+    "type": "{ start: string; end: string; }",
+    "required": false,
+    "description": "締め日で区切った期間（\"YYYY-MM-DD\"。今の ARROW の Calendar の started_on〜ended_on）。\n渡すと、その期間を含む週だけを並べ、期間の外の日は前後の月と同じ扱い（灰色・印なし）にする。月の切り替えは製品が期間を渡し直す。"
    },
    {
     "name": "month",
@@ -5936,6 +6424,7 @@
    "table",
    "head",
    "header-cell",
+   "select-text",
    "check",
    "select",
    "check-box",
@@ -6513,7 +7002,7 @@
    },
    {
     "name": "placement",
-    "type": "'right' | 'left'",
+    "type": "'left' | 'right'",
     "required": false,
     "description": "出てくる側。",
     "default": "\"right\""
@@ -7251,7 +7740,7 @@
     "name": "widths",
     "type": "readonly (string | number)[]",
     "required": false,
-    "description": "各行の幅（\"40%\" や 120）。足りない行は 100%、最後の行は 70%。"
+    "description": "各行の幅（\"40%\" や 120）。足りない行は 100%、最後の行はデザインが決める短さ（remix 70%・classic 61%）。"
    },
    {
     "name": "width",
@@ -7288,6 +7777,7 @@
    "root",
    "avatar",
    "lines",
+   "title",
    "line",
    "block"
   ],
@@ -7560,8 +8050,35 @@
     "description": "右上を押したときに開くメニュー。無ければ押すと account を key \"\" で出す。"
    },
    {
+    "name": "domains",
+    "type": "readonly ArAppNavItem[]",
+    "required": false,
+    "description": "メニューの上の領域のタブ（「人事・労務」「経費精算」）。渡すと1段目とメニューの間に並べる。",
+    "default": "[]"
+   },
+   {
+    "name": "domain",
+    "type": "string",
+    "required": false,
+    "description": "今の領域の key（domains のどれか）。"
+   },
+   {
+    "name": "collapsible",
+    "type": "boolean",
+    "required": false,
+    "description": "領域のタブの段を畳めるようにする（右に「ヘッダーを閉じる」、畳むと右上に「＋」）。",
+    "default": "false"
+   },
+   {
+    "name": "collapsed",
+    "type": "boolean",
+    "required": false,
+    "description": "畳んでいるか（v-model:collapsed）。",
+    "default": "false"
+   },
+   {
     "name": "labels",
-    "type": "{ nav: string; count: string; }",
+    "type": "{ nav: string; count: string; collapse?: string | undefined; expand?: string | undefined; domains?: string | undefined; }",
     "required": false,
     "description": "",
     "default": "{ nav: \"メインメニュー\", count: \"件\" }"
@@ -7582,10 +8099,26 @@
     "name": "account",
     "payload": "[key: string]",
     "description": ""
+   },
+   {
+    "name": "domain",
+    "payload": "[key: string]",
+    "description": "領域のタブを押した。"
+   },
+   {
+    "name": "update:collapsed",
+    "payload": "[collapsed: boolean]",
+    "description": ""
+   },
+   {
+    "name": "pill-item",
+    "payload": "[pill: string, item: string]",
+    "description": "ピルの一覧の項目を押した。"
    }
   ],
   "slots": [
-   "logo"
+   "logo",
+   "top"
   ],
   "parts": [
    "root",
@@ -7595,6 +8128,9 @@
    "pill-icon",
    "pill-label",
    "count",
+   "pill-list",
+   "pill-item",
+   "top-extra",
    "account",
    "avatar",
    "account-icon",
@@ -7602,11 +8138,19 @@
    "account-arrow",
    "menu-item",
    "menu-arrow",
+   "expand",
+   "domains",
+   "domain-list",
+   "domain",
+   "domain-icon",
+   "toggle",
    "nav",
    "spacer",
    "item",
    "item-icon",
-   "item-label"
+   "item-label",
+   "submenu",
+   "submenu-item"
   ],
   "dataAr": "app-header"
  },
@@ -7617,7 +8161,7 @@
   "props": [
    {
     "name": "tail",
-    "type": "'bottom' | 'top' | 'right' | 'left'",
+    "type": "'left' | 'right' | 'bottom' | 'top'",
     "required": false,
     "description": "しっぽを出す側。right なら右の物を指す（今の type）。",
     "default": "\"bottom\""
@@ -8320,6 +8864,20 @@
     "default": "false"
    },
    {
+    "name": "inverse",
+    "type": "boolean",
+    "required": false,
+    "description": "テーマ色の帯の上に置く形（白い文字・枠なし。押せない前へ・次へは出さずに場所だけ空ける）。今の EmployeeChanger（社員の切り替え）。",
+    "default": "false"
+   },
+   {
+    "name": "arrows",
+    "type": "boolean",
+    "required": false,
+    "description": "前へ・次へのボタンを出さない（期間を見せるだけ。今の MonthChanger の isPagenation=false・DateChanger の isChange=false）。",
+    "default": "true"
+   },
+   {
     "name": "prevDisabled",
     "type": "boolean",
     "required": false,
@@ -8531,7 +9089,7 @@
    },
    {
     "name": "labels",
-    "type": "{ change: string; title: string; hint: string; choose: string; remove: string; zoomIn: string; zoomOut: string; rotateLeft: string; rotateRight: string; area: string; cancel: string; ok: string; empty: string; }",
+    "type": "{ noFile?: string | undefined; change: string; title: string; hint: string; choose: string; remove: string; zoomIn: string; zoomOut: string; rotateLeft: string; rotateRight: string; area: string; cancel: string; ok: string; empty: string; }",
     "required": false,
     "description": "",
     "default": "{ change: \"画像を変える\", title: \"画像のアップロード\", hint: \"下の枠を押すと画像を選べます。\\n選んだあと、ドラッグで動かし、＋−で大きさを変えて切り抜きます。\\npng・jpeg・gif の画像だけ使えます。\", choose: \"画像を選ぶ\", remove: \"画像を消す\", zoomIn: \"大きく\", zoomOut: \"小さく\", rotateLeft: \"左に回す\", rotateRight: \"右に回す\", area: \"切り抜く範囲。矢印のキーで動かし、＋とーで大きさを変える\", cancel: \"キャンセル\", ok: \"登録\", empty: \"ここを押して画像を選ぶ（ドラッグして落としてもよい）\", }"
@@ -8563,9 +9121,10 @@
    "picture",
    "empty",
    "mask",
+   "file",
    "tools",
-   "tools-gap",
-   "file"
+   "submit",
+   "tools-gap"
   ],
   "dataAr": "thumbnail"
  },

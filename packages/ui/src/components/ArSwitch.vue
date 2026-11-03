@@ -11,6 +11,8 @@ const props = withDefaults(defineProps<ArSwitchProps>(), {
   size: "md",
   disabled: false,
   loading: false,
+  tone: "default",
+  twoWay: false,
   id: undefined,
 });
 const emit = defineEmits<{ "update:modelValue": [value: boolean] }>();
@@ -28,6 +30,8 @@ function toggle() {
     data-ar="switch"
     data-part="root"
     :data-size="size"
+    :data-tone="tone"
+    :data-two-way="twoWay || undefined"
     :data-text="hasText || undefined"
     :data-state="[modelValue ? 'on' : 'off', disabled && 'disabled', loading && 'loading'].filter(Boolean).join(' ')"
     :aria-checked="modelValue"
@@ -37,6 +41,7 @@ function toggle() {
     :disabled="disabled"
     @click="toggle"
   >
+    <span v-if="$slots.before" data-part="before" aria-hidden="true"><slot name="before" /></span>
     <span data-part="track" aria-hidden="true">
       <span v-if="hasText" data-part="text">
         <span data-part="on">{{ onText }}</span>
@@ -44,5 +49,7 @@ function toggle() {
       </span>
       <span data-part="thumb"><span v-if="loading" data-part="spinner" /></span>
     </span>
+    <span v-if="$slots.default" data-part="caption"><slot /></span>
+    <span v-if="$slots.after" data-part="after" aria-hidden="true"><slot name="after" /></span>
   </button>
 </template>

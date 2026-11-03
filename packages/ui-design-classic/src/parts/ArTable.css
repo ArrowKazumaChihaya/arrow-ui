@@ -1,8 +1,11 @@
 /* @covers ArTable 1.0.0 */
 /* ArTable（今の ARROW の表 Component/Table：見出しは白地・テーマ色の1px枠・中央・13px、行は上に #E8E8E8 の線だけ、行高32。並べ替えは ▲▼（#BFBFBF・向きだけ #1677FF）。チェックは灰枠 #808080） */
 [data-ar-design="classic"] [data-ar="table"]{color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
-[data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"]{background:#fff}
-[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]{padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:rgba(0,0,0,.65);font-size:13px;font-weight:400;line-height:20px;text-align:center!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 今の表は table-layout:fixed・幅100%（幅を決めない列は同じ幅に分ける。行の操作の列も1列として数える）。操作のボタンは左に寄せる */
+[data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"]{width:100%;table-layout:fixed;background:#fff}
+[data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td,col)[data-col="actions"]{width:auto;text-align:left}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"]{justify-content:flex-start}
+[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]{height:35px;padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:rgba(0,0,0,.65);font-size:13px;font-weight:400;line-height:20px;text-align:center!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 [data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]:last-child{border-right:1px solid var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="table"] [data-part="cell"]{padding:6px 8px;border-top:1px solid #E8E8E8;background:#fff;color:rgba(0,0,0,.65);font-size:13px;line-height:32px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 [data-ar-design="classic"] [data-ar="table"] tbody[data-part="body"]>tr:first-child>[data-part="cell"],[data-ar-design="classic"] [data-ar="table"] tfoot[data-part="foot"]>tr:first-child>[data-part="cell"]{border-top:0}
@@ -22,7 +25,10 @@
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"]{gap:3px}
 /* 並べ替えの印（SortMark：▲▼ 12×16、#BFBFBF。並べている向きだけ #1677FF） */
 [data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]{gap:5px}
-[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]{width:12px;height:16px;stroke:none}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]{width:12px;height:16px;stroke:none;overflow:visible}
+/* ▲▼ は antd の CaretUp／CaretDown（12px の箱の 8px ずつに重ねる：文字の中央の上下に ▲ と ▼、間は 3px） */
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="asc"]{d:path("M12 -2.8 20.1 7H3.9Z")}
+[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="desc"]{d:path("M12 22.8 3.9 13h16.2Z")}
 [data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>[data-shape="chevron"]{display:none}
 [data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]>[data-shape="caret"]{fill:#BFBFBF}
 [data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="asc"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="asc"],[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="desc"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="desc"]{fill:#1677FF}
@@ -46,3 +52,10 @@
 [data-ar-design="classic"] [data-ar="table"] td[data-part="empty"]>[data-ar="empty"]{padding:0;border:0;background:none;color:inherit;font-size:inherit;line-height:inherit}
 [data-ar-design="classic"] [data-ar="table"] tbody[data-part="before-rows"]>tr>td{padding:8px 0}
 [data-ar-design="classic"] [data-ar="table"]>[data-part="below"]{margin-top:10px}
+/* 選ぶ列（今の SelectTable）：幅90、見出しは「全選択」の文字とチェック（中央）、行のチェックは左（余白 8px） */
+[data-ar-design="classic"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"],col)[data-col="select"]{width:90px}
+[data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"] td[data-part="cell"][data-col="select"]{text-align:left}
+[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"][data-col="select"]{line-height:20px}
+[data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"][data-col="select"]>[data-part="select-text"]{margin-right:1px;vertical-align:middle}
+/* 縦横に固定した列の端に影は出さない（今の表は影なし） */
+[data-ar-design="classic"] [data-ar="table"] [data-sticky-edge]{box-shadow:none}

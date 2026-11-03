@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<ArTabsProps>(), {
   idPrefix: undefined,
   addable: false,
   addLabel: "追加",
+  alertLabel: "要確認",
 });
 const emit = defineEmits<{ "update:modelValue": [key: string]; close: [key: string]; add: [] }>();
 const list = ref<HTMLElement | null>(null);
@@ -66,6 +67,7 @@ function onKeydown(e: KeyboardEvent, key: string) {
         <ArIcon v-if="t.icon" :name="t.icon" data-part="icon" size="sm" />
         <span data-part="label">{{ t.label }}</span>
         <span v-if="t.count !== undefined" data-part="count">{{ t.count }}</span>
+        <span v-if="t.alert" data-part="alert" role="img" :aria-label="alertLabel"><ArIcon name="alert" size="sm" /></span>
         <span
           v-if="variant === 'card' && t.closable"
           data-part="close"

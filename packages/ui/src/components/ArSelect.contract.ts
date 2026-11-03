@@ -29,6 +29,19 @@ export interface ArSelectGroup {
   options: readonly ArSelectOption[];
 }
 
+/** プルダウンの下に出す操作のボタン（「新規作成」など）。 */
+export interface ArSelectAction {
+  value: string;
+  label: string;
+  icon?: ArIconName;
+}
+
+/**
+ * ArSelect 1.0 の契約。
+ *
+ * デザインが選ぶ形（ArDesign.forms.ArSelect）。値の受け渡しはどの形でも同じ。
+ * - `search`：`"auto"`（既定）＝選択肢が7つ以上ならプルダウンに探す欄を出す。`"off"`＝searchable を渡さない限り出さない（今の ARROW）。
+ */
 export interface ArSelectProps {
   /** 選んでいる値。1つ選ぶときは値か null、multiple のときは値の配列。 */
   modelValue: ArSelectValue | null | readonly ArSelectValue[];
@@ -38,6 +51,13 @@ export interface ArSelectProps {
   multiple?: boolean;
   /** 札を何枚まで出すか（multiple）。残りは「+n」。 */
   maxTags?: number;
+  /**
+   * 先頭に「何も選ばない」行を出す（選ぶと null。今の ARROW の Select の「未選択」）。
+   * true なら placeholder の文字、文字を渡せばその文字。
+   */
+  nullOption?: boolean | string;
+  /** プルダウンの下に出す操作のボタン（「新規作成」など）。押すと action を出して閉じる。 */
+  actions?: readonly ArSelectAction[];
   /** 何も選んでいないときの文字。 */
   placeholder?: string;
   /**
@@ -66,7 +86,7 @@ export interface ArSelectProps {
   loadingText?: string;
   /** 幅を中身ではなく親いっぱいにする。 */
   block?: boolean;
-  /** プルダウンの高さの上限（px）。 */
+  /** プルダウンの高さの上限（px）。省くとデザインの既定（remix 264・classic 256）。 */
   listHeight?: number;
   /** 読み上げの名前（ArField の中では不要）。 */
   label?: string;

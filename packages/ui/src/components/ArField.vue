@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<ArFieldProps>(), {
   name: undefined,
   layout: undefined,
   labelSize: undefined,
+  labelWidth: undefined,
   requiredText: "必須",
   id: undefined,
 });
@@ -30,6 +31,7 @@ const helpId = `${auto}-help`;
 const errorId = `${auto}-error`;
 const layout = computed(() => props.layout ?? form?.layout.value ?? "stacked");
 const labelSize = computed(() => props.labelSize ?? form?.labelSize.value ?? "md");
+const labelWidth = computed(() => props.labelWidth ?? form?.labelWidth.value);
 const error = computed(() => props.error ?? (props.name && form ? form.errorOf(props.name) : undefined));
 const required = computed(() => props.required ?? (props.name && form ? form.isRequired(props.name) : false));
 
@@ -79,6 +81,7 @@ function onFocusOut(e: FocusEvent) {
     data-part="root"
     :data-layout="layout"
     :data-label-size="layout === 'inline' ? labelSize : undefined"
+    :style="layout === 'inline' && labelWidth ? { '--ar-field-label': labelWidth } : undefined"
     :data-state="error ? 'invalid' : undefined"
     @focusout="onFocusOut"
   >

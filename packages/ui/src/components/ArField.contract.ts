@@ -17,6 +17,8 @@ export interface ArFieldProps {
   layout?: "stacked" | "inline" | "toolbar";
   /** inline のラベルの幅。sm＝88px・md＝120px・lg＝168px。 */
   labelSize?: "sm" | "md" | "lg";
+  /** inline のラベルの幅（CSS の長さ。例："25%"）。labelSize より優先。ArForm の中では ArForm の labelWidth。 */
+  labelWidth?: string;
   /** 必須の札の文字。 */
   requiredText?: string;
   /** 入力の id を決める（省くと自動）。 */

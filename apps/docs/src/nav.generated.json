@@ -203,6 +203,16 @@
         "ja": "日付の範囲"
       },
       {
+        "slug": "date-time-input",
+        "name": "ArDateTimeInput",
+        "ja": "日時の入力"
+      },
+      {
+        "slug": "duration-input",
+        "name": "ArDurationInput",
+        "ja": "時間の長さの入力"
+      },
+      {
         "slug": "field",
         "name": "ArField",
         "ja": "入力の項目"
@@ -216,6 +226,11 @@
         "slug": "input-number",
         "name": "ArInputNumber",
         "ja": "数の入力"
+      },
+      {
+        "slug": "item",
+        "name": "ArItem",
+        "ja": "項目の行"
       },
       {
         "slug": "mentions",
@@ -251,6 +266,11 @@
         "slug": "stepper",
         "name": "ArStepper",
         "ja": "数の増減"
+      },
+      {
+        "slug": "sub-item",
+        "name": "ArSubItem",
+        "ja": "小さな項目"
       },
       {
         "slug": "switch",
