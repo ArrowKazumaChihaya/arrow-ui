@@ -11,7 +11,7 @@ const partsOf = (d: string) =>
   fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith(".css")).map((f) => path.join(root, d, f));
 const remixParts = partsOf("ui-design-remix/src/parts");
 const classicParts = partsOf("ui-design-classic/src/parts");
-const files = [path.join(root, "ui/src/styles/structure.css"), ...remixParts, ...classicParts];
+const files = [path.join(root, "ui/src/styles/structure.css"), ...partsOf("ui/src/styles/parts"), ...remixParts, ...classicParts];
 const containers = ["field", "card", "modal", "alert", "checkbox", "radio-group", "switch", "tabs", "select", "text-input", "time-input", "date-input", "button"];
 const descendant = new RegExp(
   String.raw`\[data-ar="(${containers.join("|")})"\](?:\[[^\]]+\]|:[a-z-]+(?:\((?:[^()]|\([^()]*\))*\))?)* \[data-part=`,

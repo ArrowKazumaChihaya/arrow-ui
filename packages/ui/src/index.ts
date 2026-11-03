@@ -2,7 +2,7 @@
  * @arrow/ui — ARROW シリーズ共通の Vue 3 デザインライブラリ。
  * 公開するのはこのファイルに書いたものだけ（package.json の exports で閉じている）。
  */
-import "./styles/structure.css";
+import "./styles/index.css";
 
 export { contracts, componentNames, designedComponents, structuralComponents } from "./contracts";
 export type { ArComponentName } from "./contracts";

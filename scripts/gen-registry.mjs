@@ -90,6 +90,18 @@ write(
     "\n",
 );
 
+// 部品の構造の CSS（形だけ。見た目はデザイン）：styles/structure.css ＋ styles/parts/<部品>.css
+{
+  const dir = path.join(ui, "styles/parts");
+  const parts = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".css")).sort() : [];
+  write(
+    path.join(ui, "styles/index.css"),
+    "/* 部品の構造の CSS。scripts/gen-registry.mjs が作る。手で直さない。 */\n" +
+      ['@import "./structure.css";', ...parts.map((f) => `@import "./parts/${f}";`)].join("\n") +
+      "\n",
+  );
+}
+
 // デザインのライブラリ
 const designed = metas.filter((m) => !m.structural).map((m) => m.name);
 for (const pkg of fs.readdirSync(path.join(root, "packages")).filter((p) => p.startsWith("ui-design-"))) {

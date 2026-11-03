@@ -6,6 +6,7 @@ export const covers = {
   ArCard: "1.0.0",
   ArCheckbox: "1.0.0",
   ArDateInput: "1.0.0",
+  ArField: "1.0.0",
   ArIcon: "1.0.0",
   ArModal: "1.0.0",
   ArRadioGroup: "1.0.0",
