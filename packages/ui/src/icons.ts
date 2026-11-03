@@ -64,5 +64,18 @@ export const icons = {
   "dl": "<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3\"></path>", // ダウンロード・書き出す
   "send": "<path d=\"m22 2-7 20-4-9-9-4z\"></path><path d=\"M22 2 11 13\"></path>", // 送る
   "xls": "<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><path d=\"M14 2v6h6M9 12l6 6M15 12l-6 6\"></path>", // Excel
+  "star": "<path d=\"m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z\"></path>", // お気に入り・評価
+  "copy": "<rect x=\"8\" y=\"8\" width=\"12\" height=\"12\" rx=\"2\"></rect><path d=\"M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2\"></path>", // コピー
+  "image": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"></rect><circle cx=\"9\" cy=\"10\" r=\"2\"></circle><path d=\"m21 16-5-5-9 9\"></path>", // 画像
+  "folder": "<path d=\"M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path>", // フォルダ
+  "file": "<path d=\"M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z\"></path><path d=\"M14 3v5h5\"></path>", // ファイル
+  "home": "<path d=\"m3 11 9-7 9 7\"></path><path d=\"M5 10v10h14V10\"></path>", // ホーム
+  "up": "<path d=\"M12 19V5\"></path><path d=\"m5 12 7-7 7 7\"></path>", // 上へ（上へ戻る）
+  "down": "<path d=\"M12 5v14\"></path><path d=\"m19 12-7 7-7-7\"></path>", // 下へ
+  "zoom": "<circle cx=\"11\" cy=\"11\" r=\"7\"></circle><path d=\"m20 20-4-4\"></path><path d=\"M11 8v6M8 11h6\"></path>", // 拡大
+  "reload": "<path d=\"M20 11a8 8 0 1 0-2.3 5.7\"></path><path d=\"M20 4v7h-7\"></path>", // 読み込み直す
+  "qmark": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6\"></path><path d=\"M12 17h.01\"></path>", // はてな（問い合わせ）
+  "smile": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M8.5 14a4 4 0 0 0 7 0\"></path><path d=\"M9 9.5h.01M15 9.5h.01\"></path>", // 満足・結果
+  "drag": "<path d=\"M9 5h.01M15 5h.01M9 12h.01M15 12h.01M9 19h.01M15 19h.01\"></path>", // つまみ（ドラッグ）
 } as const;
 export type ArIconName = keyof typeof icons;
