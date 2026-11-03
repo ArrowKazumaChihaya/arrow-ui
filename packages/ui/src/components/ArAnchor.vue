@@ -57,6 +57,7 @@ function onScroll() {
 }
 function go(key: string, href: string, e: MouseEvent) {
   emit("click", key, e);
+  setCurrent(key);
   const t = targetOf(href);
   if (!t) return;
   e.preventDefault();
@@ -66,7 +67,6 @@ function go(key: string, href: string, e: MouseEvent) {
   if (isWin(b)) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - props.offset, behavior });
   else b.scrollTo({ top: t.getBoundingClientRect().top - b.getBoundingClientRect().top + b.scrollTop - props.offset, behavior });
   lock = Date.now() + 600;
-  setCurrent(key);
   if (!t.hasAttribute("tabindex")) t.setAttribute("tabindex", "-1");
   t.focus({ preventScroll: true });
 }

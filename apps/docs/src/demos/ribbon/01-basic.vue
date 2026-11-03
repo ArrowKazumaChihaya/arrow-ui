@@ -4,7 +4,7 @@ import { ArCard, ArRibbon } from "@arrow/ui";
 </script>
 
 <template>
-<div style="display: flex; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; gap: 24px; flex-wrap: wrap">
   <div style="width: 260px">
     <ArRibbon text="おすすめ">
       <ArCard variant="outlined"><div style="padding-top: 4px"><b style="color: var(--ar-color-text)">スタンダードプラン</b><br />従業員30名まで</div></ArCard>
