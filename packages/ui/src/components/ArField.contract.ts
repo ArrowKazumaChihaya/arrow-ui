@@ -10,8 +10,11 @@ export interface ArFieldProps {
   error?: string;
   /** ArForm の model の名前。rules の検証結果を受け取る。 */
   name?: string;
-  /** stacked：ラベルが上（ポップアップ）。inline：ラベルが左・右寄せ（設定の画面）。ArForm の中では ArForm の layout。 */
-  layout?: "stacked" | "inline";
+  /**
+   * stacked：ラベルが上（ポップアップ）。inline：ラベルが左・右寄せ（設定の画面）。ArForm の中では ArForm の layout。
+   * toolbar：小さな灰色のラベルを左に添える（カードの頭の「店舗」「表示モード」など。幅は文字なり）。
+   */
+  layout?: "stacked" | "inline" | "toolbar";
   /** inline のラベルの幅。sm＝88px・md＝120px・lg＝168px。 */
   labelSize?: "sm" | "md" | "lg";
   /** 必須の札の文字。 */

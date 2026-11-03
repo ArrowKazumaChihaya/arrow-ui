@@ -1,0 +1,3 @@
+/* ArField の構造（toolbar：ラベルと入力を横に並べ、ラベルは文字なりの幅）。 */
+[data-ar="field"][data-layout="toolbar"]{display:inline-flex;align-items:center;min-width:0;white-space:nowrap}
+[data-ar="field"][data-layout="toolbar"]>[data-part="label"]{flex:none}

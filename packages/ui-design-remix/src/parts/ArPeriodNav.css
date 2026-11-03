@@ -1,0 +1,23 @@
+/* @covers ArPeriodNav 1.0.0 */
+/* ArPeriodNav：シフト画面の .v-mc（月：前後の丸 36・「2026年10月」20px 太字・角丸12 の押せる文字・右端の .r-today）と
+   .v-dc（日：「10月21日」28px 太字・曜日の札 26px 角丸8 の灰色の地）。 */
+[data-ar-design="remix"] [data-ar="period-nav"]{color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]{gap:6px}
+[data-ar-design="remix"] [data-ar="period-nav"][data-size="lg"]>[data-part="center"]{gap:14px}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]{width:36px;height:36px;border:1px solid var(--ar-color-border);border-radius:50%;background:#fff;color:var(--ar-color-text-secondary);transition:background var(--ar-motion-fast),border-color var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:hover:not(:disabled){border-color:var(--ar-accent-line);background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:disabled{opacity:.45}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]{gap:6px;height:40px;padding:0 14px;border:0;border-radius:12px;background:none;color:var(--ar-color-text);font:700 20px/normal var(--ar-font-family-numeric);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]{transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]:hover{background:#F2F5F8}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="caret"]{color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="period-nav"][data-size="lg"]>[data-part="center"]>[data-part="label"]{align-items:baseline;gap:8px;height:42px;padding:0;font-size:28px;line-height:42px;letter-spacing:.01em}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{height:26px;min-width:26px;padding:0 6px;border-radius:8px;background:#F0F3F6;color:#8A9098;font-size:15px;font-weight:700;line-height:22.5px;letter-spacing:normal;transform:translateY(-3px)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"][data-tone="sun"]{background:#FDECEA;color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"][data-tone="sat"]{background:#E8F0FB;color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]{gap:5px;height:30px;padding:0 12px;border:1px solid var(--ar-color-border);border-radius:9px;background:#fff;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:700;transition:border-color var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:hover:not(:disabled){border-color:var(--ar-accent-line);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:disabled{opacity:.45}

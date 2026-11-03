@@ -4,3 +4,4 @@
 [data-ar="segmented"]>[data-part="item"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;border:0;cursor:pointer;white-space:nowrap;font:inherit;box-sizing:border-box}
 [data-ar="segmented"][data-block]>[data-part="item"]{flex:1 1 0;min-width:0}
 [data-ar="segmented"]>[data-part="item"]:disabled{cursor:not-allowed}
+[data-ar="segmented"]>[data-part="item"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box;font-variant-numeric:tabular-nums}

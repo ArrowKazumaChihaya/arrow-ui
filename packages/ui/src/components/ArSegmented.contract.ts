@@ -12,6 +12,8 @@ export interface ArSegmentedOption {
   iconOnly?: boolean;
   /** 選べない。 */
   disabled?: boolean;
+  /** 文字の右の件数の丸（「備考 2」）。0 や省いたときは出さない。 */
+  count?: number;
 }
 
 export interface ArSegmentedProps {
@@ -33,4 +35,4 @@ export interface ArSegmentedEmits {
   /** 利用者が選び直したとき。 */
   change: [value: string | number];
 }
-export type ArSegmentedPart = "root" | "item" | "icon" | "label";
+export type ArSegmentedPart = "root" | "item" | "icon" | "label" | "count";

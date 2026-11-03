@@ -1,0 +1,10 @@
+/* ArPeriodNav の構造：前へ・期間・次へを真ん中にそろえ、「今日」は右端に置く（真ん中の位置を動かさない）。 */
+[data-ar="period-nav"]{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;box-sizing:border-box}
+[data-ar="period-nav"]>[data-part="center"]{display:flex;align-items:center;justify-content:center;min-width:0}
+[data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]{display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box;margin:0;padding:0;cursor:pointer;font-family:inherit}
+[data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:disabled{cursor:default}
+[data-ar="period-nav"]>[data-part="center"]>[data-part="label"]{display:inline-flex;align-items:center;white-space:nowrap;box-sizing:border-box;margin:0;font-family:inherit}
+[data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]{cursor:pointer}
+[data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{display:inline-flex;align-items:center;justify-content:center;font-style:normal;box-sizing:border-box}
+[data-ar="period-nav"]>[data-part="today"]{position:absolute;right:0;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;white-space:nowrap;box-sizing:border-box;margin:0;cursor:pointer;font-family:inherit}
+[data-ar="period-nav"]>[data-part="today"]:disabled{cursor:default}
