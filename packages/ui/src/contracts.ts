@@ -4,7 +4,7 @@
  * 製品の arrow-ui.requires.ts はこの版に対して必要な範囲を宣言する。
  */
 export const contracts = {
-  ArUiProvider: "1.0.0",
+  ArUiProvider: "1.1.0",
   ArThemeScope: "1.0.0",
   ArStack: "1.0.0",
   ArCluster: "1.0.0",
@@ -31,7 +31,7 @@ export const contracts = {
 export type ArComponentName = keyof typeof contracts;
 export const componentNames = Object.keys(contracts) as ArComponentName[];
 
-/** 見た目を持たず、デザイン が対応しなくてよい部品（並べるための基礎と仕組み）。 */
+/** 見た目を持たず、デザインのライブラリが対応しなくてよい部品（並べるための基礎と仕組み）。 */
 export const structuralComponents: readonly ArComponentName[] = [
   "ArUiProvider",
   "ArThemeScope",
@@ -41,5 +41,5 @@ export const structuralComponents: readonly ArComponentName[] = [
   "ArSplit",
 ];
 
-/** デザイン が見た目を用意しなければならない部品。 */
+/**デザインが見た目を用意しなければならない部品。 */
 export const designedComponents = componentNames.filter((n) => !structuralComponents.includes(n));

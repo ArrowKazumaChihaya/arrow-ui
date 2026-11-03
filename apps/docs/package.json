@@ -1,0 +1,16 @@
+{
+  "name": "@arrow/docs",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node ../../scripts/gen-meta.mjs && vite",
+    "build": "node ../../scripts/gen-meta.mjs && vite build && node ./artifact.mjs"
+  },
+  "dependencies": {
+    "@arrow/ui": "0.1.0",
+    "@arrow/ui-design-remix": "0.1.0",
+    "@arrow/ui-design-classic": "0.1.0",
+    "vue": "^3.5.22"
+  }
+}

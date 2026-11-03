@@ -158,7 +158,11 @@ npm run typecheck
 npm run build
 npm run catalog     # http://127.0.0.1:5190/ でカタログ（?design=classic&palette=green）
 npm run test:visual # カタログをデザインごとに撮る（apps/catalog/shots）
+npm run docs        # http://127.0.0.1:5191/ で説明のサイト（AntD の説明のような、見本・コード・API の一覧）
+npm run docs:build  # 説明のサイトを1枚の HTML にする（apps/docs/dist/arrow-ui-docs.html）
 npm run changeset   # 変更の記録（版を上げる）
 ```
+
+説明のサイトの API の表は `scripts/gen-meta.mjs` が部品のソース（props の型・JSDoc・既定値・events・slots・data-part）から作ります。見本は `apps/docs/src/demos/<部品>/*.vue` に1つずつ置きます（1行目のコメントが題と説明）。
 
 公開先は GitHub Packages（`@arrow` スコープ）です。製品の `.npmrc` に `@arrow:registry=https://npm.pkg.github.com` と読み取りのトークンを置きます。

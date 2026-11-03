@@ -10,7 +10,7 @@ export { satisfies, parseVersion } from "./semver";
  */
 export interface ArRequirements {
   components: Partial<Record<ArComponentName, string>>;
-  /** 製品が起動時に選ぶかもしれない デザイン。CI ではすべてを確かめる。 */
+  /** 製品が起動時に選ぶかもしれないデザイン。CI ではすべてを確かめる。 */
   designs?: readonly Pick<ArDesign, "id" | "covers">[];
 }
 
@@ -32,7 +32,7 @@ export interface ArRequirementResult {
 }
 
 /**
- * 宣言をライブラリと デザイン が満たすか確かめる。
+ * 宣言をライブラリとデザインが満たすか確かめる。
  * contracts を渡さなければ、このライブラリ自身の契約で確かめる。
  */
 export function checkRequirements(

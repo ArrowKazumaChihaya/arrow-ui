@@ -3,8 +3,8 @@
  * ArModal 1.0 — ポップアップ。
  * 開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所にフォーカスを戻す。
  */
-import { nextTick, onBeforeUnmount, ref, watch } from "vue";
-import { useId } from "../provider/context";
+import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
+import { useArUi, useId } from "../provider/context";
 import ArIcon from "./ArIcon.vue";
 import type { ArModalProps } from "./ArModal.contract";
 
@@ -21,6 +21,9 @@ const props = withDefaults(defineProps<ArModalProps>(), {
 const emit = defineEmits<{ "update:open": [open: boolean]; close: [] }>();
 
 const id = useId("ar-modal");
+const ui = useArUi();
+/** 出す先。Provider が scope="self" なら、そのデザインの範囲の中に出す。 */
+const target = computed(() => (props.teleportTo === "body" && ui?.portal.value ? ui.portal.value : (props.teleportTo ?? "body")));
 const panel = ref<HTMLElement | null>(null);
 let returnTo: HTMLElement | null = null;
 const FOCUSABLE =
@@ -80,7 +83,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Teleport :to="teleportTo ?? 'body'" :disabled="teleportTo === null">
+  <Teleport :to="target" :disabled="teleportTo === null" defer>
     <div v-if="open" data-ar="modal" data-part="root" :data-size="size" @keydown="onKeydown">
       <div data-part="scrim" aria-hidden="true" @click="closeOnScrim && close()" />
       <div

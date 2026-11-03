@@ -5,11 +5,13 @@ import type { ArDesign } from "../design";
 export interface ArUiContext {
   design: Ref<ArDesign>;
   palette: Ref<ArPaletteName>;
+  /** scope="self" のとき、ポップアップを出す先（デザインの範囲の中）。 */
+  portal: Ref<HTMLElement | null>;
 }
 
 export const arUiContextKey: InjectionKey<ArUiContext> = Symbol("ArUi");
 
-/** 部品の中から今の デザイン とテーマ色を読む。Provider の外では null。 */
+/** 部品の中から今のデザインとテーマ色を読む。Provider の外では null。 */
 export function useArUi(): ArUiContext | null {
   return inject(arUiContextKey, null);
 }

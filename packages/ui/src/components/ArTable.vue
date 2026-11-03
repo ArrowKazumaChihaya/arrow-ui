@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="Row extends object">
 /**
  * ArTable 1.0 — 表。
- * 見出しの固定・左の列の固定・選択・展開・合計の行を部品として持つ（どの デザイン でも同じに動く）。
+ * 見出しの固定・左の列の固定・選択・展開・合計の行を部品として持つ（どのデザインでも同じに動く）。
  * 並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。
  */
 import { computed } from "vue";

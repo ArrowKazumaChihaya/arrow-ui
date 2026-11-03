@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "types": [
       "vitest/globals"
@@ -30,6 +31,7 @@
     "packages/*/src/**/*",
     "packages/*/test/**/*",
     "apps/catalog/src/**/*",
+    "apps/docs/src/**/*",
     "env.d.ts"
   ]
 }

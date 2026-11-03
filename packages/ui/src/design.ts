@@ -9,8 +9,8 @@ import {
 import { designedComponents, type ArComponentName } from "./contracts";
 
 /**
- * デザイン（デザインの実装）。持つのは「トークンの値」「部位に当てる CSS」「対応した部品と契約の版」だけ。
- * 部品の構造と動きはライブラリが持ち、デザイン ごとに変えない。
+ * デザインのライブラリ（見た目の実装）。持つのは「トークンの値」「部位に当てる CSS」「対応した部品と契約の版」だけ。
+ * 部品の構造と動きはライブラリが持ち、デザインごとに変えない。
  */
 export interface ArDesign {
   /** 起動時に選ぶ ID。変えない。 */
@@ -18,11 +18,11 @@ export interface ArDesign {
   label: string;
   tokens: ArTokenValues;
   palettes: Record<ArPaletteName, ArPalette>;
-  /** この デザイン が見た目を用意した部品と、その契約の版。 */
+  /** このデザインが見た目を用意した部品と、その契約の版。 */
   covers: Partial<Record<ArComponentName, string>>;
   /** 部位への CSS を読み込む。Node（CI の確認）では呼ばない。 */
   styles?: () => Promise<unknown>;
-  /** 移行中だけの デザイン なら、その旨（起動時に警告を出さない・文書に出すため）。 */
+  /** 移行中だけのデザインなら、その旨（起動時に警告を出さない・文書に出すため）。 */
   deprecated?: string;
 }
 
@@ -30,7 +30,7 @@ export class ArDesignError extends Error {
   override name = "ArDesignError";
 }
 
-/** トークン・テーマ色・対応部品がそろっていない デザイン は登録できない。 */
+/** トークン・テーマ色・対応部品がそろっていないデザインは登録できない。 */
 export function defineDesign(design: ArDesign): ArDesign {
   const problems: string[] = [];
   if (!design.id) problems.push("id がありません");

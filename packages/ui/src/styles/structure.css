@@ -1,6 +1,6 @@
 /*
  * ARROW UI の構造の CSS（デザイン に関係なく同じ）。
- * 並べ方・固定・重なりなど、動きに必要な形だけを持つ。色・角丸・文字などの見た目は デザイン が持つ。
+ * 並べ方・固定・重なりなど、動きに必要な形だけを持つ。色・角丸・文字などの見た目はデザインが持つ。
  */
 [data-gap="0"]{--ar-gap:0px}
 [data-gap="1"]{--ar-gap:var(--ar-space-1)}
@@ -139,3 +139,4 @@ html[data-ar-modal-open]{overflow:hidden}
 [data-ar="tag"]{display:inline-flex;align-items:center;white-space:nowrap;vertical-align:middle}
 [data-ar="requirements-error"]{padding:24px;font-family:system-ui,sans-serif;color:#7a1712;background:#fdecea}
 [data-ar="requirements-error"] pre{white-space:pre-wrap}
+[data-ar="ui-scope"]{display:contents}

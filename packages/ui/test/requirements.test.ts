@@ -81,3 +81,22 @@ describe("defineDesign", () => {
     expect(classicDesign.deprecated).toBeTruthy();
   });
 });
+
+describe("ArUiProvider scope=self", () => {
+  it("html ではなく自分の中だけにデザインを当て、2つのデザインを並べられる", () => {
+    document.documentElement.removeAttribute("data-ar-design");
+    const a = mount(ArUiProvider, { props: { design: remixDesign, scope: "self" }, slots: { default: () => h("p", "A") } });
+    const b = mount(ArUiProvider, { props: { design: classicDesign, scope: "self", palette: "green" }, slots: { default: () => h("p", "B") } });
+    expect(document.documentElement.hasAttribute("data-ar-design")).toBe(false);
+    const wa = a.get('[data-ar="ui-scope"]');
+    const wb = b.get('[data-ar="ui-scope"]');
+    expect(wa.attributes("data-ar-design")).toBe("remix");
+    expect(wb.attributes("data-ar-design")).toBe("classic");
+    expect(wb.attributes("data-ar-palette")).toBe("green");
+    const css = [...document.querySelectorAll("style[data-ar-tokens]")].map((s) => s.textContent).join("\n");
+    expect(css).toContain(`[data-ar-scope="${wa.attributes("data-ar-scope")}"]{--ar-color-text:#1F2933`);
+    expect(css).toContain(`[data-ar-scope="${wb.attributes("data-ar-scope")}"]{--ar-color-text:rgba(0,0,0,.88)`);
+    a.unmount();
+    b.unmount();
+  });
+});
