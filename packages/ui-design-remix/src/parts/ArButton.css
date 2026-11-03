@@ -46,6 +46,4 @@
 [data-ar-design="remix"] [data-ar="button"][data-tone="overlay"]:hover:not(:disabled){background:rgba(15,23,32,.7)}
 [data-ar-design="remix"] [data-ar="button"][data-size="xl"]{height:42px;padding:0 18px;font-size:14px;border-radius:11px}
 [data-ar-design="remix"] [data-ar="button"][data-icon-only][data-size="xl"],[data-ar-design="remix"] [data-ar="button"][data-shape="circle"][data-size="xl"]{width:42px}
-[data-ar-design="remix"] [data-ar="button"][data-state~="blink"]>:is([data-part="label"],[data-ar="icon"]){animation:ar-btn-blink 1s ease-in infinite alternate}
-@keyframes ar-btn-blink{0%{opacity:.35}100%{opacity:1}}
-@media (prefers-reduced-motion:reduce){[data-ar-design="remix"] [data-ar="button"][data-state~="blink"]>:is([data-part="label"],[data-ar="icon"]){animation:none}}
+[data-ar-design="remix"] [data-ar="button"][data-state~="blink"]>:is([data-part="label"],[data-ar="icon"]){animation:ar-btn-blink 1s ease-in infinite alternate}@keyframes ar-btn-blink{0%{opacity:.35}100%{opacity:1}}@media (prefers-reduced-motion:reduce){[data-ar-design="remix"] [data-ar="button"][data-state~="blink"]>:is([data-part="label"],[data-ar="icon"]){animation:none}}

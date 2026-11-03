@@ -87,7 +87,7 @@ export const classicDesign = defineDesign({
   forms: {
     ArTimeInput: { fields: "split", dayToggle: "link" }, // 時と分が別々の箱と「:」、前日は「当／前」の文字のリンク（今の ui-Time）
     ArSelect: { search: "off" }, // 今の Select はプルダウンに探す欄がない
-    ArDateInput: { invalidDate: "message", pad: "zero", yearEmpty: "option" }, // 今の Dates：ありえない日は「無効な日付」、月日は2桁、年の先頭に「未選択」
+    ArDateInput: { invalidDate: "message", pad: "zero", yearEmpty: "option", yearOrder: "desc" }, // 今の Dates：ありえない日は「無効な日付」、月日は2桁、年は新しい順で先頭に「未選択」
     ArUpload: { trigger: "button" }, // 今の Upload は「ファイルを選択」のボタンと、その下のファイル名（置き場はない）
     ArColorPicker: { panel: "dialog" }, // 今の Colorpicker は真ん中のダイアログ「色選択」で選ぶ
     ArProgress: { stepsInfo: "percent" }, // antd の Progress の刻みは右に「60%」

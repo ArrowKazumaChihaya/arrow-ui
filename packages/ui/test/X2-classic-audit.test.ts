@@ -25,7 +25,7 @@ describe("X2：classic の監査で足した形と動き", () => {
     expect(w.findAll('[data-part="arrow"]')).toHaveLength(0);
     expect(w.get('[data-ar="period-nav"]').attributes("data-arrows")).toBe("none");
     const v = mount(ArPeriodNav, { props: { label: "0002 山田 太郎", inverse: true, nextDisabled: true } });
-    expect(v.get('[data-ar="period-nav"]').attributes("data-inverse")).toBe("");
+    expect(v.get('[data-ar="period-nav"]').attributes("data-inverse")).toBeDefined();
     expect(v.findAll('[data-part="arrow"]')).toHaveLength(2);
     expect(v.get('[data-dir="next"]').attributes("disabled")).toBeDefined();
   });

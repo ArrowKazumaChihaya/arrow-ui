@@ -4,6 +4,7 @@
  * デザインが選ぶ形（ArDesign.forms.ArDateInput）。値の受け渡しはどの形でも同じ。
  * - `invalidDate`：`"clamp"`（既定）＝ありえない日（2月31日など）は末日に寄せる。`"message"`＝打った数字のまま月日の枠を赤くし、右に「無効な日付」を出して値は null（今の ARROW）。
  * - `pad`：`"none"`（既定）＝月日をそのまま（3）。`"zero"`＝2桁に詰める（03。今の ARROW）。
+ * - `yearOrder`：`"asc"`（既定）＝年のプルダウンは古い年が上。`"desc"`＝新しい年が上（今の ARROW）。
  * - `yearEmpty`：`"none"`（既定）。`"option"`＝年のプルダウンの先頭に「未選択」を出す（今の ARROW）。
  */
 export interface ArDateInputProps {

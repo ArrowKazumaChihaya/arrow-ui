@@ -29,6 +29,7 @@ const emit = defineEmits<{ "update:modelValue": [value: string | null] }>();
 const invalidForm = useDesignForm<"clamp" | "message">("ArDateInput", "invalidDate", "clamp");
 const padForm = useDesignForm<"none" | "zero">("ArDateInput", "pad", "none");
 const yearEmpty = useDesignForm<"none" | "option">("ArDateInput", "yearEmpty", "none");
+const yearOrder = useDesignForm<"asc" | "desc">("ArDateInput", "yearOrder", "asc");
 const show = (n: number) => (padForm.value === "zero" ? String(n).padStart(2, "0") : String(n));
 const parts = ref({ y: "", m: "", d: "" });
 /** 打った月日がありえない日（message の形のときだけ）。 */
@@ -45,8 +46,8 @@ const years = computed(() => {
   const cur = Number(parts.value.y) || thisYear;
   const from = Math.min(props.minYear ?? thisYear - 5, cur);
   const to = Math.max(props.maxYear ?? thisYear + 5, cur);
-  // 新しい年が上（今の ARROW・ArYearInput と同じ）
-  return Array.from({ length: to - from + 1 }, (_, i) => to - i);
+  // desc：新しい年が上（今の ARROW・ArYearInput と同じ）
+  return Array.from({ length: to - from + 1 }, (_, i) => (yearOrder.value === "desc" ? to - i : from + i));
 });
 
 const weekday = computed(() => {
