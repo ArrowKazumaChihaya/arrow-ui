@@ -1,0 +1,5 @@
+/* ArDateView の構造：auto はふだん long、幅 499px 以下で short。 */
+[data-ar="date-view"]{display:inline-block}
+[data-ar="date-view"]>:is([data-part="long"],[data-part="short"]){white-space:nowrap}
+[data-ar="date-view"][data-format="auto"]>[data-part="short"]{display:none}
+@media (max-width:499px){[data-ar="date-view"][data-format="auto"]>[data-part="long"]{display:none}[data-ar="date-view"][data-format="auto"]>[data-part="short"]{display:inline}}

@@ -99,7 +99,8 @@ export const classicDesign = defineDesign({
     ArModal: { buttonText: "antd" }, // 足のボタンは antd の Button：2 文字の漢字・かなは「登 録」と間を空ける（今の ui-Modal）
     ArCalendar: { firstDay: "always" }, // 今の Calendar は 1 日をいつも「11/1」「12/1」と月を添えて書く（期間の外の日も）
     ArThumbnail: { editor: "arrow" }, // 今の画像のアップロード：大きな「ファイルを選択」・ファイル名・左右の回すボタン・真ん中の大きな「登録」
-    ArTable: { selectHead: "label" }, // 今の SelectTable：見出しのチェックの左に「全選択」
+    ArTreeTable: { toggle: "box" }, // 今の TreeTable は antd の Tree（showLine）：開け閉めは四角の中の −／＋
+    ArTable: { selectHead: "label", dragHandle: "cell" }, // 今の SelectTable：見出しのチェックの左に「全選択」。今の SortableTable：並べ替えの ⠿ は1列目のセルの頭
   },
   icons: classicIcons, // 今の ARROW の塗りの絵（public/icons）。ここに無い名前は線のアイコン
   styles: () => import("@arrow/ui-design-classic/styles.css"),

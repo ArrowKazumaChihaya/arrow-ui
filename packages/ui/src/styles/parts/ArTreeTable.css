@@ -1,0 +1,22 @@
+/* ArTreeTable の構造：表。1列目は字下げ（--ar-tt-depth × --ar-tt-indent）・開け閉め・つまみ・中身を横に並べ、つなぎの線はセルに重ねる。 */
+[data-ar="tree-table"]{--ar-tt-indent:24px;--ar-tt-toggle:24px;--ar-tt-start:0px;min-width:0}
+[data-ar="tree-table"]>[data-part="viewport"]{overflow-x:auto}
+[data-ar="tree-table"]>[data-part="viewport"]>[data-part="table"]{width:100%;border-collapse:collapse;border-spacing:0}
+[data-ar="tree-table"]>[data-part="viewport"]>[data-part="table"] :is(th,td){box-sizing:border-box;vertical-align:middle}
+[data-ar="tree-table"] :is(th,td)[data-align="center"]{text-align:center}
+[data-ar="tree-table"] :is(th,td)[data-align="end"]{text-align:right}
+[data-ar="tree-table"] :is(th,td)[data-col="actions"]{width:1%;white-space:nowrap}
+[data-ar="tree-table"] [data-part="row"]{outline-offset:-2px}
+[data-ar="tree-table"] td[data-tree]{position:relative}
+[data-ar="tree-table"] td[data-tree]>[data-part="tree"]{display:flex;align-items:center;min-width:0;padding-left:calc(var(--ar-tt-depth,0) * var(--ar-tt-indent))}
+[data-ar="tree-table"] td[data-tree]>[data-part="tree"]>[data-part="toggle"]{flex:none;display:inline-flex;align-items:center;justify-content:center;width:var(--ar-tt-toggle);padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+[data-ar="tree-table"] td[data-tree]>[data-part="tree"]>[data-part="toggle"][data-state="leaf"]{cursor:default}
+[data-ar="tree-table"] td[data-tree]>[data-part="tree"]>[data-part="toggle"]>[data-part="toggle-box"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+[data-ar="tree-table"] td[data-tree]>[data-part="tree"]>[data-part="drag-handle"]{flex:none;display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:ns-resize;touch-action:none}
+[data-ar="tree-table"] td[data-tree]>[data-part="tree"]>[data-part="content"]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+[data-ar="tree-table"] td[data-tree]>[data-part="guide"]{position:absolute;box-sizing:border-box;pointer-events:none;left:calc(var(--ar-tt-start) + var(--ar-tt-col) * var(--ar-tt-indent) + var(--ar-tt-toggle) / 2)}
+[data-ar="tree-table"] td[data-tree]>[data-part="guide"][data-kind="through"]{top:0;bottom:0;width:0}
+[data-ar="tree-table"] td[data-tree]>[data-part="guide"][data-kind="corner"]{top:0;height:50%;width:var(--ar-tt-corner,var(--ar-tt-indent))}
+[data-ar="tree-table"] td[data-tree]>[data-part="guide"][data-kind="down"]{top:50%;bottom:0;width:0}
+[data-ar="tree-table"] td>[data-part="actions"]{display:inline-flex;align-items:center;vertical-align:middle}
+[data-ar="tree-table"] [data-part="row"][data-state~="dragging"]{opacity:.5}

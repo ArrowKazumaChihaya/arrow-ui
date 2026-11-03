@@ -6270,7 +6270,7 @@
  {
   "name": "ArTable",
   "version": "1.0.0",
-  "description": "表。\nbox（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。\n見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。\n並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。\nページ送りは #below に ArPagination を置く。",
+  "description": "表。\nbox（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。\n見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。\n並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。\nページ送りは #below に ArPagination を置く。\nsortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。",
   "props": [
    {
     "name": "columns",
@@ -6391,6 +6391,13 @@
     "required": false,
     "description": "読み上げの名前。",
     "default": "{}"
+   },
+   {
+    "name": "sortableRows",
+    "type": "boolean",
+    "required": false,
+    "description": "行をドラッグで並べ替えられるようにする（今の ARROW の SortableTable）。つまみは左の列か1列目の頭（デザインが選ぶ）。\nマウスはつまみをつかんで上下へ、キーボードはつまみで Alt+↑↓。並べた行は update:rows（v-model:rows）と reorder で渡す。",
+    "default": "false"
    }
   ],
   "emits": [
@@ -6413,6 +6420,16 @@
     "name": "row-click",
     "payload": "[row: Row, index: number]",
     "description": ""
+   },
+   {
+    "name": "update:rows",
+    "payload": "[rows: Row[]]",
+    "description": "並べ替えた後の行（v-model:rows）。"
+   },
+   {
+    "name": "reorder",
+    "payload": "[move: ArTableReorder]",
+    "description": "並べ替えた1行。"
    }
   ],
   "slots": [
@@ -6442,6 +6459,7 @@
    "empty",
    "row",
    "cell",
+   "drag-handle",
    "expand-toggle",
    "person",
    "name",
@@ -6453,7 +6471,8 @@
    "foot",
    "foot-label",
    "foot-value",
-   "below"
+   "below",
+   "status"
   ],
   "dataAr": "table"
  },
@@ -6883,6 +6902,152 @@
    "label"
   ],
   "dataAr": "tree"
+ },
+ {
+  "name": "ArTreeTable",
+  "version": "1.0.0",
+  "description": "列のある木の表。1列目が木（字下げ・開け閉め・つなぎの線）、ほかの列は値、右端に行の操作。\ndraggable でつまみをつかんで行を動かす（前・後・子に）。キーボードでも動かせる（つまみで Alt+↑↓←→）。\nキーボード（WAI-ARIA の treegrid）：行で ↑↓ で移り、→ で開く／子へ、← で閉じる／親へ、Home / End、Enter で row-click。",
+  "props": [
+   {
+    "name": "columns",
+    "type": "readonly ArTreeTableColumn<Row>[]",
+    "required": true,
+    "description": "列。1列目が木の列。"
+   },
+   {
+    "name": "rows",
+    "type": "readonly Row[]",
+    "required": true,
+    "description": "木のデータ（子は childrenKey の配列）。"
+   },
+   {
+    "name": "rowKey",
+    "type": "(row: Row) => ArRowKey",
+    "required": true,
+    "description": "行を見分ける値（キーの名前か関数）。"
+   },
+   {
+    "name": "childrenKey",
+    "type": "string",
+    "required": false,
+    "description": "子の配列のキーの名前。既定 \"children\"。",
+    "default": "\"children\""
+   },
+   {
+    "name": "caption",
+    "type": "string",
+    "required": true,
+    "description": "表の名前（読み上げ）。"
+   },
+   {
+    "name": "expanded",
+    "type": "readonly ArRowKey[]",
+    "required": false,
+    "description": "開いている行の key（v-model:expanded）。渡さなければ部品が覚える。"
+   },
+   {
+    "name": "defaultExpandAll",
+    "type": "boolean",
+    "required": false,
+    "description": "はじめにすべて開く（expanded を渡さないとき）。今の ARROW の TreeTable と同じく既定は開く。",
+    "default": "true"
+   },
+   {
+    "name": "draggable",
+    "type": "boolean",
+    "required": false,
+    "description": "行を動かせるようにする。1列目につまみが出る。マウスはつまみをつかんで行の上（前）・まん中（子に）・下（後）へ。\nキーボードはつまみで Alt+↑↓（同じ親の中で前後）、Alt+→（すぐ上の行の子に）、Alt+←（親の後ろへ出す）。",
+    "default": "false"
+   },
+   {
+    "name": "allowDrop",
+    "type": "((drop: ArTreeTableDrop) => boolean)",
+    "required": false,
+    "description": "動かしてよいか（false を返すと置けない）。省くとどこへでも（自分の下の行の中を除く）。"
+   },
+   {
+    "name": "footer",
+    "type": "Readonly<Record<string, string | number>> | null",
+    "required": false,
+    "description": "合計の行。列の key → 表示する値（「店舗数」「4」など）。#foot-<key> で差し替えられる。",
+    "default": "null"
+   },
+   {
+    "name": "emptyText",
+    "type": "string",
+    "required": false,
+    "description": "行がないときの文。",
+    "default": "\"データがありません\""
+   },
+   {
+    "name": "blank",
+    "type": "string",
+    "required": false,
+    "description": "値が空のセルに出す文字。",
+    "default": "\"—\""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArTreeTableLabels>",
+    "required": false,
+    "description": "読み上げの名前。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:expanded",
+    "payload": "[keys: ArRowKey[]]",
+    "description": ""
+   },
+   {
+    "name": "update:rows",
+    "payload": "[rows: Row[]]",
+    "description": "動かした後の木（v-model:rows）。"
+   },
+   {
+    "name": "drop",
+    "payload": "[drop: ArTreeTableDrop]",
+    "description": "動かした1行。"
+   },
+   {
+    "name": "row-click",
+    "payload": "[row: Row]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "`head-<key>`",
+   "before-rows",
+   "empty",
+   "`cell-<key>`",
+   "actions",
+   "`foot-<key>`",
+   "below"
+  ],
+  "parts": [
+   "root",
+   "viewport",
+   "table",
+   "head",
+   "header-cell",
+   "before-rows",
+   "body",
+   "empty",
+   "row",
+   "cell",
+   "guide",
+   "tree",
+   "toggle",
+   "toggle-box",
+   "drag-handle",
+   "content",
+   "actions",
+   "foot",
+   "below",
+   "status"
+  ],
+  "dataAr": "tree-table"
  },
  {
   "name": "ArAlert",
@@ -8334,6 +8499,42 @@
   "dataAr": "chip"
  },
  {
+  "name": "ArDateView",
+  "version": "1.0.0",
+  "description": "日付を「11月05日(木)」の形で見せる。曜日の色は日曜・祝日が赤、土曜が青。\n幅の狭い画面では「11/05(木)」（format=\"auto\"）。",
+  "props": [
+   {
+    "name": "date",
+    "type": "string | Date",
+    "required": true,
+    "description": "日付（\"2026-11-05\" か Date）。"
+   },
+   {
+    "name": "holiday",
+    "type": "boolean",
+    "required": false,
+    "description": "祝日（日曜と同じ赤にする）。祝日の一覧は製品が持つ。",
+    "default": "false"
+   },
+   {
+    "name": "format",
+    "type": "'auto' | 'long' | 'short'",
+    "required": false,
+    "description": "書き方。long＝「11月05日(木)」、short＝「11/05(木)」、\nauto＝ふだんは long、幅 499px 以下の画面では short（今の ARROW の DateView と同じ）。",
+    "default": "\"auto\""
+   }
+  ],
+  "emits": [],
+  "slots": [],
+  "parts": [
+   "root",
+   "long",
+   "weekday",
+   "short"
+  ],
+  "dataAr": "date-view"
+ },
+ {
   "name": "ArDaySummary",
   "version": "1.0.0",
   "description": "日の要約の札の並び（シフト画面の日付の下）。\n札は「見出し＋太字の値」。最後に公開の切り替えの札（押すと公開中⇄非公開）を置ける。",
@@ -8390,6 +8591,37 @@
    "publish"
   ],
   "dataAr": "day-summary"
+ },
+ {
+  "name": "ArDocumentBlock",
+  "version": "1.0.0",
+  "description": "書類の流れの1つのまとまり。枠の中に指示の見出しと中身、上に「下へ進む」矢印（chevrons）。",
+  "props": [
+   {
+    "name": "instruction",
+    "type": "string",
+    "required": false,
+    "description": "枠の上の見出し（「提出された書類を確認してください」など）。"
+   },
+   {
+    "name": "arrow",
+    "type": "boolean",
+    "required": false,
+    "description": "枠の上に「下へ進む」矢印を出す（前のまとまりから続くとき）。",
+    "default": "true"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "arrow",
+   "box",
+   "title"
+  ],
+  "dataAr": "document-block"
  },
  {
   "name": "ArEllipsis",
@@ -8697,6 +8929,57 @@
    "inline"
   ],
   "dataAr": "kana-text"
+ },
+ {
+  "name": "ArLogoSpin",
+  "version": "1.0.0",
+  "description": "ロゴを動かす読み込み中の印。ロゴの絵は製品が slot（SVG）か src（画像）で渡し、部品は動きだけを付ける。\n動きを減らす設定の人には動かさない。",
+  "props": [
+   {
+    "name": "motion",
+    "type": "'circle' | 'spin' | 'blink'",
+    "required": false,
+    "description": "動き。spin＝輪が 2.5 秒ごとに一回りし、矢が抜けて刺さり直す（LogoSpin）。circle＝輪だけが回り続ける（CircleSpin）。\nblink＝ロゴ全体がゆっくり点滅する（LogoBlink）。src の画像は blink だけ（spin・circle は画像全体を回さない）。",
+    "default": "\"spin\""
+   },
+   {
+    "name": "src",
+    "type": "string",
+    "required": false,
+    "description": "ロゴの画像（slot の代わり）。"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げる文。既定「読み込み中」。",
+    "default": "\"読み込み中\""
+   },
+   {
+    "name": "pivot",
+    "type": "string",
+    "required": false,
+    "description": "輪を回す中心（ロゴの viewBox の座標）。既定は ARROW のマーク（1024 の箱）の輪の中心 \"344px 680px\"。",
+    "default": "\"344px 680px\""
+   },
+   {
+    "name": "fill",
+    "type": "boolean",
+    "required": false,
+    "description": "親いっぱいの広さのまん中に出す（画面全体の読み込み中）。",
+    "default": "false"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "logo",
+   "image"
+  ],
+  "dataAr": "logo-spin"
  },
  {
   "name": "ArMobileHeader",

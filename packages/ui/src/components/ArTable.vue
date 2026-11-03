@@ -5,13 +5,14 @@
  * 見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。
  * 並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。
  * ページ送りは #below に ArPagination を置く。
+ * sortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。
  */
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch } from "vue";
 import ArAvatar from "./ArAvatar.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
 import { useDesignForm } from "../provider/context";
-import type { ArRowKey, ArTableAvatar, ArTableColumn, ArTableFooterValue, ArTableLabels, ArTableProps, ArTableSort } from "./ArTable.contract";
+import type { ArRowKey, ArTableAvatar, ArTableColumn, ArTableFooterValue, ArTableLabels, ArTableProps, ArTableReorder, ArTableSort } from "./ArTable.contract";
 
 const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   variant: "box",
@@ -28,23 +29,31 @@ const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   blank: "—",
   rowOff: undefined,
   labels: () => ({}),
+  sortableRows: false,
 });
 const emit = defineEmits<{
   "update:selected": [keys: ArRowKey[]];
   "update:sort": [sort: ArTableSort | null];
   "update:expanded": [keys: ArRowKey[]];
   "row-click": [row: Row, index: number];
+  "update:rows": [rows: Row[]];
+  reorder: [move: ArTableReorder];
 }>();
 const slots = useSlots();
 
 /** 形（ArDesign.forms.ArTable.selectHead）：label は見出しのチェックの左に「全選択」の文字を出す。 */
 const selectHead = useDesignForm<"check" | "label">("ArTable", "selectHead", "check");
+/** 形（ArDesign.forms.ArTable.dragHandle）：column は並べ替えのつまみを左の専用の列に、cell は1列目のセルの頭に置く。 */
+const handleForm = useDesignForm<"column" | "cell">("ArTable", "dragHandle", "column");
+const handleColumn = computed(() => props.sortableRows && handleForm.value === "column");
 const L = computed<ArTableLabels>(() => ({
   selectAll: "すべて選ぶ",
   selectRow: "この行を選ぶ",
   expand: "開く",
   collapse: "閉じる",
   actions: "操作",
+  dragHandle: "並べ替え（ドラッグ、または Alt+↑↓）",
+  moved: "{n} 番目に移しました",
   ...props.labels,
 }));
 
@@ -165,19 +174,86 @@ function ariaSort(col: ArTableColumn<Row>) {
   return o === "asc" ? "ascending" : o === "desc" ? "descending" : "none";
 }
 const rowState = (row: Row) =>
-  [selectedSet.value.has(keyOf(row)) && "selected", isOpen(row) && "expanded", props.rowOff?.(row) && "off"].filter(Boolean).join(" ") ||
+  [selectedSet.value.has(keyOf(row)) && "selected", isOpen(row) && "expanded", props.rowOff?.(row) && "off", dragging.value === keyOf(row) && "dragging"].filter(Boolean).join(" ") ||
   undefined;
+/* ---- 行の並べ替え（sortableRows） ---- */
+const rootEl = ref<HTMLElement | null>(null);
+const armed = ref<ArRowKey | null>(null);
+const dragging = ref<ArRowKey | null>(null);
+const dropAt = ref<{ key: ArRowKey; position: "before" | "after" } | null>(null);
+const announce = ref("");
+function moveRow(from: number, to: number, focus = false) {
+  if (from === to || from < 0 || to < 0 || from >= props.rows.length || to >= props.rows.length) return;
+  const next = [...props.rows];
+  const [row] = next.splice(from, 1);
+  next.splice(to, 0, row!);
+  const key = keyOf(row!);
+  emit("update:rows", next);
+  emit("reorder", { key, from, to });
+  announce.value = L.value.moved.replace("{n}", String(to + 1));
+  if (focus)
+    void nextTick(() =>
+      Array.from(rootEl.value?.querySelectorAll<HTMLElement>('[data-part="drag-handle"]') ?? [])
+        .find((el) => el.dataset.key === String(key))
+        ?.focus(),
+    );
+}
+function onHandleKey(e: KeyboardEvent, i: number) {
+  if (!e.altKey || (e.key !== "ArrowUp" && e.key !== "ArrowDown")) return;
+  e.preventDefault();
+  moveRow(i, i + (e.key === "ArrowUp" ? -1 : 1), true);
+}
+function onRowDragStart(e: DragEvent, row: Row) {
+  if (!props.sortableRows || armed.value !== keyOf(row)) return e.preventDefault();
+  dragging.value = keyOf(row);
+  e.dataTransfer?.setData("text/plain", String(keyOf(row)));
+  if (e.dataTransfer) e.dataTransfer.effectAllowed = "move";
+}
+function onRowDragOver(e: DragEvent, row: Row) {
+  if (dragging.value === null) return;
+  e.preventDefault();
+  if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
+  const box = (e.currentTarget as HTMLElement).getBoundingClientRect();
+  const y = box.height ? (e.clientY - box.top) / box.height : 1;
+  dropAt.value = { key: keyOf(row), position: y < 0.5 ? "before" : "after" };
+}
+function onRowDrop(e: DragEvent) {
+  e.preventDefault();
+  const src = dragging.value;
+  const at = dropAt.value;
+  endDrag();
+  if (src === null || !at) return;
+  const from = allKeys.value.indexOf(src);
+  let to = allKeys.value.indexOf(at.key) + (at.position === "after" ? 1 : 0);
+  if (to > from) to -= 1;
+  moveRow(from, to);
+}
+function endDrag() {
+  dragging.value = null;
+  dropAt.value = null;
+  armed.value = null;
+}
 const colspan = computed(
-  () => props.columns.length + (props.selectable ? 1 : 0) + (props.expandable ? 1 : 0) + (hasActions.value ? 1 : 0),
+  () =>
+    props.columns.length + (props.selectable ? 1 : 0) + (props.expandable ? 1 : 0) + (hasActions.value ? 1 : 0) + (handleColumn.value ? 1 : 0),
 );
 </script>
 
 <template>
-  <div data-ar="table" data-part="root" :data-variant="variant" :data-density="density" :data-sticky-header="stickyHeader || undefined">
+  <div
+    ref="rootEl"
+    data-ar="table"
+    data-part="root"
+    :data-variant="variant"
+    :data-density="density"
+    :data-sticky-header="stickyHeader || undefined"
+    :data-sortable="sortableRows || undefined"
+  >
     <div data-part="viewport" role="region" :aria-label="caption" tabindex="0">
       <table ref="tableEl" data-part="table">
         <caption data-ar-visually-hidden>{{ caption }}</caption>
         <colgroup>
+          <col v-if="handleColumn" data-col="drag" />
           <col v-if="selectable" data-col="select" />
           <col v-if="expandable" data-col="expand" />
           <col v-for="c in columns" :key="c.key" :style="c.width ? { width: `${c.width}px` } : undefined" />
@@ -185,6 +261,7 @@ const colspan = computed(
         </colgroup>
         <thead data-part="head">
           <tr>
+            <th v-if="handleColumn" data-part="header-cell" data-col="drag" scope="col"><span data-ar-visually-hidden>{{ L.dragHandle }}</span></th>
             <th
               v-if="selectable"
               data-part="header-cell"
@@ -263,7 +340,32 @@ const colspan = computed(
             </td>
           </tr>
           <template v-for="(row, i) in rows" :key="keyOf(row)">
-            <tr data-part="row" :data-state="rowState(row)" @click="emit('row-click', row, i)">
+            <tr
+              data-part="row"
+              :data-state="rowState(row)"
+              :data-drop="dropAt?.key === keyOf(row) && dragging !== keyOf(row) ? dropAt.position : undefined"
+              :draggable="sortableRows && armed === keyOf(row) ? 'true' : undefined"
+              @click="emit('row-click', row, i)"
+              @dragstart="onRowDragStart($event, row)"
+              @dragover="onRowDragOver($event, row)"
+              @drop="onRowDrop"
+              @dragend="endDrag"
+            >
+              <td v-if="handleColumn" data-part="cell" data-col="drag" @click.stop>
+                <button
+                  type="button"
+                  data-part="drag-handle"
+                  :data-key="keyOf(row)"
+                  :aria-label="L.dragHandle"
+                  @click.stop
+                  @keydown="onHandleKey($event, i)"
+                  @mousedown="armed = keyOf(row)"
+                  @mouseup="dragging === null && (armed = null)"
+                  @touchstart.passive="armed = keyOf(row)"
+                >
+                  <ArIcon name="grip" size="sm" />
+                </button>
+              </td>
               <td
                 v-if="selectable"
                 data-part="cell"
@@ -315,6 +417,20 @@ const colspan = computed(
                 :data-sticky-edge="c.key === lastSticky || undefined"
                 :style="colSticky(c) ? stick(c.key) : undefined"
               >
+                <button
+                  v-if="sortableRows && !handleColumn && c === columns[0]"
+                  type="button"
+                  data-part="drag-handle"
+                  :data-key="keyOf(row)"
+                  :aria-label="L.dragHandle"
+                  @click.stop
+                  @keydown="onHandleKey($event, i)"
+                  @mousedown="armed = keyOf(row)"
+                  @mouseup="dragging === null && (armed = null)"
+                  @touchstart.passive="armed = keyOf(row)"
+                >
+                  <ArIcon name="grip" size="sm" />
+                </button>
                 <slot :name="`cell-${c.key}`" :row="row" :value="valueOf(row, c)" :index="i">
                   <span v-if="c.avatar" data-part="person" :data-single="!c.sub || undefined">
                     <ArAvatar v-bind="avatarOf(row, c, i)" :size="variant === 'board' ? 'md' : 'sm'" />
@@ -336,13 +452,15 @@ const colspan = computed(
               </td>
             </tr>
             <tr v-if="expandable && isOpen(row)" data-part="expanded-row">
+              <td v-if="handleColumn" data-col="drag" />
               <td v-if="selectable" data-col="select" />
-              <td :colspan="colspan - (selectable ? 1 : 0)"><slot name="expanded" :row="row" /></td>
+              <td :colspan="colspan - (selectable ? 1 : 0) - (handleColumn ? 1 : 0)"><slot name="expanded" :row="row" /></td>
             </tr>
           </template>
         </tbody>
         <tfoot v-if="footer" data-part="foot">
           <tr>
+            <td v-if="handleColumn" data-part="cell" data-col="drag" />
             <td v-if="selectable" data-part="cell" data-col="select" :data-sticky="anySticky ? 'start' : undefined" :style="stick('__select')" />
             <td v-if="expandable" data-part="cell" data-col="expand" :data-sticky="anySticky ? 'start' : undefined" :style="stick('__expand')" />
             <td
@@ -370,5 +488,6 @@ const colspan = computed(
       </table>
     </div>
     <div v-if="$slots.below" data-part="below"><slot name="below" /></div>
+    <span v-if="sortableRows" data-part="status" data-ar-visually-hidden aria-live="polite">{{ announce }}</span>
   </div>
 </template>

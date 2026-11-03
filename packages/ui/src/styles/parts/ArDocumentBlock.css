@@ -1,0 +1,5 @@
+/* ArDocumentBlock の構造：矢印はまん中、枠はその下。 */
+[data-ar="document-block"]{display:block}
+[data-ar="document-block"]>[data-part="arrow"]{display:flex;justify-content:center}
+[data-ar="document-block"]>[data-part="arrow"]>[data-ar="icon"]{display:block}
+[data-ar="document-block"]>[data-part="box"]>[data-part="title"]{margin:0}

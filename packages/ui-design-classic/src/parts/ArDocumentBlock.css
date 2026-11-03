@@ -1,0 +1,9 @@
+/* @covers ArDocumentBlock 1.0.0 */
+/* ArDocumentBlock（今の Component/DocumentBlock：上に /img/document_apply.png の矢印（幅55・上下10）、枠は 2px gray・角丸10・白・内側 10px 15px・上下10。
+   見出しは 15px/30px・600・黒・中央・下5。幅 499px 以下は 内側 5px 8px・矢印 35px・見出し 12px/25px） */
+[data-ar-design="classic"] [data-ar="document-block"]{color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="document-block"]>[data-part="arrow"]{margin:10px auto}
+[data-ar-design="classic"] [data-ar="document-block"]>[data-part="arrow"]>[data-ar="icon"]{width:55px;height:50.8px}
+[data-ar-design="classic"] [data-ar="document-block"]>[data-part="box"]{margin:10px auto;padding:10px 15px;border:2px solid gray;border-radius:10px;background:#fff}
+[data-ar-design="classic"] [data-ar="document-block"]>[data-part="box"]>[data-part="title"]{margin-bottom:5px;color:#000;font-size:15px;font-weight:600;line-height:30px;text-align:center}
+@media (max-width:499px){[data-ar-design="classic"] [data-ar="document-block"]>[data-part="box"]{padding:5px 8px}[data-ar-design="classic"] [data-ar="document-block"]>[data-part="arrow"]>[data-ar="icon"]{width:35px;height:32.3px}[data-ar-design="classic"] [data-ar="document-block"]>[data-part="box"]>[data-part="title"]{font-size:12px;line-height:25px}}
