@@ -55,6 +55,8 @@ export interface ArTimeChartRow {
   weekday?: number;
   /** 曜日の文字（「木」）。省くと weekday から。 */
   weekdayLabel?: string;
+  /** 祝日。曜日名を保持しながら日曜と同じ色で表示する。 */
+  holiday?: boolean;
   /** 名前の下・横の小さな文字（勤務形態「通常」「法定外休日」）。 */
   sub?: string;
   /** 帯がないときに帯の場所に出す文字（「勤務なし」「有給全日」）。 */

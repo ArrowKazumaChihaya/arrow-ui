@@ -112,7 +112,7 @@ const placedBars = (r: ArTimeChartRow) => {
   })));
 };
 const wdText = (r: ArTimeChartRow) => r.weekdayLabel ?? (r.weekday != null ? L.value.weekdays[r.weekday] : undefined);
-const wdTone = (r: ArTimeChartRow) => (r.weekday === 0 ? "sun" : r.weekday === 6 ? "sat" : undefined);
+const wdTone = (r: ArTimeChartRow) => (r.holiday || r.weekday === 0 ? "sun" : r.weekday === 6 ? "sat" : undefined);
 const rowAria = (r: ArTimeChartRow) =>
   [r.label + (wdText(r) ? `(${wdText(r)})` : ""), r.sub, ...placedBars(r).map((b) => b.tip.replace(/\n/g, " ")), barsOf(r).length ? "" : r.note]
     .filter(Boolean)

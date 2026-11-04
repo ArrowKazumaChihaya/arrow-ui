@@ -40,14 +40,14 @@ const keyOf = (s: ArApprovalStep, i: number) => s.key ?? i;
       <span v-if="start || i > 0" data-part="sep" aria-hidden="true"><ArIcon line name="cr" size="sm" /></span>
       <span data-part="mark" :data-state="s.state" aria-hidden="true"><template v-if="s.state === 'done'">✓</template><template v-else-if="s.state === 'denied'">×</template><template v-else>{{ i + 1 }}</template></span>
       <slot name="step" :step="s" :index="i">
-        <span data-part="step" :data-state="s.state">
-          <span data-part="body">
+        <div data-part="step" :data-state="s.state">
+          <div data-part="body">
             <span data-part="title"><ArIcon v-if="s.state === 'done'" line name="check" size="sm" />{{ s.title }}</span>
             <span v-if="s.who" data-part="who">{{ s.who }}</span>
-          </span>
+          </div>
           <span data-part="status" :data-state="s.state">{{ statusOf(s) }}</span>
-          <span v-if="$slots.details" data-part="details"><slot name="details" :step="s" :index="i" /></span>
-        </span>
+          <div v-if="$slots.details" data-part="details"><slot name="details" :step="s" :index="i" /></div>
+        </div>
       </slot>
     </li>
     <li v-if="$slots.append" data-part="item" data-state="append">

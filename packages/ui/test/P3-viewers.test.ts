@@ -56,7 +56,7 @@ describe("ArOrgChart", () => {
 
 describe("ArTimeChart", () => {
   it("重なる計算区分を独立した帯に残し、区分名と全期間を読み上げる", async () => {
-    const row = { key: "day", label: "11/04", bars: [{ kind: "work" as const, start: 480, end: 1080 }], tracks: [
+    const row = { key: "day", label: "11/04", weekday: 3, holiday: true, bars: [{ kind: "work" as const, start: 480, end: 1080 }], tracks: [
       { key: "premium", label: "休日割増", bars: [{ kind: "outhol" as const, start: 480, end: 1080 }] },
       { key: "night", label: "深夜割増", bars: [{ kind: "night" as const, start: -60, end: 1620 }] },
     ] };
@@ -67,6 +67,7 @@ describe("ArTimeChart", () => {
     expect(w.findAll('[data-part="tick"]').at(-1)?.text()).toBe("翌5");
     expect(w.findAll('[data-part="legend-item"]').map((x) => x.text())).toEqual(["通常勤務", "法定外休日", "深夜勤務"]);
     await w.setProps({ mode: "month" });
+    expect(w.get('[data-weekday="sun"]').text()).toBe("(水)");
     await w.get('button[data-part="row-label"]').trigger("click");
     expect(w.emitted("select")?.[0]).toEqual([row]);
     w.unmount();
