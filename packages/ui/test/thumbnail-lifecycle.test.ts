@@ -226,3 +226,40 @@ it.each(["close", "unmount"])(
     expect(wrapper.emitted("invalid-image")).toBeUndefined();
   },
 );
+
+it.each([true, false])(
+  "emits a free crop and respects closeOnSave=%s",
+  async (closeOnSave) => {
+    let finish: BlobCallback = () => {};
+    Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
+      configurable: true,
+      value: () => ({ fillRect: vi.fn(), drawImage: vi.fn() }),
+    });
+    vi.spyOn(HTMLCanvasElement.prototype, "toBlob").mockImplementation(
+      (callback) => {
+        finish = callback;
+      },
+    );
+    const wrapper = editor({
+      freeCrop: true,
+      closeOnSave,
+      modelValue: "data:image/png;base64,fixture",
+    });
+    const picture = wrapper.get('[data-part="picture"]');
+    Object.defineProperty(picture.element, "naturalWidth", { value: 200 });
+    Object.defineProperty(picture.element, "naturalHeight", { value: 100 });
+    await picture.trigger("load");
+    await click(wrapper, "登録");
+    finish(new Blob(["output"], { type: "image/png" }));
+    await flushPromises();
+    const output = wrapper.emitted("file")?.[0]?.[0];
+    expect(output).toBeInstanceOf(File);
+    if (!(output instanceof File)) throw new Error("Missing cropped file");
+    expect(output.name).toBe("image.png");
+    expect(output.type).toBe("image/png");
+    expect(wrapper.emitted("update:modelValue")).toBeUndefined();
+    expect(wrapper.find('[data-ar="thumbnail-editor"]').exists()).toBe(
+      !closeOnSave,
+    );
+  },
+);
