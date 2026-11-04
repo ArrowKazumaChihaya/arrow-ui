@@ -7,7 +7,7 @@
 import { computed } from "vue";
 import ArTooltip from "./ArTooltip.vue";
 import { useDesignForm } from "../provider/context";
-import type { ArTimeChartBar, ArTimeChartKind, ArTimeChartLabels, ArTimeChartProps, ArTimeChartRow } from "./ArTimeChart.contract";
+import type { ArTimeChartBar, ArTimeChartKind, ArTimeChartLabels, ArTimeChartProps, ArTimeChartRow, ArTimeChartTrack } from "./ArTimeChart.contract";
 
 const props = withDefaults(defineProps<ArTimeChartProps>(), {
   mode: "month",
@@ -56,8 +56,10 @@ const tracksOf = (r: ArTimeChartRow) => r.tracks?.length ? [
   ...(r.bars.length ? [{ key: "", label: r.label, bars: r.bars }] : []), ...r.tracks,
 ] : [];
 const barsOf = (r: ArTimeChartRow) => [...r.bars, ...(r.tracks?.flatMap((t) => t.bars) ?? [])];
+const thinTrack = (t: ArTimeChartTrack) => t.bars.length > 0 && t.bars.every(b => b.kind === "shift" || b.kind === "night");
+const trackHeight = (t: ArTimeChartTrack) => thinTrack(t) ? "var(--ar-chart-track-line-height, 8px)" : "var(--ar-chart-track-height, 22px)";
 const rowHeight = (r: ArTimeChartRow) => tracksOf(r).length
-  ? { minHeight: `calc(${tracksOf(r).length} * var(--ar-chart-track-height, 22px) + 12px)` } : undefined;
+  ? { minHeight: `calc(${tracksOf(r).map(trackHeight).join(" + ")} + 12px)` } : undefined;
 
 const range = computed<[number, number]>(() => {
   if (props.range) return [props.range[0], props.range[1]];
@@ -108,7 +110,7 @@ const placedBars = (r: ArTimeChartRow) => {
   return tracks.flatMap((track, trackIndex) => track.bars.map((bar, i) => ({
     key: `track:${track.key}:${i}`, bar, track: track.key,
     tip: [track.label, tipOf(bar)].filter(Boolean).join("\n"),
-    style: { ...barStyle(bar), top: `calc(6px + ${trackIndex} * var(--ar-chart-track-height, 22px))`, bottom: "auto", height: "var(--ar-chart-track-bar-height, 16px)" },
+    style: { ...barStyle(bar), top: `calc(6px${tracks.slice(0, trackIndex).map(t => ` + ${trackHeight(t)}`).join("")})`, bottom: "auto", height: thinTrack(track) ? "var(--ar-chart-track-line-bar-height, 4px)" : "var(--ar-chart-track-bar-height, 16px)" },
   })));
 };
 const wdText = (r: ArTimeChartRow) => r.weekdayLabel ?? (r.weekday != null ? L.value.weekdays[r.weekday] : undefined);
