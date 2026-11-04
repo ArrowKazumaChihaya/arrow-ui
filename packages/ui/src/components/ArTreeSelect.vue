@@ -354,97 +354,97 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       <ArIcon line name="x" size="sm" />
     </button>
     <ArIcon line name="cd" size="sm" data-part="arrow" />
-  </div>
-  <ArFloat ar="tree-select-panel" :open="open" :anchor="root" match-width="min" :offset="6" @close="(r) => close(r === 'escape')">
-    <div v-if="searchable" data-part="search">
-      <ArTextInput
-        ref="search"
-        v-model="query"
-        size="sm"
-        type="search"
-        block
-        :placeholder="searchPlaceholder"
-        :label="searchPlaceholder"
-        role="combobox"
-        aria-autocomplete="list"
-        :aria-expanded="open"
-        :aria-controls="listId"
-        :aria-activedescendant="activeId"
-        @keydown="onKey"
-      />
-    </div>
-    <div
-      :id="listId"
-      ref="listEl"
-      data-part="list"
-      role="tree"
-      :aria-label="label"
-      :aria-labelledby="label ? undefined : rootId"
-      :aria-multiselectable="multiple || undefined"
-      :style="{ maxHeight: `${listHeight}px` }"
-      @mousedown.prevent
-    >
-      <div
-        v-for="r in rows"
-        :id="nodeId(r.node.value)"
-        :key="String(r.node.value)"
-        data-part="node"
-        role="treeitem"
-        :aria-level="r.level"
-        :aria-expanded="r.hasChildren ? r.isOpen : undefined"
-        :aria-selected="multiple ? undefined : values.includes(r.node.value)"
-        :aria-checked="multiple ? (checkState(r.node) === 'mixed' ? 'mixed' : checkState(r.node) === 'on') : undefined"
-        :aria-disabled="r.node.disabled || undefined"
-        :data-level="r.level"
-        :style="{ '--ar-tree-level': r.level - 1 }"
-        :data-state="
-          [
-            !multiple && values.includes(r.node.value) && 'selected',
-            r.node.value === active && 'active',
-            r.node.disabled && 'disabled',
-            !multiple && !selectable(r) && 'group',
-          ]
-            .filter(Boolean)
-            .join(' ') || undefined
-        "
-        @click="toggle(r)"
-        @mousemove="!r.node.disabled && (active = r.node.value)"
-      >
-        <span data-part="switch" :data-open="r.isOpen || undefined" @click.stop="r.hasChildren && setExpanded(r.node.value, !r.isOpen)">
-          <ArIcon line v-if="r.hasChildren" :name="r.isOpen ? 'cd' : 'cr'" size="sm" />
-        </span>
-        <ArCheckbox
-          v-if="multiple"
-          decorative
-          data-part="check"
-          :model-value="checkState(r.node) === 'on'"
-          :indeterminate="checkState(r.node) === 'mixed'"
-          :disabled="r.node.disabled"
+    <ArFloat ar="tree-select-panel" :open="open" :anchor="root" match-width="min" :offset="6" @close="(r) => close(r === 'escape')">
+      <div v-if="searchable" data-part="search">
+        <ArTextInput
+          ref="search"
+          v-model="query"
+          size="sm"
+          type="search"
+          block
+          :placeholder="searchPlaceholder"
+          :label="searchPlaceholder"
+          role="combobox"
+          aria-autocomplete="list"
+          :aria-expanded="open"
+          :aria-controls="listId"
+          :aria-activedescendant="activeId"
+          @keydown="onKey"
         />
-        <span data-part="node-label"
-          ><template v-for="(p, k) in splitMatch(r.node.label, query)" :key="k"
-            ><mark v-if="p.match" data-part="match">{{ p.text }}</mark
-            ><template v-else>{{ p.text }}</template></template
-          ></span
-        >
       </div>
-      <div v-if="!rows.length" data-part="empty" role="status">
-        {{ query ? `「${query}」は見つかりません` : emptyText }}
-      </div>
-    </div>
-    <div v-if="hasInclude || actions.length" data-part="footer">
-      <ArCheckbox
-        v-if="hasInclude"
-        :id="includeId"
-        data-part="include"
-        :model-value="!!includeChildren"
-        @update:model-value="toggleInclude"
-        @keydown.escape="close()"
-        >{{ includeChildrenLabel }}</ArCheckbox
+      <div
+        :id="listId"
+        ref="listEl"
+        data-part="list"
+        role="tree"
+        :aria-label="label"
+        :aria-labelledby="label ? undefined : rootId"
+        :aria-multiselectable="multiple || undefined"
+        :style="{ maxHeight: `${listHeight}px` }"
+        @mousedown.prevent
       >
-      <div v-for="a in actions" :key="a.value" data-part="action">
-        <ArButton tone="primary" block :icon="a.icon" @click="runAction(a.value)">{{ a.label }}</ArButton>
+        <div
+          v-for="r in rows"
+          :id="nodeId(r.node.value)"
+          :key="String(r.node.value)"
+          data-part="node"
+          role="treeitem"
+          :aria-level="r.level"
+          :aria-expanded="r.hasChildren ? r.isOpen : undefined"
+          :aria-selected="multiple ? undefined : values.includes(r.node.value)"
+          :aria-checked="multiple ? (checkState(r.node) === 'mixed' ? 'mixed' : checkState(r.node) === 'on') : undefined"
+          :aria-disabled="r.node.disabled || undefined"
+          :data-level="r.level"
+          :style="{ '--ar-tree-level': r.level - 1 }"
+          :data-state="
+            [
+              !multiple && values.includes(r.node.value) && 'selected',
+              r.node.value === active && 'active',
+              r.node.disabled && 'disabled',
+              !multiple && !selectable(r) && 'group',
+            ]
+              .filter(Boolean)
+              .join(' ') || undefined
+          "
+          @click="toggle(r)"
+          @mousemove="!r.node.disabled && (active = r.node.value)"
+        >
+          <span data-part="switch" :data-open="r.isOpen || undefined" @click.stop="r.hasChildren && setExpanded(r.node.value, !r.isOpen)">
+            <ArIcon line v-if="r.hasChildren" :name="r.isOpen ? 'cd' : 'cr'" size="sm" />
+          </span>
+          <ArCheckbox
+            v-if="multiple"
+            decorative
+            data-part="check"
+            :model-value="checkState(r.node) === 'on'"
+            :indeterminate="checkState(r.node) === 'mixed'"
+            :disabled="r.node.disabled"
+          />
+          <span data-part="node-label"
+            ><template v-for="(p, k) in splitMatch(r.node.label, query)" :key="k"
+              ><mark v-if="p.match" data-part="match">{{ p.text }}</mark
+              ><template v-else>{{ p.text }}</template></template
+            ></span
+          >
+        </div>
+        <div v-if="!rows.length" data-part="empty" role="status">
+          {{ query ? `「${query}」は見つかりません` : emptyText }}
+        </div>
       </div>
-    </div>
-  </ArFloat>
+      <div v-if="hasInclude || actions.length" data-part="footer">
+        <ArCheckbox
+          v-if="hasInclude"
+          :id="includeId"
+          data-part="include"
+          :model-value="!!includeChildren"
+          @update:model-value="toggleInclude"
+          @keydown.escape="close()"
+          >{{ includeChildrenLabel }}</ArCheckbox
+        >
+        <div v-for="a in actions" :key="a.value" data-part="action">
+          <ArButton tone="primary" block :icon="a.icon" @click="runAction(a.value)">{{ a.label }}</ArButton>
+        </div>
+      </div>
+    </ArFloat>
+  </div>
 </template>

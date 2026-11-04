@@ -165,25 +165,25 @@ defineExpose({ focus: () => input.value?.focus() });
       @blur="onBlur"
       @keydown="onKey"
     />
+    <ArFloat ar="select-panel" :open="showPanel" :anchor="root" match-width="min" :offset="6" @close="open = false">
+      <div :id="listId" ref="listEl" data-part="list" role="listbox" :aria-label="label" style="max-height: 264px" @mousedown.prevent>
+        <ArOptionRow
+          v-for="(r, i) in rows"
+          :id="optionId(i)"
+          :key="String(r.opt.value)"
+          :pieces="r.opt.value === RESET ? [{ text: r.opt.label, match: false }] : r.pieces"
+          :data-kind="r.opt.value === RESET ? 'null' : undefined"
+          :active="i === active"
+          :disabled="r.opt.disabled"
+          :avatar="avatarOf(r.opt)"
+          :avatar-color="r.opt.avatarColor"
+          :avatar-ink="r.opt.avatarInk"
+          :description="r.opt.description"
+          @click="choose(i)"
+          @mousemove="!r.opt.disabled && (active = i)"
+        />
+        <div v-if="!rows.length" data-part="empty" role="status">{{ emptyText }}</div>
+      </div>
+    </ArFloat>
   </span>
-  <ArFloat ar="select-panel" :open="showPanel" :anchor="root" match-width="min" :offset="6" @close="open = false">
-    <div :id="listId" ref="listEl" data-part="list" role="listbox" :aria-label="label" style="max-height: 264px" @mousedown.prevent>
-      <ArOptionRow
-        v-for="(r, i) in rows"
-        :id="optionId(i)"
-        :key="String(r.opt.value)"
-        :pieces="r.opt.value === RESET ? [{ text: r.opt.label, match: false }] : r.pieces"
-        :data-kind="r.opt.value === RESET ? 'null' : undefined"
-        :active="i === active"
-        :disabled="r.opt.disabled"
-        :avatar="avatarOf(r.opt)"
-        :avatar-color="r.opt.avatarColor"
-        :avatar-ink="r.opt.avatarInk"
-        :description="r.opt.description"
-        @click="choose(i)"
-        @mousemove="!r.opt.disabled && (active = i)"
-      />
-      <div v-if="!rows.length" data-part="empty" role="status">{{ emptyText }}</div>
-    </div>
-  </ArFloat>
 </template>

@@ -333,115 +333,115 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
     </button>
     <span v-if="loading" data-part="spinner" aria-hidden="true" />
     <ArIcon line v-else name="cd" size="sm" data-part="arrow" />
-  </div>
-  <ArFloat ar="select-panel" :open="open" :anchor="root" match-width="min" :offset="6" @close="(r) => close(r === 'escape')">
-    <div v-if="showSearch" data-part="search" :data-kind="people ? 'people' : undefined">
-      <ArTextInput
-        ref="search"
-        v-model="query"
-        :size="people ? 'md' : 'sm'"
-        :variant="people ? 'filled' : 'outlined'"
-        type="search"
-        block
-        :placeholder="searchPlaceholder"
-        :label="searchPlaceholder"
-        role="combobox"
-        aria-autocomplete="list"
-        :aria-expanded="open"
-        :aria-controls="listId"
-        :aria-activedescendant="activeId"
-        @keydown="onKey"
-      />
-    </div>
-    <div
-      :id="listId"
-      ref="listEl"
-      data-part="list"
-      role="listbox"
-      :data-kind="people ? 'people' : undefined"
-      :aria-label="label"
-      :aria-labelledby="label ? undefined : rootId"
-      :aria-multiselectable="multiple || undefined"
-      :style="listHeight ? { maxHeight: `${listHeight}px` } : undefined"
-      @mousedown.prevent
-    >
-      <template v-for="s in sections" :key="s.key">
-        <div v-if="s.label" role="group" data-part="group" :aria-labelledby="`${uid}-${s.key}`">
-          <div :id="`${uid}-${s.key}`" data-part="group-label">{{ s.label }}</div>
-          <ArOptionRow
-            v-for="it in s.items"
-            :id="optionId(it.index)"
-            :key="String(it.opt.value)"
-            :pieces="splitMatch(it.opt.label, query)"
-            :selected="isSelected(it.opt)"
-            :active="it.index === active"
-            :disabled="it.opt.disabled"
-            :icon="it.opt.icon"
-            :avatar="it.opt.avatar"
-            :avatar-src="it.opt.avatarSrc"
-            :avatar-seed="it.opt.avatarSeed"
-            :avatar-color="it.opt.avatarColor"
-            :avatar-ink="it.opt.avatarInk"
-            :avatar-size="people ? 'sm' : 'xs'"
-            :dot="it.opt.dot"
-            :description="it.opt.description"
-            :description-tone="it.opt.descriptionTone"
-            @click="choose(it.index)"
-            @mousemove="!it.opt.disabled && (active = it.index)"
-          />
-        </div>
-        <template v-else>
-          <ArOptionRow
-            v-for="it in s.items"
-            :id="optionId(it.index)"
-            :key="String(it.opt.value)"
-            :pieces="splitMatch(it.opt.label, query)"
-            :selected="isSelected(it.opt)"
-            :active="it.index === active"
-            :disabled="it.opt.disabled"
-            :icon="it.opt.icon"
-            :avatar="it.opt.avatar"
-            :avatar-src="it.opt.avatarSrc"
-            :avatar-seed="it.opt.avatarSeed"
-            :avatar-color="it.opt.avatarColor"
-            :avatar-ink="it.opt.avatarInk"
-            :avatar-size="people ? 'sm' : 'xs'"
-            :dot="it.opt.dot"
-            :description="it.opt.description"
-            :description-tone="it.opt.descriptionTone"
-            :data-kind="it.opt.value === NULL_VALUE ? 'null' : undefined"
-            @click="choose(it.index)"
-            @mousemove="!it.opt.disabled && (active = it.index)"
-          />
-        </template>
-      </template>
+    <ArFloat ar="select-panel" :open="open" :anchor="root" match-width="min" :offset="6" @close="(r) => close(r === 'escape')">
+      <div v-if="showSearch" data-part="search" :data-kind="people ? 'people' : undefined">
+        <ArTextInput
+          ref="search"
+          v-model="query"
+          :size="people ? 'md' : 'sm'"
+          :variant="people ? 'filled' : 'outlined'"
+          type="search"
+          block
+          :placeholder="searchPlaceholder"
+          :label="searchPlaceholder"
+          role="combobox"
+          aria-autocomplete="list"
+          :aria-expanded="open"
+          :aria-controls="listId"
+          :aria-activedescendant="activeId"
+          @keydown="onKey"
+        />
+      </div>
       <div
-        v-for="(a, ai) in actionList"
-        :id="optionId(flat.length + ai)"
-        :key="a.value"
-        data-part="action"
-        role="option"
-        aria-selected="false"
-        :aria-disabled="a.disabled || undefined"
-        :data-state="flat.length + ai === active ? 'active' : undefined"
-        @mousemove="!a.disabled && (active = flat.length + ai)"
+        :id="listId"
+        ref="listEl"
+        data-part="list"
+        role="listbox"
+        :data-kind="people ? 'people' : undefined"
+        :aria-label="label"
+        :aria-labelledby="label ? undefined : rootId"
+        :aria-multiselectable="multiple || undefined"
+        :style="listHeight ? { maxHeight: `${listHeight}px` } : undefined"
+        @mousedown.prevent
       >
-        <ArButton
-          :tone="a.tone ?? 'primary'"
-          :block="a.width === undefined"
-          :icon="a.icon"
-          :disabled="a.disabled"
-          tabindex="-1"
-          :style="a.width !== undefined ? { width: len(a.width) } : undefined"
-          @click="onAction(a.value)"
-        >{{ a.label }}</ArButton>
+        <template v-for="s in sections" :key="s.key">
+          <div v-if="s.label" role="group" data-part="group" :aria-labelledby="`${uid}-${s.key}`">
+            <div :id="`${uid}-${s.key}`" data-part="group-label">{{ s.label }}</div>
+            <ArOptionRow
+              v-for="it in s.items"
+              :id="optionId(it.index)"
+              :key="String(it.opt.value)"
+              :pieces="splitMatch(it.opt.label, query)"
+              :selected="isSelected(it.opt)"
+              :active="it.index === active"
+              :disabled="it.opt.disabled"
+              :icon="it.opt.icon"
+              :avatar="it.opt.avatar"
+              :avatar-src="it.opt.avatarSrc"
+              :avatar-seed="it.opt.avatarSeed"
+              :avatar-color="it.opt.avatarColor"
+              :avatar-ink="it.opt.avatarInk"
+              :avatar-size="people ? 'sm' : 'xs'"
+              :dot="it.opt.dot"
+              :description="it.opt.description"
+              :description-tone="it.opt.descriptionTone"
+              @click="choose(it.index)"
+              @mousemove="!it.opt.disabled && (active = it.index)"
+            />
+          </div>
+          <template v-else>
+            <ArOptionRow
+              v-for="it in s.items"
+              :id="optionId(it.index)"
+              :key="String(it.opt.value)"
+              :pieces="splitMatch(it.opt.label, query)"
+              :selected="isSelected(it.opt)"
+              :active="it.index === active"
+              :disabled="it.opt.disabled"
+              :icon="it.opt.icon"
+              :avatar="it.opt.avatar"
+              :avatar-src="it.opt.avatarSrc"
+              :avatar-seed="it.opt.avatarSeed"
+              :avatar-color="it.opt.avatarColor"
+              :avatar-ink="it.opt.avatarInk"
+              :avatar-size="people ? 'sm' : 'xs'"
+              :dot="it.opt.dot"
+              :description="it.opt.description"
+              :description-tone="it.opt.descriptionTone"
+              :data-kind="it.opt.value === NULL_VALUE ? 'null' : undefined"
+              @click="choose(it.index)"
+              @mousemove="!it.opt.disabled && (active = it.index)"
+            />
+          </template>
+        </template>
+        <div
+          v-for="(a, ai) in actionList"
+          :id="optionId(flat.length + ai)"
+          :key="a.value"
+          data-part="action"
+          role="option"
+          aria-selected="false"
+          :aria-disabled="a.disabled || undefined"
+          :data-state="flat.length + ai === active ? 'active' : undefined"
+          @mousemove="!a.disabled && (active = flat.length + ai)"
+        >
+          <ArButton
+            :tone="a.tone ?? 'primary'"
+            :block="a.width === undefined"
+            :icon="a.icon"
+            :disabled="a.disabled"
+            tabindex="-1"
+            :style="a.width !== undefined ? { width: len(a.width) } : undefined"
+            @click="onAction(a.value)"
+          >{{ a.label }}</ArButton>
+        </div>
+        <div v-if="loading && !flat.length" data-part="empty" data-kind="loading" role="status">
+          <span data-part="spinner" aria-hidden="true" />{{ loadingText }}
+        </div>
+        <div v-else-if="!flat.length" data-part="empty" role="status">
+          <ArIcon line v-if="query" name="search" size="sm" />{{ query ? `「${query}」は見つかりません` : emptyText }}
+        </div>
       </div>
-      <div v-if="loading && !flat.length" data-part="empty" data-kind="loading" role="status">
-        <span data-part="spinner" aria-hidden="true" />{{ loadingText }}
-      </div>
-      <div v-else-if="!flat.length" data-part="empty" role="status">
-        <ArIcon line v-if="query" name="search" size="sm" />{{ query ? `「${query}」は見つかりません` : emptyText }}
-      </div>
-    </div>
-  </ArFloat>
+    </ArFloat>
+  </div>
 </template>
