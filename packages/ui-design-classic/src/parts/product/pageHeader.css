@@ -1,0 +1,203 @@
+@layer arrow-product-classic {/* @component src/Component/Outsourcer/SelectBranch.vue#0 */
+.submit_wrap[data-v-ui596cf6e296e2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-ui596cf6e296e2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/ShiftTemplate/CopyShiftTemplateModal.vue#0 */
+.title_wrap[data-v-uie81813e8d9d3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.content_wrap[data-v-uie81813e8d9d3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 30px 20px 10px;
+}
+.shift_template_preview_wrap[data-v-uie81813e8d9d3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+}
+.submit_button_wrap[data-v-uie81813e8d9d3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Login/ResetPassword.vue#0 */
+.exec_button_wrap[data-v-ui2607c68ff8fc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 40px;
+  text-align: center;
+}
+.title_wrap[data-v-ui2607c68ff8fc]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.attention_wrap[data-v-ui2607c68ff8fc]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.reset_pass_wrap[data-v-ui2607c68ff8fc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 450px;
+  margin: 0 auto;
+}
+.reset_pass_wrap[data-v-ui2607c68ff8fc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/BonusEach/Info.vue#0 */
+.title_wrap[data-v-ui0bf67cafdd81]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.content_wrap[data-v-ui0bf67cafdd81]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 30px 20px 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Company/Branch/BranchChild.vue#0 */
+.title_wrap[data-v-uidcb9fab83017]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.submit_wrap[data-v-uidcb9fab83017]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-uidcb9fab83017]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Config/Payment/Allowance/SelectBranch.vue#0 */
+.submit_wrap[data-v-uid42a2907898a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-uid42a2907898a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/EmployeeEach/Belong/MainBranch.vue#0 */
+.submit_wrap[data-v-ui6b18f3688642]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-ui6b18f3688642]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/EmployeeEach/Belong/SubBranch.vue#0 */
+.submit_wrap[data-v-ui5f5dcc068c60]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-ui5f5dcc068c60]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/EmployeeEach/UpdatePassword.vue#0 */
+.submit_wrap[data-v-uiab19014009c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-uiab19014009c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/OutsourcerEach/Belong/MainBranch.vue#0 */
+.submit_wrap[data-v-ui97bf06553286]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-ui97bf06553286]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/OutsourcerEach/Belong/SubBranch.vue#0 */
+.submit_wrap[data-v-uia31815b9d1df]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-uia31815b9d1df]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Paidhol/Index.vue#0 */
+.index_wrap[data-v-uia686ea24ca77]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 15px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/PaymentEach/Info.vue#0 */
+.title_wrap[data-v-uic005df4c23a8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.content_wrap[data-v-uic005df4c23a8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 30px 20px 10px;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Document/Index.vue#0 */
+.document_wrap[data-v-uib6887e3b1db6]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 15px;
+  border-top: 2px solid #e389b7;
+  background-color: #fff2f9;
+}
+/* @end-component */
+
+/* @component src/View/Personal/EmployeeEach/Mypc.vue#0 */
+.attention[data-v-ui0aa32a45494f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #d10c1d;
+  font-size: 15px;
+  font-weight: 600;
+}
+.submit_button_wrap[data-v-ui0aa32a45494f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+.mail_pass_wrap[data-v-ui0aa32a45494f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 20px;
+}
+/* @end-component */
+
+/* @component src/View/Personal/EmployeeEach/UpdateMail.vue#0 */
+.submit_wrap[data-v-uicfbfe4a43f00]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-uicfbfe4a43f00]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Personal/EmployeeEach/UpdatePassword.vue#0 */
+.submit_wrap[data-v-ui69fbbb5e0a64]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-ui69fbbb5e0a64]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+}

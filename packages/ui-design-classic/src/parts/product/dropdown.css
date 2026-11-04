@@ -1,0 +1,57 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Dropdown.vue#0 */
+.ant_dropdown_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  position: relative;
+}
+.dropdown_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  line-height: 20px;
+  pointer-events: none;
+}
+.dropdown_icon
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 10px;
+  height: 10px;
+}
+.dropdown_button_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+.dropdown_button_wrap:first-of-type:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: none;
+}
+.dropdown_button_wrap:last-of-type:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-bottom: none;
+}
+.ant-select-item-option-content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 22px !important;
+}
+.overlay_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background-color: white;
+  padding-top: 2px;
+}
+.ant_dropdown_button_wrap:hover
+  .overlay_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: block;
+}
+.overlay_wrap.open:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: block;
+}
+@media screen and (max-width: 499px) {
+  .dropdown_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 15px;
+  }
+  .overlay_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    top: 27px;
+    padding-top: 2px;
+  }
+}
+/* @end-component */
+}

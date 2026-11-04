@@ -1,4 +1,4 @@
-import { computed, inject, type InjectionKey, type Ref } from "vue";
+import { computed, inject, provide, type InjectionKey, type Ref } from "vue";
 import type { ArPaletteName } from "@arrow/ui-tokens";
 import type { ArDesign } from "../design";
 
@@ -14,6 +14,12 @@ export const arUiContextKey: InjectionKey<ArUiContext> = Symbol("ArUi");
 /** 部品の中から今のデザインとテーマ色を読む。Provider の外では null。 */
 export function useArUi(): ArUiContext | null {
   return inject(arUiContextKey, null);
+}
+
+/** Capture during setup, then call in an imperative dialog's setup to retain its provider. */
+export function captureArUiContext(): () => void {
+  const context = useArUi();
+  return () => { if (context) provide(arUiContextKey, context); };
 }
 
 let seq = 0;

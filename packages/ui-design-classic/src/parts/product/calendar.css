@@ -1,0 +1,157 @@
+@layer arrow-product-classic {/* @component src/Component/Calendar.vue#0 */
+.calendar_component[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+}
+.calendar_component
+  table[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.calendar_component
+  table
+  th[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 14.2857142857%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+  border: 0.5px solid lightgray;
+}
+.calendar_component
+  table
+  td[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 14.2857142857%;
+  max-width: 0;
+  height: 100px;
+  position: relative;
+  background-color: white;
+  text-align: center;
+  border: 0.5px solid lightgray;
+  font-weight: 600;
+  vertical-align: top;
+  padding: 3px;
+  cursor: pointer;
+}
+.calendar_component
+  table
+  td
+  .text[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(240, 240, 240);
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 30px;
+  color: black;
+}
+.calendar_component
+  table
+  td
+  .text.first_day[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+}
+.calendar_component
+  table
+  td.today
+  .text[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: white;
+}
+.calendar_component
+  table
+  td.active[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0.5px;
+}
+.calendar_component
+  table
+  td.out_of_range
+  .text[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: lightgray;
+}
+.calendar_component
+  table
+  td.error_date
+  .text[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #ed5454;
+  color: white;
+}
+table.shift
+  th[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #f2f8fc;
+}
+table.shift
+  td[data-v-ui29017bfbd67f]:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #e6f3fc;
+}
+table.shift
+  td.today
+  .text[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #4395d4;
+}
+table.shift
+  td.active[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 3px solid #4395d4;
+  background-color: #d9eeff;
+}
+table.shift
+  td.error_date
+  .text[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #ed5454;
+  color: white;
+}
+table.attendance
+  th[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #f2fcf8;
+}
+table.attendance
+  td[data-v-ui29017bfbd67f]:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #e6fcf3;
+}
+table.attendance
+  td.today
+  .text[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #4eb187;
+}
+table.attendance
+  td.active[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 3px solid #4eb187;
+  background-color: #d9ffef;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Shift/Calendar/Index.vue#0 */
+.tab_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+}
+.calendar_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: 2px solid #4395d4;
+  background-color: rgb(243, 249, 252);
+  padding: 15px;
+}
+.control_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  border-top: dashed 2px lightgray;
+}
+.monthly_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.manipulator_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.monthly_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  width: calc(100% - 150px);
+}
+.manipulator_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  width: 150px;
+}
+@media screen and (max-width: 1023px) {
+  .tab_wrap[data-v-ui3787296910d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: none;
+  }
+}
+/* @end-component */
+}

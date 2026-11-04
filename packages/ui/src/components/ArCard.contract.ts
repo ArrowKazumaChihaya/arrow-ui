@@ -23,7 +23,7 @@ export interface ArCardProps {
 }
 
 /**
- * slot：default（本文）、actions（見出しの右の操作・「詳しく」）、tabs（帯のすぐ下のタブの帯）、
+ * slot：title（見出し。title prop の代わりに補足や札を配置できる）、default（本文）、actions（見出しの右の操作・「詳しく」）、tabs（帯のすぐ下のタブの帯）、
  * cover（上の絵の場所）、footer（下に並ぶアイコンの操作。1つずつ区切る）。
  */
 export type ArCardPart = "root" | "cover" | "head" | "title" | "icon" | "actions" | "tabs" | "body" | "footer";

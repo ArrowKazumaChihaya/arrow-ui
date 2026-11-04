@@ -1,0 +1,17 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Radio.vue#0 */
+.radio_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.radio_wrap
+  input[type="radio"]
+  + span:where([data-ar-design="classic"], [data-ar-design="classic"] *)::before {
+  border: none;
+}
+.radio_wrap
+  .ant-radio-wrapper:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-right: 0px !important;
+  line-height: initial !important;
+  vertical-align: middle !important;
+}
+/* @end-component */
+}

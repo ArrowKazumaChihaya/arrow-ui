@@ -1,0 +1,151 @@
+import { defineComponent, h, inject, provide, normalizeStyle, vModelDynamic, withDirectives } from "vue";
+import type { CSSProperties, FunctionalComponent, InjectionKey, StyleValue } from "vue";
+import { useArUi } from "../provider/context";
+import { classicPresets } from "./presets";
+import { classicTokens } from "./tokens";
+import { filterStructuralLayout } from "./layout";
+export { classicTokens } from "./tokens";
+export type { DesignTokens } from "./tokens";
+export { classicPresets } from "./presets";
+export { classicColorPresets } from "./colorPresets";
+export { filterStructuralLayout, filterControlLayout } from "./layout";
+export const fixedDocumentKey: InjectionKey<boolean> = Symbol("fixed-document-presentation");
+interface SurfaceProps { as?: string; uiPreset?: string; uiLayout?: StyleValue; modelValue?: unknown; modelModifiers?: Record<string, boolean>; }
+/** Native semantic surfaces for product-specific composition. Controls use the public Ar* components. */
+export function productAppearance(preset: string | undefined, layout: StyleValue, design: string, fixed = false): CSSProperties {
+  const original = normalizeStyle([preset ? classicPresets[preset] : undefined, layout]) ?? {};
+  return fixed || design === "classic" ? original as CSSProperties : filterStructuralLayout(original);
+}
+export function createPart(name: string, tag = "div"): FunctionalComponent<SurfaceProps> {
+  const component: FunctionalComponent<SurfaceProps> = (props, { attrs, slots }) => {
+    const ui = useArUi();
+    const fixed = inject(fixedDocumentKey, false);
+    const layout = normalizeStyle([attrs.style as StyleValue, props.uiLayout]);
+    const node = h(props.as ?? tag, { ...attrs, "data-ui-part": name, style: productAppearance(props.uiPreset, layout, ui?.design.value.id ?? "classic", fixed) }, slots.default?.());
+    return "onUpdate:modelValue" in attrs ? withDirectives(node, [[vModelDynamic, props.modelValue, undefined, props.modelModifiers ?? {}]]) : node;
+  };
+  component.displayName = 'Ui' + name[0]?.toUpperCase() + name.slice(1);
+  component.props = ["as", "uiPreset", "uiLayout", "modelValue", "modelModifiers"];
+  component.inheritAttrs = false;
+  return component;
+}
+export const UiBox = createPart("box");
+export const UiPage = createPart("page", "main");
+export const UiPageHeader = createPart("pageHeader");
+export const UiSection = createPart("section");
+export const UiPanel = createPart("panel");
+export const UiRow = createPart("row");
+export const UiStack = createPart("stack");
+export const UiGrid = createPart("grid");
+export const UiActions = createPart("actions");
+export const UiActionSlot = createPart("actionSlot");
+export const UiFilters = createPart("filters");
+export const UiPeriodControls = createPart("periodControls");
+export const UiFormRow = createPart("formRow");
+export const UiFieldGroup = createPart("fieldGroup");
+export const UiText = createPart("text", "span");
+export const UiHeading = createPart("heading", "h2");
+export const UiNotice = createPart("notice", "p");
+export const UiBadge = createPart("badge", "span");
+export const UiLabel = createPart("label", "label");
+export const UiLink = createPart("link", "a");
+export const UiList = createPart("list", "ul");
+export const UiListItem = createPart("listItem", "li");
+export const UiDataTable = createPart("table", "table");
+export const UiTableViewport = createPart("tableViewport");
+export const UiTableHead = createPart("tableHead", "thead");
+export const UiTableBody = createPart("tableBody", "tbody");
+export const UiTableFoot = createPart("tableFoot", "tfoot");
+export const UiTableRow = createPart("tableRow", "tr");
+export const UiTableCell = createPart("tableCell", "td");
+export const UiTableColumn = createPart("tableColumn", "col");
+export const UiCalendar = createPart("calendar");
+export const UiTimeline = createPart("timeline");
+export const UiTimelineItem = createPart("timelineItem");
+export const UiMetric = createPart("metric");
+export const UiComparison = createPart("comparison");
+export const UiNativeButton = createPart("button", "button");
+export const UiNativeInput = createPart("input", "input");
+export const UiNativeSelect = createPart("select", "select");
+export const UiNativeTextarea = createPart("textarea", "textarea");
+export const UiImage = createPart("image", "img");
+export const UiGraphic = createPart("graphic", "svg");
+export const UiDivider = createPart("divider", "hr");
+
+
+export const UiWidgetCalendar = createPart("calendar");
+export const UiWidgetAdmitFlow = createPart("admitFlow");
+export const UiWidgetAdmitFlowView = createPart("admitFlowView");
+export const UiWidgetShiftTemplateEditor = createPart("shiftTemplateEditor");
+export const UiWidgetShiftTemplateRow = createPart("shiftTemplateRow");
+export const UiWidgetShiftTemplateRowView = createPart("shiftTemplateRowView");
+export const UiWidgetShiftTemplateViewer = createPart("shiftTemplateViewer");
+export const UiWidgetTab = createPart("tabs");
+export const UiWidgetTreeSelectTable = createPart("treeSelectTable");
+export const UiWidgetTreeTable = createPart("treeTable");
+export const UiWidgetTitle = createPart("heading");
+export const UiWidgetAddress = createPart("address");
+export const UiWidgetAlert = createPart("alert");
+export const UiWidgetAttention = createPart("notice");
+export const UiWidgetBalloon = createPart("balloon");
+export const UiWidgetBread = createPart("bread");
+export const UiWidgetButton = createPart("button");
+export const UiWidgetCandidate = createPart("candidate");
+export const UiWidgetCard = createPart("panel");
+export const UiWidgetCheck = createPart("check");
+export const UiWidgetCollapse = createPart("collapse");
+export const UiWidgetColorpicker = createPart("colorpicker");
+export const UiWidgetColorviewer = createPart("colorviewer");
+export const UiWidgetDates = createPart("dates");
+export const UiWidgetDatetime = createPart("datetime");
+export const UiWidgetDownload = createPart("download");
+export const UiWidgetDropdown = createPart("dropdown");
+export const UiWidgetEllipsis = createPart("text");
+export const UiWidgetFlag = createPart("flag");
+export const UiWidgetFlagView = createPart("flagView");
+export const UiWidgetForm = createPart("form");
+export const UiWidgetFormItem = createPart("formItem");
+export const UiWidgetIcon = createPart("graphic");
+export const UiWidgetImg = createPart("image");
+export const UiWidgetInfo = createPart("info");
+export const UiWidgetInput = createPart("input");
+export const UiWidgetItem = createPart("formRow");
+export const UiWidgetJavaScriptRuleEditor = createPart("javaScriptRuleEditor");
+export const UiWidgetKana = createPart("kana");
+export const UiWidgetLoading = createPart("loading");
+export const UiWidgetMenu = createPart("menu");
+export const UiWidgetModal = createPart("dialog");
+export const UiWidgetMonthDay = createPart("monthDay");
+export const UiWidgetPagination = createPart("pagination");
+export const UiWidgetRadio = createPart("radio");
+export const UiWidgetRadioButtonGroup = createPart("radioButtonGroup");
+export const UiWidgetRadioGroup = createPart("radioGroup");
+export const UiWidgetResult = createPart("result");
+export const UiWidgetRuleScriptEditor = createPart("ruleScriptEditor");
+export const UiWidgetSelect = createPart("select");
+export const UiWidgetSelectOption = createPart("selectOption");
+export const UiWidgetSortableTable = createPart("sortableTable");
+export const UiWidgetSortMark = createPart("sortMark");
+export const UiWidgetSpace = createPart("space");
+export const UiWidgetSplit = createPart("divider");
+export const UiWidgetStep = createPart("step");
+export const UiWidgetSubItem = createPart("fieldGroup");
+export const UiWidgetTextarea = createPart("textarea");
+export const UiWidgetThumbnail = createPart("thumbnail");
+export const UiWidgetTime = createPart("time");
+export const UiWidgetToggle = createPart("toggle");
+export const UiWidgetTooltip = createPart("tooltip");
+export const UiWidgetTreeSelect = createPart("treeSelect");
+export const UiWidgetUpload = createPart("upload");
+export const UiWidgetYear = createPart("year");
+export const UiWidgetYearmonth = createPart("yearmonth");
+export const UiWidgetZip = createPart("zip");
+const fixedVariables = Object.fromEntries(Object.entries(classicTokens).map(([key, value]) => ['--arrow-' + key, value]));
+export const UiDocument = defineComponent({
+  name: "UiDocument", inheritAttrs: false,
+  props: { as: { type: String, default: "div" }, uiPreset: String, uiLayout: [Object, Array, String] },
+  setup(props, { attrs, slots }) {
+    provide(fixedDocumentKey, true);
+    return () => h(props.as, { ...attrs, "data-ui-part": "document", "data-ui-fixed": "", style: { ...fixedVariables, ...productAppearance(props.uiPreset, normalizeStyle([attrs.style as StyleValue, props.uiLayout as StyleValue]), "classic", true) } }, slots.default?.());
+  }
+});

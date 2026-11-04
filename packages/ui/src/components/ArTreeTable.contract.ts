@@ -1,5 +1,5 @@
 /**
- * ArTreeTable 1.0 の契約。列のある木の表（店舗・部署の一覧など）。1列目が木（字下げ・開け閉め）。
+ * ArTreeTable 1.1 の契約。列のある木の表（店舗・部署の一覧など）。1列目が木（字下げ・開け閉め）。
  * 並べ替え・絞り込みはしない（データの順番は製品の Logic が決める）。ドラッグで動かしたときは、動かした後の木を update:rows で渡す。
  * デザインが選べる形（ArDesign.forms.ArTreeTable）：
  * - toggle："chevron"（既定。開け閉めは ›／∨）／"box"（四角の中の −／＋。antd の Tree の showLine。classic）。
@@ -83,6 +83,8 @@ export interface ArTreeTableEmits<Row> {
 }
 
 /**
+ * Whole-table slots: head (tr), cells ({ row, depth }: td children), before-rows-raw (tr), foot (tr).
+ * The library adds its expand/reorder controls to the first supplied cell.
  * slot：cell-<key>（{ row, value, depth }）・head-<key>（{ column }）・foot-<key>（{ value }）・
  * actions（{ row }：行の右端の操作）・before-rows（見出しのすぐ下。「店舗を追加」など）・empty・below（表の下）。
  */

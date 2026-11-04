@@ -1,4 +1,4 @@
-/* @covers ArDropdown 1.0.0 */
+/* @covers ArDropdown 1.1.0 */
 /* ArDropdown：
  * variant="ops"：今の ARROW の「操作」（UI/Dropdown）。テーマ色のボタン（高さ32・角丸6・右端に白い∨）、開くと真下に同じ幅で ARROW のボタンが縦に並ぶ（危ない項目は #CA3A31）。
  * それ以外：ant-design-vue 4 の Dropdown（白・角丸8・padding 4・項目 32px・hover rgba(0,0,0,.04)・危ない項目は #FF4D4F）。 */
@@ -34,3 +34,5 @@
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"]>:is([data-part="icon"],[data-part="icon-box"]),[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"]>[data-part="text"]>[data-part="description"]{display:none}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"]>[data-part="text"]{align-items:center;justify-content:center;line-height:1}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="group"],[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="divider"]{display:none}
+
+[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="content"]{background:var(--ar-color-surface,#fff);color:var(--ar-color-text);border:1px solid var(--ar-color-border);border-radius:10px;padding:12px;box-shadow:0 10px 30px #0002}

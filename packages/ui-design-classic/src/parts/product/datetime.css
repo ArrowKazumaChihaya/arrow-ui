@@ -1,0 +1,6 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Datetime.vue#0 */
+.datetime_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+/* @end-component */
+}

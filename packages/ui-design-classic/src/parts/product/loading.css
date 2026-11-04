@@ -1,0 +1,13 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Loading.vue#0 */
+.spin_wrap[data-v-ui1f2fde3e0f78]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  --height: initial;
+  --size: 25px;
+  height: var(--height);
+  padding-top: calc((var(--height) - var(--size)) / 2);
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+/* @end-component */
+}

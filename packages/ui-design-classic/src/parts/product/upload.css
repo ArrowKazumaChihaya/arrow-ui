@@ -1,0 +1,78 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Upload.vue#0 */
+.ant_button_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 100%;
+  display: inline-block;
+}
+.ant_button_wrap
+  .ant-btn:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0 6.5px;
+  text-align: center;
+}
+.ant_button_wrap.xlarge
+  .ant-btn-lg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0 30px;
+  font-size: 20px;
+  height: 50px;
+  font-weight: 600;
+}
+.ant_button_wrap.xlarge
+  .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 24px;
+  display: inline-block;
+}
+.ant_button_wrap.xlarge
+  .icon_wrap
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: -5px;
+  width: 24px;
+  height: 24px;
+}
+.ant_button_wrap.xlarge
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+}
+.ant_button_wrap.xlarge
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 6px;
+}
+.ant_button_wrap
+  .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 16px;
+  display: inline-block;
+}
+.ant_button_wrap
+  .icon_wrap
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: -3px;
+  width: 16px;
+  height: 16px;
+}
+.ant_button_wrap
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.ant_button_wrap
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 8px;
+}
+.ant_button_wrap
+  .ant-btn-primary:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  --button-color: black;
+  background-color: var(--button-color) !important;
+  border-color: var(--button-color) !important;
+}
+.ant_button_wrap
+  .ant-btn-primary.disabled:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: #f5f5f5 !important;
+  border-color: #d9d9d9 !important;
+}
+/* @end-component */
+
+/* @component src/Component/UI/Upload.vue#1 */
+.detail[data-v-ui0ce7282aef31]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 5px;
+}
+/* @end-component */
+}

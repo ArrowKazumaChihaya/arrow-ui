@@ -1,0 +1,94 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Dates.vue#0 */
+.date_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.date_component
+  .ant-input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px !important;
+  padding: 0px !important;
+  text-align: center;
+}
+.date_component
+  span.label:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px;
+  vertical-align: middle;
+}
+.date_component
+  .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px !important;
+}
+.date_component
+  .ant-select-selection-selected-value
+  span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px !important;
+}
+.date_component
+  .ant-select-dropdown:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  animation-duration: 0.1s;
+}
+.date_component
+  .ant-select-lg
+  .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 39px;
+}
+.date_component
+  .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 30px;
+}
+.date_component
+  .ant-select-dropdown-menu-item.button_option:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: initial;
+}
+.date_component
+  .invalid
+  .ant-select-selection:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-color: #d10c1d;
+}
+.date_component
+  .invalid.date_input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-color: #d10c1d;
+}
+.date_component
+  .date_input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  vertical-align: middle;
+}
+.date_component
+  .invalid_date:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 5px;
+  color: #d10c1d;
+  font-weight: 600;
+}
+@media screen and (max-width: 499px) {
+  .date_component
+    .ant-select-lg
+    .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 39px;
+  }
+  .date_component
+    .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 13px !important;
+    line-height: 25px;
+  }
+  .date_component
+    .ant-select-selection-selected-value
+    span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 13px !important;
+  }
+  .date_component
+    .ant-input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 27px !important;
+  }
+  .date_component
+    span.label:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 27px;
+  }
+  .date_component
+    .date_input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 27px;
+  }
+}
+/* @end-component */
+}

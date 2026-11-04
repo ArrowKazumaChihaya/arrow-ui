@@ -1,0 +1,1294 @@
+/* @component src/Component/Config/ApprovalFlowLayout.vue#0 */
+.admit_flow_component[data-v-uiaedd507485d9] {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+}
+.plain[data-v-uiaedd507485d9] {
+  padding: 8px 0;
+  text-align: left;
+}
+[data-v-uiaedd507485d9] .admit_flow_wrap {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+}
+[data-v-uiaedd507485d9] .admit_flow_item {
+  display: flex;
+  align-items: center;
+}
+[data-v-uiaedd507485d9] .admit_flow_arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+}
+[data-v-uiaedd507485d9] .admit_flow_tag {
+  padding: 6px;
+  min-height: 26px;
+  min-width: 90px;
+}
+/* @end-component */
+
+/* @component src/Component/UI/ChangedValue.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/UI/EmptyCard.vue#0 */
+.empty_card[data-v-ui43cab3e2ec48] {
+  padding: 30px;
+  text-align: center;
+  margin-top: 15px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ApprovalFlow.vue#0 */
+.admit_flow_tag[data-v-ui1e3eb95dee76] {
+  max-width: 260px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.caption[data-v-ui1e3eb95dee76],
+.candidate[data-v-ui1e3eb95dee76] {
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.candidate_button[data-v-ui1e3eb95dee76] {
+  width: 175px;
+  margin: 8px auto 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/AttachmentFiles.vue#0 */
+.workflow_attachment_files[data-v-ui36d253cad02b] {
+  width: 440px;
+  max-width: 100%;
+}
+.file[data-v-ui36d253cad02b] {
+  margin-bottom: 16px;
+}
+.filename[data-v-ui36d253cad02b] {
+  overflow-wrap: anywhere;
+}
+.metadata[data-v-ui36d253cad02b],
+.help[data-v-ui36d253cad02b] {
+  margin: 5px 0 10px;
+}
+.file_actions[data-v-ui36d253cad02b] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.file_button[data-v-ui36d253cad02b],
+.upload_button[data-v-ui36d253cad02b] {
+  width: 175px;
+  max-width: 100%;
+}
+.reuse[data-v-ui36d253cad02b] {
+  width: 280px;
+  max-width: 100%;
+  margin-top: 10px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/AttachmentViewer.vue#0 */
+.app_notice[data-v-uie85373f0168c] {
+  margin-top: 15px;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.zoom[data-v-uie85373f0168c] {
+  width: 100px;
+  margin-bottom: 12px;
+}
+.image_scroll[data-v-uie85373f0168c] {
+  width: 100%;
+  max-height: 60vh;
+  overflow: auto;
+}
+.image_size[data-v-uie85373f0168c] {
+  min-height: 200px;
+}
+.viewer_actions[data-v-uie85373f0168c] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.viewer_button[data-v-uie85373f0168c] {
+  width: 175px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/BranchReference.vue#0 */
+.branch_reference[data-v-ui088e6da8f946] {
+  max-width: 100%;
+}
+[data-v-ui088e6da8f946] .table_wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/DefinitionHistory.vue#0 */
+.workflow_definition_history[data-v-ui255c6c76f443] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/EmployeeReference.vue#0 */
+.employee_reference[data-v-ui13f530c32d35] {
+  overflow-wrap: anywhere;
+}
+.help[data-v-ui13f530c32d35] {
+  margin: 25px 0;
+  line-height: 1.7;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/EmployeeTags.vue#0 */
+.dialog_actions[data-v-ui618871ac83fa] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.button_wrap[data-v-ui618871ac83fa] {
+  width: 180px;
+  max-width: 100%;
+}
+.help[data-v-ui618871ac83fa] {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseCellInput.vue#0 */
+.expense_cell_input[data-v-ui77069c7b5b3d] {
+  width: 100%;
+}
+.money_field[data-v-ui77069c7b5b3d] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.money_field[data-v-ui77069c7b5b3d] .input_component {
+  min-width: 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpensePaymentRecord.vue#0 */
+.detail[data-v-uib1f689e62a2a] {
+  margin-top: 4px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/ExpensePayrollAssignment.vue#0 */
+.help[data-v-uia52b6bb9b848],
+.excluded[data-v-uia52b6bb9b848] {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.payroll_types[data-v-uia52b6bb9b848] {
+  margin-bottom: 15px;
+}
+.month_wrap[data-v-uia52b6bb9b848] {
+  width: 300px;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.confirm_check[data-v-uia52b6bb9b848] {
+  margin-top: 20px;
+}
+.dialog_actions[data-v-uia52b6bb9b848] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.button_wrap[data-v-uia52b6bb9b848] {
+  width: 210px;
+  max-width: 100%;
+}
+.error[data-v-uia52b6bb9b848] {
+  margin: 10px 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpensePayrollAssignmentTable.vue#0 */
+.value[data-v-ui7445fb8835c8] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-width: 220px;
+}
+.small[data-v-ui7445fb8835c8] {
+  margin-top: 4px;
+}
+.amount[data-v-ui7445fb8835c8] {
+  text-align: right;
+  white-space: nowrap;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpensePayrollPreviewTable.vue#0 */
+.value[data-v-ui49171080addc] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-width: 220px;
+}
+.small[data-v-ui49171080addc] {
+  margin-top: 4px;
+}
+.amount[data-v-ui49171080addc] {
+  text-align: right;
+  white-space: nowrap;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/ExpensePayrollRelease.vue#0 */
+.help[data-v-ui5b1f50c29988] {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+fieldset[data-v-ui5b1f50c29988] {
+  min-width: 0;
+  padding: 0;
+  margin: 20px 0 0;
+}
+.dialog_actions[data-v-ui5b1f50c29988] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.button_wrap[data-v-ui5b1f50c29988] {
+  width: 210px;
+  max-width: 100%;
+}
+.error[data-v-ui5b1f50c29988] {
+  margin: 10px 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSelectionTable.vue#0 */
+.value[data-v-uiafdad9fe4f56] {
+  max-width: 240px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.amount[data-v-uiafdad9fe4f56] {
+  text-align: right;
+  white-space: nowrap;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementFilters.vue#0 */
+.expense_filters[data-v-ui158d463c00eb] {
+  padding: 15px 0;
+}
+.short_field[data-v-ui158d463c00eb] {
+  width: 240px;
+  max-width: 100%;
+}
+.employee_filter[data-v-ui158d463c00eb] {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.employee_filter[data-v-ui158d463c00eb] .ant_button_wrap {
+  width: 140px;
+}
+.amount_range[data-v-ui158d463c00eb] {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 340px;
+}
+.amount_range[data-v-ui158d463c00eb] .input_component {
+  width: 140px;
+  min-width: 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementForm.vue#0 */
+fieldset[data-v-ui9ae6b325de9c] {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+.short_field[data-v-ui9ae6b325de9c] {
+  width: 240px;
+  max-width: 100%;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementHistoryModal.vue#0 */
+.history_detail[data-v-ui20aa20616a25],
+td.action[data-v-ui20aa20616a25] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+td.action[data-v-ui20aa20616a25] {
+  max-width: 180px;
+}
+.dialog_actions[data-v-ui20aa20616a25],
+.page_actions[data-v-ui20aa20616a25] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.page_actions[data-v-ui20aa20616a25] {
+  margin-top: 15px;
+}
+.button_wrap[data-v-ui20aa20616a25] {
+  width: 180px;
+  max-width: 100%;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementState.vue#0 */
+.detail[data-v-ui9c0f7eb49bfe] {
+  margin-top: 4px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementTable.vue#0 */
+td[data-v-uic75e97f856df] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.source[data-v-uic75e97f856df],
+.payment[data-v-uic75e97f856df] {
+  max-width: 200px;
+}
+.state[data-v-uic75e97f856df] {
+  max-width: 160px;
+}
+.allocation[data-v-uic75e97f856df] {
+  max-width: 190px;
+}
+.allocation p + p[data-v-uic75e97f856df] {
+  margin-top: 6px;
+}
+.schedule_help[data-v-uic75e97f856df] {
+  margin-top: 10px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseTableInput.vue#0 */
+.row_actions[data-v-ui6c7fe69c7ab9] {
+  display: flex;
+  gap: 8px;
+  min-width: 88px;
+}
+.row_actions[data-v-ui6c7fe69c7ab9] .ant_button_wrap {
+  flex: 0 0 32px;
+}
+.receipt_reason[data-v-ui6c7fe69c7ab9] {
+  margin-top: 8px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/FieldInput.vue#0 */
+.workflow_field_input[data-v-uib0445e6d2c7b] {
+  max-width: 440px;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/FieldPreview.vue#0 */
+.field_preview[data-v-ui8dc9c1c223ab] {
+  max-width: 440px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/HistoryButton.vue#0 */
+.workflow_history_button[data-v-ui5b84288ab5fc] {
+  display: inline-block;
+  width: 220px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 599px) {
+  .workflow_history_button[data-v-ui5b84288ab5fc] {
+    margin-left: 0;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/ManagementHeader.vue#0 */
+.title_wrap[data-v-uia7bc7c99fd24] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+.settings_button_wrap[data-v-uia7bc7c99fd24] {
+  width: 220px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 499px) {
+  .title_wrap[data-v-uia7bc7c99fd24] {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+.tabs[data-v-uia7bc7c99fd24] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 3px;
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/NotificationDetails.vue#0 */
+.notification_details[data-v-ui21f51f93f5e9] {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.actions[data-v-ui21f51f93f5e9] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 25px 0;
+}
+.button_wrap[data-v-ui21f51f93f5e9] {
+  width: 220px;
+  max-width: 100%;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/NotificationRecovery.vue#0 */
+.help[data-v-ui34a47bbaf561],
+.reference[data-v-ui34a47bbaf561] {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+fieldset[data-v-ui34a47bbaf561] {
+  min-width: 0;
+  padding: 0;
+  margin: 20px 0 0;
+}
+.dialog_actions[data-v-ui34a47bbaf561] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.button_wrap[data-v-ui34a47bbaf561] {
+  width: 220px;
+  max-width: 100%;
+}
+.error[data-v-ui34a47bbaf561] {
+  margin: 10px 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ReassignmentEditor.vue#0 */
+fieldset[data-v-ui788c63d2858f] {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+.selection[data-v-ui788c63d2858f] {
+  margin: 15px 0;
+}
+.help[data-v-ui788c63d2858f] {
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/RequestComparison.vue#0 */
+.workflow_request_comparison[data-v-uibcdd648214ff] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.change_kind[data-v-uibcdd648214ff] {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/RequestContentView.vue#0 */
+.value[data-v-ui2b9c5ef3b8f2] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+td.value[data-v-ui2b9c5ef3b8f2] {
+  max-width: 360px;
+}
+.amount[data-v-ui2b9c5ef3b8f2] {
+  text-align: right;
+  white-space: nowrap;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/RequestEditor.vue#0 */
+.row_actions[data-v-ui1e330e3b0fa9] {
+  display: flex;
+  gap: 8px;
+  min-width: 88px;
+}
+.row_actions[data-v-ui1e330e3b0fa9] .ant_button_wrap {
+  flex: 0 0 32px;
+}
+.short_field[data-v-ui1e330e3b0fa9] {
+  width: 280px;
+  max-width: 100%;
+}
+.text_field[data-v-ui1e330e3b0fa9] {
+  max-width: 440px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/RequestHistory.vue#0 */
+.history[data-v-ui02ea7d5be25d] {
+  margin-top: 35px;
+}
+.submission[data-v-ui02ea7d5be25d] {
+  padding: 20px 0;
+}
+.button_wrap[data-v-ui02ea7d5be25d] {
+  width: 175px;
+}
+.comment[data-v-ui02ea7d5be25d] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Create.vue#0 */
+.title_wrap[data-v-ui3e3cac4b75f9] {
+  margin-bottom: 25px;
+}
+.target_choice[data-v-ui3e3cac4b75f9] {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+.copy_help[data-v-ui3e3cac4b75f9] {
+  line-height: 1.6;
+}
+.form_choices[data-v-ui3e3cac4b75f9] {
+  max-width: 440px;
+  margin: 15px auto;
+}
+.form_choices p[data-v-ui3e3cac4b75f9] {
+  margin-top: 10px;
+  white-space: pre-wrap;
+}
+.actions[data-v-ui3e3cac4b75f9] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+.button_wrap[data-v-ui3e3cac4b75f9] {
+  width: 175px;
+}
+.empty[data-v-ui3e3cac4b75f9],
+.error[data-v-ui3e3cac4b75f9] {
+  padding: 25px;
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/McpSettings.vue#0 */
+.workflow_mcp[data-v-ui3fcd59d89fce] {
+  max-width: 1100px;
+}
+.help[data-v-ui3fcd59d89fce],
+.connection_form[data-v-ui3fcd59d89fce],
+.credential[data-v-ui3fcd59d89fce] {
+  margin-bottom: 25px;
+}
+.connection_input[data-v-ui3fcd59d89fce] {
+  max-width: 100%;
+}
+.connection_input[data-v-ui3fcd59d89fce] .ant-space-item {
+  max-width: 100%;
+}
+.credential[data-v-ui3fcd59d89fce] textarea {
+  margin-bottom: 10px;
+}
+.connection_id[data-v-ui3fcd59d89fce],
+.field[data-v-ui3fcd59d89fce] {
+  overflow-wrap: anywhere;
+}
+.field_info[data-v-ui3fcd59d89fce] {
+  line-height: 16px;
+}
+.permission[data-v-ui3fcd59d89fce] {
+  text-align: center;
+}
+.selected_count[data-v-ui3fcd59d89fce] {
+  margin-bottom: 10px;
+}
+.actions[data-v-ui3fcd59d89fce] {
+  margin-top: 25px;
+}
+.back_action[data-v-ui3fcd59d89fce] {
+  margin-top: 25px;
+}
+.error[data-v-ui3fcd59d89fce] {
+  margin-bottom: 20px;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Request.vue#0 */
+.detail_tabs[data-v-ui97c69ad12d87] {
+  margin-bottom: 25px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.definition_refresh[data-v-ui97c69ad12d87] {
+  margin-bottom: 20px;
+}
+.title_wrap[data-v-ui97c69ad12d87] {
+  margin-bottom: 25px;
+}
+.draft_help[data-v-ui97c69ad12d87] {
+  margin-bottom: 25px;
+}
+.copy_help[data-v-ui97c69ad12d87] {
+  line-height: 1.6;
+  white-space: normal;
+}
+.actions[data-v-ui97c69ad12d87] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px 0;
+}
+.button_wrap[data-v-ui97c69ad12d87] {
+  width: 175px;
+}
+.preview_body[data-v-ui97c69ad12d87] {
+  max-height: 65vh;
+  overflow: auto;
+  padding: 5px;
+}
+.error[data-v-ui97c69ad12d87] {
+  padding: 25px;
+  text-align: center;
+}
+.upload_status[data-v-ui97c69ad12d87] {
+  margin: 12px 0;
+}
+.upload_status .actions[data-v-ui97c69ad12d87] {
+  margin: 10px 0;
+}
+.filename[data-v-ui97c69ad12d87] {
+  overflow-wrap: anywhere;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Requests.vue#0 */
+.title_wrap[data-v-uia9f709ed20f3] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+.settings_button_wrap[data-v-uia9f709ed20f3] {
+  width: 220px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 499px) {
+  .title_wrap[data-v-uia9f709ed20f3] {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+.form_filter[data-v-uia9f709ed20f3] {
+  margin-bottom: 12px;
+}
+.detail_search_button_wrap[data-v-uia9f709ed20f3] {
+  width: 175px;
+}
+.short_field[data-v-uia9f709ed20f3] {
+  width: 240px;
+  max-width: 100%;
+}
+.filters[data-v-uia9f709ed20f3] {
+  padding: 15px 0;
+}
+.button_wrap[data-v-uia9f709ed20f3] {
+  width: 140px;
+}
+.form_name[data-v-uia9f709ed20f3] {
+  margin-top: 4px;
+}
+.amount[data-v-uia9f709ed20f3] {
+  text-align: right;
+}
+.empty[data-v-uia9f709ed20f3],
+.error[data-v-uia9f709ed20f3] {
+  padding: 30px;
+  text-align: center;
+  margin-top: 15px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Company.vue#0 */
+.title_wrap[data-v-ui87d7045b391a] {
+  margin-bottom: 25px;
+}
+.reference_help[data-v-ui87d7045b391a] {
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+.button_wrap[data-v-ui87d7045b391a] {
+  width: 220px;
+  max-width: 100%;
+}
+[data-v-ui87d7045b391a] .menu_content_wrap {
+  min-width: 0;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FieldAnnotation.vue#0 */
+.field_annotation[data-v-ui359b81f9d1a3] {
+  line-height: 1.6;
+  margin-top: 5px;
+  white-space: pre-wrap;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FieldEditor.vue#0 */
+.field[data-v-uid078a48a61d0] {
+  width: 320px;
+  max-width: 100%;
+}
+.button_wrap[data-v-uid078a48a61d0] {
+  width: 180px;
+  max-width: 100%;
+}
+.row_actions[data-v-uid078a48a61d0],
+.modal_actions[data-v-uid078a48a61d0] {
+  display: flex;
+  gap: 10px;
+}
+.modal_actions[data-v-uid078a48a61d0] {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FlowEditor.vue#0 */
+.condition[data-v-ui3b048862611f] {
+  line-height: 1.6;
+}
+.condition p + p[data-v-ui3b048862611f] {
+  margin-top: 6px;
+}
+.field[data-v-ui3b048862611f] {
+  width: 300px;
+  max-width: 100%;
+}
+.number_field[data-v-ui3b048862611f] {
+  width: 100px;
+}
+.button_wrap[data-v-ui3b048862611f] {
+  width: 190px;
+  max-width: 100%;
+}
+.row_actions[data-v-ui3b048862611f],
+.modal_actions[data-v-ui3b048862611f] {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.modal_actions[data-v-ui3b048862611f] {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.tag_condition[data-v-ui3b048862611f] {
+  margin: 20px 0;
+  padding-top: 20px;
+}
+.empty[data-v-ui3b048862611f] {
+  padding: 25px;
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FlowPreview.vue#0 */
+.flow_trial[data-v-ui14cb7c9eb646] {
+  margin-top: 24px;
+  min-width: 0;
+}
+.trial_toggle[data-v-ui14cb7c9eb646] {
+  width: 300px;
+  max-width: 100%;
+}
+.button_wrap[data-v-ui14cb7c9eb646] {
+  width: 180px;
+  max-width: 100%;
+  margin: 12px 0;
+}
+.branch_field[data-v-ui14cb7c9eb646] {
+  width: 300px;
+  max-width: 100%;
+}
+.help[data-v-ui14cb7c9eb646] {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+.warning[data-v-ui14cb7c9eb646] {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+.resolution > p[data-v-ui14cb7c9eb646] {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/MasterEditor.vue#0 */
+.table_preview[data-v-ui2a90abaf00ff] {
+  margin-bottom: 25px;
+}
+.table_heading[data-v-ui2a90abaf00ff] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.table_heading .dd-origin[data-v-ui2a90abaf00ff] {
+  display: inline-flex;
+  padding: 6px 4px;
+}
+.table_heading svg[data-v-ui2a90abaf00ff] {
+  width: 14px;
+  height: 18px;
+}
+.add_table[data-v-ui2a90abaf00ff] {
+  max-width: 440px;
+  margin-bottom: 25px;
+}
+.form_icon[data-v-ui2a90abaf00ff] {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.form_icon svg[data-v-ui2a90abaf00ff] {
+  width: 32px;
+  height: 32px;
+}
+.field[data-v-ui2a90abaf00ff] {
+  width: 320px;
+  max-width: 100%;
+}
+.description[data-v-ui2a90abaf00ff] {
+  width: 500px;
+  max-width: 100%;
+}
+.number_field[data-v-ui2a90abaf00ff] {
+  width: 100px;
+}
+.section[data-v-ui2a90abaf00ff] {
+  margin: 30px 0 15px;
+}
+.standard_info[data-v-ui2a90abaf00ff] {
+  margin: 25px 0;
+  line-height: 1.8;
+}
+.branch_table[data-v-ui2a90abaf00ff] {
+  margin-bottom: 25px;
+}
+.button_wrap[data-v-ui2a90abaf00ff] {
+  width: 180px;
+  max-width: 100%;
+}
+.row_actions[data-v-ui2a90abaf00ff],
+.modal_actions[data-v-ui2a90abaf00ff] {
+  display: flex;
+  gap: 10px;
+}
+.modal_actions[data-v-ui2a90abaf00ff] {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/MasterRowActions.vue#0 */
+.row_actions[data-v-ui07922df652d2] {
+  display: flex;
+  gap: 10px;
+}
+.small_button[data-v-ui07922df652d2],
+.member_button[data-v-ui07922df652d2] {
+  width: 30px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/MasterTable.vue#0 */
+.order_help[data-v-ui768199a4628b] {
+  margin: 10px 0 20px;
+  line-height: 1.6;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/PreviewFields.vue#0 */
+.preview_field[data-v-ui5490a4110cda] {
+  margin-bottom: 25px;
+}
+.preview_label[data-v-ui5490a4110cda],
+.edit_actions[data-v-ui5490a4110cda] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.preview_label[data-v-ui5490a4110cda] {
+  min-height: 30px;
+}
+.preview_label .dd-origin[data-v-ui5490a4110cda] {
+  display: inline-flex;
+  padding: 6px 4px;
+}
+.preview_label svg[data-v-ui5490a4110cda] {
+  width: 14px;
+  height: 18px;
+}
+.field_controls[data-v-ui5490a4110cda] {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.field_controls .field_preview[data-v-ui5490a4110cda] {
+  width: 320px;
+  max-width: 100%;
+}
+.preview_header .edit_actions[data-v-ui5490a4110cda] {
+  margin-top: 5px;
+}
+.add_field[data-v-ui5490a4110cda] {
+  max-width: 440px;
+  margin-bottom: 25px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Config.vue#0 */
+.title_wrap[data-v-uief578b578b7b] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.editor[data-v-uief578b578b7b] {
+  width: 100%;
+}
+.button_wrap[data-v-uief578b578b7b] {
+  width: 180px;
+  max-width: 100%;
+}
+.small_button[data-v-uief578b578b7b] {
+  width: 95px;
+}
+.row_actions[data-v-uief578b578b7b],
+.list_actions[data-v-uief578b578b7b],
+.form_actions[data-v-uief578b578b7b] {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.form_actions[data-v-uief578b578b7b] {
+  justify-content: center;
+  margin-top: 35px;
+}
+.empty[data-v-uief578b578b7b] {
+  margin-top: 20px;
+  padding: 30px 15px;
+  text-align: center;
+}
+.error p[data-v-uief578b578b7b] {
+  margin-bottom: 15px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Employees.vue#0 */
+.title_wrap[data-v-ui6c52f10775cf] {
+  margin-bottom: 25px;
+}
+.reference_help[data-v-ui6c52f10775cf] {
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+.button_wrap[data-v-ui6c52f10775cf] {
+  width: 220px;
+  max-width: 100%;
+  margin-top: 20px;
+}
+.employee_reference_page[data-v-ui6c52f10775cf] {
+  max-width: 100%;
+}
+[data-v-ui6c52f10775cf] .table_wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Expenses.vue#0 */
+.month_changer_wrap[data-v-ui03222b1eeb1d] {
+  max-width: 700px;
+  margin: 20px auto;
+}
+.display_modes[data-v-ui03222b1eeb1d] {
+  margin: 20px 0;
+}
+.title_wrap[data-v-ui03222b1eeb1d] {
+  margin-bottom: 25px;
+}
+.payroll_context[data-v-ui03222b1eeb1d] {
+  margin-bottom: 20px;
+}
+.payroll_context p[data-v-ui03222b1eeb1d] {
+  margin-bottom: 10px;
+}
+.tabs[data-v-ui03222b1eeb1d] {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.totals[data-v-ui03222b1eeb1d] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 30px;
+  margin: 20px 0 10px;
+}
+.help[data-v-ui03222b1eeb1d] {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+.detail_search_button_wrap[data-v-ui03222b1eeb1d] {
+  width: 175px;
+}
+.export_button_wrap[data-v-ui03222b1eeb1d] {
+  width: 130px;
+}
+.search_actions[data-v-ui03222b1eeb1d] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.actions[data-v-ui03222b1eeb1d],
+.dialog_actions[data-v-ui03222b1eeb1d] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.actions[data-v-ui03222b1eeb1d] .ant_button_wrap {
+  width: 180px;
+  margin-left: 0;
+}
+.dialog_actions[data-v-ui03222b1eeb1d] {
+  justify-content: center;
+}
+.dialog_actions[data-v-ui03222b1eeb1d] .ant_button_wrap {
+  width: 180px;
+  margin-left: 0;
+}
+.selection_total[data-v-ui03222b1eeb1d] {
+  margin: 15px 0;
+}
+.value[data-v-ui03222b1eeb1d] {
+  max-width: 240px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.small[data-v-ui03222b1eeb1d] {
+  margin-top: 4px;
+}
+.amount[data-v-ui03222b1eeb1d] {
+  text-align: right;
+  white-space: nowrap;
+}
+.validation[data-v-ui03222b1eeb1d] {
+  margin: 10px 0;
+}
+.error[data-v-ui03222b1eeb1d] {
+  margin: 20px 0;
+}
+.error .button_wrap[data-v-ui03222b1eeb1d] {
+  width: 140px;
+  max-width: 100%;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/History.vue#0 */
+[data-v-ui7ab6d56a03e3] .table_wrap > table {
+  min-width: 600px;
+}
+.differences[data-v-ui7ab6d56a03e3] {
+  margin-top: 35px;
+}
+.page_actions[data-v-ui7ab6d56a03e3] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+.button_wrap[data-v-ui7ab6d56a03e3] {
+  width: 180px;
+  max-width: 100%;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Notifications.vue#0 */
+.notification_page[data-v-ui940f33598287] {
+  max-width: 100%;
+}
+.title_wrap[data-v-ui940f33598287] {
+  margin-bottom: 25px;
+}
+.summary[data-v-ui940f33598287],
+.help[data-v-ui940f33598287] {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.status_select[data-v-ui940f33598287] {
+  width: 180px;
+  max-width: 100%;
+}
+.page_actions[data-v-ui940f33598287] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+.button_wrap[data-v-ui940f33598287] {
+  width: 220px;
+  max-width: 100%;
+}
+[data-v-ui940f33598287] .table_wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+[data-v-ui940f33598287] .table_wrap table {
+  width: 100%;
+  min-width: 850px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Setting.vue#0 */
+.title_wrap[data-v-uida64472b3143] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.section[data-v-uida64472b3143] {
+  margin: 30px 0 20px;
+}
+.field[data-v-uida64472b3143] {
+  width: 300px;
+  max-width: 100%;
+}
+.notification_link[data-v-uida64472b3143] {
+  width: 220px;
+  max-width: 100%;
+  margin-bottom: 25px;
+}
+.help[data-v-uida64472b3143] {
+  margin-bottom: 15px;
+}
+.button_wrap[data-v-uida64472b3143] {
+  width: 140px;
+}
+.actions[data-v-uida64472b3143] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/TagMember.vue#0 */
+.title_wrap[data-v-ui0eca0299ecff] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.help[data-v-ui0eca0299ecff] {
+  margin-bottom: 15px;
+}
+.tag_field[data-v-ui0eca0299ecff] {
+  width: 100%;
+  max-width: 260px;
+}
+.assignment[data-v-ui0eca0299ecff] {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+}
+.tag_selection[data-v-ui0eca0299ecff] {
+  flex: 0 0 260px;
+  max-width: 100%;
+}
+.employee_selection[data-v-ui0eca0299ecff] {
+  flex: 1;
+  min-width: 0;
+}
+@media screen and (max-width: 1199px) {
+  .assignment[data-v-ui0eca0299ecff] {
+    flex-direction: column;
+  }
+  .tag_selection[data-v-ui0eca0299ecff] {
+    flex-basis: auto;
+    width: 345px;
+  }
+  .employee_selection[data-v-ui0eca0299ecff] {
+    width: 100%;
+  }
+}
+.button_wrap[data-v-ui0eca0299ecff] {
+  width: 140px;
+}
+.summary[data-v-ui0eca0299ecff] {
+  margin-top: 20px;
+}
+.actions[data-v-ui0eca0299ecff] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+/* @end-component */

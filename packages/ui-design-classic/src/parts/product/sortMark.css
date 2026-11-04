@@ -1,0 +1,31 @@
+@layer arrow-product-classic {/* @component src/Component/UI/SortMark.vue#0 */
+.sort_mark_wrap
+  .anticon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: block;
+  height: 8px;
+}
+.sort_mark_wrap
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  fill: #bfbfbf;
+  width: 12px;
+}
+.sort_mark_wrap.asc
+  .asc:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  fill: black;
+}
+.sort_mark_wrap.desc
+  .desc:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  fill: black;
+}
+@media screen and (max-width: 499px) {
+  .sort_mark_wrap
+    .anticon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    height: 5px;
+  }
+  .sort_mark_wrap
+    svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 9px;
+  }
+}
+/* @end-component */
+}

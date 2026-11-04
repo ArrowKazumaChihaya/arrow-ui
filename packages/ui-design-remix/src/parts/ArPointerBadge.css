@@ -1,0 +1,3 @@
+/* @covers ArPointerBadge 1.0.0 */
+[data-ar-design="remix"] [data-ar="pointer-badge"]{--ar-pointer-bg:#ff8e9d;background:var(--ar-pointer-bg);color:#fff;font-weight:700}
+[data-ar-design="remix"] [data-ar="pointer-badge"][data-tone="accent"]{--ar-pointer-bg:var(--ar-accent)}

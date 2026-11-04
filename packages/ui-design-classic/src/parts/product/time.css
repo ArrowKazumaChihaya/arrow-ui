@@ -1,0 +1,54 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Time.vue#0 */
+.time_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 58px;
+  min-width: 58px;
+}
+.time_component.overnight:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 71px;
+  min-width: 71px;
+}
+.time_component
+  .ant-input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0px !important;
+  text-align: center;
+  flex: 0 0 auto;
+  /* Ant's all-property transition must not animate the initial time-field width. */
+  transition-property: color, background-color, border-color, box-shadow;
+}
+.formspan:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  flex: 0 0 auto;
+  line-height: 32px;
+}
+.time_input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  flex: 0 0 auto;
+  height: 30px;
+  line-height: 30px;
+}
+.time_component
+  + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px;
+}
+@media screen and (max-width: 499px) {
+  .time_input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    height: 25px;
+    line-height: 25px;
+  }
+  .formspan:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 27px;
+  }
+  span:has(+ input.ant-input):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 27px !important;
+    font-size: 13px;
+  }
+  .time_component
+    + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 27px;
+  }
+}
+/* @end-component */
+}

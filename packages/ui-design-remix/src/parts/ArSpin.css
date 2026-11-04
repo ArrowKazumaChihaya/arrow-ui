@@ -1,4 +1,4 @@
-/* @covers ArSpin 1.0.0 */
+/* @covers ArSpin 1.1.0 */
 /* テーマ色の回る輪（.ad-spin）。中身の上には白い幕（白70%）と言葉（acc-ink）。 */
 [data-ar-design="remix"] [data-ar="spin"]{gap:6px;color:var(--ar-accent-ink);font-size:var(--ar-font-size-label);line-height:1.5;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="spin"]>[data-part="spinner"],[data-ar-design="remix"] [data-ar="spin"]>[data-part="mask"]>[data-part="spinner"]{width:30px;height:30px;border-width:3px;border-color:var(--ar-accent)}

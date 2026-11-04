@@ -1,0 +1,175 @@
+@layer arrow-product-classic {/* @component src/Component/Document/Custom/CustomDocumentFilter.vue#0 */
+.filter_wrap[data-v-ui32bb2030682d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 2px dashed #9b9a9b;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 10px 30px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.filter_text[data-v-ui32bb2030682d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 32px;
+  margin: 0 5px;
+}
+@media screen and (max-width: 768px) {
+  .filter_wrap[data-v-ui32bb2030682d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 499px) {
+  .filter_text[data-v-ui32bb2030682d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 12px;
+    line-height: 27px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Attendance/Error.vue#0 */
+.error_filter_wrap[data-v-ui5b97da54dace]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 0 0 12px;
+  padding: 12px;
+  border: 1px solid #bfe6d4;
+  background: #f7fffb;
+  border-radius: 4px;
+}
+.error_filter_button_wrap[data-v-ui5b97da54dace]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 175px;
+}
+.error_filter_head[data-v-ui5b97da54dace]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.error_filter_options[data-v-ui5b97da54dace]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  gap: 6px 20px;
+}
+.error_filter_option[data-v-ui5b97da54dace]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  min-width: 0;
+  line-height: 22px;
+}
+.error_filter_option[data-v-ui5b97da54dace]
+  .checkbox_component:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.error_filter_option[data-v-ui5b97da54dace]
+  .ant-checkbox-wrapper:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-flex;
+  align-items: flex-start;
+  vertical-align: top !important;
+}
+.error_filter_option[data-v-ui5b97da54dace]
+  .ant-checkbox:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0 !important;
+  vertical-align: top !important;
+}
+.error_filter_option[data-v-ui5b97da54dace]
+  .ant-checkbox
+  + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  line-height: 22px !important;
+  vertical-align: top !important;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Attendance/Filters.vue#0 */
+.filter_wrap[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 2px dashed #4eb187;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 38px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.filter_attention[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 5px 10px 12px;
+}
+.filter_text[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 32px;
+}
+@media screen and (max-width: 768px) {
+  .filter_wrap[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 499px) {
+  .filter_text[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 12px;
+    line-height: 27px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Employee/JoinFilter.vue#0 */
+.filter_wrap[data-v-ui04bb9eb08cf0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 2px dashed #9b9a9b;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  max-width: 265px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.filter_text[data-v-ui04bb9eb08cf0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 32px;
+  margin: 0 5px;
+}
+.check_block[data-v-ui04bb9eb08cf0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+}
+@media screen and (max-width: 768px) {
+  .filter_wrap[data-v-ui04bb9eb08cf0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 499px) {
+  .filter_text[data-v-ui04bb9eb08cf0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 12px;
+    line-height: 27px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Employee/OrderFilter.vue#0 */
+.filter_wrap[data-v-ui8a9f41c2c141]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 2px dashed #9b9a9b;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  max-width: 390px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.filter_text[data-v-ui8a9f41c2c141]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 32px;
+  margin: 0 5px;
+}
+.check_block[data-v-ui8a9f41c2c141]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+}
+@media screen and (max-width: 768px) {
+  .filter_wrap[data-v-ui8a9f41c2c141]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 499px) {
+  .filter_text[data-v-ui8a9f41c2c141]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 12px;
+    line-height: 27px;
+  }
+}
+/* @end-component */
+}

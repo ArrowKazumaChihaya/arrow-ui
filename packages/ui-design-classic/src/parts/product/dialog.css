@@ -1,0 +1,53 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Modal.vue#0 */
+.ant-modal:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: calc(100vw - 30px) !important;
+}
+.ant-modal-header:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 16px !important;
+}
+.ant-modal-title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center !important;
+  font-weight: 600 !important;
+  font-size: var(--arrow-modal-title-size, 20px) !important;
+}
+.ant_dropdown_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  position: relative;
+}
+.modal_title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--arrow-modal-title-size, 20px);
+}
+.submit_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+.ant-modal-close:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  top: 8px !important;
+  right: 8px !important;
+  inset-inline-end: none !important;
+}
+@media screen and (max-width: 499px) {
+  .ant-modal-header:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 0px 18px !important;
+  }
+  .ant-modal-content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 20px 10px 15px !important;
+  }
+  .ant-modal-title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    text-align: center !important;
+    font-weight: 600 !important;
+    font-size: var(--arrow-modal-title-size-mobile, 16px) !important;
+  }
+  .ant-modal-close:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    top: 6px !important;
+    right: 6px !important;
+  }
+}
+/* @end-component */
+}

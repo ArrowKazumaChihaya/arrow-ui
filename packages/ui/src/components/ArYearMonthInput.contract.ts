@@ -1,5 +1,7 @@
 /** ArYearMonthInput 1.0 の契約。年はプルダウン、月は数字（今の ARROW の Yearmonth）。 */
 export interface ArYearMonthInputProps {
+  initialYear?: number;
+  allowEmptyYear?: boolean;
   /** "YYYY-MM"。月が空なら null。 */
   modelValue: string | null;
   /** 一覧のいちばん古い年。既定は 1930。 */

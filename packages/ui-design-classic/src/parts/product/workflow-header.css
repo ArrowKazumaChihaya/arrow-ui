@@ -1,0 +1,65 @@
+@layer arrow-product-classic {/* @component src/View/Common/Layout/MenuLayout/Header.vue */
+.domain_nav[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #edf3f7;
+  border-bottom: 1px solid #dce5e7;
+}
+.domain_nav.is_collapsed[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-bottom: 0;
+}
+.header.domain_collapsed
+  .header_login_info[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  transition: none;
+}
+.domain_button[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #dce5e7;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid transparent;
+  background: white;
+  color: #52666f;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.domain_button.is_active[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #2d7981;
+  border-bottom-color: #59a4ab;
+  background: white;
+  box-shadow: 0 -2px 8px rgba(82, 102, 111, 0.0705882353);
+}
+.domain_button[data-v-uidec8f89b1721]:focus-visible:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  outline: 2px solid #2d7981;
+  outline-offset: -2px;
+}
+.domain_button
+  small[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 10px;
+  font-weight: normal;
+}
+@media screen and (max-width: 959px) {
+  .domain_button[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 11px;
+  }
+}
+
+/* @component src/View/Common/Layout/MenuLayout/HeaderNotice.vue */
+.workflow_header_notice:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: 10px;
+  background-color: #eb9142;
+  cursor: pointer;
+  border: 0;
+}
+.workflow_header_notice:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  opacity: 0.8;
+}
+.workflow_header_notice.disable:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #dfdfdf;
+}
+.workflow_header_notice
+  .notice_badge:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: red;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 9px;
+}
+}

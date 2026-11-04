@@ -1,0 +1,10 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Colorviewer.vue#0 */
+.color_block[data-v-ui28ab613362e9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid gray;
+}
+/* @end-component */
+}

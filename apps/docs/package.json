@@ -8,9 +8,9 @@
     "build": "node ../../scripts/gen-meta.mjs && vite build && node ./artifact.mjs"
   },
   "dependencies": {
-    "@arrow/ui": "0.1.0",
-    "@arrow/ui-design-remix": "0.1.0",
-    "@arrow/ui-design-classic": "0.1.0",
+    "@arrow/ui": "0.1.1",
+    "@arrow/ui-design-remix": "0.1.1",
+    "@arrow/ui-design-classic": "0.1.1",
     "vue": "^3.5.22"
   }
 }

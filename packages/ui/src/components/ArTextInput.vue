@@ -55,6 +55,7 @@ const emit = defineEmits<{
 }>();
 
 const attrs = useAttrs();
+const accessibleLabel = computed(() => typeof attrs["aria-label"] === "string" ? attrs["aria-label"] : props.id ? undefined : props.label);
 const rootAttrs = computed(() => ({ class: attrs.class, style: attrs.style }));
 const inputAttrs = computed(() => {
   const { class: _c, style: _s, ...rest } = attrs;
@@ -147,7 +148,7 @@ defineExpose({
       :maxlength="maxlength"
       :inputmode="inputmode"
       :autocomplete="autocomplete"
-      :aria-label="id ? undefined : label"
+      :aria-label="accessibleLabel"
       :aria-invalid="invalid ? 'true' : undefined"
       @input="onInput"
       @focus="emit('focus', $event)"

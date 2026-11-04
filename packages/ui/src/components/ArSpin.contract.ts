@@ -6,6 +6,10 @@ export interface ArSpinProps {
   size?: "sm" | "md" | "lg";
   /** 輪の下の言葉（「読み込み中」）。読み上げの名前にもなる。 */
   tip?: string;
+  /** 独立した読込領域として横幅いっぱいに中央配置する。 */
+  block?: boolean;
+  /** 読込完了まで確保する領域の最小高さ。 */
+  minHeight?: string;
 }
 /** slot：default（読み込む中身）。 */
 export type ArSpinPart = "root" | "spinner" | "tip" | "content" | "mask";

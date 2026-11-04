@@ -1,0 +1,485 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Button.vue#0 */
+.ant_button_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 100%;
+  display: inline-block;
+}
+.ant_button_wrap
+  + .ant_button_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 3px;
+}
+.ant_button_wrap.square:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 32px;
+}
+.ant_button_wrap
+  .ant-btn:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: var(--arrow-button-radius, 6px);
+  line-height: 30px;
+  vertical-align: middle !important;
+  padding: 0 7px !important;
+  text-align: center;
+}
+.ant_button_wrap
+  .ant-btn
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 30px;
+}
+.ant_button_wrap
+  .ant-btn.cancel:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: white !important;
+}
+.ant_button_wrap
+  .ant-btn.info:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: white !important;
+}
+.ant_button_wrap
+  .ant-btn.transparent:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn.text:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn.bordered:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  box-shadow: none !important;
+}
+.ant_button_wrap
+  .ant-btn.text:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  height: 20px !important;
+}
+.ant_button_wrap
+  .ant-btn.text
+  .button_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-bottom: 1px solid var(--arrow-color-link, #4f92c2) !important;
+}
+.ant_button_wrap
+  .ant-btn.text
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: var(--arrow-color-link, #4f92c2) !important;
+  font-weight: bold;
+}
+.ant_button_wrap
+  .ant-btn.text
+  .button_content
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 2px;
+}
+.ant_button_wrap
+  .ant-btn.info
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: var(--arrow-color-link, #4f92c2) !important;
+  font-weight: bold;
+}
+.ant_button_wrap
+  .ant-btn.transround
+  .button_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: 50%;
+}
+.ant_button_wrap
+  .ant-btn.bordered
+  .button_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  padding: 4px 9px;
+  padding-right: 10px;
+  border-radius: 13px;
+  border: 1px solid var(--arrow-color-link, #4f92c2);
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+.ant_button_wrap
+  .ant-btn.bordered
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: var(--arrow-color-link, #4f92c2) !important;
+  font-weight: bold;
+  vertical-align: middle !important;
+}
+.ant_button_wrap
+  .ant-btn.bordered
+  .button_content
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 2px;
+}
+.ant_button_wrap
+  .ant-btn.bordered:hover:not(.disabled)
+  .button_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: var(--arrow-color-link, #4f92c2);
+  border-color: var(--arrow-color-link, #4f92c2) !important;
+}
+.ant_button_wrap
+  .ant-btn.bordered:hover:not(.disabled)
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #fff !important;
+}
+.ant_button_wrap
+  .ant-btn.bordered:hover:not(.disabled)
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  fill: white;
+  stroke: white;
+}
+.ant_button_wrap
+  .ant-btn.disabled.bordered:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+.ant_button_wrap
+  .ant-btn.disabled.bordered
+  .button_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #d9d9d9 !important;
+  border: none;
+}
+.ant_button_wrap
+  .ant-btn.disabled.bordered
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: white !important;
+}
+.ant_button_wrap
+  .ant-btn.disabled.bordered
+  .button_content
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  fill: white;
+  stroke: white;
+}
+.ant_button_wrap
+  .ant-btn.disabled.text
+  .button_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-bottom: 1px solid gray !important;
+}
+.ant_button_wrap
+  .ant-btn.disabled.text
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: gray !important;
+}
+.ant_button_wrap
+  .ant-btn.disabled.text
+  .button_content
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  fill: gray;
+  stroke: gray;
+}
+.ant_button_wrap
+  .ant-btn
+  .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 13px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.ant_button_wrap
+  .ant-btn
+  .icon_wrap
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: middle;
+  width: 13px;
+  height: 13px;
+}
+.ant_button_wrap
+  .ant-btn.cancel:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid black !important;
+}
+.ant_button_wrap
+  .ant-btn.info:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid var(--arrow-color-link, #4f92c2) !important;
+}
+.ant_button_wrap.large
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  font-weight: 600;
+}
+.ant_button_wrap.large
+  .button_content
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 3px;
+}
+.ant_button_wrap.xlarge
+  .ant-btn-lg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0 30px;
+  font-size: 20px;
+  height: 50px;
+  font-weight: 600;
+}
+.ant_button_wrap.xlarge
+  .button_content
+  .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 24px;
+  display: inline-block;
+}
+.ant_button_wrap.xlarge
+  .button_content
+  .icon_wrap
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+}
+.ant_button_wrap.xlarge
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 18px;
+  font-weight: 600;
+}
+.ant_button_wrap.xlarge
+  .button_content
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 6px;
+}
+.ant_button_wrap.small:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: 5px;
+}
+.ant_button_wrap.small
+  .ant-btn-sm:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0 15px;
+  font-size: 12px;
+}
+.ant_button_wrap.small
+  .button_content
+  .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 14px;
+}
+.ant_button_wrap.small
+  .button_content
+  .icon_wrap
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 14px;
+  height: 14px;
+}
+.ant_button_wrap.small
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  line-height: 21.5px;
+}
+.ant_button_wrap.small
+  .button_content
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 3px;
+}
+.ant_button_wrap
+  .button_content
+  .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 16px;
+  display: inline-block;
+}
+.ant_button_wrap
+  .button_content
+  .icon_wrap
+  svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+.ant_button_wrap
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ant_button_wrap
+  .button_content
+  .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 5px;
+}
+.ant_button_wrap
+  .ant-btn-primary:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  --button-color: var(--arrow-button-default, black);
+  background-color: var(--button-color) !important;
+  border-color: var(--button-color) !important;
+}
+.ant_button_wrap
+  .ant-btn-primary.disabled:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: #f5f5f5 !important;
+  border-color: #d9d9d9 !important;
+}
+.ant_button_wrap
+  .ant-btn-primary.transparent:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary.text:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary.bordered:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.ant_button_wrap
+  .ant-btn-primary.transparent:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary.transparent:focus:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary.text:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary.text:focus:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary.bordered:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary.bordered:focus:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+.ant_button_wrap
+  .ant-btn-primary.transround:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: none !important;
+}
+.ant_button_wrap
+  .ant-btn-primary:hover:not(.disabled):not(.text):not(.bordered):where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap
+  .ant-btn-primary:focus:not(.disabled):not(.text):not(.bordered):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--button-color) !important;
+  border-color: var(--button-color) !important;
+}
+.ant_button_wrap
+  .ant-btn-primary:hover:not(.disabled):not(.text):not(.bordered):where([data-ar-design="classic"], [data-ar-design="classic"] *):after,
+.ant_button_wrap
+  .ant-btn-primary:focus:not(.disabled):not(.text):not(.bordered):where([data-ar-design="classic"], [data-ar-design="classic"] *):after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background-color: white !important;
+}
+.ant_button_wrap.text:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap.bordered:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: initial;
+}
+.ant_button_wrap.text
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant_button_wrap.bordered
+  .button_content
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 15px;
+}
+.blink
+  .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.blink
+  .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  -webkit-animation: blink 1s ease-in infinite alternate;
+  -moz-animation: blink 1s ease-in infinite alternate;
+  animation: blink 1s ease-in infinite alternate;
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 499px) {
+  .ant_button_wrap
+    .ant-btn:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    height: 27px !important;
+    font-size: 11px !important;
+    padding: 0 5.5px !important;
+  }
+  .ant_button_wrap
+    .ant-btn
+    .button_content
+    .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 14px;
+  }
+  .ant_button_wrap
+    .ant-btn
+    .button_content
+    .icon_wrap
+    svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 14px;
+    height: 14px;
+  }
+  .ant_button_wrap.square:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 27px;
+  }
+  .ant_button_wrap
+    .button_content
+    .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 25px !important;
+  }
+  .ant_button_wrap.text
+    .button_content
+    .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .ant_button_wrap.bordered
+    .button_content
+    .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 11px !important;
+    line-height: 14px !important;
+  }
+  .ant_button_wrap.large
+    .button_content
+    .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .ant_button_wrap.large
+    .button_content
+    .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin-left: 3px;
+  }
+  .ant_button_wrap.xlarge
+    .ant-btn-lg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 0 20px !important;
+    font-size: 18px !important;
+    height: 40px !important;
+  }
+  .ant_button_wrap.xlarge
+    .button_content
+    .icon_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 24px;
+    display: inline-block;
+  }
+  .ant_button_wrap.xlarge
+    .button_content
+    .icon_wrap
+    svg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+  }
+  .ant_button_wrap.xlarge
+    .button_content
+    .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 16px !important;
+  }
+  .ant_button_wrap.xlarge
+    .button_content
+    .text_wrap.with_icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin-left: 4px !important;
+  }
+}
+/* @end-component */
+}

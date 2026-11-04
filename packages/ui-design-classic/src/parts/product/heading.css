@@ -1,0 +1,215 @@
+@layer arrow-product-classic {/* @component src/Component/MonthChangerModal.vue#0 */
+.create_title[data-v-ui97a8f45ddb80]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.yearmonth_changer_wrap[data-v-ui97a8f45ddb80]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.exec_button_wrap[data-v-ui97a8f45ddb80]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 20px;
+  text-align: center;
+}
+.after_text[data-v-ui97a8f45ddb80]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: middle;
+}
+/* @end-component */
+
+/* @component src/Component/Title.vue#0 */
+h2.titlebar.bar[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: block;
+  border-radius: var(--arrow-title-radius, 0px);
+  width: 100%;
+  font-size: var(--arrow-title-size, 18px);
+  line-height: var(--arrow-title-line-height, 36px);
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+h2.titlebar.bar.shift[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-shift, #4395d4);
+}
+h2.titlebar.bar.attendance[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-attendance, #4eb187);
+}
+h2.titlebar.bar.payment[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-payment, #d1aa00);
+}
+h2.titlebar.bar.aggregation[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-aggregation, #ee751b);
+}
+h2.titlebar.bar.document[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-document, #e389b7);
+}
+h2.titlebar.bar.notification[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-notification, #eb9142);
+}
+h2.titlebar.bar.other[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-other, #6cb1b7);
+}
+h2.titlebar.text[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: var(--arrow-title-text-size, 22px);
+  font-weight: 600;
+  text-align: left;
+}
+@media screen and (max-width: 499px) {
+  h2.titlebar.bar[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: var(--arrow-title-size-mobile, 15px);
+    line-height: var(--arrow-title-line-height-mobile, 30px);
+  }
+  h2.titlebar.text[data-v-ui08f333d9f3d2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: var(--arrow-title-text-size-mobile, 18px);
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Bonus/Create.vue#0 */
+.create_title[data-v-ui77564bbfa7ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/BulkChange/Employee/Create.vue#0 */
+.create_title[data-v-uia740fe6f7491]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Employee/DemandOvertime/Create.vue#0 */
+.create_title[data-v-ui8293d13ec87c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/BulkReflect.vue#0 */
+.create_title[data-v-ui205b525be276]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.attention[data-v-ui205b525be276]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/Create.vue#0 */
+.create_title[data-v-uifa56eb739237]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.create_content[data-v-uifa56eb739237]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/ForceReflect.vue#0 */
+.create_title[data-v-ui6e0d835263e8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/Reflect.vue#0 */
+.create_title[data-v-ui2603b1cc61ae]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/UpdateEmployee.vue#0 */
+.create_title[data-v-ui597662d9e16b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.create_content[data-v-ui597662d9e16b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Remuneration/Create.vue#0 */
+.create_title[data-v-ui0813207d0633]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/RenewStdincome/Csv.vue#0 */
+.create_title[data-v-ui11e2d06806b6]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.csv_button_wrap[data-v-ui11e2d06806b6]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Manager/RenewStdincome/Summery.vue#0 */
+.create_title[data-v-uif6246238f00e]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.summery_button_wrap[data-v-uif6246238f00e]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Manager/UpdateStdincome/Create.vue#0 */
+.create_title[data-v-ui2abb821277d1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/UpdateStdincome/Csv.vue#0 */
+.create_title[data-v-uic5a1ad08b388]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.csv_button_wrap[data-v-uic5a1ad08b388]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Manager/UpdateStdincome/Summery.vue#0 */
+.create_title[data-v-ui1c6d8c2e8723]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.summery_button_wrap[data-v-ui1c6d8c2e8723]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Demand/DemandPunch/CommentModal.vue#0 */
+.create_title[data-v-ui0f8eac6e22f2]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* @end-component */
+}

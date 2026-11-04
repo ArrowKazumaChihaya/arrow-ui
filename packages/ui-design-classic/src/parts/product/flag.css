@@ -1,0 +1,11 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Flag.vue#0 */
+.flag_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.ant-checkbox-wrapper:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-family:
+    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3",
+    "メイリオ", sans-serif !important;
+}
+/* @end-component */
+}

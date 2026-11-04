@@ -1,0 +1,25 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Kana.vue#0 */
+.kana_component[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+.kana[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  position: absolute;
+  top: -15px;
+  font-size: 10px;
+}
+.name_sp[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: none;
+}
+@media screen and (max-width: 769px) {
+  .name[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .kana[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: none;
+  }
+  .name_sp[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: inline;
+  }
+}
+/* @end-component */
+}

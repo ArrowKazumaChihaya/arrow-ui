@@ -1,0 +1,40 @@
+@layer arrow-product-classic {.month_prescribed_days:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.paidhol_time_range:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.paidhol_time_label:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.paidhol_error:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: var(--arrow-color-danger);
+  margin-bottom: 0;
+  white-space: normal;
+}
+.paidhol_shift_adjustment_notice:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 12px;
+  line-height: 1.7;
+}
+.paidhol_shift_adjustment_notice
+  p:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 0;
+}
+.paidhol_example:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 12px;
+  white-space: pre-line;
+}
+
+.paidhol_tooltip:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.paidhol_tooltip .subject:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 10px;
+  font-weight: 600;
+}
+}

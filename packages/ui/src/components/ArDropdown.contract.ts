@@ -5,7 +5,7 @@ import type { ArButtonTone } from "./ArButton.contract";
 
 export interface ArDropdownProps {
   /** メニューの項目（ArMenu と同じ形。group の見出し・divider の区切り・description の説明・danger・disabled・locked）。 */
-  items: readonly ArMenuItem[];
+  items?: readonly ArMenuItem[];
   /** 開いているか。v-model:open（渡さなければ中で持つ）。 */
   open?: boolean;
   /** default slot を使わないときの、押すボタンの文字。 */
@@ -41,4 +41,4 @@ export interface ArDropdownEmits {
   click: [event: MouseEvent];
 }
 /** default slot（押すもの）は { open, toggle, attrs } を受け取る。attrs を押す要素に v-bind すると aria が付く。 */
-export type ArDropdownPart = "root" | "trigger" | "icon" | "label" | "caret" | "list" | "group" | "item" | "icon-box" | "text" | "description" | "divider";
+export type ArDropdownPart = "content" | "root" | "trigger" | "icon" | "label" | "caret" | "list" | "group" | "item" | "icon-box" | "text" | "description" | "divider";

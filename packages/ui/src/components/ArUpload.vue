@@ -98,7 +98,7 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
         :disabled="disabled"
         :aria-label="label ? `${label}：${buttonText}` : undefined"
         @click="pick"
-        >{{ buttonText }}</ArButton
+        ><slot>{{ buttonText }}</slot></ArButton
       >
       <p data-part="chosen" aria-live="polite">{{ files.length ? `${labels.selected ?? "選択中: "}${files.map((f) => f.name).join("、")}` : (labels.none ?? "ファイル未選択") }}</p>
     </template>
@@ -117,7 +117,7 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
         @drop.prevent="onDrop"
       >
         <ArIcon line name="upload" data-part="icon" />
-        <b data-part="title">{{ labels.drop }}</b>
+        <b data-part="title"><slot>{{ labels.drop }}</slot></b>
         <span data-part="hint">{{ labels.or }} <span data-part="pick">{{ labels.pick }}</span><template v-if="hint">（{{ hint }}）</template></span>
       </div>
       <ul v-if="files.length" data-part="files" role="list">

@@ -1,0 +1,12 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Collapse.vue#0 */
+.ant-collapse-header:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0 !important;
+}
+.ant-collapse-content-box:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0 !important;
+}
+.ant-collapse-expand-icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  height: 32px !important;
+}
+/* @end-component */
+}

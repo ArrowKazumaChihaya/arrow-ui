@@ -1,0 +1,120 @@
+@layer arrow-product-classic {/* @component src/View/Personal/BonusEach/Monthly.vue#0 */
+.not_lock[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5vh 20px 35vh;
+  text-align: center;
+}
+.month_changer_wrap[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.type_changer_wrap[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 15px auto 0;
+}
+.type_changer_wrap[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: none;
+  text-align: right;
+}
+@media screen and (max-width: 499px) {
+  .month_changer_wrap[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .type_changer_wrap[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin-top: 10px;
+  }
+  .type_changer_wrap[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: block;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Personal/Regist/Index.vue#0 */
+.add_shift_title[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+.month_changer_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.type_changer_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 10px auto 0;
+}
+.type_changer_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: right;
+}
+.shift_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 10px auto 0;
+  max-width: 725px;
+  position: relative;
+}
+.submit_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+
+/* @component src/View/Personal/RemunerationEach/Monthly.vue#0 */
+.not_lock[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5vh 20px 35vh;
+  text-align: center;
+}
+.month_changer_wrap[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.type_changer_wrap[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 15px auto 0;
+}
+.type_changer_wrap[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: none;
+  text-align: right;
+}
+@media screen and (max-width: 499px) {
+  .month_changer_wrap[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .type_changer_wrap[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin-top: 10px;
+  }
+  .type_changer_wrap[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: block;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Personal/Submit/Index.vue#0 */
+.add_shift_title[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+.month_changer_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.type_changer_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 10px auto 0;
+}
+.span_mode_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 8px auto 0;
+  text-align: center;
+}
+.half_month_span_radio[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 8px;
+}
+.type_changer_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: right;
+}
+.shift_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 10px auto 0;
+  max-width: 925px;
+  position: relative;
+}
+.submit_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+.submit_button_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+/* @end-component */
+}

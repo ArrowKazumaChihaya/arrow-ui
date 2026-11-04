@@ -19,7 +19,7 @@ export interface ArTextInputProps {
    * search：頭に虫めがね（icon を渡さないとき）。Enter で search を出す。
    * password：右に目のボタン（押すと文字を見せる・隠す）。
    */
-  type?: "text" | "search" | "password" | "tel" | "email" | "url";
+  type?: "text" | "search" | "password" | "tel" | "email" | "url" | "number";
   /** 何も入っていないときの薄い文字。 */
   placeholder?: string;
   /** 大きさ。sm＝高さ30・md＝38・lg＝44。 */

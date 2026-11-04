@@ -1,0 +1,124 @@
+@layer arrow-product-classic {/* @component src/View/Manager/BulkChange/Employee/EmployeeResultTableWithCondition.vue#0 */
+.detail_search_button_wrap[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 175px;
+}
+.detail_search_wrap[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 10px;
+}
+.change_origin[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 15px;
+}
+.change_origin[data-v-uif7cdd2f334dc]:not(:first-child):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 8px;
+}
+.change_origin[data-v-uif7cdd2f334dc]
+  *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 15px;
+}
+.change_arrow[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 15px;
+}
+.change_result[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: red;
+  font-size: 13px;
+  line-height: 15px;
+}
+.change_result[data-v-uif7cdd2f334dc]
+  *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 15px;
+}
+.change_caution[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: red;
+  font-weight: bold;
+}
+.change_caution[data-v-uif7cdd2f334dc]:not(:first-child):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 8px;
+}
+.change_caution[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *)::before {
+  content: "※";
+}
+table
+  th.check[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+}
+table
+  th.code[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+}
+table
+  th.name[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+}
+table
+  th.hiring_type[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+}
+table
+  th.branch_id[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+}
+table
+  td[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 4px 6px !important;
+}
+@media screen and (max-width: 499px) {
+  table
+    th.check[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 65px;
+    max-width: 65px;
+    min-width: 65px;
+  }
+  table
+    th.code[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 70px;
+    max-width: 70px;
+    min-width: 70px;
+  }
+  table
+    th.name[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 120px;
+    max-width: 120px;
+    min-width: 120px;
+  }
+  table
+    th.hiring_type[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 110px;
+    max-width: 110px;
+    min-width: 110px;
+  }
+  table
+    th.branch_id[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 125px;
+    max-width: 125px;
+    min-width: 125px;
+  }
+  table
+    th.status[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+  }
+  table
+    th.other[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+  }
+}
+/* @end-component */
+}

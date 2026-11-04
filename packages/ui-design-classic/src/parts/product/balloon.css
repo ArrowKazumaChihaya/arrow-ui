@@ -1,0 +1,28 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Balloon.vue#0 */
+.balloon.right-balloon[data-v-uid5d9f3ca51b1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  --color: #ff8e9d;
+  --size: 20px;
+  position: relative;
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  line-height: var(--size);
+  text-align: center;
+  color: #fff;
+  background: var(--color);
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+.balloon.right-balloon[data-v-uid5d9f3ca51b1]:where([data-ar-design="classic"], [data-ar-design="classic"] *):before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(-1 * var(--size) / 3);
+  margin-top: calc(-1 * var(--size) / 6);
+  border: calc(var(--size) / 6) solid transparent;
+  border-left: calc(var(--size) / 4) solid var(--color);
+  z-index: 0;
+}
+/* @end-component */
+}

@@ -1,0 +1,84 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Thumbnail.vue#0 */
+.croppa-container:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: solid 1px black;
+}
+.vue-advanced-cropper__stretcher:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  pointer-events: none;
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+.stencil-preview:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: dashed 1px rgba(255, 255, 255, 0.25);
+}
+/* @end-component */
+
+/* @component src/Component/UI/Thumbnail.vue#1 */
+.cropper_component[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: solid 1px #eee;
+  width: 100%;
+}
+.thumbnail_component[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  height: 100%;
+  width: 100%;
+}
+.img_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 1px solid black;
+}
+.camera_button_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 30px;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+}
+.submit_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+  text-align: center;
+}
+.croppa_block[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  margin: 15px auto 0;
+}
+.cropper_attention_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 350px;
+}
+.croppa_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  position: relative;
+  display: inline-block;
+}
+.submit_button_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 250px;
+}
+.image_remove_button[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 32px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.rotate_button_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+  height: 32px;
+}
+.right_button[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.left_button[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 32px;
+}
+.right_button[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  float: right;
+}
+.left_button[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  float: left;
+}
+@media screen and (max-width: 499px) {
+  .camera_button_wrap[data-v-ui45cf24e5a434]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 27px;
+  }
+}
+/* @end-component */
+}

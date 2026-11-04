@@ -1,0 +1,368 @@
+@layer arrow-product-classic {/* @component src/Component/Config/ApprovalFlowLayout.vue#0 */
+.admit_flow_component[data-v-uiaedd507485d9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+.plain[data-v-uiaedd507485d9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: white;
+}
+[data-v-uiaedd507485d9]
+  .admit_flow_arrow:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: bold;
+}
+[data-v-uiaedd507485d9]
+  .admit_flow_tag:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: white;
+}
+[data-v-uiaedd507485d9]
+  .admit_flow_tag.submit:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #585858;
+  border: 2px solid #585858;
+}
+[data-v-uiaedd507485d9]
+  .admit_flow_tag.demanding:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #ed9118;
+  border: 2px dashed #ed9118;
+}
+[data-v-uiaedd507485d9]
+  .admit_flow_tag.yet:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #797c7e;
+  font-weight: 400;
+}
+[data-v-uiaedd507485d9]
+  .admit_flow_tag.admitted:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #69af8a;
+  border: 2px solid #69af8a;
+}
+[data-v-uiaedd507485d9]
+  .admit_flow_tag.denied:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #ca3a31;
+  border: 2px solid #ca3a31;
+}
+/* @end-component */
+
+/* @component src/Component/UI/ChangedValue.vue#0 */
+.changed[data-v-ui9056b9f6895d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #c53030;
+  font-weight: 600;
+}
+/* @end-component */
+
+/* @component src/Component/UI/EmptyCard.vue#0 */
+.empty_card[data-v-ui43cab3e2ec48]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: white;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ApprovalFlow.vue#0 */
+.caption[data-v-ui1e3eb95dee76]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.candidate[data-v-ui1e3eb95dee76]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+  color: #5c5c5c;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/AttachmentFiles.vue#0 */
+.metadata[data-v-ui36d253cad02b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.help[data-v-ui36d253cad02b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  color: #666;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/AttachmentViewer.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/BranchReference.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/DefinitionHistory.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/EmployeeReference.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/EmployeeTags.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseCellInput.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpensePaymentRecord.vue#0 */
+.detail[data-v-uib1f689e62a2a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  color: #777;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/ExpensePayrollAssignment.vue#0 */
+.error[data-v-uia52b6bb9b848]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #c53030;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpensePayrollAssignmentTable.vue#0 */
+.small[data-v-ui7445fb8835c8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  color: #777;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpensePayrollPreviewTable.vue#0 */
+.small[data-v-ui49171080addc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  color: #777;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/ExpensePayrollRelease.vue#0 */
+fieldset[data-v-ui5b1f50c29988]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+}
+.error[data-v-ui5b1f50c29988]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #c53030;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSelectionTable.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementFilters.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementForm.vue#0 */
+fieldset[data-v-ui9ae6b325de9c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementHistoryModal.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementState.vue#0 */
+.detail[data-v-ui9c0f7eb49bfe]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  color: #777;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseSettlementTable.vue#0 */
+.schedule_help[data-v-uic75e97f856df]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #777;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ExpenseTableInput.vue#0 */
+.expense_table_input[data-v-ui6c7fe69c7ab9]
+  td:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: top;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/FieldInput.vue#0 */
+.workflow_field_input[data-v-uib0445e6d2c7b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/FieldPreview.vue#0 */
+.field_preview[data-v-ui8dc9c1c223ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  opacity: 0.75;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/HistoryButton.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/ManagementHeader.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/NotificationDetails.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/NotificationRecovery.vue#0 */
+fieldset[data-v-ui34a47bbaf561]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+}
+.error[data-v-ui34a47bbaf561]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #c53030;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/ReassignmentEditor.vue#0 */
+fieldset[data-v-ui788c63d2858f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+}
+/* @end-component */
+
+/* @component src/Component/Workflow/RequestComparison.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/RequestContentView.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Component/RequestEditor.vue#0 */
+
+/* @end-component */
+
+/* @component src/Component/Workflow/RequestHistory.vue#0 */
+.submission[data-v-ui02ea7d5be25d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: 1px solid #ddd;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Create.vue#0 */
+.target_choice[data-v-ui3e3cac4b75f9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+}
+.empty[data-v-ui3e3cac4b75f9]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.error[data-v-ui3e3cac4b75f9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: white;
+  border: 1px solid #ddd;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/McpSettings.vue#0 */
+.field_info[data-v-ui3fcd59d89fce]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+  color: #5f5f5f;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Request.vue#0 */
+.draft_help[data-v-ui97c69ad12d87]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #666;
+  font-size: 13px;
+}
+.error[data-v-ui97c69ad12d87]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: white;
+  border: 1px solid #ddd;
+}
+.upload_status[data-v-ui97c69ad12d87]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+}
+/* @end-component */
+
+/* @component src/View/Common/Workflow/Requests.vue#0 */
+.form_name[data-v-uia9f709ed20f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #777;
+  font-size: 12px;
+}
+.empty[data-v-uia9f709ed20f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.error[data-v-uia9f709ed20f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: white;
+  border: 1px solid #ddd;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Company.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FieldAnnotation.vue#0 */
+.field_annotation[data-v-ui359b81f9d1a3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+  color: #90959a;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FieldEditor.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FlowEditor.vue#0 */
+.tag_condition[data-v-ui3b048862611f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: 1px solid #ddd;
+}
+.empty[data-v-ui3b048862611f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #ddd;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/FlowPreview.vue#0 */
+.warning[data-v-ui14cb7c9eb646]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #a33;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/MasterEditor.vue#0 */
+.table_preview
+  > small[data-v-ui2a90abaf00ff]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #90959a;
+  font-size: 11px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/MasterRowActions.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/MasterTable.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Component/PreviewFields.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Config.vue#0 */
+.empty[data-v-uief578b578b7b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Employees.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Expenses.vue#0 */
+.selection_total[data-v-ui03222b1eeb1d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+}
+.small[data-v-ui03222b1eeb1d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  color: #777;
+}
+.validation[data-v-ui03222b1eeb1d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #c53030;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/History.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Notifications.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/Setting.vue#0 */
+
+/* @end-component */
+
+/* @component src/View/Manager/Workflow/TagMember.vue#0 */
+
+/* @end-component */
+}

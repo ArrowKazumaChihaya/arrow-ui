@@ -3,6 +3,18 @@
  * 今の ARROW の Datetime にあたる。
  */
 export interface ArDateTimeInputProps {
+  /** Initial year for an empty draft; does not commit a date by itself. */
+  initialYear?: number;
+  /** Explicit available years, in the supplied order. */
+  years?: readonly number[];
+  /** Keep validation policy independent of the selected design. */
+  invalidDate?: "clamp" | "message";
+  yearOrder?: "asc" | "desc";
+  allowEmptyYear?: boolean;
+  pad?: "none" | "zero";
+  /** Emit as fields are edited, preserving incomplete drafts. */
+  updateOnInput?: boolean;
+
   /** "YYYY-MM-DD HH:mm:ss"（今の ARROW と同じ。秒は 00）。日付か時刻のどちらかが空なら null。 */
   modelValue: string | null;
   /** 年のプルダウンの最初の年。 */

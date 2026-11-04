@@ -1,0 +1,439 @@
+@layer arrow-product-classic {/* @component src/Component/AttendanceCalculationQueueNotice.vue#0 */
+.attendance_calculation_queue_notice[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  --attendance-queue-main: #4eb187;
+  --attendance-queue-dark: #2f7d5d;
+  --attendance-queue-border: rgba(78, 177, 135, 0.26);
+  --attendance-queue-bg: rgba(78, 177, 135, 0.08);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  margin: 12px 0 4px;
+  padding: 0 12px;
+}
+.attendance_calculation_queue_notice
+  .calculation_queue_notice_panel[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  max-width: 980px;
+  padding: 10px 14px;
+  background: linear-gradient(90deg, var(--attendance-queue-bg) 0%, rgba(255, 255, 255, 0.94) 100%);
+  border-left: 3px solid var(--attendance-queue-main);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px var(--attendance-queue-border);
+}
+.attendance_calculation_queue_notice
+  .calculation_queue_spinner[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 2px solid rgba(78, 177, 135, 0.22);
+  border-top-color: var(--attendance-queue-main);
+  border-radius: 50%;
+  animation: attendance-queue-spin-ui722c093c813b 0.9s linear infinite;
+}
+.attendance_calculation_queue_notice
+  .calculation_queue_notice_text[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  min-width: 0;
+  line-height: 1.5;
+}
+.attendance_calculation_queue_notice
+  .calculation_queue_notice_title[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: var(--attendance-queue-dark);
+  font-weight: 600;
+  font-size: 13px;
+}
+.attendance_calculation_queue_notice
+  .calculation_queue_notice_description[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: rgba(0, 0, 0, 0.64);
+  font-size: 12px;
+}
+@keyframes attendance-queue-spin-ui722c093c813b {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 599px) {
+  .attendance_calculation_queue_notice[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin-top: 10px;
+    padding: 0 8px;
+  }
+  .attendance_calculation_queue_notice
+    .calculation_queue_notice_panel[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    gap: 8px;
+    padding: 9px 10px;
+  }
+  .attendance_calculation_queue_notice
+    .calculation_queue_spinner[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    flex-basis: 16px;
+    width: 16px;
+    height: 16px;
+  }
+  .attendance_calculation_queue_notice
+    .calculation_queue_notice_title[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 12px;
+  }
+  .attendance_calculation_queue_notice
+    .calculation_queue_notice_description[data-v-ui722c093c813b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+}
+/* @end-component */
+
+/* @component src/Component/UI/Attention.vue#0 */
+.attention_component[data-v-ui01f824af8fa5]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--arrow-color-danger, #d10c1d);
+  white-space: pre-wrap;
+  line-height: 20px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Bonus/Monthly.vue#0 */
+
+.month_changer_wrap[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.monthly_wrap[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  border-top: dashed 2px lightgray;
+}
+.attention_block[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  width: 100%;
+}
+.bonus_attention[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: calc(100% - 160px);
+  padding-right: 5px;
+}
+.bonus_button_wrap[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: top;
+  display: inline-block;
+  width: 160px;
+}
+.movie_guide[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+  margin-top: 0px;
+  font-size: 13px;
+  white-space: pre-wrap;
+  line-height: 17px;
+}
+@media screen and (max-width: 499px) {
+  .bonus_attention[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: calc(100% - 150px);
+  }
+  .bonus_button_wrap[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 150px;
+  }
+  .movie_guide[data-v-uif75ce7734b74]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 12px;
+  }
+}
+
+/* @end-component */
+
+/* @component src/View/Manager/Document/Documents/SocialInsAggregation.vue#0 */
+.yearmonth_wrap[data-v-ui2d8d1ee4c7ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.download_wrap[data-v-ui2d8d1ee4c7ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.attention_wrap[data-v-ui2d8d1ee4c7ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  margin-top: 10px;
+}
+.attention_wrap
+  .attention_group[data-v-ui2d8d1ee4c7ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: left;
+  display: inline-block;
+}
+.attention_wrap
+  .attention_group
+  p[data-v-ui2d8d1ee4c7ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: #d10c1d;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Employee/AddEmployeePreview/Excel.vue#0 */
+.add_employee_title[data-v-uia387f642e2f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+.add_employee_attention_wrap[data-v-uia387f642e2f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 100%;
+  text-align: center;
+}
+.add_employee_attention[data-v-uia387f642e2f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  margin: 0 auto 15px;
+  font-size: 14px;
+  text-align: left;
+}
+.attention_link[data-v-uia387f642e2f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+  padding: 0;
+  color: #1677ff;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.form_wrap[data-v-uia387f642e2f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  text-align: right;
+  margin-bottom: 10px;
+}
+.upload_wrap[data-v-uia387f642e2f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.submit_wrap[data-v-uia387f642e2f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 25px;
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Laborins/Index.vue#0 */
+.payment_wrap[data-v-ui1e7b933a426a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #fffdf7;
+  padding: 15px;
+}
+.not_lock_wrap[data-v-ui1e7b933a426a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 5vh 20px 35vh;
+  text-align: center;
+}
+.not_lock[data-v-ui1e7b933a426a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+}
+.attention[data-v-ui1e7b933a426a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 10px auto 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: left;
+  width: 490px;
+  color: #d10c1d;
+}
+.document_instruction_button_wrap[data-v-ui1e7b933a426a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/Employeely/Master/SelectOption.vue#0 */
+.create_title[data-v-ui360793377910]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.select_option_attention_title[data-v-ui360793377910]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.select_option_attention_content[data-v-ui360793377910]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  white-space: pre-wrap;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/Yearly.vue#0 */
+
+.year_changer_wrap[data-v-ui779b83e33f02]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.yearly_wrap[data-v-ui779b83e33f02]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  border-top: dashed 2px lightgray;
+}
+.nencho_attention_title[data-v-ui779b83e33f02]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.nencho_attention_content[data-v-ui779b83e33f02]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 5px;
+  font-size: 13px;
+  white-space: pre-wrap;
+  line-height: 17px;
+}
+.movie_guide[data-v-ui779b83e33f02]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+  margin-top: 5px;
+  font-size: 13px;
+  white-space: pre-wrap;
+  line-height: 17px;
+}
+
+/* @end-component */
+
+/* @component src/View/Manager/RenewStdincome/Yearly.vue#0 */
+
+.year_changer_wrap[data-v-ui6c652f71fa56]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.yearly_wrap[data-v-ui6c652f71fa56]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  border-top: dashed 2px lightgray;
+}
+.renew_stdincome_attention_title[data-v-ui6c652f71fa56]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.renew_stdincome_attention_content[data-v-ui6c652f71fa56]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 5px;
+  font-size: 13px;
+  white-space: pre-wrap;
+  line-height: 17px;
+}
+.movie_guide[data-v-ui6c652f71fa56]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+  margin-top: 5px;
+  font-size: 13px;
+  white-space: pre-wrap;
+  line-height: 17px;
+}
+.guide_button_row[data-v-ui6c652f71fa56]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* @end-component */
+
+/* @component src/View/Manager/UpdateStdincome/Monthly.vue#0 */
+.month_changer_wrap[data-v-ui92f533e63960]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.update_stdincome_attention_wrap[data-v-ui92f533e63960]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  line-height: 25px;
+  width: 100%;
+}
+.update_stdincome_attention[data-v-ui92f533e63960]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  box-sizing: border-box;
+  display: inline-block;
+  width: calc(100% - 180px);
+  padding-right: 10px;
+  text-align: left;
+}
+.update_stdincome_button_wrap[data-v-ui92f533e63960]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  vertical-align: top;
+  width: 180px;
+}
+.monthly_wrap[data-v-ui92f533e63960]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  border-top: dashed 2px lightgray;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Document/Documents/GensenTax.vue#0 */
+.year_wrap[data-v-ui3570d1c72641]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.attention_wrap[data-v-ui3570d1c72641]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.attention_wrap
+  .attention_group[data-v-ui3570d1c72641]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: left;
+  display: inline-block;
+}
+.attention_wrap
+  .attention_group
+  p[data-v-ui3570d1c72641]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: #d10c1d;
+}
+.download_button_wrap[data-v-ui3570d1c72641]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 100%;
+  text-align: center;
+}
+.download_wrap[data-v-ui3570d1c72641]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+}
+.download_wrap[data-v-ui3570d1c72641]:not(:first-child):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 10px;
+}
+@media (max-width: 600px) {
+  .download_wrap[data-v-ui3570d1c72641]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 150px;
+    display: block;
+    margin: 0px auto 0;
+  }
+  .download_wrap[data-v-ui3570d1c72641]:not(:first-child):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin: 10px auto 0;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Personal/FixedTaxReduction/NoFixedTaxReduction.vue#0 */
+.not_lock_wrap[data-v-ui2e88c51b18c9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  text-align: center;
+}
+.not_lock[data-v-ui2e88c51b18c9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Nencho/Master/NoNencho.vue#0 */
+.not_lock_wrap[data-v-uid93b5ced6c8e]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  text-align: center;
+}
+.not_lock[data-v-uid93b5ced6c8e]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Nencho/Master/SelectOption.vue#0 */
+.create_title[data-v-uifd2dfd24ed3f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+.select_option_attention_title[data-v-uifd2dfd24ed3f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.select_option_attention_content[data-v-uifd2dfd24ed3f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  white-space: pre-wrap;
+}
+/* @end-component */
+}

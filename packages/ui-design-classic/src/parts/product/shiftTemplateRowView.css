@@ -1,0 +1,106 @@
+@layer arrow-product-classic {/* @component src/View/Manager/ShiftTemplate/ShiftTemplateRowView.vue#0 */
+.block_title[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+}
+.week_schedule[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: top;
+}
+.week_list[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.week_row[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  min-height: 32px;
+}
+.time_col[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  height: 32px;
+  line-height: 32px;
+}
+.week_row
+  .day_label[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 56px;
+  line-height: 32px;
+}
+.week_row
+  .weekday[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+}
+table
+  th.order[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.order[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.order[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.order[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: top;
+  text-align: center;
+  width: 75px;
+  max-width: 75px;
+  min-width: 75px;
+}
+table
+  th.block[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.block[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.block[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.block[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 130px;
+  max-width: 330px;
+  min-width: 130px;
+}
+table
+  th.shift[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.shift[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.shift[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.shift[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 110px;
+  max-width: 160px;
+  min-width: 110px;
+}
+table
+  th.punch[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.punch[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.punch[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.punch[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 110px;
+  max-width: 160px;
+  min-width: 110px;
+}
+table
+  th.break[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.break[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.break[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.break[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 110px;
+  max-width: 160px;
+  min-width: 110px;
+}
+table
+  td.block[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.block[data-v-uif9e316d31a37]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: left;
+}
+/* @end-component */
+
+/* @component src/View/Manager/ShiftTemplate/ShiftTemplateRowView.vue#1 */
+.shift_template_row
+  .flag_view_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 20px;
+  height: 20px;
+}
+/* @end-component */
+}

@@ -5,6 +5,7 @@
  * キーボード（WAI-ARIA の treegrid）：行で ↑↓ で移り、→ で開く／子へ、← で閉じる／親へ、Home / End、Enter で row-click。
  */
 import { computed, nextTick, ref, useSlots, watch } from "vue";
+import ArTreeCells from "../internal/TreeCells";
 import ArIcon from "./ArIcon.vue";
 import ArEmpty from "./ArEmpty.vue";
 import { useDesignForm } from "../provider/context";
@@ -272,20 +273,21 @@ const hasActions = computed(() => !!slots.actions);
           <col v-if="hasActions" data-col="actions" />
         </colgroup>
         <thead data-part="head">
-          <tr role="row">
+          <slot name="head"><tr role="row">
             <th v-for="c in columns" :key="c.key" data-part="header-cell" role="columnheader" scope="col" :data-align="alignOf(c)">
               <slot :name="`head-${c.key}`" :column="c">{{ c.title }}</slot>
             </th>
             <th v-if="hasActions" data-part="header-cell" data-col="actions" role="columnheader" scope="col">
               <span data-ar-visually-hidden>{{ L.actions }}</span>
             </th>
-          </tr>
+          </tr></slot>
         </thead>
         <tbody v-if="$slots['before-rows']" data-part="before-rows">
           <tr>
             <td :colspan="colspan"><slot name="before-rows" /></td>
           </tr>
         </tbody>
+        <tbody v-if="$slots['before-rows-raw']" data-part="before-rows"><slot name="before-rows-raw" /></tbody>
         <tbody data-part="body">
           <tr v-if="!lines.length">
             <td data-part="empty" :colspan="colspan">
@@ -315,6 +317,39 @@ const hasActions = computed(() => !!slots.actions);
             @drop="onDrop"
             @dragend="endDrag"
           >
+            <ArTreeCells v-if="$slots.cells" :depth="l.depth">
+              <template #default><slot name="cells" :row="l.row" :depth="l.depth" /></template>
+              <template #controls>
+                  <button
+                    v-if="l.branch"
+                    type="button"
+                    data-part="toggle"
+                    tabindex="-1"
+                    :data-state="l.open ? 'open' : 'closed'"
+                    :aria-label="l.open ? L.collapse : L.expand"
+                    @click.stop="setOpen(l.key, !l.open)"
+                  >
+                    <span v-if="toggleForm === 'box'" data-part="toggle-box"><ArIcon line :name="l.open ? 'minus' : 'plus'" size="sm" /></span>
+                    <ArIcon v-else line :name="l.open ? 'cd' : 'cr'" size="sm" />
+                  </button>
+                  <span v-else data-part="toggle" data-state="leaf" aria-hidden="true" />
+                  <button
+                    v-if="draggable"
+                    type="button"
+                    data-part="drag-handle"
+                    :data-key="l.key"
+                    :aria-label="L.dragHandle"
+                    @click.stop
+                    @keydown="onHandleKey($event, l)"
+                    @mousedown="armed = l.key"
+                    @mouseup="dragging === null && (armed = null)"
+                    @touchstart.passive="armed = l.key"
+                  >
+                    <ArIcon name="grip" size="sm" />
+                  </button>
+</template>
+            </ArTreeCells>
+            <template v-else>
             <td
               v-for="(c, ci) in columns"
               :key="c.key"
@@ -366,12 +401,14 @@ const hasActions = computed(() => !!slots.actions);
                 isBlank(valueOf(l.row, c)) ? blank : valueOf(l.row, c)
               }}</slot>
             </td>
+            </template>
             <td v-if="hasActions" data-part="cell" data-col="actions" role="gridcell" @click.stop>
               <span data-part="actions"><slot name="actions" :row="l.row" /></span>
             </td>
           </tr>
         </tbody>
-        <tfoot v-if="footer" data-part="foot">
+        <tfoot v-if="$slots.foot" data-part="foot"><slot name="foot" /></tfoot>
+        <tfoot v-else-if="footer" data-part="foot">
           <tr>
             <td v-for="c in columns" :key="c.key" data-part="cell" :data-align="alignOf(c)" :data-numeric="c.numeric || undefined">
               <slot :name="`foot-${c.key}`" :value="footer[c.key]">{{ footer[c.key] ?? "" }}</slot>

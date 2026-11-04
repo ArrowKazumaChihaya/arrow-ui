@@ -27,6 +27,18 @@ ARROW シリーズで共通に使う Vue 3 のデザインライブラリです�
 | `@arrow/eslint-plugin-ui` | 宣言していない部品を使わせない・View で並べる基礎を使わせない |
 | `apps/catalog` | 部品をデザインとテーマ色を替えて確かめる画面（公開しない） |
 
+## 既存 Front からの利用
+
+入力・ボタン・カード・表などは `@arrow/ui` の公開部品を直接 import します。既存画面の ARROW 固有の表示パーツは `@arrow/ui/product` に集約しました。Front は配置、権限、状態、API 接続、保存値と入力値の変換を担当します。
+
+- 共通部品の外観は各デザインの `src/parts/Ar*.css`、製品固有の外観は `src/parts/_product.css` とその参照先を変更します。
+- `product` のレイアウト用 CSS と装飾は分離しています。classic の装飾は `arrow-product-classic` レイヤー内に限定し、remix の公開部品へ旧 CSS が混ざらないようにしています。
+- `vUi` の公開部品への適用は幅・位置などの配置情報に限定します。ページから入力欄やボタンの色・枠・書体を上書きしません。固定書式の帳票は `UiDocument` の境界で扱います。
+- 部品の選択値は公開契約に合わせます。Front の従来の ID 型や nullable 値は利用側の変換で維持し、ライブラリに業務処理を持ち込みません。
+- デザインは `ArUiProvider` で切り替えます。画面の再マウントを必要としないため、入力中の値や表の操作状態を保持できます。
+
+Front 統合用の作業版は `0.1.1` です。`npm run check` の後、Front の `tools/migrations/install-arrow-ui.mjs` で5パッケージを pack し、内容ハッシュ付き tarball と lockfile で固定します。公開レジストリへのリリースとは別の手順です。
+
 ## 今ある部品（115）
 
 Ant Design の全種類と、ARROW 特有の部品です。どの部品も remix と classic の両方の見た目があります。

@@ -1,0 +1,11 @@
+@layer arrow-product-classic {/* @component src/Component/UI/RadioButtonGroup.vue#0 */
+.radio_group_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.radio_group_wrap
+  input[type="radio"]
+  + span:where([data-ar-design="classic"], [data-ar-design="classic"] *)::before {
+  border: none;
+}
+/* @end-component */
+}

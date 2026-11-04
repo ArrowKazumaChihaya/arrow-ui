@@ -1,4 +1,4 @@
-/* @covers ArYearInput 1.0.0, ArYearMonthInput 1.0.0, ArMonthDayInput 1.0.0 */
+/* @covers ArYearInput 1.0.0, ArYearMonthInput 1.1.0, ArMonthDayInput 1.0.0 */
 /* 年・年月・月日（デザインシステム DateInput の .dti と同じ：年 76×36・月日 40×36・角丸9・600 14px） */
 [data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"]){gap:4px;font-size:13px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"],[data-ar-design="remix"] :is([data-ar="year-month-input"],[data-ar="month-day-input"])>input{height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text);font:600 14px var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}

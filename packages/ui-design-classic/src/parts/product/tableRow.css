@@ -1,0 +1,359 @@
+@layer arrow-product-classic {/* @component src/Component/MainBranchSelectTable.vue#0 */
+table
+  th.check_name[data-v-ui1dd09f427076]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.check_name[data-v-ui1dd09f427076]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 300px;
+}
+table
+  th.check_name
+  .name_text[data-v-ui1dd09f427076]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.check_name
+  .name_text[data-v-ui1dd09f427076]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: middle;
+}
+table
+  th.code[data-v-ui1dd09f427076]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.code[data-v-ui1dd09f427076]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 150px;
+  min-width: 150px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Config/Payment/Allowance/HiddenAllowance.vue#0 */
+table
+  th.name[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.name[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+}
+table
+  th.button[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.button[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+}
+@media screen and (max-width: 499px) {
+  table
+    th.name[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.name[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
+  }
+  table
+    th.button[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.button[data-v-ui35af1f850ef0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 100px;
+    max-width: 100px;
+    min-width: 100px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Config/Payment/SlipAttendance.vue#0 */
+.show_hidden_button_wrap[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 10px;
+}
+table
+  th.name[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.name[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+}
+table
+  th.button[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.button[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 83px;
+  max-width: 83px;
+  min-width: 83px;
+}
+table
+  p.default[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px;
+}
+table.default[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #f5f5f5;
+}
+@media screen and (max-width: 499px) {
+  table
+    th.name[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.name[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
+  }
+  table
+    th.button[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.button[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 65px;
+    max-width: 65px;
+    min-width: 65px;
+  }
+  table
+    p.default[data-v-ui067749087a0f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 27px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Config/Payment/SlipAttendance.vue#1 */
+.draggable_hovering
+  th.name:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.name:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 320px;
+  max-width: 320px;
+  min-width: 320px;
+}
+.draggable_hovering
+  th.button:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.button:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 83px;
+  max-width: 83px;
+  min-width: 83px;
+}
+.draggable_hovering
+  p.default:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px;
+}
+.draggable_hovering.default:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: #f5f5f5;
+}
+@media screen and (max-width: 499px) {
+  .draggable_hovering
+    th.name:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.name:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
+  }
+  .draggable_hovering
+    th.button:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.button:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 65px;
+    max-width: 65px;
+    min-width: 65px;
+  }
+  .draggable_hovering
+    p.default:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 27px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Config/Shift/ShiftTemplates.vue#0 */
+.shift_template_table_wrap[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+}
+table
+  th.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+}
+table
+  th.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 180px;
+  max-width: 180px;
+  min-width: 180px;
+}
+table
+  th.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 83px;
+  max-width: 83px;
+  min-width: 83px;
+}
+@media screen and (max-width: 499px) {
+  .operation_button_wrap[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 27px;
+  }
+  table
+    th.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    th.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.name[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+  }
+  table
+    th.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    th.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.branch_id[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+  }
+  table
+    th.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    th.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.button[data-v-ui458650f7ec03]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 68px;
+    max-width: 68px;
+    min-width: 68px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Config/System/AdmitFlowTag.vue#0 */
+span.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 95px !important;
+}
+table
+  th.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 200px;
+  max-width: 200px;
+  min-width: 200px;
+}
+table
+  th.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 240px;
+  max-width: 240px;
+  min-width: 240px;
+}
+table
+  th.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+table
+  td.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  th.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.draggable_hovering
+  td.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 83px;
+  max-width: 83px;
+  min-width: 83px;
+}
+@media screen and (max-width: 499px) {
+  table
+    th.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    th.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.name[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 135px;
+    max-width: 135px;
+    min-width: 135px;
+  }
+  table
+    th.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    th.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.employee_count[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 160px;
+    max-width: 160px;
+    min-width: 160px;
+  }
+  table
+    th.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  table
+    td.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    th.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .draggable_hovering
+    td.button[data-v-uif3bc4abedb5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 65px;
+    max-width: 65px;
+    min-width: 65px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Status/Receipt.vue#0 */
+.title_wrap[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.status_content_wrap[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 0 auto;
+}
+.status_content_wrap[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 550px;
+  margin-top: 20px;
+}
+table
+  th.created_at[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 200px;
+}
+table
+  th.button[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 350px;
+}
+@media screen and (max-width: 499px) {
+  .receipt_wrap[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    padding: 10px;
+  }
+  .status_content_wrap[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 315px;
+  }
+  table
+    th.created_at[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 115px;
+  }
+  table
+    th.button[data-v-uifb85cc16828b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 200px;
+  }
+}
+/* @end-component */
+}

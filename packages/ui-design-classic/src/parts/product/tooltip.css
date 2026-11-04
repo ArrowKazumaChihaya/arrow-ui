@@ -1,0 +1,7 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Tooltip.vue#0 */
+.ant-tooltip-inner:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  min-height: initial !important;
+  pointer-events: none !important;
+}
+/* @end-component */
+}

@@ -80,3 +80,6 @@ export const remixDesign = defineDesign({
 });
 
 export default remixDesign;
+
+import { createProductTokens } from "./productTokens.js";
+export const remixTokens = createProductTokens(remixDesign);

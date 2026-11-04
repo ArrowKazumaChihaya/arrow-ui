@@ -1,0 +1,68 @@
+@layer arrow-product-classic {.markdown-content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 1.7;
+}
+.markdown-content
+  :where(p, ul, ol, blockquote, pre, table):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 0 0 0.75em;
+}
+.markdown-content
+  :where(h1, h2, h3, h4, h5, h6):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 0.8em 0 0.4em;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+.markdown-content
+  :where(ul, ol):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding-left: 1.5em;
+}
+.markdown-content
+  ul:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  list-style: disc;
+}
+.markdown-content
+  ol:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  list-style: decimal;
+}
+.markdown-content
+  code:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-family: monospace;
+  background: #e2e8f0;
+  border-radius: 3px;
+  padding: 0.1em 0.25em;
+}
+.markdown-content
+  pre:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  overflow-x: auto;
+  padding: 0.75em;
+  background: #e2e8f0;
+  border-radius: 6px;
+  white-space: pre;
+}
+.markdown-content
+  pre
+  code:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 0;
+}
+.markdown-content
+  table:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-collapse: collapse;
+  width: 100%;
+}
+.markdown-content
+  :where(th, td):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #cbd5e1;
+  padding: 0.4em 0.6em;
+  text-align: left;
+}
+.markdown-content
+  blockquote:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-left: 3px solid #94a3b8;
+  padding-left: 0.8em;
+  color: #475569;
+}
+.markdown-content
+  a:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #267ebd;
+  text-decoration: underline;
+}
+}

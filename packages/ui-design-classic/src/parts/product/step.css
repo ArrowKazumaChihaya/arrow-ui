@@ -1,0 +1,105 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Step.vue#0 */
+.step_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 100%;
+  padding-right: 2% !important;
+  padding-left: 2% !important;
+  display: block;
+}
+.step_wrap_sp:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+}
+.step_wrap_sp
+  .step_sp_text:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 300px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 8px 16px;
+}
+.step_wrap_sp
+  .step_sp_text
+  .step_total:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+  margin: 0 5px;
+}
+.step_wrap_sp
+  .step_sp_text
+  .step:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  display: inline-block;
+}
+.step_wrap_sp
+  .step_sp_text
+  .step
+  span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  position: relative;
+  top: -1px;
+  color: #1890ff;
+  line-height: 1;
+}
+.step_wrap_sp
+  .step_sp_text
+  .label:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+  margin-top: 5px;
+}
+.ant-props.options:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 100%;
+}
+.ant-steps-small
+  .ant-steps-item-tail:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  top: 0px !important;
+}
+@media screen and (max-width: 959px) {
+  .ant-props.options-item-tail:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: none;
+  }
+  .ant-props.options-item-content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: none !important;
+  }
+  .ant-props.options-item-icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin-left: 0px !important;
+  }
+}
+@media screen and (max-width: 959px) {
+  .step_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: none;
+  }
+  .step_wrap_sp:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: block;
+  }
+}
+/* @end-component */
+
+/* @component src/Component/UI/Step.vue#1 */
+.step_wrap[data-v-ui17d844e364a1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 20px 0 15px;
+}
+.buttons_wrap[data-v-ui17d844e364a1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  height: 45px;
+  max-width: 350px;
+  margin: 0 auto;
+}
+.prev_button_wrap[data-v-ui17d844e364a1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  float: left;
+}
+.next_button_wrap[data-v-ui17d844e364a1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  float: right;
+}
+.prev_button_wrap.center[data-v-ui17d844e364a1]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.next_button_wrap.center[data-v-ui17d844e364a1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  float: none;
+  margin: 0 auto;
+}
+/* @end-component */
+}

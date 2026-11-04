@@ -1,4 +1,4 @@
-/* @covers ArDateInput 1.0.0, ArDateRange 1.0.0 */
+/* @covers ArDateInput 1.1.0, ArDateRange 1.0.0 */
 /* ArDateInput：.dti（年 76×36・月日 40×36・角丸9・600 14px、単位は 13px ink-2、曜日 12px mute。日は赤・土は青） */
 [data-ar-design="remix"] [data-ar="date-input"]{font-feature-settings:"palt" 1;gap:4px;font-size:13px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"],[data-ar-design="remix"] [data-ar="date-input"]>input{height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text);font:600 14px var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}

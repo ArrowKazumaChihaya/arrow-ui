@@ -1,4 +1,4 @@
-/* @covers ArTreeTable 1.0.0 */
+/* @covers ArTreeTable 1.1.0 */
 /* ArTreeTable（ArTable の box と同じ外枠・見出し・行44。1列目は字下げ20px・開け閉めの › ∨（22px）・淡いつなぎの線・つまみ ⠿（text-faint）） */
 [data-ar-design="remix"] [data-ar="tree-table"]{--ar-tt-indent:20px;--ar-tt-toggle:22px;--ar-tt-start:8px;--ar-tt-corner:18px;font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="tree-table"]>[data-part="viewport"]{background:var(--ar-color-surface);border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border)}

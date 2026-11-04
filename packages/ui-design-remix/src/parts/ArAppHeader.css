@@ -104,3 +104,21 @@
 [data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"]:hover,[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"][data-state~="open"]{background:#F3F6F9;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"]>[data-ar="icon"]{width:22px;height:22px}
+
+/* Compact header keeps account, notices and domain switching available on phones. */
+@media (max-width:959px) {
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"] { height:56px; gap:4px; padding:0 10px; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"] { margin-right:auto; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"] { position:relative; justify-content:center; width:32px; height:36px; padding:0; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-part="pill-label"],
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>:is([data-part="account-label"],[data-part="account-icon"],[data-part="account-arrow"]) { display:none; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-part="count"] { position:absolute; top:0; right:-2px; min-width:15px; height:15px; font-size:10px; padding:0 3px; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"] { margin-left:0; padding:0 3px; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="top-extra"] { margin-left:0; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"] { display:none; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"] { align-items:center; gap:4px; padding:0 8px; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"] { flex:1; min-width:0; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"] { height:40px; padding:0 8px; gap:4px; font-size:12px; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="toggle"] { width:28px; flex:none; justify-content:center; padding:0; }
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="toggle"]>span { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+}

@@ -1,0 +1,6 @@
+[data-ar="pointer-badge"]{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--ar-pointer-size);height:var(--ar-pointer-size);line-height:1;margin:0 6px;border-radius:50%}
+[data-ar="pointer-badge"]::after{content:"";position:absolute;border:calc(var(--ar-pointer-size)/6) solid transparent}
+[data-ar="pointer-badge"][data-side="right"]::after{left:100%;border-left-color:var(--ar-pointer-bg);border-right:0}
+[data-ar="pointer-badge"][data-side="left"]::after{right:100%;border-right-color:var(--ar-pointer-bg);border-left:0}
+[data-ar="pointer-badge"][data-side="top"]::after{bottom:100%;border-bottom-color:var(--ar-pointer-bg);border-top:0}
+[data-ar="pointer-badge"][data-side="bottom"]::after{top:100%;border-top-color:var(--ar-pointer-bg);border-bottom:0}

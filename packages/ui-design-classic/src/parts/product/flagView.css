@@ -1,0 +1,11 @@
+@layer arrow-product-classic {/* @component src/Component/UI/FlagView.vue#0 */
+.flag_view_component[data-v-uib888f00366ff]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  line-height: 32px;
+}
+.week
+  + .week[data-v-uib888f00366ff]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 10px;
+}
+/* @end-component */
+}

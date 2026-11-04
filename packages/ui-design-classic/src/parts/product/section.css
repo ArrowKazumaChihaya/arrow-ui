@@ -1,0 +1,163 @@
+@layer arrow-product-classic {/* @component src/View/Join/Employee/Confirm.vue#0 */
+.view_wrap[data-v-uiaf3aee188c6a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-uiaf3aee188c6a]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Manager/FixedTaxReduction/Employee/Employee/Confirm.vue#0 */
+.view_wrap[data-v-ui899c041dfc10]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui899c041dfc10]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Manager/HistoryEvent/Detail.vue#0 */
+.summary_wrap[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 16px;
+}
+.summary_wrap[data-v-uic08ee5ad5c68]
+  .item_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 3px;
+}
+.employee_target_select[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: min(100%, 360px);
+}
+.content_separator[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: 1px solid #dbe4ee;
+  margin: 18px 0 40px;
+}
+.multi_target_notice[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: -20px 0 24px;
+}
+.multi_target_notice
+  p[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #4b5563;
+  font-size: 12px;
+}
+.employee_detail_like_wrap[data-v-uic08ee5ad5c68]
+  .title_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: none;
+}
+.employee_detail_like_wrap[data-v-uic08ee5ad5c68]
+  .company_base_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+.all_section[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+.all_section[data-v-uic08ee5ad5c68]:first-of-type:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+.all_section_title[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin: 0 0 12px;
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 700;
+}
+[data-v-uic08ee5ad5c68]
+  .changed:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+[data-v-uic08ee5ad5c68]
+  .changed
+  *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #c53030 !important;
+  font-weight: 600;
+}
+.empty_wrap[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding: 12px 0;
+}
+.empty_wrap
+  p[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #6b7280;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/Employeely/Employee/Employee/Confirm.vue#0 */
+.view_wrap[data-v-ui15be97c913fc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui15be97c913fc]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/Employeely/Insurance/Insurance/Confirm.vue#0 */
+.view_wrap[data-v-uia5d2638a8c5c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-uia5d2638a8c5c]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Nencho/Employeely/Loan/Loan/Confirm.vue#0 */
+.view_wrap[data-v-ui72605a58431f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui72605a58431f]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Demand/DemandChange/Employee/Confirm.vue#0 */
+.view_wrap[data-v-ui9a2034d622b4]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui9a2034d622b4]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Demand/DemandChangeOutsourcer/Employee/Confirm.vue#0 */
+.view_wrap[data-v-ui1383dc06bfe7]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui1383dc06bfe7]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Personal/FixedTaxReduction/Employee/Confirm.vue#0 */
+.view_wrap[data-v-ui8ae56df19698]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui8ae56df19698]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Nencho/Employee/Employee/Confirm.vue#0 */
+.view_wrap[data-v-uic5ad638afb51]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-uic5ad638afb51]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Nencho/Insurance/Insurance/Confirm.vue#0 */
+.view_wrap[data-v-ui4919daace2f7]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui4919daace2f7]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Nencho/Loan/Loan/Confirm.vue#0 */
+.view_wrap[data-v-ui2361f00dc899]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 30px;
+}
+.view_wrap[data-v-ui2361f00dc899]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+/* @end-component */
+}

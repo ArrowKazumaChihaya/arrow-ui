@@ -10,6 +10,8 @@ import type { ArYearMonthInputProps } from "./ArYearMonthInput.contract";
 
 const props = withDefaults(defineProps<ArYearMonthInputProps>(), {
   minYear: 1930,
+  initialYear: undefined,
+  allowEmptyYear: false,
   maxYear: () => new Date().getFullYear(),
   era: false,
   invalid: false,
@@ -29,7 +31,7 @@ function sync(v: string | null) {
     if (digitsOf(month.value, 2) !== Number(m[2])) month.value = m[2]!;
   } else {
     // 値が空になっても、打ちかけの月はそのまま残す
-    year.value ??= Math.min(new Date().getFullYear(), props.maxYear);
+    year.value ??= props.initialYear ?? Math.max(props.minYear, Math.min(new Date().getFullYear(), props.maxYear));
   }
 }
 sync(props.modelValue);
@@ -71,6 +73,7 @@ function onMonth(e: Event) {
       :id="id"
       :model-value="year"
       :years="years"
+      :allow-empty="allowEmptyYear"
       :label-of="era ? eraLabel : undefined"
       :invalid="invalid"
       :disabled="disabled"

@@ -1,0 +1,20 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Alert.vue#0 */
+.ant-alert:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.ant-alert
+  .ant-alert-message:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 13px;
+}
+.ant-alert
+  .ant-alert-icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: middle;
+}
+.ant-alert
+  .ant-alert-content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block !important;
+  max-width: calc(100% - 22px);
+  vertical-align: middle;
+}
+/* @end-component */
+}

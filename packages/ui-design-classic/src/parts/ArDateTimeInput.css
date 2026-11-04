@@ -1,4 +1,4 @@
-/* @covers ArDateTimeInput 1.0.0 */
+/* @covers ArDateTimeInput 1.1.0 */
 /* ArDateTimeInput（今の ARROW の Datetime）：Dates と Time（時と分のプルダウン・「時」「分」）を antd の Space（間8px）で並べる。
    Time の入れ物は幅58のままなので、プルダウンは今と同じく右へはみ出す。 */
 [data-ar-design="classic"] [data-ar="date-time-input"]{gap:8px}

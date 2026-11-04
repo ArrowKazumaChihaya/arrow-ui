@@ -143,6 +143,11 @@
         "ja": "ページ送り"
       },
       {
+        "slug": "section-menu",
+        "name": "ArSectionMenu",
+        "ja": "セクションメニュー"
+      },
+      {
         "slug": "steps",
         "name": "ArSteps",
         "ja": "手順（ステップ）"
@@ -156,6 +161,11 @@
         "slug": "tabs",
         "name": "ArTabs",
         "ja": "タブ"
+      },
+      {
+        "slug": "wizard",
+        "name": "ArWizard",
+        "ja": "手順付きフォーム"
       }
     ]
   },
@@ -433,6 +443,11 @@
         "ja": "PDF の表示"
       },
       {
+        "slug": "pointer-badge",
+        "name": "ArPointerBadge",
+        "ja": "指し示すバッジ"
+      },
+      {
         "slug": "popover",
         "name": "ArPopover",
         "ja": "ポップオーバー"
@@ -678,6 +693,11 @@
         "ja": "月日の入力"
       },
       {
+        "slug": "page-heading",
+        "name": "ArPageHeading",
+        "ja": "ページ見出し"
+      },
+      {
         "slug": "payslip",
         "name": "ArPayslip",
         "ja": "明細書"
@@ -756,6 +776,26 @@
         "slug": "zip-input",
         "name": "ArZipInput",
         "ja": "郵便番号の入力"
+      }
+    ]
+  },
+  {
+    "title": "レイアウト",
+    "items": [
+      {
+        "slug": "auth-panel",
+        "name": "ArAuthPanel",
+        "ja": "認証画面"
+      }
+    ]
+  },
+  {
+    "title": "データ",
+    "items": [
+      {
+        "slug": "table-header",
+        "name": "ArTableHeader",
+        "ja": "並べ替え見出し"
       }
     ]
   }

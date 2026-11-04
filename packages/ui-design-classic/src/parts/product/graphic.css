@@ -1,0 +1,14 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Icon.vue#0 */
+svg[data-v-uif3ebc344fe0a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  --color: #5c5c5c;
+  --border: none;
+  --border-color: initial;
+  --bg-color: none;
+  --bg-opacity: 1;
+  fill: var(--color);
+  vertical-align: middle;
+  stroke: var(--border-color);
+  stroke-width: var(--border);
+}
+/* @end-component */
+}

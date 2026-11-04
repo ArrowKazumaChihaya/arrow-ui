@@ -1,0 +1,21 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Card.vue#0 */
+.card_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 100%;
+  padding: var(--arrow-card-padding, 10px);
+  background-color: var(--arrow-color-surface, #fff);
+  border: 1px solid var(--arrow-card-border, #9b9a9b);
+  border-radius: var(--arrow-card-radius, 5px);
+  margin-top: 10px;
+}
+.card_component
+  .card_title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: var(--arrow-card-title-size, 16px);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.card_component:first-of-type:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0px;
+}
+/* @end-component */
+}

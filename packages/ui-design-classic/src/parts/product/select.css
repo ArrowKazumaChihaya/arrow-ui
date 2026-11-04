@@ -1,0 +1,87 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Select.vue#0 */
+.select_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+.select_component
+  span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+.select_component
+  .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px !important;
+}
+.ant-select-dropdown:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  animation-duration: 0.1s;
+}
+.ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant-select-selection-placeholder:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px !important;
+}
+.ant-select-selection-item
+  span:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant-select-selection-placeholder
+  span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px !important;
+  vertical-align: middle !important;
+}
+.ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 28px !important;
+}
+.ant-select-selection-placeholder:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 30px !important;
+}
+.ant-select-lg
+  .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 39px;
+}
+.ant-select-dropdown-menu-item.button_option:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: initial;
+}
+@media screen and (max-width: 499px) {
+  .ant-select-selector:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    height: var(--arrow-control-height-mobile, 27px) !important;
+    padding: 0px !important;
+  }
+  .ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .ant-select-selection-placeholder:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    margin-left: 8px !important;
+    font-size: var(--arrow-control-font-size-mobile, 13px) !important;
+  }
+  .ant-select-selection-item
+    span:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .ant-select-selection-placeholder
+    span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: var(--arrow-control-font-size-mobile, 13px) !important;
+  }
+  .ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 23px !important;
+  }
+  .ant-select-selection-placeholder:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 25px !important;
+  }
+  .ant-select-lg
+    .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 39px;
+  }
+  .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: 25px !important;
+  }
+  .ant-select-dropdown-menu-item:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 11px !important;
+  }
+  .ant-select-dropdown-menu-item.button_option:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    background-color: initial;
+  }
+}
+/* @end-component */
+
+/* @component src/Component/UI/Select.vue#1 */
+.null_value[data-v-uid0e23cbbd5b5]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #c4c4c4;
+}
+/* @end-component */
+}

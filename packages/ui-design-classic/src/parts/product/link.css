@@ -1,0 +1,214 @@
+@layer arrow-product-classic {/* @component src/View/Manager/Document/Documents/EmployeeTable.vue#0 */
+.year_wrap[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.download_wrap[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.media_code_wrap[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.attention_wrap[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.attention_wrap
+  .attention_group[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: left;
+  display: inline-block;
+}
+.attention_wrap
+  .attention_group
+  p[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+.category_wrap[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: white;
+  border-top: none;
+}
+.category_wrap
+  .category_button[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: block;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 10px;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+}
+.category_wrap
+  .category_button[data-v-ui8dc1dbea53ac]:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  opacity: 0.8;
+}
+.category_wrap
+  .category_button.active[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #e1519c;
+  background-color: #e1519c;
+  color: white;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/Documents/LegalTable.vue#0 */
+.year_wrap[data-v-ui04c245e7f3ab]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/Documents/Paidhol.vue#0 */
+.year_wrap[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.download_wrap[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.media_code_wrap[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.attention_wrap[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+.attention_wrap
+  .attention_group[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: left;
+  display: inline-block;
+}
+.attention_wrap
+  .attention_group
+  p[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+.category_wrap[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: white;
+  border-top: none;
+}
+.category_wrap
+  .category_button[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: block;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 10px;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+}
+.category_wrap
+  .category_button[data-v-ui63f52db86fb8]:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  opacity: 0.8;
+}
+.category_wrap
+  .category_button.active[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #e1519c;
+  background-color: #e1519c;
+  color: white;
+}
+.not_lock_caution[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/Documents/PaymentTable.vue#0 */
+.year_wrap[data-v-ui4692c3cf1faf]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  text-align: center;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/DocumentSelect/Join.vue#0 */
+.document_title[data-v-ui10eb4745ea5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/DocumentSelect/Nencho.vue#0 */
+.document_title[data-v-ui2485bbd8688a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/DocumentSelect/Other.vue#0 */
+.document_title[data-v-ui9cf364f8c6a4]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/DocumentSelect/Payment.vue#0 */
+.document_title[data-v-ui72aa815006c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/DocumentSelect/Remuneration.vue#0 */
+.document_title[data-v-ui035e7192d902]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/DocumentSelect/Retire.vue#0 */
+.document_title[data-v-uia17fbcc265f7]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Manager/Document/DocumentSelect/SocialIns.vue#0 */
+.document_title[data-v-ui3f7a3faff0a6]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+
+/* @component src/View/Personal/Document/DocumentSelect/Nencho.vue#0 */
+.document_title[data-v-ui2df78fd8e0fa]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+/* @end-component */
+}

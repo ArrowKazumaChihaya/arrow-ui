@@ -15,6 +15,7 @@ import type { ArDropdownProps } from "./ArDropdown.contract";
 import type { ArMenuItem } from "./ArMenu.contract";
 
 const props = withDefaults(defineProps<ArDropdownProps>(), {
+  items: () => [],
   open: undefined,
   label: undefined,
   icon: undefined,
@@ -105,7 +106,7 @@ const floatAnchor = computed(() => (props.variant === "split" && !custom.value ?
     <ArFloat
       :id="menuId"
       ar="dropdown-menu"
-      role="menu"
+      :role="slots.content ? 'dialog' : 'menu'"
       :label="label"
       :open="isOpen"
       :anchor="floatAnchor"
@@ -114,7 +115,8 @@ const floatAnchor = computed(() => (props.variant === "split" && !custom.value ?
       match-width="min"
       @close="(r) => close(r === 'escape')"
     >
-      <ArMenuPanel :items="items" :variant="custom ? 'custom' : variant" :style="width ? { width: `${width}px` } : undefined" @select="onSelect" @close="close(true)" />
+      <div v-if="slots.content" data-part="content" :style="width ? {width: `${width}px`} : undefined"><slot name="content" :close="() => close(true)" /></div>
+      <ArMenuPanel v-else :items="items" :variant="custom ? 'custom' : variant" :style="width ? { width: `${width}px` } : undefined" @select="onSelect" @close="close(true)" />
     </ArFloat>
   </span>
 </template>

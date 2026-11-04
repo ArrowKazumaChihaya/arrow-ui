@@ -5,7 +5,7 @@
  * 年：↓・Enter・Space で開き、↑↓で動かし Enter で決める。数字を打つとその年へ飛ぶ（ArYearInput と同じプルダウン）。
  * 月・日：数字を打って Enter かフォーカスが外れたら確定。↑↓で1ずつ動く。
  */
-import { computed, ref, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import ArYearSelect from "../internal/ArYearSelect.vue";
 import { eraLabel } from "../internal/yearParts";
 import { useDesignForm } from "../provider/context";
@@ -15,6 +15,13 @@ import type { ArDateInputProps } from "./ArDateInput.contract";
 const thisYear = new Date().getFullYear();
 const props = withDefaults(defineProps<ArDateInputProps>(), {
   minYear: undefined,
+  initialYear: undefined,
+  years: undefined,
+  invalidDate: undefined,
+  yearOrder: undefined,
+  allowEmptyYear: undefined,
+  pad: undefined,
+  updateOnInput: false,
   maxYear: undefined,
   era: false,
   showWeekday: true,
@@ -26,23 +33,30 @@ const props = withDefaults(defineProps<ArDateInputProps>(), {
 });
 const emit = defineEmits<{ "update:modelValue": [value: string | null] }>();
 
-const invalidForm = useDesignForm<"clamp" | "message">("ArDateInput", "invalidDate", "clamp");
-const padForm = useDesignForm<"none" | "zero">("ArDateInput", "pad", "none");
-const yearEmpty = useDesignForm<"none" | "option">("ArDateInput", "yearEmpty", "none");
-const yearOrder = useDesignForm<"asc" | "desc">("ArDateInput", "yearOrder", "asc");
+const designinvalidForm = useDesignForm<"clamp" | "message">("ArDateInput", "invalidDate", "clamp");
+const designpadForm = useDesignForm<"none" | "zero">("ArDateInput", "pad", "none");
+const designyearEmpty = useDesignForm<"none" | "option">("ArDateInput", "yearEmpty", "none");
+const designyearOrder = useDesignForm<"asc" | "desc">("ArDateInput", "yearOrder", "asc");
+const invalidForm = computed(() => props.invalidDate ?? designinvalidForm.value);
+const padForm = computed(() => props.pad ?? designpadForm.value);
+const yearEmpty = computed(() => props.allowEmptyYear === undefined ? designyearEmpty.value : props.allowEmptyYear ? "option" : "none");
+const yearOrder = computed(() => props.yearOrder ?? designyearOrder.value);
 const show = (n: number) => (padForm.value === "zero" ? String(n).padStart(2, "0") : String(n));
+let ownUpdate = false;
+const initialYear = () => props.initialYear ?? Math.max(props.minYear ?? thisYear - 5, Math.min(thisYear, props.maxYear ?? thisYear + 5));
 const parts = ref({ y: "", m: "", d: "" });
 /** 打った月日がありえない日（message の形のときだけ）。 */
 const badDate = ref(false);
 function syncFromValue(v: string | null) {
   const s = splitDate(v);
   if (!s && badDate.value) return; // 「無効な日付」のときは打った数字を残す
-  parts.value = s ? { y: String(s.y), m: show(s.m), d: show(s.d) } : { y: parts.value.y || String(thisYear), m: "", d: "" };
+  parts.value = s ? { y: String(s.y), m: show(s.m), d: show(s.d) } : { y: parts.value.y || String(initialYear()), m: "", d: "" };
 }
 syncFromValue(props.modelValue);
-watch(() => props.modelValue, syncFromValue);
+watch(() => props.modelValue, value => { if (!ownUpdate) syncFromValue(value); });
 
 const years = computed(() => {
+  if (props.years) return [...props.years];
   const cur = Number(parts.value.y) || thisYear;
   const from = Math.min(props.minYear ?? thisYear - 5, cur);
   const to = Math.max(props.maxYear ?? thisYear + 5, cur);
@@ -63,12 +77,17 @@ function commit() {
   const d = toNumber(parts.value.d);
   let next = y && m && d ? clampDate(y, m, d) : null;
   badDate.value = false;
-  if (invalidForm.value === "message" && y && m && d && next !== formatDate(y, m, d)) {
+  const malformed = (parts.value.m !== "" && (!m || m > 12)) ||
+    (parts.value.d !== "" && (!d || d > 31));
+  if (invalidForm.value === "message" && (malformed || (y && m && d && next !== formatDate(y, m, d)))) {
     badDate.value = true;
     next = null;
   }
-  if (next !== props.modelValue) emit("update:modelValue", next);
-  else syncFromValue(next);
+  if (next !== props.modelValue) {
+    ownUpdate = true;
+    emit("update:modelValue", next);
+    void nextTick(() => { ownUpdate = false; });
+  }
   if (!badDate.value && next) {
     const s = splitDate(next)!;
     parts.value.m = show(s.m);
@@ -136,6 +155,7 @@ function setYear(y: number | null) {
       :disabled="disabled"
       :aria-label="`${label ?? ''}${labels.month}`"
       :aria-invalid="invalid || badDate || undefined"
+      @input="updateOnInput && commit()"
       @blur="commit"
       @keydown="step('m', $event)"
     />
@@ -149,6 +169,7 @@ function setYear(y: number | null) {
       :disabled="disabled"
       :aria-label="`${label ?? ''}${labels.day}`"
       :aria-invalid="invalid || badDate || undefined"
+      @input="updateOnInput && commit()"
       @blur="commit"
       @keydown="step('d', $event)"
     />

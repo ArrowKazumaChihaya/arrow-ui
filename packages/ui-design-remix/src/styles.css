@@ -1,11 +1,13 @@
 /* ui-design-remix の見た目。scripts/gen-registry.mjs が parts/ から作る。手で直さない。 */
 @import "./parts/_base.css";
 @import "./parts/_picker.css";
+@import "./parts/_product.css";
 @import "./parts/ArAffix.css";
 @import "./parts/ArAlert.css";
 @import "./parts/ArAnchor.css";
 @import "./parts/ArAppHeader.css";
 @import "./parts/ArApprovalFlow.css";
+@import "./parts/ArAuthPanel.css";
 @import "./parts/ArAutoComplete.css";
 @import "./parts/ArAvatar.css";
 @import "./parts/ArBadge.css";
@@ -63,12 +65,14 @@
 @import "./parts/ArNotificationHost.css";
 @import "./parts/ArOrgChart.css";
 @import "./parts/ArOtpInput.css";
+@import "./parts/ArPageHeading.css";
 @import "./parts/ArPagination.css";
 @import "./parts/ArParagraph.css";
 @import "./parts/ArPayslip.css";
 @import "./parts/ArPdfViewer.css";
 @import "./parts/ArPeriodBox.css";
 @import "./parts/ArPeriodNav.css";
+@import "./parts/ArPointerBadge.css";
 @import "./parts/ArPopconfirm.css";
 @import "./parts/ArPopover.css";
 @import "./parts/ArProgress.css";
@@ -81,6 +85,7 @@
 @import "./parts/ArRichTextEditor.css";
 @import "./parts/ArSaveBar.css";
 @import "./parts/ArSectionHead.css";
+@import "./parts/ArSectionMenu.css";
 @import "./parts/ArSegmented.css";
 @import "./parts/ArSelect.css";
 @import "./parts/ArShiftChart.css";
@@ -98,6 +103,7 @@
 @import "./parts/ArSubItem.css";
 @import "./parts/ArSwitch.css";
 @import "./parts/ArTable.css";
+@import "./parts/ArTableHeader.css";
 @import "./parts/ArTabs.css";
 @import "./parts/ArTag.css";
 @import "./parts/ArText.css";
@@ -121,5 +127,6 @@
 @import "./parts/ArViewOptions.css";
 @import "./parts/ArWatermark.css";
 @import "./parts/ArWeekdayPicker.css";
+@import "./parts/ArWizard.css";
 @import "./parts/ArYearInput.css";
 @import "./parts/ArZipInput.css";

@@ -1,0 +1,112 @@
+@layer arrow-product-classic {/* @component src/Component/Tab.vue#0 */
+.tab_component[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  --tab-width: 130px;
+}
+.tab_component
+  .tab_item[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  position: relative;
+  width: var(--tab-width);
+  height: 30px;
+  line-height: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--arrow-tab-color, gray);
+  text-align: center;
+  background-color: var(--arrow-tab-background, rgb(220, 220, 220));
+  margin-right: 3px;
+  border-radius: var(--arrow-tab-radius, 8px 8px 0px 0px);
+  cursor: pointer;
+}
+.tab_component
+  .tab_item[data-v-ui00461df21c75]:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-tab-hover, rgb(230, 230, 230));
+}
+.tab_component
+  .tab_item[data-v-ui00461df21c75]:last-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-right: 0;
+}
+.tab_component
+  .tab_item.active[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #fff;
+  cursor: default;
+}
+.tab_component
+  .tab_item.active.shift[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-shift, #4395d4);
+}
+.tab_component
+  .tab_item.active.attendance[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-attendance, #4eb187);
+}
+.tab_component
+  .tab_item.active.payment[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-payment, #d1aa00);
+}
+.tab_component
+  .tab_item.active.aggregation[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-aggregation, #ee751b);
+}
+.tab_component
+  .tab_item.active.document[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-document, #e389b7);
+}
+.tab_component
+  .tab_item.active.other[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background-color: var(--arrow-section-other, #6cb1b7);
+}
+.tab_component
+  .tab_item.beta[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *)::after {
+  content: "β";
+  position: absolute;
+  top: 4px;
+  right: 7px;
+  width: 14px;
+  height: 14px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  background-color: #e58a25;
+  border-radius: 7px;
+}
+.exclamation_icon_wrap[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  vertical-align: 2px;
+}
+.exclamation_icon_wrap
+  svg[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 15px;
+  height: 15px;
+}
+@media screen and (max-width: 499px) {
+  .tab_component[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    --tab-sp-width: 85px;
+  }
+  .tab_component
+    .tab_item[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: var(--tab-sp-width);
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+  .tab_component
+    .tab_item.beta[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *)::after {
+    top: 3px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    font-size: 9px;
+    line-height: 12px;
+  }
+  .exclamation_icon_wrap[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    vertical-align: 1px;
+  }
+  .exclamation_icon_wrap
+    svg[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 12px;
+    height: 12px;
+  }
+}
+/* @end-component */
+}

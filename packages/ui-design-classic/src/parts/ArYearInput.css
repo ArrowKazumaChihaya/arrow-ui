@@ -1,4 +1,4 @@
-/* @covers ArYearInput 1.0.0, ArYearMonthInput 1.0.0, ArMonthDayInput 1.0.0 */
+/* @covers ArYearInput 1.0.0, ArYearMonthInput 1.1.0, ArMonthDayInput 1.0.0 */
 /* 今の Year・Yearmonth・MonthDay（ui-Year / ui-Yearmonth / ui-MonthDay）：
    年は ant-design-vue の Select（77×32・和暦は 135、角丸6・枠 #D9D9D9・14px・右に 12px の ∨ rgba(0,0,0,.25)）、
    単位は間を空けずに 13px の黒（行32）、月日は 32×30（MonthDay は 30×30）の Input（余白0・中央） */

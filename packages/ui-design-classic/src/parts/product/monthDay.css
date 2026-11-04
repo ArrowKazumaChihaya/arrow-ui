@@ -1,0 +1,16 @@
+@layer arrow-product-classic {/* @component src/Component/UI/MonthDay.vue#0 */
+.month_day_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.month_day_component
+  .ant-input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px !important;
+  padding: 0px !important;
+  text-align: center;
+}
+.month_day_component
+  span.label:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px;
+}
+/* @end-component */
+}

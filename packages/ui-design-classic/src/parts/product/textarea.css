@@ -1,0 +1,6 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Textarea.vue#0 */
+textarea[data-v-ui0ba556b34cde]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 20px !important;
+}
+/* @end-component */
+}

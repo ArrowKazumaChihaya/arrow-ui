@@ -1,0 +1,6 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Result.vue#0 */
+.ant-result-subtitle:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  white-space: pre-wrap;
+}
+/* @end-component */
+}

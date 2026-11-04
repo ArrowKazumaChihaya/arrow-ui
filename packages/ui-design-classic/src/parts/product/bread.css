@@ -1,0 +1,35 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Bread.vue#0 */
+.bread_component[data-v-ui15e333fb9b6b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 15px;
+}
+.before_content[data-v-ui15e333fb9b6b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 6px;
+}
+.before_content
+  span[data-v-ui15e333fb9b6b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+}
+.before_content
+  .separator[data-v-ui15e333fb9b6b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: top;
+  margin: 0 2px;
+}
+.blank_before_content[data-v-ui15e333fb9b6b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  height: 7.5px;
+  margin-bottom: 6px;
+}
+.active_content
+  span[data-v-ui15e333fb9b6b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 22px;
+  font-weight: 600;
+}
+@media screen and (max-width: 499px) {
+  .active_content
+    span[data-v-ui15e333fb9b6b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 18px;
+  }
+}
+/* @end-component */
+}

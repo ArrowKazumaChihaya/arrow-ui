@@ -1,0 +1,6 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Space.vue#0 */
+.ant-space-item:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: revert;
+}
+/* @end-component */
+}

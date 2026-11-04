@@ -1,0 +1,31 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Input.vue#0 */
+.input_component:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  vertical-align: middle;
+}
+input.ant-input
+  + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px;
+}
+span:has(+ input.ant-input):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px;
+}
+@media (max-width: 499px) {
+  input.ant-input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    height: var(--arrow-control-height-mobile, 27px) !important;
+    padding: 4px 4px !important;
+    font-size: var(--arrow-control-font-size-mobile, 13px) !important;
+    line-height: var(--arrow-control-height-mobile, 27px) !important;
+  }
+  input.ant-input
+    + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: var(--arrow-control-height-mobile, 27px) !important;
+    font-size: var(--arrow-control-font-size-mobile, 13px);
+  }
+  span:has(+ input.ant-input):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    line-height: var(--arrow-control-height-mobile, 27px) !important;
+    font-size: var(--arrow-control-font-size-mobile, 13px);
+  }
+}
+/* @end-component */
+}

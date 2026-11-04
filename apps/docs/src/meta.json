@@ -1201,14 +1201,15 @@
  },
  {
   "name": "ArDropdown",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "押すとメニュー。項目にアイコン・説明・見出し・区切り・危ない項目（赤）・使えない・鍵（権限なし）。\n押すもの：default slot（自由）か、label で「操作」ボタン（variant=\"ops\"）・ArButton・Dropdown.Button（split）。\n↓ Enter Space で開き、メニューの中は ↑↓ で移る。Escape・外を押す・Tab で閉じ、押したものにフォーカスを戻す。",
   "props": [
    {
     "name": "items",
     "type": "readonly ArMenuItem[]",
-    "required": true,
-    "description": "メニューの項目（ArMenu と同じ形。group の見出し・divider の区切り・description の説明・danger・disabled・locked）。"
+    "required": false,
+    "description": "メニューの項目（ArMenu と同じ形。group の見出し・divider の区切り・description の説明・danger・disabled・locked）。",
+    "default": "[]"
    },
    {
     "name": "open",
@@ -1302,7 +1303,8 @@
    }
   ],
   "slots": [
-   "default"
+   "default",
+   "content"
   ],
   "parts": [
    "root",
@@ -1310,7 +1312,8 @@
    "trigger",
    "icon",
    "label",
-   "caret"
+   "caret",
+   "content"
   ],
   "dataAr": "dropdown"
  },
@@ -1507,6 +1510,64 @@
    "total"
   ],
   "dataAr": "pagination"
+ },
+ {
+  "name": "ArSectionMenu",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "items",
+    "type": "readonly ArMenuItem[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "value",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "'項目'"
+   },
+   {
+    "name": "scroll",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "scrollOffset",
+    "type": "number",
+    "required": false,
+    "description": "",
+    "default": "50"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:value",
+    "payload": "[value: string]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "navigation",
+   "desktop",
+   "mobile",
+   "content"
+  ],
+  "dataAr": "section-menu"
  },
  {
   "name": "ArSteps",
@@ -1743,6 +1804,69 @@
    "add"
   ],
   "dataAr": "tabs"
+ },
+ {
+  "name": "ArWizard",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "value",
+    "type": "number",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "options",
+    "type": "readonly ArWizardOption[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
+   {
+    "name": "labels",
+    "type": "{ steps: string; prev: string; next: string; }",
+    "required": false,
+    "description": "",
+    "default": "()=>({steps:'手順',prev:'戻る',next:'次へ'})"
+   },
+   {
+    "name": "scrollOnChange",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "true"
+   }
+  ],
+  "emits": [
+   {
+    "name": "prev",
+    "payload": "[]",
+    "description": ""
+   },
+   {
+    "name": "next",
+    "payload": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "steps",
+   "summary",
+   "content",
+   "actions"
+  ],
+  "dataAr": "wizard"
  },
  {
   "name": "ArAutoComplete",
@@ -2406,9 +2530,52 @@
  },
  {
   "name": "ArDateInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "日付の入力。年はプルダウン（ブラウザの select は使わない）、月と日は数字（全角も読む）。\n曜日は自動で出す（日は赤、土は青）。31日のまま2月にすると末日に寄せる。\n年：↓・Enter・Space で開き、↑↓で動かし Enter で決める。数字を打つとその年へ飛ぶ（ArYearInput と同じプルダウン）。\n月・日：数字を打って Enter かフォーカスが外れたら確定。↑↓で1ずつ動く。",
   "props": [
+   {
+    "name": "initialYear",
+    "type": "number",
+    "required": false,
+    "description": "Initial year for an empty draft; does not commit a date by itself."
+   },
+   {
+    "name": "years",
+    "type": "readonly number[]",
+    "required": false,
+    "description": "Explicit available years, in the supplied order."
+   },
+   {
+    "name": "invalidDate",
+    "type": "'clamp' | 'message'",
+    "required": false,
+    "description": "Keep validation policy independent of the selected design."
+   },
+   {
+    "name": "yearOrder",
+    "type": "'asc' | 'desc'",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "allowEmptyYear",
+    "type": "boolean",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "pad",
+    "type": "'none' | 'zero'",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "updateOnInput",
+    "type": "boolean",
+    "required": false,
+    "description": "Emit as fields are edited, preserving incomplete drafts.",
+    "default": "false"
+   },
    {
     "name": "modelValue",
     "type": "string | null",
@@ -2682,9 +2849,51 @@
  },
  {
   "name": "ArDateTimeInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "日時の入力。日付（年のプルダウン＋月日）と、時と分のプルダウンを並べる。\n値は \"YYYY-MM-DD HH:mm:ss\"（秒は 00）。日付か時刻のどちらかが空なら null。",
   "props": [
+   {
+    "name": "initialYear",
+    "type": "number",
+    "required": false,
+    "description": "Initial year for an empty draft; does not commit a date by itself."
+   },
+   {
+    "name": "years",
+    "type": "readonly number[]",
+    "required": false,
+    "description": "Explicit available years, in the supplied order."
+   },
+   {
+    "name": "invalidDate",
+    "type": "'clamp' | 'message'",
+    "required": false,
+    "description": "Keep validation policy independent of the selected design."
+   },
+   {
+    "name": "yearOrder",
+    "type": "'asc' | 'desc'",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "allowEmptyYear",
+    "type": "boolean",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "pad",
+    "type": "'none' | 'zero'",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "updateOnInput",
+    "type": "boolean",
+    "required": false,
+    "description": "Emit as fields are edited, preserving incomplete drafts."
+   },
    {
     "name": "modelValue",
     "type": "string | null",
@@ -4799,7 +5008,7 @@
    },
    {
     "name": "type",
-    "type": "'search' | 'text' | 'password' | 'tel' | 'email' | 'url'",
+    "type": "'number' | 'search' | 'text' | 'password' | 'tel' | 'email' | 'url'",
     "required": false,
     "description": "入力の種類。\nsearch：頭に虫めがね（icon を渡さないとき）。Enter で search を出す。\npassword：右に目のボタン（押すと文字を見せる・隠す）。",
     "default": "\"text\""
@@ -5677,7 +5886,7 @@
  },
  {
   "name": "ArUpload",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ファイルを置く・選ぶ（Excel登録と同じ形）。置き場は淡いテーマ色の点線。\n一覧：済みは緑のチェック、途中はテーマ色の進み具合、失敗は赤と理由。送る処理は親が行い、files に状態を入れる。\n置き場は Enter・Space でファイルを選ぶ画面を開く。",
   "props": [
    {
@@ -5778,7 +5987,9 @@
     "description": "一覧のごみ箱を押した。"
    }
   ],
-  "slots": [],
+  "slots": [
+   "default"
+  ],
   "parts": [
    "root",
    "input",
@@ -7214,6 +7425,42 @@
   "dataAr": "pdf-viewer"
  },
  {
+  "name": "ArPointerBadge",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "side",
+    "type": "'left' | 'right' | 'top' | 'bottom'",
+    "required": false,
+    "description": "",
+    "default": "'right'"
+   },
+   {
+    "name": "size",
+    "type": "number",
+    "required": false,
+    "description": "",
+    "default": "20"
+   },
+   {
+    "name": "tone",
+    "type": "'accent' | 'attention'",
+    "required": false,
+    "description": "",
+    "default": "'attention'"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root"
+  ],
+  "dataAr": "pointer-badge"
+ },
+ {
   "name": "ArPopover",
   "version": "1.0.0",
   "description": "白い吹き出し（見出し・中身・操作）。押す、または乗せると出る。\nvariant=\"cell\" はシフトのマスに乗せたときの時間の表示（濃い地・矢印なし・行ごとに改行）。\n押して開いたときは吹き出しにフォーカスを移し、Escape・外を押す で閉じて基準の要素へ戻す。",
@@ -8197,7 +8444,7 @@
  },
  {
   "name": "ArTreeTable",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "列のある木の表。1列目が木（字下げ・開け閉め・つなぎの線）、ほかの列は値、右端に行の操作。\ndraggable でつまみをつかんで行を動かす（前・後・子に）。キーボードでも動かせる（つまみで Alt+↑↓←→）。\nキーボード（WAI-ARIA の treegrid）：行で ↑↓ で移り、→ で開く／子へ、← で閉じる／親へ、Home / End、Enter で row-click。",
   "props": [
    {
@@ -8309,11 +8556,15 @@
    }
   ],
   "slots": [
+   "head",
    "`head-<key>`",
    "before-rows",
+   "before-rows-raw",
    "empty",
+   "cells",
    "`cell-<key>`",
    "actions",
+   "foot",
    "`foot-<key>`",
    "below"
   ],
@@ -8327,12 +8578,12 @@
    "body",
    "empty",
    "row",
-   "cell",
-   "guide",
-   "tree",
    "toggle",
    "toggle-box",
    "drag-handle",
+   "cell",
+   "guide",
+   "tree",
    "content",
    "actions",
    "foot",
@@ -9226,7 +9477,7 @@
  },
  {
   "name": "ArSpin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "テーマ色の回る輪。中身（default slot）を包むと、読み込み中は中身の上に白い幕と輪を重ねる。",
   "props": [
    {
@@ -9248,6 +9499,19 @@
     "type": "string",
     "required": false,
     "description": "輪の下の言葉（「読み込み中」）。読み上げの名前にもなる。"
+   },
+   {
+    "name": "block",
+    "type": "boolean",
+    "required": false,
+    "description": "独立した読込領域として横幅いっぱいに中央配置する。",
+    "default": "false"
+   },
+   {
+    "name": "minHeight",
+    "type": "string",
+    "required": false,
+    "description": "読込完了まで確保する領域の最小高さ。"
    }
   ],
   "emits": [],
@@ -9624,7 +9888,7 @@
   "props": [
    {
     "name": "tail",
-    "type": "'left' | 'right' | 'bottom' | 'top'",
+    "type": "'left' | 'right' | 'top' | 'bottom'",
     "required": false,
     "description": "しっぽを出す側。right なら右の物を指す（今の type）。",
     "default": "\"bottom\""
@@ -10020,7 +10284,7 @@
    },
    {
     "name": "placement",
-    "type": "'bottom' | 'top'",
+    "type": "'top' | 'bottom'",
     "required": false,
     "description": "吹き出しを出す側。",
     "default": "\"top\""
@@ -12756,9 +13020,22 @@
  },
  {
   "name": "ArYearMonthInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "年月の入力。年はプルダウン、月は数字の欄（全角でも入る）。\n1〜12 以外は受け付けない（打った文字を戻す）。2桁、または 2〜9 を打つと確定する。",
   "props": [
+   {
+    "name": "initialYear",
+    "type": "number",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "allowEmptyYear",
+    "type": "boolean",
+    "required": false,
+    "description": "",
+    "default": "false"
+   },
    {
     "name": "modelValue",
     "type": "string | null",
@@ -12911,5 +13188,128 @@
    "status"
   ],
   "dataAr": "zip-input"
+ },
+ {
+  "name": "ArAuthPanel",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "logo",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "logoAlt",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "'ARROW'"
+   },
+   {
+    "name": "companyName",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "companyCode",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "companyCodeLabel",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "'会社ID'"
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default",
+   "footer"
+  ],
+  "parts": [
+   "root",
+   "logo",
+   "card",
+   "heading",
+   "body",
+   "company",
+   "initial",
+   "company-name",
+   "company-code",
+   "footer"
+  ],
+  "dataAr": "auth-panel"
+ },
+ {
+  "name": "ArTableHeader",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "sortable",
+    "type": "boolean",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "sort",
+    "type": "string | null",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "toggle",
+    "type": "boolean",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "width",
+    "type": "number",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "maxWidth",
+    "type": "number",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "emits": [
+   {
+    "name": "activate",
+    "payload": "[]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "root",
+   "button",
+   "label",
+   "sort"
+  ],
+  "dataAr": "table-header"
  }
 ]

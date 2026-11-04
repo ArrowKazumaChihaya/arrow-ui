@@ -1,0 +1,121 @@
+@layer arrow-product-classic {/* @component src/View/Manager/Employee/Exist.vue#0 */
+.detail_search_button_wrap[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 175px;
+}
+.detail_search_wrap[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-bottom: 10px;
+}
+.manipulation_button_wrap[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+  width: 160px;
+}
+.bulk_resend_login_url_attention[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.employee_select_submit_button[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.employee_select_submit_button
+  + .employee_select_submit_button[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 10px;
+}
+table
+  th.code[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 120px;
+}
+table
+  th.name[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 150px;
+}
+table
+  th.hiring_type[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 150px;
+}
+table
+  th.branch_id[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 150px;
+}
+table
+  th.type[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 110px;
+}
+table
+  th.button[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 166px;
+}
+@media screen and (max-width: 499px) {
+  table
+    th.code[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 55px;
+  }
+  table
+    th.name[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 100px;
+  }
+  table
+    th.hiring_type[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 110px;
+  }
+  table
+    th.branch_id[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 100px;
+  }
+  table
+    th.type[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 90px;
+  }
+  table
+    th.button[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    width: 150px;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Shift/Calendar/Calendar/Index.vue#0 */
+.tab_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+}
+.calendar_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: 2px solid #4395d4;
+  background-color: rgb(243, 249, 252);
+  padding: 15px;
+}
+.control_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  border-top: dashed 2px lightgray;
+}
+.monthly_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.manipulator_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+}
+.monthly_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  width: calc(100% - 160px);
+  vertical-align: top;
+}
+.manipulator_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 15px;
+  width: 160px;
+  text-align: right;
+}
+@media screen and (max-width: 1023px) {
+  .tab_wrap[data-v-ui969a646660c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    display: none;
+  }
+}
+/* @end-component */
+
+/* @component src/View/Manager/Shift/Calendar/ShiftsExcel/Control.vue#0 */
+.button_wrap[data-v-ui6f0014407fe9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 10px;
+  height: 32px;
+}
+.form_button_wrap[data-v-ui6f0014407fe9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  float: right;
+  width: 150px;
+}
+/* @end-component */
+}

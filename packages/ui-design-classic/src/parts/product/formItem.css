@@ -1,0 +1,20 @@
+@layer arrow-product-classic {/* @component src/Component/UI/FormItem.vue#0 */
+.ant-form-item-control:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: initial !important;
+}
+.ant-form-item-label:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: initial !important;
+}
+.ant-form-item-label
+  label:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 32px !important;
+  font-weight: 600 !important;
+}
+.ant-form-item-label
+  label.before:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ant-form-item-label
+  label.after:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: initial !important;
+}
+/* @end-component */
+}

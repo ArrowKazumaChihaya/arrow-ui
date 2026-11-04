@@ -1,0 +1,8 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Colorpicker.vue#0 */
+.vc-swatches[data-v-ui5a4243de9bd9]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: none !important;
+}
+/* @end-component */
+}

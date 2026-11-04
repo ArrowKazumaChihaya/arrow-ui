@@ -45,6 +45,6 @@ describe("製品からの指摘（シフトページの突き合わせ）", () =
       expect(j.types).toBeTruthy();
     }
     const ui = JSON.parse(fs.readFileSync(path.join(root, "packages/ui/package.json"), "utf8"));
-    expect(Object.keys(ui.typesVersions["*"])).toEqual(["design", "requirements"]);
+    expect(Object.keys(ui.typesVersions["*"])).toEqual(["design", "requirements", "product"]);
   });
 });

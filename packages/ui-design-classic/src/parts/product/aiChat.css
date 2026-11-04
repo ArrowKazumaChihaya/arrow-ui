@@ -1,0 +1,275 @@
+@layer arrow-product-classic {/* @component src/View/Common/Component/AiChat.vue#0 */
+.ai-chat[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #283648;
+  font-size: 13px;
+}
+.ai-chat
+  button[data-v-ai-chat]:disabled:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  opacity: 0.5;
+}
+.ai-chat
+  button[data-v-ai-chat]:focus-visible:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ai-chat
+  textarea[data-v-ai-chat]:focus-visible:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ai-chat
+  input[data-v-ai-chat]:focus-visible:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  outline: 2px solid #4395d4 !important;
+  outline-offset: 2px;
+}
+.ai-chat__launcher[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #c7dfef;
+  border-radius: 24px;
+  color: #fff;
+  background: #267ebd;
+  box-shadow: 0 4px 16px rgba(27, 71, 100, 0.168627451);
+  font-weight: 600;
+  font-size: 14px;
+}
+.ai-chat__panel[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #dbe6ef;
+  border-radius: 0;
+  background: white;
+  box-shadow: -8px 0 32px rgba(25, 53, 74, 0.08);
+}
+.ai-chat__header[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #fff;
+  border-bottom: 1px solid #e3edf5;
+}
+.ai-chat__heading
+  h2[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 16px;
+  color: #233c55;
+  font-weight: 700;
+}
+.ai-chat__spark[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #267ebd;
+  font-size: 27px;
+}
+.ai-chat__subtitle[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ai-chat__hint[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #64758a;
+  font-size: 11px;
+}
+.ai-chat__icon[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+  background: transparent;
+  color: #52667b;
+}
+.ai-chat__toolbar[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-bottom: 1px solid #edf0f4;
+}
+.ai-chat__toolbar
+  button[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+.ai-chat__selection
+  button[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+  background: transparent;
+  color: #267ebd;
+  font-size: 12px;
+}
+.ai-chat__status[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+  color: #798595;
+}
+.ai-chat__status.is-ready[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #26785b;
+}
+.ai-chat__error[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #fff1f0;
+  color: #a82b28;
+}
+.ai-chat__messages[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #f7f9fc;
+}
+.ai-chat__welcome[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #66788b;
+}
+.ai-chat__welcome-title[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #304c65;
+  font-weight: 600;
+}
+.ai-chat__example[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #d7e5ef;
+  background: white;
+  color: #39779f;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.ai-chat__speaker[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #7b8b9c;
+  font-size: 10px;
+}
+.ai-chat__message
+  > p[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: 2px 12px 12px;
+  background: #edf2f7;
+}
+.ai-chat__message.is-user
+  > p[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #2563c9;
+  color: #fff;
+  border-radius: 14px 14px 4px 14px;
+}
+.ai-chat__tools[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #677e90;
+  font-size: 11px;
+}
+.ai-chat__diagnosis[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #d7e5ef;
+  border-radius: 10px;
+  background: white;
+  font-size: 12px;
+}
+.ai-chat__diagnosis
+  li[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-bottom: 1px solid #f0f3f7;
+}
+.ai-chat__diagnosis
+  li
+  small[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #64758a;
+  font-size: 11px;
+}
+.ai-chat__diagnosis-status[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: 4px;
+  background: #eef2f6;
+  color: #52667b;
+  font-size: 10px;
+}
+.ai-chat__diagnosis
+  li.is-applies
+  .ai-chat__diagnosis-status[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #fff1f0;
+  color: #a82b28;
+}
+.ai-chat__diagnosis
+  li.is-not_applicable[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  opacity: 0.7;
+}
+.ai-chat__diagnosis-factor[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-weight: 600;
+}
+.ai-chat__pending[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #e7c887;
+  border-radius: 10px;
+  background: #fffaf0;
+}
+.ai-chat__pending
+  pre[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 12px;
+  background: #fff;
+}
+.ai-chat__pending
+  code[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+}
+.ai-chat__thinking[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #5985a5;
+  font-size: 12px;
+}
+.ai-chat__composer[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-top: 1px solid #e3ebf1;
+}
+.ai-chat__composer
+  textarea[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #cddbe7;
+  border-radius: 8px;
+  background: white;
+}
+.ai-chat__search[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #cddbe7;
+  border-radius: 6px;
+}
+.ai-chat__selection[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+}
+.ai-chat__fields[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-block: 1px solid #e7edf3;
+}
+.ai-chat__field[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-bottom: 1px solid #f0f3f7;
+  font-size: 12px;
+}
+.ai-chat__disconnect[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 0;
+  background: transparent;
+  color: #64758a;
+  font-size: 12px;
+}
+@media (max-width: 499px) {
+  .ai-chat__launcher[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 13px;
+  }
+  .ai-chat__composer
+    textarea[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
+  .ai-chat__search[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+    font-size: 16px;
+  }
+}
+/* @component src/View/Common/Component/AiChatUsage.vue#0 */
+.ai-chat__usage[data-v-ai-chat-usage]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  color: #66778a;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Interaction cursors remain decoration owned by this skin. */
+.ai-chat
+  button[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  cursor: pointer;
+}
+.ai-chat
+  button[data-v-ai-chat]:disabled:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  cursor: not-allowed;
+}
+.ai-chat__tools
+  summary[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  cursor: pointer;
+}
+.ai-chat__field[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  cursor: pointer;
+}
+
+.ai-chat__answer:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 14px;
+  color: #1b2430;
+}
+.ai-chat__composer:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #fff;
+  border-top: 1px solid #e3e7ed;
+}
+.ai-chat__icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-radius: 8px;
+}
+.ai-chat__icon:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #eaf1fc;
+}
+.ai-chat__answer
+  .markdown-content
+  :where(table, pre, blockquote):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #fff;
+  border: 1px solid #dfe5ee;
+  border-radius: 8px;
+}
+.ai-chat__answer
+  .markdown-content
+  blockquote:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border-left: 3px solid #2563c9;
+  padding: 10px 12px;
+}
+.ai-chat__answer
+  .markdown-content
+  th:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  background: #eef3fa;
+}
+.ai-chat__answer
+  .markdown-content
+  > :first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-top: 0;
+}
+.ai-chat__report summary:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  cursor: pointer;
+  font-size: 12px;
+  color: #5a6573;
+}
+}

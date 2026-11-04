@@ -1,0 +1,49 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Info.vue#0 */
+.info_component[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  margin-left: 5px;
+}
+.info_component.small_info[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: block;
+  margin-left: 0px;
+}
+.info_component[data-v-ui8a8914dc389c]:first-child:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 0px;
+}
+.detaillink[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 15px;
+}
+.small_info[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+  white-space: pre-wrap;
+  line-height: 15px !important;
+  margin-top: 0px;
+  font-weight: initial;
+  color: #5f5f5f;
+}
+.small_info
+  span[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 15px;
+}
+.small_info[data-v-ui8a8914dc389c]
+  *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-size: 11px;
+}
+.small_info
+  .info_component[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: 11px;
+}
+.small_info
+  .detaillink[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  line-height: 11px;
+}
+.small_info
+  .small_content
+  + .detaillink[data-v-ui8a8914dc389c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-left: 10px;
+}
+/* @end-component */
+}

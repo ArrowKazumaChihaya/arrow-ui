@@ -8,6 +8,18 @@
  * - `yearEmpty`：`"none"`（既定）。`"option"`＝年のプルダウンの先頭に「未選択」を出す（今の ARROW）。
  */
 export interface ArDateInputProps {
+  /** Initial year for an empty draft; does not commit a date by itself. */
+  initialYear?: number;
+  /** Explicit available years, in the supplied order. */
+  years?: readonly number[];
+  /** Keep validation policy independent of the selected design. */
+  invalidDate?: "clamp" | "message";
+  yearOrder?: "asc" | "desc";
+  allowEmptyYear?: boolean;
+  pad?: "none" | "zero";
+  /** Emit as fields are edited, preserving incomplete drafts. */
+  updateOnInput?: boolean;
+
   /** "YYYY-MM-DD"。未入力は null。 */
   modelValue: string | null;
   /** 年のプルダウンの最初の年。既定は今年の5年前。 */

@@ -6,3 +6,5 @@
 [data-ar="spin"]>[data-part="spinner"],[data-ar="spin"]>[data-part="mask"]>[data-part="spinner"]{display:inline-block;flex:none;box-sizing:border-box;border-radius:50%;border-style:solid;border-right-color:transparent!important;animation:ar-spin .8s linear infinite}
 @keyframes ar-spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){[data-ar="spin"]>[data-part="spinner"],[data-ar="spin"]>[data-part="mask"]>[data-part="spinner"]{animation-duration:2.4s}}
+
+[data-ar="spin"][data-block]{display:flex;width:100%;justify-content:center;align-items:center}

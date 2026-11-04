@@ -1,0 +1,34 @@
+@layer arrow-product-classic {/* @component src/Component/UI/RadioGroup.vue#0 */
+.checkbox_group_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  vertical-align: middle;
+}
+.checkbox_group_wrap
+  .ant-radio-wrapper:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  font-family:
+    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3",
+    "メイリオ", sans-serif !important;
+}
+.checkbox_group_wrap
+  input[type="radio"]
+  + span:where([data-ar-design="classic"], [data-ar-design="classic"] *)::before {
+  border: none;
+}
+.checkbox_group_wrap
+  .ant-radio-group:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  vertical-align: middle !important;
+}
+.checkbox_group_wrap
+  .ant-radio-wrapper:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  margin-right: 0px !important;
+  line-height: initial !important;
+  vertical-align: middle !important;
+}
+.checkbox_group_wrap
+  .ant-radio-wrapper
+  span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: initial !important;
+  vertical-align: middle !important;
+}
+/* @end-component */
+}

@@ -1,4 +1,4 @@
-/* @covers ArCard 1.0.0 */
+/* @covers ArCard 1.1.0 */
 /* ArCard（band＝.v-card＋.v-band＋.v-tabs、elevated・outlined＝.ad-card、plain＝.stat の小さな線の箱） */
 [data-ar-design="remix"] [data-ar="card"]{font-feature-settings:"palt" 1;background:var(--ar-color-surface);color:var(--ar-color-text)}
 

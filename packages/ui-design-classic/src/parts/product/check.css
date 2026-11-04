@@ -1,0 +1,28 @@
+@layer arrow-product-classic {/* @component src/Component/UI/Check.vue#0 */
+.ant-checkbox:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+.ant-checkbox
+  + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  padding-right: 10px !important;
+  padding-left: 5px !important;
+  vertical-align: middle !important;
+  line-height: 30px !important;
+}
+.ant-checkbox-wrapper:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  line-height: initial !important;
+  vertical-align: middle !important;
+}
+.ant-checkbox-inner:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  border: 1px solid #808080 !important;
+}
+/* @end-component */
+
+/* @component src/Component/UI/Check.vue#1 */
+.checkbox_component[data-v-uib0ff68c637ff]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* @end-component */
+}
