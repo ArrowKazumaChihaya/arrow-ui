@@ -125,7 +125,7 @@ export const contracts = {
   ArBottomNav: "1.1.0",
   ArChangedValue: "1.2.0",
   ArChip: "1.0.0",
-  ArDateView: "1.0.0",
+  ArDateView: "1.1.0",
   ArDaySummary: "1.0.0",
   ArDocumentBlock: "1.0.0",
   ArEllipsis: "1.0.0",

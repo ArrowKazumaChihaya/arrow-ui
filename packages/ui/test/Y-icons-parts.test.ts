@@ -164,6 +164,16 @@ describe("Y：ArTreeTable", () => {
 });
 
 describe("Y：ArDateView・ArDocumentBlock・ArLogoSpin", () => {
+  it("ArDateView：翻訳した書式と曜日を使い、短い表示の曜日を省略できる", async () => {
+    const w = mount(ArDateView, { props: { date: "2026-11-03", format: "long", holiday: true, labels: { long: "{day}.{month}.{year}", short: "{day}/{month}", weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] } } });
+    expect(w.text()).toBe("03.11.2026(Tue)");
+    expect(w.get('[data-part="weekday"]').attributes("data-tone")).toBe("sun");
+    expect(w.attributes("datetime")).toBe("2026-11-03");
+    await w.setProps({ format: "short", shortWeekday: false });
+    expect(w.text()).toBe("03/11");
+    expect(w.find('[data-part="weekday"]').exists()).toBe(false);
+    w.unmount();
+  });
   it("ArDateView：「11月05日(木)」、土曜は sat、日曜と祝日は sun", () => {
     const w = mount(ArDateView, { props: { date: "2026-11-05", format: "long" } });
     expect(w.text()).toBe("11月05日(木)");

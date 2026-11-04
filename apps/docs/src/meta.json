@@ -10521,7 +10521,7 @@
  },
  {
   "name": "ArDateView",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "日付を「11月05日(木)」の形で見せる。曜日の色は日曜・祝日が赤、土曜が青。\n幅の狭い画面では「11/05(木)」（format=\"auto\"）。",
   "props": [
    {
@@ -10543,6 +10543,20 @@
     "required": false,
     "description": "書き方。long＝「11月05日(木)」、short＝「11/05(木)」、\nauto＝ふだんは long、幅 499px 以下の画面では short（今の ARROW の DateView と同じ）。",
     "default": "\"auto\""
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArDateViewLabels>",
+    "required": false,
+    "description": "1.1: 翻訳済みの表示。month/day はゼロ埋め、year は4桁の置換文字。",
+    "default": "{}"
+   },
+   {
+    "name": "shortWeekday",
+    "type": "boolean",
+    "required": false,
+    "description": "短い表記にも曜日を付ける。既存の曜日なしの表では false。",
+    "default": "true"
    }
   ],
   "emits": [],

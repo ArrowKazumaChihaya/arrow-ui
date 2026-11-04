@@ -1,6 +1,6 @@
 {
   "name": "ArDateView",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "group": "ARROW",
   "ja": "日付の表示",
   "slug": "date-view"
