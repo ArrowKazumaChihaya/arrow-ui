@@ -4,7 +4,7 @@
  * toolbar を消すと見本の枠（灰色の地に白い紙）だけ。
  * キーボード：紙の部分にフォーカスして ←→ PageUp PageDown でページ、+ − で大きさ、0 で 100%。
  */
-import { computed, ref } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
 import { useDesignForm } from "../provider/context";
 import type { ArPdfViewerLabels, ArPdfViewerProps } from "./ArPdfViewer.contract";
@@ -77,6 +77,14 @@ const counter = computed(() => L.value.page.replace("{page}", String(cur.value))
 const iframeSrc = computed(() => (props.src ? `${props.src.split("#")[0]}#page=${cur.value}&zoom=${z.value}` : undefined));
 const img = computed(() => props.pages[cur.value - 1]);
 const showBar = computed(() => props.toolbar && (bar.value === "full" || count.value > 1));
+const toolbarElement = ref<HTMLElement | null>(null);
+const viewport = ref<HTMLElement | null>(null);
+watch([bar, showBar], async () => {
+  const active = document.activeElement;
+  if (!(active instanceof HTMLElement) || !toolbarElement.value?.contains(active)) return;
+  await nextTick();
+  if (!active.isConnected && document.activeElement === document.body) viewport.value?.focus({ preventScroll: true });
+});
 
 function onKey(e: KeyboardEvent) {
   const m: Record<string, () => void> = {
@@ -106,7 +114,7 @@ function onKey(e: KeyboardEvent) {
     :aria-label="label"
     :style="height ? { height } : undefined"
   >
-    <div v-if="showBar" data-part="bar">
+    <div v-if="showBar" ref="toolbarElement" data-part="bar">
       <button type="button" data-part="prev" :aria-label="L.prev" :title="L.prev" :disabled="cur <= 1" @click="go(cur - 1)">
         <ArIcon :line="bar === 'full'" name="cl" />
       </button>
@@ -129,7 +137,7 @@ function onKey(e: KeyboardEvent) {
         </div>
       </template>
     </div>
-    <div data-part="viewport" tabindex="0" :aria-label="counter" @keydown="onKey">
+    <div ref="viewport" data-part="viewport" tabindex="0" :aria-label="counter" @keydown="onKey">
       <iframe v-if="src" data-part="frame" :src="iframeSrc" :title="label ?? counter" />
       <div
         v-else

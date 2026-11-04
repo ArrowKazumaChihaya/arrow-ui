@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- Keep keyboard focus inside the PDF preview when switching to a design that hides the focused zoom control, without losing page or zoom state.
+
 - Show full department/store names and long codes in organization chart cards by wrapping text.
 
 - Organization charts support anchored pan/pinch gestures, async tree data, and non-overlapping mobile controls. Preserve user zoom and pan across design changes.
