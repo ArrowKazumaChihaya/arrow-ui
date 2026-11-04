@@ -1,0 +1,8 @@
+/* Identity stays in normal flow; long names and metadata cannot overlap the next section. */
+[data-ar="profile-card"]{min-width:0;container-type:inline-size}
+[data-ar="profile-card"] [data-part="identity"]{display:flex;align-items:flex-start;gap:16px;min-width:0;max-width:100%}
+[data-ar="profile-card"] [data-part="identity"]>[data-ar="stack"]{min-width:0;overflow-wrap:anywhere}
+[data-ar="profile-card"] [data-part="photo"]{display:flex;flex-direction:column;align-items:center;gap:8px;flex:none}
+[data-ar="profile-card"] [data-part="name"]{margin:0;overflow-wrap:anywhere}
+[data-ar="profile-card"] [data-ar="descriptions"] dd{overflow-wrap:anywhere}
+@container(max-width:600px){[data-ar="profile-card"] [data-ar="descriptions"]>[data-part="list"]{grid-template-columns:auto minmax(0,1fr)}}

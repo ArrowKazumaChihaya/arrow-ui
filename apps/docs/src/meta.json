@@ -7826,6 +7826,78 @@
   "dataAr": "popover"
  },
  {
+  "name": "ArProfileCard",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "name",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "kana",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "code",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "image",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "items",
+    "type": "readonly ArDescriptionsItem[]",
+    "required": false,
+    "description": "",
+    "default": "[]"
+   },
+   {
+    "name": "tags",
+    "type": "readonly { key: string; label: string; tone?: 'danger' | 'ok' | 'accent' | 'neutral' | 'warn' | 'event' | 'solid' | undefined; }[]",
+    "required": false,
+    "description": "",
+    "default": "[]"
+   },
+   {
+    "name": "tagsLabel",
+    "type": "string",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "photo-actions",
+   "actions",
+   "footer"
+  ],
+  "parts": [
+   "root",
+   "identity",
+   "photo",
+   "name",
+   "actions",
+   "footer"
+  ],
+  "dataAr": "profile-card"
+ },
+ {
   "name": "ArQRCode",
   "version": "1.0.0",
   "description": "QR コード（打刻用など）。点は ink、期限切れは白い幕と「作り直す」ボタン。\nQR は中で作る（外の部品に頼らない。UTF-8・型番 1〜40・誤り訂正 L/M/Q/H）。",

@@ -1,0 +1,3 @@
+/* @covers ArProfileCard 1.0.0 */
+/* The profile composes the design's Card, Avatar, Title, Tag and Descriptions. */
+[data-ar-design="remix"] [data-ar="profile-card"]{color:var(--ar-color-text)}

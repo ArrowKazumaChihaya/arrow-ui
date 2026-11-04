@@ -85,6 +85,7 @@ export const covers = {
   ArPointerBadge: "1.0.0",
   ArPopconfirm: "1.0.0",
   ArPopover: "1.0.0",
+  ArProfileCard: "1.0.0",
   ArProgress: "1.0.0",
   ArPunchButton: "1.0.0",
   ArQRCode: "1.0.0",
