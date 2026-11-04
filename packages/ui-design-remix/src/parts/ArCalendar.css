@@ -98,3 +98,7 @@
 [data-ar-design="remix"] [data-ar="calendar"] [data-part="times"]{gap:4px;padding-top:2px}
 [data-ar-design="remix"] [data-ar="calendar"] [data-part="time-range"]{font:600 10.5px/1.3 var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="calendar"] [data-part="time-end"]{color:var(--ar-color-text-secondary)}
+
+/* State badges are deliberately compact in a seven-column phone calendar. Long translations wrap. */
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"] [data-part="foot"]>[data-ar="tag"]{max-width:100%;height:auto;min-height:16px;padding:1px 2px;white-space:normal;overflow-wrap:anywhere;text-align:center;line-height:14px}
+@media(max-width:959px){[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]{padding-inline:2px}}
