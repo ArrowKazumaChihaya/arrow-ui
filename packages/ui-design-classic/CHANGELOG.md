@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- 勤怠チャートの長い分類名と横スクロール中の見出しを保持し、時間帯のキーボード操作と淡色帯の文字を改善。
+
 - Organization charts support anchored pan/pinch gestures, async tree data, and non-overlapping mobile controls. Preserve user zoom and pan across design changes.
 
 - Keep authentication page side insets and remove excessive vertical whitespace on mobile.

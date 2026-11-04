@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- 勤怠チャートの長い分類名と横スクロール中の見出しを保持し、時間帯のキーボード操作と淡色帯の文字を改善。
+
 - Keep keyboard focus inside the PDF preview when switching to a design that hides the focused zoom control, without losing page or zoom state.
 
 - Show full department/store names and long codes in organization chart cards by wrapping text.

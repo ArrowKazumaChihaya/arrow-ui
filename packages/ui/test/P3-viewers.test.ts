@@ -72,6 +72,15 @@ describe("ArTimeChart", () => {
     expect((w.emitted("select")![0]![0] as { key: string }).key).toBe("1");
     expect(w.findAll('[data-part="note"]')[0]!.text()).toBe("勤務なし");
   });
+  it("時間帯へキーボードで移り、独自の説明と金額を読める", async () => {
+    const w = mount(ArTimeChart, { props: { mode: "day", rows: [{ key: "work", label: "勤務", bars: [{ kind: "work", start: -60, end: 1620, tip: "勤務 23:00〜27:00\n金額 1234" }] }] } });
+    const bar = w.get('[data-part="bar"]');
+    expect(bar.attributes("tabindex")).toBe("0");
+    expect(bar.attributes("aria-label")).toBe("勤務 23:00〜27:00\n金額 1234");
+    await w.setProps({ labels: { kinds: { work: "Work" } } });
+    expect(bar.element).toBe(w.get('[data-part="bar"]').element);
+    w.unmount();
+  });
   it("day：帯の中の文字と1時間ごとの目盛り", () => {
     const w = mount(ArTimeChart, { props: { mode: "day", rows: [{ key: "s", label: "シフト", bars: [{ kind: "shift" as const, start: 1080, end: 1620, text: "18:00〜27:00" }] }] } });
     expect(w.find('[data-part="bar-text"]').text()).toBe("18:00〜27:00");

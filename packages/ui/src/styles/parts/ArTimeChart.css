@@ -20,3 +20,9 @@
 [data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-ar="tooltip"]>[data-part="bar"]>[data-part="bar-text"]{white-space:nowrap}
 [data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-part="note"]{position:absolute;white-space:nowrap}
 [data-ar="tooltip"] [data-part="tip"]{white-space:pre-line}
+
+/* Keep category names readable while the time axis scrolls on narrow screens. */
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="head-label"],
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]{position:sticky;left:0;z-index:2}
+[data-ar="time-chart"][data-mode="day"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]>[data-part="date"]{white-space:normal;overflow-wrap:anywhere;max-width:100%;line-height:1.5;padding-block:6px}
+[data-ar="time-chart"] [data-part="bar"]:focus-visible{outline:2px solid var(--ar-color-text);outline-offset:2px}

@@ -147,7 +147,7 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
         <div data-part="lane" role="cell" :aria-label="rowAria(r)">
           <span v-for="t in ticks" :key="t.m" data-part="gridline" aria-hidden="true" :style="{ left: `${t.left}%` }" />
           <ArTooltip v-for="(b, i) in r.bars" :key="i" :data-lane="lane(b.kind)" :style="barStyle(b)" placement="top">
-            <span data-part="bar" :data-kind="b.kind"><span v-if="mode === 'day' && (b.text ?? '') !== ''" data-part="bar-text">{{ b.text }}</span></span>
+            <span data-part="bar" :data-kind="b.kind" tabindex="0" :aria-label="tipOf(b)"><span v-if="mode === 'day' && (b.text ?? '') !== ''" data-part="bar-text">{{ b.text }}</span></span>
             <template #content><span data-part="tip">{{ tipOf(b) }}</span></template>
           </ArTooltip>
           <span v-if="!r.bars.length && r.note" data-part="note">{{ r.note }}</span>
