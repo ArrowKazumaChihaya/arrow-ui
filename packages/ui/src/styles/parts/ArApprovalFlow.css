@@ -27,3 +27,4 @@
 [data-ar="approval-flow"] [data-part="details"]{display:block;min-width:0;grid-column:1/-1;white-space:normal;font-weight:400}
 [data-ar="approval-flow"][data-detailed][data-layout="row"] [data-part="step"]{flex-direction:column;align-items:stretch;height:auto;white-space:normal}
 [data-ar="approval-flow"][data-detailed][data-layout="row"] [data-part="step"]>[data-part="status"]{position:static;clip:auto;width:auto;height:auto;white-space:normal}
+[data-ar="approval-flow"] [data-part="sep"]{pointer-events:none}
