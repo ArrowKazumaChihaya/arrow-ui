@@ -134,6 +134,23 @@ function onSingleInput(e: Event) {
   commit(Array.from({ length: props.length }, (_, k) => v[k] ?? ""));
 }
 
+// Single and split layouts share the same draft. If the theme changes while the
+// user is editing, continue at the corresponding digit in the new layout.
+watch(form, async (next) => {
+  const active = document.activeElement;
+  if (!(active instanceof HTMLInputElement)) return;
+  const index = inputs.value.findIndex((input) => input === active);
+  if (active !== single.value && index < 0) return;
+  const start = active === single.value ? (active.selectionStart ?? 0) : index;
+  const end = active === single.value ? (active.selectionEnd ?? start) : index + 1;
+  await nextTick();
+  if (document.activeElement !== active && document.activeElement !== document.body) return;
+  if (next === "single") {
+    single.value?.focus();
+    single.value?.setSelectionRange(start, end);
+  } else focusAt(start);
+});
+
 /* 再送までの秒数 */
 const remaining = ref(0);
 let timer: ReturnType<typeof setInterval> | undefined;

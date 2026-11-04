@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- Keep the OTP draft and corresponding digit focus when switching between classic single-field and remix split-field designs.
+
 ### Patch Changes
 
 - Add a shared profile card for manager and personal employee information. Wrap breadcrumb actions at narrow widths and prevent responsive grids and page offsets from overflowing or adding duplicate mobile gutters.

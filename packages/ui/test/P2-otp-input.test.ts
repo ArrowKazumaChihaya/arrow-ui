@@ -1,9 +1,10 @@
 import { mount } from "@vue/test-utils";
-import { nextTick } from "vue";
+import { nextTick, ref } from "vue";
 import ArOtpInput from "../src/components/ArOtpInput.vue";
 import ArUiProvider from "../src/provider/ArUiProvider.vue";
 import { h } from "vue";
 import classicDesign from "@s_and_a/arrow-ui-design-classic";
+import remixDesign from "@s_and_a/arrow-ui-design-remix";
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -67,6 +68,37 @@ describe("ArOtpInput", () => {
     expect(w.emitted("resend")).toHaveLength(1);
     await nextTick();
     expect(btn().text()).toBe("認証コードを再送（あと5秒）");
+  });
+  it("keeps a partial code and digit focus when switching between single and split fields", async () => {
+    const design = ref(classicDesign);
+    const value = ref("482");
+    const w = mount({ render: () => h(ArUiProvider, { design: design.value, scope: "self" }, () => h(ArOtpInput, { modelValue: value.value, "onUpdate:modelValue": (v: string) => (value.value = v) })) }, { attachTo: document.body });
+    const single = w.get<HTMLInputElement>('[data-part="input"]');
+    single.element.focus();
+    single.element.setSelectionRange(1, 2);
+    design.value = remixDesign;
+    await nextTick();
+    await nextTick();
+    const cells = w.findAll<HTMLInputElement>('[data-part="cell"]');
+    expect(cells.map((cell) => cell.element.value).join("")).toBe("482");
+    expect(document.activeElement).toBe(cells[1]?.element);
+    await cells[1]?.setValue("9");
+    await nextTick();
+    expect(value.value).toBe("492");
+    cells[2]?.element.focus();
+    design.value = classicDesign;
+    await nextTick();
+    await nextTick();
+    const restored = w.get<HTMLInputElement>('[data-part="input"]');
+    expect(restored.element.value).toBe("492");
+    expect(document.activeElement).toBe(restored.element);
+    expect([restored.element.selectionStart, restored.element.selectionEnd]).toEqual([2, 3]);
+    restored.element.blur();
+    design.value = remixDesign;
+    await nextTick();
+    await nextTick();
+    expect(document.activeElement).toBe(document.body);
+    w.unmount();
   });
   it("classic は1つの欄（placeholder 000000）で、値の受け渡しは同じ", async () => {
     let val = "";

@@ -31,5 +31,6 @@ export interface ArOtpInputEmits {
  * デザインが選ぶ形（ArDesign.forms.ArOtpInput）。
  * fields：split（既定。1桁ずつの箱。打つと次の箱へ、Backspace で前へ、貼り付けで全部の箱に入る）／ single（今の ARROW：1つの欄に6桁。placeholder「000000」）。
  * どちらも v-model の値（数字だけの文字列）と complete・resend は同じ。
+ * 入力中にデザインを切り替えたときは、対応する桁へフォーカスを引き継ぐ。
  */
 export type ArOtpInputPart = "root" | "fields" | "cell" | "input" | "resend";
