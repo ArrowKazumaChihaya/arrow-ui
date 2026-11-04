@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- Remove excessive vertical whitespace above mobile authentication forms.
+
 ### Patch Changes
 
 - Add a shared profile card for manager and personal employee information. Wrap breadcrumb actions at narrow widths and prevent responsive grids and page offsets from overflowing or adding duplicate mobile gutters.

@@ -32,7 +32,7 @@ const digits = computed(() => {
   return Array.from({ length: props.length }, (_, i) => v[i] ?? "");
 });
 const rootAttrs = computed(() => {
-  const { id: _id, "aria-invalid": _inv, "aria-describedby": _d, ...rest } = attrs as Record<string, unknown>;
+  const { id: _id, "aria-invalid": _inv, "aria-describedby": _d, "aria-required": _r, "aria-labelledby": _l, ...rest } = attrs as Record<string, unknown>;
   return rest;
 });
 const firstId = computed(() => (attrs.id as string | undefined) ?? `${id}-0`);
@@ -205,13 +205,15 @@ defineExpose({ focus: () => (form.value === "single" ? single.value?.focus() : f
         :maxlength="length"
         :placeholder="'0'.repeat(length)"
         :aria-label="label"
+        :aria-labelledby="attrs['aria-labelledby'] as string | undefined"
+        :aria-required="attrs['aria-required'] as boolean | 'true' | 'false' | undefined"
         :aria-invalid="invalid ? 'true' : undefined"
         :aria-describedby="(attrs['aria-describedby'] as string | undefined)"
         :disabled="disabled"
         @input="onSingleInput"
       />
     </div>
-    <div v-else data-part="fields" role="group" :aria-label="label">
+    <div v-else data-part="fields" role="group" :aria-label="label" :aria-labelledby="attrs['aria-labelledby'] as string | undefined">
       <input
         v-for="(d, i) in digits"
         :key="i"
@@ -225,6 +227,7 @@ defineExpose({ focus: () => (form.value === "single" ? single.value?.focus() : f
         :autocomplete="i === 0 ? 'one-time-code' : 'off'"
         maxlength="2"
         :aria-label="`${label} ${i + 1}桁目`"
+        :aria-required="attrs['aria-required'] as boolean | 'true' | 'false' | undefined"
         :aria-invalid="invalid ? 'true' : undefined"
         :aria-describedby="i === 0 ? (attrs['aria-describedby'] as string | undefined) : undefined"
         :disabled="disabled"

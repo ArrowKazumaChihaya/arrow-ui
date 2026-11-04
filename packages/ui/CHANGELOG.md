@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- OTP digits shrink to fit narrow forms and forward field required/help/label attributes to native controls.
+
 - Keep the OTP draft and corresponding digit focus when switching between classic single-field and remix split-field designs.
 
 ### Patch Changes

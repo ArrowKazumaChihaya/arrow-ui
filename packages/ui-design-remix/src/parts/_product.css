@@ -318,3 +318,7 @@
 [data-ar-design="remix"] :is([data-ar="card"],[data-ar="modal"],[data-ui-part="section"],[data-ui-part="panel"]) :is([data-ui-part="section"],[data-ui-part="panel"]):not([data-ui-fixed], [data-ui-fixed] *) {border:0;border-radius:0;background:transparent}
 /* A viewport provides scrolling; tables and cards own their visible boundaries. */
 [data-ar-design="remix"] [data-ui-part="tableViewport"]:not([data-ui-fixed], [data-ui-fixed] *) {border:0}
+
+@media(max-width:767px) {
+  [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *) { min-height:0;justify-content:flex-start;padding:32px 20px; }
+}

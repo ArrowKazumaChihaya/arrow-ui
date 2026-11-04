@@ -20,6 +20,25 @@ function mountOtp(props: Record<string, unknown>) {
 }
 
 describe("ArOtpInput", () => {
+  it("connects field labels, required state and help to the native controls in both forms", async () => {
+    const design = ref(classicDesign);
+    const w = mount({ render: () => h(ArUiProvider, { design: design.value, scope: "self" }, () => h(ArOtpInput, { id: "test-code", label: "Code", "aria-labelledby": "code-label", "aria-required": "true", "aria-describedby": "code-help" })) });
+    const single = w.get("input");
+    expect(single.attributes("id")).toBe("test-code");
+    expect(single.attributes("aria-labelledby")).toBe("code-label");
+    expect(single.attributes("aria-describedby")).toBe("code-help");
+    expect(single.attributes("aria-required")).toBe("true");
+    design.value = remixDesign;
+    await nextTick();
+    expect(w.get('[role="group"]').attributes("aria-labelledby")).toBe("code-label");
+    const cells = w.findAll("input");
+    expect(cells).toHaveLength(6);
+    expect(cells[0]?.attributes("id")).toBe("test-code");
+    expect(cells[0]?.attributes("aria-describedby")).toBe("code-help");
+    expect(cells.every((cell) => cell.attributes("aria-required") === "true")).toBe(true);
+    expect(cells[2]?.attributes("aria-label")).toBe("Code 3桁目");
+    w.unmount();
+  });
   it("6つの箱に1桁ずつ。打つと次の箱へ、全部入ると complete", async () => {
     const w = mountOtp({ modelValue: "" });
     const cells = w.findAll('[data-part="cell"]');
