@@ -18,7 +18,8 @@ describe("organization chart navigation", () => {
     await nextTick();
     await viewport.trigger("wheel", { deltaX: 20, deltaY: 40 });
     expect(style()).toContain("-20px), -40px) scale(1)");
-    await viewport.trigger("wheel", { deltaY: -1, ctrlKey: true, clientX: 350, clientY: 140 });
+    viewport.element.dispatchEvent(new WheelEvent("wheel", { bubbles: true, cancelable: true, deltaY: -1, ctrlKey: true, clientX: 350, clientY: 140 }));
+    await nextTick();
     expect(style()).toContain("-32px), -54px) scale(1.1)");
     wrapper.unmount();
   });
@@ -40,9 +41,11 @@ describe("organization chart navigation", () => {
     await viewport.trigger("pointermove", { pointerId: 1, clientX: 210, clientY: 150 });
     expect(style()).toContain("60px), -90px) scale(2)");
     await viewport.trigger("pointerup", { pointerId: 1 });
-    await wrapper.get('[data-part="node"]').trigger("click", { detail: 1 });
+    wrapper.get('[data-part="node"]').element.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, detail: 1 }));
+    await nextTick();
     expect(wrapper.emitted("select")).toBeUndefined();
-    await wrapper.get('[data-part="node"]').trigger("click", { detail: 0 });
+    wrapper.get('[data-part="node"]').element.dispatchEvent(new MouseEvent("click", { bubbles: true, detail: 0 }));
+    await nextTick();
     expect(wrapper.emitted("select")?.length).toBe(1);
     wrapper.unmount();
   });
