@@ -1,4 +1,4 @@
-/* @covers ArPeriodNav 1.0.0 */
+/* @covers ArPeriodNav 1.1.0 */
 /* ArPeriodNav：今の ARROW の MonthChanger（md：‹ › は 30px のテーマ色の丸に白い 12px の矢印・間8px、年月は幅いっぱいの 2px のテーマ色の枠・
    テーマ色の 18px 太さ600・行の高さ30）と DateChanger（lg：日付は枠なしの黒い 30px 太さ600・最大220px、曜日は 22px の灰色・土は青・日は赤）。
    乗せると丸は不透明度 .8。「今日」は今の ARROW にないので antd の小さなボタンを右に並べる（refs/classic/rules/arrow-MonthChanger.css・arrow-DateChanger.css）。 */
@@ -32,3 +32,5 @@
 [data-ar-design="classic"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="arrow"]:hover:not(:disabled){opacity:1;background:#DCDCDC}
 [data-ar-design="classic"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="arrow"]:disabled{visibility:hidden}
 [data-ar-design="classic"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{height:36px;padding:0;border:0;background:none;color:#fff;font-size:18px;line-height:36px}
+/* 1.1：祝日は今の DateChanger と同じく曜日の文字を赤にするだけ（名前は出さない。読み上げには入る） */
+[data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="holiday"]{display:none}

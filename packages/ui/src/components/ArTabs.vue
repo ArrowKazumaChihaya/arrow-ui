@@ -9,6 +9,7 @@ import ArIcon from "./ArIcon.vue";
 import type { ArTabsProps } from "./ArTabs.contract";
 
 const props = withDefaults(defineProps<ArTabsProps>(), {
+  size: "md",
   variant: "line",
   idPrefix: undefined,
   addable: false,
@@ -46,7 +47,7 @@ function onKeydown(e: KeyboardEvent, key: string) {
 </script>
 
 <template>
-  <div data-ar="tabs" data-part="root" :data-variant="variant">
+  <div data-ar="tabs" data-part="root" :data-variant="variant" :data-size="size === 'sm' ? 'sm' : undefined">
     <div ref="list" data-part="list" role="tablist" :aria-label="label">
       <button
         v-for="t in items"

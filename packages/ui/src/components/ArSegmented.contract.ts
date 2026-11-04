@@ -1,4 +1,4 @@
-/** ArSegmented 1.0 の契約。 */
+/** ArSegmented 1.1 の契約。 */
 import type { ArIconName } from "../icons";
 
 export interface ArSegmentedOption {
@@ -14,6 +14,8 @@ export interface ArSegmentedOption {
   disabled?: boolean;
   /** 文字の右の件数の丸（「備考 2」）。0 や省いたときは出さない。 */
   count?: number;
+  /** 件数の丸の色。accent（既定・テーマ色）、warn（未回答など注意。淡い橙）、danger（間違い・不足）、neutral（灰）。 */
+  countTone?: "accent" | "warn" | "danger" | "neutral";
 }
 
 export interface ArSegmentedProps {

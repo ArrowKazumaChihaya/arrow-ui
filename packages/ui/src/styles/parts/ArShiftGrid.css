@@ -1,0 +1,82 @@
+/* ArShiftGrid の構造：左にパターンの一覧、右に表（名前の列＋日の列の CSS グリッド）と表の下の案内。
+   行は display:contents。見出しの行は上に、名前の列は左に固定（sticky）。列の幅は --sg-col（部品が決める）、名前の列の幅は --sg-name（デザインが決める）。
+   チャートの帯は帯の場所の中で left と width を % で置く。 */
+[data-ar="shift-grid"]{--sg-name:168px;display:flex;flex-direction:column;min-width:0;box-sizing:border-box}
+[data-ar="shift-grid"] *{box-sizing:border-box}
+[data-ar="shift-grid"]>[data-part="toolbar"]{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+[data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]{display:inline-flex;align-items:center}
+[data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]>button{display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+[data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]>button:disabled{cursor:not-allowed}
+[data-ar="shift-grid"]>[data-part="layout"]{display:flex;align-items:flex-start;min-width:0}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]{display:flex;flex-direction:column;flex:none}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-edit"]{display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-search"]{display:flex;align-items:center}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-search"]>input{flex:1;min-width:0;border:0;outline:none;background:none;padding:0}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern"]{display:flex;align-items:center;cursor:grab;user-select:none;-webkit-user-select:none}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern"]>[data-part="pattern-swatch"]{flex:none}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern"]>span:last-child{min-width:0}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern"] :is([data-part="pattern-name"],[data-part="pattern-time"]){display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-hint"]{display:flex}
+[data-ar="shift-grid"]>[data-part="layout"]>[data-part="main"]{flex:1;min-width:0;display:flex;flex-direction:column}
+[data-ar="shift-grid"] [data-part="viewport"]{position:relative;overflow:auto;outline:none;user-select:none;-webkit-user-select:none}
+[data-ar="shift-grid"][data-fit="scale"] [data-part="viewport"]{overflow-x:hidden}
+[data-ar="shift-grid"] [data-part="scaler"]{position:relative}
+[data-ar="shift-grid"] [data-part="grid"]{display:grid;grid-template-columns:var(--sg-name) repeat(var(--sg-n),minmax(var(--sg-col),1fr));min-width:calc(var(--sg-name) + var(--sg-n) * var(--sg-col));transform-origin:0 0}
+[data-ar="shift-grid"] [data-part="grid"]>[role="row"]{display:contents}
+[data-ar="shift-grid"] [data-part="grid"]>[role="row"]>*{min-width:0}
+[data-ar="shift-grid"] [data-part="head-date"]>*,[data-ar="shift-grid"] [data-part="head-sub"]>*{position:sticky;z-index:3}
+[data-ar="shift-grid"] [data-part="head-date"]>*{top:0}
+[data-ar="shift-grid"] :is([data-part="head-date"],[data-part="head-sub"],[data-part="head-event"])>[data-part="name-head"]{position:sticky;left:0;z-index:8}
+[data-ar="shift-grid"] [data-part="row"]>[data-part="name"],[data-ar="shift-grid"] [data-part="foot"]>[data-part="foot-name"]{position:sticky;left:0;z-index:6}
+[data-ar="shift-grid"] [data-part="date"]{display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+[data-ar="shift-grid"] [data-part="date"]>[data-part="date-icons"]{display:flex;align-items:center;justify-content:center}
+[data-ar="shift-grid"] [data-part="status"]{display:flex;align-items:center;justify-content:center}
+[data-ar="shift-grid"] [data-part="status"]>[data-part="chart-button"]{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap;overflow:hidden}
+[data-ar="shift-grid"] [data-part="status"]>[data-part="axis"]{display:flex;justify-content:space-between;flex:1;min-width:0}
+[data-ar="shift-grid"] [data-part="head-event"]>[data-part="status"]{flex-direction:column;align-items:stretch}
+[data-ar="shift-grid"] [data-part="event"]{display:flex;align-items:center;white-space:nowrap;overflow:hidden;min-width:0}
+[data-ar="shift-grid"] [data-part="event"]>[data-part="event-dot"]{flex:none}
+[data-ar="shift-grid"] [data-part="event"]>span{overflow:hidden;text-overflow:ellipsis}
+[data-ar="shift-grid"] [data-part="name"]{display:flex;align-items:center;overflow:hidden}
+[data-ar="shift-grid"] [data-part="name"]>[data-part="grip"]{flex:none;display:inline-flex;cursor:grab}
+[data-ar="shift-grid"] [data-part="name"]>[data-part="avatar"]{flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+[data-ar="shift-grid"] [data-part="name"]>[data-part="avatar"]>img{width:100%;height:100%;object-fit:cover}
+[data-ar="shift-grid"] [data-part="name"]>[data-part="member"]{min-width:0;overflow:hidden}
+[data-ar="shift-grid"] [data-part="name"]>[data-part="member"]>:is([data-part="code"],[data-part="member-name"],[data-part="summary"]){display:block}
+[data-ar="shift-grid"] [data-part="name"]>[data-part="member"]>[data-part="member-name"]{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-ar="shift-grid"] [data-part="summary"]>span{white-space:nowrap;display:inline-block}
+[data-ar="shift-grid"] [data-part="cell"]{position:relative;display:flex;align-items:stretch}
+[data-ar="shift-grid"] [data-part="cell"]:hover{z-index:5}
+[data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"]{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden;white-space:nowrap}
+[data-ar="shift-grid"] [data-part="cell"] [data-part="line"]{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+[data-ar="shift-grid"] [data-part="cell"] [data-part="detail"]{display:block}
+[data-ar="shift-grid"] [data-part="cell"] [data-part="detail-label"]{display:block}
+[data-ar="shift-grid"] [data-part="cell"]>[data-part="avail"]{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap;cursor:pointer;padding:0;font-family:inherit}
+[data-ar="shift-grid"] [data-part="cell"]>[data-part="track"]{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+[data-ar="shift-grid"] [data-part="track"]>[data-part="bar-track"]{position:relative;display:block;overflow:hidden}
+[data-ar="shift-grid"] [data-part="bar-track"]>:is([data-part="bar"],[data-part="break"],[data-part="handle"],[data-part="avail-bar"]){position:absolute;top:0;bottom:0;display:block}
+[data-ar="shift-grid"] [data-part="bar-track"]>[data-part="bar"]{cursor:grab}
+[data-ar="shift-grid"][data-dragging] [data-part="bar-track"]>[data-part="bar"]{cursor:grabbing}
+[data-ar="shift-grid"] [data-part="bar-track"]>[data-part="break"]{pointer-events:none}
+[data-ar="shift-grid"] [data-part="bar-track"]>[data-part="handle"]{width:8px;cursor:ew-resize;z-index:2}
+[data-ar="shift-grid"] [data-part="bar-track"]>[data-part="handle"][data-side="start"]{transform:translateX(-1px)}
+[data-ar="shift-grid"] [data-part="bar-track"]>[data-part="handle"][data-side="end"]{transform:translateX(-7px)}
+[data-ar="shift-grid"] [data-part="bar-track"]>[data-part="avail-bar"]{padding:0;cursor:pointer}
+[data-ar="shift-grid"] [data-part="track"][data-empty]{cursor:crosshair}
+[data-ar="shift-grid"] [data-part="track"]>[data-part="bar-label"]{display:block;white-space:nowrap;overflow:hidden;text-align:center}
+[data-ar="shift-grid"] [data-part="cell"]>[data-part="fill-handle"]{position:absolute;z-index:4;cursor:crosshair}
+[data-ar="shift-grid"] [data-part="foot-cell"],[data-ar="shift-grid"] [data-part="foot-name"]{display:flex;align-items:center;justify-content:center}
+[data-ar="shift-grid"] [data-part="hints"]{display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="shift-grid"] [data-part="hints"]>[data-part="hint"]{white-space:nowrap}
+[data-ar="shift-grid"] [data-part="hints"]>[data-part="hint-status"]{margin-left:auto}
+[data-ar="shift-grid"][data-compact]>[data-part="layout"]{flex-direction:column;align-items:stretch}
+[data-ar="shift-grid"][data-compact]>[data-part="layout"]>[data-part="patterns"]{flex-direction:row;overflow-x:auto}
+[data-ar="shift-grid"][data-compact]>[data-part="layout"]>[data-part="patterns"]>*{flex:none}
+[data-ar="shift-grid"][data-compact]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-hint"]{display:none}
+[data-ar="shift-grid"][data-compact] [data-part="name"]>:is([data-part="grip"],[data-part="avatar"]){display:none}
+[data-ar="shift-grid-tip"]{position:fixed;z-index:1100;pointer-events:none;white-space:pre}
+[data-ar="shift-grid-tip"]>[data-part="tip-row"]{display:block}
+[data-ar="shift-grid-tip"]>[data-part="tip-row"][data-form="section"]>*{display:block}
+[data-ar="shift-grid-menu"]{position:fixed;z-index:1100}
+[data-ar="shift-grid-menu"]>[data-part="menu"]{display:flex;flex-direction:column}
+[data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"]{display:flex;align-items:center;cursor:pointer;font-family:inherit}

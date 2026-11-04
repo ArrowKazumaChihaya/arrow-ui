@@ -4,9 +4,11 @@
  * 頭のアイコン・文字、後ろの単位・アイコン、探す（虫めがね）、パスワード（目のボタンで表示の切り替え）、
  * 文字数、消すボタン、大きさ、間違い・注意・使えない・読み取りのみ。
  * update:modelValue は打つたびに、change は確定したとき（Enter・フォーカスが外れた）に出す。
- * class と style 以外の属性（aria-describedby など）は中の input に渡す。
+ * class と style 以外の属性（tabindex・aria-*・inputmode など）とイベント（keydown・beforeinput・paste・drop…）は中の input に渡す。
+ * input に class・style を付けるときは inputClass・inputStyle。フォーカスは focus()・blur()・select()・setSelectionRange() と input。
+ * 1.1：update:modelValue で出した値と欄の文字がずれたら（マスク・数字だけで直したとき）、欄を出した値にそろえる。
  */
-import { computed, onMounted, ref, useAttrs } from "vue";
+import { computed, nextTick, onMounted, ref, useAttrs } from "vue";
 import ArIcon from "./ArIcon.vue";
 import type { ArTextInputProps } from "./ArTextInput.contract";
 
@@ -38,6 +40,8 @@ const props = withDefaults(defineProps<ArTextInputProps>(), {
   autocomplete: "off",
   autofocus: false,
   clearLabel: "消す",
+  inputClass: undefined,
+  inputStyle: undefined,
 });
 const emit = defineEmits<{
   "update:modelValue": [value: string];
@@ -70,6 +74,12 @@ const invalid = computed(() => props.invalid || attrs["aria-invalid"] === "true"
 
 function onInput(e: Event) {
   emit("update:modelValue", (e.target as HTMLInputElement).value);
+  /* 親が値を直して同じ値を返したときは描き直されないので、欄の文字を modelValue にそろえる（変換中は触らない）。 */
+  if ((e as InputEvent).isComposing) return;
+  void nextTick(() => {
+    const el = input.value;
+    if (el && el.value !== (props.modelValue ?? "")) el.value = props.modelValue ?? "";
+  });
 }
 function onEnter() {
   emit("change", props.modelValue);
@@ -99,6 +109,7 @@ defineExpose({
   focus: () => input.value?.focus(),
   blur: () => input.value?.blur(),
   select: () => input.value?.select(),
+  setSelectionRange: (start: number | null, end: number | null, direction?: "forward" | "backward" | "none") => input.value?.setSelectionRange(start, end, direction),
   input,
 });
 </script>
@@ -123,6 +134,8 @@ defineExpose({
       :id="id"
       ref="input"
       v-bind="inputAttrs"
+      :class="inputClass"
+      :style="inputStyle"
       data-part="input"
       :data-align="align && align !== 'left' ? align : undefined"
       :type="inputType"

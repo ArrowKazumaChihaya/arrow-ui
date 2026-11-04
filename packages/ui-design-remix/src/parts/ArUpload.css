@@ -1,4 +1,4 @@
-/* @covers ArUpload 1.0.0 */
+/* @covers ArUpload 1.1.0 */
 /* ArUpload：置き場 .ad-up（点線1.5 acc-line・角丸14・acc-25・余白22）、一覧 .ad-file（行34・角丸8・13px、名前は acc-ink）、
    進み具合 .ad-bar（3px・テーマ色）、失敗は赤と理由、写真 .ad-upc（96px・点線 field・角丸12）。 */
 [data-ar-design="remix"] [data-ar="upload"]{gap:12px 22px;font-feature-settings:"palt" 1}

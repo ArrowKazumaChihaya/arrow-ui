@@ -41,3 +41,8 @@
 /* 止めた列の見出しは、ほかの見出し（上に貼りつく）より前に。2段の見出しの下の段は上の段の高さだけ下に貼りつく */
 [data-ar="table"][data-sticky-header] thead th[data-sticky]{z-index:3}
 [data-ar="table"][data-sticky-header] thead tr[data-tier="2"]>th{top:var(--ar-table-head-top,0px)}
+/* 1.2：段に分けた列・セルの頭の小さな文字（「〜」）・表の中の時刻と選ぶの入力 */
+[data-ar="table"] td>[data-part="lead"]{display:inline-block;vertical-align:middle}
+[data-ar="table"] td>[data-part="cell-editor"]{display:inline-flex;align-items:center;vertical-align:middle;max-width:100%}
+[data-ar="table"] td>[data-part="cell-editor"][data-editor="select"]{display:flex;width:100%;min-width:0}
+[data-ar="table"] td>[data-part="cell-editor"][data-editor="select"]>*{flex:1;min-width:0}

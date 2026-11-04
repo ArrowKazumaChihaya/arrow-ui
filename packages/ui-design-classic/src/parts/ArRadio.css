@@ -1,0 +1,14 @@
+/* @covers ArRadio 1.0.0 */
+/* ArRadio（今の UI/Radio＝antd の Radio を radio_wrap で包んだもの：16px の丸・#D9D9D9 の枠、選ぶと #1677FF の地に白い点、
+   右の余白 0・行の高さは中身なり・縦は真ん中。文字は 14px rgba(0,0,0,.88)・丸との間 8px） */
+[data-ar-design="classic"] [data-ar="radio"]{gap:8px;color:rgba(0,0,0,.88);font-size:14px;line-height:normal}
+[data-ar-design="classic"] [data-ar="radio"]>[data-part="control"]>[data-part="mark"]{width:16px;height:16px;border:1px solid #D9D9D9;border-radius:50%;background:#fff;transition:all .2s}
+[data-ar-design="classic"] [data-ar="radio"]:hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="mark"]{border-color:#1677FF}
+[data-ar-design="classic"] [data-ar="radio"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{background:#1677FF;border-color:#1677FF;box-shadow:inset 0 0 0 4px #1677FF,inset 0 0 0 8px #fff}
+[data-ar-design="classic"] [data-ar="radio"]>[data-part="control"]>[data-part="input"]:focus-visible+[data-part="mark"]{outline:2px solid #91CAFF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="radio"][data-state~="invalid"]:not([data-state~="checked"])>[data-part="control"]>[data-part="mark"]{border-color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="radio"][data-state~="disabled"]{color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="radio"][data-state~="disabled"]>[data-part="control"]>[data-part="mark"]{background:rgba(0,0,0,.04);border-color:#D9D9D9;box-shadow:none}
+[data-ar-design="classic"] [data-ar="radio"][data-state~="disabled"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{box-shadow:inset 0 0 0 4px #F5F5F5,inset 0 0 0 8px #BFBFBF}
+/* ArRadioGroup の選択肢の下の中身（extra）：丸の右の文字の頭（16+8px）にそろえる */
+[data-ar-design="classic"] [data-ar="radio-group"]>[data-part="extra"]{padding:4px 0 8px 24px}

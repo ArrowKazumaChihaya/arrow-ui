@@ -1,4 +1,4 @@
-/* @covers ArCheckbox 1.0.0, ArCheckboxGroup 1.0.0, ArRadioGroup 1.0.0 */
+/* @covers ArCheckbox 1.0.0, ArCheckboxGroup 1.0.0, ArRadioGroup 1.1.0 */
 /* ArCheckbox（ui-Check）：16×16・角丸4・枠は灰 #808080（ARROW の上書き。チェック時・hover・無効でも灰のまま）、
    チェック時の塗り #1677FF、indeterminate は白地の中央に 8px の #1677FF の四角。ラベルは 14px・左5／右10・行30。 */
 [data-ar-design="classic"] [data-ar="checkbox"],[data-ar-design="classic"] [data-ar="radio-group"]>[data-part="item"]{font-size:14px;color:rgba(0,0,0,.88)}

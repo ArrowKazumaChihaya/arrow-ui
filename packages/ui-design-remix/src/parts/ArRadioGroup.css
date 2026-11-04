@@ -1,4 +1,4 @@
-/* @covers ArRadioGroup 1.0.0 */
+/* @covers ArRadioGroup 1.1.0 */
 /* ArRadioGroup：.radio（18px の丸・枠1.5 #AEB9C4、選ぶと枠5のテーマ色）。type=button は .seg（ArSegmented と同じ形）。 */
 [data-ar-design="remix"] [data-ar="radio-group"]{gap:10px 18px}
 [data-ar-design="remix"] [data-ar="radio-group"][data-direction="vertical"]{gap:10px}

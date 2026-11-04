@@ -1,4 +1,4 @@
-/* @covers ArTextInput 1.0.0 */
+/* @covers ArTextInput 1.1.0 */
 /* ArTextInput（.inp）：高さ38・角丸10・枠 field・14px 500。フォーカスはテーマ色の枠と淡い輪。 */
 [data-ar-design="remix"] [data-ar="text-input"]{height:38px;gap:8px;padding:0 12px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font-size:14px;font-weight:500;line-height:normal;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),background-color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="text-input"]:hover{border-color:#A3AEB9}

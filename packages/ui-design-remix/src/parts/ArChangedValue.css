@@ -1,4 +1,4 @@
-/* @covers ArChangedValue 1.1.0 */
+/* @covers ArChangedValue 1.2.0 */
 /* 変更前は薄い打ち消し線、矢印は mute、変更後は太字の橙（直した所が目に入る） */
 [data-ar-design="remix"] [data-ar="changed-value"]{font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="changed-value"]>[data-part="before"]{color:var(--ar-color-text-muted);text-decoration:line-through;text-decoration-color:var(--ar-color-text-faint)}
@@ -26,3 +26,5 @@
 [data-ar-design="remix"] [data-ar="changed-value"][data-layout="list"]>[data-part="row"]:last-child{border-bottom:0}
 [data-ar-design="remix"] [data-ar="changed-value"][data-layout="list"]>[data-part="row"]>[data-part="change"]{gap:4px 8px;padding:8px 0;line-height:19.5px}
 [data-ar-design="remix"] [data-ar="changed-value"][data-layout="list"] [data-part="arrow"]{margin:0}
+/* 1.2 text（今の表記そのままの1つの文）：変わったときは変更後と同じ橙の太字 */
+[data-ar-design="remix"] [data-ar="changed-value"][data-layout="text"][data-state~="changed"]{color:var(--ar-color-warn);font-weight:700}

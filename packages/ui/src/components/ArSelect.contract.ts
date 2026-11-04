@@ -1,5 +1,6 @@
-/** ArSelect 1.0 の契約。 */
+/** ArSelect 1.2 の契約。 */
 import type { ArIconName } from "../icons";
+import type { ArButtonTone } from "./ArButton.contract";
 
 export type ArSelectValue = string | number;
 
@@ -9,6 +10,8 @@ export interface ArSelectOption {
   disabled?: boolean;
   /** 頭に出すアイコン（例：store）。 */
   icon?: ArIconName;
+  /** 頭に出す色の小さな丸（シフトのパターンの色など）。icon・avatar がないときに出す。選んだあとの欄にも出す。 */
+  dot?: string;
   /** 頭に出す丸の文字（人の名前なら頭文字。例：「佐」）。 */
   avatar?: string;
   /** 丸の地の色（人ごとの色）。省くとテーマ色の淡い色。 */
@@ -29,20 +32,30 @@ export interface ArSelectGroup {
   options: readonly ArSelectOption[];
 }
 
-/** プルダウンの下に出す操作のボタン（「新規作成」など）。 */
+/**
+ * プルダウンの下に出す操作のボタン（「新規作成」「店舗を追加」など。今の ARROW の Select の button 付きの選択肢）。
+ * 選択肢ではないので選んだ値にはならない。押す・↑↓ で移って Enter で action を出す。
+ */
 export interface ArSelectAction {
   value: string;
   label: string;
   icon?: ArIconName;
+  /** ボタンの種類（既定 primary。今の button.type の add→primary、bordered→secondary）。 */
+  tone?: ArButtonTone;
+  /** ボタンの幅（px か CSS の長さ。今の button.style の width）。省くと行いっぱい。 */
+  width?: number | string;
+  disabled?: boolean;
 }
 
 /**
- * ArSelect 1.0 の契約。
+ * ArSelect 1.1 の契約。
  *
  * デザインが選ぶ形（ArDesign.forms.ArSelect）。値の受け渡しはどの形でも同じ。
  * - `search`：`"auto"`（既定）＝選択肢が7つ以上ならプルダウンに探す欄を出す。`"off"`＝searchable を渡さない限り出さない（今の ARROW）。
  */
 export interface ArSelectProps {
+  /** 選んだあとの欄にも、選択肢の右の小さな文字（description。例：パターンの「10:00–19:00」）を出す。 */
+  valueDescription?: boolean;
   /** 選んでいる値。1つ選ぶときは値か null、multiple のときは値の配列。 */
   modelValue: ArSelectValue | null | readonly ArSelectValue[];
   /** 選択肢。見出しつきのまとまり（{ label, options }）も混ぜられる。 */
@@ -56,7 +69,7 @@ export interface ArSelectProps {
    * true なら placeholder の文字、文字を渡せばその文字。
    */
   nullOption?: boolean | string;
-  /** プルダウンの下に出す操作のボタン（「新規作成」など）。押すと action を出して閉じる。 */
+  /** プルダウンの下に出す操作のボタン（「新規作成」など）。押すと action を出して閉じる。↑↓ で選択肢の続きとして移れる。 */
   actions?: readonly ArSelectAction[];
   /** 何も選んでいないときの文字。 */
   placeholder?: string;

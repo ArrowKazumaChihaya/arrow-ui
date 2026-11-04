@@ -1,0 +1,5 @@
+/* @covers ArShiftDaySheet 1.0.0 */
+/* 今の ARROW のスマホの日の詳細（「シフト詳細」の題・左の ×）を antd の Drawer（placement="bottom"）で出す。中身は 16px の余白、日付の段（DateChanger）と要約の札を 12px あけて並べる。 */
+[data-ar-design="classic"] [data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]>[data-part="body"]{padding:16px}
+[data-ar-design="classic"] [data-ar="shift-day-sheet"]{gap:12px}
+[data-ar-design="classic"] [data-ar="shift-day-sheet"]>[data-part="body"]{gap:12px}

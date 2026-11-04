@@ -1,4 +1,4 @@
-/* @covers ArColorPicker 1.0.0, ArColorSwatches 1.0.0 */
+/* @covers ArColorPicker 1.1.0, ArColorSwatches 1.0.0 */
 /* ArColorPicker（ui-Colorpicker）：30×30・角丸4・灰 #808080 の枠の中が色（空は白）。押すと色の一覧（今の「色選択」は 40×25 の色の升を並べ、選んだ色に白いレ点）。
    HEX の文字は出さない（読み上げだけ）。 */
 [data-ar-design="classic"] [data-ar="color-picker"]>[data-part="chip"]{width:30px;height:30px;padding:0;border:1px solid gray;border-radius:4px;background:#fff;overflow:hidden}

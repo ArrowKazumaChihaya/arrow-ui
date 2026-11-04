@@ -1,0 +1,4 @@
+/* 日の詳細のシートの構造：日付の段・要約・中身を縦に並べる。 */
+[data-ar="shift-day-sheet"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="shift-day-sheet"]>[data-part="body"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]{max-height:none}

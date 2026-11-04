@@ -1,10 +1,12 @@
 <script setup lang="ts">
 /**
- * ArTreeSelect 1.0 — 部署のような木から選ぶ（プルダウンの中に木）。
+ * ArTreeSelect 1.1 — 部署のような木から選ぶ（プルダウンの中に木）。
  * multiple はチェックで選び、一部だけ選んでいる親は indeterminate（テーマ色に白い横線）。1つ選ぶときは選んだ行が淡いテーマ色。
  * キーボード：↓↑で行を動く、→ で開く・子へ、← で閉じる・親へ、Enter・Space で選ぶ／チェック、Escape で閉じる。
+ * 1.1：「子店舗を含める」の切り替え（v-model:includeChildren）と、プルダウンの下の操作（actions・action）。
  */
 import { computed, nextTick, ref, watch } from "vue";
+import ArButton from "./ArButton.vue";
 import ArIcon from "./ArIcon.vue";
 import ArTextInput from "./ArTextInput.vue";
 import ArFloat from "../internal/ArFloat.vue";
@@ -34,12 +36,19 @@ const props = withDefaults(defineProps<ArTreeSelectProps>(), {
   listHeight: 300,
   label: undefined,
   id: undefined,
+  nullOption: false,
+  includeChildren: undefined,
+  includeChildrenLabel: "子店舗を含める",
+  includeChildrenMark: "子店舗を含む",
+  actions: () => [],
 });
 const emit = defineEmits<{
   "update:modelValue": [value: ArTreeSelectValue | null | ArTreeSelectValue[]];
   change: [value: ArTreeSelectValue | null | ArTreeSelectValue[]];
   "update:expanded": [value: ArTreeSelectValue[]];
   "open-change": [open: boolean];
+  "update:includeChildren": [value: boolean];
+  action: [value: string];
 }>();
 
 const uid = useId("ar-tree-select");
@@ -52,6 +61,12 @@ const open = ref(false);
 const query = ref("");
 const active = ref<ArTreeSelectValue | null>(null);
 
+/** 「未選択」の行の値（中だけで使う）。 */
+const NULL_VALUE = "\u0000ar-tree-null";
+/** 先頭に「未選択」の行を足した木（nullOption）。 */
+const treeNodes = computed<readonly ArTreeSelectNode[]>(() =>
+  props.nullOption && !props.multiple ? [{ value: NULL_VALUE, label: typeof props.nullOption === "string" ? props.nullOption : props.placeholder }, ...props.tree] : props.tree,
+);
 /** 値 → 項目・親・深さ。 */
 interface Info {
   node: ArTreeSelectNode;
@@ -71,7 +86,7 @@ const index = computed(() => {
     }
     return all;
   };
-  walk(props.tree, null, 1);
+  walk(treeNodes.value, null, 1);
   return map;
 });
 const pathOf = (v: ArTreeSelectValue): ArTreeSelectNode[] => {
@@ -140,13 +155,13 @@ const rows = computed<Row[]>(() => {
       if (isOpen) walk(n.children!, level + 1);
     }
   };
-  walk(props.tree, 1);
+  walk(treeNodes.value, 1);
   return out;
 });
 const rowIndex = computed(() => rows.value.findIndex((r) => r.node.value === active.value));
 const nodeId = (v: ArTreeSelectValue) => `${uid}-n-${String(v).replace(/[^\w-]/g, "_")}`;
 const activeId = computed(() => (open.value && active.value !== null ? nodeId(active.value) : undefined));
-const selectable = (r: Row) => !r.node.disabled && (props.multiple || !props.leafOnly || !r.hasChildren);
+const selectable = (r: Row) => !r.node.disabled && r.node.selectable !== false && (props.multiple || !props.leafOnly || !r.hasChildren);
 
 function setOpen(v: boolean) {
   if (v === open.value || (v && props.disabled)) return;
@@ -184,7 +199,8 @@ function toggle(r: Row) {
     for (const v of leaves) (on ? set.add(v) : set.delete(v));
     commit([...set]);
   } else if (selectable(r)) {
-    if (r.node.value !== props.modelValue) commit(r.node.value);
+    const v = r.node.value === NULL_VALUE ? null : r.node.value;
+    if (v !== props.modelValue) commit(v);
     close();
   } else if (r.hasChildren) setExpanded(r.node.value, !r.isOpen);
 }
@@ -272,6 +288,20 @@ function clear() {
   commit(props.multiple ? [] : null);
   root.value?.focus();
 }
+/** 「子店舗を含める」を出すか（v-model:includeChildren を渡したとき）。 */
+const hasInclude = computed(() => typeof props.includeChildren === "boolean");
+const includeId = `${uid}-include`;
+/** 押す所の「子店舗を含む」の印：オンで、選んでいる部署に下の部署があるとき。 */
+const showIncludeMark = computed(
+  () => hasInclude.value && props.includeChildren && !props.multiple && values.value.some((v) => !!index.value.get(v)?.node.children?.length),
+);
+function toggleInclude() {
+  emit("update:includeChildren", !props.includeChildren);
+}
+function runAction(v: string) {
+  emit("action", v);
+  close();
+}
 const state = computed(
   () => [open.value && "open", empty.value && "empty", props.invalid && "invalid", props.disabled && "disabled"].filter(Boolean).join(" ") || undefined,
 );
@@ -317,6 +347,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
     <template v-else>
       <span v-if="!empty" data-part="value"><span data-part="value-text">{{ display }}</span></span>
       <span v-else data-part="placeholder">{{ placeholder }}</span>
+      <span v-if="showIncludeMark" data-part="include-mark">{{ includeChildrenMark }}</span>
     </template>
     <button v-if="canClear" type="button" data-part="clear" tabindex="-1" aria-label="選んだものを消す" @mousedown.prevent @click.stop="clear">
       <ArIcon line name="x" size="sm" />
@@ -394,6 +425,16 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       </div>
       <div v-if="!rows.length" data-part="empty" role="status">
         {{ query ? `「${query}」は見つかりません` : emptyText }}
+      </div>
+    </div>
+    <div v-if="hasInclude || actions.length" data-part="footer">
+      <label v-if="hasInclude" data-part="include" :data-state="includeChildren ? 'on' : undefined">
+        <input :id="includeId" type="checkbox" :checked="includeChildren" @change="toggleInclude" @keydown.escape="close()" />
+        <span data-part="include-box" aria-hidden="true"><ArIcon v-if="includeChildren" line name="check" size="sm" /></span>
+        <span data-part="include-label">{{ includeChildrenLabel }}</span>
+      </label>
+      <div v-for="a in actions" :key="a.value" data-part="action">
+        <ArButton tone="primary" block :icon="a.icon" @click="runAction(a.value)">{{ a.label }}</ArButton>
       </div>
     </div>
   </ArFloat>

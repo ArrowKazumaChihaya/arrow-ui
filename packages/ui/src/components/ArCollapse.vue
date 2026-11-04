@@ -2,6 +2,8 @@
 /**
  * ArCollapse 1.0 — 折りたたみ。見出しは bg-2 の地に太字、開くと矢印が下を向く。
  * 見出しのボタンは ↑↓ Home End で移り、Enter・Space で開閉する（WAI-ARIA の Accordion）。
+ * 1.1：#title-<key>・#title（{ item, open }）で見出しの文字の所に部品（太字の文・札・件数など）を入れられる（今の UI/Collapse の #header）。
+ * #header-extra-<key>・#header-extra（{ item, open }）は見出しのボタンの外の右に置く（押しても開閉しない。ボタン・スイッチなど押せる部品はここ）。
  */
 import { ref } from "vue";
 import ArIcon from "./ArIcon.vue";
@@ -55,11 +57,14 @@ function onKey(e: KeyboardEvent, i: number) {
         >
           <ArIcon line name="cr" size="sm" data-part="arrow" />
           <ArIcon v-if="it.icon" :name="it.icon" size="sm" data-part="icon" />
-          <span data-part="title">{{ it.title }}</span>
+          <span data-part="title"><slot :name="`title-${it.key}`" :item="it" :open="isOpen(it)"><slot name="title" :item="it" :open="isOpen(it)">{{ it.title }}</slot></slot></span>
           <span v-if="it.extra || $slots[`extra-${it.key}`]" data-part="extra">
             <slot :name="`extra-${it.key}`">{{ it.extra }}</slot>
           </span>
         </button>
+        <span v-if="$slots[`header-extra-${it.key}`] || $slots['header-extra']" data-part="header-extra">
+          <slot :name="`header-extra-${it.key}`" :item="it" :open="isOpen(it)"><slot name="header-extra" :item="it" :open="isOpen(it)" /></slot>
+        </span>
       </component>
       <div
         v-show="isOpen(it)"

@@ -58,12 +58,14 @@
 @import "./parts/ArPagination.css";
 @import "./parts/ArPayslip.css";
 @import "./parts/ArPdfViewer.css";
+@import "./parts/ArPeriodBox.css";
 @import "./parts/ArPeriodNav.css";
 @import "./parts/ArPopconfirm.css";
 @import "./parts/ArPopover.css";
 @import "./parts/ArProgress.css";
 @import "./parts/ArPunchButton.css";
 @import "./parts/ArQRCode.css";
+@import "./parts/ArRadio.css";
 @import "./parts/ArRadioGroup.css";
 @import "./parts/ArRate.css";
 @import "./parts/ArResult.css";
@@ -72,6 +74,10 @@
 @import "./parts/ArSectionHead.css";
 @import "./parts/ArSegmented.css";
 @import "./parts/ArSelect.css";
+@import "./parts/ArShiftChart.css";
+@import "./parts/ArShiftDaySheet.css";
+@import "./parts/ArShiftGrid.css";
+@import "./parts/ArShiftViewTable.css";
 @import "./parts/ArSkeleton.css";
 @import "./parts/ArSlider.css";
 @import "./parts/ArSpin.css";

@@ -1,4 +1,4 @@
-/* @covers ArThumbnail 1.0.0 */
+/* @covers ArThumbnail 1.1.0 */
 /* 顔写真：四角は角丸14・丸、写真がないときは淡い灰の面に人の形。カメラは右下の白い丸（32）にテーマ色の線 */
 [data-ar-design="remix"] [data-ar="thumbnail"]>:is([data-part="image"],[data-part="silhouette"]){border-radius:14px;box-shadow:inset 0 0 0 1px rgba(31,41,51,.06)}
 [data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="image"]{border:1px solid var(--ar-color-border)}
@@ -24,3 +24,8 @@
 [data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-shape="circle"]>[data-part="mask"]{border-radius:50%;box-shadow:0 0 0 999px rgba(31,41,51,.42),inset 0 0 0 1.5px #fff}
 [data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="tools"]{gap:6px}
 [data-ar-design="remix"] [data-ar="thumbnail-editor"]{font-feature-settings:"palt" 1}
+/* 1.1：自由な範囲（freeCrop）：範囲の外は暗く（#0F172A 45%）、範囲は白い 2px の線、四隅は 12px の白い角丸3のつまみ（テーマ色の枠） */
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]{border:2px solid #fff;box-shadow:0 0 0 9999px rgba(15,23,42,.45)}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]>[data-part="crop-handle"]{width:12px;height:12px;border:2px solid var(--ar-accent);border-radius:3px;background:#fff}
+[data-ar-design="remix"] [data-ar="thumbnail-editor"]>[data-part="frame"]:focus-visible>[data-part="crop"]{border-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="silhouette"][data-kind="picture"]>[data-part="silhouette-line"]{width:44%;height:44%}

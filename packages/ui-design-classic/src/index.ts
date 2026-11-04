@@ -90,7 +90,7 @@ export const classicDesign = defineDesign({
     ArSelect: { search: "off" }, // 今の Select はプルダウンに探す欄がない
     ArDateInput: { invalidDate: "message", pad: "zero", yearEmpty: "option", yearOrder: "desc" }, // 今の Dates：ありえない日は「無効な日付」、月日は2桁、年は新しい順で先頭に「未選択」
     ArUpload: { trigger: "button" }, // 今の Upload は「ファイルを選択」のボタンと、その下のファイル名（置き場はない）
-    ArColorPicker: { panel: "dialog" }, // 今の Colorpicker は真ん中のダイアログ「色選択」で選ぶ
+    ArColorPicker: { panel: "dialog", palette: "arrow" }, // 今の Colorpicker は真ん中のダイアログ「色選択」で選ぶ。色は 12色×濃さ4段（縦に4色ずつ）
     ArProgress: { stepsInfo: "percent" }, // antd の Progress の刻みは右に「60%」
     ArSkeleton: { title: "line" }, // antd の Skeleton は行の上に幅半分の見出しの行がある
     ArNotificationHost: { order: "newest-last" }, // antd の notification は新しいものを下に足す
@@ -102,6 +102,7 @@ export const classicDesign = defineDesign({
     ArTreeTable: { toggle: "box" }, // 今の TreeTable は antd の Tree（showLine）：開け閉めは四角の中の −／＋
     ArSaveBar: { summary: "hidden", buttonText: "arrow" }, // 今の設定：変えると「キャンセル」「実行」のボタンだけが並ぶ（件数・項目名はない）
     ArApprovalFlow: { list: "row" }, // 今の承認フロー（AdmitFlowView）は横に並んだ丸い札と「→」だけ
+    ArPeriodBox: { layout: "nav" }, // 今の募集・一括登録の期間：テーマ色の点線の箱に MonthChanger と「月／半月」「(前半)／(後半)」のボタン型ラジオ、箱の下に大きな「適用」と /img/apply.png の矢印
     ArTable: { selectHead: "label", dragHandle: "cell", groupToggle: "menu" }, // 今の SelectTable：見出しのチェックの左に「全選択」。今の SortableTable：並べ替えの ⠿ は1列目のセルの頭。まとまりを開くのは Th の isToggle（menu の絵）
     ArPunchButton: { icons: "punch" }, // 今の MyPC 打刻：出勤・退勤は人の大きな絵（punch_in・punch_out）、休憩は絵なし
     ArOtpInput: { fields: "single" }, // 今のログインの認証コードは1つの欄（maxlength 6・placeholder 000000）
@@ -109,6 +110,9 @@ export const classicDesign = defineDesign({
     ArVariablePanel: { search: "off" }, // 今の変数のメニュー（Froala）に探す欄はない
     ArPdfViewer: { bar: "pager" }, // 今の PdfViewer：PDF の上の真ん中に「‹ 1 / 5 ›」だけ（大きさ・何人目はない）、PDF は黒い1pxの枠
     ArTimeChart: { tick: "60" }, // 今の勤怠の月のチャート（MonthlyChart）は1時間ごとの線と時刻
+    ArShiftChart: { counts: "spans", bar: "icon", avatar: "balloon", axis: "number", summary: "count", legend: "editing" }, // 今のシフトチャート（Calendar/Chart/Daily.vue）：必要人数・不足人数の帯の行、バーの真ん中に人の絵、吹き出しの丸、下に「9」「10」…、右下に「当店舗のシフト人数」
+    ArShiftGrid: { head: "button", fit: "scale", cell: "fill", tip: "section", hint: "text", summary: "paren" }, // 今のテーブルタブ（Weekly・Monthly）：1段目は日付だけ・2段目に「名前」とシフトチャートのボタン、週と月は枠の幅まで縮める、マスはパターン色の塗り、吹き出しは見出しの下に時刻、「コピー: ⌘+C」の文字
+    ArShiftViewTable: { chip: "labeled", time: "padded", dayHead: "inline", summary: "days", fill: "fixed", columnWidth: "136", nameWidth: "136" }, // 今の閲覧タブ：灰色の札の右上に店舗名・「シフト」・「09:00〜18:00」、見出しは「16 (金)」、名前の下は「勤務 n日」、列は 136px ちょうど
   },
   icons: classicIcons, // 今の ARROW の塗りの絵（public/icons）。ここに無い名前は線のアイコン
   styles: () => import("@arrow/ui-design-classic/styles.css"),

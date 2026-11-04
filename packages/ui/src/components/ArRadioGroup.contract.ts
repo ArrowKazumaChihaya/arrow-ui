@@ -1,4 +1,4 @@
-/** ArRadioGroup 1.0 の契約。 */
+/** ArRadioGroup 1.1 の契約。 */
 export type ArRadioValue = string | number | boolean;
 
 export interface ArRadioOption {
@@ -23,4 +23,9 @@ export interface ArRadioGroupProps {
 export interface ArRadioGroupEmits {
   "update:modelValue": [value: ArRadioValue];
 }
-export type ArRadioGroupPart = "root" | "item" | "control" | "input" | "mark" | "label";
+/**
+ * slot：label（{ option, checked }：名前の所に任意の部品。押すとラジオも選ぶ）、
+ * extra（{ option, checked }：選択肢の下に置く表や入力。ラジオの外なので押しても切り替わらない。type="radio" のときだけ）。
+ * 1つだけ離れた所に置くラジオは ArRadio を使う。
+ */
+export type ArRadioGroupPart = "root" | "item" | "control" | "input" | "mark" | "label" | "extra";

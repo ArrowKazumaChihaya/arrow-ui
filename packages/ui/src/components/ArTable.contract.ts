@@ -1,5 +1,5 @@
 /**
- * ArTable 1.1 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
+ * ArTable 1.2 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
  * デザインが選べる形（ArDesign.forms.ArTable）：
  * - selectHead："check"（既定。見出しはチェックだけ）／"label"（チェックの左に「全選択」の文字。今の ARROW の SelectTable。classic）。
  * - dragHandle："column"（既定。並べ替えのつまみを左の専用の列に）／"cell"（1列目のセルの頭に。今の ARROW の SortableTable。classic）。
@@ -14,9 +14,24 @@
  * - 表の中の小さな金額の入力（列の edit・v-model:edits・invalidCells）。直した欄はテーマ色の淡い地（給与のページでは黄色）。
  * - 3段の金額のセル（列の stack：値の配列を 24px の行に縦に並べる。課税支給／社会保険料等／所得税）。edit と合わせると3つの入力。
  * - 数字の下の小さな行（列の delta：前月との差「+12,000（前月比）」）。
+ *
+ * 1.2 で、シフト画面・シフトのポップアップのために足した：
+ * - cell-<key> のスロットの引数に Default（既定の表示を描く部品）。行の中で追加する行だけ入力に差し替え、
+ *   ほかの行は `<component :is="Default" />` で既定の表示（頭文字の丸・名前・色の四角つきの sub など）のまま出せる。
+ * - 段に分ける列（列の lines）。値の配列を1つずつ「行の中の段」に出し、段の高さを列をまたいで揃える
+ *   （休憩を分けて持つ会社の「休始・休終」、募集の日ごとの「パターン・時間・人数」）。段のない列は段をまたぐ。
+ *   段のセルは cell-<key> のスロットで差し替えられ、引数の line が段の番号、value がその段の値。
+ * - 表の中の入力の種類（列の editor）：amount（金額。既定）・text（文字）・time（時刻。ArTimeInput）・select（選ぶ。ArSelect）。
+ *   値は v-model:edits に入る（time は { time, day }、select は選んだ値）。
+ * 並べ替えの状態は v-model:sort（{ key, order } か null）。製品が持つので、画面を移っても製品の store に残せば保てる。
  */
 import type { ArIconName } from "../icons";
 import type { ArAvatarTone } from "./ArAvatar.contract";
+import type { ArSelectOption } from "./ArSelect.contract";
+import type { ArTimeValue } from "./ArTimeInput.contract";
+
+/** 表の中の入力の値。amount・text は文字、time は { time, day }、select は選んだ値（null は未選択）。 */
+export type ArTableEditValue = string | number | null | ArTimeValue;
 
 export type ArRowKey = string | number;
 
@@ -73,6 +88,26 @@ export interface ArTableColumn<Row> {
   edit?: boolean | ((row: Row) => boolean);
   /** 入力の読み上げの名前（「末永 修也さんの残業手当」）。段の番号は stack のとき。 */
   editLabel?: (row: Row, line?: number) => string;
+  /**
+   * 表の中の入力の種類（edit のとき）。amount＝小さな金額（既定・右寄せ）、text＝文字、
+   * time＝時刻（ArTimeInput の sm。dayShift・overnight を渡せる）、select＝選ぶ（ArSelect の sm。options）。
+   */
+  editor?: "amount" | "text" | "time" | "select";
+  /** セルの頭に置く小さな文字（時刻の範囲の「〜」など。前の列とつなげて読ませる）。 */
+  lead?: string;
+  /** editor="select" の選択肢（行ごとに変えるなら関数）。 */
+  options?: readonly ArSelectOption[] | ((row: Row) => readonly ArSelectOption[]);
+  /** 入力が空のときの薄い文字。 */
+  placeholder?: string;
+  /** editor="time"：［当日⇄前日］の切り替えを出す（出勤・退勤・休始・休終）。 */
+  dayShift?: boolean;
+  /** editor="time"：24:00 以降を受ける（夜勤）。 */
+  overnight?: boolean;
+  /**
+   * 段に分ける列。値の配列を1つずつ「行の中の段」に出し、段の高さを列をまたいで揃える（段のない列は段をまたいで1つ）。
+   * 行の段の数は、段に分ける列の配列のいちばん長いもの（短い列は空の段で埋める）。入力の key には「:段」を足す。
+   */
+  lines?: boolean;
   /** 値の配列を 24px の行に縦に並べる（3段の金額のセル）。 */
   stack?: boolean;
   /** 値の下の小さな行（前月との差など）。tone：warn＝目立たせる（10%以上の差）、muted＝灰色（既定）。 */
@@ -180,8 +215,8 @@ export interface ArTableProps<Row> {
   columnGroups?: readonly ArTableColumnGroup[];
   /** 開いているまとまりの key（v-model:openGroups）。 */
   openGroups?: readonly string[];
-  /** 表の中の入力の値（v-model:edits）。key は「行のkey:列のkey」（stack は「:段」）。ここにある値を入力に出し、元の値と違えば「直した欄」にする。 */
-  edits?: Readonly<Record<string, string>>;
+  /** 表の中の入力の値（v-model:edits）。key は「行のkey:列のkey」（stack・lines は「:段」）。ここにある値を入力に出し、元の値と違えば「直した欄」にする。 */
+  edits?: Readonly<Record<string, ArTableEditValue>>;
   /** 間違いのある入力の key（赤い枠）。 */
   invalidCells?: readonly string[];
 }
@@ -198,12 +233,12 @@ export interface ArTableEmits<Row> {
   /** 開いているまとまり（v-model:openGroups）。 */
   "update:openGroups": [keys: string[]];
   /** 表の中の入力の値（v-model:edits）。 */
-  "update:edits": [edits: Record<string, string>];
+  "update:edits": [edits: Record<string, ArTableEditValue>];
 }
 
 /**
  * slot：
- * cell-<key>（{ row, value, index }）・head-<key>（{ column }）・foot-<key>（{ value }）・expanded（{ row }）・empty、
+ * cell-<key>（{ row, value, index, line, Default }：Default は既定の表示を描く部品、line は段に分けた列の段の番号）・head-<key>（{ column }）・foot-<key>（{ value }）・expanded（{ row }）・empty、
  * actions（{ row, index }：行の右端の操作。アイコンだけのボタンに aria-label を付ける）、
  * before-rows（見出しのすぐ下・行の上。シフト画面の「シフト追加」）、
  * below（表の下。ArPagination や「表示内容」のプルダウンを置く）。
@@ -244,5 +279,7 @@ export type ArTablePart =
   | "toggle-hint"
   | "stack"
   | "cell-input"
+  | "cell-editor"
+  | "lead"
   | "delta"
   | "mark";

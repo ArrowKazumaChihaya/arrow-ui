@@ -1,4 +1,4 @@
-/* @covers ArUpload 1.0.0 */
+/* @covers ArUpload 1.1.0 */
 /* ArUpload（今の ui-Upload はボタンだけなので、置き場は素の antd 4 の Upload.Dragger をテーマ色に）：点線 1px #D9D9D9・角丸8・地 rgba(0,0,0,.02)・余白16、
    アイコン 48px テーマ色、見出し 16px、説明 14px rgba(0,0,0,.45)。一覧は行22（上に8）、失敗は #FF4D4F、進み具合は 2px のテーマ色。写真は 102px の点線の升。 */
 [data-ar-design="classic"] [data-ar="upload"]{gap:8px 16px}

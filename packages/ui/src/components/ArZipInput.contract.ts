@@ -1,4 +1,4 @@
-/** ArZipInput 1.0 の契約。郵便番号の入力（今の ARROW の Zip：「###-####」の形と、住所を引く）。 */
+/** ArZipInput 1.1 の契約。class・style は外側、ほかの属性（tabindex・aria-*）とイベントは中の入力へ。ref から focus()・blur()・select()・input。郵便番号の入力（今の ARROW の Zip：「###-####」の形と、住所を引く）。 */
 export interface ArZipInputProps {
   /** "123-4567"。空なら null。 */
   modelValue: string | null;

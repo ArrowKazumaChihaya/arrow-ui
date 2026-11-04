@@ -258,6 +258,11 @@
         "ja": "選ぶ札"
       },
       {
+        "slug": "radio",
+        "name": "ArRadio",
+        "ja": "ラジオ（単独）"
+      },
+      {
         "slug": "radio-group",
         "name": "ArRadioGroup",
         "ja": "ラジオ"
@@ -678,6 +683,11 @@
         "ja": "明細書"
       },
       {
+        "slug": "period-box",
+        "name": "ArPeriodBox",
+        "ja": "期間の箱"
+      },
+      {
         "slug": "period-nav",
         "name": "ArPeriodNav",
         "ja": "期間の切り替え"
@@ -696,6 +706,26 @@
         "slug": "section-head",
         "name": "ArSectionHead",
         "ja": "まとまりの見出し"
+      },
+      {
+        "slug": "shift-chart",
+        "name": "ArShiftChart",
+        "ja": "シフトのチャート"
+      },
+      {
+        "slug": "shift-day-sheet",
+        "name": "ArShiftDaySheet",
+        "ja": "日の詳細のシート"
+      },
+      {
+        "slug": "shift-grid",
+        "name": "ArShiftGrid",
+        "ja": "シフトのテーブル（日×人）"
+      },
+      {
+        "slug": "shift-view-table",
+        "name": "ArShiftViewTable",
+        "ja": "シフト閲覧の表"
       },
       {
         "slug": "thumbnail",
