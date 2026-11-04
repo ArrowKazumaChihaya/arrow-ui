@@ -64,3 +64,4 @@
 [data-ar-design="remix"] [data-ar="time-chart"]{--ar-chart-track-height:18px;--ar-chart-track-bar-height:12px}
 [data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"]>[data-part="grid"]{grid-template-columns:168px minmax(max(520px,var(--ar-chart-tick-width,0px)),1fr)}
 [data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]{flex-wrap:wrap;align-content:center;gap:2px 8px;padding-block:6px}
+@media(max-width:600px){[data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"]>[data-part="grid"]{grid-template-columns:112px minmax(max(520px,var(--ar-chart-tick-width,0px)),1fr)}}
