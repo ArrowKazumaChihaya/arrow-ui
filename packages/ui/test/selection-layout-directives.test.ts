@@ -7,7 +7,7 @@ import ArAutoComplete from "../src/components/ArAutoComplete.vue";
 describe("selection control layout directives", () => {
   for (const [name, renderControl] of [
     ["select", () => h(ArSelect, { modelValue: null, options: [{ value: 1, label: "Store" }] })],
-    ["tree-select", () => h(ArTreeSelect, { modelValue: null, options: [{ value: 1, label: "Store" }] })],
+    ["tree-select", () => h(ArTreeSelect, { modelValue: null, tree: [{ value: 1, label: "Store" }] })],
     ["auto-complete", () => h(ArAutoComplete, { modelValue: "", options: ["Store"] })],
   ] as const) {
     it(`${name} applies updates to the existing control root without a fragment warning`, async () => {
