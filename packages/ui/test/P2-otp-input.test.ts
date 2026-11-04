@@ -22,7 +22,7 @@ function mountOtp(props: Record<string, unknown>) {
 describe("ArOtpInput", () => {
   it("connects field labels, required state and help to the native controls in both forms", async () => {
     const design = ref(classicDesign);
-    const w = mount({ render: () => h(ArUiProvider, { design: design.value, scope: "self" }, () => h(ArOtpInput, { id: "test-code", label: "Code", "aria-labelledby": "code-label", "aria-required": "true", "aria-describedby": "code-help" })) });
+    const w = mount({ render: () => h(ArUiProvider, { design: design.value, scope: "self" }, () => h(ArOtpInput, { modelValue: "", id: "test-code", label: "Code", "aria-labelledby": "code-label", "aria-required": "true", "aria-describedby": "code-help" })) });
     const single = w.get("input");
     expect(single.attributes("id")).toBe("test-code");
     expect(single.attributes("aria-labelledby")).toBe("code-label");
