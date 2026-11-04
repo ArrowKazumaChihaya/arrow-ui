@@ -3244,11 +3244,11 @@ table.list-style
   background-color: #dddddd;
 }
 .check_wrap
-  input[type="checkbox"]:where([data-ui-fixed], [data-ui-fixed] *) {
+  input[type="checkbox"]:not([data-part="input"]):where([data-ui-fixed], [data-ui-fixed] *) {
   display: none;
 }
 .check_wrap
-  input[type="checkbox"]
+  input[type="checkbox"]:not([data-part="input"])
   + div:where([data-ui-fixed], [data-ui-fixed] *) {
   position: relative;
   cursor: pointer;
@@ -3258,7 +3258,7 @@ table.list-style
   display: inline-block;
 }
 .check_wrap
-  input[type="checkbox"]
+  input[type="checkbox"]:not([data-part="input"])
   + div:where([data-ui-fixed], [data-ui-fixed] *)::before {
   content: "";
   display: block;
@@ -3273,7 +3273,7 @@ table.list-style
   margin: 7px 0;
 }
 .check_wrap
-  input[type="checkbox"]:checked
+  input[type="checkbox"]:not([data-part="input"]):checked
   + div:where([data-ui-fixed], [data-ui-fixed] *)::after {
   content: "";
   display: block;
@@ -3287,16 +3287,16 @@ table.list-style
   border-right: 3px solid #000000;
   line-height: 16px;
 }
-input[type="radio"]:where([data-ui-fixed], [data-ui-fixed] *) {
+input[type="radio"]:not([data-part="input"]):where([data-ui-fixed], [data-ui-fixed] *) {
   display: none;
 }
-input[type="radio"]
+input[type="radio"]:not([data-part="input"])
   + span:where([data-ui-fixed], [data-ui-fixed] *) {
   padding-left: 6px;
   position: relative;
   cursor: pointer;
 }
-input[type="radio"]
+input[type="radio"]:not([data-part="input"])
   + span:where([data-ui-fixed], [data-ui-fixed] *)::before {
   content: "";
   display: block;
@@ -21758,7 +21758,7 @@ ul
   display: inline-block;
 }
 .radio_wrap
-  input[type="radio"]
+  input[type="radio"]:not([data-part="input"])
   + span:where([data-ui-fixed], [data-ui-fixed] *)::before {
   border: none;
 }
@@ -21772,7 +21772,7 @@ ul
   display: inline-block;
 }
 .radio_group_wrap
-  input[type="radio"]
+  input[type="radio"]:not([data-part="input"])
   + span:where([data-ui-fixed], [data-ui-fixed] *)::before {
   border: none;
 }
@@ -21787,7 +21787,7 @@ ul
     "メイリオ", sans-serif !important;
 }
 .checkbox_group_wrap
-  input[type="radio"]
+  input[type="radio"]:not([data-part="input"])
   + span:where([data-ui-fixed], [data-ui-fixed] *)::before {
   border: none;
 }

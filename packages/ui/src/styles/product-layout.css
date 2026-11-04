@@ -2475,11 +2475,11 @@ table.list-style.input
   z-index: 1000;
 }
 .check_wrap
-  input[type="checkbox"] {
+  input[type="checkbox"]:not([data-part="input"]) {
   display: none;
 }
 .check_wrap
-  input[type="checkbox"]
+  input[type="checkbox"]:not([data-part="input"])
   + div {
   position: relative;
   cursor: pointer;
@@ -2488,7 +2488,7 @@ table.list-style.input
   display: inline-block;
 }
 .check_wrap
-  input[type="checkbox"]
+  input[type="checkbox"]:not([data-part="input"])
   + div::before {
   display: block;
   position: absolute;
@@ -2500,7 +2500,7 @@ table.list-style.input
   margin: 7px 0;
 }
 .check_wrap
-  input[type="checkbox"]:checked
+  input[type="checkbox"]:not([data-part="input"]):checked
   + div::after {
   display: block;
   position: absolute;
@@ -2510,16 +2510,16 @@ table.list-style.input
   height: 14px;
   line-height: 16px;
 }
-input[type="radio"] {
+input[type="radio"]:not([data-part="input"]) {
   display: none;
 }
-input[type="radio"]
+input[type="radio"]:not([data-part="input"])
   + span {
   padding-left: 6px;
   position: relative;
   cursor: pointer;
 }
-input[type="radio"]
+input[type="radio"]:not([data-part="input"])
   + span::before {
   display: block;
   position: absolute;

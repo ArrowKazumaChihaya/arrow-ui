@@ -1946,11 +1946,11 @@ table.list-style
   background-color: #dddddd;
 }
 .check_wrap
-  input[type="checkbox"]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  input[type="checkbox"]:not([data-part="input"]):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   display: none;
 }
 .check_wrap
-  input[type="checkbox"]
+  input[type="checkbox"]:not([data-part="input"])
   + div:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   position: relative;
   cursor: pointer;
@@ -1960,7 +1960,7 @@ table.list-style
   display: inline-block;
 }
 .check_wrap
-  input[type="checkbox"]
+  input[type="checkbox"]:not([data-part="input"])
   + div:where([data-ar-design="classic"], [data-ar-design="classic"] *)::before {
   content: "";
   display: block;
@@ -1975,7 +1975,7 @@ table.list-style
   margin: 7px 0;
 }
 .check_wrap
-  input[type="checkbox"]:checked
+  input[type="checkbox"]:not([data-part="input"]):checked
   + div:where([data-ar-design="classic"], [data-ar-design="classic"] *)::after {
   content: "";
   display: block;
@@ -1989,16 +1989,16 @@ table.list-style
   border-right: 3px solid #000000;
   line-height: 16px;
 }
-input[type="radio"]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+input[type="radio"]:not([data-part="input"]):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   display: none;
 }
-input[type="radio"]
+input[type="radio"]:not([data-part="input"])
   + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   padding-left: 6px;
   position: relative;
   cursor: pointer;
 }
-input[type="radio"]
+input[type="radio"]:not([data-part="input"])
   + span:where([data-ar-design="classic"], [data-ar-design="classic"] *)::before {
   content: "";
   display: block;
