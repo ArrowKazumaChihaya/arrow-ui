@@ -6,8 +6,8 @@
  * 全画面を新しい部品へ移し、remix を全社に出したら、このパッケージごと外して廃止する。
  */
 import { defineDesign } from "@arrow/ui/design";
-import { covers } from "./covers.generated";
-import { classicIcons } from "./icons";
+import { covers } from "./covers.generated.js";
+import { classicIcons } from "./icons.js";
 import { derivePalette, mixHex, type ArPalette } from "@arrow/ui-tokens";
 
 /** 今のページの色（section-*）と、押したときの明るい色（section-*-hover）。 */

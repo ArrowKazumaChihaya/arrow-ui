@@ -2,6 +2,8 @@ import type { ArIconName } from "../icons";
 
 /** ArDrawer 1.1 の契約。 */
 export interface ArDrawerProps {
+  /** 重なりの順（z-index）。ほかの重なり（ant-design-vue のポップアップなど）の上に出したいときに渡す。 */
+  zIndex?: number;
   open: boolean;
   title: string;
   /** 題の左のアイコン（人なら user など）。 */

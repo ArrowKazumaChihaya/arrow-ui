@@ -13,7 +13,9 @@ import ArButton from "./ArButton.vue";
 import type { ArIconName } from "../icons";
 import type { ArModalProps } from "./ArModal.contract";
 
+defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArModalProps>(), {
+  zIndex: undefined,
   description: undefined,
   size: "md",
   width: undefined,
@@ -94,6 +96,7 @@ const { onKeydown, palette } = useDialog({
   <Teleport :to="target" :disabled="teleportTo === null || contained" defer>
     <div
       v-if="open"
+      v-bind="$attrs"
       data-ar="modal"
       data-part="root"
       :data-size="size"
@@ -101,6 +104,7 @@ const { onKeydown, palette } = useDialog({
       :data-contained="contained || undefined"
       :data-mobile="mobileFullscreen && !confirm && size !== 'full' ? 'fullscreen' : undefined"
       :data-ar-palette="palette"
+      :style="zIndex != null ? { zIndex } : undefined"
       @keydown="onKeydown"
     >
       <div data-part="scrim" aria-hidden="true" @click="closeOnScrim && close()" />

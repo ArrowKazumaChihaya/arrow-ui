@@ -3,18 +3,20 @@
  * ArAlert 1.1 — 画面の中のお知らせ。間違いは danger、注意は warn、終わったことは ok、案内は info、ロック中などは neutral。
  * 先頭にアイコン、見出し（title）と本文、右に操作（#action）と閉じる。banner はページの上いっぱいの帯（角丸なし）。
  */
-import { computed } from "vue";
+import { computed, type PropType } from "vue";
 import ArIcon from "./ArIcon.vue";
 import type { ArIconName } from "../icons";
 import type { ArAlertProps } from "./ArAlert.contract";
 
-const props = withDefaults(defineProps<ArAlertProps>(), {
-  tone: "info",
-  title: undefined,
-  icon: undefined,
-  closable: false,
-  closeLabel: "閉じる",
-  banner: false,
+// icon は ArIconName | false。アイコン名の型（keyof typeof icons）は Vue のコンパイラが実行時の型に直せず、
+// 型の宣言だと Boolean だけになって icon="lock" が警告になる。そのため実行時の宣言で書く（型は契約と同じ）。
+const props = defineProps({
+  tone: { type: String as PropType<NonNullable<ArAlertProps["tone"]>>, default: "info" },
+  title: { type: String, default: undefined },
+  icon: { type: [String, Boolean] as PropType<ArAlertProps["icon"]>, default: undefined },
+  closable: { type: Boolean, default: false },
+  closeLabel: { type: String, default: "閉じる" },
+  banner: { type: Boolean, default: false },
 });
 const emit = defineEmits<{ close: [] }>();
 const defaults: Record<NonNullable<ArAlertProps["tone"]>, ArIconName> = { info: "info", ok: "check", warn: "alert", danger: "alert", neutral: "lock" };

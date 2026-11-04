@@ -6,6 +6,19 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "design": [
+        "./dist/types/design-entry.d.ts"
+      ],
+      "requirements": [
+        "./dist/types/requirements/index.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",

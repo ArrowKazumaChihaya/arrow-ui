@@ -4,10 +4,22 @@
   "description": "ARROW UI のトークンの名前と型（値はデザインのライブラリが持つ）",
   "type": "module",
   "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
-  "files": ["dist"],
-  "scripts": { "build": "tsc -p tsconfig.build.json" },
-  "publishConfig": { "registry": "https://npm.pkg.github.com" }
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }

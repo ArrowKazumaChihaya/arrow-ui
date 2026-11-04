@@ -8162,48 +8162,7 @@
   "name": "ArAlert",
   "version": "1.1.0",
   "description": "画面の中のお知らせ。間違いは danger、注意は warn、終わったことは ok、案内は info、ロック中などは neutral。\n先頭にアイコン、見出し（title）と本文、右に操作（#action）と閉じる。banner はページの上いっぱいの帯（角丸なし）。",
-  "props": [
-   {
-    "name": "tone",
-    "type": "'danger' | 'info' | 'ok' | 'neutral' | 'warn'",
-    "required": false,
-    "description": "info：案内（テーマ色の淡い面）。ok：終わったこと（緑）。warn：注意（橙）。danger：間違い（赤）。\nneutral：ロック中・権限など、操作できないことの帯（灰）。",
-    "default": "\"info\""
-   },
-   {
-    "name": "title",
-    "type": "string",
-    "required": false,
-    "description": "見出し（太字）。本文はその下。"
-   },
-   {
-    "name": "icon",
-    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
-    "required": false,
-    "description": "先頭のアイコン。既定は種類ごと（info・ok は info・check、warn・danger は alert、neutral は lock）。false で出さない。"
-   },
-   {
-    "name": "closable",
-    "type": "boolean",
-    "required": false,
-    "description": "右に × を出す。押すと close。",
-    "default": "false"
-   },
-   {
-    "name": "closeLabel",
-    "type": "string",
-    "required": false,
-    "description": "",
-    "default": "\"閉じる\""
-   },
-   {
-    "name": "banner",
-    "type": "boolean",
-    "required": false,
-    "description": "ページの上いっぱいに置く帯（角丸なし）。",
-    "default": "false"
-   }
-  ],
+  "props": [],
   "emits": [
    {
     "name": "close",
@@ -8260,9 +8219,15 @@
  },
  {
   "name": "ArDrawer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "横から出る板（placement=\"bottom\" でスマホの下から出る一覧）。幕は ink の42%、頭は白、足は bg-2。\nARROW のシフト画面では日の詳細は横から出さない（配置を変えない）。設定の細かい項目などに使う。\n開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所に戻す。",
   "props": [
+   {
+    "name": "zIndex",
+    "type": "number",
+    "required": false,
+    "description": "重なりの順（z-index）。ほかの重なり（ant-design-vue のポップアップなど）の上に出したいときに渡す。"
+   },
    {
     "name": "open",
     "type": "boolean",
@@ -8419,9 +8384,15 @@
  },
  {
   "name": "ArModal",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ポップアップ。\n頭（題・1行の説明・閉じる）、手順（頭の下）、中身、足（左に補足・戻る、右にキャンセルと主なボタン）。\n開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所にフォーカスを戻す。\nスマホ（幅640px以下）では画面いっぱいになる（mobileFullscreen）。確かめは variant=\"confirm\" か useArConfirm()。",
   "props": [
+   {
+    "name": "zIndex",
+    "type": "number",
+    "required": false,
+    "description": "重なりの順（z-index）。ほかの重なり（ant-design-vue のポップアップなど）の上に出したいときに渡す。"
+   },
    {
     "name": "open",
     "type": "boolean",
@@ -9113,60 +9084,7 @@
   "name": "ArToast",
   "version": "1.0.0",
   "description": "操作のあと画面の下の真ん中に出る黒い帯（.toast）。チェックの印＋言葉＋「元に戻す」「閉じる」。\nシフト画面で「〜を変更しました」と知らせるときに使う。上に短く出すだけなら useArMessage()。",
-  "props": [
-   {
-    "name": "open",
-    "type": "boolean",
-    "required": true,
-    "description": "出しているか（v-model:open）。"
-   },
-   {
-    "name": "message",
-    "type": "string",
-    "required": false,
-    "description": "言葉（「末永 修也さんの10月21日のシフトを変更しました」など）。default slot でもよい。"
-   },
-   {
-    "name": "icon",
-    "type": "false | 'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
-    "required": false,
-    "description": "先頭の印。既定は check。false で出さない。",
-    "default": "\"check\""
-   },
-   {
-    "name": "undoText",
-    "type": "string",
-    "required": false,
-    "description": "「元に戻す」の文字。渡すと出し、押すと undo。"
-   },
-   {
-    "name": "closeText",
-    "type": "string",
-    "required": false,
-    "description": "閉じるの文字。空文字にすると出さない。",
-    "default": "\"閉じる\""
-   },
-   {
-    "name": "duration",
-    "type": "number",
-    "required": false,
-    "description": "自然に消えるまでの秒数。0 で消えない。マウスが乗っている間は止まる。",
-    "default": "6"
-   },
-   {
-    "name": "offset",
-    "type": "number",
-    "required": false,
-    "description": "下からの距離（px）。"
-   },
-   {
-    "name": "contained",
-    "type": "boolean",
-    "required": false,
-    "description": "画面全体ではなく、親の要素（position:relative）の下に出す。",
-    "default": "false"
-   }
-  ],
+  "props": [],
   "emits": [
    {
     "name": "update:open",
