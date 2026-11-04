@@ -1,4 +1,4 @@
-/** ArSteps 1.0 の契約。 */
+/** ArSteps 1.1 の契約。 */
 export type ArStepStatus = "wait" | "process" | "finish" | "error";
 
 export interface ArStepItem {
@@ -26,6 +26,12 @@ export interface ArStepsProps {
   clickable?: boolean;
   /** 読み上げの名前。 */
   label?: string;
+  /**
+   * 横の手順で幅が足りないとき、縦の並びに切り替える（名前と数字が重ならないように）。
+   * true（既定）：手順1つあたり 150px より狭くなったら縦にする。数を渡すと、その幅（px）を手順1つあたりの下限にする。false：切り替えない。
+   * mini と縦の手順には効かない。
+   */
+  responsive?: boolean | number;
 }
 export interface ArStepsEmits {
   "update:current": [index: number];

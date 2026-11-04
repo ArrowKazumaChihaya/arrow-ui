@@ -105,7 +105,7 @@ export const covers = {
   ArSplitter: "1.0.0",
   ArStatistic: "1.0.0",
   ArStepper: "1.0.0",
-  ArSteps: "1.0.0",
+  ArSteps: "1.1.0",
   ArStepSelect: "1.0.0",
   ArSubItem: "1.0.0",
   ArSwitch: "1.0.0",

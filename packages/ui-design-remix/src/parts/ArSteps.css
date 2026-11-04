@@ -1,4 +1,4 @@
-/* @covers ArSteps 1.0.0 */
+/* @covers ArSteps 1.1.0 */
 /* ArSteps：横・縦は .ad-steps（今はテーマ色、済みは淡い面、エラーは赤）。mini はポップアップの上の .stpr（今はテーマ色の丸、済みは緑の丸にチェック）。 */
 [data-ar-design="remix"] [data-ar="steps"]{color:var(--ar-color-text);font-size:14px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="steps"][data-size="default"]>[data-part="step"]>[data-part="body"]{gap:10px}
@@ -26,3 +26,5 @@
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]>[data-part="step"][data-status="process"]>[data-part="body"]>[data-part="icon"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]>[data-part="step"][data-status="finish"]>[data-part="body"]>[data-part="icon"]{background:var(--ar-color-ok);color:#fff}
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="icon"]{background:var(--ar-color-danger);color:#fff}
+/* まだの手順の丸は、灰色の地の上でも見えるように細い線を付ける */
+[data-ar-design="remix"] [data-ar="steps"]>[data-part="step"][data-status="wait"]>[data-part="body"]>[data-part="icon"]{box-shadow:inset 0 0 0 1px #DCE3EA}

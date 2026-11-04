@@ -31,7 +31,7 @@ export const contracts = {
   ArDropdown: "1.0.0",
   ArMenu: "1.0.0",
   ArPagination: "1.0.0",
-  ArSteps: "1.0.0",
+  ArSteps: "1.1.0",
   ArStepSelect: "1.0.0",
   ArTabs: "1.1.0",
   ArAutoComplete: "1.0.0",
