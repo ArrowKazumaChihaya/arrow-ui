@@ -34,6 +34,7 @@ import ArButton from "./ArButton.vue";
 
 const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   variant: "box",
+  fit: false,
   selectable: false,
   selected: () => [],
   sort: null,
@@ -537,6 +538,7 @@ const colspan = computed(
     data-ar="table"
     data-part="root"
     :data-variant="variant"
+    :data-fit="fit || undefined"
     :data-density="density"
     :data-sticky-header="stickyHeader || undefined"
     :data-sortable="sortableRows || undefined"
@@ -781,6 +783,7 @@ const colspan = computed(
                   :data-align="alignOf(c)"
                   :data-numeric="c.numeric || undefined"
                   :data-emphasis="c.emphasis"
+                  :data-wrap="c.wrap || undefined"
                   :data-blank="(!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!isLineCol(c) || j === 1)) || undefined"
                   :data-sticky="cellStick(row, c)"
                   :data-sticky-edge="cellStickEdge(row, c)"

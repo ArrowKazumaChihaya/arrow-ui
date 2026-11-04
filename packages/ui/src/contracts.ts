@@ -96,7 +96,7 @@ export const contracts = {
   ArQRCode: "1.0.0",
   ArRibbon: "1.0.0",
   ArStatistic: "1.0.0",
-  ArTable: "1.4.0",
+  ArTable: "1.5.0",
   ArTag: "1.0.0",
   ArTimeline: "1.0.0",
   ArTooltip: "1.1.0",

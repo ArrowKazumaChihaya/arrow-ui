@@ -1,5 +1,5 @@
 /**
- * ArTable 1.4 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
+ * ArTable 1.5 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
  * デザインが選べる形（ArDesign.forms.ArTable）：
  * - selectHead："check"（既定。見出しはチェックだけ）／"label"（チェックの左に「全選択」の文字。今の ARROW の SelectTable。classic）。
  * - dragHandle："column"（既定。並べ替えのつまみを左の専用の列に）／"cell"（1列目のセルの頭に。今の ARROW の SortableTable。classic）。
@@ -71,6 +71,8 @@ export interface ArTableAvatar {
 }
 
 export interface ArTableColumn<Row> {
+  /** 1.5：長い本文をセル内で折り返し、改行を保持する。日付・金額などは省略して従来の表示を保つ。 */
+  wrap?: boolean;
   /** 列の名前（slot の名前 cell-<key> にも使う）。 */
   key: string;
   /** 見出しの文字。 */
@@ -209,6 +211,11 @@ export interface ArTableReorder {
 }
 
 export interface ArTableProps<Row> {
+  /**
+   * 1.5：利用可能な幅に表を収める。columns.widthを指定した列を優先し、残りを未指定の列へ配分する。
+   * 長文の列はwrapを併用する。省略時は各テーマの従来の表幅と横スクロールを維持する。
+   */
+  fit?: boolean;
   /** 列。 */
   columns: readonly ArTableColumn<Row>[];
   /** 行のデータ（並べ替え・絞り込み・ページ分けは製品がしたもの）。 */

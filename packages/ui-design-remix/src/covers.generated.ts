@@ -114,7 +114,7 @@ export const covers = {
   ArStepSelect: "1.0.0",
   ArSubItem: "1.0.0",
   ArSwitch: "1.1.0",
-  ArTable: "1.4.0",
+  ArTable: "1.5.0",
   ArTableHeader: "1.0.0",
   ArTabs: "1.1.0",
   ArTag: "1.0.0",

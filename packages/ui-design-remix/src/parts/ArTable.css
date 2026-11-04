@@ -1,4 +1,4 @@
-/* @covers ArTable 1.4.0 */
+/* @covers ArTable 1.5.0 */
 /* ArTable（box＝.lst/.lr：外枠 角丸12・線、見出し34・行44。board＝シフト画面の .v-tr：外枠なし、角の丸い見出し・行50・合計の帯） */
 [data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
@@ -188,3 +188,7 @@
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="actions"][data-kind="edit"]{gap:6px}
 /* 1.4：行ぜんぶを1つのセル（案内・説明の行）：上下10・左右12、折り返す、灰色の 12.5px の文 */
 [data-ar-design="remix"] [data-ar="table"] td[data-full]{padding:10px 12px;color:var(--ar-color-text-secondary);font-size:12.5px;line-height:1.6;white-space:normal}
+
+/* Long comments and document reasons can share the available table width. */
+[data-ar-design="remix"] [data-ar="table"][data-fit]>[data-part="viewport"]>[data-part="table"]{width:100%;table-layout:fixed}
+[data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-wrap]{white-space:pre-wrap;overflow-wrap:anywhere;text-overflow:clip;line-height:1.6;padding-block:8px}

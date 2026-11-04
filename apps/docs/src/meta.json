@@ -8112,9 +8112,16 @@
  },
  {
   "name": "ArTable",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "表。\nbox（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。\n見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。\n並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。\nページ送りは #below に ArPagination を置く。\nsortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。\n1.1：右に止める列・2段の見出し（押すとまとまりが開く）・行をまたぐセル・表の中の小さな金額の入力・3段の金額・数字の下の差の行。\n1.4：横につなぐセル（列の colSpan）・行ぜんぶを1つのセル（fullRow と #full-row）。\n1.3：入力の行（editing・commit・cancel）・時間の組の段（editor=\"time-range\"）。\n1.2：スロットの引数 Default（既定の表示）・段に分ける列（lines。段の高さを列をまたいで揃える）・入力の種類（文字・時刻・選ぶ）。",
   "props": [
+   {
+    "name": "fit",
+    "type": "boolean",
+    "required": false,
+    "description": "1.5：利用可能な幅に表を収める。columns.widthを指定した列を優先し、残りを未指定の列へ配分する。\n長文の列はwrapを併用する。省略時は各テーマの従来の表幅と横スクロールを維持する。",
+    "default": "false"
+   },
    {
     "name": "columns",
     "type": "readonly ArTableColumn<Row>[]",

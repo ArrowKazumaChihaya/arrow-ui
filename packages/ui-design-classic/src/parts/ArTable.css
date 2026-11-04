@@ -1,4 +1,4 @@
-/* @covers ArTable 1.4.0 */
+/* @covers ArTable 1.5.0 */
 /* ArTable（今の ARROW の表 Component/Table：見出しは白地・テーマ色の1px枠・中央・13px、行は上に #E8E8E8 の線だけ、行高32。並べ替えは ▲▼（#BFBFBF・向きだけ #1677FF）。チェックは灰枠 #808080） */
 [data-ar-design="classic"] [data-ar="table"]{color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
 /* 今の表は table-layout:fixed・幅100%（幅を決めない列は同じ幅に分ける。行の操作の列も1列として数える）。操作のボタンは左に寄せる */
@@ -103,3 +103,7 @@
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"][data-kind="edit"]{gap:4px}
 /* 1.4：行ぜんぶを1つのセル（今の UiTableCell(colspan) の案内の行：ふつうのセルと同じ字で、折り返す） */
 [data-ar-design="classic"] [data-ar="table"] td[data-full]{white-space:normal;text-overflow:clip}
+
+/* Long comments and document reasons can share the available table width. */
+[data-ar-design="classic"] [data-ar="table"][data-fit]>[data-part="viewport"]>[data-part="table"]{width:100%;table-layout:fixed}
+[data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-wrap]{white-space:pre-wrap;overflow-wrap:anywhere;text-overflow:clip;line-height:1.6;padding-block:8px}
