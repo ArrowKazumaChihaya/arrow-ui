@@ -1,4 +1,4 @@
-/* @covers ArOrgChart 1.0.0 */
+/* @covers ArOrgChart 1.1.0 */
 /* ArOrgChart：会社情報キャンバスの「部署/店舗階層構造」（地は #F7F9FB に 18px ごとの #D9E1E8 の点、図は上から 40px、
    いちばん上の札は幅176・角丸14・余白 10px 12px・内側 1.5px（子があれば acc-line、無ければ line）と浅い影、建物の絵と 13.5px 700 acc-ink の下線つきの名前・11.5px の ID・人の絵と 12px の人数、
    子の札は幅150・角丸12・余白 8px 10px・内側 1px line・13px の名前、つなぐ線は 2px の acc-line（札の下 18px・横の線・子の上 18px）、上の段の札の間 28px・子の札の間 14px、

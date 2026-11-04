@@ -72,7 +72,7 @@ export const covers = {
   ArMonthDayInput: "1.1.0",
   ArNotification: "1.0.0",
   ArNotificationHost: "1.0.0",
-  ArOrgChart: "1.0.0",
+  ArOrgChart: "1.1.0",
   ArOtpInput: "1.0.0",
   ArPageHeading: "1.0.0",
   ArPagination: "1.0.0",

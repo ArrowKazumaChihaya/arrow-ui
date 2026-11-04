@@ -1,6 +1,6 @@
 /* ArOrgChart の構造：地（巻き取らず、ドラッグで中の図を動かす）・図は上の真ん中から下へ枝分かれ・右下に拡大縮小・左下に案内。 */
-[data-ar="org-chart"]{position:relative;display:flex;flex-direction:column;min-width:0;box-sizing:border-box;overflow:hidden}
-[data-ar="org-chart"]>[data-part="viewport"]{position:relative;flex:1;min-height:0;overflow:hidden;cursor:grab;touch-action:none;outline:0}
+[data-ar="org-chart"]{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:minmax(0,1fr) auto;container-type:inline-size;min-width:0;box-sizing:border-box;overflow:hidden}
+[data-ar="org-chart"]>[data-part="viewport"]{position:relative;grid-column:1/-1;min-width:0;min-height:0;overflow:hidden;cursor:grab;touch-action:none;outline:0}
 [data-ar="org-chart"]>[data-part="viewport"][data-state~="dragging"]{cursor:grabbing}
 [data-ar="org-chart"]>[data-part="viewport"]>[data-part="canvas"]{position:absolute;left:50%;top:40px;display:flex;align-items:flex-start;width:max-content;transform-origin:50% 0;user-select:none}
 [data-ar="org-chart"] [data-part="branch"]{display:flex;flex-direction:column;align-items:center}
@@ -19,8 +19,13 @@
 [data-ar="org-chart"] [data-part="child"]:first-child::before{left:50%}
 [data-ar="org-chart"] [data-part="child"]:last-child::before{right:50%}
 [data-ar="org-chart"] [data-part="child"]:only-child::before{display:none}
-[data-ar="org-chart"]>[data-part="controls"]{position:absolute;right:14px;bottom:12px;z-index:2;display:flex;align-items:center}
+[data-ar="org-chart"]>[data-part="controls"]{position:relative;grid-column:2;grid-row:2;margin:8px 14px 12px;justify-self:end;z-index:2;display:flex;align-items:center;flex-wrap:wrap;max-width:calc(100% - 28px);box-sizing:border-box}
 [data-ar="org-chart"]>[data-part="controls"]>button{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap}
 [data-ar="org-chart"]>[data-part="controls"]>button:disabled{cursor:not-allowed}
 [data-ar="org-chart"]>[data-part="controls"]>button>svg{flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-[data-ar="org-chart"]>[data-part="hint"]{position:absolute;left:14px;bottom:12px;z-index:2;display:flex;align-items:center;pointer-events:none}
+[data-ar="org-chart"]>[data-part="hint"]{position:relative;grid-column:1;grid-row:2;margin:8px 0 12px 14px;align-self:center;min-width:0;z-index:2;display:flex;align-items:center;pointer-events:none}
+
+@container (max-width:640px){
+  [data-ar="org-chart"]>[data-part="hint"]{grid-column:1/-1;grid-row:2;margin:8px 14px 0}
+  [data-ar="org-chart"]>[data-part="controls"]{grid-column:1/-1;grid-row:3}
+}

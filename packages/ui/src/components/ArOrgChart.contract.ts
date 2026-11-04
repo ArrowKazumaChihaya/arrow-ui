@@ -1,5 +1,5 @@
 /**
- * ArOrgChart 1.0 の契約。組織図：部署・店舗の親子のつながりの図（会社情報の「部署/店舗階層構造」）。
+ * ArOrgChart 1.1 の契約。組織図：部署・店舗の親子のつながりの図（会社情報の「部署/店舗階層構造」）。
  * 子のある札の下の丸い印で開け閉め、右下で拡大縮小・「全体を表示」、地をドラッグで動かす・ホイールで拡大縮小。札を押すと select。
  */
 export interface ArOrgNode {
@@ -28,6 +28,8 @@ export interface ArOrgChartProps {
   minZoom?: number;
   maxZoom?: number;
   zoomStep?: number;
+  /** zoom はホイールで拡大縮小。pan は通常ホイールで移動、Ctrl/⌘+ホイールで拡大縮小。 */
+  wheelMode?: "zoom" | "pan";
   /** 選んでいる札の key。 */
   selected?: string | null;
   /** 図の高さ（既定 560px）。 */

@@ -1,4 +1,4 @@
-/* @covers ArOrgChart 1.0.0 */
+/* @covers ArOrgChart 1.1.0 */
 /* ArOrgChart：今の ARROW に組織図はない（部署/店舗の階層は表と「└」の字下げ）。素の antd 4 と ARROW の材料で作る：
    地は白（#F0F0F0 の1pxの枠・角丸8）、札は antd の Card の small（白・#D9D9D9 の1px・角丸8・余白 8px 12px）、いちばん上の札はページのテーマ色の1pxの枠、
    名前は ARROW のリンクの色 #4F92C2 の 700 13px（下線）、ID と人数は 12px rgba(0,0,0,.45)／.88、つなぐ線は #D9D9D9 の1px、

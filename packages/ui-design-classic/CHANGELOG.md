@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- Organization charts support anchored pan/pinch gestures, async tree data, and non-overlapping mobile controls. Preserve user zoom and pan across design changes.
+
 - Keep authentication page side insets and remove excessive vertical whitespace on mobile.
 
 ### Patch Changes

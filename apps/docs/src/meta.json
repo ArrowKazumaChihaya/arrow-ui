@@ -7480,7 +7480,7 @@
  },
  {
   "name": "ArOrgChart",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "組織図（部署・店舗の階層の図）。会社情報の「部署/店舗階層構造」。\n札を押すと select。子のある札の下の丸い印で開け閉め。地をドラッグで動かし、ホイールで拡大縮小、右下で −・＋・「全体を表示」。\nキーボード：札は Tab で移って Enter。図にフォーカスして ←→↑↓ で動かし、+ − で大きさ、0 で全体を表示。",
   "props": [
    {
@@ -7521,6 +7521,13 @@
     "required": false,
     "description": "",
     "default": "0.1"
+   },
+   {
+    "name": "wheelMode",
+    "type": "'zoom' | 'pan'",
+    "required": false,
+    "description": "zoom はホイールで拡大縮小。pan は通常ホイールで移動、Ctrl/⌘+ホイールで拡大縮小。",
+    "default": "\"zoom\""
    },
    {
     "name": "selected",
