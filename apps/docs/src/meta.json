@@ -10202,7 +10202,7 @@
  },
  {
   "name": "ArApprovalFlow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "承認の流れ。済み・あなたの番・まだ（差し戻し・飛ばした）を段ごとに。\nrow は横の札を › でつなぎ（設定の承認フロー）、list は番号の丸と状態の札の縦の一覧（勤怠・社員情報の承認）。",
   "props": [
    {
@@ -10242,6 +10242,7 @@
   "emits": [],
   "slots": [
    "step",
+   "details",
    "append"
   ],
   "parts": [
@@ -10249,13 +10250,14 @@
    "item",
    "start",
    "sep",
+   "mark",
    "step",
+   "body",
    "title",
    "who",
    "status",
-   "append",
-   "mark",
-   "body"
+   "details",
+   "append"
   ],
   "dataAr": "approval-flow"
  },

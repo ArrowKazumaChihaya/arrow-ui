@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { mount } from "@vue/test-utils";
-import { defineComponent, h } from "vue";
+import { defineComponent, h, nextTick, shallowRef } from "vue";
 import ArUiProvider from "../src/provider/ArUiProvider.vue";
 import ArItem from "../src/components/ArItem.vue";
 import ArChangedValue from "../src/components/ArChangedValue.vue";
@@ -132,6 +132,34 @@ describe("P1：ArApprovalFlow", () => {
     const c = inDesign(classicDesign, ArApprovalFlow, { steps });
     expect(c.get('[data-ar="approval-flow"]').attributes("data-layout")).toBe("row");
     c.unmount();
+  });
+  it("詳細スロットの編集値・フォーカス・操作は list と row の往復でも保持する", async () => {
+    const design = shallowRef(remixDesign);
+    let opened = 0;
+    const App = defineComponent(() => () => h(ArUiProvider, { design: design.value, scope: "self" }, () =>
+      h(ArApprovalFlow, { steps }, {
+        details: ({ index }: { index: number }) => [
+          h("input", { "aria-label": `承認者メモ ${index + 1}` }),
+          h("button", { onClick: () => { opened++; } }, "承認者を表示"),
+        ],
+      }),
+    ));
+    const w = mount(App, { attachTo: document.body });
+    const input = w.get<HTMLInputElement>('input[aria-label="承認者メモ 2"]');
+    await input.setValue("確認中の理由");
+    input.element.focus();
+    for (const theme of [classicDesign, remixDesign]) {
+      design.value = theme;
+      await nextTick();
+      expect(w.get('[data-ar="approval-flow"]').attributes("data-layout")).toBe(theme === classicDesign ? "row" : "list");
+      expect(w.get('input[aria-label="承認者メモ 2"]').element).toBe(input.element);
+      expect(input.element.value).toBe("確認中の理由");
+      expect(document.activeElement).toBe(input.element);
+      expect(w.get('[aria-current="step"] [data-part="status"]').text()).toBe("あなたの番");
+      await w.get('[aria-current="step"] button').trigger("click");
+    }
+    expect(opened).toBe(2);
+    w.unmount();
   });
 });
 
