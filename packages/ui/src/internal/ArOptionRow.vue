@@ -22,6 +22,8 @@ const props = withDefaults(
     avatarColor?: string;
     avatarInk?: string;
     icon?: ArIconName;
+    /** 頭の色の小さな丸（パターンの色など）。 */
+    dot?: string;
     description?: string;
     /** 右の小さな文字の色。 */
     descriptionTone?: "default" | "ok" | "warn" | "danger";
@@ -41,6 +43,7 @@ const props = withDefaults(
     avatarColor: undefined,
     avatarInk: undefined,
     icon: undefined,
+    dot: undefined,
     description: undefined,
     descriptionTone: "default",
     check: true,
@@ -70,6 +73,7 @@ const avatarStyle = computed(() =>
   >
     <span v-if="avatar !== undefined" data-part="avatar" aria-hidden="true" :style="avatarStyle">{{ avatar }}</span>
     <ArIcon v-else-if="icon" :name="icon" size="sm" data-part="option-icon" />
+    <span v-else-if="dot" data-part="option-dot" aria-hidden="true" :style="{ background: dot }" />
     <span data-part="option-label"
       ><template v-for="(p, i) in pieces" :key="i"
         ><mark v-if="p.match" data-part="match">{{ p.text }}</mark

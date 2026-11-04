@@ -1,0 +1,66 @@
+/* @covers ArShiftViewTable 1.0.0 */
+/* 今の ARROW の閲覧タブ（View/Manager/Shift/View/Index.vue の .view_table）：#c8c8c8 の 1px の枠（離れた枠なので内側は 2px）、見出しは #f2f8fc の 13px/600、
+   日も名前も 136px、名前の下に「勤務 n日」10px #82909f、札は #eef1f3 の地・#e1e5e8 の枠・角丸5 で、右上に店舗名 9px、「シフト」10px/600、時刻 13px。
+   今の画面に無い今日の列・凡例のこの店舗／ほかの店舗は出さない（今の画面と同じ見た目）。合計の行と凡例の有給・パターンは見出しと同じ材料で描く。 */
+[data-ar-design="classic"] [data-ar="shift-view-table"]{gap:12px;color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;font-weight:400;line-height:1em}
+/* 操作の段：antd の Input（高さ32・角丸6・#d9d9d9）とボタン */
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]{gap:8px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="note"]{gap:6px;color:rgba(0,0,0,.88);font-size:13px;line-height:18px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="note"]>[data-ar="icon"]{width:14px;height:14px;color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]{width:220px;height:32px;gap:4px;padding:4px 11px;border:1px solid #d9d9d9;border-radius:6px;background:#fff;color:rgba(0,0,0,.25);transition:border-color .2s,box-shadow .2s}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]:hover{border-color:#4096ff}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]:focus-within{border-color:#4096ff;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-icon"]{width:14px;height:14px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-input"]{color:rgba(0,0,0,.88);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:14px;line-height:1.5714}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-input"]::placeholder{color:rgba(0,0,0,.25);opacity:1}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]{height:32px;border:1px solid #d9d9d9;border-radius:6px;background:#fff}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]{width:30px;height:30px;border:0;border-radius:5px;background:none;color:rgba(0,0,0,.88);transition:color .2s}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:hover:not(:disabled){color:#4096ff}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:focus-visible{outline:0;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:disabled{color:rgba(0,0,0,.25)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-value"]{min-width:48px;color:rgba(0,0,0,.88);font-size:12px;line-height:30px}
+/* 表 */
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]{background:#fff}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]:focus-visible{outline:2px solid rgba(5,145,255,.2)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>*>tr>*{border:1px solid #c8c8c8;padding:2px;vertical-align:middle}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>th{height:34px;padding:1px;background:#f2f8fc;color:#333;font-size:13px;font-weight:600;text-align:center}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="corner"]{text-align:center}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"][data-tone="sun"]{background:#fff0f1}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"][data-tone="sat"]{background:#edf5ff}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"]>[data-part="day-label"]>[data-part="day-num"]{font-size:13px;font-weight:400;line-height:30px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"][data-tone="sun"]>[data-part="day-label"]>[data-part="day-num"]{color:#d14c54}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"][data-tone="sat"]>[data-part="day-label"]>[data-part="day-num"]{color:#3978bd}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"]>button[data-part="day-label"]:hover>[data-part="day-num"]{color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"]>button[data-part="day-label"]:focus-visible{outline:2px solid rgba(5,145,255,.2)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]{background:#fff;text-align:left;color:#333;font-size:13px;font-weight:600}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]{display:block}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-ar="avatar"]{display:none}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]{padding:5px 8px 1px;font-size:13px;font-weight:400;line-height:18px;white-space:normal;word-break:break-word;color:#333}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-sub"]{padding:0 8px 5px;color:#82909f;font-size:10px;font-weight:400;line-height:1em}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]>[data-part="live"]{width:8px;height:8px;margin-right:5px;border-radius:50%;vertical-align:1px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]>[data-part="live"][data-state="working"]{background:#52c41a}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]>[data-part="live"][data-state="absent"]{box-shadow:inset 0 0 0 1.5px #82909f}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]{padding:3px;background:#fff;vertical-align:top}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"][data-tone="sun"]{background:#fff9f9}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"][data-tone="sat"]{background:#f8fbff}
+/* 札（labeled）：右上に店舗名、「シフト」、時刻を1行ずつ */
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]{position:relative;padding:14px 5px 4px;border:1px solid #e1e5e8;border-radius:5px;background:#eef1f3;color:#44515c;font-size:11px;line-height:14px;white-space:normal}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]+[data-part="chip"]{margin-top:3px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]>[data-part="chip-branch"]{position:absolute;top:3px;right:5px;left:5px;color:#7c8995;font-size:9px;font-weight:400;line-height:13px;text-align:right}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]>[data-part="chip-subject"]{font-size:10px;font-weight:600;line-height:1em;opacity:.85}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]>[data-part="chip-time"]{font-size:13px;font-weight:400;line-height:1em}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>button[data-part="chip"]:hover{border-color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>button[data-part="chip"]:focus-visible{outline:2px solid rgba(5,145,255,.2)}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="empty"]{padding:24px 16px;background:#fff}
+/* 合計の行（今の画面には無い）：見出しと同じ #f2f8fc の 13px/600 */
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tfoot>tr>*{height:34px;background:#f2f8fc;color:#333;font-size:13px;font-weight:600;line-height:16px;text-align:center}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tfoot>tr>[data-part="foot"]>[data-part="foot-hours"]{color:#82909f;font-size:10px;font-weight:400;line-height:13px}
+/* 凡例（今の画面には無い）：この店舗／ほかの店舗は札が同じなので出さない。有給・パターンの色だけ */
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="legend"]{gap:12px;color:rgba(0,0,0,.65);font-size:12px;line-height:18px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="legend"]:not(:has(>[data-part="legend-item"]:is([data-kind="leave"],[data-kind="pattern"]))):not(:has(>:not([data-part="legend-item"]))){display:none}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]:is([data-kind="own"],[data-kind="other"]){display:none}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]{gap:5px}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"]{width:14px;height:12px;border-radius:2px;border:1px solid #e1e5e8;background:#eef1f3}
+[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="pattern"]{border:0;background:var(--ar-svt-chip,var(--ar-accent))}
+/* スマホ：説明と検索は1行ずつ */
+[data-ar-design="classic"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="toolbar"]>:is([data-part="note"],[data-part="search"]){width:100%}

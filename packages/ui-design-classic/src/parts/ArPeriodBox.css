@@ -1,0 +1,13 @@
+/* @covers ArPeriodBox 1.0.0 */
+/* ArPeriodBox（今の ARROW の募集・一括登録の .control_wrap：最大幅660・中央・内側10・テーマ色の 2px の点線・#F5F5F5・角丸10。
+   中に MonthChanger、下に間8・中央で「月／半月」のボタン型ラジオ、その右に間8で「(前半)／(後半)」。
+   箱の下は .apply_wrap（上15・中央）に幅250の大きな「適用」、その下に間10で /img/apply.png（幅70）） */
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="box"]{box-sizing:border-box;width:100%;max-width:660px;margin:0 auto;padding:10px;border:2px dashed var(--ar-accent);border-radius:10px;background:#F5F5F5}
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="box"]>[data-part="modes"]{justify-content:center;gap:8px;margin-top:8px}
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="apply"]{flex-direction:column;margin-top:15px}
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="apply"]>[data-ar="button"]{width:250px}
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="apply"]>[data-part="apply-arrow"]{display:block;width:70px;height:64.6px;margin:10px auto 0}
+/* 箱の中の操作（今の .pattern_button_wrap：右に寄せた幅150のボタン、上に間10） */
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="box"]>[data-part="body"]{margin-top:8px}
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="box"]>[data-part="actions"]{margin-top:10px}
+[data-ar-design="classic"] [data-ar="period-box"]>[data-part="box"]>[data-part="actions"]>[data-ar="button"]{width:150px}

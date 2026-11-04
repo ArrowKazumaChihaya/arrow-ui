@@ -1,4 +1,6 @@
-/** ArUpload 1.0 の契約。 */
+/** ArUpload 1.1 の契約。 */
+import type { ArIconName } from "../icons";
+
 export interface ArUploadFile {
   /** 一覧の中で一意な値。 */
   id: string | number;
@@ -13,7 +15,8 @@ export interface ArUploadFile {
   url?: string;
 }
 /**
- * ArUpload 1.0 の契約。
+ * ArUpload 1.1 の契約。
+ * 1.1：今の Upload（trigger="button"）と同じく、選んだあとはボタンを「ファイルを変更」、下を「選択中: 名前」に。ボタンのアイコンを選べる（buttonIcon）。
  *
  * デザインが選ぶ形（ArDesign.forms.ArUpload）。値の受け渡し（select・reject・remove）はどの形でも同じ。
  * - `trigger`：`"drop"`（既定）＝置き場（点線の枠）とファイルの一覧。`"button"`＝「ファイルを選択」のボタンと、その下に選んだファイルの名前（なければ「ファイル未選択」）（今の ARROW の Upload）。listType="text" のときだけ効く。
@@ -30,6 +33,8 @@ export interface ArUploadProps {
   listType?: "text" | "picture";
   /** trigger="button" のときのボタンの種類（今の ARROW の Upload の type：add→primary、cancel→muted）。 */
   buttonTone?: "primary" | "secondary" | "muted";
+  /** trigger="button" のときのボタンのアイコン（今の Upload の icon）。null で出さない。既定 upload。 */
+  buttonIcon?: ArIconName | null;
   /** trigger="button" のときのボタンの大きさ（xl＝今の ARROW の xlarge）。 */
   buttonSize?: "md" | "xl";
   /** 置き場の下の説明（例：「.xlsx・10MBまで」）。 */
@@ -50,6 +55,10 @@ export interface ArUploadProps {
     choose?: string;
     /** trigger="button" で、まだ何も選んでいないときの文字。 */
     none?: string;
+    /** trigger="button" で、選んだあとのボタンの文字（既定「ファイルを変更」。今の component.upload.change）。 */
+    change?: string;
+    /** trigger="button" で、選んだファイルの名前の前の文字（既定「選択中: 」。今の component.upload.selected_file）。 */
+    selected?: string;
   };
 }
 export interface ArUploadEmits {

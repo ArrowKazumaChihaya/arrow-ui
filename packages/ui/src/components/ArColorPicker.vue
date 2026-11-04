@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArColorPicker 1.0 — 色を選ぶ（イベント・パターンの色）。ふだんは決まった色の丸（ArColorSwatches）から選び、
+ * ArColorPicker 1.1 — 色を選ぶ（イベント・パターンの色）。ふだんは決まった色の丸（ArColorSwatches）から選び、
  * 自由な色は「詳細」で色の面・色相の帯・HEX から選ぶ。選ぶたびにすぐ値が変わる。
  * キーボード：色の面は←→で鮮やかさ・↑↓で明るさ、色相の帯は←→、HEX は打って Enter。
  */
@@ -10,11 +10,11 @@ import ArColorSwatches from "./ArColorSwatches.vue";
 import ArIcon from "./ArIcon.vue";
 import ArModal from "./ArModal.vue";
 import { useDesignForm, useId } from "../provider/context";
-import { arEventColors, hexToHsv, hsvToHex, normalizeHex, type Hsv } from "./color";
+import { arArrowColors, arEventColors, hexToHsv, hsvToHex, normalizeHex, type Hsv } from "./color";
 import type { ArColorPickerProps } from "./ArColorPicker.contract";
 
 const props = withDefaults(defineProps<ArColorPickerProps>(), {
-  colors: () => arEventColors,
+  colors: undefined,
   custom: true,
   detailOpen: false,
   groupSize: undefined,
@@ -25,11 +25,15 @@ const props = withDefaults(defineProps<ArColorPickerProps>(), {
 const emit = defineEmits<{ "update:modelValue": [value: string]; "update:open": [open: boolean] }>();
 
 const panel = useDesignForm<"popover" | "dialog">("ArColorPicker", "panel", "popover");
+/** 形（ArDesign.forms.ArColorPicker.palette）：colors を省いたときの色。event＝イベント・パターンの8色、arrow＝今の ARROW の「色選択」の48色（縦に4色ずつ）。 */
+const palette = useDesignForm<"event" | "arrow">("ArColorPicker", "palette", "event");
+const colors = computed(() => props.colors ?? (palette.value === "arrow" ? arArrowColors : arEventColors));
+const groupSize = computed(() => props.groupSize ?? (palette.value === "arrow" && !props.colors ? 4 : undefined));
 const baseId = useId("ar-color");
 const chip = ref<HTMLButtonElement | null>(null);
 const open = ref(false);
 const detail = ref(props.detailOpen);
-const hsv = ref<Hsv>(hexToHsv(props.modelValue ?? props.colors[0]?.value ?? "#5591CE"));
+const hsv = ref<Hsv>(hexToHsv(props.modelValue ?? (props.colors ?? arEventColors)[0]?.value ?? "#5591CE"));
 const hexText = ref(props.modelValue ?? "");
 watch(
   () => props.modelValue,

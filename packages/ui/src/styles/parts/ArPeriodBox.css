@@ -1,0 +1,6 @@
+/* ArPeriodBox の構造（並びだけ。色・余白はデザインが持つ） */
+[data-ar="period-box"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="period-box"]>[data-part="box"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="period-box"]>[data-part="box"]>[data-part="modes"]{display:flex;flex-wrap:wrap;align-items:center}
+[data-ar="period-box"]>[data-part="apply"]{display:flex;align-items:center}
+[data-ar="period-box"]>[data-part="box"]>[data-part="actions"]{display:flex;justify-content:flex-end}

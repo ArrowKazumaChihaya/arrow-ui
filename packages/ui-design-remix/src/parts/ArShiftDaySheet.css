@@ -1,0 +1,16 @@
+/* @covers ArShiftDaySheet 1.0.0 */
+/* シフトのキャンバスの .v-sheet（RxSpDay）：頭は右上の × だけ（34px の丸・#F0F3F6）、題は読み上げだけ。中身は上へ 10px かぶせ、左右 14px・下 16px、16px あけて並べる。
+   日付の段は .nrw .v-dc（23px・前後の丸 34px・曜日の札 22px）、要約の札は .nrw .r-sc（高さ26・12px）で、上の段に 6px 寄せる。 */
+[data-ar-design="remix"] [data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]>[data-part="header"]{position:relative;z-index:1;height:42px;padding:8px 8px 0;border-bottom:0;background:transparent}
+[data-ar-design="remix"] [data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]>[data-part="header"]>[data-part="title"]{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[data-ar-design="remix"] [data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{width:34px;height:34px;margin-left:auto;border-radius:50%;background:#F0F3F6;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]:hover{background:#E6EBF0;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]>[data-ar="icon"]{width:16px;height:16px}
+[data-ar-design="remix"] [data-ar="drawer"][data-sheet="shift-day"]>[data-part="panel"]>[data-part="body"]{margin-top:-10px;padding:0 14px 16px}
+[data-ar-design="remix"] [data-ar="shift-day-sheet"]{gap:16px}
+[data-ar-design="remix"] [data-ar="shift-day-sheet"]>[data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]{width:34px;height:34px}
+[data-ar-design="remix"] [data-ar="shift-day-sheet"]>[data-ar="period-nav"]>[data-part="center"]>[data-part="label"]{height:34.5px;font-size:23px;line-height:34.5px}
+[data-ar-design="remix"] [data-ar="shift-day-sheet"]>[data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{height:22px;min-width:22px;font-size:13px;line-height:19.5px;box-sizing:border-box}
+[data-ar-design="remix"] [data-ar="shift-day-sheet"]>[data-ar="day-summary"]{margin-top:-6px}
+[data-ar-design="remix"] [data-ar="shift-day-sheet"]>[data-ar="day-summary"]>:is([data-part="item"],[data-part="publish"]){height:26px;padding:0 10px;font-size:12px}
+[data-ar-design="remix"] [data-ar="shift-day-sheet"]>[data-part="body"]{gap:16px}

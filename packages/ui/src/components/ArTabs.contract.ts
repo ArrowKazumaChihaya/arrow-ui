@@ -1,4 +1,4 @@
-/** ArTabs 1.0 の契約。 */
+/** ArTabs 1.1 の契約。 */
 import type { ArIconName } from "../icons";
 
 export interface ArTabItem {
@@ -28,6 +28,8 @@ export interface ArTabsProps {
    * line：カードの中の下線のタブ（中身の切り替え）。card：閉じられる・足せるタブ（10月分・11月分など）。
    */
   variant?: "band" | "line" | "card";
+  /** 大きさ。sm はスマホのカードの帯の中（シフトのキャンバスの .nrw .v-tab：高さ34・13px）。 */
+  size?: "md" | "sm";
   /** 読み上げ用の名前。 */
   label: string;
   /** 1つ1つのタブの id の頭（tabpanel 側の aria-labelledby に使う）。 */

@@ -1,17 +1,17 @@
-<!-- 領域のタブ・畳む・子のメニュー・ピルの一覧 | domains で1段目とメニューの間に「人事・労務」「経費精算」のタブ。collapsible で右に「ヘッダーを閉じる」（v-model:collapsed。畳むと右上に「＋」）。メニューの children は指すと真下に出る（社員情報 → 社員一覧・有給管理）。ピルの items は指すとピルが下に伸びて一覧が出る。top の slot は1段目に足すもの。 -->
+<!-- 領域のタブ・畳む・子のメニュー・ピルの一覧 | domains で1段目とメニューの間に「人事・労務」「経費精算」のタブ（note で「未契約」を添える）。collapsible で右に「ヘッダーを閉じる」（v-model:collapsed。畳むと右上に「＋」）。メニューの children は指す・フォーカス・指で押す・↓ キーで真下に出る（社員情報 → 社員一覧・有給管理）。ピルの items は指す・押す・↓ キーで下に一覧が出る。top の slot は1段目に足すもの（デザインの選択）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArAppHeader } from "@arrow/ui";
+import { ArAppHeader, ArButton } from "@arrow/ui";
 import type { ArAppNavItem } from "@arrow/ui";
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 const menus: ArAppNavItem[] = [
   { key: "shift", label: "シフト", icon: "cal", palette: "blue" },
-  { key: "attendance", label: "勤怠", icon: "brief", palette: "green" },
+  { key: "attendance", label: "勤怠", icon: "brief", palette: "green", children: [{ key: "attendance-list", label: "勤怠一覧" }, { key: "paid", label: "有給管理" }] },
   { key: "payment", label: "給与賞与", icon: "calc", palette: "yellow" },
 ];
 const menusEnd: ArAppNavItem[] = [
   { key: "company", label: "会社情報", icon: "bld", palette: "teal" },
-  { key: "employee", label: "社員情報", icon: "users", palette: "teal", children: [{ key: "employees", label: "社員一覧" }, { key: "paid", label: "有給管理" }] },
+  { key: "employee", label: "社員情報", icon: "users", palette: "teal", children: [{ key: "employees", label: "社員一覧" }, { key: "paid-hol", label: "有給管理" }] },
   { key: "config", label: "設定", icon: "gear", palette: "teal" },
 ];
 const domain = ref("hr");
@@ -27,7 +27,7 @@ const last = ref("");
       :menus="menus"
       :menus-end="menusEnd"
       current="shift"
-      :domains="[{ key: 'hr', label: '人事・労務', icon: 'users' }, { key: 'expense', label: '経費精算', icon: 'calc' }]"
+      :domains="[{ key: 'hr', label: '人事・労務', icon: 'users' }, { key: 'expense', label: '経費精算', icon: 'calc', note: '未契約' }]"
       :domain="domain"
       collapsible
       :pills="[
@@ -40,6 +40,7 @@ const last = ref("");
       @pill-item="(p, k) => (last = `${p}:${k}`)"
     >
       <template #logo><img :src="logo" alt="ARROW" /></template>
+      <template #top><ArButton size="sm" tone="secondary" @click="last = 'design'">デザインを選択</ArButton></template>
     </ArAppHeader>
     <p style="margin: 16px 24px 0; font-size: 12px">押したもの：{{ last || "—" }}</p>
   </div>

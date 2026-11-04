@@ -1,4 +1,4 @@
-/* @covers ArViewOptions 1.0.0 */
+/* @covers ArViewOptions 1.1.0 */
 /* ArViewOptions：antd 4 の Button（高さ32・角丸6・#D9D9D9 の枠）＋ Dropdown のチェックの並び（角丸8・影・項目は角丸4）。 */
 [data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]{gap:6px;height:32px;padding:0 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;box-shadow:0 2px 0 rgba(0,0,0,.02);transition:border-color .2s,color .2s}
 [data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]:hover:not(:disabled),[data-ar-design="classic"] [data-ar="view-options"][data-state~="open"]>[data-part="trigger"]{border-color:var(--ar-accent);color:var(--ar-accent)}
@@ -24,3 +24,27 @@
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="foot"]{margin-top:4px;padding:6px 8px 2px;border-top:1px solid rgba(5,5,5,.06)}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="foot"]>button{padding:0 7px;height:24px;border-radius:4px;color:var(--ar-accent);font-size:14px}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="foot"]>button:hover{background:rgba(0,0,0,.04)}
+/* 1.1 保存した組み合わせ：antd の Dropdown の項目（余白 5px 12px・角丸4・選択中は淡いテーマ色）、範囲は antd の Tag（12px・角丸4・#FAFAFA と #D9D9D9 の枠、会社はテーマ色）。保存の操作は link のボタン。 */
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]{padding-bottom:4px;border-bottom:1px solid rgba(5,5,5,.06);margin-bottom:4px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="presets-title"]{padding:5px 12px;color:rgba(0,0,0,.45);font-size:12px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]{border-radius:4px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]:hover{background:rgba(0,0,0,.04)}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"][data-state~="on"]{background:var(--ar-accent-faint)}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]{gap:8px;padding:5px 12px;border-radius:4px;color:rgba(0,0,0,.88);font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"][data-state~="on"]>[data-part="preset-apply"]{font-weight:600}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:-2px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>[data-part="preset-check"]{width:14px;height:14px;color:var(--ar-accent);stroke-width:3}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>[data-part="preset-scope"]{height:20px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;background:#FAFAFA;color:rgba(0,0,0,.88);font-size:12px;font-weight:400;line-height:18px;box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>[data-part="preset-scope"][data-scope="company"]{border-color:var(--ar-accent-line);background:var(--ar-accent-faint);color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>[data-part="preset-default"]{color:rgba(0,0,0,.45);font-size:12px;font-weight:400}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]{width:24px;height:24px;margin-right:4px;border-radius:4px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]:hover{background:rgba(0,0,0,.06);color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:-2px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]>[data-ar="icon"]{width:12px;height:12px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]{gap:4px;padding:4px 8px 2px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>button,[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button{height:24px;padding:0 7px;border-radius:4px;color:var(--ar-accent);font-size:14px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>button:hover,[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button:hover:not(:disabled){background:rgba(0,0,0,.04)}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>button:focus-visible,[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:1px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]{gap:6px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]{gap:4px}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button[data-kind="cancel"]{color:rgba(0,0,0,.88)}

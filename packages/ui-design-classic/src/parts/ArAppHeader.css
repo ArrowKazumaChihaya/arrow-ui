@@ -1,4 +1,4 @@
-/* @covers ArAppHeader 1.0.0, ArAppFooter 1.0.0, ArMobileHeader 1.0.0, ArBottomNav 1.0.0 */
+/* @covers ArAppHeader 1.1.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.1.0 */
 /* 今の MenuLayout のヘッダー（arrow-Header.png）：#EDF3F7 の面・下に 6px の #6CB1B7（その他の色）。
    1段目：ロゴ 100px、上から垂れる 235px のタブ（お知らせ #DFDFDF／やること #FFEAE6・角丸 0 0 12 12）、右に「管理ページ」14px。
    2段目：120×76（右は 100）の白い四角（角丸4・間12）に 42px の丸とアイコン、下に 14px の名前。今いる項目・指した項目は項目の色で塗り、名前は白の太字 */
@@ -29,9 +29,9 @@
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]{width:42px;height:42px;border-radius:50%;color:#5C5C5C}
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]>[data-ar="icon"]{width:29px;height:29px;stroke-width:1.5}
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-label"]{width:100%;margin-top:4px;font-size:14px;line-height:18px;color:#333;text-align:center}
-[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"]){background:var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"])>[data-part="item-icon"]{background:rgba(255,255,255,.5)}
-[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"])>[data-part="item-label"]{color:#fff;font-weight:700}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"],[data-state~="open"]){background:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"],[data-state~="open"])>[data-part="item-icon"]{background:rgba(255,255,255,.5)}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:is(:hover,[data-state~="on"],[data-state~="open"])>[data-part="item-label"]{color:#fff;font-weight:700}
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:focus-visible{outline:2px solid #4096FF;outline-offset:1px}@keyframes ar-classic-blink{0%{opacity:0}50%{opacity:1}100%{opacity:1}}@media (prefers-reduced-motion: reduce){[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-state="has-count"]>*{animation:none}}
 /* 管理ページのメニュー（arrow-Header-loginmenu：150px・#4495D4 の 3px の枠・角丸4・行40 の 14px 太字） */
 [data-ar-design="classic"] [data-ar="app-account-menu"]{width:150px;border:3px solid #4495D4;border-radius:4px;background:#fff;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
@@ -82,10 +82,22 @@
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]::before{content:"";position:absolute;left:0;right:0;top:-8px;height:8px;background:inherit}
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"][data-tone="notice"]{background:#DFDFDF}
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"][data-tone="todo"]{background:#FFEAE6}
-[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>li{padding:20px 10px 0}
-[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]{color:#1677FF;font-size:13px;font-weight:700;line-height:13px}
-[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]::before{content:"・"}
-[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]:hover{text-decoration:underline}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]{max-height:calc(100vh - 160px)}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]{display:block;padding:20px 10px 0}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:last-child{padding-bottom:7px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-item"]{display:inline-block;width:calc(100% - 25px);color:#1677FF;font-size:13px;font-weight:700;line-height:13px;vertical-align:top;transition:color .3s}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-item"]::before{content:"・"}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-item"]:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]{display:inline-block;width:25px;height:13px;color:#DC2525;font-size:20px;line-height:13px;vertical-align:top;transition:color .3s}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]:hover{opacity:.6}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>:focus-visible{outline:2px solid #4096FF;outline-offset:1px}
+/* 外したものを戻す（今の todo_cancel_item：右寄せの 10px 太字のリンク・余白 10px 10px 0）と、空のとき */
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]{padding:10px 10px 0;color:#1677FF;font-size:10px;font-weight:700;line-height:13px;text-align:right}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]:focus-visible{outline:2px solid #4096FF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-empty"]{padding:20px 10px 7px;color:gray;font-size:13px;line-height:13px;text-align:center}
+/* 領域のタブの小さな文字（今の domain_button small：10px・太さ400） */
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"]>[data-part="domain-note"]{font-size:10px;font-weight:400}
 /* 1段目の右の「＋」（畳んだとき）：今の bordered のボタン（#4F92C2 の 1px の枠・角丸13 の丸ピル、中に 16px の＋） */
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="expand"]{width:36px;height:25px;margin-left:16px;padding:0;border:1px solid #4F92C2;border-radius:13px;background:#fff;color:#4F92C2}
 [data-ar-design="classic"] [data-ar="app-header"]>[data-part="top"]>[data-part="expand"]:hover{background:#4F92C2;color:#fff}
@@ -132,3 +144,24 @@
 [data-ar-design="classic"] [data-ar="app-header"]:not(:has(>[data-part="nav"]))>[data-part="top"]>[data-part="logo"]>img{width:200px;height:auto}
 /* リンクも問い合わせもない足（SlimLayout の Footer）は著作権の行だけ */
 [data-ar-design="classic"] [data-ar="app-footer"]>[data-part="row"]:not(:has([data-part="link"],[data-part="support"])){display:none}
+[data-ar-design="classic"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]:focus-visible{outline:2px solid #4096FF;outline-offset:-2px}
+/* 1.1 下のメニューの子の段（今の sub_menu_wrap：メニューの真上・高さ50・#ECECEC の1項目分のタイルを左か右に寄せる。中身は項目と同じ） */
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="submenu"]{height:50px}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]{justify-content:flex-start;height:100%;padding:7px;border-top:2px solid #ECECEC;background:#ECECEC;color:#5C5C5C;font-size:8px;font-weight:600;line-height:1}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="icon"]{width:20px;height:20px;flex:none}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="label"]{margin-top:4px}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"][data-state~="on"]{border-top-color:var(--ar-accent);color:var(--ar-accent)}
+[data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]:focus-visible{outline:2px solid #4096FF;outline-offset:-2px}
+/* メニューの一覧（今のメニューのページ MenuLayout/Menu の app-grid：4列・最大360px、テーマ色の角丸10 の四角に白い絵、下に 10px 太さ600 #333） */
+[data-ar-design="classic"] [data-ar="nav-sheet"]{grid-template-columns:repeat(4,25%);justify-content:center;max-width:360px;margin:0 auto;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="nav-sheet"]>[data-part="tile"]{width:100%;max-width:90px;padding:10px 15px;background:none;color:#333;font-size:10px;font-weight:600;line-height:1.3}
+[data-ar-design="classic"] [data-ar="nav-sheet"]>[data-part="tile"]>[data-part="tile-icon"]{width:100%;aspect-ratio:1;padding:7px;border-radius:10px;background:var(--ar-accent);color:#fff;box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="nav-sheet"]>[data-part="tile"]>[data-part="tile-icon"]>[data-ar="icon"]{width:70%;height:70%;stroke-width:1.6}
+[data-ar-design="classic"] [data-ar="nav-sheet"]>[data-part="tile"]>[data-part="tile-label"]{margin-top:3px}
+[data-ar-design="classic"] [data-ar="nav-sheet"]>[data-part="tile"]:is(:hover,:active)>[data-part="tile-icon"]{filter:brightness(.8);transition:filter .2s ease}
+[data-ar-design="classic"] [data-ar="nav-sheet"]>[data-part="tile"]:focus-visible{outline:2px solid #4096FF;outline-offset:-2px}
+/* スマホの頭のメニューのボタン（お知らせのボタンと同じ 40px・角丸10、地はその他の色 #6CB1B7・白い3本線） */
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="menu"]{width:40px;height:40px;margin-right:10px;padding:7px;border:0;border-radius:10px;background:#6CB1B7;color:#fff}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="menu"]:hover{opacity:.8}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="menu"]:focus-visible{outline:2px solid #4096FF;outline-offset:1px}
+[data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="menu"]>[data-ar="icon"]{width:25px;height:25px;stroke-width:2}

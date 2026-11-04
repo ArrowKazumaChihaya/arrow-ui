@@ -7,3 +7,8 @@
 [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{transition:transform .15s}
 [data-ar="collapse"]>[data-part="panel"][data-state~="open"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{transform:rotate(90deg)}
 @media (prefers-reduced-motion: reduce){[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{transition:none}}
+/* 1.1 見出しのボタンの外の右に置くもの（header-extra）。見出しは横並びにし、ボタンが残りの幅を取る */
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]:has(>[data-part="header-extra"]){display:flex;align-items:stretch}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]:has(>[data-part="header-extra"])>[data-part="trigger"]{flex:1;width:auto;min-width:0}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="header-extra"]{display:flex;align-items:center;flex:none}
+[data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="title"]{display:inline-flex;align-items:center;flex-wrap:wrap}

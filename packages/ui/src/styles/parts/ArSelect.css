@@ -17,3 +17,10 @@
 :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="spinner"]{box-sizing:border-box;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:ar-spin .8s linear infinite}
 [data-ar="select-panel"]>[data-part="list"]{max-height:264px}
 [data-ar="select-panel"]>[data-part="list"]>[data-part="action"]{display:flex;align-items:center;box-sizing:border-box}
+/* 1.1 選んだ名前の長さで押す所の「最小の幅」が決まらないようにする（好きな幅は名前なりのまま）。
+   横並びの中の箱（製品の UI/Select のように包んだもの）に入れて幅を 100% にしても、長い名前は1行で「…」で切れて縮み、下向きの印に重ならない。 */
+[data-ar="select"]>[data-part="value"]>[data-part="value-text"]{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;line-clamp:1;white-space:normal;overflow-wrap:anywhere;word-break:break-all}
+/* 1.2：色の小さな丸（パターンの色など）と、選んだあとの欄の右の小さな文字 */
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="value"]>[data-part="dot"]{flex:none;width:8px;height:8px;border-radius:50%;margin-right:8px}
+:is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="value"]>[data-part="value-description"]{flex:none;margin-left:8px;white-space:nowrap}
+[data-part="option"]>[data-part="option-dot"]{flex:none;width:8px;height:8px;border-radius:50%}

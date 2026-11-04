@@ -1,4 +1,4 @@
-/* @covers ArPeriodNav 1.0.0 */
+/* @covers ArPeriodNav 1.1.0 */
 /* ArPeriodNav：シフト画面の .v-mc（月：前後の丸 36・「2026年10月」20px 太字・角丸12 の押せる文字・右端の .r-today）と
    .v-dc（日：「10月21日」28px 太字・曜日の札 26px 角丸8 の灰色の地）。 */
 [data-ar-design="remix"] [data-ar="period-nav"]{color:var(--ar-color-text)}
@@ -29,3 +29,5 @@
 [data-ar-design="remix"] [data-ar="period-nav"]:has(>[data-part="today"]){display:grid;grid-template-columns:minmax(0,1fr) auto minmax(max-content,1fr);column-gap:8px}
 [data-ar-design="remix"] [data-ar="period-nav"]:has(>[data-part="today"])>[data-part="center"]{grid-column:2}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]{grid-column:3;justify-self:end;position:static;transform:none}
+/* 1.1：祝日の名前（date と holidays。PopRecruitDays の「11/3（火・祝） 文化の日」と同じく、日曜の赤の小さな文字） */
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="holiday"]{color:var(--ar-color-sun);font-size:11.5px;font-weight:600;line-height:1.4;white-space:nowrap}

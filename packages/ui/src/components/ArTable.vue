@@ -1,22 +1,23 @@
 <script setup lang="ts" generic="Row extends object">
 /**
- * ArTable 1.1 — 表。
+ * ArTable 1.2 — 表。
  * box（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。
  * 見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。
  * 並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。
  * ページ送りは #below に ArPagination を置く。
  * sortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。
  * 1.1：右に止める列・2段の見出し（押すとまとまりが開く）・行をまたぐセル・表の中の小さな金額の入力・3段の金額・数字の下の差の行。
+ * 1.2：スロットの引数 Default（既定の表示）・段に分ける列（lines。段の高さを列をまたいで揃える）・入力の種類（文字・時刻・選ぶ）。
  */
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch } from "vue";
-import ArAvatar from "./ArAvatar.vue";
+import { computed, h, markRaw, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch, type FunctionalComponent } from "vue";
+import ArTableCellBody from "../internal/ArTableCellBody.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
 import { useDesignForm } from "../provider/context";
 import type {
   ArRowKey,
-  ArTableAvatar,
   ArTableColumn,
+  ArTableEditValue,
   ArTableColumnGroup,
   ArTableFooterValue,
   ArTableLabels,
@@ -54,7 +55,7 @@ const emit = defineEmits<{
   "update:rows": [rows: Row[]];
   reorder: [move: ArTableReorder];
   "update:openGroups": [keys: string[]];
-  "update:edits": [edits: Record<string, string>];
+  "update:edits": [edits: Record<string, ArTableEditValue>];
 }>();
 const slots = useSlots();
 
@@ -107,29 +108,73 @@ function toggleGroups(keys: string | readonly string[]) {
 }
 const togglesOpen = (c: ArTableColumn<Row>) => (typeof c.toggles === "string" ? [c.toggles] : [...(c.toggles ?? [])]).some((k) => openSet.value.has(k));
 
-/* ---- 表の中の入力・3段・差の行 ---- */
-const editKey = (row: Row, c: ArTableColumn<Row>, line?: number) => `${String(keyOf(row))}:${c.key}${line === undefined ? "" : `:${line}`}`;
+/* ---- 表の中の入力・段に分けた列・既定の表示 ---- */
 const canEdit = (row: Row, c: ArTableColumn<Row>) => (typeof c.edit === "function" ? c.edit(row) : !!c.edit);
-const asText = (v: unknown) => (v === null || v === undefined ? "" : String(v));
-const editValue = (row: Row, c: ArTableColumn<Row>, raw: unknown, line?: number) => {
-  const k = editKey(row, c, line);
-  return k in props.edits ? props.edits[k]! : asText(raw);
-};
-const editState = (row: Row, c: ArTableColumn<Row>, raw: unknown, line?: number) => {
-  const k = editKey(row, c, line);
-  const s = [props.invalidCells.includes(k) && "invalid", k in props.edits && props.edits[k] !== asText(raw) && "changed"].filter(Boolean).join(" ");
-  return s || undefined;
-};
-function onEdit(row: Row, c: ArTableColumn<Row>, e: Event, line?: number) {
-  emit("update:edits", { ...props.edits, [editKey(row, c, line)]: (e.target as HTMLInputElement).value });
-}
 const linesOf = (v: unknown): unknown[] => (Array.isArray(v) ? v : [v]);
-const deltaOf = (row: Row, c: ArTableColumn<Row>) => {
-  const d = c.delta?.(row);
-  if (d === undefined || d === "") return null;
-  return typeof d === "string" ? { text: d, tone: "muted" as const } : { tone: "muted" as const, ...d };
+/** 段に分ける列があるか（あれば1つの行を段の数の tr に分け、段のない列は段をまたぐ）。 */
+const lineCols = computed(() => cols.value.filter((c) => c.lines));
+const anyLines = computed(() => lineCols.value.length > 0);
+/** 行の段の数＝段に分ける列の配列のいちばん長いもの。 */
+const lineCount = (row: Row) => {
+  let n = 1;
+  for (const c of lineCols.value) {
+    const v = valueOf(row, c);
+    if (Array.isArray(v)) n = Math.max(n, v.length);
+  }
+  return n;
 };
+/** セルの値（段に分けた列ではその段の値）。 */
+const cellValue = (row: Row, c: ArTableColumn<Row>, line?: number) => (line === undefined ? valueOf(row, c) : linesOf(valueOf(row, c))[line]);
+const lineOf = (c: ArTableColumn<Row>, j: number) => (c.lines ? j : undefined);
+function onEdit(k: string, v: ArTableEditValue) {
+  emit("update:edits", { ...props.edits, [k]: v });
+}
+const bodyProps = (row: Row, c: ArTableColumn<Row>, i: number, line?: number) => ({
+  row,
+  col: c as ArTableColumn<object>,
+  value: cellValue(row, c, line),
+  rowKey: keyOf(row),
+  index: i,
+  line,
+  variant: props.variant,
+  edits: props.edits,
+  invalidCells: props.invalidCells,
+  blank: props.blank,
+  onEdit,
+});
+/**
+ * スロットの引数 Default：既定の表示を描く部品。行と列ごとに同じ部品を返す（描き直しのたびに作り直さない）。
+ * 中では今の列・行の順番を読み直すので、並べ替えや列の出し入れのあとも正しく描く。
+ */
+const defaults = new WeakMap<object, Map<string, FunctionalComponent>>();
+function defaultOf(row: Row, c: ArTableColumn<Row>, line?: number): FunctionalComponent {
+  let m = defaults.get(row);
+  if (!m) defaults.set(row, (m = new Map()));
+  const k = `${c.key}:${line ?? ""}`;
+  let comp = m.get(k);
+  if (!comp) {
+    const fc: FunctionalComponent = (_p, ctx) => {
+      const col = cols.value.find((x) => x.key === c.key) ?? c;
+      return h(ArTableCellBody, { ...bodyProps(row, col, Math.max(0, props.rows.indexOf(row)), line), ...ctx.attrs });
+    };
+    fc.inheritAttrs = false;
+    fc.displayName = "ArTableCellDefault";
+    comp = markRaw(fc);
+    m.set(k, comp);
+  }
+  return comp;
+}
 const spanOf = (row: Row, c: ArTableColumn<Row>, i: number) => (c.rowSpan ? c.rowSpan(row, i) : 1);
+/** td の rowspan：段のない列は行の段の数ぶん（rowSpan でまたぐときは、またぐ行の段の数の合計）。 */
+const rowspanOf = (row: Row, c: ArTableColumn<Row>, i: number) => {
+  if (c.lines) return 1;
+  const base = spanOf(row, c, i);
+  if (!anyLines.value) return base;
+  let n = 0;
+  for (let k = i; k < Math.min(props.rows.length, i + Math.max(1, base)); k++) n += lineCount(props.rows[k]!);
+  return n;
+};
+const hoverKey = ref<ArRowKey | null>(null);
 
 /** 形（ArDesign.forms.ArTable.selectHead）：label は見出しのチェックの左に「全選択」の文字を出す。 */
 const selectHead = useDesignForm<"check" | "label">("ArTable", "selectHead", "check");
@@ -155,16 +200,6 @@ const valueOf = (row: Row, col: ArTableColumn<Row>) =>
   col.value ? col.value(row) : (row as Record<string, unknown>)[col.key];
 const isBlank = (v: unknown) => v === null || v === undefined || v === "" || (Array.isArray(v) && v.length === 0);
 const alignOf = (col: ArTableColumn<Row>) => col.align ?? (col.numeric ? "end" : "start");
-/** 名前の列の丸：文字は値の1文字目、色は seed（省くと行の順番）で人ごとに。名前は隣に書くので丸は読み上げない。 */
-const avatarOf = (row: Row, col: ArTableColumn<Row>, i: number): ArTableAvatar => {
-  const a: ArTableAvatar = typeof col.avatar === "function" ? col.avatar(row) : {};
-  const text = a.text ?? (Array.from(String(valueOf(row, col) ?? "").trim())[0] ?? "");
-  return { text, tone: a.tone, seed: a.tone ? undefined : (a.seed ?? i) };
-};
-const subOf = (row: Row, col: ArTableColumn<Row>) => {
-  const v = col.sub?.(row);
-  return v === undefined || v === "" ? null : typeof v === "string" ? { text: v, color: undefined } : v;
-};
 /** 合計の行のセル（span でつないだ列は飛ばす）。 */
 const footCells = computed(() => {
   const out: { col: ArTableColumn<Row>; span: number; raw: ArTableFooterValue | undefined; label?: string; value: string | number }[] = [];
@@ -295,8 +330,15 @@ function ariaSort(col: ArTableColumn<Row>) {
   return o === "asc" ? "ascending" : o === "desc" ? "descending" : "none";
 }
 const rowState = (row: Row) =>
-  [selectedSet.value.has(keyOf(row)) && "selected", isOpen(row) && "expanded", props.rowOff?.(row) && "off", dragging.value === keyOf(row) && "dragging"].filter(Boolean).join(" ") ||
-  undefined;
+  [
+    selectedSet.value.has(keyOf(row)) && "selected",
+    isOpen(row) && "expanded",
+    props.rowOff?.(row) && "off",
+    dragging.value === keyOf(row) && "dragging",
+    anyLines.value && hoverKey.value === keyOf(row) && lineCount(row) > 1 && "hover",
+  ]
+    .filter(Boolean)
+    .join(" ") || undefined;
 /* ---- 行の並べ替え（sortableRows） ---- */
 const rootEl = ref<HTMLElement | null>(null);
 const armed = ref<ArRowKey | null>(null);
@@ -527,150 +569,132 @@ const colspan = computed(
           </tr>
           <template v-for="(row, i) in rows" :key="keyOf(row)">
             <tr
+              v-for="j in anyLines ? lineCount(row) : 1"
+              :key="j"
               data-part="row"
               :data-state="rowState(row)"
-              :data-drop="dropAt?.key === keyOf(row) && dragging !== keyOf(row) ? dropAt.position : undefined"
+              :data-line="anyLines ? j - 1 : undefined"
+              :data-line-last="anyLines && j === lineCount(row) ? '' : undefined"
+              :data-drop="dropAt?.key === keyOf(row) && dragging !== keyOf(row) && j === (dropAt.position === 'before' ? 1 : anyLines ? lineCount(row) : 1) ? dropAt.position : undefined"
               :draggable="sortableRows && armed === keyOf(row) ? 'true' : undefined"
               @click="emit('row-click', row, i)"
               @dragstart="onRowDragStart($event, row)"
               @dragover="onRowDragOver($event, row)"
               @drop="onRowDrop"
               @dragend="endDrag"
+              @mouseenter="anyLines && (hoverKey = keyOf(row))"
+              @mouseleave="anyLines && hoverKey === keyOf(row) && (hoverKey = null)"
             >
-              <td v-if="handleColumn" data-part="cell" data-col="drag" @click.stop>
-                <button
-                  type="button"
-                  data-part="drag-handle"
-                  :data-key="keyOf(row)"
-                  :aria-label="L.dragHandle"
-                  @click.stop
-                  @keydown="onHandleKey($event, i)"
-                  @mousedown="armed = keyOf(row)"
-                  @mouseup="dragging === null && (armed = null)"
-                  @touchstart.passive="armed = keyOf(row)"
-                >
-                  <ArIcon name="grip" size="sm" />
-                </button>
-              </td>
-              <td
-                v-if="selectable"
-                data-part="cell"
-                data-col="select"
-                :data-sticky="anySticky ? 'start' : undefined"
-                :style="stick('__select')"
-                @click.stop
-              >
-                <span data-part="check" :data-state="selectedSet.has(keyOf(row)) ? 'checked' : undefined">
-                  <input
-                    data-part="select"
-                    type="checkbox"
-                    :checked="selectedSet.has(keyOf(row))"
-                    :aria-label="L.selectRow"
-                    @change="toggleRow(row)"
-                  />
-                  <span data-part="check-box" aria-hidden="true">
-                    <ArIcon line v-if="selectedSet.has(keyOf(row))" name="check" size="sm" />
-                  </span>
-                </span>
-              </td>
-              <td
-                v-if="expandable"
-                data-part="cell"
-                data-col="expand"
-                :data-sticky="anySticky ? 'start' : undefined"
-                :style="stick('__expand')"
-                @click.stop
-              >
-                <button
-                  type="button"
-                  data-part="expand-toggle"
-                  :aria-expanded="isOpen(row)"
-                  :aria-label="isOpen(row) ? L.collapse : L.expand"
-                  @click="toggleExpand(row)"
-                >
-                  <ArIcon line name="cr" size="sm" />
-                </button>
-              </td>
-              <template v-for="c in cols" :key="c.key">
-              <td
-                v-if="spanOf(row, c, i) > 0"
-                data-part="cell"
-                :rowspan="spanOf(row, c, i) > 1 ? spanOf(row, c, i) : undefined"
-                :data-align="alignOf(c)"
-                :data-numeric="c.numeric || undefined"
-                :data-emphasis="c.emphasis"
-                :data-blank="(!canEdit(row, c) && isBlank(valueOf(row, c))) || undefined"
-                :data-sticky="stickAttr(c)"
-                :data-sticky-edge="edgeAttr(c)"
-                :data-total="c.total || undefined"
-                :data-group-start="groupStart(c) || undefined"
-                :data-editing="canEdit(row, c) || undefined"
-                :data-edge="c === cols[0] ? 'first' : c === cols[cols.length - 1] ? 'last' : undefined"
-                :style="stickStyle(c)"
-              >
-                <button
-                  v-if="sortableRows && !handleColumn && c === cols[0]"
-                  type="button"
-                  data-part="drag-handle"
-                  :data-key="keyOf(row)"
-                  :aria-label="L.dragHandle"
-                  @click.stop
-                  @keydown="onHandleKey($event, i)"
-                  @mousedown="armed = keyOf(row)"
-                  @mouseup="dragging === null && (armed = null)"
-                  @touchstart.passive="armed = keyOf(row)"
-                >
-                  <ArIcon name="grip" size="sm" />
-                </button>
-                <slot :name="`cell-${c.key}`" :row="row" :value="valueOf(row, c)" :index="i">
-                  <span v-if="canEdit(row, c) && c.stack" data-part="stack" @click.stop>
-                    <input
-                      v-for="(v, j) in linesOf(valueOf(row, c))"
-                      :key="j"
-                      data-part="cell-input"
-                      type="text"
-                      inputmode="numeric"
-                      :value="editValue(row, c, v, j)"
-                      :data-state="editState(row, c, v, j)"
-                      :aria-invalid="invalidCells.includes(editKey(row, c, j)) || undefined"
-                      :aria-label="c.editLabel?.(row, j) ?? `${c.title} ${j + 1}`"
-                      @input="onEdit(row, c, $event, j)"
-                    />
-                  </span>
-                  <input
-                    v-else-if="canEdit(row, c)"
-                    data-part="cell-input"
-                    type="text"
-                    inputmode="numeric"
-                    :value="editValue(row, c, valueOf(row, c))"
-                    :data-state="editState(row, c, valueOf(row, c))"
-                    :aria-invalid="invalidCells.includes(editKey(row, c)) || undefined"
-                    :aria-label="c.editLabel?.(row) ?? c.title"
+              <template v-if="j === 1">
+                <td v-if="handleColumn" data-part="cell" data-col="drag" :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined" @click.stop>
+                  <button
+                    type="button"
+                    data-part="drag-handle"
+                    :data-key="keyOf(row)"
+                    :aria-label="L.dragHandle"
                     @click.stop
-                    @input="onEdit(row, c, $event)"
-                  />
-                  <span v-else-if="c.stack" data-part="stack">
-                    <span v-for="(v, j) in linesOf(valueOf(row, c))" :key="j">{{ isBlank(v) ? "" : v }}</span>
-                  </span>
-                  <span v-else-if="c.avatar" data-part="person" :data-single="!c.sub || undefined">
-                    <ArAvatar v-bind="avatarOf(row, c, i)" :size="variant === 'board' ? 'md' : 'sm'" />
-                    <span data-part="name">
-                      <b>{{ valueOf(row, c) }}</b>
-                      <small v-if="subOf(row, c)" data-part="sub">
-                        <i v-if="subOf(row, c)!.color" data-part="sub-mark" :style="{ background: subOf(row, c)!.color }" aria-hidden="true" />{{ subOf(row, c)!.text }}
-                      </small>
+                    @keydown="onHandleKey($event, i)"
+                    @mousedown="armed = keyOf(row)"
+                    @mouseup="dragging === null && (armed = null)"
+                    @touchstart.passive="armed = keyOf(row)"
+                  >
+                    <ArIcon name="grip" size="sm" />
+                  </button>
+                </td>
+                <td
+                  v-if="selectable"
+                  data-part="cell"
+                  data-col="select"
+                  :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
+                  :data-sticky="anySticky ? 'start' : undefined"
+                  :style="stick('__select')"
+                  @click.stop
+                >
+                  <span data-part="check" :data-state="selectedSet.has(keyOf(row)) ? 'checked' : undefined">
+                    <input
+                      data-part="select"
+                      type="checkbox"
+                      :checked="selectedSet.has(keyOf(row))"
+                      :aria-label="L.selectRow"
+                      @change="toggleRow(row)"
+                    />
+                    <span data-part="check-box" aria-hidden="true">
+                      <ArIcon line v-if="selectedSet.has(keyOf(row))" name="check" size="sm" />
                     </span>
                   </span>
-                  <span v-else-if="Array.isArray(valueOf(row, c)) && !isBlank(valueOf(row, c))" data-part="lines">
-                    <span v-for="(v, j) in valueOf(row, c) as unknown[]" :key="j">{{ v }}</span>
-                  </span>
-                  <template v-else>{{ isBlank(valueOf(row, c)) ? blank : valueOf(row, c) }}</template>
-                  <ArIcon v-if="c.marked?.(row)" line name="pen" size="sm" data-part="mark" label="手で直した金額" />
-                  <small v-if="deltaOf(row, c)" data-part="delta" :data-tone="deltaOf(row, c)!.tone">{{ deltaOf(row, c)!.text }}</small>
-                </slot>
-              </td>
+                </td>
+                <td
+                  v-if="expandable"
+                  data-part="cell"
+                  data-col="expand"
+                  :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
+                  :data-sticky="anySticky ? 'start' : undefined"
+                  :style="stick('__expand')"
+                  @click.stop
+                >
+                  <button
+                    type="button"
+                    data-part="expand-toggle"
+                    :aria-expanded="isOpen(row)"
+                    :aria-label="isOpen(row) ? L.collapse : L.expand"
+                    @click="toggleExpand(row)"
+                  >
+                    <ArIcon line name="cr" size="sm" />
+                  </button>
+                </td>
               </template>
-              <td v-if="hasActions" data-part="cell" data-col="actions" data-align="end" @click.stop>
+              <template v-for="c in cols" :key="c.key">
+                <td
+                  v-if="(j === 1 || c.lines) && spanOf(row, c, i) > 0"
+                  data-part="cell"
+                  :rowspan="rowspanOf(row, c, i) > 1 ? rowspanOf(row, c, i) : undefined"
+                  :data-align="alignOf(c)"
+                  :data-numeric="c.numeric || undefined"
+                  :data-emphasis="c.emphasis"
+                  :data-blank="(!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!c.lines || j === 1)) || undefined"
+                  :data-sticky="stickAttr(c)"
+                  :data-sticky-edge="edgeAttr(c)"
+                  :data-total="c.total || undefined"
+                  :data-group-start="groupStart(c) || undefined"
+                  :data-editing="canEdit(row, c) || undefined"
+                  :data-line-cell="(anyLines && c.lines) || undefined"
+                  :data-edge="c === cols[0] ? 'first' : c === cols[cols.length - 1] ? 'last' : undefined"
+                  :style="stickStyle(c)"
+                >
+                  <button
+                    v-if="sortableRows && !handleColumn && c === cols[0] && j === 1"
+                    type="button"
+                    data-part="drag-handle"
+                    :data-key="keyOf(row)"
+                    :aria-label="L.dragHandle"
+                    @click.stop
+                    @keydown="onHandleKey($event, i)"
+                    @mousedown="armed = keyOf(row)"
+                    @mouseup="dragging === null && (armed = null)"
+                    @touchstart.passive="armed = keyOf(row)"
+                  >
+                    <ArIcon name="grip" size="sm" />
+                  </button>
+                  <slot
+                    :name="`cell-${c.key}`"
+                    :row="row"
+                    :value="cellValue(row, c, lineOf(c, j - 1))"
+                    :index="i"
+                    :line="lineOf(c, j - 1)"
+                    :Default="defaultOf(row, c, lineOf(c, j - 1))"
+                  >
+                    <ArTableCellBody v-bind="bodyProps(row, c, i, lineOf(c, j - 1))" />
+                  </slot>
+                </td>
+              </template>
+              <td
+                v-if="hasActions && j === 1"
+                data-part="cell"
+                data-col="actions"
+                data-align="end"
+                :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
+                @click.stop
+              >
                 <span data-part="actions"><slot name="actions" :row="row" :index="i" /></span>
               </td>
             </tr>

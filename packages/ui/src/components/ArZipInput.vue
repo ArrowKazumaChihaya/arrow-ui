@@ -2,11 +2,13 @@
 /**
  * ArZipInput 1.0 — 郵便番号。数字だけを受け付け（全角も読む）、3桁のあとに「-」を自動で入れる。
  * 7桁そろうと lookup（製品が渡す関数）で住所を引き、見つかれば address を出す。引いている間と見つからないときは右に小さく出す。
+ * 1.1：class・style は外側、ほかの属性（tabindex・aria-*）とイベント（keydown など）は中の入力へ渡す。ref から focus()・select()・input。
  */
-import { nextTick, ref } from "vue";
+import { computed, nextTick, ref, useAttrs } from "vue";
 import ArTextInput from "./ArTextInput.vue";
 import type { ArZipInputProps } from "./ArZipInput.contract";
 
+defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArZipInputProps>(), {
   lookup: undefined,
   invalid: false,
@@ -53,13 +55,29 @@ function onInput(v: string) {
   status.value = "idle";
   if (z.length === 8) void find(z);
 }
+const attrs = useAttrs();
+const inputAttrs = computed(() => {
+  const { class: _c, style: _s, ...rest } = attrs;
+  return rest;
+});
+const field = ref<InstanceType<typeof ArTextInput> | null>(null);
+defineExpose({
+  focus: () => field.value?.focus(),
+  blur: () => field.value?.blur(),
+  select: () => field.value?.select(),
+  get input() {
+    return field.value?.input ?? null;
+  },
+});
 const statusText = () =>
   status.value === "searching" ? props.labels.searching : status.value === "not-found" ? props.labels.notFound : status.value === "failed" ? props.labels.failed : "";
 </script>
 
 <template>
-  <span ref="root" data-ar="zip-input" data-part="root" :data-state="status !== 'idle' ? status : undefined">
+  <span ref="root" :class="attrs.class" :style="attrs.style as any" data-ar="zip-input" data-part="root" :data-state="status !== 'idle' ? status : undefined">
     <ArTextInput
+      ref="field"
+      v-bind="inputAttrs"
       :id="id"
       :model-value="modelValue ?? ''"
       type="tel"

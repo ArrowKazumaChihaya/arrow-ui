@@ -1,4 +1,4 @@
-/* @covers ArThumbnail 1.0.0 */
+/* @covers ArThumbnail 1.1.0 */
 /* 今の Thumbnail（ui-Thumbnail.png）：1px の黒い枠、写真がないときは #A7A7A7 に白い塗りの人の形、右下 3px に 30px の rgba(0,0,0,.6) の丸いカメラ */
 [data-ar-design="classic"] [data-ar="thumbnail"]{border:1px solid #000}
 [data-ar-design="classic"] [data-ar="thumbnail"][data-shape="circle"],[data-ar-design="classic"] [data-ar="thumbnail"][data-shape="circle"]>:is([data-part="image"],[data-part="silhouette"]){border-radius:50%}
@@ -41,3 +41,9 @@
 /* カメラの絵は ArIcon が classic の絵（camera）で描く。白 */
 [data-ar-design="classic"] [data-ar="thumbnail"]>[data-part="camera"]>[data-part="camera-icon"]{color:#fff}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="frame"]>[data-part="empty"]>[data-ar="icon"]{color:#fff}
+/* 1.1：自由な範囲（今の freeCrop＝vue-advanced-cropper の RectangleStencil：外は黒 50%、範囲は白い細い線、四隅の白い 10px のつまみ） */
+[data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]{border:1px solid rgba(255,255,255,.8);box-shadow:0 0 0 9999px rgba(0,0,0,.5)}
+[data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]>[data-part="crop-handle"]{width:10px;height:10px;background:#fff}
+/* 1.1：画像のないときの写真の絵（今の Img の silhouette="picture"＝/icons/picture.svg を白で、灰色の地の真ん中に） */
+[data-ar-design="classic"] [data-ar="thumbnail"]>[data-part="silhouette"][data-kind="picture"]{align-items:center}
+[data-ar-design="classic"] [data-ar="thumbnail"]>[data-part="silhouette"][data-kind="picture"]>[data-part="silhouette-fill"]{width:62%;height:62%;margin:0}

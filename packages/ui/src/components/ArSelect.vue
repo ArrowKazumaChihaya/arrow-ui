@@ -21,6 +21,7 @@ const NULL_VALUE = "\u0000ar-null";
 
 defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArSelectProps>(), {
+  valueDescription: false,
   multiple: false,
   maxTags: 2,
   placeholder: "選んでください",
@@ -98,6 +99,10 @@ const sections = computed(() => {
 });
 const flat = computed(() => sections.value.flatMap((s) => s.items.map((i) => i.opt)));
 const enabled = (i: number) => !!flat.value[i] && !flat.value[i]!.disabled;
+/** ↑↓ で動ける行：選択肢の続きに actions のボタンを数える。 */
+const actionList = computed(() => props.actions ?? []);
+const navCount = computed(() => flat.value.length + actionList.value.length);
+const navEnabled = (i: number) => (i < flat.value.length ? enabled(i) : !!actionList.value[i - flat.value.length] && !actionList.value[i - flat.value.length]!.disabled);
 
 const values = computed<ArSelectValue[]>(() =>
   props.multiple ? (Array.isArray(props.modelValue) ? [...props.modelValue] : []) : props.modelValue == null ? [] : [props.modelValue as ArSelectValue],
@@ -174,7 +179,7 @@ watch(query, (q) => {
 const typeahead = createTypeahead();
 function onKey(e: KeyboardEvent) {
   if (props.disabled) return;
-  const n = flat.value.length;
+  const n = navCount.value;
   const fromSearch = e.target !== root.value;
   switch (e.key) {
     case "ArrowDown":
@@ -183,25 +188,25 @@ function onKey(e: KeyboardEvent) {
       if (!open.value) return setOpen(true);
       if (e.altKey && e.key === "ArrowUp") return choose(active.value);
       const dir = e.key === "ArrowDown" ? 1 : -1;
-      active.value = active.value < 0 ? firstEnabled(n, enabled, dir < 0) : step(active.value, dir, n, enabled);
+      active.value = active.value < 0 ? firstEnabled(n, navEnabled, dir < 0) : step(active.value, dir, n, navEnabled);
       return;
     }
     case "Home":
     case "End":
       if (!open.value || fromSearch) return;
       e.preventDefault();
-      active.value = firstEnabled(n, enabled, e.key === "End");
+      active.value = firstEnabled(n, navEnabled, e.key === "End");
       return;
     case "Enter":
       e.preventDefault();
       if (!open.value) return setOpen(true);
-      if (active.value >= 0) choose(active.value);
+      if (active.value >= 0) pick(active.value);
       return;
     case " ":
       if (fromSearch) return;
       e.preventDefault();
       if (!open.value) return setOpen(true);
-      if (active.value >= 0) choose(active.value);
+      if (active.value >= 0) pick(active.value);
       return;
     case "Tab":
       if (open.value) setOpen(false);
@@ -234,6 +239,14 @@ const state = computed(
       .filter(Boolean)
       .join(" ") || undefined,
 );
+/** ↑↓ で選んだ行を決める（選択肢なら選び、actions のボタンなら action を出す）。 */
+function pick(i: number) {
+  const a = actionList.value[i - flat.value.length];
+  if (i >= flat.value.length) {
+    if (a && !a.disabled) onAction(a.value);
+  } else choose(i);
+}
+const len = (v: number | string | undefined) => (v === undefined ? undefined : typeof v === "number" ? `${v}px` : v);
 function onAction(v: string) {
   emit("action", v);
   close();
@@ -287,14 +300,20 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       <span v-else data-part="placeholder">{{ placeholder }}</span>
     </template>
     <template v-else>
-      <span v-if="single" data-part="value"
+      <span v-if="single" data-part="value" :data-has-dot="!icon && single.dot && single.avatar === undefined ? '' : undefined"
         ><span
+          v-if="!icon && single.dot && single.avatar === undefined"
+          data-part="dot"
+          aria-hidden="true"
+          :style="{ background: single.dot }"
+        /><span
           v-if="!icon && 'avatar' in single && single.avatar !== undefined"
           data-part="avatar"
           aria-hidden="true"
           :style="single.avatarColor || single.avatarInk ? { background: single.avatarColor, color: single.avatarInk } : undefined"
           >{{ single.avatar }}</span
-        ><span data-part="value-text">{{ single.label }}</span></span
+        ><span data-part="value-text">{{ single.label }}</span
+        ><small v-if="valueDescription && single.description" data-part="value-description">{{ single.description }}</small></span
       >
       <span v-else data-part="placeholder">{{ placeholder }}</span>
     </template>
@@ -358,6 +377,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             :avatar="it.opt.avatar"
             :avatar-color="it.opt.avatarColor"
             :avatar-ink="it.opt.avatarInk"
+            :dot="it.opt.dot"
             :description="it.opt.description"
             :description-tone="it.opt.descriptionTone"
             @click="choose(it.index)"
@@ -377,6 +397,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             :avatar="it.opt.avatar"
             :avatar-color="it.opt.avatarColor"
             :avatar-ink="it.opt.avatarInk"
+            :dot="it.opt.dot"
             :description="it.opt.description"
             :description-tone="it.opt.descriptionTone"
             :data-kind="it.opt.value === NULL_VALUE ? 'null' : undefined"
@@ -385,8 +406,26 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
           />
         </template>
       </template>
-      <div v-for="a in actions ?? []" :key="a.value" data-part="action">
-        <ArButton tone="primary" block :icon="a.icon" @click="onAction(a.value)">{{ a.label }}</ArButton>
+      <div
+        v-for="(a, ai) in actionList"
+        :id="optionId(flat.length + ai)"
+        :key="a.value"
+        data-part="action"
+        role="option"
+        aria-selected="false"
+        :aria-disabled="a.disabled || undefined"
+        :data-state="flat.length + ai === active ? 'active' : undefined"
+        @mousemove="!a.disabled && (active = flat.length + ai)"
+      >
+        <ArButton
+          :tone="a.tone ?? 'primary'"
+          :block="a.width === undefined"
+          :icon="a.icon"
+          :disabled="a.disabled"
+          tabindex="-1"
+          :style="a.width !== undefined ? { width: len(a.width) } : undefined"
+          @click="onAction(a.value)"
+        >{{ a.label }}</ArButton>
       </div>
       <div v-if="loading && !flat.length" data-part="empty" data-kind="loading" role="status">
         <span data-part="spinner" aria-hidden="true" />{{ loadingText }}

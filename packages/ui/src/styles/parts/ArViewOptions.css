@@ -12,3 +12,17 @@
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="sample"]{display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box;white-space:nowrap}
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="foot"]{display:flex;justify-content:space-between}
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="foot"]>button{margin:0;border:0;background:none;cursor:pointer;font-family:inherit}
+/* 1.1 保存した組み合わせ（行は名前のボタンと × の横並び）と、保存の操作 */
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]{display:flex;flex-direction:column}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]{display:flex;align-items:center}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]{display:flex;align-items:center;flex:1;min-width:0;margin:0;border:0;background:none;text-align:left;cursor:pointer;font-family:inherit;box-sizing:border-box}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>[data-part="preset-label"]{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>:is([data-part="preset-scope"],[data-part="preset-default"]){flex:none;white-space:nowrap}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>[data-part="preset-check"]{flex:none;visibility:hidden}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"][data-state~="on"]>[data-part="preset-apply"]>[data-part="preset-check"]{visibility:visible}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;border:0;background:none;cursor:pointer;font-family:inherit;box-sizing:border-box}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]{display:flex;flex-wrap:wrap;justify-content:space-between}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>button,[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button{margin:0;border:0;background:none;cursor:pointer;font-family:inherit}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]{display:flex;flex-direction:column;width:100%}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]{display:flex;justify-content:flex-end;flex-wrap:wrap}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button:disabled{cursor:not-allowed;opacity:.45}

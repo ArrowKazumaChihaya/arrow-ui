@@ -16,3 +16,14 @@
 [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="mask"]{position:absolute;inset:0;pointer-events:none}
 [data-ar="thumbnail-editor"]>[data-part="tools"]{display:flex;flex-wrap:wrap;align-items:center;align-self:stretch}
 [data-ar="thumbnail-editor"]>[data-part="tools"]>[data-part="tools-gap"]{flex:1}
+/* 1.1：箱を切り抜く比に（aspect="crop"）、ポップアップだけ（dialogOnly）、自由な範囲（freeCrop）の枠と四隅のつまみ */
+[data-ar="thumbnail"][data-aspect="crop"]{height:var(--ar-thumbnail-height,var(--ar-thumbnail-size,120px))}
+[data-ar="thumbnail"][data-dialog-only]{display:contents}
+[data-ar="thumbnail-editor"][data-free]>[data-part="frame"][data-state~="has-image"]{cursor:default}
+[data-ar="thumbnail-editor"][data-free]>[data-part="frame"]>[data-part="picture"]{margin:0;transform:none}
+[data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]{position:absolute;box-sizing:border-box;cursor:move;touch-action:none}
+[data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]>[data-part="crop-handle"]{position:absolute;box-sizing:border-box;transform:translate(-50%,-50%);touch-action:none}
+[data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]>[data-part="crop-handle"][data-pos="nw"]{left:0;top:0;cursor:nwse-resize}
+[data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]>[data-part="crop-handle"][data-pos="ne"]{left:100%;top:0;cursor:nesw-resize}
+[data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]>[data-part="crop-handle"][data-pos="sw"]{left:0;top:100%;cursor:nesw-resize}
+[data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]>[data-part="crop-handle"][data-pos="se"]{left:100%;top:100%;cursor:nwse-resize}

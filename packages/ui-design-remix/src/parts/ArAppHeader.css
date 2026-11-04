@@ -1,4 +1,4 @@
-/* @covers ArAppHeader 1.0.0, ArAppFooter 1.0.0, ArMobileHeader 1.0.0, ArBottomNav 1.0.0 */
+/* @covers ArAppHeader 1.1.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.1.0 */
 /* 画面の頭（Header .v-hd：1段目38・2段目の項目36・今いる項目はテーマ色の塗り・下端3pxのテーマ色の線） */
 [data-ar-design="remix"] [data-ar="app-header"]{z-index:5;background:#fff;box-shadow:0 1px 0 var(--ar-color-border),0 6px 24px rgba(31,41,51,.04);color:var(--ar-color-text);font-size:14px;line-height:1.5;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="app-header"]::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--ar-accent)}
@@ -55,9 +55,22 @@
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
 /* ピルの一覧・領域のタブ・畳む・子のメニュー（remix）：白い面と淡い線、テーマ色の文字 */
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]{padding:6px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]{padding:8px 10px;border-radius:8px;color:var(--ar-color-text);font-size:13px}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"] [data-part="pill-item"]:hover{background:var(--ar-accent-faint);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]{min-width:260px;margin-top:6px;padding:6px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]{max-height:min(360px,calc(100vh - 140px))}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]{gap:2px;border-radius:8px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover{background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-item"]{padding:8px 10px;border-radius:8px;color:var(--ar-color-text);font-size:13px;line-height:1.45}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover>[data-part="pill-item"]{color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]{width:28px;height:28px;margin:3px 2px 0 0;border-radius:7px;color:var(--ar-color-text-muted);font-size:17px;line-height:1}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]:hover{background:#FDECEC;color:#C8312B}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-empty"]{padding:14px 10px;color:var(--ar-color-text-muted);font-size:12.5px;text-align:center}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]{margin-top:4px;padding:8px 10px 4px;border-top:1px solid var(--ar-color-border-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;text-align:right}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]:hover{text-decoration:underline}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]:focus-visible{outline:0;box-shadow:0 0 0 2px var(--ar-accent-ring);border-radius:6px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"]>[data-part="domain-note"]{color:var(--ar-color-text-muted);font-size:10.5px;font-weight:500}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="top-extra"]{margin-left:12px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="expand"]{width:32px;height:32px;margin-left:8px;padding:0;border:1px solid var(--ar-color-border);border-radius:10px;background:#fff;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]{gap:12px;padding:0 24px;border-bottom:1px solid var(--ar-color-border)}
@@ -69,3 +82,25 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]{gap:2px;margin-top:4px;padding:4px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]{padding:8px 6px;border:0;border-radius:8px;background:none;color:var(--ar-color-text);font-size:13px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]:hover{background:var(--ar-accent-faint);color:var(--ar-accent-ink)}
+/* 1.1 下のメニューの子の段（メニューの真上に浮かぶ白い段・角丸14・影、タイルは項目と同じ形）と、メニューの一覧（下から出る板の中の4列のタイル） */
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"]{left:8px;right:auto;max-width:calc(100% - 16px);bottom:calc(100% + 6px);gap:2px;padding:6px 4px;border:1px solid var(--ar-color-border);border-radius:14px;background:#fff;box-shadow:0 12px 32px rgba(31,41,51,.14)}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"][data-align="end"]{left:auto;right:8px}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]{flex:0 1 72px;width:72px;gap:3px;height:52px;padding:0 2px;border-radius:10px;background:none;color:var(--ar-color-text-secondary);font-size:10px;font-weight:700;line-height:1.15}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="icon"]{width:20px;height:20px}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]:hover{background:#F3F6F9}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"][data-state~="open"]:not([data-state~="on"]){background:#F3F6F9;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="nav-sheet"]{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 4px;max-width:420px;margin:0 auto;padding:2px 0 8px;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="nav-sheet"]>[data-part="tile"]{gap:6px;padding:8px 2px;border-radius:12px;background:none;color:var(--ar-color-text);font-size:11px;font-weight:700;line-height:1.25}
+[data-ar-design="remix"] [data-ar="nav-sheet"]>[data-part="tile"]>[data-part="tile-icon"]{width:44px;height:44px;border-radius:13px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="nav-sheet"]>[data-part="tile"]>[data-part="tile-icon"]>[data-ar="icon"]{width:22px;height:22px}
+[data-ar-design="remix"] [data-ar="nav-sheet"]>[data-part="tile"]:hover{background:#F3F6F9}
+[data-ar-design="remix"] [data-ar="nav-sheet"]>[data-part="tile"][data-state~="on"]>[data-part="tile-icon"]{background:var(--ar-accent);color:var(--ar-on-accent)}
+[data-ar-design="remix"] [data-ar="nav-sheet"]>[data-part="tile"][data-kind="child"]:not([data-state~="on"])>[data-part="tile-icon"]{background:#F1F4F7;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="nav-sheet"]>[data-part="tile"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+/* スマホの頭のメニューのボタン（お知らせのボタンと同じ大きさ・線の3本線） */
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"]{width:44px;height:44px;padding:0;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"]:hover,[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"][data-state~="open"]{background:#F3F6F9;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="menu"]>[data-ar="icon"]{width:22px;height:22px}

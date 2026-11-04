@@ -1,4 +1,4 @@
-/* @covers ArTable 1.1.0 */
+/* @covers ArTable 1.2.0 */
 /* ArTable（今の ARROW の表 Component/Table：見出しは白地・テーマ色の1px枠・中央・13px、行は上に #E8E8E8 の線だけ、行高32。並べ替えは ▲▼（#BFBFBF・向きだけ #1677FF）。チェックは灰枠 #808080） */
 [data-ar-design="classic"] [data-ar="table"]{color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
 /* 今の表は table-layout:fixed・幅100%（幅を決めない列は同じ幅に分ける。行の操作の列も1列として数える）。操作のボタンは左に寄せる */
@@ -92,3 +92,11 @@
 [data-ar-design="classic"] [data-ar="table"] td:has(>[data-part="mark"]){color:green}
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="delta"]{font-size:11px;line-height:15px;color:#5F5F5F}
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="delta"]:is([data-tone="warn"],[data-tone="danger"]){color:#D10C1D}
+/* 1.2：段に分けた列（lines）。今の ARROW のシフト詳細の時刻の列（.shift_time_col：1段 32px を縦に重ね、段の間に線なし。足りない段は空の 32px）と同じ見え方。
+   段のセルは最初の段だけ上に6・最後の段だけ下に6の余白（ふつうのセルの 6px 8px と同じ外寸）、段のない列は段をまたいで真ん中 */
+[data-ar-design="classic"] [data-ar="table"] tr[data-part="row"][data-line]:not([data-line="0"])>td[data-line-cell]{border-top:0;padding-top:0}
+[data-ar-design="classic"] [data-ar="table"] tr[data-part="row"][data-line]:not([data-line-last])>td[data-line-cell]{padding-bottom:0}
+/* 1.2：表の中の時刻・選ぶの入力（今の ARROW の Time・Select をそのまま表に置いた形） */
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="cell-editor"]{line-height:normal}
+/* 1.2：セルの頭の「〜」（今の ARROW の募集の表の UiText「〜」：本文と同じ色・13px、間4） */
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="lead"]{margin-right:4px}

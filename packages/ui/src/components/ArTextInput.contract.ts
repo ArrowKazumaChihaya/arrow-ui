@@ -1,4 +1,14 @@
-/** ArTextInput 1.0 の契約。 */
+/**
+ * ArTextInput 1.1 の契約。
+ *
+ * 属性の行き先：class と style は外側の箱（data-part="root"。幅・余白を決める所）に付ける。
+ * それ以外の属性とイベント（tabindex・aria-*・data-*・inputmode・maxlength・enterkeyhint・pattern、
+ * @keydown・@beforeinput・@paste・@drop・@compositionend など）はすべて中の input に渡す。
+ * 中の input に class・style を付けたいとき（今の ARROW の tabindexkey のように input を class で探すとき）は inputClass・inputStyle を使う。
+ * change と focus・blur は部品のイベント（change は文字、focus・blur は FocusEvent）。打つたびの値は update:modelValue。
+ * フォーカスは ref から focus()・blur()・select()・setSelectionRange()、中の要素は input で取れる。
+ * input のイベントで値を直した（マスク・数字だけ）ときも、出した値と入力欄の文字をそろえる（同じ値を出しても欄が直る）。
+ */
 import type { ArIconName } from "../icons";
 
 export interface ArTextInputProps {
@@ -57,6 +67,10 @@ export interface ArTextInputProps {
   autofocus?: boolean;
   /** 消すボタンの読み上げ。 */
   clearLabel?: string;
+  /** 中の input に付ける class（今の ARROW の text_input・tabindexkey など、input を class で探すとき）。 */
+  inputClass?: string | readonly string[] | Record<string, boolean>;
+  /** 中の input に付ける style。 */
+  inputStyle?: string | Record<string, string | number>;
 }
 
 export type ArTextInputPart = "root" | "addon" | "prefix" | "input" | "suffix" | "clear" | "reveal" | "count";

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 /**
- * ArChangedValue 1.1 — 変更前→変更後。変わっていなければ今の値だけを出す。
+ * ArChangedValue 1.2 — 変更前→変更後。変わっていなければ今の値だけを出す。
+ * layout="text" は今の UI/ChangedValue と同じ1つの文「前 → 後」（変わったときは class="changed"）。
  * items を渡すと「項目｜変更前｜変更後」の表（table）か、1列の一覧（list）にまとめる（保存前の確認・変更履歴の詳細）。
  * 読み上げでは「変更前 … 変更後 …」と読む（矢印は飾り）。
  */
@@ -24,6 +25,9 @@ const isChanged = computed(() => props.changed ?? show(props.before) !== show(pr
 const form = computed(() => props.layout ?? (props.items ? "table" : "inline"));
 const H = computed<ArChangedValueHeaders>(() => ({ label: "項目", before: "変更前", after: "変更後", list: "項目（変更前 → 変更後）", ...props.headers }));
 const keyOf = (it: ArChangedValueItem) => it.key ?? it.label;
+/** text：今の UI/ChangedValue と同じ（null は空の文字、変わったかはそのまま比べる）。 */
+const raw = (v: string | number | null | undefined) => (v === null || v === undefined ? "" : String(v));
+const textChanged = computed(() => props.changed ?? props.before !== props.after);
 </script>
 
 <template>
@@ -57,6 +61,14 @@ const keyOf = (it: ArChangedValueItem) => it.key ?? it.label;
       </span>
     </div>
   </div>
+  <span
+    v-else-if="form === 'text'"
+    data-ar="changed-value"
+    data-part="root"
+    data-layout="text"
+    :class="{ changed: textChanged }"
+    :data-state="textChanged ? 'changed' : undefined"
+  >{{ textChanged ? `${raw(before)} → ${raw(after)}` : raw(after) }}</span>
   <span v-else data-ar="changed-value" data-part="root" :data-state="isChanged ? 'changed' : undefined">
     <template v-if="isChanged">
       <span data-ar-visually-hidden>{{ labels.before }}</span>

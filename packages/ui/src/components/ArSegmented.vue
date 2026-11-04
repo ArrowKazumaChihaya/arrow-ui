@@ -77,7 +77,7 @@ function onKeydown(e: KeyboardEvent, i: number) {
     >
       <ArIcon v-if="o.icon" :name="o.icon" data-part="icon" size="sm" />
       <span v-if="!o.iconOnly" data-part="label">{{ o.label }}</span>
-      <span v-if="o.count && !o.iconOnly" data-part="count">{{ o.count }}</span>
+      <span v-if="o.count && !o.iconOnly" data-part="count" :data-tone="o.countTone && o.countTone !== 'accent' ? o.countTone : undefined">{{ o.count }}</span>
     </button>
   </div>
 </template>

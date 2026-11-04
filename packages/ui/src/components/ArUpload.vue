@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArUpload 1.0 — ファイルを置く・選ぶ（Excel登録と同じ形）。置き場は淡いテーマ色の点線。
+ * ArUpload 1.1 — ファイルを置く・選ぶ（Excel登録と同じ形）。置き場は淡いテーマ色の点線。
  * 一覧：済みは緑のチェック、途中はテーマ色の進み具合、失敗は赤と理由。送る処理は親が行い、files に状態を入れる。
  * 置き場は Enter・Space でファイルを選ぶ画面を開く。
  */
@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<ArUploadProps>(), {
   multiple: false,
   listType: "text",
   hint: undefined,
+  buttonIcon: "upload",
   buttonTone: "primary",
   buttonSize: "md",
   disabled: false,
@@ -39,6 +40,8 @@ const emit = defineEmits<{
   remove: [file: ArUploadFile];
 }>();
 
+/** trigger="button" のボタンの文字：選んだあとは「ファイルを変更」（今の Upload の change）。 */
+const buttonText = computed(() => (props.files?.length ? (props.labels.change ?? "ファイルを変更") : (props.labels.choose ?? "ファイルを選択")));
 const trigger = useDesignForm<"drop" | "button">("ArUpload", "trigger", "drop");
 const input = ref<HTMLInputElement | null>(null);
 const over = ref(false);
@@ -90,14 +93,14 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
         data-part="button"
         :tone="buttonTone"
         :size="buttonSize"
-        icon="upload"
+        :icon="buttonIcon ?? undefined"
         block
         :disabled="disabled"
-        :aria-label="label ? `${label}：${labels.choose ?? 'ファイルを選択'}` : undefined"
+        :aria-label="label ? `${label}：${buttonText}` : undefined"
         @click="pick"
-        >{{ labels.choose ?? "ファイルを選択" }}</ArButton
+        >{{ buttonText }}</ArButton
       >
-      <p data-part="chosen" aria-live="polite">{{ files.length ? files.map((f) => f.name).join("、") : (labels.none ?? "ファイル未選択") }}</p>
+      <p data-part="chosen" aria-live="polite">{{ files.length ? `${labels.selected ?? "選択中: "}${files.map((f) => f.name).join("、")}` : (labels.none ?? "ファイル未選択") }}</p>
     </template>
     <template v-else-if="listType === 'text'">
       <div

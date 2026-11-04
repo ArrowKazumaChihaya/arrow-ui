@@ -1,4 +1,4 @@
-/* @covers ArTabs 1.0.0 */
+/* @covers ArTabs 1.1.0 */
 /* ArTabs（band：今の灰色のタブ。line：ant-design-vue の下線のタブ。card：ant-design-vue の card 型） */
 [data-ar-design="classic"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]{gap:3px}
 [data-ar-design="classic"] [data-ar="tabs"][data-variant="band"]>[data-part="list"]>[data-part="tab"]{gap:0;min-width:130px;height:30px;padding:2px 16px 0;border:0;border-radius:8px 8px 0 0;background:#DCDCDC;color:gray;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:15px;font-weight:600;line-height:1}

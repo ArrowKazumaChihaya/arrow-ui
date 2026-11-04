@@ -1,4 +1,4 @@
-/* @covers ArTabs 1.0.0 */
+/* @covers ArTabs 1.1.0 */
 /* band：カードの頭の .v-tabs。line：カードの中の下線のタブ（.ad-tabs）。card：閉じられるタブ（.ad-tabs.xcard）。 */
 [data-ar-design="remix"] [data-ar="tabs"]{font-size:13.5px}
 [data-ar-design="remix"] [data-ar="tabs"]:is([data-variant="line"],[data-variant="card"])>[data-part="list"]>[data-part="tab"]{font-feature-settings:"palt" 1}
@@ -32,3 +32,4 @@
 /* 注意の印（alert）：文字の右に小さな赤い三角 */
 [data-ar-design="remix"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]>[data-part="alert"]{display:inline-flex;color:var(--ar-color-danger)}
 [data-ar-design="remix"] [data-ar="tabs"]>[data-part="list"]>[data-part="tab"]>[data-part="alert"]>[data-ar="icon"]{width:14px;height:14px}
+[data-ar-design="remix"] [data-ar="tabs"][data-variant="band"][data-size="sm"]>[data-part="list"]>[data-part="tab"]{height:34px;font-size:13px}

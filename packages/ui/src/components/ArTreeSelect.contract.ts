@@ -1,4 +1,10 @@
-/** ArTreeSelect 1.0 の契約。 */
+/**
+ * ArTreeSelect 1.1 の契約。
+ * 1.1：店舗（部署）の階層の選択（今の BranchSelectorInner）のために、
+ * 「子店舗を含める」の切り替え（v-model:includeChildren）、プルダウンの下の操作（「部署/店舗追加」など。actions と action）、
+ * 開いている部署の保存（v-model:expanded を製品が localStorage などに置く）、行ごとの選べない見出し（node.selectable:false）、
+ * 先頭の「未選択」の行（nullOption。今の isNull）を足した。
+ */
 import type { ArIconName } from "../icons";
 
 export type ArTreeSelectValue = string | number;
@@ -9,6 +15,15 @@ export interface ArTreeSelectNode {
   /** 下の部署。 */
   children?: readonly ArTreeSelectNode[];
   disabled?: boolean;
+  /** false で、この行だけ選べなくする（灰色にせず、押すと開け閉めする見出しの行。今の TreeOption の selectable:false）。 */
+  selectable?: boolean;
+}
+
+/** プルダウンの下に出す操作のボタン。 */
+export interface ArTreeSelectAction {
+  value: string;
+  label: string;
+  icon?: ArIconName;
 }
 
 export interface ArTreeSelectProps {
@@ -48,8 +63,33 @@ export interface ArTreeSelectProps {
   listHeight?: number;
   /** 読み上げの名前（ArField の中では不要）。 */
   label?: string;
+  /**
+   * 「子店舗を含める」の切り替え（v-model:includeChildren）。渡すと、プルダウンの下に切り替え（チェック）を出し、
+   * オンで下の部署のある部署を選んでいると、押す所に「子店舗を含む」の印を出す。省くと出さない。
+   */
+  includeChildren?: boolean;
+  /** 切り替えの文字（既定「子店舗を含める」）。印の文字は includeChildrenMark（既定「子店舗を含む」）。 */
+  includeChildrenLabel?: string;
+  includeChildrenMark?: string;
+  /** 先頭に「何も選ばない」行を出す（選ぶと null。今の TreeSelect の isNull）。true なら placeholder の文字、文字を渡せばその文字。 */
+  nullOption?: boolean | string;
+  /** プルダウンの下に出す操作のボタン（今の「部署/店舗追加」）。押すと action を出して閉じる。 */
+  actions?: readonly ArTreeSelectAction[];
   /** 押す所の id（ArField の中ではスロットの id を渡す）。 */
   id?: string;
 }
 
-export type ArTreeSelectPart = "root" | "icon" | "value" | "placeholder" | "tags" | "tag" | "tag-remove" | "clear" | "arrow";
+export interface ArTreeSelectEmits {
+  "update:modelValue": [value: ArTreeSelectValue | null | ArTreeSelectValue[]];
+  change: [value: ArTreeSelectValue | null | ArTreeSelectValue[]];
+  "update:expanded": [value: ArTreeSelectValue[]];
+  "open-change": [open: boolean];
+  /** 「子店舗を含める」を切り替えた（v-model:includeChildren）。 */
+  "update:includeChildren": [value: boolean];
+  /** プルダウンの下の操作を押した（actions の value）。 */
+  action: [value: string];
+}
+
+export type ArTreeSelectPart = "root" | "icon" | "value" | "placeholder" | "tags" | "tag" | "tag-remove" | "clear" | "arrow" | "include-mark";
+/** プルダウン（data-ar="tree-select-panel"）の部位。 */
+export type ArTreeSelectPanelPart = "search" | "list" | "node" | "switch" | "check" | "node-label" | "empty" | "footer" | "include" | "include-box" | "include-label" | "action";

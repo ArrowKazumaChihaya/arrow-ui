@@ -12,7 +12,7 @@
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:20px;height:20px;stroke-width:2;color:inherit}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:absolute;right:12px;top:50%;transform:translateY(-50%);gap:6px;text-shadow:none}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]{height:46px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:15px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:16px}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:18px;height:18px}
 /* 帯のすぐ下のタブの帯（acc-50 の地・下に acc-100 の線）は ArTabs（variant="band"）が持つ。ここは隙間なくつなぐだけ */
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]{padding:0}

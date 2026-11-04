@@ -1,4 +1,4 @@
-/* @covers ArColorPicker 1.0.0, ArColorSwatches 1.0.0 */
+/* @covers ArColorPicker 1.1.0, ArColorSwatches 1.0.0 */
 /* ArColorSwatches：.sws（26px・角丸6・間6）。選んでいる色は白と ink の2重の輪。 */
 [data-ar-design="remix"] [data-ar="color-swatches"]{gap:6px}
 [data-ar-design="remix"] [data-ar="color-swatches"]>[data-part="swatch"]{width:26px;height:26px;border-radius:6px;outline:0;transition:box-shadow var(--ar-motion-fast)}

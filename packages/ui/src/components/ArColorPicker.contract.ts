@@ -5,12 +5,15 @@ import type { ArColorSwatch } from "./ArColorSwatches.contract";
  * ArColorPicker 1.0 の契約。
  *
  * デザインが選ぶ形（ArDesign.forms.ArColorPicker）。値の受け渡しはどの形でも同じ。
+ * 1.1：colors を省いたときの色もデザインが選ぶ（`palette`）。classic は今の Colorpicker と同じ48色なので、
+ *   今の `Colorpicker(v-model:value)` は `ArColorPicker(v-model, label)` だけで置き換えられる。
+ * - `palette`：`"event"`（既定）＝イベント・パターンの8色（remix は「詳細」から自由な色・HEX の入力欄も）。`"arrow"`＝今の ARROW の「色選択」の12色×濃さ4段（縦に4色ずつ）。
  * - `panel`：`"popover"`（既定）＝色の見本の下に浮かぶ一覧（自由な色も選べる）。`"dialog"`＝真ん中のダイアログ（題「色選択」・幅372px）で色を選び、選ぶと閉じる（今の ARROW の Colorpicker）。dialog では自由な色は出さない。
  */
 export interface ArColorPickerProps {
   /** "#RRGGBB"。未選択は null。 */
   modelValue: string | null;
-  /** ふだん選ぶ決まった色。既定はイベント・パターンの8色。 */
+  /** ふだん選ぶ決まった色。省くとデザインの palette（remix はイベント・パターンの8色、classic は今の48色）。 */
   colors?: readonly ArColorSwatch[];
   /** 自由な色（色の面・色相の帯・HEX）を選べる。false なら決まった色だけ。 */
   custom?: boolean;

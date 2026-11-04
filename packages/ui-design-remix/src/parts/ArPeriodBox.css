@@ -1,0 +1,8 @@
+/* @covers ArPeriodBox 1.0.0 */
+/* ArPeriodBox（PopRecruit の「募集する期間」：切り替え（.seg sm）の右に 11.5px の灰色の説明、下に年・月・日の範囲と「30日間」。
+   決まりは下に間14、適用は右寄せの主ボタン（PopBulk の「日付に当てはめる」：カレンダーの印つき）。箱の枠は描かない） */
+[data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="modes"]{gap:6px 10px}
+[data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="modes"]>[data-part="hint"]{color:var(--ar-color-text-muted);font-size:11.5px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="range"]{margin-top:8px}
+[data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="body"]{margin-top:14px}
+[data-ar-design="remix"] [data-ar="period-box"]>[data-part="apply"]{justify-content:flex-end;gap:8px;margin-top:14px}

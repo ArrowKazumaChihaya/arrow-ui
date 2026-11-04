@@ -1,14 +1,15 @@
 <script setup lang="ts">
 /**
- * ArAppHeader 1.0 — PC の画面の頭（2段）。
- * 1段目：ロゴ（slot）・お知らせとやることのピル（件数の丸）・右端に管理ページ（押すとメニュー）。
- * 2段目：メニュー（今いるものをテーマ色で塗る）。下端にページのテーマ色の線。項目はすべて props で渡す。
+ * ArAppHeader 1.1 — PC の画面の頭（2段）。
+ * 1段目：ロゴ（slot）・お知らせとやることのピル（件数の丸。押す・指すと下に一覧）・右端に管理ページ（押すとメニュー）。
+ * 2段目：メニュー（今いるものをテーマ色で塗る。子のメニューは真下に出す）。下端にページのテーマ色の線。項目はすべて props で渡す。
+ * ピルの一覧と子のメニューは、指す・フォーカス・押す・↓ キーで開き、↑↓ Home End で移り、Escape で閉じて元へ戻る。
  */
-import { computed, nextTick, ref } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
 import ArFloat from "../internal/ArFloat.vue";
 import { useId } from "../provider/context";
-import type { ArAppHeaderProps, ArAppNavItem } from "./ArAppHeader.contract";
+import type { ArAppHeaderPill, ArAppHeaderProps, ArAppNavItem } from "./ArAppHeader.contract";
 
 const props = withDefaults(defineProps<ArAppHeaderProps>(), {
   menusEnd: () => [],
@@ -29,8 +30,26 @@ const emit = defineEmits<{
   domain: [key: string];
   "update:collapsed": [collapsed: boolean];
   "pill-item": [pill: string, item: string];
+  "pill-item-delete": [pill: string, item: string];
+  "pill-restore": [pill: string];
 }>();
-const L = computed(() => ({ collapse: "ヘッダーを閉じる", expand: "ヘッダーを開く", domains: "領域", ...props.labels }));
+const L = computed(() => ({
+  collapse: "ヘッダーを閉じる",
+  expand: "ヘッダーを開く",
+  domains: "領域",
+  delete: "削除",
+  restore: "すべて表示する",
+  ...props.labels,
+}));
+const uid = useId("ar-app-header");
+const rootEl = ref<HTMLElement | null>(null);
+const listEl = ref<HTMLElement | null>(null);
+const subEl = ref<HTMLElement | null>(null);
+
+/** 一覧を出すピルか（items を渡し、行・空の文字・「すべて表示する」のどれかがある）。 */
+const hasList = (p: ArAppHeaderPill) => p.items !== undefined && (p.items.length > 0 || !!p.emptyText || (p.hiddenCount ?? 0) > 0);
+const hasChildren = (it: ArAppNavItem) => !!it.children?.length;
+
 /** 指している・フォーカスしているピル（一覧を出す）とメニュー（子のメニューを出す）。出すものはその真下に同じ幅で置く。 */
 const pillEls = new Map<string, HTMLElement>();
 const itemEls = new Map<string, HTMLElement>();
@@ -39,15 +58,23 @@ function setRef(map: Map<string, HTMLElement>, key: string, el: unknown) {
   if (node instanceof HTMLElement) map.set(key, node);
   else map.delete(key);
 }
-const open = ref<{ kind: "pill" | "item"; key: string } | null>(null);
+type Kind = "pill" | "item";
+const open = ref<{ kind: Kind; key: string } | null>(null);
+/** 押して開いた（指を離しても閉じない。外を押す・Escape・もう一度押すと閉じる）。 */
+const pinned = ref(false);
 const openStyle = ref<Record<string, string>>({});
 let timer: ReturnType<typeof setTimeout> | undefined;
-function show(kind: "pill" | "item", key: string, has: boolean) {
+const isOpen = (kind: Kind, key: string) => open.value?.kind === kind && open.value.key === key;
+/** Escape で閉じて元の項目へフォーカスを戻すとき、そのフォーカスで開き直さない。 */
+let refocusing = false;
+function show(kind: Kind, key: string, has: boolean) {
+  if (refocusing) return;
   clearTimeout(timer);
   if (!has) {
-    open.value = null;
+    if (!pinned.value) open.value = null;
     return;
   }
+  if (pinned.value && !isOpen(kind, key)) pinned.value = false;
   const el = (kind === "pill" ? pillEls : itemEls).get(key);
   if (el) openStyle.value = { left: `${el.offsetLeft}px`, top: `${el.offsetTop + el.offsetHeight}px`, width: `${el.offsetWidth}px` };
   open.value = { kind, key };
@@ -57,10 +84,113 @@ function keep() {
 }
 function hideSoon() {
   clearTimeout(timer);
+  if (pinned.value) return;
   timer = setTimeout(() => (open.value = null), 120);
+}
+function hide(refocus: boolean) {
+  const was = open.value;
+  clearTimeout(timer);
+  open.value = null;
+  pinned.value = false;
+  if (refocus && was) {
+    refocusing = true;
+    (was.kind === "pill" ? pillEls : itemEls).get(was.key)?.focus();
+    refocusing = false;
+  }
 }
 const openPill = computed(() => (open.value?.kind === "pill" ? props.pills.find((p) => p.key === open.value!.key) : undefined));
 const openItem = computed(() => (open.value?.kind === "item" ? [...props.menus, ...props.menusEnd].find((m) => m.key === open.value!.key) : undefined));
+
+/** 一覧・子のメニューの中で動ける所（ボタンとリンク）。 */
+function focusables(box: HTMLElement | null): HTMLElement[] {
+  return [...(box?.querySelectorAll<HTMLElement>("button:not(:disabled),a[href]") ?? [])];
+}
+async function openAndFocus(kind: Kind, key: string, has: boolean) {
+  show(kind, key, has);
+  await nextTick();
+  focusables(kind === "pill" ? listEl.value : subEl.value)[0]?.focus();
+}
+function onPopKey(e: KeyboardEvent, box: HTMLElement | null) {
+  const list = focusables(box);
+  const i = list.indexOf(document.activeElement as HTMLElement);
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    list[(i + (e.key === "ArrowDown" ? 1 : -1) + list.length) % list.length]?.focus();
+  } else if (e.key === "Home" || e.key === "End") {
+    e.preventDefault();
+    (e.key === "Home" ? list[0] : list.at(-1))?.focus();
+  } else if (e.key === "Escape") {
+    e.preventDefault();
+    e.stopPropagation();
+    hide(true);
+  }
+}
+
+/* ピル：押すと一覧を出したままにする（もう一度押すと閉じる）。↓ で一覧の最初へ。Escape で閉じる。 */
+function onPillClick(p: ArAppHeaderPill) {
+  emit("pill", p.key);
+  if (!hasList(p)) return;
+  if (pinned.value && isOpen("pill", p.key)) return hide(false);
+  show("pill", p.key, true);
+  pinned.value = true;
+}
+function onPillKey(e: KeyboardEvent, p: ArAppHeaderPill) {
+  if (!hasList(p)) return;
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    void openAndFocus("pill", p.key, true);
+  } else if (e.key === "Escape" && open.value) {
+    e.preventDefault();
+    hide(true);
+  }
+}
+async function onDelete(pill: string, item: string) {
+  emit("pill-item-delete", pill, item);
+  await nextTick();
+  const first = focusables(listEl.value)[0];
+  if (first) first.focus();
+  else hide(true);
+}
+
+/* メニュー：指で押すと子のメニューを出したままにする（navigate も出す）。↓ で子の最初へ。 */
+let lastPointer = "mouse";
+function onNav(item: ArAppNavItem, e: MouseEvent) {
+  emit("navigate", item.key, e);
+}
+function onItemClick(item: ArAppNavItem, e: MouseEvent) {
+  onNav(item, e);
+  if (hasChildren(item) && lastPointer !== "mouse") {
+    show("item", item.key, true);
+    pinned.value = true;
+  }
+  lastPointer = "mouse";
+}
+function onItemKey(e: KeyboardEvent, item: ArAppNavItem) {
+  if (!hasChildren(item)) return;
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    void openAndFocus("item", item.key, true);
+  } else if (e.key === "Escape" && open.value) {
+    e.preventDefault();
+    hide(true);
+  }
+}
+function onSubClick(c: ArAppNavItem, e: MouseEvent) {
+  onNav(c, e);
+  hide(false);
+}
+
+/** 押して出したままの一覧は、外を押すと閉じる。 */
+function onDocPointer(e: PointerEvent) {
+  if (!open.value || !pinned.value) return;
+  if (rootEl.value?.contains(e.target as Node)) return;
+  hide(false);
+}
+onMounted(() => document.addEventListener("pointerdown", onDocPointer, true));
+onBeforeUnmount(() => {
+  document.removeEventListener("pointerdown", onDocPointer, true);
+  clearTimeout(timer);
+});
 
 const menuId = useId("ar-account-menu");
 const accountBtn = ref<HTMLButtonElement | null>(null);
@@ -113,13 +243,10 @@ function onMenuKey(e: KeyboardEvent) {
     closeMenu(false);
   }
 }
-function onNav(item: ArAppNavItem, e: MouseEvent) {
-  emit("navigate", item.key, e);
-}
 </script>
 
 <template>
-  <header data-ar="app-header" data-part="root">
+  <header ref="rootEl" data-ar="app-header" data-part="root">
     <div data-part="top">
       <span data-part="logo"><slot name="logo" /></span>
       <button
@@ -129,30 +256,53 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
         type="button"
         data-part="pill"
         :data-tone="p.tone ?? 'notice'"
-        :data-state="[p.count ? 'has-count' : 'empty', open?.kind === 'pill' && open.key === p.key && 'open'].filter(Boolean).join(' ')"
-        :aria-expanded="p.items?.length ? open?.kind === 'pill' && open.key === p.key : undefined"
-        @click="emit('pill', p.key)"
-        @pointerenter="show('pill', p.key, !!p.items?.length)"
+        :data-state="[p.count ? 'has-count' : 'empty', isOpen('pill', p.key) && 'open'].filter(Boolean).join(' ')"
+        :aria-expanded="hasList(p) ? isOpen('pill', p.key) : undefined"
+        :aria-controls="hasList(p) && isOpen('pill', p.key) ? `${uid}-list` : undefined"
+        @click="onPillClick(p)"
+        @keydown="onPillKey($event, p)"
+        @pointerenter="show('pill', p.key, hasList(p))"
         @pointerleave="hideSoon"
-        @focus="show('pill', p.key, !!p.items?.length)"
+        @focus="show('pill', p.key, hasList(p))"
         @blur="hideSoon"
       >
         <ArIcon v-if="p.icon" :name="p.icon" size="sm" data-part="pill-icon" :data-icon="p.icon" />
         <span data-part="pill-label">{{ p.label }}</span>
         <span v-if="p.count" data-part="count"><span aria-hidden="true">{{ countText(p.count) }}</span><span data-ar-visually-hidden>{{ p.count }}{{ labels.count }}</span></span>
       </button>
-      <ul
-        v-if="openPill?.items?.length"
+      <div
+        v-if="openPill && hasList(openPill)"
+        :id="`${uid}-list`"
+        ref="listEl"
         data-part="pill-list"
         :data-tone="openPill.tone ?? 'notice'"
         :style="openStyle"
+        role="group"
+        :aria-label="openPill.label"
         @pointerenter="keep"
         @pointerleave="hideSoon"
         @focusin="keep"
         @focusout="hideSoon"
+        @keydown="onPopKey($event, listEl)"
       >
-        <li v-for="it in openPill.items" :key="it.key"><button type="button" data-part="pill-item" @click="emit('pill-item', openPill.key, it.key)">{{ it.label }}</button></li>
-      </ul>
+        <ul v-if="openPill.items?.length" data-part="pill-rows">
+          <li v-for="it in openPill.items" :key="it.key" data-part="pill-row" :data-deletable="it.deletable || undefined">
+            <button type="button" data-part="pill-item" @click="emit('pill-item', openPill.key, it.key)">{{ it.label }}</button>
+            <button
+              v-if="it.deletable"
+              type="button"
+              data-part="pill-delete"
+              :aria-label="`${L.delete}：${it.label}`"
+              :title="L.delete"
+              @click="onDelete(openPill.key, it.key)"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </li>
+        </ul>
+        <p v-else-if="openPill.emptyText" data-part="pill-empty">{{ openPill.emptyText }}</p>
+        <button v-if="(openPill.hiddenCount ?? 0) > 0" type="button" data-part="pill-restore" @click="emit('pill-restore', openPill.key)">{{ L.restore }}</button>
+      </div>
       <div v-if="$slots.top" data-part="top-extra"><slot name="top" /></div>
       <button
         v-if="account"
@@ -186,7 +336,7 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
           <span>{{ a.label }}</span><ArIcon line name="cr" size="sm" data-part="menu-arrow" />
         </button>
       </ArFloat>
-      <button v-if="collapsible && collapsed" type="button" data-part="expand" :aria-label="L.expand" :title="L.expand" @click="emit('update:collapsed', false)">
+      <button v-if="collapsible && collapsed" type="button" data-part="expand" :aria-label="L.expand" :title="L.expand" :aria-expanded="false" @click="emit('update:collapsed', false)">
         <ArIcon line name="plus" size="sm" />
       </button>
     </div>
@@ -204,9 +354,10 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
         >
           <span v-if="d.icon" data-part="domain-icon" :data-icon="d.icon"><ArIcon :name="d.icon" /></span>
           <span>{{ d.label }}</span>
+          <small v-if="d.note" data-part="domain-note">{{ d.note }}</small>
         </button>
       </div>
-      <button v-if="collapsible" type="button" data-part="toggle" @click="emit('update:collapsed', true)">
+      <button v-if="collapsible" type="button" data-part="toggle" :aria-expanded="true" @click="emit('update:collapsed', true)">
         <ArIcon line name="minus" size="sm" /><span>{{ L.collapse }}</span>
       </button>
     </div>
@@ -220,16 +371,19 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
           :ref="(el: unknown) => setRef(itemEls, it.key, el)"
           data-part="item"
           :data-side="gi === 0 ? 'start' : 'end'"
-          :data-state="[it.key === current && 'on', open?.kind === 'item' && open.key === it.key && 'open'].filter(Boolean).join(' ') || undefined"
+          :data-state="[it.key === current && 'on', isOpen('item', it.key) && 'open'].filter(Boolean).join(' ') || undefined"
           :data-ar-palette="it.palette"
           :href="it.href"
           :type="it.href ? undefined : 'button'"
           :aria-current="it.key === current ? 'page' : undefined"
-          :aria-expanded="it.children?.length ? open?.kind === 'item' && open.key === it.key : undefined"
-          @click="onNav(it, $event)"
-          @pointerenter="show('item', it.key, !!it.children?.length)"
+          :aria-expanded="hasChildren(it) ? isOpen('item', it.key) : undefined"
+          :aria-controls="hasChildren(it) && isOpen('item', it.key) ? `${uid}-sub` : undefined"
+          @pointerdown="lastPointer = $event.pointerType || 'mouse'"
+          @click="onItemClick(it, $event)"
+          @keydown="onItemKey($event, it)"
+          @pointerenter="show('item', it.key, hasChildren(it))"
           @pointerleave="hideSoon"
-          @focus="show('item', it.key, !!it.children?.length)"
+          @focus="show('item', it.key, hasChildren(it))"
           @blur="hideSoon"
         >
           <span v-if="it.icon" data-part="item-icon" :data-icon="it.icon"><ArIcon :name="it.icon" /></span>
@@ -238,22 +392,29 @@ function onNav(item: ArAppNavItem, e: MouseEvent) {
       </template>
       <div
         v-if="openItem?.children?.length"
+        :id="`${uid}-sub`"
+        ref="subEl"
         data-part="submenu"
         :data-ar-palette="openItem.palette"
         :style="openStyle"
+        role="group"
+        :aria-label="openItem.label"
         @pointerenter="keep"
         @pointerleave="hideSoon"
         @focusin="keep"
         @focusout="hideSoon"
+        @keydown="onPopKey($event, subEl)"
       >
         <component
           :is="c.href ? 'a' : 'button'"
           v-for="c in openItem.children"
           :key="c.key"
           data-part="submenu-item"
+          :data-state="c.key === current ? 'on' : undefined"
+          :aria-current="c.key === current ? 'page' : undefined"
           :href="c.href"
           :type="c.href ? undefined : 'button'"
-          @click="onNav(c, $event)"
+          @click="onSubClick(c, $event)"
         >{{ c.label }}</component>
       </div>
     </nav>
