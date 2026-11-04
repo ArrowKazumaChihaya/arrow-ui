@@ -43,3 +43,13 @@
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="unit"]{margin-left:1px;font-size:12px}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="diff"]{margin-left:6px}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]>dd{font-weight:600}
+
+/* 紙面を縮小せず、classic の罫線と色を維持して狭い画面にも並べる。 */
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="title"]{flex:0 1 310px;height:auto;min-height:35px}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="columns"]{row-gap:16px}
+[data-ar-design="classic"] [data-ar="payslip"] [data-part="section"] :is(th,td){height:auto;min-height:33px}
+[data-ar-design="classic"] [data-ar="payslip"] [data-part="label"]{white-space:normal;line-height:1.5;padding-block:5px}
+[data-ar-design="classic"] [data-ar="payslip"] [data-part="section-title"]{padding-inline:12px}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>:is(dt,dd){white-space:normal;overflow-wrap:anywhere}
+@media(max-width:767px){[data-ar-design="classic"] [data-ar="payslip"]{padding:16px 12px}}

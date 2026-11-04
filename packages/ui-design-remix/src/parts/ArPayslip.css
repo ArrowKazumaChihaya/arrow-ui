@@ -52,3 +52,5 @@
 [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]>dd{font-size:22px}
 @media (max-width:767px){[data-ar-design="remix"] [data-ar="payslip"]{padding:14px 12px}[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{order:-1}}
+
+[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr))}

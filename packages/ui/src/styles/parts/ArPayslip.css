@@ -21,3 +21,12 @@
 [data-ar="payslip"]>[data-part="totals"]{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:0}
 [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>:is(dt,dd){margin:0}
 @media (max-width:767px){[data-ar="payslip"]>[data-part="columns"]{grid-template-columns:minmax(0,1fr)}}
+
+/* 明細自身の幅で列数を決める。親カードやサイドパネルの中でも縮小しない。 */
+[data-ar="payslip"]{container:ar-payslip / inline-size}
+[data-ar="payslip"]>[data-part="head"]>*{min-width:0;max-width:100%;overflow-wrap:anywhere}
+[data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div{min-width:0;max-width:100%;flex-wrap:wrap}
+[data-ar="payslip"] [data-part="label"]{overflow-wrap:anywhere}
+[data-ar="payslip"]>[data-part="totals"]{grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr))}
+@container ar-payslip (max-width:999px){[data-ar="payslip"]>[data-part="columns"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container ar-payslip (max-width:599px){[data-ar="payslip"]>[data-part="columns"]{grid-template-columns:minmax(0,1fr)}}
