@@ -198,11 +198,11 @@ npm run release         # Changesets が未公開バージョンを公開
 
 パスワード、トークン、ワンタイムコードはリポジトリへ保存しません。公開したバージョン番号は再利用せず、次の変更では `npm run changeset` と `npx changeset version` で版を進めます。
 
-公開後の Front 側では、以下のように取得します。初回公開が完了するまではこの切り替えを行いません。
+5 パッケージの `0.1.1` は公開済みです（公開元コミット `e169d71`）。Front 側では、以下のように取得できます。
 
 ```sh
 yarn add --exact @s_and_a/arrow-ui@0.1.1 @s_and_a/arrow-ui-tokens@0.1.1 @s_and_a/arrow-ui-design-remix@0.1.1 @s_and_a/arrow-ui-design-classic@0.1.1
 yarn add --dev --exact @s_and_a/eslint-plugin-arrow-ui@0.1.1
 ```
 
-Front に残る `resolutions` のファイル参照も公開バージョンへ更新し、`yarn.lock` を生成してから `vendor/arrow-ui` を削除します。別環境では `yarn install --frozen-lockfile` だけで同じ公開版を取得できます。
+Front の `feature/design-renewal-prep` は通常の npm 依存へ移行済みです。`resolutions` と `yarn.lock` も公開版を参照し、旧 `vendor/arrow-ui` は削除しました。別環境では `yarn install --frozen-lockfile` だけで同じ公開版を取得できます。
