@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- Keep modal descriptions, long titles and footer notes readable on mobile instead of hiding or truncating them.
+
 - Organization charts support anchored pan/pinch gestures, async tree data, and non-overlapping mobile controls. Preserve user zoom and pan across design changes.
 
 - Remove excessive vertical whitespace above mobile authentication forms.

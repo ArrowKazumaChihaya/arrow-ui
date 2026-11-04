@@ -38,10 +38,10 @@
 [data-ar-design="remix"] [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]>*>[data-part="note"]{font-size:12.5px;line-height:1.5;color:var(--ar-color-text-muted)}@media (max-width:640px){
   /* スマホ：全画面（.fsc）。頭は閉じるを左・題を真ん中（.fh）、足は白でボタンを広げる */
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]{border-radius:0;box-shadow:none;background:var(--ar-color-bg)}
-  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]{height:52px;box-sizing:border-box;align-items:center;gap:0;padding:0 6px;background:var(--ar-color-surface)}
+  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]{min-height:52px;box-sizing:border-box;align-items:center;gap:0;padding:8px 6px;background:var(--ar-color-surface)}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]{text-align:center}
-  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:var(--ar-font-size-heading);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{display:none}
+  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:var(--ar-font-size-heading);line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:4px;overflow-wrap:anywhere}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{width:44px;height:44px;border-radius:8px;color:var(--ar-color-text-secondary)}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]>[data-ar="icon"]{width:21px;height:21px}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]::after{content:"";width:44px;flex:none}
@@ -50,10 +50,17 @@
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]{padding:12px 16px 24px;background:var(--ar-color-surface)}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]{flex:1}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="button"]{flex:1}
-  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>*>[data-part="note"]{display:none}
+  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>*>[data-part="note"]{display:block;overflow-wrap:anywhere}
 }
 /* 小型の完了通知もスマホでは確定操作を押しやすい幅にする。確認用confirmは従来の配置を保つ。 */
 @media(max-width:640px){
   [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]{flex:1}
   [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="button"]{flex:1}
+}
+
+/* Supplemental information remains readable on mobile; actions occupy their own row. */
+@media(max-width:640px){
+  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]{flex-wrap:wrap}
+  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-start"]:has([data-part="note"]){flex-basis:100%}
+  [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-part="note"]{flex-basis:100%}
 }
