@@ -1,4 +1,4 @@
-/* @covers ArTimeChart 1.0.0 */
+/* @covers ArTimeChart 1.1.0 */
 /* ArTimeChart：今の ARROW の勤怠の個人の「チャート」（View/Manager/AttendanceEach/MonthlyChart.vue・scoped の CSS を実測）。ARROW の Table（theme attendance）：
    見出しは白・テーマ色の1pxの枠・13px rgba(0,0,0,.65)・高さ35、「日付」「勤務形態」は各 110px、時刻の列は 600px 以上で1時間ごとに lightgray の線と 13px の時刻（線の左下に寄せる）。
    行は下に #E8E8E8 の線、日付と形態は真ん中寄せ 13px。帯は行の中で上から 深夜（15px・#6126A5）・残業（15px：法定内 #FFA8A8・法定外 #FF5656・週 #BE3F3F・月 #742828・60時間超 #DB0000）・
@@ -55,3 +55,6 @@
 [data-ar-design="classic"] [data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-ar="tooltip"]>[data-part="bar"]:is([data-kind="preover"],[data-kind="outhol"],[data-kind="lawhol"],[data-kind="break"],[data-kind="missing"])>[data-part="bar-text"]{color:#332E27}
 
 [data-ar-design="classic"] [data-ar="time-chart"][data-mode="day"]>[data-part="grid"]{grid-template-columns:110px minmax(max(600px,var(--ar-chart-tick-width,0px)),1fr)}
+
+[data-ar-design="classic"] [data-ar="time-chart"]{--ar-chart-track-height:22px;--ar-chart-track-bar-height:16px}
+[data-ar-design="classic"] [data-ar="time-chart"][data-mode="month"]>[data-part="grid"]{grid-template-columns:220px minmax(max(600px,var(--ar-chart-tick-width,0px)),1fr)}

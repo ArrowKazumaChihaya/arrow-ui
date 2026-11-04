@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArTimeChart 1.0 — 時間の横棒のチャート。month は1日＝1行の1か月（勤怠の種類ごとの色の帯・上の線がシフト・下の線が深夜）、day は1日の内容ごとの行。
+ * ArTimeChart 1.1 — 時間の横棒のチャート。month は1日＝1行の1か月（勤怠の種類ごとの色の帯・上の線がシフト・下の線が深夜）、day は1日の内容ごとの行。
  * 帯に乗せると「種類・時間帯・時間数」の吹き出し。month の日付は押せる（select。その日の大きなチャートを開く）。
  * キーボード：month の日付は Tab で移って Enter。行の読み上げに帯の中身（種類・時間帯）を含める。
  */
@@ -52,11 +52,17 @@ const L = computed<ArTimeChartLabels>(() => {
 });
 const kindName = (k: ArTimeChartKind) => L.value.kinds[k] ?? KIND[k];
 const tickForm = useDesignForm<"180" | "60">("ArTimeChart", "tick", "180");
+const tracksOf = (r: ArTimeChartRow) => r.tracks?.length ? [
+  ...(r.bars.length ? [{ key: "", label: r.label, bars: r.bars }] : []), ...r.tracks,
+] : [];
+const barsOf = (r: ArTimeChartRow) => [...r.bars, ...(r.tracks?.flatMap((t) => t.bars) ?? [])];
+const rowHeight = (r: ArTimeChartRow) => tracksOf(r).length
+  ? { minHeight: `calc(${tracksOf(r).length} * var(--ar-chart-track-height, 22px) + 12px)` } : undefined;
 
 const range = computed<[number, number]>(() => {
   if (props.range) return [props.range[0], props.range[1]];
   if (props.mode === "month") return [-60, 1680];
-  const all = props.rows.flatMap((r) => r.bars);
+  const all = props.rows.flatMap(barsOf);
   if (!all.length) return [480, 1260];
   const lo = Math.floor(Math.min(...all.map((b) => b.start)) / 60) * 60 - 120;
   const hi = Math.ceil(Math.max(...all.map((b) => b.end)) / 60) * 60 + 120;
@@ -96,10 +102,19 @@ const barStyle = (b: ArTimeChartBar) => ({
   left: `${pct(b.start)}%`,
   width: `${Math.max(props.minBarWidth, pct(b.end) - pct(b.start))}%`,
 });
+const placedBars = (r: ArTimeChartRow) => {
+  const tracks = tracksOf(r);
+  if (!tracks.length) return r.bars.map((bar, i) => ({ key: `bar:${i}`, bar, track: undefined, tip: tipOf(bar), style: barStyle(bar) }));
+  return tracks.flatMap((track, trackIndex) => track.bars.map((bar, i) => ({
+    key: `track:${track.key}:${i}`, bar, track: track.key,
+    tip: [track.label, tipOf(bar)].filter(Boolean).join("\n"),
+    style: { ...barStyle(bar), top: `calc(6px + ${trackIndex} * var(--ar-chart-track-height, 22px))`, bottom: "auto", height: "var(--ar-chart-track-bar-height, 16px)" },
+  })));
+};
 const wdText = (r: ArTimeChartRow) => r.weekdayLabel ?? (r.weekday != null ? L.value.weekdays[r.weekday] : undefined);
 const wdTone = (r: ArTimeChartRow) => (r.weekday === 0 ? "sun" : r.weekday === 6 ? "sat" : undefined);
 const rowAria = (r: ArTimeChartRow) =>
-  [r.label + (wdText(r) ? `(${wdText(r)})` : ""), r.sub, ...r.bars.map((b) => tipOf(b).replace(/\n/g, " ")), r.bars.length ? "" : r.note]
+  [r.label + (wdText(r) ? `(${wdText(r)})` : ""), r.sub, ...placedBars(r).map((b) => b.tip.replace(/\n/g, " ")), barsOf(r).length ? "" : r.note]
     .filter(Boolean)
     .join("、");
 
@@ -107,7 +122,7 @@ const legendKinds = computed<ArTimeChartKind[]>(() => {
   if (!props.legend) return [];
   if (Array.isArray(props.legend)) return [...props.legend];
   const order: ArTimeChartKind[] = ["work", "preover", "overtime", "weekOver", "monthOver", "sixtyOver", "outhol", "lawhol", "night", "shift", "break", "missing"];
-  const seen = new Set(props.rows.flatMap((r) => r.bars.map((b) => b.kind)));
+  const seen = new Set(props.rows.flatMap((r) => barsOf(r).map((b) => b.kind)));
   return order.filter((k) => seen.has(k));
 });
 const legendText = (k: ArTimeChartKind) =>
@@ -135,22 +150,23 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
           data-part="row-label"
           role="rowheader"
           :aria-label="`${L.open.replace('{label}', r.label)}：${rowAria(r)}`"
+          :style="rowHeight(r)"
           @click="emit('select', r)"
         >
           <b data-part="date">{{ r.label }}<em v-if="wdText(r)" data-part="weekday" :data-weekday="wdTone(r)">({{ wdText(r) }})</em></b>
           <small v-if="r.sub" data-part="sub">{{ r.sub }}</small>
         </button>
-        <div v-else data-part="row-label" role="rowheader">
+        <div v-else data-part="row-label" role="rowheader" :style="rowHeight(r)">
           <b data-part="date">{{ r.label }}</b>
           <small v-if="r.sub" data-part="sub">{{ r.sub }}</small>
         </div>
-        <div data-part="lane" role="cell" :aria-label="rowAria(r)">
+        <div data-part="lane" role="cell" :aria-label="rowAria(r)" :style="rowHeight(r)">
           <span v-for="t in ticks" :key="t.m" data-part="gridline" aria-hidden="true" :style="{ left: `${t.left}%` }" />
-          <ArTooltip v-for="(b, i) in r.bars" :key="i" :data-lane="lane(b.kind)" :style="barStyle(b)" placement="top">
-            <span data-part="bar" :data-kind="b.kind" tabindex="0" :aria-label="tipOf(b)"><span v-if="mode === 'day' && (b.text ?? '') !== ''" data-part="bar-text">{{ b.text }}</span></span>
-            <template #content><span data-part="tip">{{ tipOf(b) }}</span></template>
+          <ArTooltip v-for="b in placedBars(r)" :key="b.key" :data-lane="lane(b.bar.kind)" :data-track="b.track" :style="b.style" placement="top">
+            <span data-part="bar" :data-kind="b.bar.kind" tabindex="0" :aria-label="b.tip"><span v-if="mode === 'day' && (b.bar.text ?? '') !== ''" data-part="bar-text">{{ b.bar.text }}</span></span>
+            <template #content><span data-part="tip">{{ b.tip }}</span></template>
           </ArTooltip>
-          <span v-if="!r.bars.length && r.note" data-part="note">{{ r.note }}</span>
+          <span v-if="!barsOf(r).length && r.note" data-part="note">{{ r.note }}</span>
         </div>
       </div>
     </div>

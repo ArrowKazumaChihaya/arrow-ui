@@ -55,6 +55,22 @@ describe("ArOrgChart", () => {
 });
 
 describe("ArTimeChart", () => {
+  it("重なる計算区分を独立した帯に残し、区分名と全期間を読み上げる", async () => {
+    const row = { key: "day", label: "11/04", bars: [{ kind: "work" as const, start: 480, end: 1080 }], tracks: [
+      { key: "premium", label: "休日割増", bars: [{ kind: "outhol" as const, start: 480, end: 1080 }] },
+      { key: "night", label: "深夜割増", bars: [{ kind: "night" as const, start: -60, end: 1620 }] },
+    ] };
+    const w = mount(ArTimeChart, { props: { mode: "day", rows: [row], legend: true } });
+    expect(w.findAll('[data-part="bar"]')).toHaveLength(3);
+    expect(w.get('[data-track="premium"] [data-part="bar"]').attributes("aria-label")).toContain("休日割増\n法定外休日");
+    expect(w.get('[data-track="night"] [data-part="bar"]').attributes("aria-label")).toContain("深夜割増\n深夜勤務");
+    expect(w.findAll('[data-part="tick"]').at(-1)?.text()).toBe("翌5");
+    expect(w.findAll('[data-part="legend-item"]').map((x) => x.text())).toEqual(["通常勤務", "法定外休日", "深夜勤務"]);
+    await w.setProps({ mode: "month" });
+    await w.get('button[data-part="row-label"]').trigger("click");
+    expect(w.emitted("select")?.[0]).toEqual([row]);
+    w.unmount();
+  });
   it("month：帯の場所と吹き出し、日付を押すと select", async () => {
     const rows = [
       { key: "1", label: "10/01", weekday: 4, sub: "通常", bars: [{ kind: "shift" as const, start: 780, end: 1320 }, { kind: "work" as const, start: 780, end: 1320, minutes: 480 }, { kind: "night" as const, start: 1320, end: 1380 }] },

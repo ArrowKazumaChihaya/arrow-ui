@@ -123,7 +123,7 @@ export const covers = {
   ArTextarea: "1.1.0",
   ArTextInput: "1.1.0",
   ArThumbnail: "1.1.0",
-  ArTimeChart: "1.0.0",
+  ArTimeChart: "1.1.0",
   ArTimeInput: "1.1.0",
   ArTimeline: "1.0.0",
   ArTimePicker: "1.0.0",

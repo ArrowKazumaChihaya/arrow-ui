@@ -1,4 +1,4 @@
-/* @covers ArTimeChart 1.0.0 */
+/* @covers ArTimeChart 1.1.0 */
 /* ArTimeChart：勤怠キャンバスの勤怠詳細の「チャート」（.r-chleg 凡例 11.5px・16×10 角丸3 の色、.r-chg 角丸12・ln の内側の線、見出し acc-50 の 30px・11.5px 700 acc-ink、目盛り 10.5px 700、
    日の名前 168px（12.5px 700・曜日 日は赤 土は青・形態 11px mute）、帯の場所 高さ38・ln-2 の上の線・#EEF1F4 の目盛りの線、土日は #FAFBFD の地・有給全日は斜線の地、
    帯：シフトは上の 4px の線（#5591CE）、勤務は 13px から 16px の角丸4（通常 #4EB187・法定内残業 #E3A73B・法定外残業 #D86A3A・法定外休日 #3D9FB0・法定休日 #2E7BBF）、深夜は下の 4px の線（#6F55C2）、休憩は灰色の斜線、打刻もれは赤い斜線）
@@ -60,3 +60,6 @@
 [data-ar-design="remix"] [data-ar="time-chart"] [data-kind="weekOver"]{background:#B5462C}
 [data-ar-design="remix"] [data-ar="time-chart"] [data-kind="monthOver"]{background:#963D38}
 [data-ar-design="remix"] [data-ar="time-chart"] [data-kind="sixtyOver"]{background:#793441}
+
+[data-ar-design="remix"] [data-ar="time-chart"]{--ar-chart-track-height:18px;--ar-chart-track-bar-height:12px}
+[data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"]>[data-part="grid"]{grid-template-columns:168px minmax(max(520px,var(--ar-chart-tick-width,0px)),1fr)}

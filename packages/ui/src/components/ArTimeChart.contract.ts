@@ -1,5 +1,5 @@
 /**
- * ArTimeChart 1.0 の契約。時間の横棒のチャート（勤怠の月のチャート・1日のチャート）。
+ * ArTimeChart 1.1 の契約。時間の横棒のチャート（勤怠の月のチャート・1日のチャート）。
  * month：1行＝1日。帯（通常勤務・残業・休日勤務・休憩）と、上の細い線＝シフト、下の細い線＝深夜。日付を押すと select（その日の大きなチャート）。
  * day：1行＝1つの内容（シフト・勤務・休憩・深夜勤務）。帯の中に「18:00〜27:00」などの文字。
  * 帯に乗せると「種類・時間帯・時間数」の吹き出し。時刻は 0:00 からの分（翌日の 3:00 は 1620。前日の 23:00 は -60）。
@@ -40,6 +40,13 @@ export interface ArTimeChartBar {
   tip?: string;
 }
 
+/** 同じ日・時刻に重なる独立した計算区分。各区分を別の帯にして隠さず表示する。 */
+export interface ArTimeChartTrack {
+  key: string;
+  label: string;
+  bars: readonly ArTimeChartBar[];
+}
+
 export interface ArTimeChartRow {
   key: string;
   /** 左の名前（month は「10/01」、day は「シフト」）。 */
@@ -55,6 +62,8 @@ export interface ArTimeChartRow {
   /** 行の地。holiday＝土日・祝日の淡い地、paid＝有給の斜線の地、error＝エラーの淡い赤（名前の側）。 */
   tone?: "holiday" | "paid" | "error";
   bars: readonly ArTimeChartBar[];
+  /** 1.1: 区分ごとの帯。bars があれば先頭の帯に残し、tracks を後ろに並べる。空の帯も順序を保持する。 */
+  tracks?: readonly ArTimeChartTrack[];
 }
 
 export interface ArTimeChartProps {
