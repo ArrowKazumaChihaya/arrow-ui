@@ -4,7 +4,7 @@
  *   幅500、「ファイルを選択」の大きなボタンの下に選んだファイルの名前、左右の端に回すボタン、真ん中に大きな「登録」。キャンセルは × で閉じる）。
  */
 /**
- * ArThumbnail 1.1 の契約。顔写真などの画像と、変えるためのカメラのボタン・切り抜きのポップアップ（今の ARROW の Thumbnail）。
+ * ArThumbnail 1.2 の契約。顔写真などの画像と、変えるためのカメラのボタン・切り抜きのポップアップ（今の ARROW の Thumbnail）。
  * 1.1：今の Thumbnail の呼び方に合わせて、ポップアップの開け閉めを製品が持つ（v-model:open＝今の isEditting・updateIsEditting）、
  * ポップアップだけ（dialogOnly）、切り抜く範囲を自由に変える（freeCrop。結果は file で PNG の File＝今の updateFile）、
  * 受け付ける拡張子（accept＝今の allowedExtension）、画像のないときの絵（placeholder＝今の silhouette）、
@@ -36,6 +36,8 @@ export interface ArThumbnailProps {
   open?: boolean;
   /** 画像とカメラのボタンを出さず、ポップアップだけ（今の dialogOnly。添付の「写真を追加」のボタンから開く）。 */
   dialogOnly?: boolean;
+  /** 保存イベント後に閉じる。既定true。falseなら親が非同期保存の成功後にopenをfalseへ変える。 */
+  closeOnSave?: boolean;
   /**
    * 切り抜く範囲を自由に変える（今の freeCrop）。画像全体を枠に入れ、四隅のつまみで範囲を変え、中をドラッグで動かす。
    * 「登録」で、範囲を元の画素のまま PNG にした File を file で渡す（modelValue は変えない）。
@@ -75,4 +77,18 @@ export interface ArThumbnailEmits {
   /** 読めない・大きすぎる画像を選んだとき。 */
   "invalid-image": [reason: "type" | "bytes" | "pixels" | "load"];
 }
-export type ArThumbnailPart = "root" | "image" | "silhouette" | "camera" | "editor" | "hint" | "frame" | "picture" | "empty" | "tools" | "file" | "submit" | "crop" | "crop-handle";
+export type ArThumbnailPart =
+  | "root"
+  | "image"
+  | "silhouette"
+  | "camera"
+  | "editor"
+  | "hint"
+  | "frame"
+  | "picture"
+  | "empty"
+  | "tools"
+  | "file"
+  | "submit"
+  | "crop"
+  | "crop-handle";

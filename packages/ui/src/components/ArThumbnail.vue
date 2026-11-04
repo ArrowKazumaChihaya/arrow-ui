@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArThumbnail 1.1 — 顔写真などの画像（丸／四角）と、右下のカメラのボタン。
+ * ArThumbnail 1.2 — 顔写真などの画像（丸／四角）と、右下のカメラのボタン。
  * ボタンでポップアップを開き、画像を選んで（押す・落とす）、ドラッグで動かし、＋−・ホイールで拡大縮小、左右に90°回して切り抜く。
  * 切り抜きは canvas だけで行う（ほかのライブラリは使わない）。キーボードでは枠にフォーカスして矢印で動かし、＋−で拡大縮小。
  * 1.1：v-model:open・dialogOnly・freeCrop（四隅のつまみで範囲を変え、PNG の File を file で渡す。矢印で動かし、Shift＋矢印で大きさ）・accept・placeholder・aspect。
@@ -25,6 +25,7 @@ const props = withDefaults(defineProps<ArThumbnailProps>(), {
   alt: "",
   open: undefined,
   dialogOnly: false,
+  closeOnSave: true,
   freeCrop: false,
   accept: undefined,
   placeholder: "person",
@@ -54,18 +55,36 @@ const emit = defineEmits<{
 
 const open = ref(false);
 /** 受け付ける拡張子（input の accept と、選んだファイルの名前の確かめ）。 */
-const acceptAttr = computed(() => (props.accept?.length ? props.accept.map((x) => `.${x.replace(/^\./, "")}`).join(",") : "image/png,image/jpeg,image/gif"));
-const extOk = (name: string) => !props.accept?.length || props.accept.some((x) => x.replace(/^\./, "").toLowerCase() === name.split(".").pop()?.toLowerCase());
+const acceptAttr = computed(() =>
+  props.accept?.length
+    ? props.accept.map((x) => `.${x.replace(/^\./, "")}`).join(",")
+    : "image/png,image/jpeg,image/gif",
+);
+const extOk = (name: string) =>
+  !props.accept?.length ||
+  props.accept.some(
+    (x) =>
+      x.replace(/^\./, "").toLowerCase() ===
+      name.split(".").pop()?.toLowerCase(),
+  );
 /** 画面の箱：aspect="crop" は幅 size・高さは切り抜く比。 */
 const boxStyle = computed(() => ({
   "--ar-thumbnail-size": `${props.size}px`,
-  ...(props.aspect === "crop" ? { "--ar-thumbnail-height": `${Math.round((props.size * props.cropHeight) / props.cropWidth)}px` } : {}),
+  ...(props.aspect === "crop"
+    ? {
+        "--ar-thumbnail-height": `${Math.round((props.size * props.cropHeight) / props.cropWidth)}px`,
+      }
+    : {}),
 }));
 /** freeCrop の範囲（元の画素で）。 */
 const crop = ref({ x: 0, y: 0, w: 0, h: 0 });
 const baseName = ref("image");
 /** 形（ArDesign.forms.ArThumbnail.editor）。arrow は今の ARROW の画像のアップロードの並び。 */
-const editor = useDesignForm<"tools" | "arrow">("ArThumbnail", "editor", "tools");
+const editor = useDesignForm<"tools" | "arrow">(
+  "ArThumbnail",
+  "editor",
+  "tools",
+);
 /** 選んだファイルの名前（editor="arrow" で出す）。 */
 const fileName = ref("");
 const fileInput = ref<HTMLInputElement | null>(null);
@@ -78,13 +97,36 @@ const scale = ref(1);
 const ox = ref(0);
 const oy = ref(0);
 let objectUrl: string | null = null;
+let imageWork = 0;
+const pendingUrls = new Set<string>();
+
+/** A newer selection or a closed editor owns the image; stale work cannot restore it. */
+function cancelImageWork(): number {
+  imageWork += 1;
+  for (const url of pendingUrls) URL.revokeObjectURL(url);
+  pendingUrls.clear();
+  return imageWork;
+}
+function releasePending(url: string): void {
+  if (pendingUrls.delete(url)) URL.revokeObjectURL(url);
+}
+function isCurrentImageWork(work: number): boolean {
+  return open.value && work === imageWork;
+}
 
 /** 画面の枠（いちばん長い辺を 280px にそろえる）。 */
 const frame = computed(() => {
   const k = 280 / Math.max(props.cropWidth, props.cropHeight);
-  return { w: Math.round(props.cropWidth * k), h: Math.round(props.cropHeight * k) };
+  return {
+    w: Math.round(props.cropWidth * k),
+    h: Math.round(props.cropHeight * k),
+  };
 });
-const rotated = computed(() => (rotate.value % 180 === 0 ? natural.value : { w: natural.value.h, h: natural.value.w }));
+const rotated = computed(() =>
+  rotate.value % 180 === 0
+    ? natural.value
+    : { w: natural.value.h, h: natural.value.w },
+);
 const fitScale = (mode: "contain" | "cover") => {
   const r = rotated.value;
   if (!r.w || !r.h) return 1;
@@ -113,8 +155,12 @@ function revoke() {
   if (objectUrl) URL.revokeObjectURL(objectUrl);
   objectUrl = null;
 }
-onBeforeUnmount(revoke);
+onBeforeUnmount(() => {
+  cancelImageWork();
+  revoke();
+});
 function startEdit() {
+  cancelImageWork();
   revoke();
   src.value = props.modelValue;
   fileName.value = "";
@@ -123,9 +169,11 @@ function startEdit() {
 }
 function onImageLoad(e: Event) {
   const el = e.target as HTMLImageElement;
+  if (!open.value || el !== img.value) return;
   natural.value = { w: el.naturalWidth, h: el.naturalHeight };
   reset();
-  if (props.freeCrop) crop.value = { x: 0, y: 0, w: el.naturalWidth, h: el.naturalHeight };
+  if (props.freeCrop)
+    crop.value = { x: 0, y: 0, w: el.naturalWidth, h: el.naturalHeight };
 }
 
 /** 先頭の数バイトで画像の種類を確かめる（拡張子は信じない）。 */
@@ -135,18 +183,33 @@ async function sniff(file: File): Promise<boolean> {
   return hex === "89504e47" || hex === "47494638" || hex.startsWith("ffd8ff");
 }
 async function load(file: File | undefined | null) {
-  if (!file) return;
+  if (!file || !open.value) return;
+  const work = cancelImageWork();
   if (!extOk(file.name)) return emit("invalid-image", "type");
-  if (props.maxFileBytes && file.size > props.maxFileBytes) return emit("invalid-image", "bytes");
-  if (!(await sniff(file))) return emit("invalid-image", "type");
+  if (props.maxFileBytes && file.size > props.maxFileBytes)
+    return emit("invalid-image", "bytes");
+  try {
+    const valid = await sniff(file);
+    if (!isCurrentImageWork(work)) return;
+    if (!valid) return emit("invalid-image", "type");
+  } catch {
+    if (isCurrentImageWork(work)) emit("invalid-image", "load");
+    return;
+  }
   const url = URL.createObjectURL(file);
+  pendingUrls.add(url);
   const probe = new Image();
   probe.onload = () => {
-    if (props.maxImagePixels && probe.naturalWidth * probe.naturalHeight > props.maxImagePixels) {
-      URL.revokeObjectURL(url);
+    if (!isCurrentImageWork(work)) return releasePending(url);
+    if (
+      props.maxImagePixels &&
+      probe.naturalWidth * probe.naturalHeight > props.maxImagePixels
+    ) {
+      releasePending(url);
       emit("invalid-image", "pixels");
       return;
     }
+    pendingUrls.delete(url);
     revoke();
     objectUrl = url;
     src.value = url;
@@ -154,10 +217,20 @@ async function load(file: File | undefined | null) {
     baseName.value = file.name.replace(/\.[^.]+$/, "") || "image";
   };
   probe.onerror = () => {
-    URL.revokeObjectURL(url);
-    emit("invalid-image", "load");
+    releasePending(url);
+    if (isCurrentImageWork(work)) emit("invalid-image", "load");
   };
   probe.src = url;
+}
+function removeImage(): void {
+  cancelImageWork();
+  revoke();
+  src.value = null;
+  natural.value = { w: 0, h: 0 };
+  fileName.value = "";
+}
+function finishSave(): void {
+  if (props.closeOnSave) open.value = false;
 }
 function onFile(e: Event) {
   const input = e.target as HTMLInputElement;
@@ -171,11 +244,18 @@ function onDrop(e: DragEvent) {
 }
 
 // ドラッグで動かす
-let drag: { x: number; y: number; ox: number; oy: number; id: number } | null = null;
+let drag: { x: number; y: number; ox: number; oy: number; id: number } | null =
+  null;
 function onPointerDown(e: PointerEvent) {
   if (!src.value || props.freeCrop) return;
   (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-  drag = { x: e.clientX, y: e.clientY, ox: ox.value, oy: oy.value, id: e.pointerId };
+  drag = {
+    x: e.clientX,
+    y: e.clientY,
+    ox: ox.value,
+    oy: oy.value,
+    id: e.pointerId,
+  };
 }
 function onPointerMove(e: PointerEvent) {
   if (!drag || drag.id !== e.pointerId) return;
@@ -213,7 +293,12 @@ function onFrameKey(e: KeyboardEvent) {
   }
   if (props.freeCrop) return onCropKey(e);
   const step = e.shiftKey ? 30 : 10;
-  const moves: Record<string, [number, number]> = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
+  const moves: Record<string, [number, number]> = {
+    ArrowLeft: [-step, 0],
+    ArrowRight: [step, 0],
+    ArrowUp: [0, -step],
+    ArrowDown: [0, step],
+  };
   if (e.key in moves) {
     e.preventDefault();
     ox.value += moves[e.key]![0];
@@ -237,9 +322,11 @@ const pictureStyle = computed(() => ({
 
 function submit() {
   if (props.freeCrop) return submitFree();
+  if (!open.value) return;
+  cancelImageWork();
   if (!src.value || !img.value || !natural.value.w) {
     emit("update:modelValue", null);
-    open.value = false;
+    finishSave();
     return;
   }
   const cw = Math.round(props.cropWidth * props.quality);
@@ -259,14 +346,15 @@ function submit() {
   ctx.scale(scale.value * f, scale.value * f);
   ctx.drawImage(img.value, -natural.value.w / 2, -natural.value.h / 2);
   emit("update:modelValue", canvas.toDataURL("image/png"));
-  open.value = false;
+  finishSave();
 }
-watch(open, (o) => {
-  if (!o) {
-    revoke();
-    src.value = null;
-  }
-});
+watch(
+  open,
+  (o) => {
+    if (!o) removeImage();
+  },
+  { flush: "sync" },
+);
 
 /* ---- freeCrop：画像全体を枠に入れ、範囲を四隅のつまみで変える ---- */
 /** 画面での倍率と、枠の中の画像の位置。 */
@@ -274,13 +362,27 @@ const view = computed(() => {
   const n = natural.value;
   if (!n.w || !n.h) return { k: 1, left: 0, top: 0 };
   const k = Math.min(frame.value.w / n.w, frame.value.h / n.h);
-  return { k, left: (frame.value.w - n.w * k) / 2, top: (frame.value.h - n.h * k) / 2 };
+  return {
+    k,
+    left: (frame.value.w - n.w * k) / 2,
+    top: (frame.value.h - n.h * k) / 2,
+  };
 });
-const freeStyle = computed(() => ({ width: `${natural.value.w * view.value.k}px`, height: `${natural.value.h * view.value.k}px`, left: `${view.value.left}px`, top: `${view.value.top}px` }));
+const freeStyle = computed(() => ({
+  width: `${natural.value.w * view.value.k}px`,
+  height: `${natural.value.h * view.value.k}px`,
+  left: `${view.value.left}px`,
+  top: `${view.value.top}px`,
+}));
 const cropStyle = computed(() => {
   const { k, left, top } = view.value;
   const c = crop.value;
-  return { left: `${left + c.x * k}px`, top: `${top + c.y * k}px`, width: `${c.w * k}px`, height: `${c.h * k}px` };
+  return {
+    left: `${left + c.x * k}px`,
+    top: `${top + c.y * k}px`,
+    width: `${c.w * k}px`,
+    height: `${c.h * k}px`,
+  };
 });
 /** 範囲を画像の中に収める（いちばん小さくて 16 画素）。 */
 function setCrop(c: { x: number; y: number; w: number; h: number }) {
@@ -288,13 +390,30 @@ function setCrop(c: { x: number; y: number; w: number; h: number }) {
   const min = Math.min(16, n.w, n.h);
   const w = Math.min(n.w, Math.max(min, c.w));
   const h = Math.min(n.h, Math.max(min, c.h));
-  crop.value = { x: Math.min(n.w - w, Math.max(0, c.x)), y: Math.min(n.h - h, Math.max(0, c.y)), w, h };
+  crop.value = {
+    x: Math.min(n.w - w, Math.max(0, c.x)),
+    y: Math.min(n.h - h, Math.max(0, c.y)),
+    w,
+    h,
+  };
 }
-let cropDrag: { mode: string; x: number; y: number; c: { x: number; y: number; w: number; h: number }; id: number } | null = null;
+let cropDrag: {
+  mode: string;
+  x: number;
+  y: number;
+  c: { x: number; y: number; w: number; h: number };
+  id: number;
+} | null = null;
 function onCropDown(e: PointerEvent, mode: string) {
   e.stopPropagation();
   (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
-  cropDrag = { mode, x: e.clientX, y: e.clientY, c: { ...crop.value }, id: e.pointerId };
+  cropDrag = {
+    mode,
+    x: e.clientX,
+    y: e.clientY,
+    c: { ...crop.value },
+    id: e.pointerId,
+  };
 }
 function onCropMove(e: PointerEvent) {
   if (!cropDrag || cropDrag.id !== e.pointerId) return;
@@ -324,16 +443,26 @@ function onCropUp() {
 }
 function onCropKey(e: KeyboardEvent) {
   const step = 10 / (view.value.k || 1);
-  const d: Record<string, [number, number]> = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
+  const d: Record<string, [number, number]> = {
+    ArrowLeft: [-step, 0],
+    ArrowRight: [step, 0],
+    ArrowUp: [0, -step],
+    ArrowDown: [0, step],
+  };
   if (!(e.key in d)) return;
   e.preventDefault();
   const [dx, dy] = d[e.key]!;
   const c = crop.value;
-  setCrop(e.shiftKey ? { ...c, w: c.w + dx, h: c.h + dy } : { ...c, x: c.x + dx, y: c.y + dy });
+  setCrop(
+    e.shiftKey
+      ? { ...c, w: c.w + dx, h: c.h + dy }
+      : { ...c, x: c.x + dx, y: c.y + dy },
+  );
 }
 /** 元の画像を回した画像に置き換える（範囲は全体に戻す）。 */
 function turnSource(deg: number) {
-  if (!img.value || !natural.value.w) return;
+  if (!img.value || !natural.value.w || !open.value) return;
+  const work = cancelImageWork();
   const { w, h } = natural.value;
   const canvas = document.createElement("canvas");
   canvas.width = h;
@@ -344,14 +473,15 @@ function turnSource(deg: number) {
   ctx.rotate((deg * Math.PI) / 180);
   ctx.drawImage(img.value, -w / 2, -h / 2);
   canvas.toBlob((blob) => {
-    if (!blob) return;
+    if (!isCurrentImageWork(work) || !blob) return;
     revoke();
     objectUrl = URL.createObjectURL(blob);
     src.value = objectUrl;
   }, "image/png");
 }
 function submitFree() {
-  if (!src.value || !img.value || !natural.value.w) return;
+  if (!src.value || !img.value || !natural.value.w || !open.value) return;
+  const work = cancelImageWork();
   const c = crop.value;
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(c.w));
@@ -360,12 +490,23 @@ function submitFree() {
   if (!ctx) return;
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(img.value, c.x, c.y, c.w, c.h, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(
+    img.value,
+    c.x,
+    c.y,
+    c.w,
+    c.h,
+    0,
+    0,
+    canvas.width,
+    canvas.height,
+  );
   const name = `${baseName.value}.png`;
   canvas.toBlob((blob) => {
+    if (!isCurrentImageWork(work)) return;
     if (!blob) return emit("invalid-image", "load");
     emit("file", new File([blob], name, { type: "image/png" }));
-    open.value = false;
+    finishSave();
   }, "image/png");
 }
 /** v-model:open（今の isEditting）：製品が開けたら中身をそろえて開き、閉じたら閉じる。 */
@@ -395,25 +536,77 @@ defineExpose({ edit: startEdit });
     :style="boxStyle"
   >
     <template v-if="!dialogOnly">
-    <img v-if="modelValue" data-part="image" :src="modelValue" :alt="alt" />
-    <span v-else-if="placeholder === 'picture'" data-part="silhouette" data-kind="picture" :role="alt ? 'img' : undefined" :aria-label="alt || undefined"
-      ><ArIcon name="image" data-part="silhouette-line" /><svg data-part="silhouette-fill" viewBox="0 0 800 800" aria-hidden="true" focusable="false"><path fill="currentColor" d="M656.3 186.4c-47.2 0-85.4 38.2-85.4 85.4s38.2 85.4 85.4 85.4 85.4-38.2 85.4-85.4-38.1-85.4-85.4-85.4zM250.5 261.2 58.3 613.6h512.5L410.7 325.3l-64.1 96.1z" /></svg
-    ></span>
-    <span v-else data-part="silhouette" :role="alt ? 'img' : undefined" :aria-label="alt || undefined"
-      ><ArIcon name="user" data-part="silhouette-line" /><svg data-part="silhouette-fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4.6" fill="currentColor" /><path d="M2.6 22c.4-4.8 4.4-7.6 9.4-7.6s9 2.8 9.4 7.6z" fill="currentColor" /></svg
-    ></span>
+      <img v-if="modelValue" data-part="image" :src="modelValue" :alt="alt" />
+      <span
+        v-else-if="placeholder === 'picture'"
+        data-part="silhouette"
+        data-kind="picture"
+        :role="alt ? 'img' : undefined"
+        :aria-label="alt || undefined"
+        ><ArIcon name="image" data-part="silhouette-line" /><svg
+          data-part="silhouette-fill"
+          viewBox="0 0 800 800"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            fill="currentColor"
+            d="M656.3 186.4c-47.2 0-85.4 38.2-85.4 85.4s38.2 85.4 85.4 85.4 85.4-38.2 85.4-85.4-38.1-85.4-85.4-85.4zM250.5 261.2 58.3 613.6h512.5L410.7 325.3l-64.1 96.1z"
+          /></svg
+      ></span>
+      <span
+        v-else
+        data-part="silhouette"
+        :role="alt ? 'img' : undefined"
+        :aria-label="alt || undefined"
+        ><ArIcon name="user" data-part="silhouette-line" /><svg
+          data-part="silhouette-fill"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="12" cy="8" r="4.6" fill="currentColor" />
+          <path
+            d="M2.6 22c.4-4.8 4.4-7.6 9.4-7.6s9 2.8 9.4 7.6z"
+            fill="currentColor"
+          /></svg
+      ></span>
     </template>
-    <button v-if="editable && !dialogOnly" type="button" data-part="camera" :aria-label="labels.change" :title="labels.change" @click="startEdit">
+    <button
+      v-if="editable && !dialogOnly"
+      type="button"
+      data-part="camera"
+      :aria-label="labels.change"
+      :title="labels.change"
+      @click="startEdit"
+    >
       <ArIcon name="camera" data-part="camera-icon" />
     </button>
-    <ArModal v-model:open="open" :title="labels.title" size="sm" :width="editor === 'arrow' ? 500 : undefined">
-      <div data-ar="thumbnail-editor" data-part="root" :data-form="editor" :data-free="freeCrop || undefined">
+    <ArModal
+      v-model:open="open"
+      :title="labels.title"
+      size="sm"
+      :width="editor === 'arrow' ? 500 : undefined"
+    >
+      <div
+        data-ar="thumbnail-editor"
+        data-part="root"
+        :data-form="editor"
+        :data-free="freeCrop || undefined"
+      >
         <p data-part="hint">{{ labels.hint }}</p>
         <div
           data-part="frame"
           :data-shape="shape"
-          :data-state="[src ? 'has-image' : 'empty', dragOver && 'drag-over'].filter(Boolean).join(' ')"
-          :style="{ '--ar-thumbnail-frame-w': `${frame.w}px`, '--ar-thumbnail-frame-h': `${frame.h}px` }"
+          :data-state="
+            [src ? 'has-image' : 'empty', dragOver && 'drag-over']
+              .filter(Boolean)
+              .join(' ')
+          "
+          :style="{
+            '--ar-thumbnail-frame-w': `${frame.w}px`,
+            '--ar-thumbnail-frame-h': `${frame.h}px`,
+          }"
           tabindex="0"
           role="group"
           :aria-label="src ? labels.area : labels.empty"
@@ -428,8 +621,19 @@ defineExpose({ edit: startEdit });
           @dragleave="dragOver = false"
           @drop.prevent="onDrop"
         >
-          <img v-if="src" ref="img" data-part="picture" :src="src" alt="" draggable="false" :style="freeCrop ? freeStyle : pictureStyle" @load="onImageLoad" />
-          <span v-else data-part="empty"><ArIcon name="upload" /><span>{{ labels.choose }}</span></span>
+          <img
+            v-if="src"
+            ref="img"
+            data-part="picture"
+            :src="src"
+            alt=""
+            draggable="false"
+            :style="freeCrop ? freeStyle : pictureStyle"
+            @load="onImageLoad"
+          />
+          <span v-else data-part="empty"
+            ><ArIcon name="upload" /><span>{{ labels.choose }}</span></span
+          >
           <span v-if="src && !freeCrop" data-part="mask" aria-hidden="true" />
           <span
             v-if="src && freeCrop && natural.w"
@@ -454,29 +658,93 @@ defineExpose({ edit: startEdit });
           </span>
         </div>
         <template v-if="editor === 'arrow'">
-          <p data-part="file">{{ fileName || (labels.noFile ?? "ファイル未選択") }}</p>
+          <p data-part="file">
+            {{ fileName || (labels.noFile ?? "ファイル未選択") }}
+          </p>
           <div data-part="tools">
-            <ArButton tone="primary" icon="undo" :label="labels.rotateLeft" @click="src && turn(-90)" />
-            <ArButton tone="primary" icon="redo" :label="labels.rotateRight" @click="src && turn(90)" />
+            <ArButton
+              tone="primary"
+              icon="undo"
+              :label="labels.rotateLeft"
+              :disabled="!src"
+              @click="turn(-90)"
+            />
+            <ArButton
+              tone="primary"
+              icon="redo"
+              :label="labels.rotateRight"
+              :disabled="!src"
+              @click="turn(90)"
+            />
           </div>
-          <div data-part="submit"><ArButton tone="primary" size="xl" :disabled="freeCrop && !src" @click="submit">{{ labels.ok }}</ArButton></div>
+          <div data-part="submit">
+            <ArButton
+              tone="primary"
+              size="xl"
+              :disabled="freeCrop && !src"
+              @click="submit"
+              >{{ labels.ok }}</ArButton
+            >
+          </div>
         </template>
         <div v-else data-part="tools">
           <template v-if="!freeCrop">
-            <ArButton size="sm" icon="minus" :label="labels.zoomOut" :disabled="!src" @click="zoom(1 / 1.15)" />
-            <ArButton size="sm" icon="plus" :label="labels.zoomIn" :disabled="!src" @click="zoom(1.15)" />
+            <ArButton
+              size="sm"
+              icon="minus"
+              :label="labels.zoomOut"
+              :disabled="!src"
+              @click="zoom(1 / 1.15)"
+            />
+            <ArButton
+              size="sm"
+              icon="plus"
+              :label="labels.zoomIn"
+              :disabled="!src"
+              @click="zoom(1.15)"
+            />
           </template>
-          <ArButton size="sm" icon="undo" :label="labels.rotateLeft" :disabled="!src" @click="turn(-90)" />
-          <ArButton size="sm" icon="redo" :label="labels.rotateRight" :disabled="!src" @click="turn(90)" />
+          <ArButton
+            size="sm"
+            icon="undo"
+            :label="labels.rotateLeft"
+            :disabled="!src"
+            @click="turn(-90)"
+          />
+          <ArButton
+            size="sm"
+            icon="redo"
+            :label="labels.rotateRight"
+            :disabled="!src"
+            @click="turn(90)"
+          />
           <span data-part="tools-gap" />
-          <ArButton size="sm" icon="upload" @click="fileInput?.click()">{{ labels.choose }}</ArButton>
-          <ArButton size="sm" tone="danger-subtle" icon="trash" :label="labels.remove" :disabled="!src" @click="src = null" />
+          <ArButton size="sm" icon="upload" @click="fileInput?.click()">{{
+            labels.choose
+          }}</ArButton>
+          <ArButton
+            size="sm"
+            tone="danger-subtle"
+            icon="trash"
+            :label="labels.remove"
+            :disabled="!src"
+            @click="removeImage"
+          />
         </div>
-        <input ref="fileInput" type="file" :accept="acceptAttr" data-part="file" hidden @change="onFile" />
+        <input
+          ref="fileInput"
+          type="file"
+          :accept="acceptAttr"
+          data-part="file"
+          hidden
+          @change="onFile"
+        />
       </div>
       <template v-if="editor !== 'arrow'" #footer>
         <ArButton @click="open = false">{{ labels.cancel }}</ArButton>
-        <ArButton tone="primary" :disabled="freeCrop && !src" @click="submit">{{ labels.ok }}</ArButton>
+        <ArButton tone="primary" :disabled="freeCrop && !src" @click="submit">{{
+          labels.ok
+        }}</ArButton>
       </template>
     </ArModal>
   </span>
