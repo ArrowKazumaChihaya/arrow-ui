@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { h } from "vue";
+import { h, nextTick, ref } from "vue";
 import ArButton from "../src/components/ArButton.vue";
 import ArField from "../src/components/ArField.vue";
 import ArTable from "../src/components/ArTable.vue";
@@ -154,6 +154,44 @@ describe("ArModal", () => {
     await w.get('[data-part="close"]').trigger("click");
     expect(w.emitted("close")).toHaveLength(2);
     w.unmount();
+  });
+
+  it("消えた編集ボタンから body にフォーカスが移っても Tab と Esc が効く", async () => {
+    const editing = ref(true);
+    const w = mount(ArModal, {
+      props: { ...base, open: true }, attachTo: document.body,
+      slots: { default: () => editing.value ? h("button", { id: "temporary-editor" }, "取り消し") : h("p", "閲覧") },
+    });
+    await nextTick();
+    (w.get("#temporary-editor").element as HTMLElement).focus();
+    editing.value = false;
+    await nextTick();
+    expect(document.activeElement).toBe(document.body);
+    document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true, cancelable: true }));
+    expect(w.get('[role="dialog"]').element.contains(document.activeElement)).toBe(true);
+    (document.activeElement as HTMLElement).blur();
+    document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
+    expect(w.emitted("close")).toHaveLength(1);
+    w.unmount();
+  });
+
+  it("body の Esc は最前面だけに届き、子部品が処理した Esc は消費しない", async () => {
+    const first = mount(ArModal, { props: { ...base, open: true }, attachTo: document.body });
+    const last = mount(ArModal, { props: { ...base, open: true }, attachTo: document.body });
+    await nextTick();
+    (document.activeElement as HTMLElement).blur();
+    const consumed = new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true });
+    consumed.preventDefault();
+    document.body.dispatchEvent(consumed);
+    expect(last.emitted("close")).toBeUndefined();
+    document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    expect(last.emitted("close")).toHaveLength(1);
+    expect(first.emitted("close")).toBeUndefined();
+    last.unmount();
+    document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    expect(first.emitted("close")).toHaveLength(1);
+    first.unmount();
+    expect(document.documentElement.hasAttribute("data-ar-modal-open")).toBe(false);
   });
 
   it("開くと本文の最初の入力にフォーカスする", async () => {
