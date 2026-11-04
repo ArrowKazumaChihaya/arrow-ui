@@ -33,7 +33,7 @@ export const classicPresets: Record<string, string> = {
   pc27cb295308c:
     "width: 30px;line-height: 30px !important;padding: 0px !important;text-align: center;",
   p767b0c58aede: "margin-right: 5px;",
-  pcfeacbcb6c37: "width: 39px; margin: 0 5px",
+  pcfeacbcb6c37: "white-space: nowrap; margin: 0 5px",
   p9659f69f06e7: "margin-top: 10px; height: 33px",
   pe06c04790961: "margin-bottom: 10px",
   p9d6445aaea34: "min-width: 85px; width: 100%",
