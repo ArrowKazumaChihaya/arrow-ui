@@ -42,7 +42,7 @@
     }
   },
   "bin": {
-    "arrow-ui": "./bin/arrow-ui.mjs"
+    "arrow-ui": "bin/arrow-ui.mjs"
   },
   "files": [
     "dist",
