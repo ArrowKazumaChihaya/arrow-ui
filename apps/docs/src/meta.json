@@ -6640,7 +6640,7 @@
  },
  {
   "name": "ArCalendar",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。\nマスの中身は cell slot（イベント・不足など）。年の表示（12か月）にも切り替えられる。\nsize=\"mini\" は小さなカレンダー（設定のシフトテンプレートの「カレンダーで確かめる」）：見出しは絵と題だけ、マスに札と小さな文字、下に footer slot。\nキーボード：←→↑↓ で日を移り、PageUp / PageDown で月（Shift で年）、Home / End で週の端、Enter / Space で選ぶ。",
   "props": [
    {
@@ -6754,6 +6754,13 @@
     "default": "[]"
    },
    {
+    "name": "timeRanges",
+    "type": "readonly ArCalendarTimeRange[]",
+    "required": false,
+    "description": "日ごとの勤務時間。狭いマスでも開始・終了を2行で省略せず表示する。値の計算・整形は利用側で行う。",
+    "default": "[]"
+   },
+   {
     "name": "label",
     "type": "string",
     "required": false,
@@ -6816,6 +6823,10 @@
    "foot",
    "note",
    "content",
+   "times",
+   "time-range",
+   "time-start",
+   "time-end",
    "footer"
   ],
   "dataAr": "calendar"
@@ -11302,7 +11313,7 @@
     "name": "title",
     "type": "string",
     "required": false,
-    "description": ""
+    "description": "Heading text. When omitted, the default slot supplies the heading; with a title, the slot is supplementary."
    },
    {
     "name": "type",

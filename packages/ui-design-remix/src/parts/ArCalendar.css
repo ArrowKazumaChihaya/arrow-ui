@@ -1,4 +1,4 @@
-/* @covers ArCalendar 1.1.0 */
+/* @covers ArCalendar 1.2.0 */
 /* ArCalendar：デザインシステムの .ad-calf（角丸12・線の枠・見出しの段 8/10 と下線、曜日は淡いテーマ色の 28px、マスは 54px・線 #F0F3F6・12px 中太の数字、
    今日はテーマ色の 20px の丸、選んだ日は acc-25 の地と 1.5px の枠、前後の月は #A3AEB9）と .ev（行事の印）、.seg（月／年の切り替え）。 */
 [data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"],[data-size="mini"]){border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-border);overflow:hidden;color:var(--ar-color-text);font-size:14px;line-height:1.5}
@@ -94,3 +94,7 @@
 [data-ar-design="remix"] [data-ar="calendar"][data-size="mini"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:var(--ar-color-ok)}
 [data-ar-design="remix"] [data-ar="calendar"][data-size="mini"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="note"]{max-width:100%;overflow:hidden;color:var(--ar-color-text-secondary);font-size:10.5px;line-height:1.5;font-variant-numeric:tabular-nums;white-space:nowrap;text-overflow:ellipsis}
 [data-ar-design="remix"] [data-ar="calendar"][data-size="mini"]>[data-part="footer"]{display:flex;flex-wrap:wrap;gap:14px;color:var(--ar-color-text-secondary);font-size:12px;line-height:1.5}
+
+[data-ar-design="remix"] [data-ar="calendar"] [data-part="times"]{gap:4px;padding-top:2px}
+[data-ar-design="remix"] [data-ar="calendar"] [data-part="time-range"]{font:600 10.5px/1.3 var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="calendar"] [data-part="time-end"]{color:var(--ar-color-text-secondary)}

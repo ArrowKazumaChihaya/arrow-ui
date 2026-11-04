@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArCalendar 1.0 — 月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。
+ * ArCalendar 1.2 — 月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。
  * マスの中身は cell slot（イベント・不足など）。年の表示（12か月）にも切り替えられる。
  * size="mini" は小さなカレンダー（設定のシフトテンプレートの「カレンダーで確かめる」）：見出しは絵と題だけ、マスに札と小さな文字、下に footer slot。
  * キーボード：←→↑↓ で日を移り、PageUp / PageDown で月（Shift で年）、Home / End で週の端、Enter / Space で選ぶ。
@@ -11,7 +11,7 @@ import ArIcon from "./ArIcon.vue";
 import ArHoverTip from "../internal/ArHoverTip.vue";
 import { daysInMonth, formatDate, splitDate, weekdayOf } from "./date";
 import { useDesignForm, useId } from "../provider/context";
-import type { ArCalendarCell, ArCalendarEvent, ArCalendarProps } from "./ArCalendar.contract";
+import type { ArCalendarCell, ArCalendarEvent, ArCalendarTimeRange, ArCalendarProps } from "./ArCalendar.contract";
 
 const props = withDefaults(defineProps<ArCalendarProps>(), {
   variant: "sheet",
@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<ArCalendarProps>(), {
   disabledDate: undefined,
   showAdjacent: true,
   events: () => [],
+  timeRanges: () => [],
   label: undefined,
   labels: () => ({
     weekdays: ["日", "月", "火", "水", "木", "金", "土"],
@@ -232,6 +233,13 @@ const eventMap = computed(() => {
   for (const e of props.events) m.set(e.date, [...(m.get(e.date) ?? []), e]);
   return m;
 });
+const timeMap = computed(() => {
+  const result = new Map<string, ArCalendarTimeRange[]>();
+  for (const range of props.timeRanges) result.set(range.date, [...(result.get(range.date) ?? []), range]);
+  return result;
+});
+const timesOf = (date: string) => timeMap.value.get(date) ?? [];
+const timeLabel = (range: ArCalendarTimeRange) => range.label ?? `${range.start}〜${range.end}`;
 const eventsOf = (date: string) => eventMap.value.get(date) ?? [];
 const weekendOf = (wd: number) => (props.weekendColors ? (wd === 0 ? "sun" : wd === 6 ? "sat" : undefined) : undefined);
 const dayTone = (c: ArCalendarCell) => (props.weekendColors && marksOf(c)?.holiday ? "sun" : weekendOf(c.weekday));
@@ -257,7 +265,8 @@ const cellLabel = (c: ArCalendarCell) => {
   const m = marksOf(c);
   const L = props.labels;
   const extra = [m?.locked && L.locked, m?.unpublished && L.unpublished, m?.alert && L.alert].filter(Boolean);
-  return `${c.year}${L.year}${c.month}${L.month}${c.day}日${extra.length ? `（${extra.join("・")}）` : ""}`;
+  const times = c.inMonth ? timesOf(c.date).map(timeLabel) : [];
+  return `${c.year}${L.year}${c.month}${L.month}${c.day}日${extra.length ? `（${extra.join("・")}）` : ""}${times.length ? ` ${times.join("、")}` : ""}`;
 };
 /** board の日付：月の1日は「10/1」のように月を添える。 */
 const firstDay = useDesignForm<"inMonth" | "always">("ArCalendar", "firstDay", "inMonth");
@@ -368,6 +377,12 @@ const calRoot = ref<HTMLElement | null>(null);
               <slot name="cell" v-bind="c" />
             </div>
           </template>
+          <div v-if="c.inMonth && timesOf(c.date).length" data-part="times">
+            <span v-for="(range, index) in timesOf(c.date)" :key="index" data-part="time-range" :title="timeLabel(range)" aria-hidden="true">
+              <span data-part="time-start">{{ range.start }}</span>
+              <span data-part="time-end">{{ range.end }}</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
