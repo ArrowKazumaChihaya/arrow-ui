@@ -3,3 +3,5 @@
 [data-ar="result"]>[data-part="badge"]{display:flex;align-items:center;justify-content:center;flex:none}
 [data-ar="result"]>[data-part="title"],[data-ar="result"]>[data-part="description"]{margin:0}
 [data-ar="result"]>[data-part="actions"]{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+/* 長い成功メッセージを狭い画面で均等に折り返し、末尾数文字だけの行を避ける。 */
+[data-ar="result"]>[data-part="title"]{text-wrap:balance;overflow-wrap:anywhere}

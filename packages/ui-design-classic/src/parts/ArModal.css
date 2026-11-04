@@ -76,3 +76,8 @@
   [data-ar-design="classic"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]{border-radius:0}
   [data-ar-design="classic"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{order:0;margin-left:auto}
 }
+/* 小型の完了通知でもスマホの確定操作を十分な幅に揃える。 */
+@media(max-width:640px){
+  [data-ar-design="classic"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]{flex:1}
+  [data-ar-design="classic"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="button"]{flex:1}
+}

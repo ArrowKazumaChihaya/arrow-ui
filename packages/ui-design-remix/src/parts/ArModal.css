@@ -52,3 +52,8 @@
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="button"]{flex:1}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>*>[data-part="note"]{display:none}
 }
+/* 小型の完了通知もスマホでは確定操作を押しやすい幅にする。確認用confirmは従来の配置を保つ。 */
+@media(max-width:640px){
+  [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]{flex:1}
+  [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="button"]{flex:1}
+}
