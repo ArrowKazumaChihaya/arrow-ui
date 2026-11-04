@@ -36,7 +36,7 @@ export const covers = {
   ArDateTimeInput: "1.1.0",
   ArDateView: "1.0.0",
   ArDaySummary: "1.0.0",
-  ArDescriptions: "1.0.0",
+  ArDescriptions: "1.1.0",
   ArDivider: "1.0.0",
   ArDocumentBlock: "1.0.0",
   ArDrawer: "1.1.0",

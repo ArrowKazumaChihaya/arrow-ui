@@ -160,6 +160,23 @@ describe("ArAvatar・ArAvatarGroup", () => {
 });
 
 describe("ArDescriptions・ArStatistic・ArCountdown", () => {
+  it.each(["plain", "bordered"] as const)("%s の縦並びは説明と値・slot・列結合を保ち、表示切替で本文を作り直さない", async (variant) => {
+    const note = "長い申請事由をラベルの下で最後まで表示します。\n追記も保持します。";
+    const w = mount(ArDescriptions, {
+      props: { variant, layout: "stacked", column: 2, items: [{ key: "date", label: "希望日", value: "2026-11-04" }, { key: "note", label: "申請事由(任意)", value: note, span: 2 }] },
+      slots: { "item-date": "11月4日（水）" },
+    });
+    expect(w.findAll("dt").map((node) => node.text())).toEqual(["希望日", "申請事由(任意)"]);
+    expect(w.findAll("dd").map((node) => node.text())).toEqual(["11月4日（水）", note]);
+    const value = w.findAll("dd")[1]!.element;
+    expect(w.findAll('[data-part="item"]')[1]!.attributes("style")).toContain("span 2");
+    expect(w.findAll("dd")[1]!.attributes("style")).toBeUndefined();
+    await w.setProps({ layout: "inline" });
+    expect(w.findAll("dd")[1]!.element).toBe(value);
+    expect(w.findAll("dd")[1]!.text()).toBe(note);
+    if (variant === "bordered") expect(w.findAll("dd")[1]!.attributes("style")).toContain("span 3");
+    w.unmount();
+  });
   it("説明リストは dt/dd で、slot で値を差し替えられ、span で横につなぐ", () => {
     const w = mount(ArDescriptions, {
       props: { items: [{ key: "name", label: "氏名", value: "佐藤" }, { key: "type", label: "雇用形態" }, { key: "note", label: "備考", value: "x", span: 3 }] },

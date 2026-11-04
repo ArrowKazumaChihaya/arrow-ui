@@ -1,4 +1,4 @@
-/* @covers ArDescriptions 1.0.0 */
+/* @covers ArDescriptions 1.1.0 */
 /* ArDescriptions（bordered＝.ad-desc：角丸12・線、セルは10/12、ラベルは acc-25 の地に ink-2 の太字。plain＝日の要約：灰色のラベル＋太字の値） */
 [data-ar-design="remix"] [data-ar="descriptions"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="descriptions"]>[data-part="header"]{margin-bottom:10px}
@@ -11,6 +11,10 @@
 [data-ar-design="remix"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]{gap:6px}
 [data-ar-design="remix"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]>[data-part="value"]{font-weight:700;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr));row-gap:12px}
+[data-ar-design="remix"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]{gap:4px}
+[data-ar-design="remix"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{font-size:12px;font-weight:700;white-space:normal}
+[data-ar-design="remix"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="value"]{font-weight:400;line-height:1.7}
 [data-ar-design="remix"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="danger"]>[data-part="value"]{color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="warn"]>[data-part="value"]{color:var(--ar-color-warn)}
 [data-ar-design="remix"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="ok"]>[data-part="value"]{color:var(--ar-color-ok)}

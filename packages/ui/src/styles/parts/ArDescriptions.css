@@ -8,3 +8,6 @@
 [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr))}
 [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]{display:flex;align-items:baseline;min-width:0}
 [data-ar="descriptions"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){margin:0;min-width:0}
+[data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr))}
+[data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]{display:flex;flex-direction:column;align-items:stretch;min-width:0}
+[data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){overflow-wrap:anywhere;white-space:pre-wrap}

@@ -1,4 +1,4 @@
-/* @covers ArDescriptions 1.0.0 */
+/* @covers ArDescriptions 1.1.0 */
 /* ArDescriptions（素の ant-design-vue 4 の Descriptions。plain＝既定：「ラベル：値」14px、行の下16。bordered（small）＝角丸8・rgba(5,5,5,.06) の枠、ラベルは rgba(0,0,0,.02) の地・余白 8/16、1行の高さ 38） */
 /* 文字は ARROW の地の書体（今の画面は div・td などに游ゴシックが当たり、antd の書体は外の箱だけ）。 */
 [data-ar-design="classic"] [data-ar="descriptions"]{color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:14px;line-height:22px}
@@ -11,6 +11,11 @@
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{gap:1px;grid-template-columns:repeat(var(--ar-desc-columns,3),auto auto)}
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){padding:8px 16px;box-shadow:1px 0 0 rgba(5,5,5,.06),0 1px 0 rgba(5,5,5,.06),1px 1px 0 rgba(5,5,5,.06)}
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);white-space:nowrap}
+[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr));row-gap:12px}
+[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]{gap:4px;padding-bottom:0}
+[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{color:rgba(0,0,0,.65);font-size:13px;white-space:normal}
+[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]::after{content:none}
+[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="value"]{font-weight:400;line-height:1.7}
 [data-ar-design="classic"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="danger"]>[data-part="value"]{color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="warn"]>[data-part="value"]{color:#FAAD14}
 [data-ar-design="classic"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="ok"]>[data-part="value"]{color:#3F8600}

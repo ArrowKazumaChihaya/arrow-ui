@@ -1,4 +1,4 @@
-/** ArDescriptions 1.0 の契約。 */
+/** ArDescriptions 1.1 の契約。 */
 
 export interface ArDescriptionsItem {
   /** 項目の名前（slot の名前 item-<key> にも使う）。 */
@@ -22,6 +22,8 @@ export interface ArDescriptionsProps {
    * 形。bordered＝枠つきの表（ラベルの地は淡いテーマ色）、plain＝枠なしで「ラベル 値」を並べる（日の要約の形）。
    */
   variant?: "bordered" | "plain";
+  /** inline＝ラベルと値を横に並べる。stacked＝ラベルを上、値を下へ置く（スマホの申請事由・長い文章）。 */
+  layout?: "inline" | "stacked";
   /** 上の見出し。 */
   title?: string;
   /** 見出しの段階。 */

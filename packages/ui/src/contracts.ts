@@ -83,7 +83,7 @@ export const contracts = {
   ArCarousel: "1.0.0",
   ArCollapse: "1.1.0",
   ArCountdown: "1.0.0",
-  ArDescriptions: "1.0.0",
+  ArDescriptions: "1.1.0",
   ArEmpty: "1.0.0",
   ArImage: "1.0.0",
   ArList: "1.0.0",
