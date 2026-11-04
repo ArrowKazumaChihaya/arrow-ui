@@ -121,7 +121,7 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
       <span v-for="k in legendKinds" :key="k" data-part="legend-item"><i data-part="swatch" :data-kind="k" :data-lane="lane(k)" aria-hidden="true" />{{ legendText(k) }}</span>
       <span v-if="hint" data-part="hint"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>{{ hint }}</span>
     </div>
-    <div data-part="grid" role="table" :aria-label="label">
+    <div data-part="grid" role="table" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 32}px` }">
       <div data-part="head" role="row">
         <div data-part="head-label" role="columnheader">{{ head }}</div>
         <div data-part="ticks" role="columnheader" aria-hidden="true">

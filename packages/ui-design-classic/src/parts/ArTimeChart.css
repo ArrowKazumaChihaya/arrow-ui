@@ -53,3 +53,5 @@
 [data-ar-design="classic"] [data-ar="time-chart"] [data-kind="missing"]{background:repeating-linear-gradient(90deg,#FFCCCC 0 4px,#fff 4px 8px);box-shadow:inset 0 0 0 1px #FF5656}
 
 [data-ar-design="classic"] [data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"]>[data-ar="tooltip"]>[data-part="bar"]:is([data-kind="preover"],[data-kind="outhol"],[data-kind="lawhol"],[data-kind="break"],[data-kind="missing"])>[data-part="bar-text"]{color:#332E27}
+
+[data-ar-design="classic"] [data-ar="time-chart"][data-mode="day"]>[data-part="grid"]{grid-template-columns:110px minmax(max(600px,var(--ar-chart-tick-width,0px)),1fr)}

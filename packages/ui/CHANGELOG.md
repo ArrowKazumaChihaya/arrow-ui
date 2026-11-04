@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- 長時間の勤怠チャートは目盛りに必要な幅を確保し、最初と最後の時刻が見切れないよう修正。
+
 - 勤怠チャートの長い分類名と横スクロール中の見出しを保持し、時間帯のキーボード操作と淡色帯の文字を改善。
 
 - Keep keyboard focus inside the PDF preview when switching to a design that hides the focused zoom control, without losing page or zoom state.

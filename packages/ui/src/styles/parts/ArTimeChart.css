@@ -26,3 +26,6 @@
 [data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]{position:sticky;left:0;z-index:2}
 [data-ar="time-chart"][data-mode="day"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]>[data-part="date"]{white-space:normal;overflow-wrap:anywhere;max-width:100%;line-height:1.5;padding-block:6px}
 [data-ar="time-chart"] [data-part="bar"]:focus-visible{outline:2px solid var(--ar-color-text);outline-offset:2px}
+
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="ticks"]>[data-part="tick"]:first-child{transform:none;margin-left:0}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="ticks"]>[data-part="tick"]:last-child{transform:translateX(-100%);margin-left:0}
