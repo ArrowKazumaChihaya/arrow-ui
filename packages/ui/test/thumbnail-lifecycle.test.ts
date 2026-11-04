@@ -50,6 +50,12 @@ beforeEach(() => {
 });
 afterEach(() => {
   for (const wrapper of active.splice(0)) wrapper.unmount();
+  if (contextDescriptor)
+    Object.defineProperty(
+      HTMLCanvasElement.prototype,
+      "getContext",
+      contextDescriptor,
+    );
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
   if (createDescriptor)
@@ -189,10 +195,10 @@ it.each(["close", "unmount"])(
   "discards a late free-crop result after %s",
   async (action) => {
     let finish: BlobCallback = () => {};
-    vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue({
-      fillRect: vi.fn(),
-      drawImage: vi.fn(),
-    } as CanvasRenderingContext2D);
+    Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
+      configurable: true,
+      value: () => ({ fillRect: vi.fn(), drawImage: vi.fn() }),
+    });
     vi.spyOn(HTMLCanvasElement.prototype, "toBlob").mockImplementation(
       (callback) => {
         finish = callback;
