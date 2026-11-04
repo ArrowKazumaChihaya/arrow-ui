@@ -26,6 +26,12 @@ describe('product integration contracts', () => {
   expect(wrapper.get('[data-part=suffix]').text()).toBe('補足');
   expect(wrapper.attributes('data-type')).toBe('bar');
  });
+ it('renders a slot-only heading as its title instead of supplementary text', () => {
+  const wrapper=mount(ArPageHeading,{slots:{default:'報酬明細'}});
+  expect(wrapper.get('[data-part=label]').text()).toBe('報酬明細');
+  expect(wrapper.find('[data-part=suffix]').exists()).toBe(false);
+  wrapper.unmount();
+ });
  it('renders product card title content in an accessible heading', () => {
   const wrapper=mount(ArCard,{props:{title:'fallback'},slots:{title:()=>[h('span','保険料'),h('small','補足')],default:'本文'}});
   expect(wrapper.get('h2').text()).toBe('保険料補足');

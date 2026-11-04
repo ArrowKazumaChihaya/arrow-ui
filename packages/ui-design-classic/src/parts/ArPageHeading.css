@@ -1,5 +1,5 @@
 /* @covers ArPageHeading 1.0.0 */
 [data-ar-design="classic"] [data-ar="page-heading"]{font-weight:600;font-size:18px;line-height:36px}
-[data-ar-design="classic"] [data-ar="page-heading"][data-type="bar"]{height:36px;background:var(--ar-accent);color:white}
+[data-ar-design="classic"] [data-ar="page-heading"][data-type="bar"]{min-height:36px;height:auto;background:var(--ar-accent);color:white}
 [data-ar-design="classic"] [data-ar="page-heading"][data-type="text"]{font-size:22px;line-height:22px;color:#000}
 @media(max-width:499px){[data-ar-design="classic"] [data-ar="page-heading"][data-type="text"]{font-size:18px}}
