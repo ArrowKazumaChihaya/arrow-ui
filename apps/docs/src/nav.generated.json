@@ -728,6 +728,11 @@
         "ja": "打刻のボタン"
       },
       {
+        "slug": "punch-panel",
+        "name": "ArPunchPanel",
+        "ja": "打刻の画面"
+      },
+      {
         "slug": "save-bar",
         "name": "ArSaveBar",
         "ja": "保存バー"

@@ -1,0 +1,2 @@
+/* @covers ArPunchPanel 1.0.0 */
+[data-ar-design="classic"] [data-ar="punch-panel"] [data-part="clock"]{font-size:clamp(22px,4vw,48px);font-weight:400;line-height:1.5;color:#333}

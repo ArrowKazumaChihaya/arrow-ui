@@ -11764,6 +11764,52 @@
   "dataAr": "punch-button"
  },
  {
+  "name": "ArPunchPanel",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "timestamp",
+    "type": "string",
+    "required": true,
+    "description": "利用側の時計が整形した日時。そのまま表示し、この部品自身はタイマーを持たない。"
+   },
+   {
+    "name": "description",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'apply' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": "",
+    "default": "\"clock\""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default",
+   "actions",
+   "footer"
+  ],
+  "parts": [
+   "root",
+   "clock",
+   "controls",
+   "actions",
+   "footer"
+  ],
+  "dataAr": "punch-panel"
+ },
+ {
   "name": "ArSaveBar",
   "version": "1.0.0",
   "description": "保存バー。保存していない変更の件数と項目名、直すところへ飛ぶボタン、「変更を取り消す」「この内容で保存」。\n置く場所（ページの下・ポップアップの足）は製品が決める。sticky で画面の下に貼りつく。",

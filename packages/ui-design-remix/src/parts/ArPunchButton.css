@@ -15,3 +15,5 @@
 [data-ar-design="remix"] [data-ar="punch-button"]>[data-part="button"]:disabled{background:#EEF1F5;color:#A3AEB9;box-shadow:none;text-shadow:none}
 [data-ar-design="remix"] [data-ar="punch-button"][data-state~="loading"]>[data-part="button"]{cursor:progress}
 [data-ar-design="remix"] [data-ar="punch-button"]>[data-part="reason"]{color:var(--ar-color-text-secondary);font-size:12px;font-weight:400;line-height:18px;text-align:center}
+/* 既定の大きな打刻ボタンもスマホでは md と同じ高さに収める。 */
+@media(max-width:640px){[data-ar-design="remix"] [data-ar="punch-button"][data-size="lg"]>[data-part="button"]{height:136px}}

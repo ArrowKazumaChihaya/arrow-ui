@@ -19,3 +19,10 @@
 [data-ar-design="classic"] [data-ar="punch-button"][data-state~="loading"]>[data-part="button"]{cursor:progress}
 [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="reason"]{width:350px;max-width:100%;color:rgba(0,0,0,.45);font-size:12px;line-height:1.5}
 [data-ar-design="classic"] [data-ar="punch-button"][data-size="md"]>[data-part="reason"]{width:200px}
+/* スマホの2列でも旧デザインの人物アイコンと白いラベルを切らない。 */
+@media(max-width:640px){
+  [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]{padding:10px}
+  [data-ar-design="classic"] [data-ar="punch-button"][data-size="lg"]>[data-part="button"]{height:200px}
+  [data-ar-design="classic"] [data-ar="punch-button"][data-size="lg"]>[data-part="button"]>[data-part="label"]{font-size:18px;line-height:30px}
+  [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]>[data-part="icon"]{width:min(125px,100%);height:125px;margin-top:15px}
+}
