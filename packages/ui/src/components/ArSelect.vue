@@ -8,6 +8,7 @@
  */
 import { computed, nextTick, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArAvatar from "./ArAvatar.vue";
 import ArTextInput from "./ArTextInput.vue";
 import ArFloat from "../internal/ArFloat.vue";
 import ArOptionRow from "../internal/ArOptionRow.vue";
@@ -306,13 +307,13 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
           data-part="dot"
           aria-hidden="true"
           :style="{ background: single.dot }"
-        /><span
+        /><ArAvatar
           v-if="!icon && 'avatar' in single && single.avatar !== undefined"
           data-part="avatar"
-          aria-hidden="true"
-          :style="single.avatarColor || single.avatarInk ? { background: single.avatarColor, color: single.avatarInk } : undefined"
-          >{{ single.avatar }}</span
-        ><span data-part="value-text">{{ single.label }}</span
+          size="xs"
+          :text="single.avatar"
+          :color="single.avatarColor || single.avatarInk ? [single.avatarColor ?? '', single.avatarInk ?? ''] : undefined"
+        /><span data-part="value-text">{{ single.label }}</span
         ><small v-if="valueDescription && single.description" data-part="value-description">{{ single.description }}</small></span
       >
       <span v-else data-part="placeholder">{{ placeholder }}</span>
@@ -377,6 +378,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             :avatar="it.opt.avatar"
             :avatar-color="it.opt.avatarColor"
             :avatar-ink="it.opt.avatarInk"
+            :avatar-size="people ? 'sm' : 'xs'"
             :dot="it.opt.dot"
             :description="it.opt.description"
             :description-tone="it.opt.descriptionTone"
@@ -397,6 +399,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             :avatar="it.opt.avatar"
             :avatar-color="it.opt.avatarColor"
             :avatar-ink="it.opt.avatarInk"
+            :avatar-size="people ? 'sm' : 'xs'"
             :dot="it.opt.dot"
             :description="it.opt.description"
             :description-tone="it.opt.descriptionTone"

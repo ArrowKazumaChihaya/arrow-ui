@@ -40,3 +40,6 @@
 [data-ar-design="classic"] [data-ar="variable-panel"][data-layout="chips"]>[data-part="body"]>[data-part="empty"]{padding:0;text-align:left}
 [data-ar-design="classic"] [data-ar="variable-panel"]>[data-part="note"]{font-size:12px;line-height:1.5;color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="variable-panel"][data-state~="disabled"]>[data-part="body"] [data-part="item"]{color:rgba(0,0,0,.25);background:none}
+/* 探して無いときは ArEmpty。classic は今の形（文字だけ）をここで保つ */
+[data-ar-design="classic"] [data-ar="variable-panel"]>[data-part="body"]>[data-part="empty"]{font-family:inherit;font-size:inherit;line-height:inherit}
+[data-ar-design="classic"] [data-ar="variable-panel"]>[data-part="body"]>[data-part="empty"]>[data-part="icon"]{display:none}

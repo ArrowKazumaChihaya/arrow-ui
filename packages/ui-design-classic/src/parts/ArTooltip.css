@@ -1,4 +1,4 @@
-/* @covers ArTooltip 1.0.0 */
+/* @covers ArTooltip 1.1.0 */
 /* ArTooltip：今の ARROW の Tooltip（antd 既定）。地 rgba(0,0,0,.85)・白・角丸6・余白 6/8・幅250まで・antd の影、文字は ARROW の div の指定で 13px／行の高さ13px／游ゴシック。
    矢印は 16×8 の三角（先が丸い）、吹き出しと基準の間は 16px（refs/classic/antd-Tooltip-open.png・ui-Tooltip.png を実測）。 */
 [data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]{max-width:250px;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);white-space:pre-line}
@@ -14,3 +14,6 @@
 [data-ar-design="classic"] [data-ar="tooltip"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-5.65px;border-top-left-radius:2px}
 [data-ar-design="classic"] [data-ar="tooltip"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5.65px;border-top-right-radius:2px}
 [data-ar-design="classic"] [data-ar="tooltip"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5.65px;border-bottom-left-radius:2px}
+/* 1.1 行の並び（見出しの行＋ラベルと値）：今の ARROW のシフト表の吹き出しと同じく行の間 4px・ラベルの後ろに全角の間 */
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"] [data-part="tip-row"]+[data-part="tip-row"]{margin-top:4px}
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"] [data-part="tip-row"]>[data-part="tip-label"]::after{content:"　"}

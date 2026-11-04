@@ -16,12 +16,7 @@
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="head-name"]{display:flex;align-items:center;padding-left:12px;color:var(--ar-accent-ink);font-size:11.5px;font-weight:700;letter-spacing:.04em}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="axis"]>[data-part="tick"]{top:0;bottom:0;display:flex;align-items:center;transform:translateX(-50%);color:var(--ar-accent-ink);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]{gap:8px;min-height:46px;padding:0 10px 0 12px;border-top:1px solid var(--ar-color-border-subtle)}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"]{width:28px;height:28px;border-radius:50%;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:12px;font-weight:700}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"][data-tone="blue"]{background:#E3EEFA;color:#1F5F99}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"][data-tone="orange"]{background:#FCEBDD;color:#9A4A12}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"][data-tone="green"]{background:#E5F4EC;color:#226B47}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"][data-tone="purple"]{background:#F3E8F8;color:#6E3E8C}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"][data-tone="yellow"]{background:#FFF2CC;color:#7A5A00}
+/* 名前の列の頭文字の丸は ArAvatar（size="sm"：28・12px 700、人ごとの色は seed） */
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="name-text"]>[data-part="name-main"]{font-size:13px;font-weight:700;line-height:1.5}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="name-text"]>[data-part="name-sub"]{color:var(--ar-color-text-muted);font-size:10.5px;line-height:1.5;font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]{min-height:46px;border-top:1px solid var(--ar-color-border-subtle);background-image:linear-gradient(90deg,var(--ar-color-border-subtle) 1px,transparent 1px);background-position:0 0;background-size:var(--ar-shift-chart-hour) 100%}
@@ -40,11 +35,11 @@
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="handle"][data-side="start"]{transform:translateX(-1px)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="handle"][data-side="end"]{transform:translateX(-9px)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="handle"]>i{width:3px;height:12px;border-radius:2px;background:rgba(255,255,255,.95)}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="leave"]{left:0;right:0;top:11px;height:24px;border-radius:7px;background:repeating-linear-gradient(135deg,#F2F3F5 0 4px,#E6E8EB 4px 8px);color:#5C636B;font-size:11px;font-weight:700}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="leave"]{left:0;right:0;top:11px;height:24px;border-radius:7px;background:var(--ar-remix-leave-stripe);color:#5C636B;font-size:11px;font-weight:700}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="other"]{top:13px;height:20px;padding:0 6px;border:1px dashed #9AA6B2;border-radius:6px;background:#fff;color:#4A5562;font-size:10.5px;font-weight:700}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="available"]{top:11px;height:24px;gap:4px;padding:0 8px;border:1.5px dashed #46A574;border-radius:7px;background:#EEF8F2;color:#1E7A4C;font-size:11px;font-weight:700}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="available"]{top:11px;height:24px;gap:4px;padding:0 8px;border:1.5px dashed var(--ar-remix-hope-line);border-radius:7px;background:var(--ar-remix-hope-subtle);color:#1E7A4C;font-size:11px;font-weight:700}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="available"][data-state~="on"]:hover{background:#DDF1E5}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="available"]:focus-visible{outline:2px solid #46A574;outline-offset:2px}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="available"]:focus-visible{outline:2px solid var(--ar-remix-hope-line);outline-offset:2px}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="available"]>[data-ar="icon"]{width:12px;height:12px}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="punch"]{bottom:5px;height:4px;border-radius:2px;background:#1F2933}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="track"]>[data-part="punch"][data-state~="open"]{background:linear-gradient(90deg,#1F2933 80%,rgba(31,41,51,.2))}
@@ -54,11 +49,11 @@
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"]{top:6px;bottom:6px;gap:2px;border-radius:6px;background:#fff;font-variant-numeric:tabular-nums;line-height:1.5}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"]>b{color:var(--ar-color-text);font-size:12px;font-weight:700}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"]>i{color:var(--ar-color-text-muted);font-size:10.5px;font-style:normal}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"][data-tone="short"]{background:#FDECEA}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"][data-tone="short"]>b{color:#B4231C}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"][data-tone="short"]{background:var(--ar-remix-short-subtle)}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"][data-tone="short"]>b{color:var(--ar-remix-short)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"][data-kind="short"]>*{min-height:38px;background:#FFF8F7}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"][data-kind="short"]>[data-part="count-name"]{justify-content:center;color:#B4231C}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"][data-kind="short"]>[data-part="count-track"]>[data-part="cell"]{top:5px;bottom:5px;color:#B4231C;font-size:11px;font-weight:700}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"][data-kind="short"]>[data-part="count-name"]{justify-content:center;color:var(--ar-remix-short)}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="counts"][data-kind="short"]>[data-part="count-track"]>[data-part="cell"]{top:5px;bottom:5px;color:var(--ar-remix-short);font-size:11px;font-weight:700}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]{gap:8px 14px;color:var(--ar-color-text-secondary);font-size:11.5px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-ar]:first-child{margin-right:4px}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]{gap:6px}
@@ -66,19 +61,19 @@
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="shift"]{background:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="break"]{background:repeating-linear-gradient(135deg,#9AA6B2 0 2px,#fff 2px 4px);box-shadow:inset 0 0 0 1px #9AA6B2}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="punch"]{height:4px;background:#1F2933}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="available"]{border:1.5px dashed #46A574;background:#EEF8F2}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="available"]{border:1.5px dashed var(--ar-remix-hope-line);background:var(--ar-remix-hope-subtle)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="other"]{border:1px dashed #9AA6B2;background:#fff}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="short"]{background:#FDECEA;box-shadow:inset 0 0 0 1px #F2B8B3}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="short"]{background:var(--ar-remix-short-subtle);box-shadow:inset 0 0 0 1px var(--ar-remix-short-line)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="hint"]{gap:6px;margin-left:auto;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="legend"]>[data-part="hint"]>[data-ar="icon"]{width:14px;height:14px}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"]{gap:8px;padding:10px 12px;border-radius:10px;background:#F3F6F9;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:700;line-height:1.5}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"][data-tone="danger"]{background:#FDECEA;color:#B4231C}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"][data-tone="ok"]{background:#E3F4EA;color:#1E7A4C}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"][data-tone="danger"]{background:var(--ar-remix-short-subtle);color:var(--ar-remix-short)}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:#1E7A4C}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"]>[data-part="summary-status"]{gap:8px}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"]>[data-part="summary-status"]>[data-ar="icon"]{width:14px;height:14px}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"]>[data-part="summary-total"]{color:var(--ar-color-text-secondary);font-weight:600}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="summary"]>[data-part="summary-total"]>b{color:var(--ar-color-text);font-variant-numeric:tabular-nums}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="empty"]{margin:0;padding:14px;text-align:center;color:var(--ar-color-text-muted);font-size:12.5px}
+/* 空のときは ArEmpty（sm：カレンダーのアイコン・12.5px muted） */
 /* スマホの日の詳細（RxSpDay のシート）：名前の列 92px・頭文字なし、時間の場所は 560px 以上で横にすべらせる。 */
 [data-ar-design="remix"] [data-ar="shift-chart"][data-variant="mobile"]>[data-part="grid"]>*{grid-template-columns:92px minmax(560px,1fr)}
 [data-ar-design="remix"] [data-ar="shift-chart"][data-variant="mobile"]>[data-part="grid"]>:is([data-part="row"],[data-part="counts"])>:is([data-part="name"],[data-part="count-name"]){padding:0 6px 0 10px}

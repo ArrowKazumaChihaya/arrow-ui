@@ -10,6 +10,8 @@ import ArAvatar from "./ArAvatar.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
 import ArSegmented from "./ArSegmented.vue";
+import ArHoverTip from "../internal/ArHoverTip.vue";
+import ArZoomControl from "./ArZoomControl.vue";
 import { useDesignForm, useId } from "../provider/context";
 import type {
   ArShiftViewKey,
@@ -306,31 +308,19 @@ function dayState(d: { today: boolean }) {
           @input="onQuery"
         />
       </label>
-      <div v-if="zoom" data-part="zoom" role="group" :aria-label="L.zoom">
-        <button
-          type="button"
-          data-part="zoom-button"
-          data-dir="out"
-          :aria-label="L.zoomOut"
-          :title="L.zoomOut"
-          :disabled="cw <= minColumnWidth"
-          @click="setWidth(cw - columnStep)"
-        >
-          <ArIcon line name="minus" size="sm" />
-        </button>
-        <span data-part="zoom-value" aria-live="polite">{{ cw }}px</span>
-        <button
-          type="button"
-          data-part="zoom-button"
-          data-dir="in"
-          :aria-label="L.zoomIn"
-          :title="L.zoomIn"
-          :disabled="cw >= maxColumnWidth"
-          @click="setWidth(cw + columnStep)"
-        >
-          <ArIcon line name="plus" size="sm" />
-        </button>
-      </div>
+      <ArZoomControl
+        v-if="zoom"
+        data-part="zoom"
+        :value="`${cw}px`"
+        :out-disabled="cw <= minColumnWidth"
+        :in-disabled="cw >= maxColumnWidth"
+        :size="size === 'sm' ? 'sm' : 'md'"
+        :label="L.zoom"
+        :out-label="L.zoomOut"
+        :in-label="L.zoomIn"
+        @out="setWidth(cw - columnStep)"
+        @in="setWidth(cw + columnStep)"
+      />
       <ArSegmented
         v-if="periodOptions?.length"
         :model-value="periodValue"
@@ -398,7 +388,7 @@ function dayState(d: { today: boolean }) {
                       :data-state="row.live"
                       role="img"
                       :aria-label="row.live === 'working' ? L.working : L.absent"
-                      :title="row.live === 'working' ? L.working : L.absent"
+                      :data-tip="row.live === 'working' ? L.working : L.absent"
                     />{{ row.name }}</b
                   >
                   <small v-if="subOf(row)" data-part="name-sub">{{ subOf(row) }}</small>
@@ -421,7 +411,7 @@ function dayState(d: { today: boolean }) {
                 data-part="chip"
                 :data-scope="scopeOf(s)"
                 :style="chipStyle(s)"
-                :title="chipTip(s)"
+                :data-tip="chipTip(s)"
                 @click="clickable && emit('shift-click', s, row)"
               >
                 <slot
@@ -479,5 +469,6 @@ function dayState(d: { today: boolean }) {
       </span>
       <slot name="legend" />
     </div>
+    <ArHoverTip :root="root" />
   </div>
 </template>

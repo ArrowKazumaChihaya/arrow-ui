@@ -5,6 +5,7 @@
  */
 import { computed } from "vue";
 import ArButton from "./ArButton.vue";
+import ArTag from "./ArTag.vue";
 import { useDesignForm } from "../provider/context";
 import type { ArSaveBarProps } from "./ArSaveBar.contract";
 
@@ -41,7 +42,7 @@ const saveLabel = computed(() => props.saveText ?? (texts.value === "arrow" ? "�
     :data-sticky="sticky || undefined"
     :data-summary="summary"
   >
-    <span data-part="count" aria-live="polite">{{ countLabel }}</span>
+    <ArTag data-part="count" shape="pill" tone="warn" count aria-live="polite">{{ countLabel }}</ArTag>
     <span v-if="!sm && items.length" data-part="items" :title="items.join('・')">{{ items.join("・") }}</span>
     <span v-else data-part="spacer" />
     <ArButton v-if="errorCount > 0" tone="danger-subtle" size="sm" icon="alert" @click="emit('jump', $event)">{{ errorText.replace("{n}", String(errorCount)) }}</ArButton>

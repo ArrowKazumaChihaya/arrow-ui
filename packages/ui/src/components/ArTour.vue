@@ -169,7 +169,7 @@ const placement = computed(() => (rect.value ? (step.value?.placement ?? "bottom
       @keydown="onKey"
     >
       <span v-if="rect" data-part="arrow" aria-hidden="true" />
-      <button v-if="closable" type="button" data-part="close" :aria-label="labels.close" @click="close"><ArIcon line name="x" size="sm" /></button>
+      <ArButton v-if="closable" data-part="close" tone="muted" icon="x" size="sm" :label="labels.close" @click="close" />
       <b :id="`${id}-title`" data-part="title">{{ step.title }}</b>
       <div v-if="step.description || $slots.default" :id="`${id}-desc`" data-part="description">
         <slot :step="step" :index="index" :total="steps.length">{{ step.description }}</slot>

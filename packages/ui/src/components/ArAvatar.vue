@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArAvatar 1.0 — 人の頭文字の丸。
+ * ArAvatar 1.1 — 人の頭文字の丸（写真も）。ライブラリの頭文字の丸はこれ1つ。
  * 地は淡いテーマ色。シフト画面のように人を見分けたいときは seed で人ごとの色にする。
  * ArAvatarGroup に入れると白い縁で重なる。
  */
@@ -16,6 +16,8 @@ const props = withDefaults(defineProps<ArAvatarProps>(), {
   tone: undefined,
   seed: undefined,
   size: undefined,
+  src: undefined,
+  color: undefined,
   shape: "circle",
   label: undefined,
 });
@@ -24,6 +26,7 @@ const shown = computed(() => props.text ?? (props.name ? Array.from(props.name.t
 const toneValue = computed(() => props.tone ?? (props.seed !== undefined ? arAvatarToneOf(props.seed) : "accent"));
 const sizeValue = computed(() => props.size ?? group?.size() ?? "md");
 const name = computed(() => props.label ?? props.name);
+const colorStyle = computed(() => (props.color ? { background: props.color[0], color: props.color[1] } : undefined));
 </script>
 
 <template>
@@ -36,8 +39,10 @@ const name = computed(() => props.label ?? props.name);
     :role="name ? 'img' : undefined"
     :aria-label="name"
     :aria-hidden="name ? undefined : 'true'"
+    :style="colorStyle"
   >
-    <ArIcon v-if="icon" :name="icon" size="sm" data-part="icon" />
+    <img v-if="src" :src="src" alt="" data-part="image" />
+    <ArIcon v-else-if="icon" :name="icon" size="sm" data-part="icon" />
     <span v-else data-part="text" aria-hidden="true">{{ shown }}</span>
   </span>
 </template>

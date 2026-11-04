@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArDateTimeInput 1.0 — 日時の入力。日付（年のプルダウン＋月日）と、時と分のプルダウンを並べる。
+ * ArDateTimeInput 1.1 — 日時の入力。日付（年のプルダウン＋月日）と、時と分のプルダウンを並べる。
  * 値は "YYYY-MM-DD HH:mm:ss"（秒は 00）。日付か時刻のどちらかが空なら null。
  */
 import { ref, watch } from "vue";
@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<ArDateTimeInputProps>(), {
   minuteStep: 5,
   showWeekday: false,
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   id: undefined,
@@ -50,7 +51,7 @@ function onTime(v: ArTimeValue) {
 </script>
 
 <template>
-  <span data-ar="date-time-input" data-part="root" role="group" :aria-label="label">
+  <span data-ar="date-time-input" data-part="root" :data-size="size" role="group" :aria-label="label">
     <ArDateInput
       :id="id"
       :model-value="date"
@@ -60,6 +61,7 @@ function onTime(v: ArTimeValue) {
       :show-weekday="showWeekday"
       :invalid="invalid"
       :disabled="disabled"
+      :size="size"
       :label="label"
       @update:model-value="onDate"
     />
@@ -69,6 +71,7 @@ function onTime(v: ArTimeValue) {
       :minute-step="minuteStep"
       :invalid="invalid"
       :disabled="disabled"
+      :size="size"
       :label="label"
       :labels="{ same: '当日', prev: '前日', toggleHint: '', hour: labels.hour, minute: labels.minute }"
       @update:model-value="onTime"

@@ -5,7 +5,9 @@
 [data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:1px}
 [data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]:disabled{background:#F5F5F5;color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]>[data-ar="icon"]{width:14px;height:14px}
-[data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]>[data-part="count"]{color:rgba(0,0,0,.45);font-size:12px}
+/* 件数は ArBadge。classic は今の形（丸なしの灰の 12px の文字）をここで保つ */
+[data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]>[data-part="count"]{font-family:inherit}
+[data-ar-design="classic"] [data-ar="view-options"]>[data-part="trigger"]>[data-part="count"]>[data-part="count"]{min-width:0;height:auto;padding:0;border-radius:0;background:none;box-shadow:none;color:rgba(0,0,0,.45);font-family:inherit;font-size:12px;line-height:inherit}
 [data-ar-design="classic"] [data-ar="view-options-panel"]{border-radius:8px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:rgba(0,0,0,.88);font-size:14px}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]{max-height:560px;padding:4px}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="title"]{padding:5px 12px;color:rgba(0,0,0,.45);font-size:12px}
@@ -14,9 +16,6 @@
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]:hover:not(:disabled){background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:-2px}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]:disabled{color:rgba(0,0,0,.25)}
-[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="box"]{width:16px;height:16px;border:1px solid #D9D9D9;border-radius:4px;background:#fff;color:transparent}
-[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="box"]>[data-ar="icon"]{width:11px;height:11px;stroke-width:3}
-[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"][data-state~="checked"]>[data-part="box"]{border-color:var(--ar-accent);background:var(--ar-accent);color:#fff}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="text"]>b{font-weight:400}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="text"]>[data-part="description"]{color:rgba(0,0,0,.45);font-size:12px}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="sample"]{gap:3px;min-width:22px;height:20px;padding:0 6px;border-radius:4px;font-size:12px}
@@ -48,3 +47,11 @@
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]{gap:6px}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]{gap:4px}
 [data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button[data-kind="cancel"]{color:rgba(0,0,0,.88)}
+
+/* 項目のチェックは ArCheckbox（_choice.css）。ここは今の表示項目のメニューの色だけ（枠 #D9D9D9、入りはページのテーマ色） */
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="box"]>[data-part="control"]>[data-part="box"]{border-color:#D9D9D9}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"][data-state~="checked"]>[data-part="box"]>[data-part="control"]>[data-part="box"]{border-color:var(--ar-accent);background:var(--ar-accent)}
+/* 型の削除 × は ArButton（muted・アイコンだけ・sm）。前と同じ線の × を antd の CloseOutlined の形で描く */
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]{padding:0;border:0;background:none}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]>[data-ar="icon"]{background-color:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M563.8%20512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7%200-9.2%202.1-12.3%205.7L511.6%20449.8%20295.1%20191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8%200-10.5%207.9-6.1%2013.1L459.4%20512%20196.9%20824.9A7.95%207.95%200%2000203%20838h79.8c4.7%200%209.2-2.1%2012.3-5.7l216.5-258.1%20216.5%20258.1c3%203.6%207.5%205.7%2012.3%205.7h79.8c6.8%200%2010.5-7.9%206.1-13.1L563.8%20512z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M563.8%20512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7%200-9.2%202.1-12.3%205.7L511.6%20449.8%20295.1%20191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8%200-10.5%207.9-6.1%2013.1L459.4%20512%20196.9%20824.9A7.95%207.95%200%2000203%20838h79.8c4.7%200%209.2-2.1%2012.3-5.7l216.5-258.1%20216.5%20258.1c3%203.6%207.5%205.7%2012.3%205.7h79.8c6.8%200%2010.5-7.9%206.1-13.1L563.8%20512z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
+[data-ar-design="classic"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]>[data-ar="icon"]>*{display:none}

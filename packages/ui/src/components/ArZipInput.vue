@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArZipInput 1.0 — 郵便番号。数字だけを受け付け（全角も読む）、3桁のあとに「-」を自動で入れる。
+ * ArZipInput 1.2 — 郵便番号。数字だけを受け付け（全角も読む）、3桁のあとに「-」を自動で入れる。
  * 7桁そろうと lookup（製品が渡す関数）で住所を引き、見つかれば address を出す。引いている間と見つからないときは右に小さく出す。
  * 1.1：class・style は外側、ほかの属性（tabindex・aria-*）とイベント（keydown など）は中の入力へ渡す。ref から focus()・select()・input。
  */
@@ -12,6 +12,7 @@ defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArZipInputProps>(), {
   lookup: undefined,
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   id: undefined,
@@ -74,7 +75,7 @@ const statusText = () =>
 </script>
 
 <template>
-  <span ref="root" :class="attrs.class" :style="attrs.style as any" data-ar="zip-input" data-part="root" :data-state="status !== 'idle' ? status : undefined">
+  <span ref="root" :class="attrs.class" :style="attrs.style as any" data-ar="zip-input" data-part="root" :data-size="size" :data-state="status !== 'idle' ? status : undefined">
     <ArTextInput
       ref="field"
       v-bind="inputAttrs"
@@ -88,6 +89,7 @@ const statusText = () =>
       :label="label"
       :invalid="invalid"
       :disabled="disabled"
+      :size="size"
       @update:model-value="onInput"
     />
     <span data-part="status" role="status" aria-live="polite">{{ statusText() }}</span>

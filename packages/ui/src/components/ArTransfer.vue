@@ -7,6 +7,7 @@
 import { computed, ref } from "vue";
 import ArButton from "./ArButton.vue";
 import ArCheckbox from "./ArCheckbox.vue";
+import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
 import type { ArTransferProps, ArTransferValue, ArTransferItem } from "./ArTransfer.contract";
 
@@ -92,7 +93,7 @@ function move(from: 0 | 1) {
                 {{ it.label }}
               </ArCheckbox>
             </div>
-            <p v-if="!sides[side].length" data-part="empty">{{ labels.empty }}</p>
+            <ArEmpty v-if="!sides[side].length" data-part="empty" size="sm" icon="inbox" :text="labels.empty" />
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@
 import { computed, nextTick, ref, watch } from "vue";
 import ArSelect from "./ArSelect.vue";
 import ArIcon from "./ArIcon.vue";
+import ArHoverTip from "../internal/ArHoverTip.vue";
 import { daysInMonth, formatDate, splitDate, weekdayOf } from "./date";
 import { useDesignForm, useId } from "../provider/context";
 import type { ArCalendarCell, ArCalendarEvent, ArCalendarProps } from "./ArCalendar.contract";
@@ -262,10 +263,12 @@ const cellLabel = (c: ArCalendarCell) => {
 const firstDay = useDesignForm<"inMonth" | "always">("ArCalendar", "firstDay", "inMonth");
 const dayText = (c: ArCalendarCell) =>
   c.day === 1 && (firstDay.value === "always" || (props.variant === "board" && c.inMonth)) ? `${c.month}/${c.day}` : String(c.day);
+/** 予定の札の吹き出し（ArHoverTip。classic はブラウザの title のまま）。 */
+const calRoot = ref<HTMLElement | null>(null);
 </script>
 
 <template>
-  <div data-ar="calendar" data-part="root" :data-mode="mode" :data-variant="variant" :data-size="mini ? 'mini' : undefined">
+  <div ref="calRoot" data-ar="calendar" data-part="root" :data-mode="mode" :data-variant="variant" :data-size="mini ? 'mini' : undefined">
     <div v-if="showHeader" data-part="header">
       <ArIcon v-if="mini" line name="cal" data-part="heading-icon" />
       <div :id="`${id}-title`" data-part="title" aria-live="polite">{{ title }}</div>
@@ -351,7 +354,7 @@ const dayText = (c: ArCalendarCell) =>
               <span
                 data-part="event"
                 :data-tone="ev.tone ?? 'event'"
-                :title="ev.title"
+                :data-tip="ev.title"
                 :style="ev.color || ev.background ? { color: ev.color, background: ev.background } : undefined"
               >{{ ev.label }}</span>
               <span v-if="ev.note" data-part="note">{{ ev.note }}</span>
@@ -393,5 +396,6 @@ const dayText = (c: ArCalendarCell) =>
       </div>
     </div>
     <div v-if="$slots.footer" data-part="footer"><slot name="footer" /></div>
+    <ArHoverTip :root="calRoot" />
   </div>
 </template>

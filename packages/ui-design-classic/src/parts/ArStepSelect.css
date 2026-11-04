@@ -19,6 +19,7 @@
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]{justify-content:center;gap:8px}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="marker"]{display:none}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{font-size:15px;font-weight:600;line-height:30px;text-align:center}
-[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="count"]{padding:0 7px;border:1px solid #d9d9d9;border-radius:4px;background:rgba(0,0,0,.02);font-size:12px;line-height:20px}
+/* 件数の札は ArTag。classic は今の形（antd の灰の札）をここで保つ */
+[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="count"][data-ar="tag"]{height:auto;margin:0;box-shadow:none;font-family:inherit;padding:0 7px;border:1px solid #d9d9d9;border-radius:4px;background:rgba(0,0,0,.02);color:inherit;font-size:12px;font-weight:inherit;line-height:20px}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="extra"]{gap:8px;margin-left:0}
 @media (max-width:499px){[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]{padding:5px 8px}[data-ar-design="classic"] [data-ar="step-select"]>[data-part="connector"]>[data-ar="icon"]:last-child{width:35px;height:32.3px}[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{font-size:12px;line-height:25px}}

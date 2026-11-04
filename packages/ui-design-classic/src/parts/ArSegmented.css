@@ -1,4 +1,4 @@
-/* @covers ArSegmented 1.1.0 */
+/* @covers ArSegmented 1.2.0 */
 /* ArSegmented：今のシフト画面の表示モードの切り替え（時間帯／備考）。高さ30・余白 4px 12px・13px。選択中はテーマ色の塗りと白、ほかは白地に #B7C9D8 の枠。角丸は外側だけ4px。 */
 [data-ar-design="classic"] [data-ar="segmented"]{gap:0}
 [data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]{gap:5px;height:30px;padding:4px 12px;border:1px solid #B7C9D8;border-radius:0;background:#fff;color:#44515C;font-size:13px;font-weight:400;line-height:1;transition:background .2s,color .2s,border-color .2s}
@@ -13,7 +13,9 @@
 [data-ar-design="classic"] [data-ar="segmented"][data-size="sm"]>[data-part="item"]{height:24px;padding:0 8px;font-size:12px}
 [data-ar-design="classic"] [data-ar="segmented"][data-size="lg"]>[data-part="item"]{height:40px;padding:0 15px;font-size:14px}
 /* 件数の丸（今の「備考 3」：約19×20・角丸10・テーマ色の地・白い 1px の縁・白い 12px） */
-[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"]{min-width:20px;height:20px;padding:0 5px;border:1px solid #fff;border-radius:10px;background:var(--ar-accent);color:#fff;font-size:12px;line-height:1}
-[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"][data-tone="warn"]{background:#faad14}
-[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"][data-tone="danger"]{background:#ff4d4f}
-[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"][data-tone="neutral"]{background:rgba(0,0,0,.25)}
+/* 件数は ArBadge。今の形（白い 1px の枠・12px・行の高さ1）をここで保つ */
+[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"]{font-family:inherit}
+[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;border:1px solid #fff;border-radius:10px;background:var(--ar-accent);box-shadow:none;color:#fff;font-size:12px;font-weight:400;line-height:1}
+[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"][data-tone="warn"]>[data-part="count"]{background:#faad14}
+[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"][data-tone="danger"]>[data-part="count"]{background:#ff4d4f}
+[data-ar-design="classic"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"][data-tone="neutral"]>[data-part="count"]{background:rgba(0,0,0,.25)}

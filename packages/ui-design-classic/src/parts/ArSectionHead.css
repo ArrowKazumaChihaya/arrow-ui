@@ -6,7 +6,8 @@
 [data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="icon"]{display:none}
 [data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="title"]{font-size:18px;font-weight:600;line-height:27px}
 [data-ar-design="classic"] [data-ar="section-head"]>button[data-part="toggle"]>[data-part="title"]{color:var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="count"]{color:var(--ar-accent);font-size:14px;font-weight:700}
+/* 件数の札は ArTag。classic は今の形（テーマ色の 14px 700 の文字だけ）をここで保つ */
+[data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="count"][data-ar="tag"]{height:auto;margin:0;box-shadow:none;font-family:inherit;padding:0;border:0;border-radius:0;background:none;color:var(--ar-accent);font-size:14px;font-weight:700;line-height:inherit}
 [data-ar-design="classic"] [data-ar="section-head"]>[data-part="toggle"]>[data-part="caret"]{color:rgba(0,0,0,.45);transition:transform .2s}
 [data-ar-design="classic"] [data-ar="section-head"][data-state="closed"]>[data-part="toggle"]>[data-part="caret"]{transform:rotate(-90deg)}
 [data-ar-design="classic"] [data-ar="section-head"]>[data-part="actions"]{gap:8px;margin-left:8px}

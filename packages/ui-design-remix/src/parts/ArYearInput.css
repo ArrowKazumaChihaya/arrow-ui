@@ -1,7 +1,7 @@
-/* @covers ArYearInput 1.0.0, ArYearMonthInput 1.0.0, ArMonthDayInput 1.0.0 */
-/* 年・年月・月日（デザインシステム DateInput の .dti と同じ：年 76×36・月日 40×36・角丸9・600 14px） */
+/* @covers ArYearInput 1.1.0, ArYearMonthInput 1.1.0, ArMonthDayInput 1.1.0 */
+/* 年・年月・月日（デザインシステム DateInput の .dti と同じ：年 76×36・月日 40×36・600 14px）。大きさの段は ArDateInput と同じ（sm 30／md 36／lg 42・角丸 9／10／11）。 */
 [data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"]){gap:4px;font-size:13px;color:var(--ar-color-text-secondary)}
-[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"],[data-ar-design="remix"] :is([data-ar="year-month-input"],[data-ar="month-day-input"])>input{height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text);font:600 14px var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"],[data-ar-design="remix"] :is([data-ar="year-month-input"],[data-ar="month-day-input"])>input{height:var(--ar-size-control-md);border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font:600 14px var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"]{width:76px;padding:0 20px 0 9px}
 [data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"])[data-era]>[data-part="year"]{width:auto;min-width:136px}
 [data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"]>[data-part="arrow"]{right:5px;width:14px;height:14px;stroke-width:2;color:var(--ar-color-text-muted)}
@@ -18,3 +18,13 @@
 [data-ar-design="remix"] [data-ar="year-list"]>[data-part="option"][data-state~="selected"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
 [data-ar-design="remix"] [data-ar="year-list"]>[data-part="option"][data-state~="selected"][data-state~="active"]{background:var(--ar-accent-muted)}
 [data-ar-design="remix"] [data-ar="year-list"]>[data-part="option"]>[data-part="check"]{color:var(--ar-accent)}
+/* 大きさの段 */
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="sm"]{font-size:12.5px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="sm"]>:is([data-part="year"],input){height:var(--ar-size-control-sm);border-radius:9px;font-size:13px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="sm"]>[data-part="year"]{width:70px;padding:0 18px 0 8px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="sm"]>input{width:36px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]{font-size:14px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]>:is([data-part="year"],input){height:var(--ar-size-control-lg);border-radius:11px;font-size:15px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]>[data-part="year"]{width:84px;padding:0 22px 0 10px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]>input{width:46px}
+[data-ar-design="remix"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-era]:is([data-size="sm"],[data-size="lg"])>[data-part="year"]{width:auto}

@@ -1,4 +1,4 @@
-/** ArAvatar 1.0 の契約。 */
+/** ArAvatar 1.1 の契約。頭文字の丸はライブラリでこれ1つ（シフト表・チャートの名前の列、ヘッダーの管理ページ、セレクトの人の選択肢もこれで描く）。 */
 import type { ArIconName } from "../icons";
 
 /**
@@ -31,8 +31,18 @@ export interface ArAvatarProps {
   tone?: ArAvatarTone;
   /** 人ごとの色を選ぶ元（並び順や社員の番号）。数は 0→blue, 1→orange… の順に回る。 */
   seed?: string | number;
-  /** 大きさ。xs＝24・sm＝26（表の中）・md＝32・lg＝44・xl＝60。 */
+  /**
+   * 大きさ。xs＝24（セレクトの値・選択肢の中）・sm＝28（表の名前の列・ヘッダー。デザインシステムの .v-av）・md＝32・lg＝44・xl＝60。
+   * 1.1 で sm を 26→28 にした（デザインシステムに 26 は無く、表の名前の列は 28）。
+   */
   size?: "xs" | "sm" | "md" | "lg" | "xl";
+  /** 1.1 写真の URL。渡すと頭文字の代わりに丸く切った写真を出す。 */
+  src?: string;
+  /**
+   * 1.1 地と文字の色を直接渡す（[地, 文字]。社員ごとに決めた色など）。省くと tone・seed の色。
+   * 人ごとの色は seed（blue・orange・green・purple・yellow の順）を使い、ここに色を直書きしない。
+   */
+  color?: readonly [string, string];
   /** 形。square は角丸10の四角。 */
   shape?: "circle" | "square";
   /** 読み上げの名前（name がないとき）。どちらもなければ飾りとして読まない。 */
@@ -48,5 +58,5 @@ export interface ArAvatarGroupProps {
   label?: string;
 }
 
-export type ArAvatarPart = "root" | "text" | "icon";
+export type ArAvatarPart = "root" | "text" | "icon" | "image";
 export type ArAvatarGroupPart = "root" | "rest";

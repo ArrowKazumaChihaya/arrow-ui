@@ -2,6 +2,8 @@
 import { computed } from "vue";
 import { paletteNames, paletteSlots, tokenNames, cssVar } from "@arrow/ui-tokens";
 import { designs, palette } from "../state";
+import DemoBox from "../DemoBox.vue";
+import { demosOf } from "../demos";
 
 const groups = [
   { title: "色", prefix: "color." },
@@ -16,6 +18,12 @@ const shownSlots = ["accent", "accent-strong", "accent-ink", "accent-muted", "ac
 const slotCount = computed(() => paletteSlots.length);
 const paletteJa: Record<string, string> = { blue: "青", green: "緑", yellow: "黄", pink: "桃", orange: "橙", teal: "青緑", amber: "琥珀" };
 const pick = (p: (typeof paletteNames)[number]) => (palette.value = p);
+const sizeDemos = demosOf("designs");
+const sizeSteps = [
+  { step: "sm", remix: "30px・角丸 9", classic: "24px・角丸 4（antd の small）", use: "設定・表の上の操作の段・ポップアップの中など、密集した所" },
+  { step: "md（既定）", remix: "36px・角丸 10", classic: "32px・角丸 6（antd の middle）", use: "ふつうの入力の画面。size を書かなければこれ" },
+  { step: "lg", remix: "42px・角丸 11", classic: "40px・角丸 8（antd の large）", use: "年末調整・スマホなど、大きく押しやすくしたい所" },
+];
 </script>
 
 <template>
@@ -69,6 +77,30 @@ const pick = (p: (typeof paletteNames)[number]) => (palette.value = p);
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <h2 id="sizes">大きさの段（sm・md・lg）と使い分け</h2>
+    <p>
+      入力・セレクト・時刻・日付・ボタンなど、高さを持つ部品はどれも <code>size</code> に同じ3つの段（<code>sm</code>・<code>md</code>・<code>lg</code>）を持ちます。
+      同じ段なら部品が違っても高さと角丸がそろうので、1行に並べても上下がずれません。文字の大きさは部品の役目ごとに決めています（ボタンは 12.5・13・14px、入力は 13・14・15px）。
+    </p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr><th>段</th><th>新しい見た目</th><th>今の見た目</th><th>使う所</th></tr>
+        </thead>
+        <tbody>
+          <tr v-for="r in sizeSteps" :key="r.step">
+            <td class="nm"><code>{{ r.step }}</code></td>
+            <td>{{ r.remix }}</td>
+            <td>{{ r.classic }}</td>
+            <td>{{ r.use }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="demos">
+      <DemoBox v-for="d in sizeDemos" :key="d.id" :demo="d" />
     </div>
 
     <h2 id="tokens">色・文字・余白の値</h2>

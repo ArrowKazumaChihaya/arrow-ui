@@ -1,4 +1,4 @@
-/* @covers ArDatePicker 1.0.0 */
+/* @covers ArDatePicker 1.1.0 */
 /* ArDatePicker：入力欄は ui-Dates と同じ。パネルは今の ARROW にないので素の antd 4 の DatePicker（パネル 288px・見出し 40・日 36×32 の升に 24px・角丸4、
    今日は 1px の線、選んだ日は塗り、範囲の間は淡い色、角丸8・影）を、テーマ色に合わせる。 */
 [data-ar-design="classic"] [data-ar="date-picker"]>[data-part="row"]{gap:4px 8px;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
@@ -32,3 +32,6 @@
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]:focus-visible{outline:0}
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]:focus-visible::before{outline:2px solid #91CAFF;outline-offset:1px}
 [data-ar-design="classic"] [data-ar="date-picker-panel"]>[data-part="foot"]{padding:4px 12px;border-top:1px solid rgba(5,5,5,.06);line-height:32px}
+/* 大きさの段（sm・lg）：押す所も antd の small 24・large 40（角丸 4・8） */
+[data-ar-design="classic"] [data-ar="date-picker"][data-size="sm"]>[data-part="row"]>[data-part="trigger"]{width:24px;height:24px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="date-picker"][data-size="lg"]>[data-part="row"]>[data-part="trigger"]{width:40px;height:40px;border-radius:8px}

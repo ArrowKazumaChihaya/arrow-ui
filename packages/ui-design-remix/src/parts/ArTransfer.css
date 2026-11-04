@@ -15,6 +15,7 @@
 [data-ar-design="remix"] [data-ar="transfer"]>[data-part="list"]>[data-part="body"]>[data-part="items"]>[data-part="item"]:hover:not([data-state~="disabled"]){background:var(--ar-color-hover)}
 [data-ar-design="remix"] [data-ar="transfer"]>[data-part="list"]>[data-part="body"]>[data-part="items"]>[data-part="item"][data-state~="checked"]{background:var(--ar-accent-faint)}
 [data-ar-design="remix"] [data-ar="transfer"]>[data-part="list"]>[data-part="body"]>[data-part="items"]>[data-part="item"]>[data-ar="checkbox"]{font-size:13px}
-[data-ar-design="remix"] [data-ar="transfer"]>[data-part="list"]>[data-part="body"]>[data-part="items"]>[data-part="empty"]{margin:auto;font-size:12px;color:var(--ar-color-text-faint)}
+/* 空のときは ArEmpty（sm：受け箱のアイコン・12.5px muted）。真ん中に置くだけここで */
+[data-ar-design="remix"] [data-ar="transfer"]>[data-part="list"]>[data-part="body"]>[data-part="items"]>[data-part="empty"]{margin:auto}
 [data-ar-design="remix"] [data-ar="transfer"]>[data-part="actions"]{gap:6px}
 [data-ar-design="remix"] [data-ar="transfer"][data-state~="disabled"]>[data-part="list"]{background:var(--ar-color-surface-alt)}

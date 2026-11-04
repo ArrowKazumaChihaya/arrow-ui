@@ -33,11 +33,10 @@
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="child"]::after{width:2px;height:18px;margin-left:-1px;background:var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]{gap:4px;padding:4px;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(31,41,51,.12)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button{gap:6px;height:30px;padding:0 10px;border:0;border-radius:9px;background:none;color:var(--ar-color-text-muted);font:700 12.5px/normal var(--ar-font-family);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>:is([data-part="zoom-out"],[data-part="zoom-in"]){width:30px;padding:0}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button>:is(svg,[data-ar="icon"]){width:15px;height:15px}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button:not(:disabled):hover{background:#F1F4F7;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button:disabled{color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>[data-part="zoom-value"]{min-width:44px;font-size:12.5px;font-weight:700;text-align:center;font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="hint"]{gap:6px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.92);color:var(--ar-color-text-secondary);font-size:12px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="hint"]>[data-ar="icon"]{width:14px;height:14px}
+/* 拡大・縮小の −／＋ は ArZoomControl（variant="plain"：30 の角丸9・muted・値 12.5px 700） */

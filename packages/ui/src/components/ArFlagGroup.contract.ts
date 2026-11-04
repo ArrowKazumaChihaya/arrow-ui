@@ -1,4 +1,6 @@
-/** ArFlagGroup 1.0 の契約。ビットの合計の数を、チェックの並びで入れる（今の ARROW の Flag。曜日・残業の扱いなど）。 */
+/** ArFlagGroup 1.1 の契約。ビットの合計の数を、チェックの並びで入れる（今の ARROW の Flag。曜日・残業の扱いなど）。 */
+import type { ArChoiceSize, ArChoiceVariant } from "./ArRadioGroup.contract";
+
 export interface ArFlagOption {
   /** この項目のビット（1・2・4・8…）。 */
   value: number;
@@ -14,6 +16,10 @@ export interface ArFlagGroupProps {
   /** 縦に並べる（今の isVertical）。 */
   vertical?: boolean;
   disabled?: boolean;
+  /** 1.1：大きさ（sm・md・lg。ArCheckboxGroup と同じ段）。 */
+  size?: ArChoiceSize;
+  /** 1.1：形。plain（既定。今の Flag と同じ並び）か card（選ぶカード）。 */
+  variant?: ArChoiceVariant;
   /** 読み上げ用のまとまりの名前（例：「勤務する曜日」）。 */
   label?: string;
 }

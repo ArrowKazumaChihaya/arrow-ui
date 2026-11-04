@@ -39,14 +39,17 @@ describe("F1：製品からの指摘（ヘッダー・スマホのメニュー�
     expect(pill.attributes("aria-expanded")).toBe("true");
     await pill.trigger("pointerleave");
     await new Promise((r) => setTimeout(r, 200));
-    expect(w.find('[data-part="pill-list"]').exists()).toBe(true);
-    expect(w.findAll('[data-part="pill-delete"]')).toHaveLength(1);
-    await w.get('[data-part="pill-delete"]').trigger("click");
+    // 一覧は ArFloat に載せて出す先（body）へ出すので、document から探す
+    const q = (sel: string) => document.querySelector<HTMLElement>(sel);
+    expect(q('[data-ar="app-pill-list"] [data-part="pill-list"]')).not.toBeNull();
+    expect(document.querySelectorAll('[data-part="pill-delete"]')).toHaveLength(1);
+    q('[data-part="pill-delete"]')!.click();
     expect(w.emitted("pill-item-delete")?.[0]).toEqual(["todo", "tax"]);
-    await w.get('[data-part="pill-restore"]').trigger("click");
+    q('[data-part="pill-restore"]')!.click();
     expect(w.emitted("pill-restore")?.[0]).toEqual(["todo"]);
-    await w.get('[data-part="pill-list"]').trigger("keydown", { key: "Escape" });
-    expect(w.find('[data-part="pill-list"]').exists()).toBe(false);
+    q('[data-part="pill-list"]')!.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    await nextTick();
+    expect(q('[data-part="pill-list"]')).toBeNull();
     w.unmount();
   });
 
@@ -61,7 +64,7 @@ describe("F1：製品からの指摘（ヘッダー・スマホのメニュー�
     });
     await w.get('[data-part="pill"]').trigger("keydown", { key: "ArrowDown" });
     await nextTick();
-    expect(w.get('[data-part="pill-empty"]').text()).toBe("やることはありません");
+    expect(document.querySelector('[data-part="pill-empty"]')?.textContent).toBe("やることはありません");
     await w.get('[data-part="item"]').trigger("keydown", { key: "ArrowDown" });
     await nextTick();
     expect(document.activeElement?.textContent).toBe("社員一覧");

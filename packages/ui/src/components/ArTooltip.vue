@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArTooltip 1.0 — 短い説明の吹き出し（濃い ink の吹き出しと矢印）。
+ * ArTooltip 1.1 — 短い説明の吹き出し（濃い ink の吹き出し。remix はシフトの .r-tip の形、classic は antd の Tooltip）。
  * 乗せると少し遅れて出て、フォーカスではすぐ出る。Escape で消える。吹き出しへ移る間は消さない。
  * アイコンだけのボタンには必ず付ける。説明は基準の要素の aria-describedby で読み上げる。
  */

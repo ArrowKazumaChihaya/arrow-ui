@@ -1,4 +1,4 @@
-/* @covers ArWeekdayPicker 1.0.0, ArPills 1.0.0 */
+/* @covers ArWeekdayPicker 1.1.0, ArPills 1.0.0 */
 /* ArWeekdayPicker（ui-Flag）：今は曜日を Check で横に並べる。ボタンを Check の形に描く（16×16・角丸4・灰 #808080 の枠、選ぶと #1677FF の塗りに白いレ点、
    ラベルは 14px・左5／右10・行30）。曜日の文字は黒のまま。 */
 [data-ar-design="classic"] [data-ar="weekday-picker"]{gap:0}
@@ -11,7 +11,12 @@
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]:disabled{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]:disabled::before{background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]:disabled::after{border-color:rgba(0,0,0,.25)}
-[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="sm"]>[data-part="day"]{font-size:13px}
+/* 大きさ：xs（表の行。1.0 の sm）は 13px、sm は行24、lg は行40・16px（印は16pxのまま。antd の Checkbox に大きさは無い） */
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="xs"]>[data-part="day"]{font-size:13px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="sm"]>[data-part="day"]{height:24px;line-height:24px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="lg"]>[data-part="day"]{height:40px;font-size:16px;line-height:40px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="lg"]>[data-part="day"][data-state~="on"]::after{top:15px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="sm"]>[data-part="day"][data-state~="on"]::after{top:7px}
 /* ArPills（今の ARROW にないので素の antd 4 の CheckableTag をテーマ色に）：高さ22・角丸4・12px、選ぶとテーマ色の塗りに白、hover はテーマ色の文字。 */
 [data-ar-design="classic"] [data-ar="pills"]{gap:8px}
 [data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]{gap:4px;height:22px;padding:0 7px;border:1px solid transparent;border-radius:4px;background:transparent;color:rgba(0,0,0,.88);font-size:12px;line-height:20px;transition:all .2s}
@@ -21,4 +26,6 @@
 [data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"][data-state~="on"]:hover{background:var(--ar-accent-hi)}
 [data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
 [data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]:disabled{color:rgba(0,0,0,.25)}
-[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]>[data-part="count"]{opacity:.75}
+/* 札の件数は ArBadge。classic は今の形（丸なしの文字・.75）をここで保つ */
+[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]>[data-part="count"]{opacity:.75;font-family:inherit;line-height:inherit}
+[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]>[data-part="count"]>[data-part="count"]{min-width:0;height:auto;padding:0;border-radius:0;background:none;box-shadow:none;color:inherit;font-size:inherit;font-weight:inherit;line-height:inherit}

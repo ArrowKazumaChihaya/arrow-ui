@@ -1,5 +1,5 @@
-/* @covers ArSwitch 1.0.0 */
-/* ArSwitch：.tog（36×20・角丸10・地は field、つまみは白16）。文字ありは .tog.ad-lb（高さ22・最小52・700 11px）。sm は 28×16。 */
+/* @covers ArSwitch 1.1.0 */
+/* ArSwitch：.tog（36×20・角丸10・地は field、つまみは白16）。文字ありは .tog.ad-lb（高さ22・最小52・700 11px）。sm は 28×16（.tog.ad-sm）、lg は 44×24（年末調整・スマホ。ラジオ・チェックの lg と同じ段）。 */
 [data-ar-design="remix"] [data-ar="switch"]{border-radius:11px}
 [data-ar-design="remix"] [data-ar="switch"]>[data-part="track"]{width:36px;height:20px;border-radius:10px;background:var(--ar-color-field);transition:background var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="switch"]>[data-part="track"]>[data-part="thumb"]{left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left var(--ar-motion-fast)}
@@ -16,6 +16,16 @@
 [data-ar-design="remix"] [data-ar="switch"][data-size="sm"]>[data-part="track"]{width:28px;height:16px;border-radius:8px}
 [data-ar-design="remix"] [data-ar="switch"][data-size="sm"]>[data-part="track"]>[data-part="thumb"]{width:12px;height:12px}
 [data-ar-design="remix"] [data-ar="switch"][data-size="sm"][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:14px}
+/* 大 */
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"]{border-radius:13px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"]>[data-part="track"]{width:44px;height:24px;border-radius:12px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"]>[data-part="track"]>[data-part="thumb"]{width:20px;height:20px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:22px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text]>[data-part="track"]{min-width:62px;height:26px;border-radius:13px;padding:0 10px 0 28px;font-size:12px;line-height:26px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text][data-state~="on"]>[data-part="track"]{padding:0 28px 0 11px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text]>[data-part="track"]>[data-part="thumb"]{left:3px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:calc(100% - 23px)}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"]>[data-part="caption"]{margin-left:10px;font-size:14px}
 /* 状態 */
 [data-ar-design="remix"] [data-ar="switch"]:focus-visible{outline:0}
 [data-ar-design="remix"] [data-ar="switch"]:focus-visible>[data-part="track"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}

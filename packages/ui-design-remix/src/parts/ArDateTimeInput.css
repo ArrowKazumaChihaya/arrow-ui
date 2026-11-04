@@ -1,3 +1,3 @@
-/* @covers ArDateTimeInput 1.0.0 */
+/* @covers ArDateTimeInput 1.1.0 */
 /* ArDateTimeInput：日付の入力（.dti）と時刻のプルダウンを 10px 空けて並べる。 */
 [data-ar-design="remix"] [data-ar="date-time-input"]{gap:10px}

@@ -1,4 +1,4 @@
-/** ArTimeInput 1.0 の契約。 */
+/** ArTimeInput 1.1 の契約。 */
 export interface ArTimeValue {
   /** "HH:mm"。未入力は null。overnight のときは 24:00 以降（例 "29:00"）もある。 */
   time: string | null;
@@ -42,7 +42,7 @@ export interface ArTimeInputProps {
   select?: boolean;
   /** select のときの分の刻み（今の ARROW の minuteUnit）。 */
   minuteStep?: number;
-  /** sm：高さ32（表の中・範囲）。md：36。lg：40（スマホのシート）。 */
+  /** 大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。sm は表の中・範囲、lg はスマホのシートにも。select の形では時と分のプルダウンも同じ段になる。 */
   size?: "sm" | "md" | "lg";
   /** 親の幅いっぱい（時間の表の列など）。fields が single のときだけ効く。 */
   block?: boolean;

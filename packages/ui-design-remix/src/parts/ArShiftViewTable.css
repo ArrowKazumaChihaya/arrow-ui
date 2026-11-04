@@ -10,12 +10,6 @@
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-icon"]{width:14px;height:14px}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-input"]{padding:1px 2px;color:var(--ar-color-text);font-size:12.5px;font-weight:500;line-height:normal}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-input"]::placeholder{color:#9AA5B1;opacity:1}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]{height:34px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--ar-color-border);background:#fff}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]{width:32px;height:34px;border:0;border-radius:10px;background:none;color:var(--ar-color-text-secondary);transition:color var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:hover:not(:disabled){color:var(--ar-accent-ink)}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:disabled{opacity:.4}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-value"]{min-width:52px;color:var(--ar-color-text-secondary);font-size:11.5px;font-weight:700;line-height:1.5}
 /* 表の枠：角丸14・1px の線（内側の影） */
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]{border-radius:14px;box-shadow:inset 0 0 0 1px var(--ar-color-border);background:#fff}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]:focus-visible{box-shadow:inset 0 0 0 1px var(--ar-color-border),0 0 0 3px var(--ar-accent-ring)}
@@ -35,13 +29,13 @@
 /* 名前の列：白・左に止まる（右に 1px の線）。頭文字の丸 28px、名前 13px 太字、下に合計時間と日数 10.5px */
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]{height:54px;padding:6px 8px 6px 10px;background:#fff;box-shadow:1px 0 0 var(--ar-color-border-subtle);z-index:6}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]{gap:8px}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-ar="avatar"]{width:28px;height:28px;font-size:12px}
+/* 名前の列の頭文字の丸は ArAvatar size="sm"（28・12px） */
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]{font-size:13px;font-weight:700;line-height:1.5;white-space:nowrap}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-sub"]{font-size:10.5px;line-height:1.35;color:var(--ar-color-text-muted);white-space:nowrap}
 /* 今日の勤怠の印：緑の点＝勤務中、白抜き＝未打刻 */
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]>[data-part="live"]{width:8px;height:8px;margin-right:6px;border-radius:50%;vertical-align:1px}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]>[data-part="live"][data-state="working"]{background:#2E9D62;box-shadow:0 0 0 3px #DDF2E6}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]>[data-part="live"][data-state="absent"]{box-shadow:inset 0 0 0 1.5px #8592A0}
+[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-label"]>[data-part="live"][data-state="absent"]{box-shadow:inset 0 0 0 1.5px var(--ar-remix-lock)}
 /* マス：白・58px・上から札を 4px あけて並べる。土日はごく淡い灰、今日はテーマ色の 4% */
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]{height:58px;padding:5px;background:#fff;vertical-align:top}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]:is([data-tone="sun"],[data-tone="sat"]){background:#FAFBFD}
@@ -50,7 +44,7 @@
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]{gap:1px;padding:4px 7px;border:0;border-left:3px solid var(--ar-svt-chip,#6C7A89);border-radius:7px;background:color-mix(in srgb,var(--ar-svt-chip,#6C7A89) 11%,transparent);color:var(--ar-svt-chip,#6C7A89);line-height:1.2}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]+[data-part="chip"]{margin-top:4px}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"][data-scope="other"]{border:1px dashed #AEB8C3;border-left:3px dashed #AEB8C3;background:#fff;color:#4A5562}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"][data-scope="leave"]{border-left-color:#C9CDD2;background:repeating-linear-gradient(135deg,#F2F3F5 0 5px,#E8EAED 5px 10px);color:#5C636B}
+[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"][data-scope="leave"]{border-left-color:#C9CDD2;background:repeating-linear-gradient(135deg,#F2F3F5 0 5px,#E6E8EB 5px 10px);color:#5C636B}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]>[data-part="chip-time"]{font-size:12px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>[data-part="chip"]>[data-part="chip-branch"]{font-size:10px;font-weight:600;line-height:1.2;opacity:.85}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="cell"]>button[data-part="chip"]:hover{filter:brightness(.97)}
@@ -66,14 +60,13 @@
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"]{width:14px;height:12px;border-radius:3px}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="own"]{background:color-mix(in srgb,var(--ar-svt-chip,var(--ar-accent)) 14%,transparent);box-shadow:inset 3px 0 0 var(--ar-svt-chip,var(--ar-accent))}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="other"]{border:1px dashed #AEB8C3;background:#fff}
-[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="leave"]{background:repeating-linear-gradient(135deg,#F2F3F5 0 3px,#E0E3E7 3px 6px)}
+[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="leave"]{background:repeating-linear-gradient(135deg,#F2F3F5 0 3px,#E6E8EB 3px 6px)}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="pattern"]{background:var(--ar-svt-chip,var(--ar-accent))}
 /* スマホのカードの中（.r-sp・.nrw）：説明と検索は1行ずつ、列の幅は 32px、名前の列は細く頭文字の丸なし */
 [data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]{gap:12px}
 [data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="toolbar"]>[data-part="note"]{width:100%}
 [data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="toolbar"]>[data-part="search"]{width:100%}
-[data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="toolbar"]>[data-part="zoom"]{height:32px}
-[data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]{width:30px;height:32px}
 [data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="toolbar"]>[data-ar="segmented"]>[data-part="item"]{height:28px;padding:0 10px;font-size:12px}
 [data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-ar="avatar"]{display:none}
 [data-ar-design="remix"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="scroll"]>[data-part="table"]>tbody>tr>[data-part="name"]>[data-part="name-box"]>[data-part="name-text"]>[data-part="name-sub"]{font-size:9.5px}
+/* 列の幅の −／＋ は ArZoomControl（.r-zoom：箱 34・sm は 32） */
