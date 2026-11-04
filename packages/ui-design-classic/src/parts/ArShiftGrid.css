@@ -11,7 +11,8 @@
 [data-ar-design="classic"] [data-ar="shift-grid"]{--sg-name:136px;--sg-row:36px;gap:10px;color:#000;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
 [data-ar-design="classic"] [data-ar="shift-grid"][data-summary]{--sg-name:210px;--sg-row:48px}
 [data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="toolbar"]{gap:8px}
-[data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]{gap:4px}
+/* 列の幅の −／＋ は ArZoomControl。今の ARROW は箱なしで線つきのボタンを 4px あけて並べるので、箱を消してボタンに線を付ける */
+[data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]{gap:4px;height:auto;border:0;border-radius:0;background:none}
 [data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]>button{width:32px;height:32px;padding:0;border:1px solid #d9d9d9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 2px 0 rgba(0,0,0,.02)}
 [data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]>button:hover:not(:disabled){border-color:var(--ar-accent-hi);color:var(--ar-accent-hi)}
 [data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="toolbar"]>[data-part="zoom"]>button:disabled{border-color:#d9d9d9;background:rgba(0,0,0,.04);color:rgba(0,0,0,.25)}
@@ -133,3 +134,8 @@
 [data-ar-design="classic"] [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"]:disabled{border-color:#d9d9d9;background:rgba(0,0,0,.04);color:rgba(0,0,0,.25);box-shadow:none;cursor:not-allowed}
 [data-ar-design="classic"] [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"]:focus-visible{outline:2px solid rgba(5,145,255,.4);outline-offset:1px}
 [data-ar-design="classic"] [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"] [data-ar="icon"]{width:16px;height:16px}
+/* ロックの鍵の印（remix で ArCalendar と同じ印を足した）は、今の ARROW には無いので出さない */
+[data-ar-design="classic"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="lock"]{display:none}
+/* パターンを探して無いときは ArEmpty。classic は今の形（11px の文字だけ）をここで保つ */
+[data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-none"]>[data-part="icon"]{display:none}
+[data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-none"]{font-family:inherit}

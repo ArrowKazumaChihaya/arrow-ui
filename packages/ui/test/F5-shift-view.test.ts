@@ -81,7 +81,8 @@ describe("ArShiftViewTable", () => {
 
   it("列の幅の −／＋ は刻みで動き、下限・上限で止まる", async () => {
     const w = mount(ArShiftViewTable, { props: { ...base, columnWidth: 96 } });
-    const [out, inn] = w.findAll('[data-part="zoom-button"]');
+    // 1.x：−／＋ は ArZoomControl（data-part="zoom-out"・"zoom-in"）
+    const [out, inn] = [w.get('[data-part="zoom-out"]'), w.get('[data-part="zoom-in"]')];
     await out!.trigger("click");
     expect(w.emitted("update:columnWidth")?.[0]).toEqual([88]);
     await w.setProps({ columnWidth: 88 });

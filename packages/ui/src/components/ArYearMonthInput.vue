@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArYearMonthInput 1.0 — 年月の入力。年はプルダウン、月は数字の欄（全角でも入る）。
+ * ArYearMonthInput 1.1 — 年月の入力。年はプルダウン、月は数字の欄（全角でも入る）。
  * 1〜12 以外は受け付けない（打った文字を戻す）。2桁、または 2〜9 を打つと確定する。
  */
 import { computed, ref, watch } from "vue";
@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<ArYearMonthInputProps>(), {
   maxYear: () => new Date().getFullYear(),
   era: false,
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   id: undefined,
@@ -62,6 +63,7 @@ function onMonth(e: Event) {
   <span
     data-ar="year-month-input"
     data-part="root"
+    :data-size="size"
     role="group"
     :aria-label="label"
     :data-era="era || undefined"

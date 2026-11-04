@@ -6,6 +6,7 @@
 import { computed, ref } from "vue";
 import { useId } from "../provider/context";
 import ArIcon from "./ArIcon.vue";
+import ArTag from "./ArTag.vue";
 import type { ArStepSelectProps, ArStepSelectStep } from "./ArStepSelect.contract";
 
 const props = withDefaults(defineProps<ArStepSelectProps>(), { crumbs: true, connectors: true, labels: () => ({}) });
@@ -67,7 +68,7 @@ function jump(s: ArStepSelectStep) {
             <template v-else>{{ s.no }}</template>
           </span>
           <h3 :id="`${id}-${s.key}`" data-part="title">{{ s.title }}</h3>
-          <span v-if="s.count" data-part="count">{{ s.count }}</span>
+          <ArTag v-if="s.count" data-part="count" shape="pill" tone="accent" count>{{ s.count }}</ArTag>
           <div v-if="$slots[`extra-${s.key}`]" data-part="extra"><slot :name="`extra-${s.key}`" /></div>
         </div>
         <div v-if="$slots[`step-${s.key}`]" data-part="body"><slot :name="`step-${s.key}`" /></div>

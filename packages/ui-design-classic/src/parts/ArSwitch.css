@@ -1,4 +1,5 @@
-/* @covers ArSwitch 1.0.0 */
+/* @covers ArSwitch 1.1.0 */
+/* lg（1.1）：antd の Switch に大は無いので、今の ARROW と同じ既定（44×22）で描く。 */
 /* ArSwitch（ui-Toggle）：44×22・角丸100・つまみ18の白丸（影 0 2px 4px rgba(0,35,11,.2)）。off は rgba(0,0,0,.25)（hover .45）、
    on は antd の #1677FF（hover #4096FF）。tone="accent" はページのテーマ色（theme を付けた Toggle。hover でも変わらない）。
    twoWay（alwaysValid）は切れていても色（既定 #4096FF・accent はテーマ色）。無効・保存中は不透明度 .65。小は 28×16・つまみ12。

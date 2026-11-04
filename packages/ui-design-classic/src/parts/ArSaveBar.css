@@ -6,5 +6,7 @@
 [data-ar-design="classic"] [data-ar="save-bar"][data-summary="hidden"]>[data-part="spacer"]{display:none}
 [data-ar-design="classic"] [data-ar="save-bar"]>[data-ar="button"]:is([data-tone="secondary"],[data-tone="primary"]){width:130px}
 [data-ar-design="classic"] [data-ar="save-bar"][data-sticky]{padding:8px 0;background:#fff}
-[data-ar-design="classic"] [data-ar="save-bar"][data-summary="show"]>[data-part="count"]{padding:0 7px;border:1px solid #FFE58F;border-radius:4px;background:#FFFBE6;color:#D48806;font-size:12px;line-height:20px}
+/* 件数の札は ArTag。classic は今の形（antd の warning の札・#D48806）をここで保つ */
+[data-ar-design="classic"] [data-ar="save-bar"]>[data-part="count"][data-ar="tag"]{height:auto;margin:0;box-shadow:none;font-family:inherit;padding:0;border:0;border-radius:0;background:none;color:inherit;font-size:inherit;font-weight:inherit;line-height:inherit}
+[data-ar-design="classic"] [data-ar="save-bar"][data-summary="show"]>[data-part="count"][data-ar="tag"]{padding:0 7px;border:1px solid #FFE58F;border-radius:4px;background:#FFFBE6;color:#D48806;font-size:12px;line-height:20px}
 [data-ar-design="classic"] [data-ar="save-bar"][data-summary="show"]>[data-part="items"]{color:rgba(0,0,0,.65)}

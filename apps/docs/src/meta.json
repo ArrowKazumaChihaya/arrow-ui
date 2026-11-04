@@ -517,7 +517,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg' | 'xl' | 'xs'",
     "required": false,
-    "description": "大きさ。xs＝表の行の中の小さな操作（「シフトに入れる」）・sm＝小さい・md＝ふつう・lg＝大きい・xl＝手順の「次へ」「戻る」などのいちばん大きい操作。\n今の ARROW の size との対応：small→sm、なし→md、large→lg、xlarge→xl、square→アイコンだけ（label を渡す）。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。\nxs＝表の行の中の小さな操作（「シフトに入れる」）、xl＝手順の「次へ」「戻る」などのいちばん大きい操作（新しい見た目では lg と同じ高さ）。\n今の ARROW の size との対応：small→sm、なし→md、large→lg、xlarge→xl、square→アイコンだけ（label を渡す）。",
     "default": "\"md\""
    },
    {
@@ -846,8 +846,8 @@
  },
  {
   "name": "ArSegmented",
-  "version": "1.1.0",
-  "description": "2〜4つの表示の切り替え（セグメント）。\nradiogroup として読み上げ、←→（↑↓）で選び直す。選んでいるものだけ Tab で止まる。",
+  "version": "1.2.0",
+  "description": "2〜4つの表示の切り替え（セグメント）。ArRadioGroup の type=\"button\" も同じ見た目（CSS は1つ）。大きさは sm 30・md 36・lg 42（ほかの入力と同じ段）。\nradiogroup として読み上げ、←→（↑↓）で選び直す。選んでいるものだけ Tab で止まる。",
   "props": [
    {
     "name": "modelValue",
@@ -871,7 +871,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm 30・md 34・lg 42（外側の高さ）。",
+    "description": "大きさ（外側の高さ・角丸）。sm 30・9（設定の行・表の上）、md 36・10（ふつう）、lg 42・11（スマホ・年末調整）。\nほかの入力・ボタンと同じ段。1.2：md は 34→36、lg は 42（角丸 11）。",
     "default": "\"md\""
    },
    {
@@ -1818,7 +1818,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -1933,7 +1933,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -2037,8 +2037,8 @@
  },
  {
   "name": "ArCheckbox",
-  "version": "1.0.0",
-  "description": "チェック（18px・角丸5）。default slot がラベル。\nindeterminate は「一部だけ」（テーマ色に白い横線）。表の行・見出しでは slot なしで label（読み上げ）だけ渡す。",
+  "version": "1.1.0",
+  "description": "チェック（18px・角丸5）。default slot がラベル。\nindeterminate は「一部だけ」（テーマ色に白い横線）。表の行・見出しでは slot なしで label（読み上げ）だけ渡す。\n1.1：variant（plain・card。card はラジオの card と同じ面）・size（sm・md・lg）・description・\ndecorative（input を持たない見た目だけの印。役目を持つ親の中に置く）。",
   "props": [
    {
     "name": "modelValue",
@@ -2071,6 +2071,33 @@
     "type": "string",
     "required": false,
     "description": "入力の id（ArField の label と結ぶ）。"
+   },
+   {
+    "name": "variant",
+    "type": "ArChoiceVariant",
+    "required": false,
+    "description": "1.1：形。plain（既定）＝四角と文字だけ。card＝選ぶカード（ラジオの card と同じ面。年末調整の「メールを送る」など）。",
+    "default": "\"plain\""
+   },
+   {
+    "name": "size",
+    "type": "ArChoiceSize",
+    "required": false,
+    "description": "1.1：大きさ（sm＝四角16・13px、md＝18・13.5px、lg＝18・14px。ラジオと同じ段）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "description",
+    "type": "string",
+    "required": false,
+    "description": "1.1：名前の下の説明。"
+   },
+   {
+    "name": "decorative",
+    "type": "boolean",
+    "required": false,
+    "description": "1.1：見た目だけのチェック（input を持たない）。役目（menuitemcheckbox・treeitem・option など）と aria-checked を\n持つ親の中に、チェックの印だけを置くときに使う（ArViewOptions の項目・ArTreeSelect の複数選択）。",
+    "default": "false"
    }
   ],
   "emits": [
@@ -2089,14 +2116,15 @@
    "input",
    "box",
    "mark",
-   "label"
+   "label",
+   "description"
   ],
   "dataAr": "checkbox"
  },
  {
   "name": "ArCheckboxGroup",
-  "version": "1.0.0",
-  "description": "選択肢から いくつでも選ぶ（並べて見せる）。\ncheckAll で上に「すべて」を出す。一部だけ選んでいるときは indeterminate。押せない選択肢は「すべて」でも変えない。",
+  "version": "1.1.0",
+  "description": "選択肢から いくつでも選ぶ（並べて見せる）。\ncheckAll で上に「すべて」を出す。一部だけ選んでいるときは indeterminate。押せない選択肢は「すべて」でも変えない。\n1.1：variant（card・plain。省くとデザインの既定）・size（sm・md・lg）・columns・選択肢の description。ArRadioGroup と同じ考え方。",
   "props": [
    {
     "name": "modelValue",
@@ -2116,6 +2144,25 @@
     "required": false,
     "description": "horizontal：横に並べる（折り返す）。vertical：縦に並べる。",
     "default": "\"horizontal\""
+   },
+   {
+    "name": "variant",
+    "type": "ArChoiceVariant",
+    "required": false,
+    "description": "1.1：形。省くとデザインの既定（remix は card、classic は今の ARROW と同じ plain）。ArRadioGroup の variant と同じ考え方。\ncard＝選ぶカード（ラジオの card と同じ面）。plain＝四角と文字だけ（設定の行など密集した所）。"
+   },
+   {
+    "name": "size",
+    "type": "ArChoiceSize",
+    "required": false,
+    "description": "1.1：大きさ（sm・md・lg。ArRadioGroup と同じ段）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "columns",
+    "type": "number",
+    "required": false,
+    "description": "1.1：card のとき、この数の等しい幅の列に並べる。"
    },
    {
     "name": "checkAll",
@@ -2155,8 +2202,8 @@
  },
  {
   "name": "ArChoiceCard",
-  "version": "1.0.0",
-  "description": "選ぶカード。プラン・支払い方法（card）、社員を追加の4択（option）、書類の種類（tile）、年調の なし／あり（radio）。\nvalue と v-model を渡すと1つを選ぶ組（role=\"radio\"・←→↑↓で隣へ動いて選ぶ）。並べ方は使う側の ArGrid や role=\"radiogroup\" の箱が決める。",
+  "version": "1.1.0",
+  "description": "選ぶカード。プラン・支払い方法（card）、社員を追加の4択（option）、書類の種類（tile）、年調の なし／あり（radio）。\nvalue と v-model を渡すと1つを選ぶ組（role=\"radio\"・←→↑↓で隣へ動いて選ぶ）。並べ方は使う側の ArGrid や role=\"radiogroup\" の箱が決める。\n1.1：size（sm・md・lg）。radio は ArRadio の card（ArRadioGroup の card と同じもの。見た目・CSS は1つ）で描く。",
   "props": [
    {
     "name": "title",
@@ -2180,7 +2227,7 @@
     "name": "variant",
     "type": "'card' | 'option' | 'tile' | 'radio'",
     "required": false,
-    "description": "形。\ncard＝大きな選択のカード（プラン・支払い方法。右上に丸いチェック、選ぶとテーマ色の枠と淡い地）。\noption＝やり方を選ぶカード（社員を追加の4択。左にテーマ色の四角のアイコン。押すと次へ進む）。\ntile＝選ぶタイル（書類の種類・書類。選ぶとテーマ色の面）。\nradio＝ラジオカード（年末調整の なし／あり。左にラジオの丸）。",
+    "description": "形。\ncard＝大きな選択のカード（プラン・支払い方法。右上に丸いチェック、選ぶとテーマ色の枠と淡い地）。\noption＝やり方を選ぶカード（社員を追加の4択。左にテーマ色の四角のアイコン。押すと次へ進む）。\ntile＝選ぶタイル（書類の種類・書類。選ぶとテーマ色の面）。\nradio＝ラジオカード（年末調整の なし／あり。左にラジオの丸）。1.1 から ArRadio の card（ArRadioGroup の card と同じもの）で描く。\n新しく書くときは ArRadioGroup（variant=\"card\"・size=\"lg\"・columns）を使う。",
     "default": "\"card\""
    },
    {
@@ -2227,6 +2274,18 @@
     "required": false,
     "description": "",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "ArChoiceSize",
+    "required": false,
+    "description": "1.1：大きさ（sm・md・lg。ほかの選ぶ部品と同じ段）。省くと radio は lg（年末調整の大きさ）、ほかは md（キャンバスの大きさ）。\ncard：sm 最小88・md 112・lg 128。option：アイコン sm 36・md 44・lg 52。tile：sm 最小44・md 52・lg 60。radio：sm 30・md 36・lg 42（ほかの入力と同じ段）。"
+   },
+   {
+    "name": "name",
+    "type": "string",
+    "required": false,
+    "description": "1.1：radio のとき、同じ組の札に同じ name を付ける（本物のラジオとして ←→↑↓ で移れる）。"
    }
   ],
   "emits": [
@@ -2245,12 +2304,12 @@
    "default"
   ],
   "parts": [
+   "title",
+   "tag",
    "root",
    "check",
    "icon",
    "body",
-   "title",
-   "tag",
    "description",
    "reason"
   ],
@@ -2413,7 +2472,7 @@
  },
  {
   "name": "ArDateInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "日付の入力。年はプルダウン（ブラウザの select は使わない）、月と日は数字（全角も読む）。\n曜日は自動で出す（日は赤、土は青）。31日のまま2月にすると末日に寄せる。\n年：↓・Enter・Space で開き、↑↓で動かし Enter で決める。数字を打つとその年へ飛ぶ（ArYearInput と同じプルダウン）。\n月・日：数字を打って Enter かフォーカスが外れたら確定。↑↓で1ずつ動く。",
   "props": [
    {
@@ -2454,6 +2513,13 @@
     "required": false,
     "description": "外から渡す間違いの状態（例：終わりの日が始まりの日より前）。",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
    },
    {
     "name": "disabled",
@@ -2502,7 +2568,7 @@
  },
  {
   "name": "ArDatePicker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "カレンダーから日付を選ぶ。入力欄は ArDateInput と同じ（年はプルダウン、月日は数字）で、\n右のカレンダーのボタンでパネルを開く。ARROW では日付は ArDateInput が基本で、カレンダーから選ぶときだけこれを使う。\nパネル：月の切り替え・土日の色・今日は線・選んだ日は塗り・「今日」「決める」。range なら間は淡いテーマ色。",
   "props": [
    {
@@ -2559,6 +2625,13 @@
     "default": "false"
    },
    {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "入力欄とカレンダーのボタンの大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
+   },
+   {
     "name": "disabled",
     "type": "boolean",
     "required": false,
@@ -2605,7 +2678,7 @@
  },
  {
   "name": "ArDateRange",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "期間の入力。2つの ArDateInput を「〜」でつなぎ、右に日数（30日間）を出す。\n終わりの日が始まりの日より前なら両方を赤くし、下に直し方を言葉で出す。1か月・半月などのボタンとは親がつなぐ。",
   "props": [
    {
@@ -2646,6 +2719,13 @@
     "required": false,
     "description": "終わりの日が始まりの日より前のとき、両方を赤くして下に直し方を出す。",
     "default": "true"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
    },
    {
     "name": "disabled",
@@ -2689,7 +2769,7 @@
  },
  {
   "name": "ArDateTimeInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "日時の入力。日付（年のプルダウン＋月日）と、時と分のプルダウンを並べる。\n値は \"YYYY-MM-DD HH:mm:ss\"（秒は 00）。日付か時刻のどちらかが空なら null。",
   "props": [
    {
@@ -2739,6 +2819,13 @@
     "default": "false"
    },
    {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "日付と時刻の欄の大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
+   },
+   {
     "name": "disabled",
     "type": "boolean",
     "required": false,
@@ -2780,7 +2867,7 @@
  },
  {
   "name": "ArDurationInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "時間の長さの入力（「1 時間 30 分」）。値は分。\n時間と分の2つの箱を単位の文字でつなぐ。分を2桁（または6〜9）打つと次の入力へ移る。空の分で Backspace・端の ←→ で隣の箱へ。\n値の確定は箱からフォーカスが外れたとき・Enter だけ。分が空なら null、時間だけ空なら 0 時間。",
   "props": [
    {
@@ -2802,6 +2889,13 @@
     "required": false,
     "description": "",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
    },
    {
     "name": "disabled",
@@ -3095,7 +3189,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -3642,8 +3736,8 @@
  },
  {
   "name": "ArRadio",
-  "version": "1.0.0",
-  "description": "単独で置くラジオ。ArRadioGroup に並べられない所（表の行の頭、選択肢の行の中に表や入力を置く画面）で使う。\nmodelValue と value が同じなら選ばれた形。押すと update:modelValue に value を出す（今の ARROW の UI/Radio：value・thisValue）。\n中身は本物の input type=\"radio\"。同じ name を付けたものの間は←→↑↓で移れる。",
+  "version": "1.1.0",
+  "description": "ラジオ1つ。ArRadioGroup の各選択肢・ArChoiceCard の variant=\"radio\" もこれで描く（丸の印・カードの見た目は1つだけ）。\n単独では ArRadioGroup に並べられない所（表の行の頭、選択肢の行の中に表や入力を置く画面）で使う。\nmodelValue と value が同じなら選ばれた形。押すと update:modelValue に value を出す（今の ARROW の UI/Radio：value・thisValue）。\n中身は本物の input type=\"radio\"。同じ name を付けたものの間は←→↑↓で移れる。\n1.1：variant（plain・card）・size（sm・md・lg）・description。",
   "props": [
    {
     "name": "modelValue",
@@ -3688,6 +3782,26 @@
     "type": "string",
     "required": false,
     "description": "input の id（ArField の label と結ぶ）。"
+   },
+   {
+    "name": "variant",
+    "type": "ArChoiceVariant",
+    "required": false,
+    "description": "1.1：形。plain（既定）＝丸と文字だけ。card＝選ぶカード（ArRadioGroup の card と同じ。年末調整の なし／あり）。",
+    "default": "\"plain\""
+   },
+   {
+    "name": "size",
+    "type": "ArChoiceSize",
+    "required": false,
+    "description": "1.1：大きさ（sm・md・lg。ArRadioGroup と同じ段）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "description",
+    "type": "string",
+    "required": false,
+    "description": "1.1：名前の下の説明。"
    }
   ],
   "emits": [
@@ -3706,18 +3820,18 @@
    "default"
   ],
   "parts": [
-   "root",
    "control",
    "input",
    "mark",
-   "label"
+   "label",
+   "description"
   ],
   "dataAr": "radio"
  },
  {
   "name": "ArRadioGroup",
-  "version": "1.1.0",
-  "description": "選択肢から1つ選ぶ（並べて見せる）。7つ以上なら ArSelect を使う。\ntype=\"button\" はボタン型（Segmented と同じ形）。どちらも中身は本物のラジオなので、←→↑↓で選べる。\n1.1：#label（{ option, checked }）で名前の所に任意の部品、#extra（{ option, checked }）で選択肢の下に表や入力を置ける\n（extra はラジオの外に置くので、中の入力を押してもラジオは切り替わらない）。",
+  "version": "1.2.0",
+  "description": "選択肢から1つ選ぶ（並べて見せる）。7つ以上なら ArSelect を使う。\n1.2：各選択肢は ArRadio で描く（丸の印・カードの見た目は ArRadio・ArChoiceCard の variant=\"radio\" と1つ）。\nvariant：card＝選ぶカード（年末調整の なし／あり。remix の既定）、plain＝丸と文字だけ（密集した所。classic の既定）。\nsize：sm・md・lg（ArSelect・ArTextInput と同じ段）。columns でカードを等しい幅の列に並べる。\ntype=\"button\" はボタン型（ArSegmented と同じ形・同じ大きさの段）。どちらも中身は本物のラジオなので、←→↑↓で選べる。\n1.1：#label（{ option, checked }）で名前の所に任意の部品、#extra（{ option, checked }）で選択肢の下に表や入力を置ける\n（extra はラジオの外に置くので、中の入力を押してもラジオは切り替わらない）。",
   "props": [
    {
     "name": "modelValue",
@@ -3735,8 +3849,21 @@
     "name": "type",
     "type": "'button' | 'radio'",
     "required": false,
-    "description": "radio：18px の丸。button：ボタン型（ArSegmented と同じ形。日・週・月の切り替えなど）。",
+    "description": "radio：丸の印のラジオ（形は variant）。button：ボタン型（ArSegmented と同じ形。日・週・月の切り替えなど）。",
     "default": "\"radio\""
+   },
+   {
+    "name": "variant",
+    "type": "ArChoiceVariant",
+    "required": false,
+    "description": "1.2：type=\"radio\" の形。省くとデザインの既定（remix は card、classic は今の ARROW と同じ plain）。\ncard＝選ぶカード（年末調整の なし／あり。ArChoiceCard の variant=\"radio\" と同じもの）。\nplain＝丸と文字だけ（設定の行・表の中など密集した所）。"
+   },
+   {
+    "name": "size",
+    "type": "ArChoiceSize",
+    "required": false,
+    "description": "1.2：大きさ。sm＝設定の行（カードは高さ30・丸16・13px）。md＝ふつう（カード36・丸18・13.5px）。\nlg＝年末調整・スマホ（カード42・丸18・14px、説明の文を入れても押しやすい）。type=\"button\" のときは ArSegmented の sm・md・lg と同じ。",
+    "default": "\"md\""
    },
    {
     "name": "direction",
@@ -3744,6 +3871,12 @@
     "required": false,
     "description": "丸のときの並び。button は常に横。",
     "default": "\"horizontal\""
+   },
+   {
+    "name": "columns",
+    "type": "number",
+    "required": false,
+    "description": "1.2：card のとき、この数の等しい幅の列に並べる（年末調整の なし／あり は 2）。"
    },
    {
     "name": "block",
@@ -3782,7 +3915,6 @@
    "item",
    "control",
    "input",
-   "mark",
    "label",
    "extra"
   ],
@@ -4165,7 +4297,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -4402,7 +4534,7 @@
  },
  {
   "name": "ArStepper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "− ＋ で挟む数の入力（人数など1ずつ変える小さな数）。\njoined は枠の中に − 数 ＋（.stp）、split は小さな四角いボタンで数を挟む。最小・最大で端のボタンは押せない。\n真ん中は spinbutton（↑↓で増減、Home・End で最小・最大）。押し続けると繰り返す。",
   "props": [
    {
@@ -4446,9 +4578,9 @@
    },
    {
     "name": "size",
-    "type": "'sm' | 'md'",
+    "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm＝高さ30・md＝38。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。split の形の −＋ は sm 26／md 30／lg 36。lg は 1.1 で足した。",
     "default": "\"md\""
    },
    {
@@ -4563,8 +4695,8 @@
  },
  {
   "name": "ArSwitch",
-  "version": "1.0.0",
-  "description": "すぐ効く切り替え（公開中／非公開など）。押したら保存まで行うときは loading を出す。\n文字ありのときは「入」と「切」の文字を同じ場所に重ねて置き、見えるのは片方だけ。幅は長い方に合わせて変わらない。",
+  "version": "1.1.0",
+  "description": "すぐ効く切り替え（公開中／非公開など）。押したら保存まで行うときは loading を出す。\n大きさは sm・md・lg（1.1 で lg を足した）。文字ありのときは「入」と「切」の文字を同じ場所に重ねて置き、見えるのは片方だけ。幅は長い方に合わせて変わらない。",
   "props": [
    {
     "name": "modelValue",
@@ -4592,9 +4724,9 @@
    },
    {
     "name": "size",
-    "type": "'sm' | 'md'",
+    "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "md：36×20（文字ありは高さ22）。sm：28×16（文字は出さない）。",
+    "description": "大きさ（ラジオ・チェックと同じ段）。sm：28×16（設定の行など密集した所。文字は出さない）。md：36×20（文字ありは高さ22）。\n1.1：lg：44×24（年末調整・スマホ。文字ありは高さ26）。",
     "default": "\"md\""
    },
    {
@@ -4660,7 +4792,7 @@
  },
  {
   "name": "ArTextarea",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "複数行の文字の入力（備考・メモ）。\n枠は 1行の入力と同じ（角丸10・枠 field・フォーカスはテーマ色の枠と淡い輪）。行の高さ1.6。\nautosize で中身に合わせて高さを変え、show-count で右下に文字数を出す。\nclass と style 以外の属性（aria-describedby など）は中の textarea に渡す。",
   "props": [
    {
@@ -4729,6 +4861,13 @@
     "required": false,
     "description": "注意の枠（黄）。",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "文字と角丸の大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）（高さは rows で決まる。文字は sm 13／md 14／lg 15px）。1.1 で足した。",
+    "default": "\"md\""
    },
    {
     "name": "disabled",
@@ -4821,7 +4960,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -5033,7 +5172,7 @@
  },
  {
   "name": "ArTimeInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "時刻の入力。ARROW の時刻はこれを使う（パネルで選ぶ ArTimePicker は補助）。\n- 形はデザインが選ぶ（fields）：1つの箱に「09:30」と打つ（single）／時と分が別々の箱を「:」でつなぐ（split＝今の ARROW）。\n- キー入力が基本：single は「930」「9:30」「０９３０」が 09:30。↑↓で step 分ずつ動く。\n- dayShift なら［当日⇄前日］の切り替え（形はデザインが選ぶ：枠と一体のボタン／1文字のリンク「当」「前」）。Tab では止まらない。\n- select なら時と分のプルダウン（今の ARROW の isSelect。先頭に「未選択」）。\n- 値の確定は Enter・箱からフォーカスが外れたとき・切り替え・プルダウンで選んだときだけ。\n- note を渡すと入力の代わりに点線の枠で文字を出す（「打刻と同じ」など）。",
   "props": [
    {
@@ -5081,7 +5220,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "sm：高さ32（表の中・範囲）。md：36。lg：40（スマホのシート）。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。sm は表の中・範囲、lg はスマホのシートにも。select の形では時と分のプルダウンも同じ段になる。",
     "default": "\"md\""
    },
    {
@@ -5214,7 +5353,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "入力欄の大きさ（ArTimeInput と同じ）。",
+    "description": "入力欄と時計のボタンの大きさの段（ArTimeInput と同じ）。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -5294,7 +5433,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "時刻の欄の大きさ（ArTimeInput と同じ）。sm は表の中・ポップアップの行。",
+    "description": "時刻の欄の大きさの段（ArTimeInput と同じ）。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -5528,7 +5667,7 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg'",
     "required": false,
-    "description": "大きさ。sm＝高さ30・md＝38・lg＝44。",
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
    },
    {
@@ -5670,14 +5809,11 @@
    "node",
    "switch",
    "check",
-   "dash",
    "node-label",
    "match",
    "empty",
    "footer",
    "include",
-   "include-box",
-   "include-label",
    "action"
   ],
   "dataAr": "tree-select"
@@ -5926,8 +6062,8 @@
  },
  {
   "name": "ArWeekdayPicker",
-  "version": "1.0.0",
-  "description": "曜日をいくつでも選ぶ（繰り返し・一括登録の決まり）。\n選んだ曜日はテーマ色の塗り、選んでいない日・祝は赤、土は青の文字。各ボタンは押すたびに切り替わる（aria-pressed）。",
+  "version": "1.1.0",
+  "description": "曜日をいくつでも選ぶ（繰り返し・一括登録の決まり）。大きさは xs（表の行）・sm・md・lg。\n選んだ曜日はテーマ色の塗り、選んでいない日・祝は赤、土は青の文字。各ボタンは押すたびに切り替わる（aria-pressed）。",
   "props": [
    {
     "name": "modelValue",
@@ -5951,9 +6087,9 @@
    },
    {
     "name": "size",
-    "type": "'sm' | 'md'",
+    "type": "'sm' | 'md' | 'lg' | 'xs'",
     "required": false,
-    "description": "md：38×36（ポップアップ）。sm：17×26（表の行の中）。",
+    "description": "大きさ（ラジオ・チェックと同じ段）。\nxs：17×26（表の行の中。シフト募集の決まりの表。1.0 の sm）。\nsm：30×30（設定の行など密集した所）。md：38×36（ポップアップ。シフトのキャンバスの .wd）。lg：42×42（スマホ・大きく押しやすく）。sm・md・lg の高さ・角丸はほかの入力と同じ段（30／36／42・9／10／11）。\n1.1 で sm の意味が変わった（1.0 の sm は xs）。",
     "default": "\"md\""
    },
    {
@@ -5992,9 +6128,98 @@
   "dataAr": "weekday-picker"
  },
  {
-  "name": "ArAvatar",
+  "name": "ArZoomControl",
   "version": "1.0.0",
-  "description": "人の頭文字の丸。\n地は淡いテーマ色。シフト画面のように人を見分けたいときは seed で人ごとの色にする。\nArAvatarGroup に入れると白い縁で重なる。",
+  "description": "−／＋ で列の幅・図の大きさを変える組（今の値を真ん中に出す）。\nシフト表（ArShiftGrid・ArShiftViewTable）と組織図（ArOrgChart）の拡大縮小はこれ1つ。値は使う側が持ち、out・in を受けて変える。\nボタンの名前は吹き出し（ArTooltip と同じ形）と読み上げで伝える。",
+  "props": [
+   {
+    "name": "value",
+    "type": "string",
+    "required": true,
+    "description": "真ん中に出す今の値（「64px」「100%」）。読み上げでも伝える（aria-live）。"
+   },
+   {
+    "name": "outDisabled",
+    "type": "boolean",
+    "required": false,
+    "description": "− を押せない（下限）。",
+    "default": "false"
+   },
+   {
+    "name": "inDisabled",
+    "type": "boolean",
+    "required": false,
+    "description": "＋ を押せない（上限）。",
+    "default": "false"
+   },
+   {
+    "name": "disabled",
+    "type": "boolean",
+    "required": false,
+    "description": "全部押せない。",
+    "default": "false"
+   },
+   {
+    "name": "variant",
+    "type": "'plain' | 'box'",
+    "required": false,
+    "description": "形。box＝白い箱に線（シフト表の上の操作の段。キャンバスの .r-zoom）、\nplain＝箱なし（ArOrgChart の右下の操作の板のように、すでに白い板の中に置くとき）。",
+    "default": "\"box\""
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md'",
+    "required": false,
+    "description": "大きさの段。md＝ふつう（箱 34）、sm＝密集した所・スマホ（箱 32）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "まとまりの読み上げの名前（「列の幅」）。",
+    "default": "\"拡大・縮小\""
+   },
+   {
+    "name": "outLabel",
+    "type": "string",
+    "required": false,
+    "description": "− の名前（読み上げ・吹き出し）。",
+    "default": "\"小さく\""
+   },
+   {
+    "name": "inLabel",
+    "type": "string",
+    "required": false,
+    "description": "＋ の名前（読み上げ・吹き出し）。",
+    "default": "\"大きく\""
+   }
+  ],
+  "emits": [
+   {
+    "name": "out",
+    "payload": "[event: MouseEvent]",
+    "description": "− を押した。"
+   },
+   {
+    "name": "in",
+    "payload": "[event: MouseEvent]",
+    "description": "＋ を押した。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "zoom-out",
+   "zoom-value",
+   "zoom-in"
+  ],
+  "dataAr": "zoom-control"
+ },
+ {
+  "name": "ArAvatar",
+  "version": "1.1.0",
+  "description": "人の頭文字の丸（写真も）。ライブラリの頭文字の丸はこれ1つ。\n地は淡いテーマ色。シフト画面のように人を見分けたいときは seed で人ごとの色にする。\nArAvatarGroup に入れると白い縁で重なる。",
   "props": [
    {
     "name": "name",
@@ -6030,7 +6255,19 @@
     "name": "size",
     "type": "'sm' | 'md' | 'lg' | 'xl' | 'xs'",
     "required": false,
-    "description": "大きさ。xs＝24・sm＝26（表の中）・md＝32・lg＝44・xl＝60。"
+    "description": "大きさ。xs＝24（セレクトの値・選択肢の中）・sm＝28（表の名前の列・ヘッダー。デザインシステムの .v-av）・md＝32・lg＝44・xl＝60。\n1.1 で sm を 26→28 にした（デザインシステムに 26 は無く、表の名前の列は 28）。"
+   },
+   {
+    "name": "src",
+    "type": "string",
+    "required": false,
+    "description": "1.1 写真の URL。渡すと頭文字の代わりに丸く切った写真を出す。"
+   },
+   {
+    "name": "color",
+    "type": "readonly [string, string]",
+    "required": false,
+    "description": "1.1 地と文字の色を直接渡す（[地, 文字]。社員ごとに決めた色など）。省くと tone・seed の色。\n人ごとの色は seed（blue・orange・green・purple・yellow の順）を使い、ここに色を直書きしない。"
    },
    {
     "name": "shape",
@@ -6050,6 +6287,7 @@
   "slots": [],
   "parts": [
    "root",
+   "image",
    "icon",
    "text"
   ],
@@ -6090,14 +6328,14 @@
  },
  {
   "name": "ArBadge",
-  "version": "1.0.0",
-  "description": "件数の丸・点・状態の点。\n子（アイコンのボタンなど）の右上に件数（赤＝重要／テーマ色）や点を重ねる。status を渡すと「点＋言葉」の状態の表示になる。\n「提出済」のような札は ArTag を使う。",
+  "version": "1.1.0",
+  "description": "件数の丸・点・状態の点。\n子（アイコンのボタンなど）の右上に件数（赤＝お知らせ・やること／テーマ色）や点を重ねる。status を渡すと「点＋言葉」の状態の表示になる。\n件数の丸はライブラリの中でこれ1つ。ほかの部品（ヘッダー・メニューのタイル・タブ・切り替えなど）の件数もこれで描く。\n「提出済」のような札・「4名」のような件数の札（高さ22）は ArTag（shape=\"pill\"）を使う。",
   "props": [
    {
     "name": "count",
-    "type": "number",
+    "type": "string | number",
     "required": false,
-    "description": "件数。子（アイコンのボタンなど）の右上に重ねる。子がなければその場に出す。"
+    "description": "件数。子（アイコンのボタンなど）の右上に重ねる。子がなければその場に出す。\n文字（「3/10」など）も渡せる（max・showZero は数のときだけ効く）。"
    },
    {
     "name": "max",
@@ -6122,10 +6360,23 @@
    },
    {
     "name": "tone",
-    "type": "'danger' | 'accent' | 'neutral'",
+    "type": "'danger' | 'accent' | 'neutral' | 'warn'",
     "required": false,
-    "description": "件数・点の色。danger＝赤（重要）、accent＝テーマ色、neutral＝灰色。",
+    "description": "件数・点の色。danger＝赤（お知らせ・やること・メニューの件数。remix は count の赤 #DC2525）、accent＝テーマ色、\nneutral＝灰色、warn＝橙（未保存・未提出の件数）。",
     "default": "\"danger\""
+   },
+   {
+    "name": "variant",
+    "type": "'subtle' | 'solid'",
+    "required": false,
+    "description": "塗り方（1.1）。solid＝色の塗りに白い字（既定）、subtle＝淡い地に濃い字（タブ・表示内容・切り替えの中の件数など、文字の横に並べるとき）。",
+    "default": "\"solid\""
+   },
+   {
+    "name": "ring",
+    "type": "boolean",
+    "required": false,
+    "description": "白い 2px の縁（1.1）。アイコンや写真の上に重ねても読めるようにする。省くと、子に重ねるときは付け、子がない（その場に出す）ときは付けない。"
    },
    {
     "name": "status",
@@ -6143,7 +6394,7 @@
     "name": "label",
     "type": "string",
     "required": false,
-    "description": "読み上げの名前（件数のとき）。省くと「n件」。"
+    "description": "読み上げの名前（件数のとき）。省くと「n件」。\n\"\" にすると読み上げの名前を足さず、丸の中の文字をそのまま読む（タブ・切り替えの中の数など、前後の言葉と一緒に読むとき）。"
    }
   ],
   "emits": [],
@@ -6360,7 +6611,7 @@
    },
    {
     "name": "variant",
-    "type": "'band' | 'outlined' | 'elevated' | 'plain'",
+    "type": "'band' | 'plain' | 'outlined' | 'elevated'",
     "required": false,
     "description": "形。\nband＝ページの大きなまとまり（白・角丸18・影、頭にテーマ色の帯）。\nelevated＝中の小さなまとまり（白・角丸18・影）。\noutlined＝中の小さなまとまり（白・角丸18・線）。\nplain＝中のさらに小さな箱（白・角丸12・線。数字の箱など）。",
     "default": "\"outlined\""
@@ -7083,9 +7334,7 @@
    "canvas",
    "hint",
    "controls",
-   "zoom-out",
-   "zoom-value",
-   "zoom-in",
+   "zoom",
    "fit"
   ],
   "dataAr": "org-chart"
@@ -7537,7 +7786,7 @@
    },
    {
     "name": "variant",
-    "type": "'board' | 'box'",
+    "type": "'box' | 'board'",
     "required": false,
     "description": "形。box＝外枠（角丸12・線）の中に見出しと行（ポップアップ・一覧の表）。\nboard＝外枠なし・見出しは角の丸い淡いテーマ色の帯・行は高め（シフト画面の「勤務メンバー」「勤務可能な人」）。",
     "default": "\"box\""
@@ -7934,8 +8183,8 @@
  },
  {
   "name": "ArTooltip",
-  "version": "1.0.0",
-  "description": "短い説明の吹き出し（濃い ink の吹き出しと矢印）。\n乗せると少し遅れて出て、フォーカスではすぐ出る。Escape で消える。吹き出しへ移る間は消さない。\nアイコンだけのボタンには必ず付ける。説明は基準の要素の aria-describedby で読み上げる。",
+  "version": "1.1.0",
+  "description": "短い説明の吹き出し（濃い ink の吹き出し。remix はシフトの .r-tip の形、classic は antd の Tooltip）。\n乗せると少し遅れて出て、フォーカスではすぐ出る。Escape で消える。吹き出しへ移る間は消さない。\nアイコンだけのボタンには必ず付ける。説明は基準の要素の aria-describedby で読み上げる。",
   "props": [
    {
     "name": "title",
@@ -9404,7 +9653,7 @@
  {
   "name": "ArAppHeader",
   "version": "1.1.0",
-  "description": "PC の画面の頭（2段）。\n1段目：ロゴ（slot）・お知らせとやることのピル（件数の丸。押す・指すと下に一覧）・右端に管理ページ（押すとメニュー）。\n2段目：メニュー（今いるものをテーマ色で塗る。子のメニューは真下に出す）。下端にページのテーマ色の線。項目はすべて props で渡す。\nピルの一覧と子のメニューは、指す・フォーカス・押す・↓ キーで開き、↑↓ Home End で移り、Escape で閉じて元へ戻る。",
+  "description": "PC の画面の頭（2段）。\n1段目：ロゴ（slot）・お知らせとやることのピル（件数の丸。押す・指すと下に一覧）・右端に管理ページ（押すとメニュー）。\n2段目：メニュー（今いるものをテーマ色で塗る。子のメニューは真下に出す）。下端にページのテーマ色の線。項目はすべて props で渡す。\nピルの一覧と子のメニューは、指す・フォーカス・押す・↓ キーで開き、↑↓ Home End で移り、Escape で閉じて元へ戻る。\nピルの一覧（お知らせ・やること）は ArFloat に載せる（Provider の出す先に出し、画面からはみ出さないよう置く。data-ar=\"app-pill-list\"）。",
   "props": [
    {
     "name": "menus",
@@ -10118,8 +10367,8 @@
  },
  {
   "name": "ArFlagGroup",
-  "version": "1.0.0",
-  "description": "ビットの合計の数をチェックの並びで入れる（今の Flag）。\n各項目は ArCheckbox。入れると合計にそのビットを足し、外すと引く（ほかのビットはそのまま残す）。",
+  "version": "1.1.0",
+  "description": "ビットの合計の数をチェックの並びで入れる（今の Flag）。\n各項目は ArCheckbox（1.1：size・variant をそのまま渡す。見た目は ArCheckbox と1つ）。入れると合計にそのビットを足し、外すと引く（ほかのビットはそのまま残す）。",
   "props": [
    {
     "name": "modelValue",
@@ -10152,6 +10401,20 @@
     "required": false,
     "description": "",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "ArChoiceSize",
+    "required": false,
+    "description": "1.1：大きさ（sm・md・lg。ArCheckboxGroup と同じ段）。",
+    "default": "\"md\""
+   },
+   {
+    "name": "variant",
+    "type": "ArChoiceVariant",
+    "required": false,
+    "description": "1.1：形。plain（既定。今の Flag と同じ並び）か card（選ぶカード）。",
+    "default": "\"plain\""
    },
    {
     "name": "label",
@@ -10610,7 +10873,7 @@
  },
  {
   "name": "ArMonthDayInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "月日の入力（年なし）。月と日は数字の欄（全角でも入る）。\n範囲外は受け付けない。月が決まる（2桁・2〜9）と日の欄へ進み、日の欄が空で Backspace を押すと月へ戻る。",
   "props": [
    {
@@ -10625,6 +10888,13 @@
     "required": false,
     "description": "",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
    },
    {
     "name": "disabled",
@@ -11924,9 +12194,6 @@
    "root",
    "toolbar",
    "zoom",
-   "zoom-out",
-   "zoom-value",
-   "zoom-in",
    "layout",
    "patterns",
    "pattern-edit",
@@ -11976,6 +12243,7 @@
    "handle",
    "bar-label",
    "fill-handle",
+   "lock",
    "foot",
    "foot-name",
    "foot-cell",
@@ -12220,8 +12488,6 @@
    "search-icon",
    "search-input",
    "zoom",
-   "zoom-button",
-   "zoom-value",
    "scroll",
    "table",
    "caption",
@@ -12669,7 +12935,7 @@
  },
  {
   "name": "ArYearInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "年の入力。新しい年が上のプルダウン（端末の標準の選択は使わない）。\n和暦を添えられる。数字を打つとその年へ飛ぶ。",
   "props": [
    {
@@ -12721,6 +12987,13 @@
     "default": "false"
    },
    {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
+   },
+   {
     "name": "disabled",
     "type": "boolean",
     "required": false,
@@ -12763,7 +13036,7 @@
  },
  {
   "name": "ArYearMonthInput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "年月の入力。年はプルダウン、月は数字の欄（全角でも入る）。\n1〜12 以外は受け付けない（打った文字を戻す）。2桁、または 2〜9 を打つと確定する。",
   "props": [
    {
@@ -12799,6 +13072,13 @@
     "required": false,
     "description": "",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.1 で足した。",
+    "default": "\"md\""
    },
    {
     "name": "disabled",
@@ -12844,7 +13124,7 @@
  },
  {
   "name": "ArZipInput",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "郵便番号。数字だけを受け付け（全角も読む）、3桁のあとに「-」を自動で入れる。\n7桁そろうと lookup（製品が渡す関数）で住所を引き、見つかれば address を出す。引いている間と見つからないときは右に小さく出す。\n1.1：class・style は外側、ほかの属性（tabindex・aria-*）とイベント（keydown など）は中の入力へ渡す。ref から focus()・select()・input。",
   "props": [
    {
@@ -12865,6 +13145,13 @@
     "required": false,
     "description": "",
     "default": "false"
+   },
+   {
+    "name": "size",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。1.2 で足した。",
+    "default": "\"md\""
    },
    {
     "name": "disabled",

@@ -1,9 +1,9 @@
 /* @covers ArTimePicker 1.0.0 */
 /* ArTimePicker：入力欄は .tin、右に時計のボタン。パネルは .ad-tp（列 56px・高さ196・行28・角丸12）。 */
 [data-ar-design="remix"] [data-ar="time-picker"]{gap:6px}
-[data-ar-design="remix"] [data-ar="time-picker"]>[data-part="trigger"]{width:36px;height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text-muted);transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),color var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="time-picker"][data-size="sm"]>[data-part="trigger"]{width:32px;height:32px}
-[data-ar-design="remix"] [data-ar="time-picker"][data-size="lg"]>[data-part="trigger"]{width:40px;height:40px}
+[data-ar-design="remix"] [data-ar="time-picker"]>[data-part="trigger"]{width:var(--ar-size-control-md);height:var(--ar-size-control-md);border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text-muted);transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="time-picker"][data-size="sm"]>[data-part="trigger"]{width:var(--ar-size-control-sm);height:var(--ar-size-control-sm);border-radius:9px}
+[data-ar-design="remix"] [data-ar="time-picker"][data-size="lg"]>[data-part="trigger"]{width:var(--ar-size-control-lg);height:var(--ar-size-control-lg);border-radius:11px}
 [data-ar-design="remix"] [data-ar="time-picker"]>[data-part="trigger"]:hover:not(:disabled){border-color:var(--ar-color-text-faint);color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="time-picker"]>[data-part="trigger"]:focus-visible,[data-ar-design="remix"] [data-ar="time-picker"][data-state~="open"]>[data-part="trigger"]{outline:0;border-color:var(--ar-accent);color:var(--ar-accent-ink);box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="time-picker"][data-state~="disabled"]>[data-part="trigger"]{background:#F4F6F9;border-color:var(--ar-color-border);color:var(--ar-color-text-faint)}

@@ -17,3 +17,6 @@
 [data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]:hover:not([data-state~="selected"]){background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"][data-state~="selected"]{background:var(--ar-accent-subtle)}
 [data-ar-design="classic"] [data-ar="time-picker-panel"]>[data-part="foot"]{padding:4px 8px;border-top:1px solid rgba(5,5,5,.06)}
+/* 大きさの段（sm・lg）：時刻の箱と同じ antd の small 24・large 40（角丸 4・8） */
+[data-ar-design="classic"] [data-ar="time-picker"][data-size="sm"]>[data-part="trigger"]{width:24px;height:24px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="time-picker"][data-size="lg"]>[data-part="trigger"]{width:40px;height:40px;border-radius:8px}

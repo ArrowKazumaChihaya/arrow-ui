@@ -1,4 +1,4 @@
-/** ArSegmented 1.1 の契約。 */
+/** ArSegmented 1.2 の契約。ArRadioGroup の type="button" も同じ見た目・同じ大きさの段。 */
 import type { ArIconName } from "../icons";
 
 export interface ArSegmentedOption {
@@ -25,7 +25,10 @@ export interface ArSegmentedProps {
   options: readonly (ArSegmentedOption | string)[];
   /** 読み上げ用の名前（「表示モード」など）。 */
   label: string;
-  /** 大きさ。sm 30・md 34・lg 42（外側の高さ）。 */
+  /**
+   * 大きさ（外側の高さ・角丸）。sm 30・9（設定の行・表の上）、md 36・10（ふつう）、lg 42・11（スマホ・年末調整）。
+   * ほかの入力・ボタンと同じ段。1.2：md は 34→36、lg は 42（角丸 11）。
+   */
   size?: "sm" | "md" | "lg";
   /** 親の幅いっぱいに広げ、選択肢を等分する。 */
   block?: boolean;

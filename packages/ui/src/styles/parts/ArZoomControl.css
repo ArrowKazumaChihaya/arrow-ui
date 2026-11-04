@@ -1,0 +1,5 @@
+/* ArZoomControl の構造：− 値 ＋ を横に並べる */
+[data-ar="zoom-control"]{display:inline-flex;align-items:center;flex:none;box-sizing:border-box}
+[data-ar="zoom-control"]>:is([data-part="zoom-out"],[data-part="zoom-in"]){display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;padding:0;border:0;background:none;cursor:pointer;font:inherit;box-sizing:border-box}
+[data-ar="zoom-control"]>:is([data-part="zoom-out"],[data-part="zoom-in"]):disabled{cursor:not-allowed}
+[data-ar="zoom-control"]>[data-part="zoom-value"]{text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}

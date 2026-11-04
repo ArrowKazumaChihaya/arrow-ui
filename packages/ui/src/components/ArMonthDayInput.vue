@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArMonthDayInput 1.0 — 月日の入力（年なし）。月と日は数字の欄（全角でも入る）。
+ * ArMonthDayInput 1.1 — 月日の入力（年なし）。月と日は数字の欄（全角でも入る）。
  * 範囲外は受け付けない。月が決まる（2桁・2〜9）と日の欄へ進み、日の欄が空で Backspace を押すと月へ戻る。
  */
 import { ref, watch } from "vue";
@@ -9,6 +9,7 @@ import type { ArMonthDayInputProps } from "./ArMonthDayInput.contract";
 
 const props = withDefaults(defineProps<ArMonthDayInputProps>(), {
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   id: undefined,
@@ -65,6 +66,7 @@ function onDayKey(e: KeyboardEvent) {
   <span
     data-ar="month-day-input"
     data-part="root"
+    :data-size="size"
     role="group"
     :aria-label="label"
     :data-state="[invalid && 'invalid', disabled && 'disabled'].filter(Boolean).join(' ') || undefined"

@@ -1,4 +1,4 @@
-<!-- 大きさ・アイコン・幅いっぱい・使えない | sm 30・md 34・lg 42。アイコンだけの選択肢は label が読み上げの名前になる。block で等分。 -->
+<!-- 大きさ・アイコン・幅いっぱい・使えない | sm 30・md 36・lg 42。アイコンだけの選択肢は label が読み上げの名前になる。block で等分。 -->
 <script setup lang="ts">
 import { ArSegmented, ArStack } from "@arrow/ui";
 import { ref } from "vue";

@@ -17,7 +17,7 @@
 [data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>*{grid-template-columns:160px minmax(0,1fr);min-width:600px}
 [data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>:is([data-part="row"],[data-part="counts"])>*{height:50px;border-top:1px solid lightgray;box-sizing:border-box;background:#fff}
 [data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]{padding-left:15px;font-size:14px;font-weight:600;line-height:20px}
-[data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"]{position:relative;width:30px;height:30px;margin-right:10px;border-radius:50%;background:#5DB2B7;color:#fff;overflow:visible}
+[data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"]{position:relative;width:30px;height:30px;margin-right:10px;border:0;border-radius:50%;background:#5DB2B7;color:#fff;overflow:visible}
 [data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"]::before{content:"";position:absolute;top:50%;right:-10px;margin-top:-5px;border:5px solid transparent;border-left:7.5px solid #5DB2B7}
 [data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"]>img{border-radius:50%}
 [data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="avatar"]>[data-ar="icon"]{width:16px;height:16px;margin-top:-5px;fill:#fff;stroke:rgb(50,50,50);stroke-width:2px}
@@ -92,3 +92,6 @@
 [data-ar-design="classic"] [data-ar="shift-chart"][data-variant="print"]>[data-part="grid"]>[data-part="row"]>[data-part="name"]>[data-part="name-text"]{display:inline-flex;vertical-align:middle;max-width:100px}
 [data-ar-design="classic"] [data-ar="shift-chart"][data-variant="print"]>[data-part="grid"]>[data-part="foot-axis"]>*{height:40px;vertical-align:top}
 [data-ar-design="classic"] [data-ar="shift-chart"][data-variant="print"]>[data-part="grid"]>[data-part="foot-axis"]>[data-part="axis"]>[data-part="tick"]{height:15px}
+/* 空のときは ArEmpty。今の ARROW は文字だけ（アイコンなし・余白なし）なのでここで保つ */
+[data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="empty"]{padding:0;color:inherit;font-family:inherit}
+[data-ar-design="classic"] [data-ar="shift-chart"]>[data-part="empty"]>[data-part="icon"]{display:none}

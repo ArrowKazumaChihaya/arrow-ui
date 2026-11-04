@@ -25,3 +25,10 @@
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]{gap:1px}
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="label"]{font-size:13px;font-weight:700}
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="description"]{font-size:11px;font-weight:500;line-height:1.4;color:var(--ar-color-text-muted)}
+/* 部品の中の自前のメニュー（ArShiftGrid の右クリック・ArAppHeader の管理ページ）も dropdown-menu と同じ板と項目にする（項目 38・角丸8・13.5px 400・乗せると accent-subtle・削除は danger-ink） */
+[data-ar-design="remix"] :is([data-ar="shift-grid-menu"],[data-ar="app-account-menu"]){padding:6px;border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font-family:var(--ar-font-family);font-size:13.5px;line-height:1.5}
+[data-ar-design="remix"] :is([data-ar="shift-grid-menu"]>[data-part="menu"],[data-ar="app-account-menu"])>[data-part="menu-item"]{gap:10px;height:38px;padding:0 10px;border:0;border-radius:8px;background:none;color:var(--ar-color-text);font-size:13.5px;font-weight:400;text-align:left;outline:0}
+[data-ar-design="remix"] :is([data-ar="shift-grid-menu"]>[data-part="menu"],[data-ar="app-account-menu"])>[data-part="menu-item"]:is(:hover,:focus-visible):not(:disabled){background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] :is([data-ar="shift-grid-menu"]>[data-part="menu"],[data-ar="app-account-menu"])>[data-part="menu-item"]>[data-ar="icon"]{color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"][data-item="delete"]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"][data-item="delete"]>[data-ar="icon"]{color:inherit}

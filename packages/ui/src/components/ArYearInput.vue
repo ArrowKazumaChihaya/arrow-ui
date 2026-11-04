@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArYearInput 1.0 — 年の入力。新しい年が上のプルダウン（端末の標準の選択は使わない）。
+ * ArYearInput 1.1 — 年の入力。新しい年が上のプルダウン（端末の標準の選択は使わない）。
  * 和暦を添えられる。数字を打つとその年へ飛ぶ。
  */
 import { computed } from "vue";
@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<ArYearInputProps>(), {
   allowEmpty: false,
   showUnit: true,
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   id: undefined,
@@ -28,6 +29,7 @@ const years = computed(() => yearList(props.minYear, props.maxYear, props.modelV
   <span
     data-ar="year-input"
     data-part="root"
+    :data-size="size"
     :data-era="era || undefined"
     :data-state="[invalid && 'invalid', disabled && 'disabled'].filter(Boolean).join(' ') || undefined"
   >

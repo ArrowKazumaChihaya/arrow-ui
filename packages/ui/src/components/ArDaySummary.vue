@@ -3,7 +3,9 @@
  * ArDaySummary 1.0 — 日の要約の札の並び（シフト画面の日付の下）。
  * 札は「見出し＋太字の値」。最後に公開の切り替えの札（押すと公開中⇄非公開）を置ける。
  */
+import { ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArHoverTip from "../internal/ArHoverTip.vue";
 import type { ArDaySummaryProps } from "./ArDaySummary.contract";
 
 const props = withDefaults(defineProps<ArDaySummaryProps>(), {
@@ -18,10 +20,11 @@ function toggle() {
   if (props.publishDisabled || props.published === undefined) return;
   emit("update:published", !props.published);
 }
+const rootEl = ref<HTMLElement | null>(null);
 </script>
 
 <template>
-  <div data-ar="day-summary" data-part="root" :data-align="align">
+  <div ref="rootEl" data-ar="day-summary" data-part="root" :data-align="align">
     <span v-for="(it, i) in items" :key="i" data-part="item" :data-tone="it.tone ?? 'neutral'">
       <ArIcon v-if="it.icon" :name="it.icon" data-part="icon" />
       <span data-part="label">{{ it.label }}</span>
@@ -34,11 +37,12 @@ function toggle() {
       :data-state="[published ? 'on' : 'off', publishDisabled && 'disabled'].filter(Boolean).join(' ')"
       :aria-pressed="published ? 'true' : 'false'"
       :disabled="publishDisabled"
-      :title="publishDisabled ? undefined : labels.toggleHint"
+      :data-tip="publishDisabled ? undefined : labels.toggleHint"
       @click="toggle"
     >
       <ArIcon line :name="published ? 'eye' : 'eyeoff'" data-part="icon" />
       <span data-part="label">{{ published ? labels.published : labels.unpublished }}</span>
     </button>
+    <ArHoverTip :root="rootEl" />
   </div>
 </template>

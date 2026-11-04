@@ -1,10 +1,11 @@
 <script setup lang="ts">
 /**
- * ArSegmented 1.0 — 2〜4つの表示の切り替え（セグメント）。
+ * ArSegmented 1.2 — 2〜4つの表示の切り替え（セグメント）。ArRadioGroup の type="button" も同じ見た目（CSS は1つ）。大きさは sm 30・md 36・lg 42（ほかの入力と同じ段）。
  * radiogroup として読み上げ、←→（↑↓）で選び直す。選んでいるものだけ Tab で止まる。
  */
 import { computed, nextTick, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArBadge from "./ArBadge.vue";
 import type { ArSegmentedOption, ArSegmentedProps } from "./ArSegmented.contract";
 
 const props = withDefaults(defineProps<ArSegmentedProps>(), { size: "md", block: false, disabled: false });
@@ -77,7 +78,14 @@ function onKeydown(e: KeyboardEvent, i: number) {
     >
       <ArIcon v-if="o.icon" :name="o.icon" data-part="icon" size="sm" />
       <span v-if="!o.iconOnly" data-part="label">{{ o.label }}</span>
-      <span v-if="o.count && !o.iconOnly" data-part="count" :data-tone="o.countTone && o.countTone !== 'accent' ? o.countTone : undefined">{{ o.count }}</span>
+      <ArBadge
+        v-if="o.count && !o.iconOnly"
+        data-part="count"
+        :count="o.count"
+        :tone="o.countTone ?? 'accent'"
+        :variant="o.countTone && o.countTone !== 'accent' ? 'subtle' : 'solid'"
+        label=""
+      />
     </button>
   </div>
 </template>

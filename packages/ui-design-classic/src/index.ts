@@ -88,6 +88,8 @@ export const classicDesign = defineDesign({
   forms: {
     ArTimeInput: { fields: "split", dayToggle: "link" }, // 時と分が別々の箱と「:」、前日は「当／前」の文字のリンク（今の ui-Time）
     ArSelect: { search: "off" }, // 今の Select はプルダウンに探す欄がない
+    ArRadioGroup: { variant: "plain" }, // 今の RadioGroup は antd の Radio を並べただけ（カードの形は variant="card" と書いた所だけ。今の年調の なし／あり の箱）
+    ArCheckboxGroup: { variant: "plain" }, // 今の Flag（Check を並べただけ）
     ArDateInput: { invalidDate: "message", pad: "zero", yearEmpty: "option", yearOrder: "desc" }, // 今の Dates：ありえない日は「無効な日付」、月日は2桁、年は新しい順で先頭に「未選択」
     ArUpload: { trigger: "button" }, // 今の Upload は「ファイルを選択」のボタンと、その下のファイル名（置き場はない）
     ArColorPicker: { panel: "dialog", palette: "arrow" }, // 今の Colorpicker は真ん中のダイアログ「色選択」で選ぶ。色は 12色×濃さ4段（縦に4色ずつ）
@@ -113,6 +115,7 @@ export const classicDesign = defineDesign({
     ArShiftChart: { counts: "spans", bar: "icon", avatar: "balloon", axis: "number", summary: "count", legend: "editing" }, // 今のシフトチャート（Calendar/Chart/Daily.vue）：必要人数・不足人数の帯の行、バーの真ん中に人の絵、吹き出しの丸、下に「9」「10」…、右下に「当店舗のシフト人数」
     ArShiftGrid: { head: "button", fit: "scale", cell: "fill", tip: "section", hint: "text", summary: "paren" }, // 今のテーブルタブ（Weekly・Monthly）：1段目は日付だけ・2段目に「名前」とシフトチャートのボタン、週と月は枠の幅まで縮める、マスはパターン色の塗り、吹き出しは見出しの下に時刻、「コピー: ⌘+C」の文字
     ArShiftViewTable: { chip: "labeled", time: "padded", dayHead: "inline", summary: "days", fill: "fixed", columnWidth: "136", nameWidth: "136" }, // 今の閲覧タブ：灰色の札の右上に店舗名・「シフト」・「09:00〜18:00」、見出しは「16 (金)」、名前の下は「勤務 n日」、列は 136px ちょうど
+    ArTooltip: { cellTip: "title" }, // シフトのチャート・閲覧の表・カレンダーの帯やマスの説明は、今の ARROW どおりブラウザの title（OS の吹き出し）
   },
   icons: classicIcons, // 今の ARROW の塗りの絵（public/icons）。ここに無い名前は線のアイコン
   styles: () => import("@arrow/ui-design-classic/styles.css"),

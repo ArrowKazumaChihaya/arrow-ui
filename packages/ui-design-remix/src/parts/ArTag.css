@@ -19,8 +19,8 @@
 /* 小さな札（カレンダーのマス）：10px・高さ16・角丸5 */
 [data-ar-design="remix"] [data-ar="tag"][data-size="xs"]{height:16px;padding:0 4px;border-radius:5px;font-size:10px;font-weight:700;box-shadow:none}
 [data-ar-design="remix"] [data-ar="tag"][data-size="xs"]>[data-part="icon"]{width:11px;height:11px}
-[data-ar-design="remix"] [data-ar="tag"][data-size="xs"][data-tone="danger"]{background:#FDECEA;color:#B4231C}
-[data-ar-design="remix"] [data-ar="tag"][data-size="xs"][data-tone="ok"]{background:#E3F4EA;color:#1E7A4C}
+[data-ar-design="remix"] [data-ar="tag"][data-size="xs"][data-tone="danger"]{background:var(--ar-remix-short-subtle);color:var(--ar-remix-short)}
+[data-ar-design="remix"] [data-ar="tag"][data-size="xs"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:#1E7A4C}
 
 /* 外す × */
 [data-ar-design="remix"] [data-ar="tag"]>[data-part="close"]{width:15px;height:15px;margin-right:-2px;color:inherit;opacity:.6;border-radius:4px}

@@ -4,9 +4,14 @@
  * 1段目：ロゴ（slot）・お知らせとやることのピル（件数の丸。押す・指すと下に一覧）・右端に管理ページ（押すとメニュー）。
  * 2段目：メニュー（今いるものをテーマ色で塗る。子のメニューは真下に出す）。下端にページのテーマ色の線。項目はすべて props で渡す。
  * ピルの一覧と子のメニューは、指す・フォーカス・押す・↓ キーで開き、↑↓ Home End で移り、Escape で閉じて元へ戻る。
+ * ピルの一覧（お知らせ・やること）は ArFloat に載せる（Provider の出す先に出し、画面からはみ出さないよう置く。data-ar="app-pill-list"）。
  */
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArBadge from "./ArBadge.vue";
+import ArAvatar from "./ArAvatar.vue";
+import ArButton from "./ArButton.vue";
+import ArEmpty from "./ArEmpty.vue";
 import ArFloat from "../internal/ArFloat.vue";
 import { useId } from "../provider/context";
 import type { ArAppHeaderPill, ArAppHeaderProps, ArAppNavItem } from "./ArAppHeader.contract";
@@ -183,7 +188,7 @@ function onSubClick(c: ArAppNavItem, e: MouseEvent) {
 /** 押して出したままの一覧は、外を押すと閉じる。 */
 function onDocPointer(e: PointerEvent) {
   if (!open.value || !pinned.value) return;
-  if (rootEl.value?.contains(e.target as Node)) return;
+  if (rootEl.value?.contains(e.target as Node) || listEl.value?.contains(e.target as Node)) return;
   hide(false);
 }
 onMounted(() => document.addEventListener("pointerdown", onDocPointer, true));
@@ -197,7 +202,6 @@ const accountBtn = ref<HTMLButtonElement | null>(null);
 const menuOpen = ref(false);
 const active = ref(0);
 const hasMenu = computed(() => !!props.accountMenu?.length);
-const countText = (n: number) => (n > 99 ? "99+" : String(n));
 
 function onAccount() {
   if (!hasMenu.value) return emit("account", "");
@@ -268,15 +272,24 @@ function onMenuKey(e: KeyboardEvent) {
       >
         <ArIcon v-if="p.icon" :name="p.icon" size="sm" data-part="pill-icon" :data-icon="p.icon" />
         <span data-part="pill-label">{{ p.label }}</span>
-        <span v-if="p.count" data-part="count"><span aria-hidden="true">{{ countText(p.count) }}</span><span data-ar-visually-hidden>{{ p.count }}{{ labels.count }}</span></span>
+        <ArBadge v-if="p.count" data-part="count" :count="p.count" :label="`${p.count}${labels.count}`" />
       </button>
+      <ArFloat
+        :open="!!openPill && hasList(openPill)"
+        :anchor="openPill ? (pillEls.get(openPill.key) ?? null) : null"
+        placement="bottom-start"
+        :offset="0"
+        match-width
+        :close-on-outside="false"
+        ar="app-pill-list"
+        @close="(r) => hide(r === 'escape')"
+      >
       <div
         v-if="openPill && hasList(openPill)"
         :id="`${uid}-list`"
         ref="listEl"
         data-part="pill-list"
         :data-tone="openPill.tone ?? 'notice'"
-        :style="openStyle"
         role="group"
         :aria-label="openPill.label"
         @pointerenter="keep"
@@ -288,21 +301,21 @@ function onMenuKey(e: KeyboardEvent) {
         <ul v-if="openPill.items?.length" data-part="pill-rows">
           <li v-for="it in openPill.items" :key="it.key" data-part="pill-row" :data-deletable="it.deletable || undefined">
             <button type="button" data-part="pill-item" @click="emit('pill-item', openPill.key, it.key)">{{ it.label }}</button>
-            <button
+            <ArButton
               v-if="it.deletable"
-              type="button"
               data-part="pill-delete"
-              :aria-label="`${L.delete}：${it.label}`"
-              :title="L.delete"
+              tone="muted"
+              icon="x"
+              size="sm"
+              :label="`${L.delete}：${it.label}`"
               @click="onDelete(openPill.key, it.key)"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
+            />
           </li>
         </ul>
-        <p v-else-if="openPill.emptyText" data-part="pill-empty">{{ openPill.emptyText }}</p>
+        <ArEmpty v-else-if="openPill.emptyText" data-part="pill-empty" size="sm" icon="inbox" :text="openPill.emptyText" />
         <button v-if="(openPill.hiddenCount ?? 0) > 0" type="button" data-part="pill-restore" @click="emit('pill-restore', openPill.key)">{{ L.restore }}</button>
       </div>
+      </ArFloat>
       <div v-if="$slots.top" data-part="top-extra"><slot name="top" /></div>
       <button
         v-if="account"
@@ -316,7 +329,7 @@ function onMenuKey(e: KeyboardEvent) {
         @click="onAccount"
         @keydown="onAccountKey"
       >
-        <span v-if="account.initial" data-part="avatar" aria-hidden="true">{{ account.initial }}</span>
+        <ArAvatar v-if="account.initial" data-part="avatar" size="sm" tone="neutral" :text="account.initial" />
         <ArIcon line name="bld" data-part="account-icon" />
         <span data-part="account-label">{{ account.label }}</span>
         <ArIcon line v-if="hasMenu" name="cd" size="sm" data-part="account-arrow" />

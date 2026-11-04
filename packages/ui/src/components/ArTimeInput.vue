@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArTimeInput 1.0 — 時刻の入力。ARROW の時刻はこれを使う（パネルで選ぶ ArTimePicker は補助）。
+ * ArTimeInput 1.1 — 時刻の入力。ARROW の時刻はこれを使う（パネルで選ぶ ArTimePicker は補助）。
  * - 形はデザインが選ぶ（fields）：1つの箱に「09:30」と打つ（single）／時と分が別々の箱を「:」でつなぐ（split＝今の ARROW）。
  * - キー入力が基本：single は「930」「9:30」「０９３０」が 09:30。↑↓で step 分ずつ動く。
  * - dayShift なら［当日⇄前日］の切り替え（形はデザインが選ぶ：枠と一体のボタン／1文字のリンク「当」「前」）。Tab では止まらない。
@@ -312,7 +312,7 @@ const fieldName = (part: string) => (props.label ? `${props.label}の${part}` : 
         null-option="未選択"
         :searchable="false"
         placeholder=""
-        size="sm"
+        :size="size"
         :disabled="disabled"
         :invalid="invalid"
         :label="fieldName(L.hour)"
@@ -326,7 +326,7 @@ const fieldName = (part: string) => (props.label ? `${props.label}の${part}` : 
         null-option="未選択"
         :searchable="false"
         placeholder=""
-        size="sm"
+        :size="size"
         :disabled="disabled"
         :invalid="invalid"
         :label="fieldName(L.minute)"

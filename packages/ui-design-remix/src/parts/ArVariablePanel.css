@@ -16,7 +16,7 @@
 [data-ar-design="remix"] [data-ar="variable-panel"][data-layout="list"]>[data-part="body"]>[data-part="group"]>[data-part="item"]>[data-ar="icon"]{width:15px;height:15px;color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="variable-panel"][data-layout="list"]>[data-part="body"]>[data-part="group"]>[data-part="item"]:hover{background:var(--ar-accent-faint)}
 [data-ar-design="remix"] [data-ar="variable-panel"][data-layout="list"]>[data-part="body"]>[data-part="group"]>[data-part="item"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:-2px}
-[data-ar-design="remix"] [data-ar="variable-panel"]>[data-part="body"]>[data-part="empty"]{padding:20px 12px;font-size:12.5px;color:var(--ar-color-text-muted);text-align:center}
+/* 探して無いときは ArEmpty（sm：探すアイコン・12.5px muted） */
 /* chips（差し込み項目） */
 [data-ar-design="remix"] [data-ar="variable-panel"][data-layout="chips"]{gap:8px;padding:10px 12px;background:var(--ar-accent-faint)}
 [data-ar-design="remix"] [data-ar="variable-panel"][data-layout="chips"]>[data-part="head"]{gap:8px}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArDatePicker 1.0 — カレンダーから日付を選ぶ。入力欄は ArDateInput と同じ（年はプルダウン、月日は数字）で、
+ * ArDatePicker 1.1 — カレンダーから日付を選ぶ。入力欄は ArDateInput と同じ（年はプルダウン、月日は数字）で、
  * 右のカレンダーのボタンでパネルを開く。ARROW では日付は ArDateInput が基本で、カレンダーから選ぶときだけこれを使う。
  * パネル：月の切り替え・土日の色・今日は線・選んだ日は塗り・「今日」「決める」。range なら間は淡いテーマ色。
  */
@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<ArDatePickerProps>(), {
   confirm: true,
   showDays: true,
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   labels: () => ({
@@ -146,6 +147,7 @@ function setRange(key: "start" | "end", v: string | null) {
     ref="root"
     data-ar="date-picker"
     data-part="root"
+    :data-size="size"
     :data-range="range || undefined"
     :data-state="[bad && 'invalid', disabled && 'disabled', open && 'open'].filter(Boolean).join(' ') || undefined"
     role="group"
@@ -158,6 +160,7 @@ function setRange(key: "start" | "end", v: string | null) {
           :model-value="rangeValue.start"
           :invalid="bad"
           :disabled="disabled"
+          :size="size"
           :label="`${label ?? ''}始まり`"
           @update:model-value="(v) => setRange('start', v)"
         />
@@ -167,6 +170,7 @@ function setRange(key: "start" | "end", v: string | null) {
           :model-value="rangeValue.end"
           :invalid="bad"
           :disabled="disabled"
+          :size="size"
           :label="`${label ?? ''}終わり`"
           @update:model-value="(v) => setRange('end', v)"
         />
@@ -177,6 +181,7 @@ function setRange(key: "start" | "end", v: string | null) {
         :model-value="single"
         :invalid="invalid"
         :disabled="disabled"
+        :size="size"
         :label="label"
         @update:model-value="(v) => emit('update:modelValue', v)"
       />

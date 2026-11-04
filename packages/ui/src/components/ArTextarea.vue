@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArTextarea 1.0 — 複数行の文字の入力（備考・メモ）。
+ * ArTextarea 1.1 — 複数行の文字の入力（備考・メモ）。
  * 枠は 1行の入力と同じ（角丸10・枠 field・フォーカスはテーマ色の枠と淡い輪）。行の高さ1.6。
  * autosize で中身に合わせて高さを変え、show-count で右下に文字数を出す。
  * class と style 以外の属性（aria-describedby など）は中の textarea に渡す。
@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<ArTextareaProps>(), {
   resize: "vertical",
   invalid: false,
   warning: false,
+  size: "md",
   disabled: false,
   readonly: false,
   label: undefined,
@@ -83,6 +84,7 @@ defineExpose({ focus: () => el.value?.focus(), blur: () => el.value?.blur(), tex
     v-bind="rootAttrs"
     data-ar="textarea"
     data-part="root"
+    :data-size="size"
     :data-variant="variant"
     :data-resize="auto ? 'none' : resize"
     :data-state="

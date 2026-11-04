@@ -6,9 +6,9 @@
 [data-ar-design="remix"] [data-ar="tour"][data-part="overlay"]:not([data-mask])>[data-part="spot"][data-target="none"]{box-shadow:none}
 [data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]{width:250px;max-width:calc(100vw - 16px);padding:12px 14px;border-radius:14px;background:#fff;color:var(--ar-color-text);box-shadow:var(--ar-shadow-pop);font-size:13px;line-height:1.5;animation:ar-tour-in .16s ease-out}
 [data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="title"]{margin-bottom:4px;font-size:14px;font-weight:700}
-[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]{top:8px;right:8px;width:24px;height:24px;border:0;border-radius:6px;background:none;color:var(--ar-color-text-muted)}
-[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]:hover{background:#F2F5F8;color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]+[data-part="title"]{padding-right:22px}
+/* 閉じる × は ArButton（tone="muted"・アイコンだけ・sm＝30。前の 24 より押しやすい） */
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]{top:5px;right:5px}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]+[data-part="title"]{padding-right:28px}
 [data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{gap:6px;margin-top:10px}
 [data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]{gap:6px}
 [data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="footer"]>[data-part="dots"]>[data-part="dot"]{width:6px;height:6px;border-radius:50%;background:var(--ar-color-border);transition:width .2s,background .2s}

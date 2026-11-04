@@ -4,6 +4,7 @@
  * collapsible なら見出しの部分がボタンになり、押すと下の中身を開け閉めする（aria-expanded）。
  */
 import ArIcon from "./ArIcon.vue";
+import ArTag from "./ArTag.vue";
 import type { ArSectionHeadProps } from "./ArSectionHead.contract";
 
 const props = withDefaults(defineProps<ArSectionHeadProps>(), {
@@ -29,7 +30,7 @@ const emit = defineEmits<{ "update:open": [open: boolean] }>();
     >
       <span v-if="icon" data-part="icon" aria-hidden="true"><ArIcon :name="icon" size="sm" /></span>
       <component :is="`h${headingLevel}`" data-part="title">{{ title }}</component>
-      <span v-if="count !== undefined" data-part="count">{{ count }}</span>
+      <ArTag v-if="count !== undefined" data-part="count" shape="pill" tone="accent" count>{{ count }}</ArTag>
       <ArIcon line v-if="collapsible" name="cd" size="sm" data-part="caret" />
     </component>
     <div v-if="$slots.actions" data-part="actions"><slot name="actions" /></div>

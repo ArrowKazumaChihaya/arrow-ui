@@ -1,6 +1,7 @@
-/* @covers ArTimeInput 1.0.0, ArTimeRange 1.0.0 */
-/* ArTimeInput：.tin（高さ36・角丸9・枠 field・600 14px）。［当日］は #F1F4F7 の 700 11px、［前日］は橙。sm 32・lg 40。 */
-[data-ar-design="remix"] [data-ar="time-input"]{height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+/* @covers ArTimeInput 1.1.0, ArTimeRange 1.0.0 */
+/* ArTimeInput：.tin（枠 field・600 14px）。［当日］は #F1F4F7 の 700 11px、［前日］は橙。
+   大きさの段はほかの入力と同じ sm 30／md 36／lg 42・角丸 9／10／11（デザインシステムの .tin は 32／36／40・角丸9 だが、横に並べてそろえるため段に合わせた）。文字は .tin どおり 13／14／15px。 */
+[data-ar-design="remix"] [data-ar="time-input"]{height:var(--ar-size-control-md);border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="time-input"]:hover:not([data-state~="disabled"]):not(:focus-within):not([data-state~="invalid"]):not([data-state~="prev"]):not([data-state~="note"]){border-color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="time-input"]:focus-within{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="time-input"]>[data-part="input"]{width:58px;padding:0 6px;text-align:center;font:600 14px var(--ar-font-family-numeric);color:var(--ar-color-text);box-sizing:border-box}
@@ -19,10 +20,10 @@
 [data-ar-design="remix"] [data-ar="time-input"][data-state~="note"]{border-style:dashed;background:#fff}
 [data-ar-design="remix"] [data-ar="time-input"]>[data-part="note"]{padding:0 8px;font-size:11.5px;font-weight:700;color:var(--ar-color-text-muted)}
 /* 大きさ */
-[data-ar-design="remix"] [data-ar="time-input"][data-size="sm"]{height:32px}
+[data-ar-design="remix"] [data-ar="time-input"][data-size="sm"]{height:var(--ar-size-control-sm);border-radius:9px}
 [data-ar-design="remix"] [data-ar="time-input"][data-size="sm"]>[data-part="input"]{width:54px;font-size:13px}
 [data-ar-design="remix"] [data-ar="time-input"][data-size="sm"]>[data-part="day-toggle"]{padding:0 6px;font-size:10.5px}
-[data-ar-design="remix"] [data-ar="time-input"][data-size="lg"]{height:40px}
+[data-ar-design="remix"] [data-ar="time-input"][data-size="lg"]{height:var(--ar-size-control-lg);border-radius:11px}
 [data-ar-design="remix"] [data-ar="time-input"][data-size="lg"]>[data-part="input"]{font-size:15px}
 [data-ar-design="remix"] [data-ar="time-input"][data-block]>[data-part="input"]{width:auto}
 /* ArTimeRange：.trng（間 6px、〜 は mute-3 13px）。間違いは .derr。 */

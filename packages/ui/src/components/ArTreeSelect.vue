@@ -7,6 +7,7 @@
  */
 import { computed, nextTick, ref, watch } from "vue";
 import ArButton from "./ArButton.vue";
+import ArCheckbox from "./ArCheckbox.vue";
 import ArIcon from "./ArIcon.vue";
 import ArTextInput from "./ArTextInput.vue";
 import ArFloat from "../internal/ArFloat.vue";
@@ -412,10 +413,14 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
         <span data-part="switch" :data-open="r.isOpen || undefined" @click.stop="r.hasChildren && setExpanded(r.node.value, !r.isOpen)">
           <ArIcon line v-if="r.hasChildren" :name="r.isOpen ? 'cd' : 'cr'" size="sm" />
         </span>
-        <span v-if="multiple" data-part="check" :data-state="checkState(r.node)" aria-hidden="true">
-          <ArIcon line v-if="checkState(r.node) === 'on'" name="check" size="sm" />
-          <span v-else-if="checkState(r.node) === 'mixed'" data-part="dash" />
-        </span>
+        <ArCheckbox
+          v-if="multiple"
+          decorative
+          data-part="check"
+          :model-value="checkState(r.node) === 'on'"
+          :indeterminate="checkState(r.node) === 'mixed'"
+          :disabled="r.node.disabled"
+        />
         <span data-part="node-label"
           ><template v-for="(p, k) in splitMatch(r.node.label, query)" :key="k"
             ><mark v-if="p.match" data-part="match">{{ p.text }}</mark
@@ -428,11 +433,15 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       </div>
     </div>
     <div v-if="hasInclude || actions.length" data-part="footer">
-      <label v-if="hasInclude" data-part="include" :data-state="includeChildren ? 'on' : undefined">
-        <input :id="includeId" type="checkbox" :checked="includeChildren" @change="toggleInclude" @keydown.escape="close()" />
-        <span data-part="include-box" aria-hidden="true"><ArIcon v-if="includeChildren" line name="check" size="sm" /></span>
-        <span data-part="include-label">{{ includeChildrenLabel }}</span>
-      </label>
+      <ArCheckbox
+        v-if="hasInclude"
+        :id="includeId"
+        data-part="include"
+        :model-value="!!includeChildren"
+        @update:model-value="toggleInclude"
+        @keydown.escape="close()"
+        >{{ includeChildrenLabel }}</ArCheckbox
+      >
       <div v-for="a in actions" :key="a.value" data-part="action">
         <ArButton tone="primary" block :icon="a.icon" @click="runAction(a.value)">{{ a.label }}</ArButton>
       </div>

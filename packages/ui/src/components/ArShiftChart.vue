@@ -6,10 +6,13 @@
  * データは製品の形（0:00 からの分）で受け取り、変えた結果はイベントで返す（保存は製品）。
  */
 import { computed, ref, shallowRef } from "vue";
+import ArAvatar from "./ArAvatar.vue";
 import ArButton from "./ArButton.vue";
+import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
 import ArSelect from "./ArSelect.vue";
 import ArSwitch from "./ArSwitch.vue";
+import ArHoverTip from "../internal/ArHoverTip.vue";
 import { arAvatarToneOf } from "./avatar";
 import { useDesignForm, useId } from "../provider/context";
 import {
@@ -139,6 +142,8 @@ const avatarForm = useDesignForm<"initial" | "balloon">("ArShiftChart", "avatar"
 const axisForm = useDesignForm<"hour" | "number">("ArShiftChart", "axis", "hour");
 const summaryForm = useDesignForm<"status" | "count">("ArShiftChart", "summary", "status");
 const legendForm = useDesignForm<"always" | "editing">("ArShiftChart", "legend", "always");
+/** 帯・マス・打刻の吹き出し（ArHoverTip：ArTooltip と同じ吹き出しを1つだけ動かす。押している間は出さない）。 */
+const chartEl = ref<HTMLElement | null>(null);
 
 const uid = useId("ar-shift-chart");
 const isPrint = computed(() => props.variant === "print");
@@ -506,6 +511,7 @@ const keysId = `${uid}-keys`;
 
 <template>
   <div
+    ref="chartEl"
     data-ar="shift-chart"
     data-part="root"
     :data-variant="variant"
@@ -551,11 +557,7 @@ const keysId = `${uid}-keys`;
       <div v-for="v in view" :key="v.r.key" data-part="row" role="group" :aria-label="v.aria" :data-state="[v.dragging && 'drag', !v.editable && interactive && 'locked'].filter(Boolean).join(' ') || undefined">
         <div data-part="name">
           <slot name="name" :row="v.r">
-            <span data-part="avatar" :data-tone="v.tone" aria-hidden="true">
-              <img v-if="v.r.image" :src="v.r.image" alt="" />
-              <ArIcon v-else-if="avatarForm === 'balloon'" name="user" />
-              <template v-else>{{ v.initial }}</template>
-            </span>
+            <ArAvatar data-part="avatar" size="sm" :tone="v.tone" :src="v.r.image" :icon="avatarForm === 'balloon' ? 'user' : undefined" :text="v.initial" />
             <span data-part="name-text">
               <b data-part="name-main">{{ v.r.name }}</b>
               <small data-part="name-sub">{{ v.sub }}</small>
@@ -568,20 +570,20 @@ const keysId = `${uid}-keys`;
           :tabindex="v.add ? 0 : undefined"
           :role="v.add ? 'button' : undefined"
           :aria-label="v.add ? L.addRow.replace('{name}', v.r.name) : undefined"
-          :title="v.add ? L.addTip : undefined"
+          :data-tip="v.add ? L.addTip : undefined"
           @pointerdown="downTrack($event, v.r)"
           @keydown="keyTrack($event, v.r)"
           @focusout="focusOut"
         >
           <span v-if="v.r.leave" data-part="leave">{{ v.r.leave }}</span>
-          <span v-for="(o, i) in v.others" :key="`o${i}`" data-part="other" :style="o.style" :title="o.tip">{{ o.text }}</span>
+          <span v-for="(o, i) in v.others" :key="`o${i}`" data-part="other" :style="o.style" :data-tip="o.tip">{{ o.text }}</span>
           <span
             v-for="(a, i) in v.available"
             :key="`a${i}`"
             data-part="available"
             :data-state="v.add ? 'on' : undefined"
             :style="a.style"
-            :title="a.tip"
+            :data-tip="a.tip"
             :tabindex="v.add ? 0 : undefined"
             :role="v.add ? 'button' : undefined"
             :aria-label="v.add ? `${v.r.name} ${a.tip}` : undefined"
@@ -594,7 +596,7 @@ const keysId = `${uid}-keys`;
               data-part="bar"
               :data-state="[!v.r.color && 'plain', v.editable && 'editable'].filter(Boolean).join(' ') || undefined"
               :style="b.style"
-              :title="drag.state.value ? undefined : b.tip"
+              :data-tip="b.tip"
               :tabindex="v.editable ? 0 : undefined"
               :role="v.editable ? 'button' : 'img'"
               :aria-label="b.aria"
@@ -612,7 +614,7 @@ const keysId = `${uid}-keys`;
               v-if="k.visible"
               data-part="break"
               :style="k.style"
-              :title="drag.state.value ? undefined : k.text"
+              :data-tip="k.text"
               :tabindex="v.editable ? 0 : undefined"
               :role="v.editable ? 'button' : 'img'"
               :aria-label="k.aria"
@@ -628,12 +630,12 @@ const keysId = `${uid}-keys`;
           </template>
           <template v-if="v.editable">
             <template v-for="b in v.bars" :key="`h${b.i}`">
-              <span v-if="b.visible" data-part="handle" data-side="start" :style="{ left: b.startLeft }" :title="L.startHandle" aria-hidden="true" @pointerdown="downOp($event, v.r, { kind: 'start', index: b.i })"><i /></span>
-              <span v-if="b.visible" data-part="handle" data-side="end" :style="{ left: b.endLeft }" :title="L.endHandle" aria-hidden="true" @pointerdown="downOp($event, v.r, { kind: 'end', index: b.i })"><i /></span>
+              <span v-if="b.visible" data-part="handle" data-side="start" :style="{ left: b.startLeft }" :data-tip="L.startHandle" aria-hidden="true" @pointerdown="downOp($event, v.r, { kind: 'start', index: b.i })"><i /></span>
+              <span v-if="b.visible" data-part="handle" data-side="end" :style="{ left: b.endLeft }" :data-tip="L.endHandle" aria-hidden="true" @pointerdown="downOp($event, v.r, { kind: 'end', index: b.i })"><i /></span>
             </template>
           </template>
           <span v-if="v.draft" data-part="draft" :style="place(v.draft)" aria-hidden="true"><span data-part="bar-text">{{ clock(v.draft.start) }}–{{ clock(v.draft.end) }}</span></span>
-          <span v-for="(p, i) in v.punches" :key="`p${i}`" data-part="punch" :data-state="p.open ? 'open' : undefined" :style="p.style" :title="p.tip" />
+          <span v-for="(p, i) in v.punches" :key="`p${i}`" data-part="punch" :data-state="p.open ? 'open' : undefined" :style="p.style" :data-tip="p.tip" />
         </div>
       </div>
 
@@ -641,7 +643,7 @@ const keysId = `${uid}-keys`;
         <div v-if="countRow" data-part="counts" data-kind="count">
           <div data-part="count-name">{{ L.count }}<small v-if="needs.length">{{ L.countSub }}</small></div>
           <div data-part="count-track">
-            <span v-for="c in hourCells" :key="c.start" data-part="cell" :data-tone="c.short ? 'short' : 'ok'" :style="c.style" :title="c.tip" :aria-label="c.tip">
+            <span v-for="c in hourCells" :key="c.start" data-part="cell" :data-tone="c.short ? 'short' : 'ok'" :style="c.style" :data-tip="c.tip" :aria-label="c.tip">
               <b>{{ c.count }}</b><i v-if="needs.length">{{ c.need || "—" }}</i>
             </span>
           </div>
@@ -650,7 +652,7 @@ const keysId = `${uid}-keys`;
           <div data-part="count-name">{{ L.short }}</div>
           <div data-part="count-track">
             <template v-for="c in hourCells" :key="c.start">
-              <span v-if="c.short" data-part="cell" data-tone="short" :style="c.style" :title="c.tip">{{ L.people.replace("{n}", String(c.short)) }}</span>
+              <span v-if="c.short" data-part="cell" data-tone="short" :style="c.style" :data-tip="c.tip">{{ L.people.replace("{n}", String(c.short)) }}</span>
             </template>
           </div>
         </div>
@@ -659,19 +661,19 @@ const keysId = `${uid}-keys`;
         <div v-if="countRow" data-part="counts" data-kind="count">
           <div data-part="count-name">{{ L.count }}</div>
           <div data-part="count-track">
-            <span v-for="c in hourCells" :key="c.start" data-part="cell" :style="c.plainStyle" :title="c.tip">{{ c.count }}</span>
+            <span v-for="c in hourCells" :key="c.start" data-part="cell" :style="c.plainStyle" :data-tip="c.tip">{{ c.count }}</span>
           </div>
         </div>
         <div v-if="needs.length" data-part="counts" data-kind="need">
           <div data-part="count-name">{{ L.need }}</div>
           <div data-part="count-track">
-            <span v-for="(c, i) in needSpans" :key="i" data-part="span" :data-join="c.join || undefined" :style="c.style" :title="`${clock(c.s.start)}〜${clock(c.s.end)} ${L.people.replace('{n}', String(c.s.count))}`"><span>{{ c.text }}</span></span>
+            <span v-for="(c, i) in needSpans" :key="i" data-part="span" :data-join="c.join || undefined" :style="c.style" :data-tip="`${clock(c.s.start)}〜${clock(c.s.end)} ${L.people.replace('{n}', String(c.s.count))}`"><span>{{ c.text }}</span></span>
           </div>
         </div>
         <div v-if="shortRow && hasShort" data-part="counts" data-kind="short">
           <div data-part="count-name">{{ L.short }}</div>
           <div data-part="count-track">
-            <span v-for="(c, i) in shortSpanCells" :key="i" data-part="span" :data-join="c.join || undefined" :style="c.style" :title="`${clock(c.s.start)}〜${clock(c.s.end)} ${L.people.replace('{n}', String(c.s.count))}`"><span>{{ c.text }}</span></span>
+            <span v-for="(c, i) in shortSpanCells" :key="i" data-part="span" :data-join="c.join || undefined" :style="c.style" :data-tip="`${clock(c.s.start)}〜${clock(c.s.end)} ${L.people.replace('{n}', String(c.s.count))}`"><span>{{ c.text }}</span></span>
           </div>
         </div>
       </template>
@@ -683,7 +685,7 @@ const keysId = `${uid}-keys`;
         </div>
       </div>
     </div>
-    <p v-else data-part="empty">{{ emptyText ?? L.empty }}</p>
+    <ArEmpty v-else data-part="empty" size="sm" icon="cal" :text="emptyText ?? L.empty" />
 
     <div v-if="showLegendItems || hintText || $slots.options" data-part="legend">
       <slot name="options" />
@@ -710,5 +712,6 @@ const keysId = `${uid}-keys`;
 
     <span :id="keysId" data-ar-visually-hidden>{{ L.keys }}</span>
     <span data-part="live" data-ar-visually-hidden aria-live="polite">{{ live }}</span>
+    <ArHoverTip :root="chartEl" :disabled="!!drag.state.value" />
   </div>
 </template>

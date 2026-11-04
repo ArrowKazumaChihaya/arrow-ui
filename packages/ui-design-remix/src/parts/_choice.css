@@ -1,0 +1,71 @@
+/* 選ぶ部品の共通（ここだけに書く）：ラジオの丸（.radio）・チェックの四角（.chk）・選ぶカード（年末調整の なし／あり .rcard）・大きさの段。
+   ArRadio・ArRadioGroup（各選択肢は ArRadio）・ArChoiceCard の variant="radio"（ArRadio の card）・ArCheckbox・ArCheckboxGroup・ArFlagGroup が使う。
+   段（sm・md・lg）の値は、設定のキャンバス（.cf-op：丸18・13.5px・行32・間8、並びは 8px 20px／縦6）と
+   年末調整のキャンバス（なし／あり：padding 12px 14px・角丸12・14px/600・間10、選ぶとテーマ色の2pxの枠と acc-50 の地）から決めた。
+   カードと文字だけの行の高さは、ほかの入力・ボタンと同じ段（sm 30・md 36・lg 42、角丸 9・10・11。まとめ役の決めた値）。 */
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"]){--ar-ch-mark:18px;--ar-ch-ring:5px;--ar-ch-box:5px;--ar-ch-icon:13px;--ar-ch-gap:8px;--ar-ch-fs:13.5px;--ar-ch-lh:20px;--ar-ch-min:36px;--ar-ch-pad:8px 12px;--ar-ch-r:10px;--ar-ch-cmin:36px;--ar-ch-cgap:10px;--ar-ch-dfs:12px;--ar-ch-dlh:18px}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-size="sm"]{--ar-ch-mark:16px;--ar-ch-ring:4px;--ar-ch-box:5px;--ar-ch-icon:11px;--ar-ch-gap:6px;--ar-ch-fs:13px;--ar-ch-lh:20px;--ar-ch-min:30px;--ar-ch-pad:5px 10px;--ar-ch-r:9px;--ar-ch-cmin:30px;--ar-ch-cgap:8px;--ar-ch-dfs:11.5px;--ar-ch-dlh:17px}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-size="lg"]{--ar-ch-mark:18px;--ar-ch-ring:5px;--ar-ch-box:5px;--ar-ch-icon:13px;--ar-ch-gap:10px;--ar-ch-fs:14px;--ar-ch-lh:20px;--ar-ch-min:42px;--ar-ch-pad:11px 14px;--ar-ch-r:11px;--ar-ch-cmin:42px;--ar-ch-cgap:10px;--ar-ch-dfs:12.5px;--ar-ch-dlh:19px}
+
+/* 文字だけ（plain）の並び */
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"]){gap:var(--ar-ch-gap);min-height:var(--ar-ch-min);color:var(--ar-color-text);font-size:var(--ar-ch-fs);font-weight:400;line-height:var(--ar-ch-lh)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-bare]{min-height:0;line-height:1}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-desc]{column-gap:var(--ar-ch-gap);row-gap:0}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"]):is([data-desc],[data-variant="card"])>[data-part="control"]{margin-top:calc((var(--ar-ch-lh) - var(--ar-ch-mark)) / 2)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])>[data-part="description"]{color:var(--ar-color-text-muted);font-size:var(--ar-ch-dfs);font-weight:400;line-height:var(--ar-ch-dlh)}
+
+/* 印：丸（.radio：枠1.5 #AEB9C4、選ぶとテーマ色の太い輪）と四角（.chk：角丸5、選ぶとテーマ色の塗りに白いレ点） */
+[data-ar-design="remix"] :is([data-ar="radio"]>[data-part="control"]>[data-part="mark"],[data-ar="checkbox"]>[data-part="control"]>[data-part="box"]){width:var(--ar-ch-mark);height:var(--ar-ch-mark);border:1.5px solid #AEB9C4;background:#fff;transition:border var(--ar-motion-fast),background var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="radio"]>[data-part="control"]>[data-part="mark"]{border-radius:50%}
+[data-ar-design="remix"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]{border-radius:var(--ar-ch-box);color:#fff}
+[data-ar-design="remix"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]>[data-ar="icon"]{width:var(--ar-ch-icon);height:var(--ar-ch-icon);stroke-width:3}
+[data-ar-design="remix"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]>[data-part="mark"][data-kind="dash"]{width:calc(var(--ar-ch-mark) * .45);height:2px;border-radius:1px;background:currentColor}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"]):hover:not([data-state~="disabled"])>[data-part="control"]>:is([data-part="mark"],[data-part="box"]){border-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="radio"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{border:var(--ar-ch-ring) solid var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="checkbox"]:is([data-state~="checked"],[data-state~="indeterminate"])>[data-part="control"]>[data-part="box"]{background:var(--ar-accent);border-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="checkbox"]:is([data-state~="checked"],[data-state~="indeterminate"]):hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="box"]{background:var(--ar-accent-strong);border-color:var(--ar-accent-strong)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])>[data-part="control"]>[data-part="input"]:focus-visible+:is([data-part="mark"],[data-part="box"]){box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="radio"][data-state~="invalid"]:not([data-state~="checked"])>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-color-danger)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-state~="disabled"]{color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-state~="disabled"]>[data-part="control"]>:is([data-part="mark"],[data-part="box"]){border-color:var(--ar-color-border);background:var(--ar-color-surface-alt);color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="radio"][data-state~="disabled"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-color-field)}
+
+/* 選ぶカード（.rcard）：白い面に1pxの線、hover はテーマ色の線、選ぶとテーマ色の2pxの枠と acc-50 の地。名前は 600。 */
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]{min-height:var(--ar-ch-cmin);padding:var(--ar-ch-pad);border-radius:var(--ar-ch-r);gap:var(--ar-ch-cgap);background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-border);font-weight:600;transition:background-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"][data-desc]{column-gap:var(--ar-ch-cgap);row-gap:0}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]:hover:not([data-state~="disabled"]){box-shadow:inset 0 0 0 1px var(--ar-accent-line)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]:is([data-state~="checked"],[data-state~="indeterminate"]){background:var(--ar-accent-subtle);box-shadow:inset 0 0 0 2px var(--ar-accent)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]:has(>[data-part="control"]>[data-part="input"]:focus-visible){box-shadow:inset 0 0 0 1px var(--ar-accent-line),0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]:is([data-state~="checked"],[data-state~="indeterminate"]):has(>[data-part="control"]>[data-part="input"]:focus-visible){box-shadow:inset 0 0 0 2px var(--ar-accent),0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]>[data-part="control"]>[data-part="input"]:focus-visible+:is([data-part="mark"],[data-part="box"]){box-shadow:none}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"][data-state~="disabled"]{background:var(--ar-color-surface-alt);color:var(--ar-color-text-faint);box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"][data-state~="disabled"]>[data-part="description"]{color:var(--ar-color-text-faint)}
+/* カードの名前の横の札（ArChoiceCard の tag：推奨・ご利用中） */
+[data-ar-design="remix"] [data-ar="radio"]>[data-part="label"]>[data-part="tag"]{height:20px;margin-left:8px;padding:0 7px;border-radius:10px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11px;font-weight:700;line-height:1;white-space:nowrap}
+[data-ar-design="remix"] [data-ar="radio"]>[data-part="label"]>[data-part="tag"][data-tone="ok"]{background:var(--ar-color-ok-subtle);color:var(--ar-color-ok)}
+[data-ar-design="remix"] [data-ar="radio"]>[data-part="label"]>[data-part="tag"][data-tone="neutral"]{background:#EEF1F5;color:#525E6B}
+[data-ar-design="remix"] [data-ar="radio"][data-state~="checked"]>[data-part="label"]>[data-part="tag"]:not([data-tone]),[data-ar-design="remix"] [data-ar="radio"][data-state~="checked"]>[data-part="label"]>[data-part="tag"][data-tone="accent"]{background:#fff}
+
+/* まとまりの並び（ArRadioGroup・ArCheckboxGroup・ArFlagGroup）。plain：sm 4px 14px／縦0、md 8px 20px／縦2（行36＋2＝設定のキャンバスの行の間隔38）、lg 8px 24px／縦2。カード：sm 6・md 8・lg 10。 */
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="plain"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="plain"]>[data-part="list"]{gap:8px 20px}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="plain"][data-direction="vertical"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="plain"][data-direction="vertical"]>[data-part="list"]{gap:2px}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="plain"][data-size="sm"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="plain"][data-size="sm"]>[data-part="list"]{gap:4px 14px}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="plain"][data-size="sm"][data-direction="vertical"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="plain"][data-size="sm"][data-direction="vertical"]>[data-part="list"]{gap:0}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="plain"][data-size="lg"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="plain"][data-size="lg"]>[data-part="list"]{gap:8px 24px}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="plain"][data-size="lg"][data-direction="vertical"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="plain"][data-size="lg"][data-direction="vertical"]>[data-part="list"]{gap:2px}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="card"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="card"]>[data-part="list"]{gap:8px}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="card"][data-size="sm"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="card"][data-size="sm"]>[data-part="list"]{gap:6px}
+[data-ar-design="remix"] :is([data-ar="radio-group"],[data-ar="flag-group"])[data-variant="card"][data-size="lg"],[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="card"][data-size="lg"]>[data-part="list"]{gap:10px}
+/* 「すべて」の下 */
+[data-ar-design="remix"] [data-ar="checkbox-group"]>[data-ar="checkbox"]{margin-bottom:6px}
+[data-ar-design="remix"] [data-ar="checkbox-group"][data-size="sm"]>[data-ar="checkbox"]{margin-bottom:2px}
+[data-ar-design="remix"] [data-ar="checkbox-group"][data-variant="card"]>[data-ar="checkbox"]{margin-bottom:8px}
+/* ArRadioGroup の選択肢の下の中身（extra）：plain は丸の右の文字の頭にそろえる */
+[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="extra"]{padding-left:26px}
+[data-ar-design="remix"] [data-ar="radio-group"][data-size="sm"]>[data-part="extra"]{padding-left:22px}
+[data-ar-design="remix"] [data-ar="radio-group"][data-size="lg"]>[data-part="extra"]{padding-left:28px}
+[data-ar-design="remix"] [data-ar="radio-group"][data-variant="card"]>[data-part="extra"]{padding-left:0}
+/* 見た目だけのチェック（decorative）の上に本物の input を重ねる形（ArTable の選ぶ列）：input の hover・focus・無効を印に映す */
+[data-ar-design="remix"] input:hover:not(:disabled)+[data-ar="checkbox"][data-decorative]>[data-part="control"]>[data-part="box"]{border-color:var(--ar-accent)}
+[data-ar-design="remix"] input:focus-visible+[data-ar="checkbox"][data-decorative]>[data-part="control"]>[data-part="box"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] input:disabled+[data-ar="checkbox"][data-decorative]>[data-part="control"]>[data-part="box"]{background:var(--ar-color-surface-alt);border-color:var(--ar-color-border)}

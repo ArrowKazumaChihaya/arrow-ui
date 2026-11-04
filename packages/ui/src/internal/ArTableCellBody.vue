@@ -205,7 +205,7 @@ const lineKey = computed(() => props.line);
       <span v-for="(v, j) in linesOf(value)" :key="j">{{ isBlankCell(v) ? "" : v }}</span>
     </span>
     <span v-else-if="col.avatar" data-part="person" :data-single="!col.sub || undefined">
-      <ArAvatar v-bind="avatar" :size="variant === 'board' ? 'md' : 'sm'" />
+      <ArAvatar v-bind="avatar" :size="variant === 'board' && col.sub ? 'md' : 'sm'" />
       <span data-part="name">
         <b>{{ value }}</b>
         <small v-if="sub" data-part="sub">

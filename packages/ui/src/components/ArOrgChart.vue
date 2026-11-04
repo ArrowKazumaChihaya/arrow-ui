@@ -6,6 +6,7 @@
  */
 import { computed, nextTick, onMounted, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArZoomControl from "./ArZoomControl.vue";
 import ArOrgChartBranch from "../internal/ArOrgChartBranch.vue";
 import type { ArOrgChartLabels, ArOrgChartProps, ArOrgNode } from "./ArOrgChart.contract";
 
@@ -158,9 +159,18 @@ defineExpose({ fit });
     </div>
     <div v-if="hint" data-part="hint" aria-hidden="true"><ArIcon line name="hand" />{{ L.hint }}</div>
     <div data-part="controls" role="group" :aria-label="L.zoomGroup">
-      <button type="button" data-part="zoom-out" :aria-label="L.zoomOut" :title="L.zoomOut" :disabled="z <= minZoom" @click="setZoom(z - zoomStep)"><ArIcon line name="minus" /></button>
-      <span data-part="zoom-value" aria-live="polite">{{ Math.round(z * 100) }}%</span>
-      <button type="button" data-part="zoom-in" :aria-label="L.zoomIn" :title="L.zoomIn" :disabled="z >= maxZoom" @click="setZoom(z + zoomStep)"><ArIcon line name="plus" /></button>
+      <ArZoomControl
+        data-part="zoom"
+        variant="plain"
+        :value="`${Math.round(z * 100)}%`"
+        :out-disabled="z <= minZoom"
+        :in-disabled="z >= maxZoom"
+        :label="L.zoomGroup"
+        :out-label="L.zoomOut"
+        :in-label="L.zoomIn"
+        @out="setZoom(z - zoomStep)"
+        @in="setZoom(z + zoomStep)"
+      />
       <button type="button" data-part="fit" @click="fit"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" /></svg>{{ L.fit }}</button>
     </div>
   </div>

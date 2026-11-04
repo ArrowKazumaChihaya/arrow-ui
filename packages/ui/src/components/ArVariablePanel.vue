@@ -7,6 +7,7 @@
  */
 import { computed, nextTick, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArEmpty from "./ArEmpty.vue";
 import { useDesignForm, useId } from "../provider/context";
 import type { ArVariableGroup, ArVariableItem, ArVariablePanelProps } from "./ArVariablePanel.contract";
 
@@ -196,7 +197,7 @@ const emptyText = computed(() => props.labels.empty.replace("{q}", q.value.trim(
           </button>
         </template>
       </template>
-      <div v-if="none" data-part="empty" role="status">{{ q.trim() ? emptyText : "" }}</div>
+      <ArEmpty v-if="none && q.trim()" data-part="empty" role="status" size="sm" icon="search" :text="emptyText" />
     </div>
 
     <div v-if="layout === 'chips' && (description || $slots.note)" data-part="note">

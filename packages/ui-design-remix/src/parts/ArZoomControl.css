@@ -1,0 +1,20 @@
+/* @covers ArZoomControl 1.0.0 */
+/* ArZoomControl（シフトのキャンバスの .r-zoom：白い箱 34・角丸10・内側に線、−／＋ は 32×34 の線なしのボタン（乗せるとテーマ色の濃い字）、
+   値は 52px 幅・11.5px 700・text-secondary。sm は箱 32・ボタン 30×32。plain は箱なし：30 の角丸9 のボタン（muted、乗せると淡い灰の地）・値 12.5px 700）。
+   フォーカスはどちらも輪（ring 3px）。 */
+[data-ar-design="remix"] [data-ar="zoom-control"]{height:36px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-border);color:var(--ar-color-text-secondary);font-family:var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="zoom-control"]>:is([data-part="zoom-out"],[data-part="zoom-in"]){width:34px;height:36px;border-radius:10px;color:var(--ar-color-text-secondary);transition:color var(--ar-motion-fast),background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="zoom-control"]>:is([data-part="zoom-out"],[data-part="zoom-in"]):hover:not(:disabled){color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="zoom-control"]>:is([data-part="zoom-out"],[data-part="zoom-in"]):disabled{opacity:.4}
+[data-ar-design="remix"] [data-ar="zoom-control"]>:is([data-part="zoom-out"],[data-part="zoom-in"]):focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="zoom-control"]>[data-part="zoom-value"]{min-width:52px;color:var(--ar-color-text-secondary);font-size:11.5px;font-weight:700;line-height:1.5}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-size="sm"]{height:30px;border-radius:9px}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-size="sm"]>:is([data-part="zoom-out"],[data-part="zoom-in"]){width:30px;height:30px;border-radius:9px}
+/* plain：すでに白い板の中に置くとき（ArOrgChart の右下の操作） */
+[data-ar-design="remix"] [data-ar="zoom-control"][data-variant="plain"]{height:auto;gap:4px;border-radius:0;background:none;box-shadow:none}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-variant="plain"]>:is([data-part="zoom-out"],[data-part="zoom-in"]){width:30px;height:30px;border-radius:9px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-variant="plain"]>:is([data-part="zoom-out"],[data-part="zoom-in"]):hover:not(:disabled){background:#F1F4F7;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-variant="plain"]>:is([data-part="zoom-out"],[data-part="zoom-in"]):disabled{opacity:1;color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-variant="plain"]>:is([data-part="zoom-out"],[data-part="zoom-in"])>[data-ar="icon"]{width:15px;height:15px}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-variant="plain"]>[data-part="zoom-value"]{min-width:44px;color:var(--ar-color-text);font-size:12.5px}
+[data-ar-design="remix"] [data-ar="zoom-control"][data-state~="disabled"]{opacity:.6}

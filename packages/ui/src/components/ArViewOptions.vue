@@ -8,6 +8,9 @@
  */
 import { computed, nextTick, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArCheckbox from "./ArCheckbox.vue";
+import ArBadge from "./ArBadge.vue";
+import ArButton from "./ArButton.vue";
 import ArTextInput from "./ArTextInput.vue";
 import ArFloat from "../internal/ArFloat.vue";
 import { useId } from "../provider/context";
@@ -165,7 +168,7 @@ function onPanelKey(e: KeyboardEvent) {
     >
       <ArIcon line name="filter" data-part="icon" />
       <span data-part="label">{{ label }}</span>
-      <span data-part="count">{{ onCount }}/{{ all.length }}</span>
+      <ArBadge data-part="count" :count="`${onCount}/${all.length}`" tone="accent" variant="subtle" label="" />
       <ArIcon line name="cd" data-part="caret" />
     </button>
     <ArFloat :id="id" :open="isOpen" :anchor="trigger" ar="view-options-panel" role="menu" :label="title ?? label" :placement="placement" :offset="6" @close="(r) => close(r === 'escape')">
@@ -180,9 +183,7 @@ function onPanelKey(e: KeyboardEvent) {
               <span data-part="preset-scope" :data-scope="p.scope">{{ p.scope === "company" ? L.company : L.personal }}</span>
               <span v-if="p.default" data-part="preset-default">{{ L.default }}</span>
             </button>
-            <button v-if="p.deletable" type="button" data-part="preset-delete" tabindex="-1" :aria-label="`${L.delete}：${p.label}`" :title="L.delete" @click="emit('delete-preset', p)">
-              <ArIcon line name="x" />
-            </button>
+            <ArButton v-if="p.deletable" data-part="preset-delete" tone="muted" icon="x" size="sm" tabindex="-1" :label="`${L.delete}：${p.label}`" @click="emit('delete-preset', p)" />
           </div>
         </div>
         <div v-for="(g, gi) in groups" :key="gi" data-part="group" role="group" :aria-label="g.label">
@@ -199,7 +200,7 @@ function onPanelKey(e: KeyboardEvent) {
             tabindex="-1"
             @click="toggle(o)"
           >
-            <span data-part="box" aria-hidden="true"><ArIcon line name="check" /></span>
+            <ArCheckbox decorative size="sm" data-part="box" :model-value="chosen.has(o.key)" :disabled="o.disabled" />
             <span data-part="text">
               <b>{{ o.label }}</b>
               <small v-if="o.description" data-part="description">{{ o.description }}</small>

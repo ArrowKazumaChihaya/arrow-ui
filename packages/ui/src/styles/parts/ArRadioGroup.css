@@ -1,3 +1,8 @@
+/* ArRadioGroup・ArCheckboxGroup：カードを等しい幅の列に並べる（columns）。縦のカードは幅いっぱい。 */
+[data-ar="radio-group"][data-columns]{display:grid;grid-template-columns:repeat(var(--ar-choice-columns,2),minmax(0,1fr))}
+[data-ar="radio-group"][data-columns]>[data-part="extra"]{grid-column:1/-1}
+[data-ar="checkbox-group"][data-columns]>[data-part="list"]{display:grid;grid-template-columns:repeat(var(--ar-choice-columns,2),minmax(0,1fr))}
+[data-ar="checkbox-group"][data-variant="card"][data-direction="vertical"],[data-ar="checkbox-group"][data-variant="card"][data-direction="vertical"]>[data-part="list"],[data-ar="checkbox-group"][data-columns]{align-items:stretch}
 /* ArRadioGroup のボタン型：本物のラジオを項目いっぱいに重ねる */
 [data-ar="radio-group"][data-type="button"]{display:inline-flex;flex-wrap:nowrap}
 [data-ar="radio-group"][data-type="button"][data-block]{display:flex}

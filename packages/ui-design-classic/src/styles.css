@@ -1,5 +1,6 @@
 /* ui-design-classic の見た目。scripts/gen-registry.mjs が parts/ から作る。手で直さない。 */
 @import "./parts/_base.css";
+@import "./parts/_choice.css";
 @import "./parts/_controls.css";
 @import "./parts/_picker.css";
 @import "./parts/ArAffix.css";
@@ -122,3 +123,4 @@
 @import "./parts/ArWeekdayPicker.css";
 @import "./parts/ArYearInput.css";
 @import "./parts/ArZipInput.css";
+@import "./parts/ArZoomControl.css";

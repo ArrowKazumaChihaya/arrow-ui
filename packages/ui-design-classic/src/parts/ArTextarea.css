@@ -1,4 +1,4 @@
-/* @covers ArTextarea 1.0.0 */
+/* @covers ArTextarea 1.1.0 */
 /* ArTextarea（今の ARROW の Textarea＝antd 4 の TextArea：余白 4px 11px・角丸6・枠 #d9d9d9・行の高さ20px（ARROW の上書き）・文字数は右下に灰色） */
 [data-ar-design="classic"] [data-ar="textarea"]{color:rgba(0,0,0,.88);font-size:14px}
 [data-ar-design="classic"] [data-ar="textarea"]>[data-part="input"]{min-height:32px;padding:4px 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;font-size:14px;line-height:20px;transition:all .2s}
@@ -11,3 +11,7 @@
 [data-ar-design="classic"] [data-ar="textarea"][data-state~="invalid"]>[data-part="input"]:focus{box-shadow:0 0 0 2px rgba(255,38,5,.06)}
 [data-ar-design="classic"] [data-ar="textarea"][data-state~="warning"]>[data-part="input"]{border-color:#FAAD14}
 [data-ar-design="classic"] [data-ar="textarea"][data-state~="disabled"]>[data-part="input"]{background:rgba(0,0,0,.04);border-color:#D9D9D9;color:rgba(0,0,0,.25);cursor:not-allowed}
+/* 大きさの段：antd の TextArea small（余白 0 7・角丸4）・large（余白 7 11・角丸8・16px） */
+[data-ar-design="classic"] [data-ar="textarea"][data-size="sm"]>[data-part="input"]{padding:0 7px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="textarea"][data-size="lg"]{font-size:16px}
+[data-ar-design="classic"] [data-ar="textarea"][data-size="lg"]>[data-part="input"]{padding:7px 11px;border-radius:8px;font-size:16px;line-height:24px}

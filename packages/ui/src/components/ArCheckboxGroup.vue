@@ -1,13 +1,27 @@
 <script setup lang="ts">
 /**
- * ArCheckboxGroup 1.0 — 選択肢から いくつでも選ぶ（並べて見せる）。
+ * ArCheckboxGroup 1.1 — 選択肢から いくつでも選ぶ（並べて見せる）。
  * checkAll で上に「すべて」を出す。一部だけ選んでいるときは indeterminate。押せない選択肢は「すべて」でも変えない。
+ * 1.1：variant（card・plain。省くとデザインの既定）・size（sm・md・lg）・columns・選択肢の description。ArRadioGroup と同じ考え方。
  */
 import { computed } from "vue";
+import { useDesignForm } from "../provider/context";
 import ArCheckbox from "./ArCheckbox.vue";
 import type { ArCheckboxGroupProps, ArCheckboxValue } from "./ArCheckboxGroup.contract";
+import type { ArChoiceVariant } from "./ArRadioGroup.contract";
 
-const props = withDefaults(defineProps<ArCheckboxGroupProps>(), { direction: "horizontal", checkAll: false, disabled: false });
+const props = withDefaults(defineProps<ArCheckboxGroupProps>(), {
+  direction: "horizontal",
+  variant: undefined,
+  size: "md",
+  columns: undefined,
+  checkAll: false,
+  disabled: false,
+});
+/** 形を省いたときはデザインの既定（remix＝card、classic＝plain。classic の forms に ArCheckboxGroup.variant）。 */
+const designVariant = useDesignForm<ArChoiceVariant>("ArCheckboxGroup", "variant", "card");
+const shape = computed<ArChoiceVariant>(() => props.variant ?? designVariant.value);
+const grid = computed(() => (props.columns && props.columns > 0 ? props.columns : undefined));
 const emit = defineEmits<{ "update:modelValue": [value: ArCheckboxValue[]] }>();
 
 const has = (v: ArCheckboxValue) => props.modelValue.includes(v);
@@ -36,10 +50,22 @@ function toggleAll(on: boolean) {
 </script>
 
 <template>
-  <div data-ar="checkbox-group" data-part="root" role="group" :aria-label="label" :data-direction="direction">
+  <div
+    data-ar="checkbox-group"
+    data-part="root"
+    role="group"
+    :aria-label="label"
+    :data-direction="direction"
+    :data-variant="shape"
+    :data-size="size"
+    :data-columns="grid"
+    :style="grid ? { '--ar-choice-columns': grid } : undefined"
+  >
     <ArCheckbox
       v-if="checkAll"
       data-part="all"
+      :variant="shape"
+      :size="size"
       :model-value="allOn"
       :indeterminate="someOn"
       :disabled="disabled || enabled.length === 0"
@@ -52,6 +78,9 @@ function toggleAll(on: boolean) {
         v-for="o in options"
         :key="String(o.value)"
         :model-value="has(o.value)"
+        :variant="shape"
+        :size="size"
+        :description="o.description"
         :disabled="disabled || o.disabled"
         @update:model-value="(on: boolean) => toggle(o.value, on)"
       >

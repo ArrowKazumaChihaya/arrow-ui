@@ -7,7 +7,9 @@
 [data-ar-design="classic"] [data-ar="menu-tile"]:is(:hover,:active)>[data-part="icon"]{filter:brightness(.8);transition:filter .2s ease}
 [data-ar-design="classic"] [data-ar="menu-tile"]>[data-part="icon"]>[data-ar="icon"]{width:46px;height:46px}
 [data-ar-design="classic"] [data-ar="menu-tile"]>[data-part="icon"]:is([data-icon="cal"],[data-icon="shift"],[data-icon="schedule"],[data-icon="brief"],[data-icon="calc"],[data-icon="yen"],[data-icon="layers"],[data-icon="note"],[data-icon="files"],[data-icon="speaker"],[data-icon="mega"],[data-icon="bld"],[data-icon="users"],[data-icon="user"],[data-icon="gear"],[data-icon="umbrella"],[data-icon="status"],[data-icon="contract"],[data-icon="help"],[data-icon="switch-user"],[data-icon="manager"],[data-icon="out"],[data-icon="clock"],[data-icon="pen"],[data-icon="sheet"],[data-icon="coffee"],[data-icon="movie"],[data-icon="play"],[data-icon="mail"])>[data-ar="icon"]{visibility:hidden}
-[data-ar-design="classic"] [data-ar="menu-tile"]>[data-part="icon"]>[data-part="count"]{top:0;right:0;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#ff4d4f;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;font-size:12px;font-weight:400;line-height:20px;box-shadow:0 0 0 1px #fff;transform:translate(50%,-50%)}
+/* 件数は ArBadge（classic の ArBadge は antd の Badge：20・角丸10・#FF4D4F・12px・白い1pxの縁＝前と同じ）。位置と余白だけここで決める */
+[data-ar-design="classic"] [data-ar="menu-tile"]>[data-part="icon"]>[data-part="count"]{top:0;right:0;transform:translate(50%,-50%)}
+[data-ar-design="classic"] [data-ar="menu-tile"]>[data-part="icon"]>[data-part="count"]>[data-part="count"]{padding:0 6px}
 [data-ar-design="classic"] [data-ar="menu-tile"]>[data-part="label"]{margin-top:4px;color:#5c5c5c;font-size:8px;font-weight:600;line-height:normal;white-space:nowrap}
 [data-ar-design="classic"] [data-ar="menu-tile"]>[data-part="note"]{margin-top:1px;color:#ff4d4f;font-size:8px;font-weight:600;line-height:normal;white-space:nowrap}
 [data-ar-design="classic"] [data-ar="menu-tile"][data-state~="disabled"]{opacity:.4}

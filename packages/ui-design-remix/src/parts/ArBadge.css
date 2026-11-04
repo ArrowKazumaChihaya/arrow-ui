@@ -1,13 +1,21 @@
-/* @covers ArBadge 1.0.0, ArRibbon 1.0.0 */
-/* ArBadge（.ad-bdg sup：18・角丸9・700 11px・白い2pxの縁、右上に top-7 right-9。点は8px。状態の点 .ad-st は7px＋7pxの間） */
+/* @covers ArBadge 1.1.0, ArRibbon 1.0.0 */
+/* ArBadge（.ad-bdg sup：18・角丸9・700 11px・白い2pxの縁、右上に top-7 right-9。点は8px。状態の点 .ad-st は7px＋7pxの間）
+   件数の丸はライブラリでこれ1つ。赤はデザインシステムの count（#DC2525。--ar-remix-count）。白い縁は data-ring（子に重ねるとき既定）。
+   variant="subtle"：淡い地に濃い字（タブ・表示内容・切り替えの中の件数）。 */
 [data-ar-design="remix"] [data-ar="badge"]{font-family:var(--ar-font-family)}
-[data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-color-danger);color:#fff;font-size:11px;font-weight:700;line-height:18px;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-remix-count);color:#fff;font-size:11px;font-weight:700;line-height:18px;font-variant-numeric:tabular-nums;box-shadow:none}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="count"]{top:-7px;right:-9px}
-[data-ar-design="remix"] [data-ar="badge"]>[data-part="dot"]{width:8px;height:8px;border-radius:50%;background:var(--ar-color-danger);box-shadow:0 0 0 2px var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ar="badge"]>[data-part="dot"]{width:8px;height:8px;border-radius:50%;background:var(--ar-remix-count);box-shadow:none}
+[data-ar-design="remix"] [data-ar="badge"][data-ring]>:is([data-part="count"],[data-part="dot"]){box-shadow:0 0 0 2px var(--ar-color-surface)}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="dot"]{top:-2px;right:-2px}
 [data-ar-design="remix"] [data-ar="badge"][data-tone="accent"]>:is([data-part="count"],[data-part="dot"]){background:var(--ar-accent);color:var(--ar-on-accent)}
 [data-ar-design="remix"] [data-ar="badge"][data-tone="neutral"]>:is([data-part="count"],[data-part="dot"]){background:var(--ar-color-text-faint)}
-[data-ar-design="remix"] [data-ar="badge"][data-standalone]>[data-part="count"]{box-shadow:none}
+[data-ar-design="remix"] [data-ar="badge"][data-tone="warn"]>:is([data-part="count"],[data-part="dot"]){background:#E39A2D}
+/* 淡い地（1.1）：テーマ色＝accent-subtle／accent-ink、灰＝#EEF1F5／#525E6B（ArTag pill neutral と同じ）、赤＝不足の地、橙＝warn の地 */
+[data-ar-design="remix"] [data-ar="badge"][data-variant="subtle"]>[data-part="count"]{background:var(--ar-remix-short-subtle);color:var(--ar-remix-short)}
+[data-ar-design="remix"] [data-ar="badge"][data-variant="subtle"][data-tone="accent"]>[data-part="count"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="badge"][data-variant="subtle"][data-tone="neutral"]>[data-part="count"]{background:#EEF1F5;color:#525E6B}
+[data-ar-design="remix"] [data-ar="badge"][data-variant="subtle"][data-tone="warn"]>[data-part="count"]{background:var(--ar-color-warn-subtle);color:var(--ar-color-warn)}
 /* 状態の点＋言葉 */
 [data-ar-design="remix"] [data-ar="badge"][data-mode="status"]{gap:7px;font-size:13px;line-height:1.5;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="status"]>[data-part="status-dot"]{width:7px;height:7px;border-radius:50%;background:var(--ar-color-text-faint)}

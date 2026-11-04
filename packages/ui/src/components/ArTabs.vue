@@ -6,6 +6,7 @@
  */
 import { nextTick, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArBadge from "./ArBadge.vue";
 import type { ArTabsProps } from "./ArTabs.contract";
 
 const props = withDefaults(defineProps<ArTabsProps>(), {
@@ -67,7 +68,7 @@ function onKeydown(e: KeyboardEvent, key: string) {
       >
         <ArIcon v-if="t.icon" :name="t.icon" data-part="icon" size="sm" />
         <span data-part="label">{{ t.label }}</span>
-        <span v-if="t.count !== undefined" data-part="count">{{ t.count }}</span>
+        <ArBadge v-if="t.count !== undefined" data-part="count" :count="t.count" tone="accent" variant="subtle" show-zero label="" />
         <span v-if="t.alert" data-part="alert" role="img" :aria-label="alertLabel"><ArIcon line name="alert" size="sm" /></span>
         <span
           v-if="variant === 'card' && t.closable"
