@@ -24,6 +24,7 @@ const emit = defineEmits<{ select: [node: ArOrgNode]; toggle: [node: ArOrgNode] 
         data-part="node"
         :data-state="selected === node.key ? 'selected' : undefined"
         :aria-label="nodeLabel(node)"
+        :title="nodeLabel(node)"
         @click="emit('select', node)"
       >
         <span data-part="node-head">

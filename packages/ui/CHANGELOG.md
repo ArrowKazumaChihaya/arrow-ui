@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- Show full department/store names and long codes in organization chart cards by wrapping text.
+
 - Organization charts support anchored pan/pinch gestures, async tree data, and non-overlapping mobile controls. Preserve user zoom and pan across design changes.
 
 - OTP digits shrink to fit narrow forms and forward field required/help/label attributes to native controls.
