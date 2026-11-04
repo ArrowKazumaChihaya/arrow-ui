@@ -1510,7 +1510,7 @@
  },
  {
   "name": "ArSteps",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "手順。横・縦（承認の流れ）・mini（ポップアップの上の小さな手順）。\n今はテーマ色、済みは淡い面（mini は緑の丸にチェック）、エラーは赤。clickable なら済んだ手順を押して戻れる。",
   "props": [
    {
@@ -1560,6 +1560,13 @@
     "required": false,
     "description": "読み上げの名前。",
     "default": "\"手順\""
+   },
+   {
+    "name": "responsive",
+    "type": "number | boolean",
+    "required": false,
+    "description": "横の手順で幅が足りないとき、縦の並びに切り替える（名前と数字が重ならないように）。\ntrue（既定）：手順1つあたり 150px より狭くなったら縦にする。数を渡すと、その幅（px）を手順1つあたりの下限にする。false：切り替えない。\nmini と縦の手順には効かない。",
+    "default": "true"
    }
   ],
   "emits": [
