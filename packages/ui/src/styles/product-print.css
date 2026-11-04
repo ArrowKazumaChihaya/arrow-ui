@@ -1412,16 +1412,7 @@ table
 .v-leave-to:where([data-ui-fixed], [data-ui-fixed] *) {
   opacity: 0;
 }
-html:where([data-ui-fixed], [data-ui-fixed] *) {
-  overflow: hidden !important;
-}
-body:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 100% !important;
-  overflow-x: auto !important;
-  overflow-y: auto !important;
-  overflow-scrolling: touch;
-  -webkit-overflow-scrolling: touch;
-}
+/* Document scrolling belongs to the host; only an open dialog locks it. */
 *:where([data-ui-fixed], [data-ui-fixed] *) {
   outline: none !important;
 }

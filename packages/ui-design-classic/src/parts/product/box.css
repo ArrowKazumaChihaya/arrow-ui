@@ -114,16 +114,7 @@
 .v-leave-to:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   opacity: 0;
 }
-html:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  overflow: hidden !important;
-}
-body:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  width: 100% !important;
-  overflow-x: auto !important;
-  overflow-y: auto !important;
-  overflow-scrolling: touch;
-  -webkit-overflow-scrolling: touch;
-}
+/* Document scrolling belongs to the host; only an open dialog locks it. */
 *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   outline: none !important;
 }
