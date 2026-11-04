@@ -4,6 +4,8 @@
 /* 今の表は table-layout:fixed・幅100%（幅を決めない列は同じ幅に分ける。行の操作の列も1列として数える）。操作のボタンは左に寄せる */
 [data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"]{width:100%;table-layout:fixed;background:#fff}
 [data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td,col)[data-col="actions"]{width:auto;text-align:left}
+/* 操作列の幅は内容から確保する。固定幅の列が viewport を超えても、操作列が 0px にならない。 */
+[data-ar-design="classic"] [data-ar="table"]>[data-part="viewport"]>[data-part="table"]:has(>colgroup>col[data-col="actions"]){table-layout:auto}
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"]{justify-content:flex-start}
 [data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]{height:35px;padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:rgba(0,0,0,.65);font-size:13px;font-weight:400;line-height:20px;text-align:center!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 [data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"]:last-child{border-right:1px solid var(--ar-accent)}
