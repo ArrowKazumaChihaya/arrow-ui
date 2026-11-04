@@ -34,7 +34,7 @@ onBeforeUnmount(()=>document.removeEventListener('scroll',updatePosition,true));
  <div data-ar="section-menu" data-part="root">
   <nav data-part="navigation" :aria-label="label" :data-sticky="scroll || undefined">
    <div data-part="desktop"><ArMenu mode="inline" :items="items" :selected="selected" :label="label" @select="select" @update:open-keys="onOpen" /></div>
-   <div data-part="mobile"><ArSelect :model-value="selected ?? null" :options="options" :label="label" @update:model-value="select" /></div>
+   <div data-part="mobile"><ArSelect block :model-value="selected ?? null" :options="options" :label="label" @update:model-value="select" /></div>
   </nav>
   <div data-part="content"><slot /></div>
  </div>
