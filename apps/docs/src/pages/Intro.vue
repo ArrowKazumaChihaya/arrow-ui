@@ -26,12 +26,12 @@ const screen = demosOf("_screen")[0]!;
         <p>余白・配置・ページごとの並び。<code>src/Layout</code> に書き、ライブラリには入れない。</p>
       </div>
       <div class="layer">
-        <span class="layer-tag">@arrow/ui</span>
+        <span class="layer-tag">@s_and_a/arrow-ui</span>
         <h3>部品のライブラリ</h3>
         <p>部品の構造・動き・読み上げ・契約（props・events・slots・部位）。見た目は持たない。</p>
       </div>
       <div class="layer">
-        <span class="layer-tag">@arrow/ui-design-*</span>
+        <span class="layer-tag">@s_and_a/arrow-ui-design-*</span>
         <h3>見た目のライブラリ</h3>
         <p>トークンの値・テーマ色・部位に当てる CSS・対応した部品と版。入れ替えられる。</p>
       </div>
@@ -45,7 +45,7 @@ const screen = demosOf("_screen")[0]!;
       </li>
       <li>
         <h3>デザインを1か所で決める</h3>
-        <p>製品のコードは <code>@arrow/ui-design</code> という名前だけを読みます。どのデザインにするかはビルドの設定で決め、画面のコードは変わりません。</p>
+        <p>製品のコードは <code>@s_and_a/arrow-ui-design</code> という名前だけを読みます。どのデザインにするかはビルドの設定で決め、画面のコードは変わりません。</p>
         <CodeBlock :code="s.viteAlias" file="vite.config.ts" />
       </li>
       <li>

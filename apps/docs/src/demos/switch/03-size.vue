@@ -1,6 +1,6 @@
 <!-- 大きさ（sm・md・lg） | sm 28×16（設定の行など密集した所。文字は出さない）、md 36×20（ふつう）、lg 44×24（年末調整・スマホ。文字ありは高さ26）。ラジオ・チェックと同じ段で並べる。 -->
 <script setup lang="ts">
-import { ArSwitch, ArRadioGroup } from "@arrow/ui";
+import { ArSwitch, ArRadioGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 const on = ref(true);

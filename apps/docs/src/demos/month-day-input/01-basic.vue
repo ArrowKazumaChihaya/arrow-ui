@@ -1,7 +1,7 @@
 <!-- 月日 | 年のない日付（起算日・記念日など）。月が決まると日の欄へ進む。2月30日は2月29日に寄せる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArMonthDayInput, ArCluster, ArStack } from "@arrow/ui";
+import { ArMonthDayInput, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 const v = ref<string | null>("04-01");
 const n = ref<string | null>(null);
 </script>

@@ -1,6 +1,6 @@
 <!-- 祝日を渡す（日の切り替え） | date（"YYYY-MM-DD"）と holidays（日付の配列か、日付 → 名前）を渡すと、曜日の札と色を部品が決める。日曜・祝日は赤、土曜は青。名前を渡すと remix は札の横に「文化の日」、classic は今の DateChanger と同じく色だけ。weekday・weekdayTone は渡さなくてよい。 -->
 <script setup lang="ts">
-import { ArPeriodNav, ArStack } from "@arrow/ui";
+import { ArPeriodNav, ArStack } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 /** 製品は API の祝日（national_holiday_date_array など）をそのまま渡す。 */
 const holidays = { "2026-11-03": "文化の日", "2026-11-23": "勤労感謝の日" };

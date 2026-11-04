@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Toggle と同じ並び。色は既定（antd の青）か、tone="accent"（ページのテーマ色）。two-way は「一覧／カレンダー」のような2択の切り替え（切れていても色）。 -->
 <script setup lang="ts">
-import { ArSwitch, ArThemeScope, ArIcon } from "@arrow/ui";
+import { ArSwitch, ArThemeScope, ArIcon } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const off = ref(false);
 const on = ref(true);

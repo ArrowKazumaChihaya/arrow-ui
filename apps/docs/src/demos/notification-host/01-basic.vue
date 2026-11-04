@@ -1,6 +1,6 @@
 <!-- 置き方 | ArUiProvider の中（テーマ色の効く場所）に1つだけ置く。useArNotification() で出した通知を右上に並べる。 -->
 <script setup lang="ts">
-import { ArButton, ArNotificationHost, useArNotification } from "@arrow/ui";
+import { ArButton, ArNotificationHost, useArNotification } from "@s_and_a/arrow-ui";
 const notification = useArNotification();
 </script>
 

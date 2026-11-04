@@ -1,6 +1,6 @@
 <!-- 大きさ・形・アイコンだけ | xs 28（表の行の中の小さな操作）・sm 30・md 34・lg 42。アイコンだけのボタンは label で読み上げの名前を付ける。shape は round（両端が丸い）と circle（丸）。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArStack } from "@arrow/ui";
+import { ArButton, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

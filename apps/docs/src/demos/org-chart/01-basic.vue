@@ -1,6 +1,6 @@
 <!-- 部署/店舗階層構造 | いちばん上の部署が横に並び、子の店舗が線でつながる。札を押すと select（その部署/店舗の情報を開く）。子のある札の下の丸で開け閉め、右下で拡大縮小・全体を表示、地をドラッグで動かす・ホイールで拡大縮小。 -->
 <script setup lang="ts">
-import { ArOrgChart, type ArOrgNode } from "@arrow/ui";
+import { ArOrgChart, type ArOrgNode } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const nodes: ArOrgNode[] = [
   { key: "1", label: "ARROW事業部", code: "arrow", count: 8, children: [{ key: "5", label: "渋谷店", code: "shibuya", count: 12 }, { key: "6", label: "新宿店", code: "shinjuku", count: 9 }] },

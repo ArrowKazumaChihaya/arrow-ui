@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Colorpicker・Colorviewer と同じ：30×30 の見本。classic は押すと「色選択」のダイアログ（12色×濃さ4段、group-size=4）。readonly は見るだけ（Colorviewer）。 -->
 <script setup lang="ts">
-import { ArColorPicker } from "@arrow/ui";
+import { ArColorPicker } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const families = [
   ["#E03838", "#E66464", "#ED9090", "#F4BCBC"],

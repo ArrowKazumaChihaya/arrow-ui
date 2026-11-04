@@ -25,7 +25,7 @@ import {
   type ArMenuItem,
   type ArTableColumn,
   type ArViewOptionGroup,
-} from "@arrow/ui";
+} from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;

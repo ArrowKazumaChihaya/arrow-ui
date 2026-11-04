@@ -1,7 +1,7 @@
 <!-- チェック | checkable で名前の前に ArCheckbox。親を付けると子もすべて付き、一部だけなら「一部」の印。Space で付け外し。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArTree, type ArTreeKey } from "@arrow/ui";
+import { ArTree, type ArTreeKey } from "@s_and_a/arrow-ui";
 const checked = ref<ArTreeKey[]>(["shibuya"]);
 const items = [
   {

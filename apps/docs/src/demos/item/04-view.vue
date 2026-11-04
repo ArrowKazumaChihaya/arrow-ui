@@ -1,6 +1,6 @@
 <!-- 見るだけの行・？・未登録・項目名の下の補足（会社情報・社員情報） | 値を見せる行。「？」（help）で説明の吹き出し、まだ入っていない値は「未登録」と理由の札（unregistered）、項目名の下に補足（caption）。 -->
 <script setup lang="ts">
-import { ArItem, ArTextInput } from "@arrow/ui";
+import { ArItem, ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const nick = ref("マユ");
 const kana = ref("");

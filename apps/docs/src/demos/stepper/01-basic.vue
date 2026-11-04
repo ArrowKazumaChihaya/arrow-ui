@@ -1,6 +1,6 @@
 <!-- − ＋ で挟む | joined（.stp）は枠の中に − 数 ＋。split は小さな四角いボタンで数を挟む（人数）。最小・最大で端のボタンは押せない。 -->
 <script setup lang="ts">
-import { ArStepper, ArCluster } from "@arrow/ui";
+import { ArStepper, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const day = ref(23);
 const people = ref(2);

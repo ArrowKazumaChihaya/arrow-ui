@@ -1,5 +1,5 @@
 import { computed, inject, provide, type InjectionKey, type Ref } from "vue";
-import type { ArPaletteName } from "@arrow/ui-tokens";
+import type { ArPaletteName } from "@s_and_a/arrow-ui-tokens";
 import type { ArDesign } from "../design";
 
 export interface ArUiContext {

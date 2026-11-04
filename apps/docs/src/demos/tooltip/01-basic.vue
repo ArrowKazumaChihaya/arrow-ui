@@ -1,6 +1,6 @@
 <!-- 基本 | 短い説明は濃い吹き出し（ink）。テーマ色の吹き出し（accent）は案内を目立たせたいときだけ。乗せると少し遅れて出て、キーボードのフォーカスではすぐ出る。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArTooltip } from "@arrow/ui";
+import { ArButton, ArCluster, ArTooltip } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

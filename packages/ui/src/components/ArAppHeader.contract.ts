@@ -1,6 +1,6 @@
 /** ArAppHeader 1.1 の契約。PC の画面の頭（2段：ロゴ・お知らせ・やること・管理ページ／メニュー）。 */
 import type { ArIconName } from "../icons";
-import type { ArPaletteName } from "@arrow/ui-tokens";
+import type { ArPaletteName } from "@s_and_a/arrow-ui-tokens";
 
 /** メニューの1項目（ヘッダー・スマホの下のメニューで共通）。 */
 export interface ArAppNavItem {

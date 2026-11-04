@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Zip と同じ値（幅120px）。 -->
 <script setup lang="ts">
-import { ArZipInput } from "@arrow/ui";
+import { ArZipInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<string | null>(null);
 const b = ref<string | null>("150-0001");

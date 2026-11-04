@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 時と分の箱・前日の切り替え（day-shift）・時と分のプルダウン（select）を、今の ARROW（ui-Time）と同じ値で並べる。時間の長さ（「1 時間 30 分」）は ArDurationInput。 -->
 <script setup lang="ts">
-import { ArTimeInput, ArDurationInput, type ArTimeValue } from "@arrow/ui";
+import { ArTimeInput, ArDurationInput, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const empty = ref<ArTimeValue>({ time: null, day: "same" });
 const nine = ref<ArTimeValue>({ time: "09:00", day: "same" });

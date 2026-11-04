@@ -1,4 +1,4 @@
-/* @covers ArSelect 1.2.0 */
+/* @covers ArSelect 1.3.0 */
 /* 押す所（トリガー）は ArCascader・ArTreeSelect も同じ形なので、ここで3つまとめて当てる。 */
 /* ArSelect：field＝入力と同じ枠（.inp・右に下向きの印）、selbox＝店舗の選択（.selbox）。プルダウンは _picker.css。 */
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]){height:var(--ar-size-control-md);gap:8px;padding:0 34px 0 12px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font-size:14px;font-weight:500;line-height:normal;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}

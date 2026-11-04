@@ -1,6 +1,6 @@
 <!-- 種類 | 大きな印（意味の色の淡い丸）＋見出し＋説明＋次の一手（default slot のボタン）。見つからないページは status="404" で大きな数。 -->
 <script setup lang="ts">
-import { ArResult, ArButton, ArGrid } from "@arrow/ui";
+import { ArResult, ArButton, ArGrid } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

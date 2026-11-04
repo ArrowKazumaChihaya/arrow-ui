@@ -1,6 +1,6 @@
 <!-- 中の小さなカード | elevated（白・角丸18・影）と outlined（線）は見出しの行・本文・#footer のアイコンの操作を持つ。#cover は上の絵。plain は数字などの小さな線の箱（角丸12）。 -->
 <script setup lang="ts">
-import { ArButton, ArCard } from "@arrow/ui";
+import { ArButton, ArCard } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

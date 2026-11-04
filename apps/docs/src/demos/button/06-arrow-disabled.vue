@@ -1,6 +1,6 @@
 <!-- 今の ARROW の種類：押せない | 塗りの種類は灰色になり、secondary（cancel）・subtle（info）は見た目が変わらない。disabled-reason を渡すと、押せない見た目のまま押せて、押すと理由のダイアログを出す。 -->
 <script setup lang="ts">
-import { ArButton } from "@arrow/ui";
+import { ArButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

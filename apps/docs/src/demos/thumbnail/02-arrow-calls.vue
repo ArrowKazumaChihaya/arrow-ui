@@ -1,6 +1,6 @@
 <!-- 今の Thumbnail の呼び方との対応 | isEditting・updateIsEditting → v-model:open、width・height → crop-width・crop-height（aspect="crop" で画面の箱も同じ比。社員カードの 300×189）、silhouette="picture" → placeholder="picture"（不具合の報告のキャプチャー）、dialogOnly・freeCrop・allowedExtension → dialog-only・free-crop・accept（添付の「写真を追加」：四隅のつまみで範囲を変え、「登録」で PNG の File を file で受け取る）、invalidImage → invalid-image。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArThumbnail } from "@arrow/ui";
+import { ArButton, ArCluster, ArThumbnail } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const card = ref<string | null>(null);
 const editingCard = ref(false);

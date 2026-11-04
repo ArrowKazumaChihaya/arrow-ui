@@ -1,5 +1,5 @@
 /**
- * @arrow/ui — ARROW シリーズ共通の Vue 3 デザインライブラリ。
+ * @s_and_a/arrow-ui — ARROW シリーズ共通の Vue 3 デザインライブラリ。
  * 公開するのはこのファイルに書いたものだけ（package.json の exports で閉じている）。
  */
 import "./styles/index.css";
@@ -24,4 +24,4 @@ export type {
   ArNotificationApi,
 } from "./feedback";
 export type { ArSpace, ArAlign, ArJustify } from "./layout/types";
-export type { ArPaletteName, ArPalette, ArTokenName, ArTokenValues } from "@arrow/ui-tokens";
+export type { ArPaletteName, ArPalette, ArTokenName, ArTokenValues } from "@s_and_a/arrow-ui-tokens";

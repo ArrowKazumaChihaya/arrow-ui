@@ -1,4 +1,4 @@
-/* @covers ArAvatar 1.1.0, ArAvatarGroup 1.0.0 */
+/* @covers ArAvatar 1.1.1, ArAvatarGroup 1.0.0 */
 /* ArAvatar（.ad-av / .v-av：頭文字・700・地は淡いテーマ色。人ごとの色はシフト画面の AVC） */
 [data-ar-design="remix"] [data-ar="avatar"]{font-feature-settings:"palt" 1;width:32px;height:32px;border-radius:50%;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:13px;font-weight:700}
 [data-ar-design="remix"] [data-ar="avatar"][data-size="xs"]{width:24px;height:24px;font-size:11px}

@@ -1,6 +1,6 @@
 <!-- 形 | 白・角丸18・後ろの幕。頭（題18px太字＋1行の説明＋右の閉じる）、頭の下に手順、中身（まとまりの間は16px）、足（右にキャンセルと主なボタン）。contained で親の中に出せる。 -->
 <script setup lang="ts">
-import { ArModal, ArField, ArTextInput, ArDateInput, ArTimeInput, ArCluster, type ArTimeValue } from "@arrow/ui";
+import { ArModal, ArField, ArTextInput, ArDateInput, ArTimeInput, ArCluster, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(true);
 const title = ref("朝礼");

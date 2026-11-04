@@ -1,6 +1,6 @@
 <!-- 縦の手順・小さな手順 | 承認の流れは縦。ポップアップの上は size="mini"（今はテーマ色の丸、済みは緑の丸にチェック）。clickable なら済んだ手順を押して戻れる。 -->
 <script setup lang="ts">
-import { ArSteps, ArCluster } from "@arrow/ui";
+import { ArSteps, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const step = ref(1);
 </script>

@@ -1,5 +1,5 @@
 {
-  "name": "@arrow/eslint-plugin-ui",
+  "name": "@s_and_a/eslint-plugin-arrow-ui",
   "version": "0.1.1",
   "description": "ARROW UI を使う製品のための ESLint ルール（宣言した部品だけを使う・並べる基礎を View で使わない）",
   "main": "./lib/index.cjs",

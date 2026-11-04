@@ -1,6 +1,6 @@
 <!-- 吹き出し | その場に置く注意や目印。しっぽの向き（上下左右）と色を選ぶ。dot は丸い目印（チャートの人の印など）。 -->
 <script setup lang="ts">
-import { ArBalloon, ArCluster, ArStack, ArIcon } from "@arrow/ui";
+import { ArBalloon, ArCluster, ArStack, ArIcon } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

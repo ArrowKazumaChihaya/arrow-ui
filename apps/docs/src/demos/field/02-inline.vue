@@ -1,6 +1,6 @@
 <!-- ラベルを横に（設定の画面） | layout="inline" でラベルを左（120px・右寄せ・13.5px）に置く。label-size で 88px・168px にも。ラベルは入力（と間違い・説明）の縦の真ん中にそろう。 -->
 <script setup lang="ts">
-import { ArField, ArTextInput, ArSelect, ArTextarea, ArStack } from "@arrow/ui";
+import { ArField, ArTextInput, ArSelect, ArTextarea, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref("朝礼");
 const store = ref<string | number | null>("shibuya");

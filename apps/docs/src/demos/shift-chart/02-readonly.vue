@@ -1,7 +1,7 @@
 <!-- 読み取り専用（募集人数・他店舗のチャート） | 今の「募集人数・他店舗のチャートを表示」（Calendar/Chart/Daily.vue）の置き換え。readonly でドラッグ・つまみ・操作の行を出さない。右上の切り替えで、ほかの店舗のシフトも出す（v-model:others）。下に必要人数と不足。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArShiftChart, type ArShiftChartRow } from "@arrow/ui";
+import { ArShiftChart, type ArShiftChartRow } from "@s_and_a/arrow-ui";
 const H = (h: number, m = 0) => h * 60 + m;
 // 製品の API（manager/shift/shift-chart/read）の shifts・all_shifts の times（is_valid の started_at・ended_at）を行に、needs を募集に直したもの。
 const others = ref(true);

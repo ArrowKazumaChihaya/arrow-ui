@@ -1,6 +1,6 @@
 <!-- 横に並べる・編集する（申請設定） | layout="row"。先頭に「申請」（start）、段を › でつなぐ。step スロットで札をセレクトに替え、append で「ステップを足す」。 -->
 <script setup lang="ts">
-import { ArApprovalFlow, ArButton, ArSelect, ArStack, type ArApprovalStep } from "@arrow/ui";
+import { ArApprovalFlow, ArButton, ArSelect, ArStack, type ArApprovalStep } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const opts = [
   { value: "store", label: "店長" },

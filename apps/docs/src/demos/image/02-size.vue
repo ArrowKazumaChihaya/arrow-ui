@@ -1,6 +1,6 @@
 <!-- 大きさ・収め方・代わりの画像 | width・height で大きさ。fit="contain" は全体を入れる。fallback は読み込めないときの代わりの画像。preview=false で押せない画像に。 -->
 <script setup lang="ts">
-import { ArCluster, ArImage } from "@arrow/ui";
+import { ArCluster, ArImage } from "@s_and_a/arrow-ui";
 const pic = (w: number, h: number, a: string, b: string) =>
   "data:image/svg+xml," +
   encodeURIComponent(

@@ -1,6 +1,6 @@
 <!-- 大きさ（sm・md・lg） | 同じ段なら ArSelect・ArTextInput・ボタンと高さ・角丸がそろう（カード sm 30・md 36・lg 42、角丸 9・10・11）。使い分け：sm＝設定の行・表の上など密集した所。md＝ふつうの画面・ポップアップ。lg＝年末調整・スマホなど、大きく押しやすくしたい所（説明の文も入れられる）。 -->
 <script setup lang="ts">
-import { ArRadioGroup, ArSelect, ArTextInput, type ArRadioValue } from "@arrow/ui";
+import { ArRadioGroup, ArSelect, ArTextInput, type ArRadioValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 type Z = (typeof sizes)[number];

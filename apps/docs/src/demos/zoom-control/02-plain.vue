@@ -1,7 +1,7 @@
 <!-- 板の中に置く（plain） | すでに白い板の中に置くときは箱なし（組織図の右下の操作）。ほかのボタン（「全体を表示」など）と並べる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArZoomControl } from "@arrow/ui";
+import { ArButton, ArZoomControl } from "@s_and_a/arrow-ui";
 
 const z = ref(100);
 </script>

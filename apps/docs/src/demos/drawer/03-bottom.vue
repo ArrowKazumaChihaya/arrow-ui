@@ -1,7 +1,7 @@
 <!-- 下から出る一覧（ボトムシート） | placement="bottom"。スマホで「設定を選ぶ」「操作」などの一覧を下から出す。上の角だけ丸く、題は真ん中、高さは中身なり（最大 82%。height で決めることもできる）。見本は contained で枠の中に出している。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArDrawer, ArIcon, ArTextInput } from "@arrow/ui";
+import { ArButton, ArDrawer, ArIcon, ArTextInput } from "@s_and_a/arrow-ui";
 const open = ref(true);
 const q = ref("");
 const cur = ref("基本設定");

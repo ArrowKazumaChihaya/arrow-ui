@@ -1,6 +1,6 @@
 <!-- シフト詳細の勤務メンバー（行の中の追加・2段の見出し・休憩の段） | 名前の列は cell-name のスロットで「追加の行」だけ選ぶ入力に差し替え、ほかの行は引数の Default で既定の表示（頭文字の丸・名前・色の四角つきの sub）のまま。シフト／勤怠（打刻）／休憩は columnGroups の2段の見出し。休憩を分けて持つ会社は、休始・休終の列を lines（段に分ける列）にして、1行に2つ以上の休憩を段で並べる（ほかの列は段をまたぐ）。追加・編集の行は editor="time" で表の中に時刻の入力。並べ替えは v-model:sort（状態は製品が持つので、画面を移っても製品の store に置けば保てる）。 -->
 <script setup lang="ts">
-import { ArButton, ArSelect, ArTable, type ArTableColumn, type ArTableColumnGroup, type ArTableEditValue, type ArTableSort } from "@arrow/ui";
+import { ArButton, ArSelect, ArTable, type ArTableColumn, type ArTableColumnGroup, type ArTableEditValue, type ArTableSort } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 
 type Row = { id: number | "new"; name: string; pattern?: string; color?: string; start: string | null; end: string | null; in: string | null; out: string | null; bs: (string | null)[]; be: (string | null)[] };

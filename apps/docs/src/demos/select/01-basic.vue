@@ -1,6 +1,6 @@
 <!-- 1つ選ぶ | 押すとプルダウンが開く。選んでいる項目は淡いテーマ色＋チェック。↓↑・Enter・Escape・文字で飛ぶで操作できる。 -->
 <script setup lang="ts">
-import { ArSelect, ArField, ArGrid } from "@arrow/ui";
+import { ArSelect, ArField, ArGrid } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const repeat = ref<string | number | null>("week");
 const role = ref<string | number | null>(null);

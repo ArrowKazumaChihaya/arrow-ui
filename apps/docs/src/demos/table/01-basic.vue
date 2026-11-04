@@ -1,6 +1,6 @@
 <!-- 一覧の表（box） | 外枠は角丸12の線。名前の列は頭文字の丸、時刻は太字・等幅、区分は灰色。行の右端にアイコンだけのボタン（aria-label 付き）。左のチェックで選び、見出しのチェックで表に出ている人をすべて選ぶ。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, type ArTableColumn } from "@arrow/ui";
+import { ArButton, ArTable, type ArTableColumn } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 type Row = { id: number; seed: number; name: string; start: string[]; end: string[]; kind: string };
 const rows: Row[] = [

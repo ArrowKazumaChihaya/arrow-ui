@@ -1,6 +1,6 @@
 <!-- 変わる項目の表と一覧（保存前の確認） | items を渡すと「項目｜変更前｜変更後」の表（layout="table"）。狭い所（スマホの確認）では1列の一覧（layout="list"）。金額は numeric で右に寄せる。 -->
 <script setup lang="ts">
-import { ArChangedValue, ArStack } from "@arrow/ui";
+import { ArChangedValue, ArStack } from "@s_and_a/arrow-ui";
 const cfg = [
   { label: "シフトサマリー計算期間", before: "月単位", after: "給与計算期間" },
   { label: "シフト提出", before: "店舗/部署ごとに提出", after: "全ての店舗/部署に一括提出" },

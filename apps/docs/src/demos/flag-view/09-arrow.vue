@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の FlagView と同じ（選んだ曜日を文字で並べる。0 は「なし」）。 -->
 <script setup lang="ts">
-import { ArFlagView } from "@arrow/ui";
+import { ArFlagView } from "@s_and_a/arrow-ui";
 const days = ["日", "月", "火", "水", "木", "金", "土"].map((label, i) => ({ value: 2 ** i, label }));
 </script>
 

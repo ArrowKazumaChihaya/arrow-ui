@@ -1,6 +1,6 @@
 <!-- アイコンだけのボタン | アイコンだけのボタンには必ず付ける。Tab で移るとすぐ出て、Escape で消える。説明は aria-describedby で読み上げる。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArTooltip } from "@arrow/ui";
+import { ArButton, ArCluster, ArTooltip } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

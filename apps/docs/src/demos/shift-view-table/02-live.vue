@@ -1,8 +1,8 @@
 <!-- 今日の勤怠の印・押せる見出しと札 | 名前の前の丸：緑の点＝勤務中、白抜き＝まだ打刻がない（データは製品が渡す。キャンバスの LiveAndSettings）。clickable で日付の見出しと札を押せる（day-click で日の詳細を開くなど）。合計は製品の summarizeShiftViewDays の値をそのまま totals に渡せる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArShiftViewTable } from "@arrow/ui";
-import type { ArShiftViewRow } from "@arrow/ui";
+import { ArShiftViewTable } from "@s_and_a/arrow-ui";
+import type { ArShiftViewRow } from "@s_and_a/arrow-ui";
 import { branches, people, shifts, today, weekDates } from "./_data";
 
 const live: Record<number, ArShiftViewRow["live"]> = { 101: "absent", 102: "working", 103: "working", 104: "working", 105: "absent" };

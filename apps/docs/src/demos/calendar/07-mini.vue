@@ -1,6 +1,6 @@
 <!-- 小さなカレンダー（size="mini"） | 設定のシフトテンプレートの「カレンダーで確かめる」。見出しはカレンダーの絵と title・extra slot、マスは日付・当たった条件の札（events の label・color・background）・時間帯（note）、下に footer slot の凡例。祝日は cellMarks の holiday で赤。 -->
 <script setup lang="ts">
-import { ArCalendar, ArTag, type ArCalendarEvent } from "@arrow/ui";
+import { ArCalendar, ArTag, type ArCalendarEvent } from "@s_and_a/arrow-ui";
 const HOL: Record<number, string> = { 3: "文化の日", 23: "勤労感謝の日" };
 const PAL = [
   { background: "var(--ar-accent-muted)", color: "var(--ar-accent-ink)" },

@@ -1,6 +1,6 @@
 <!-- 開く・閉じる | 幕を押す・Esc・× で閉じる。開くと中の最初の入力にフォーカスし、閉じると押したボタンに戻る。placement="left" で左から。width で幅を変える。 -->
 <script setup lang="ts">
-import { ArDrawer, ArButton, ArCluster, ArField, ArTextInput } from "@arrow/ui";
+import { ArDrawer, ArButton, ArCluster, ArField, ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(false);
 const side = ref<"right" | "left">("right");

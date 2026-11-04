@@ -1,6 +1,6 @@
 <!-- 決まりと「適用」（シフト一括登録・募集の決まり） | default のスロットに曜日ごとの決まり（ArWeekdayPicker・ArSelect・ArTimeInput など）を置き、applyText を渡すと「適用」を出す（押すと apply に今の期間）。remix は右下の主ボタン（PopBulk の「日付に当てはめる」）、classic は箱の下の幅250の大きな「適用」と下向きの矢印の絵（/img/apply.png）。 -->
 <script setup lang="ts">
-import { ArButton, ArPeriodBox, ArSelect, ArTimeInput, ArWeekdayPicker, type ArPeriodBoxValue, type ArTimeValue, type ArWeekday } from "@arrow/ui";
+import { ArButton, ArPeriodBox, ArSelect, ArTimeInput, ArWeekdayPicker, type ArPeriodBoxValue, type ArTimeValue, type ArWeekday } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const period = ref<ArPeriodBoxValue>({ mode: "half", start: "2026-11-16", end: "2026-11-30" });
 const rules = ref<{ days: ArWeekday[]; pattern: number | null; start: ArTimeValue; end: ArTimeValue }[]>([

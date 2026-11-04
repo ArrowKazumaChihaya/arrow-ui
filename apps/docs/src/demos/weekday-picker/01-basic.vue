@@ -1,6 +1,6 @@
 <!-- 曜日 | いくつでも選ぶ。選んだ曜日はテーマ色の塗り、選んでいない日・祝は赤、土は青。xs は表の行の中（シフト募集。1.0 の sm）。 -->
 <script setup lang="ts">
-import { ArWeekdayPicker, ArStack, type ArWeekday } from "@arrow/ui";
+import { ArWeekdayPicker, ArStack, type ArWeekday } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const days = ref<ArWeekday[]>([1, 2, 3, 4, 5]);
 const weekend = ref<ArWeekday[]>([0, 6, "holiday"]);

@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | classic は今の ARROW の Upload と同じく「ファイルを選択」のボタンと、その下のファイル名（remix は置き場）。button-tone・button-size でボタンを選ぶ。 -->
 <script setup lang="ts">
-import { ArUpload, type ArUploadFile } from "@arrow/ui";
+import { ArUpload, type ArUploadFile } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const files = ref<ArUploadFile[]>([]);
 function onSelect(fs: File[]) {

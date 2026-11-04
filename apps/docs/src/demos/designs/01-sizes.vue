@@ -1,7 +1,7 @@
 <!-- 大きさの段（sm・md・lg）と使い分け | どの部品も同じ3段の大きさを持ち、同じ段なら高さ・角丸・文字がそろう（新しい見た目：sm 30・md 36・lg 42、角丸 9・10・11。今の見た目：antd の 24・32・40）。sm は設定など密集した所、md はふつう、lg は年末調整・スマホなど大きく押しやすくしたい所。size を書かなければ md。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArDateInput, ArSelect, ArTextInput, ArTimeInput, type ArTimeValue } from "@arrow/ui";
+import { ArButton, ArDateInput, ArSelect, ArTextInput, ArTimeInput, type ArTimeValue } from "@s_and_a/arrow-ui";
 
 const steps = [
   { size: "sm", name: "sm", use: "設定・表の上の操作の段など、密集した所" },

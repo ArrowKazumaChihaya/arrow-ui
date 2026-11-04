@@ -1,6 +1,6 @@
 <!-- 中身を自由に・点だけ | item slot で中身の形を変えられる。arrows=false で前後のボタンを消し、点だけにする。height で高さを変える。 -->
 <script setup lang="ts">
-import { ArCarousel, ArButton } from "@arrow/ui";
+import { ArCarousel, ArButton } from "@s_and_a/arrow-ui";
 const items = ["給与", "書類"];
 </script>
 

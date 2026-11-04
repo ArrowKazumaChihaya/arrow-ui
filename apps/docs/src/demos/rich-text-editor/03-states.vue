@@ -1,6 +1,6 @@
 <!-- 状態 | 空のときの薄い字（placeholder）・上限（maxLength を越えると数が赤く、赤い枠）・誤り（invalid）・読むだけ（readonly：ツールバーなし）・押せない（disabled）。危ないタグ（script・iframe・onclick など）は入れても消える。 -->
 <script setup lang="ts">
-import { ArRichTextEditor, ArStack } from "@arrow/ui";
+import { ArRichTextEditor, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref("");
 const b = ref("<p>上限は30文字です。ここに長い文章を入れると、文字数が赤くなります。</p>");

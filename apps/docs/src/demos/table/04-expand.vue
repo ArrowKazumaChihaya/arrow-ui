@@ -1,6 +1,6 @@
 <!-- 開く行・左の固定・薄い行・詰めた表 | expandable で行の下に #expanded を開く。sticky の列は横にスクロールしても残る。rowOff で薄く出す（シフトなし・ロック中）。density="compact" は詰めた表。 -->
 <script setup lang="ts">
-import { ArTable, ArTag, type ArTableColumn } from "@arrow/ui";
+import { ArTable, ArTag, type ArTableColumn } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 type Row = { id: number; name: string; store: string; start: string; end: string; minutes: string; off?: boolean };
 const rows: Row[] = [

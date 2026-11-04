@@ -1,6 +1,6 @@
 <!-- 店舗の GPS | 真ん中のピンと打刻範囲の円。restriction="strict"（範囲内でのみ打刻可能）はテーマ色の実線、"warn"（勤怠エラーのみ）は橙の点線、"none"（制限なし）は円なし。半径が 10〜9999m の外なら円を出さず案内の札。 -->
 <script setup lang="ts">
-import { ArMapPreview, ArStack } from "@arrow/ui";
+import { ArMapPreview, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

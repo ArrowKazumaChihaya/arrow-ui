@@ -1,8 +1,8 @@
 <!-- マイページの給与明細 | 勤怠／支給／控除／その他の4列と、下に合計の箱。「前回と比べる」は compare="diff"（値の下に差）。差は prev（前回の値）から自動で計算するか、時間・日数などは diff に文字で渡す。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArThemeScope, ArPayslip, ArSwitch } from "@arrow/ui";
-import type { ArPayslipSection, ArPayslipTotal } from "@arrow/ui";
+import { ArThemeScope, ArPayslip, ArSwitch } from "@s_and_a/arrow-ui";
+import type { ArPayslipSection, ArPayslipTotal } from "@s_and_a/arrow-ui";
 const cmp = ref(false);
 const columns: ArPayslipSection[] = [
   { title: "勤怠", rows: [

@@ -1,6 +1,6 @@
 <!-- アップロード | Excel登録と同じ形。置き場は淡いテーマ色の点線（Enter・Space でも選べる）。済みは緑のチェック、途中はテーマ色の進み具合、失敗は赤と理由。送る処理は親が行い files に状態を入れる。 -->
 <script setup lang="ts">
-import { ArUpload, type ArUploadFile } from "@arrow/ui";
+import { ArUpload, type ArUploadFile } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const files = ref<ArUploadFile[]>([
   { id: 1, name: "シフト_2026年10月.xlsx", status: "done" },

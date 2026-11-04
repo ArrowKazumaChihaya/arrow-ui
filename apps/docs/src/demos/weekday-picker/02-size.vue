@@ -1,6 +1,6 @@
 <!-- 大きさ（xs・sm・md・lg） | xs＝表の行の中（17×26）。sm＝設定の行（30×30）。md＝ポップアップ（38×36・シフトのキャンバスの .wd）。lg＝スマホ・大きく押しやすく（42×42）。sm・md・lg はほかの入力と同じ高さ。 -->
 <script setup lang="ts">
-import { ArWeekdayPicker, ArSelect, type ArWeekday } from "@arrow/ui";
+import { ArWeekdayPicker, ArSelect, type ArWeekday } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["xs", "sm", "md", "lg"] as const;
 const days = ref<ArWeekday[]>([1, 2, 3, 4, 5]);

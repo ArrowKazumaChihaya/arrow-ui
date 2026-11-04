@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方：ボタンの形 | 今の ARROW の RadioButtonGroup と同じ（選んだものは白地のまま枠と文字が antd の青）。 -->
 <script setup lang="ts">
-import { ArRadioGroup } from "@arrow/ui";
+import { ArRadioGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const unit = [
   { value: "d", label: "日" },

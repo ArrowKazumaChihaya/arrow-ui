@@ -1,6 +1,6 @@
 <!-- シフト画面のカレンダー（board） | variant="board"：角の丸いマス。日付は真ん中の丸（月の1日は「10/1」）、行事は登録した色の点と名前（events の color）、#cell はマスの下の段（ArTag size="xs" の「不足1」「提出2」と人数）。cellMarks でロック中（斜線と鍵）・非公開（目の印）・注意（赤い枠）。 -->
 <script setup lang="ts">
-import { ArCalendar, ArTag, type ArCalendarCellMarks, type ArCalendarEvent } from "@arrow/ui";
+import { ArCalendar, ArTag, type ArCalendarCellMarks, type ArCalendarEvent } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const day = ref<string | null>("2026-10-21");
 const month = ref("2026-10");

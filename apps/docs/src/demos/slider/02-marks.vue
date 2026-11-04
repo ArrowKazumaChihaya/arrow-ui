@@ -1,6 +1,6 @@
 <!-- 目盛り | marks で点と文字。step=null なら目盛りの値にだけ止まる（ドラッグの間隔：5・10・15・20・30分）。 -->
 <script setup lang="ts">
-import { ArSlider, ArStack } from "@arrow/ui";
+import { ArSlider, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const v = ref(2);
 const labels = ["5分", "10分", "15分", "20分", "30分"];

@@ -1,6 +1,6 @@
 <!-- 見出しの段 | level 1〜5（remix は 28/22/18/16/14px）。文書の段に合わせて選ぶ。 -->
 <script setup lang="ts">
-import { ArTitle, ArCluster, ArStack } from "@arrow/ui";
+import { ArTitle, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

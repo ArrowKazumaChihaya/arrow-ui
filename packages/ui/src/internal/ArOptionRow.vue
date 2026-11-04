@@ -20,6 +20,8 @@ const props = withDefaults(
     /** 選んでいる道筋（カスケーダーの途中の段）。 */
     path?: boolean;
     avatar?: string;
+    avatarSrc?: string;
+    avatarSeed?: string | number;
     avatarColor?: string;
     avatarInk?: string;
     /** 頭文字の丸（ArAvatar）の大きさ。xs＝24（ふつう）、sm＝28（人を選ぶ一覧）。 */
@@ -43,6 +45,8 @@ const props = withDefaults(
     disabled: false,
     path: false,
     avatar: undefined,
+    avatarSrc: undefined,
+    avatarSeed: undefined,
     avatarColor: undefined,
     avatarInk: undefined,
     avatarSize: "xs",
@@ -74,9 +78,9 @@ const avatarColor = computed(() =>
     :aria-selected="role === 'option' ? selected : undefined"
     :aria-disabled="disabled || undefined"
     :data-state="state"
-    :data-has-avatar="avatar !== undefined || undefined"
+    :data-has-avatar="avatar !== undefined || !!avatarSrc || undefined"
   >
-    <ArAvatar v-if="avatar !== undefined" data-part="avatar" :size="avatarSize" :text="avatar" :color="avatarColor" />
+    <ArAvatar v-if="avatar !== undefined || avatarSrc" data-part="avatar" :size="avatarSize" :text="avatar" :src="avatarSrc" :seed="avatarSeed" :color="avatarColor" />
     <ArIcon v-else-if="icon" :name="icon" size="sm" data-part="option-icon" />
     <span v-else-if="dot" data-part="option-dot" aria-hidden="true" :style="{ background: dot }" />
     <span data-part="option-label"

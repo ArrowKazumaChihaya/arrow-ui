@@ -75,7 +75,7 @@ const nullRow = computed<ArSelectOption | null>(() =>
 const rows = computed<readonly (ArSelectOption | ArSelectGroup)[]>(() => (nullRow.value ? [nullRow.value, ...props.options] : props.options));
 const allOptions = computed(() => props.options.flatMap((o) => (isGroup(o) ? o.options : [o])));
 /** 人を選ぶ（頭文字の丸がある）ときは、シフト画面の名前の選択と同じ形（行38px・丸26px・探す欄は灰色の地）。 */
-const people = computed(() => allOptions.value.some((o) => o.avatar !== undefined));
+const people = computed(() => allOptions.value.some((o) => o.avatar !== undefined || !!o.avatarSrc));
 const showSearch = computed(() => props.searchable ?? (searchForm.value === "off" ? false : allOptions.value.length >= 7));
 const matches = (o: ArSelectOption) => {
   const q = fold(query.value.trim());
@@ -301,17 +301,19 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
       <span v-else data-part="placeholder">{{ placeholder }}</span>
     </template>
     <template v-else>
-      <span v-if="single" data-part="value" :data-has-dot="!icon && single.dot && single.avatar === undefined ? '' : undefined"
+      <span v-if="single" data-part="value" :data-has-dot="!icon && single.dot && single.avatar === undefined && !single.avatarSrc ? '' : undefined"
         ><span
-          v-if="!icon && single.dot && single.avatar === undefined"
+          v-if="!icon && single.dot && single.avatar === undefined && !single.avatarSrc"
           data-part="dot"
           aria-hidden="true"
           :style="{ background: single.dot }"
         /><ArAvatar
-          v-if="!icon && 'avatar' in single && single.avatar !== undefined"
+          v-if="!icon && (single.avatar !== undefined || single.avatarSrc)"
           data-part="avatar"
           size="xs"
           :text="single.avatar"
+          :src="single.avatarSrc"
+          :seed="single.avatarSeed"
           :color="single.avatarColor || single.avatarInk ? [single.avatarColor ?? '', single.avatarInk ?? ''] : undefined"
         /><span data-part="value-text">{{ single.label }}</span
         ><small v-if="valueDescription && single.description" data-part="value-description">{{ single.description }}</small></span
@@ -376,6 +378,8 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             :disabled="it.opt.disabled"
             :icon="it.opt.icon"
             :avatar="it.opt.avatar"
+            :avatar-src="it.opt.avatarSrc"
+            :avatar-seed="it.opt.avatarSeed"
             :avatar-color="it.opt.avatarColor"
             :avatar-ink="it.opt.avatarInk"
             :avatar-size="people ? 'sm' : 'xs'"
@@ -397,6 +401,8 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             :disabled="it.opt.disabled"
             :icon="it.opt.icon"
             :avatar="it.opt.avatar"
+            :avatar-src="it.opt.avatarSrc"
+            :avatar-seed="it.opt.avatarSeed"
             :avatar-color="it.opt.avatarColor"
             :avatar-ink="it.opt.avatarInk"
             :avatar-size="people ? 'sm' : 'xs'"

@@ -1,5 +1,5 @@
 /** ArPunchButton 1.0 の契約。打刻の大きいボタン（出勤・退勤・休憩開始・休憩終了）。 */
-import type { ArPaletteName } from "@arrow/ui-tokens";
+import type { ArPaletteName } from "@s_and_a/arrow-ui-tokens";
 import type { ArIconName } from "../icons";
 
 export interface ArPunchButtonProps {

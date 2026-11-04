@@ -1,6 +1,6 @@
 <!-- コピー・「…」で切る | copyable はテーマ色のコピーアイコン（押すとチェックに変わる）。ellipsis は幅に収まらない文を「…」で切り、全文は吹き出しで出す。 -->
 <script setup lang="ts">
-import { ArText, ArStack, ArParagraph } from "@arrow/ui";
+import { ArText, ArStack, ArParagraph } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

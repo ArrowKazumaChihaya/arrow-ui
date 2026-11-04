@@ -1,6 +1,6 @@
 <!-- 基本 | 押すと開く白い吹き出し。見出し（title）・中身（content）・操作（footer slot）。外を押す・Escape で閉じ、押した場所へフォーカスを戻す。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArPopover } from "@arrow/ui";
+import { ArButton, ArCluster, ArPopover } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- 部品の中の印（line） | line を付けると、デザインが絵を持っていてもいつも線で描く。部品の中の開閉の∨・閉じる×・チェックの✓などに使う（classic でもそこは今の ARROW の絵ではないため）。 -->
 <script setup lang="ts">
-import { ArIcon } from "@arrow/ui";
+import { ArIcon } from "@s_and_a/arrow-ui";
 const names = ["cd", "x", "check", "plus", "lock"] as const;
 </script>
 

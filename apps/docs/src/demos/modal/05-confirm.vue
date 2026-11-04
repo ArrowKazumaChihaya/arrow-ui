@@ -1,6 +1,6 @@
 <!-- 確かめ（confirm） | useArConfirm() で小さな確かめを出し、答えを Promise で受け取る。左に印、ボタンは何が起きるかを書く。削除は tone="danger"（赤）。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArModal, useArConfirm } from "@arrow/ui";
+import { ArButton, ArCluster, ArModal, useArConfirm } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const confirm = useArConfirm();
 const result = ref("");

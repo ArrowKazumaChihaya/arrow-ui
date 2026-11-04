@@ -1,7 +1,7 @@
 <!-- 並べ替え | draggable でつまみ（⋮⋮）が出て、ドラッグで並べ替える（行の上・下・中に落とす）。キーボードは Alt+↑↓。並べ替えるのは drop を受けた親。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArTree, type ArTreeDrop, type ArTreeNode } from "@arrow/ui";
+import { ArTree, type ArTreeDrop, type ArTreeNode } from "@s_and_a/arrow-ui";
 const items = ref<ArTreeNode[]>([
   { key: "arrow", label: "ARROW事業部", icon: "folder", children: [{ key: "tokyo", label: "東京", icon: "folder" }, { key: "osaka", label: "大阪", icon: "folder" }] },
   { key: "hq", label: "本社", icon: "folder" },

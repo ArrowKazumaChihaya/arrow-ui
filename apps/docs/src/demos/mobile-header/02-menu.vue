@@ -1,8 +1,8 @@
 <!-- メニューのボタン | menus を渡すと右端にメニューのボタン。押すと下から一覧が出る（親とその子を順にタイルで並べる）。項目を押すと navigate。actions の slot にはベルの左に足すもの（やることの札など）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArMobileHeader } from "@arrow/ui";
-import type { ArAppNavItem } from "@arrow/ui";
+import { ArMobileHeader } from "@s_and_a/arrow-ui";
+import type { ArAppNavItem } from "@s_and_a/arrow-ui";
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 const menus: ArAppNavItem[] = [
   { key: "shift", label: "シフト", icon: "cal", palette: "blue", children: [{ key: "shift-submit", label: "シフト提出" }, { key: "shift-view", label: "シフト閲覧" }] },

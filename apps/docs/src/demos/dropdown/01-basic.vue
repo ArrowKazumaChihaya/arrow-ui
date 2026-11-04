@@ -1,6 +1,6 @@
 <!-- ドロップダウン | シフトの「操作」メニューと同じ形。項目にアイコン・区切り・権限なし（鍵と灰色）・危ない項目（赤・区切り線のあと）。split は Dropdown.Button（Compact でつなぐ）。 -->
 <script setup lang="ts">
-import { ArDropdown, ArCluster, type ArMenuItem } from "@arrow/ui";
+import { ArDropdown, ArCluster, type ArMenuItem } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const last = ref("");
 const items: ArMenuItem[] = [

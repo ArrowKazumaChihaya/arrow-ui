@@ -1,7 +1,7 @@
 <!-- 見出しに部品を入れる | #title-<key>（{ item, open }）で見出しの文字の所に部品（太字の文・札・件数）。押すと開閉する（今の UI/Collapse の #header）。#header-extra-<key> は見出しのボタンの外の右に置き、押しても開閉しない（ボタン・スイッチはこちら）。1つだけの折りたたみ（今の UI/Collapse の value：true／false）は items を1つにして v-model を [key] か [] にする。 -->
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArButton, ArCollapse, ArSwitch, ArTag } from "@arrow/ui";
+import { ArButton, ArCollapse, ArSwitch, ArTag } from "@s_and_a/arrow-ui";
 const open = ref<string[]>([]);
 const guide = ref<string[]>(["guide"]);
 const on = ref(true);

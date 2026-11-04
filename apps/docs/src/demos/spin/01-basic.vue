@@ -1,6 +1,6 @@
 <!-- 回る輪・中身の上 | テーマ色の回る輪（sm 16・md 30・lg 40）。中身を包むと、読み込み中は白い幕と輪と言葉を重ね、中身は押せない。 -->
 <script setup lang="ts">
-import { ArSpin, ArCluster } from "@arrow/ui";
+import { ArSpin, ArCluster } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

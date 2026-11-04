@@ -1,6 +1,6 @@
 <!-- 読み込み中・押せない・幅いっぱい | loading の間は押せない。block は親の幅いっぱい。点線（dashed）を block にすると表の上の「シフト追加」（高さ40）。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArStack } from "@arrow/ui";
+import { ArButton, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const busy = ref(false);
 function save() { busy.value = true; setTimeout(() => (busy.value = false), 1500); }

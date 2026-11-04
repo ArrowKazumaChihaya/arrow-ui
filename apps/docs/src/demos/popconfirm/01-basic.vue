@@ -1,6 +1,6 @@
 <!-- その場の確認 | 中のボタンを押すと、そばに問いと「やめる／主なボタン」が出る。消すときは ok-tone="danger"。外を押す・Esc でやめる。 -->
 <script setup lang="ts">
-import { ArPopconfirm, ArButton, ArCluster } from "@arrow/ui";
+import { ArPopconfirm, ArButton, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(true);
 const last = ref("");

@@ -1,6 +1,6 @@
 <!-- 間違い | 終わりの日が始まりの日より前なら、両方を赤くして下に直し方を言葉で出す。showDays=false で日数を出さない。 -->
 <script setup lang="ts">
-import { ArDateRange, ArStack, type ArDateRangeValue } from "@arrow/ui";
+import { ArDateRange, ArStack, type ArDateRangeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const bad = ref<ArDateRangeValue>({ start: "2026-11-30", end: "2026-11-01" });
 const plain = ref<ArDateRangeValue>({ start: "2026-04-01", end: null });

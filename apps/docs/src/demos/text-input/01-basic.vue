@@ -1,6 +1,6 @@
 <!-- 基本 | 高さ38・角丸10・枠は field。フォーカスするとテーマ色の枠と淡い輪。ArField の中に置くとラベル・必須・間違いと結ばれる。 -->
 <script setup lang="ts">
-import { ArTextInput, ArField, ArGrid } from "@arrow/ui";
+import { ArTextInput, ArField, ArGrid } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const title = ref("朝礼");
 const memo = ref("");

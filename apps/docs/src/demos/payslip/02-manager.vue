@@ -1,8 +1,8 @@
 <!-- 管理者の給与明細（前月と比べる） | size="sm"。4列目は表を上から並べる（その他・差引支給額・振込支給額・そのほか）。合計は total、差引支給額は big。compare="prev" で値の右に「前 ○○」と差。手で直した金額は edited（ペンの印）、マイナスは赤。見出しの右は toolbar の slot。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArThemeScope, ArPayslip, ArSegmented } from "@arrow/ui";
-import type { ArPayslipSection } from "@arrow/ui";
+import { ArThemeScope, ArPayslip, ArSegmented } from "@s_and_a/arrow-ui";
+import type { ArPayslipSection } from "@s_and_a/arrow-ui";
 const mode = ref<"off" | "prev">("prev");
 const att: ArPayslipSection = { title: "勤怠", rows: [
   ["通常勤務時間", "160:00"], ["法定内残業勤務時間", "2:00"], ["早退日数", "0日"], ["遅刻日数", "1日"], ["欠勤日数", "0日"], ["有給休暇日数", "1日"], ["通常出勤日数", "19日"], ["法定外残業勤務時間", "7:00"], ["遅刻時間", "0:15"], ["有給残日数", "8日"],

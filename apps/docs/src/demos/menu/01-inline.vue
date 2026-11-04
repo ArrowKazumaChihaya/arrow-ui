@@ -1,6 +1,6 @@
 <!-- 縦のメニュー（inline） | 子メニューはその場で開く。上の段の選択中はテーマ色の塗り（白文字）、子の選択中は淡い面とテーマ色の文字。権限がない項目は鍵と灰色。 -->
 <script setup lang="ts">
-import { ArMenu, type ArMenuItem } from "@arrow/ui";
+import { ArMenu, type ArMenuItem } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const selected = ref("shift");
 const open = ref(["pay"]);

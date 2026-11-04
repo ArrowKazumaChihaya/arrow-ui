@@ -1,6 +1,6 @@
 <!-- カードの右上のリボン | 中にカードを入れる。テーマ色の塗りに白い文字。placement="start" で左上。 -->
 <script setup lang="ts">
-import { ArCard, ArRibbon } from "@arrow/ui";
+import { ArCard, ArRibbon } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-import { paletteNames, paletteSlots, tokenNames, toDeclarations } from "@arrow/ui-tokens";
+import { paletteNames, paletteSlots, tokenNames, toDeclarations } from "@s_and_a/arrow-ui-tokens";
 import type { ArDesign } from "../design";
 
 /**

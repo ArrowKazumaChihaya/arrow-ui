@@ -1,6 +1,6 @@
 <!-- 前後のアイコン・文字 | icon・prefix は頭に、suffix・suffixIcon は後ろに出す（アイコンは15px）。addon-before・addon-after は区切った灰色の地の文字。 -->
 <script setup lang="ts">
-import { ArTextInput, ArStack } from "@arrow/ui";
+import { ArTextInput, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const name = ref("");
 const wage = ref("1200");

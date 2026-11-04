@@ -1,7 +1,7 @@
 <!-- 基本 | 初めての人への案内。指す要素のまわりを残して暗い幕、白いカードで説明、今の点はテーマ色。［次へ］［前へ］か ←→ で移り、Escape で閉じる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArCluster, ArTour } from "@arrow/ui";
+import { ArButton, ArCluster, ArTour } from "@s_and_a/arrow-ui";
 const open = ref(false);
 const current = ref(0);
 const add = ref<HTMLElement | null>(null);

@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Year と同じ値（和暦は era）。 -->
 <script setup lang="ts">
-import { ArYearInput } from "@arrow/ui";
+import { ArYearInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<number | null>(2026);
 const b = ref<number | null>(2026);

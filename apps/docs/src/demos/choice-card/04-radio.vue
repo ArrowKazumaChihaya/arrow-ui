@@ -1,7 +1,7 @@
 <!-- ラジオカード（年末調整の なし／あり） | variant="radio"。2つを横に並べて1つを選ぶ。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArChoiceCard, ArThemeScope } from "@arrow/ui";
+import { ArChoiceCard, ArThemeScope } from "@s_and_a/arrow-ui";
 const ins = ref(false);
 const prev = ref(true);
 </script>

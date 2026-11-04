@@ -1,6 +1,6 @@
 <!-- 評価 | 星は黄（テーマ色ではなく決まった色）。allowHalf で半分の星。readonly は見せるだけ。←→で動かせる。 -->
 <script setup lang="ts">
-import { ArRate, ArStack, ArCluster } from "@arrow/ui";
+import { ArRate, ArStack, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref(4);
 const b = ref(3.5);

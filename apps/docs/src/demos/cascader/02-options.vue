@@ -1,6 +1,6 @@
 <!-- 途中の段も選ぶ・乗せて開く・最後だけ出す | change-on-select で「東京」なども選べる。expand-trigger="hover" で乗せただけで次の段が開く。display-last で最後の段の名前だけ出す。 -->
 <script setup lang="ts">
-import { ArCascader, ArCluster } from "@arrow/ui";
+import { ArCascader, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<(string | number)[] | null>(["arrow", "tokyo"]);
 const b = ref<(string | number)[] | null>(["arrow", "osaka", "umeda"]);

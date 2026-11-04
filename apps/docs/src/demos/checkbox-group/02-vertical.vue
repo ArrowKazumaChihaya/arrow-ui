@@ -1,6 +1,6 @@
 <!-- 縦に並べる・使えない | direction="vertical"。disabled でまとめて押せなくする。 -->
 <script setup lang="ts">
-import { ArCheckboxGroup, ArCluster } from "@arrow/ui";
+import { ArCheckboxGroup, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const items = ref<string[]>(["time", "color"]);
 const opts = [

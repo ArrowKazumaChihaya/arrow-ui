@@ -1,6 +1,6 @@
 <!-- 項目名の幅・改行・ArSubItem との組み合わせ | title-width で項目名の幅を変える。項目名の改行（\n）はそのまま。中に ArSubItem を横に並べると、名前つきの入力を並べられる。 -->
 <script setup lang="ts">
-import { ArItem, ArSubItem, ArTimeInput, ArTextarea, type ArTimeValue } from "@arrow/ui";
+import { ArItem, ArSubItem, ArTimeInput, ArTextarea, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const s = ref<ArTimeValue>({ time: "09:00", day: "same" });
 const e = ref<ArTimeValue>({ time: "18:00", day: "same" });

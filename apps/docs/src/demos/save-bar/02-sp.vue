@@ -1,6 +1,6 @@
 <!-- スマホ・画面の下に貼りつける | size="sm" は件数と小さな「取り消す」「保存」だけ。sticky でスクロールしても画面の下に残る。 -->
 <script setup lang="ts">
-import { ArSaveBar } from "@arrow/ui";
+import { ArSaveBar } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- ロック中・権限の帯 | neutral は操作できないことを知らせる灰の帯。見出しと小さな説明で、なぜか・どうすれば直せるかを書く。 -->
 <script setup lang="ts">
-import { ArAlert, ArStack } from "@arrow/ui";
+import { ArAlert, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

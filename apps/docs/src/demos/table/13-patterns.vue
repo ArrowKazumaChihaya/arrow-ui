@@ -1,6 +1,6 @@
 <!-- シフトパターンの一覧（ダイアログの表：並べ替え・行の編集・1つのセルに複数の時間の組） | 今の SortableTable の置き換え。sortable-rows でつまみをドラッグ（Alt+↑↓）すると reorder と v-model:rows。editing に行の key を入れるとその行だけ入力になり（名前は editor="text"、シフト・勤怠・休憩は editor="time-range"：最後の組を埋めると下に空の組、× で消す）、右端の［取り消し］［確定］（Esc・Ctrl+Enter）で cancel・commit。「パターン追加」は #before-rows のボタンで先頭に空の行を足して editing に入れる。 -->
 <script setup lang="ts">
-import { ArButton, ArColorPicker, ArTable, type ArRowKey, type ArTableColumn, type ArTableEditValue, type ArTableRowEdit, type ArTableTimeRange } from "@arrow/ui";
+import { ArButton, ArColorPicker, ArTable, type ArRowKey, type ArTableColumn, type ArTableEditValue, type ArTableRowEdit, type ArTableTimeRange } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 
 type Pattern = { id: number | "new"; name: string; color: string; shift: ArTableTimeRange[]; punch: ArTableTimeRange[]; rest: ArTableTimeRange[] };

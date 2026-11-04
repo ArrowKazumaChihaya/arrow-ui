@@ -1,7 +1,7 @@
 <!-- 郵便番号 | 数字だけを受け付け、3桁のあとに「-」を入れる。7桁そろうと lookup（製品が渡す関数）で住所を引く。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArZipInput, ArTextInput, ArField, ArStack } from "@arrow/ui";
+import { ArZipInput, ArTextInput, ArField, ArStack } from "@s_and_a/arrow-ui";
 const zip = ref<string | null>("150-0041");
 const address = ref("東京都渋谷区神南");
 // 見本の住所の表（製品では郵便番号の API を呼ぶ）

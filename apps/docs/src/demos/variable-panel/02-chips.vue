@@ -1,6 +1,6 @@
 <!-- タブと札（chips） | 通知のメールテンプレートの「ARROW 差し込み項目」。まとまりのタブ（件数つき・←→で選び直す）・探す欄・「＋ 名前」の札。札の部分は max-height で巻き取る。下に description の説明。 -->
 <script setup lang="ts">
-import { ArVariablePanel, type ArVariableGroup } from "@arrow/ui";
+import { ArVariablePanel, type ArVariableGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const mk = (key: string, label: string, prefix: string, names: string[]): ArVariableGroup => ({ key, label, items: names.map((n) => ({ key: `${key}_${n}`, label: n, token: `{${prefix}:${n}}` })) });
 const groups = [

@@ -1,6 +1,6 @@
 <!-- useArNotification() | 関数で出す。ArUiProvider の中に ArNotificationHost を1つ置いておく。duration 秒で消え、マウスが乗っている間は止まる（0 で消えない）。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArNotificationHost, useArNotification } from "@arrow/ui";
+import { ArButton, ArCluster, ArNotificationHost, useArNotification } from "@s_and_a/arrow-ui";
 const notification = useArNotification();
 function submitted() {
   notification.info({

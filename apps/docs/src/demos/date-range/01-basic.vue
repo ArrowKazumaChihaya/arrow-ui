@@ -1,6 +1,6 @@
 <!-- 期間 | 2つの日付を「〜」でつなぎ、右に日数。1か月・半月・カスタムのボタンとは親がつなぐ（日付を変えて合わなくなったら「カスタム」）。 -->
 <script setup lang="ts">
-import { ArDateRange, ArRadioGroup, ArStack, type ArDateRangeValue } from "@arrow/ui";
+import { ArDateRange, ArRadioGroup, ArStack, type ArDateRangeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const kind = ref("month");
 const range = ref<ArDateRangeValue>({ start: "2026-11-01", end: "2026-11-30" });

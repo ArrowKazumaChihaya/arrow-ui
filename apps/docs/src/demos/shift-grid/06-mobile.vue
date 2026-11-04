@@ -1,6 +1,6 @@
 <!-- スマホ（RxSpTable） | compact。名前の列を細く（サムネと⠿なし）、パターンの一覧は横に並べ、案内は出さない。列は 50px から。 -->
 <script setup lang="ts">
-import { ArShiftGrid } from "@arrow/ui";
+import { ArShiftGrid } from "@s_and_a/arrow-ui";
 import { patterns, TODAY, useShiftGridDemo } from "./_data";
 
 const { members, cells, days, on } = useShiftGridDemo({ from: 18, to: 24 });

@@ -4,16 +4,16 @@
   "commit": false,
   "fixed": [
     [
-      "@arrow/ui",
-      "@arrow/ui-tokens",
-      "@arrow/ui-design-remix",
-      "@arrow/ui-design-classic"
+      "@s_and_a/arrow-ui",
+      "@s_and_a/arrow-ui-tokens",
+      "@s_and_a/arrow-ui-design-remix",
+      "@s_and_a/arrow-ui-design-classic"
     ]
   ],
   "access": "public",
   "baseBranch": "main",
   "ignore": [
-    "@arrow/catalog",
-    "@arrow/docs"
+    "@s_and_a/arrow-ui-catalog",
+    "@s_and_a/arrow-ui-docs"
   ]
 }

@@ -1,7 +1,7 @@
 <!-- 年 | 新しい年が上のプルダウン。数字を打つとその年へ飛ぶ。↑↓ で開いて選び、Enter で決める。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArYearInput, ArCluster, ArStack } from "@arrow/ui";
+import { ArYearInput, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 const y = ref<number | null>(2026);
 const e = ref<number | null>(2025);
 const n = ref<number | null>(null);

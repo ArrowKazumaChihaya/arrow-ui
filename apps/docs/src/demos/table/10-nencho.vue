@@ -1,6 +1,6 @@
 <!-- 集計表：3段の金額・右に止める列・見出しの列から開く（年末調整） | 1人の行に「課税支給／社会保険料等／所得税」の3段（stack）。「＋ 合計」を押すと月ごとの列が開き、上に「給与」「賞与」の段（toggles）。右端の「反映」は sticky: "end" で止める。一括編集では3段の入力（高さ24・右寄せ）。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, ArThemeScope, type ArTableColumn, type ArTableColumnGroup } from "@arrow/ui";
+import { ArButton, ArTable, ArThemeScope, type ArTableColumn, type ArTableColumnGroup } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 
 type Row = { id: string; code: string; name: string; kind: string; months: [number, number, number]; sums: [number, number, number]; state: string };

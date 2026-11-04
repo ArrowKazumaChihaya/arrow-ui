@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方：住所・姓と名 | 住所（Address）は幅200px、姓と名を分けて打つ欄（Split）は幅120px の ArTextInput。 -->
 <script setup lang="ts">
-import { ArTextInput } from "@arrow/ui";
+import { ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const ad0 = ref("");
 const ad1 = ref("東京都渋谷区神宮前1-1-1");

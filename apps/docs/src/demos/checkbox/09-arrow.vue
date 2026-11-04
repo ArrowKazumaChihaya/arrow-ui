@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Check と同じ並び（枠は灰色 #808080、チェックは antd の青）。 -->
 <script setup lang="ts">
-import { ArCheckbox } from "@arrow/ui";
+import { ArCheckbox } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref(false);
 const b = ref(true);

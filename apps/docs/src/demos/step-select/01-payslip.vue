@@ -1,8 +1,8 @@
 <!-- 書類集計の段 | 上から 種類 › 書類 › 年月 › 社員 › ダウンロード の段を並べ、間に「下へ進む」矢印。済み（done）は緑のチェック、最初の済みでない段が「今」（枠を強める）、その先は番号。crumb-label・crumb-value を渡した段は上の道しるべの札になり、押すとその段へ戻る（jump）。中身は step-<key>、見出しの右は extra-<key> の slot。 -->
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArButton, ArChoiceCard, ArStepSelect, ArTextInput, ArThemeScope, ArYearMonthInput } from "@arrow/ui";
-import type { ArStepSelectStep } from "@arrow/ui";
+import { ArButton, ArChoiceCard, ArStepSelect, ArTextInput, ArThemeScope, ArYearMonthInput } from "@s_and_a/arrow-ui";
+import type { ArStepSelectStep } from "@s_and_a/arrow-ui";
 const kind = ref("pay");
 const doc = ref("slip");
 const ym = ref<string | null>("2026-10");

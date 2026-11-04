@@ -1,6 +1,6 @@
 <!-- 保存バー | 保存していない変更の件数と項目名、「変更を取り消す」「この内容で保存」。直すところがあれば件数とそこへ飛ぶボタン（error-count・jump）。 -->
 <script setup lang="ts">
-import { ArSaveBar, ArStack } from "@arrow/ui";
+import { ArSaveBar, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const log = ref("—");
 </script>

@@ -1,6 +1,6 @@
 <!-- チェック | 18px・角丸5。チェックしたものと「一部だけ」（indeterminate）はテーマ色、indeterminate は白い横線。 -->
 <script setup lang="ts">
-import { ArCheckbox, ArCluster } from "@arrow/ui";
+import { ArCheckbox, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref(true);
 const b = ref(false);

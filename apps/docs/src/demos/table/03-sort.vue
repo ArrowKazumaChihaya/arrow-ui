@@ -1,6 +1,6 @@
 <!-- 並べ替え・合計・数字の列 | 並べ替えの状態は v-model:sort で受け取り、並べ替え自体は製品が行う（サーバーで並べることもあるため）。numeric の列は右寄せ・等幅。合計の行は footer。 -->
 <script setup lang="ts">
-import { ArTable, type ArTableColumn, type ArTableSort } from "@arrow/ui";
+import { ArTable, type ArTableColumn, type ArTableSort } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 type Row = { id: number; name: string; store: string; start: string; end: string; minutes: number; cost: number };
 const rows: Row[] = [

@@ -1,6 +1,6 @@
 <!-- 浮かぶボタン・グループ | 主なものだけテーマ色（tone="primary"）。件数は赤の丸。items を渡すと縦につないだグループ。fixed で画面の右下に固定する（スマホの「シフト追加」）。 -->
 <script setup lang="ts">
-import { ArFloatButton, ArCluster } from "@arrow/ui";
+import { ArFloatButton, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const last = ref("");
 </script>

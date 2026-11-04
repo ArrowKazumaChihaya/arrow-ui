@@ -19,7 +19,7 @@ import * as s from "../snippets";
       <table class="tbl">
         <thead><tr><th>いつ</th><th>何を確かめるか</th><th>足りないと</th></tr></thead>
         <tbody>
-          <tr><td>コードを書くとき<br /><code>@arrow/eslint-plugin-ui</code></td><td>宣言にない <code>Ar*</code> 部品を使っていないか</td><td>エラー</td></tr>
+          <tr><td>コードを書くとき<br /><code>@s_and_a/eslint-plugin-arrow-ui</code></td><td>宣言にない <code>Ar*</code> 部品を使っていないか</td><td>エラー</td></tr>
           <tr><td>CI<br /><code>npx arrow-ui check</code></td><td>部品のライブラリと、並べたデザインのライブラリが、宣言した部品と版を満たすか</td><td>1 で終わり、足りない部品を一覧で出す</td></tr>
           <tr><td>起動時<br /><code>ArUiProvider</code> の <code>requires</code></td><td>当てているデザインで同じ確認</td><td>画面を出さない</td></tr>
         </tbody>

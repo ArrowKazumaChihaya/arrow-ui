@@ -1,7 +1,7 @@
 <!-- スマホのカード（閲覧） | スマホでもカードにタブを置き、閲覧を開ける（最初は週の表示）。size="auto"（既定）は部品の幅が 600px 未満で sm になり、名前の列が細く（132px）頭文字の丸を出さず、説明と検索が1行ずつ並ぶ。表は横にスクロールし、名前の列は止まる。 -->
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArCard, ArDivider, ArPeriodNav, ArShiftViewTable, ArTabs } from "@arrow/ui";
+import { ArCard, ArDivider, ArPeriodNav, ArShiftViewTable, ArTabs } from "@s_and_a/arrow-ui";
 import { branches, halfDates, monthDates, people, shifts, today, totals, weekDates } from "./_data";
 
 const tab = ref("view");

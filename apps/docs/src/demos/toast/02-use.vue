@@ -1,6 +1,6 @@
 <!-- 出す・元に戻す | v-model:open で出す。duration 秒で消え（既定6）、マウスが乗っている間は止まる。「元に戻す」を押すと undo が出て閉じる。 -->
 <script setup lang="ts">
-import { ArButton, ArToast } from "@arrow/ui";
+import { ArButton, ArToast } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(false);
 const done = ref("");

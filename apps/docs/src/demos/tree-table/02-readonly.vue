@@ -1,6 +1,6 @@
 <!-- 見るだけの木・閉じた状態から・空 | draggable を付けなければつまみは出ない。default-expand-all を false にすると閉じた状態から始まる（開いている行は v-model:expanded）。行がないときは emptyText。 -->
 <script setup lang="ts">
-import { ArTreeTable } from "@arrow/ui";
+import { ArTreeTable } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 type Row = { id: string; name: string; manager: string; children?: Row[] };
 const rows: Row[] = [

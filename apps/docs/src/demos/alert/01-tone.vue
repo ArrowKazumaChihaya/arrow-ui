@@ -1,6 +1,6 @@
 <!-- 種類 | info はテーマ色の淡い面、ok・warn・danger は意味の色。先頭にアイコン、言葉は1〜2行で直し方まで書く。 -->
 <script setup lang="ts">
-import { ArAlert, ArStack } from "@arrow/ui";
+import { ArAlert, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

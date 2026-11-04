@@ -2,9 +2,9 @@
  * remix — ARROW リミックスの見た目。
  * 落ち着いた青を基本に、ページごとのテーマ色・やわらかい帯・角丸10の部品。テーマ色の上の文字はすべて白。
  */
-import { defineDesign } from "@arrow/ui/design";
+import { defineDesign } from "@s_and_a/arrow-ui/design";
 import { covers } from "./covers.generated.js";
-import { derivePalette } from "@arrow/ui-tokens";
+import { derivePalette } from "@s_and_a/arrow-ui-tokens";
 
 export const remixDesign = defineDesign({
   id: "remix",
@@ -76,7 +76,7 @@ export const remixDesign = defineDesign({
     amber: derivePalette("#E07A2E", "#A9521A", "0 1px 2px rgba(90,40,0,.28)"),
   },
   covers,
-  styles: () => import("@arrow/ui-design-remix/styles.css"),
+  styles: () => import("@s_and_a/arrow-ui-design-remix/styles.css"),
 });
 
 export default remixDesign;

@@ -1,7 +1,7 @@
 <!-- MyPC打刻 | マイページの打刻画面。今の状態（まだ出勤していない・勤務中・休憩中・退勤済み）で押せるボタンが変わり、押せないボタンの下に理由を書く。押すと punch（どの打刻か）を出す。 -->
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArPunchButton, ArSegmented } from "@arrow/ui";
+import { ArPunchButton, ArSegmented } from "@s_and_a/arrow-ui";
 
 type St = "off" | "in" | "brk" | "done";
 const st = ref<St>("off");

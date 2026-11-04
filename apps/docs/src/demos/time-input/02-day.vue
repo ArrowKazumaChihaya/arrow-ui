@@ -1,6 +1,6 @@
 <!-- 前日をまたぐ（ARROW 特有） | 出勤・退勤・休始・休終は、枠と一体の［当日］を押すたびに［前日］（橙）と切り替わる。Tab では止まらない。 -->
 <script setup lang="ts">
-import { ArTimeInput, ArCluster, type ArTimeValue } from "@arrow/ui";
+import { ArTimeInput, ArCluster, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<ArTimeValue>({ time: "09:00", day: "same" });
 const b = ref<ArTimeValue>({ time: "21:55", day: "prev" });

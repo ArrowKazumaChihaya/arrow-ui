@@ -1,6 +1,6 @@
 <!-- ラベルが上（ポップアップ） | ラベルは .lbl（12.5px 太字）、必須は赤い札。説明は入力の下に灰色で、間違いは赤い文字で直し方まで書く。スロットの値を v-bind すると id・説明・間違いが入力と結ばれる。 -->
 <script setup lang="ts">
-import { ArField, ArTextInput, ArSelect, ArTextarea, ArGrid } from "@arrow/ui";
+import { ArField, ArTextInput, ArSelect, ArTextarea, ArGrid } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const title = ref("朝礼");
 const q = ref("");

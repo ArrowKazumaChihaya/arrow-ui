@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Dates と同じ並び（曜日なし）。ありえない日（2月31日など）を打つと、classic では「無効な日付」。era で和暦を添える。 -->
 <script setup lang="ts">
-import { ArDateInput } from "@arrow/ui";
+import { ArDateInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<string | null>(null);
 const b = ref<string | null>("2026-11-03");

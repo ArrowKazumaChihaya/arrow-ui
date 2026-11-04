@@ -1,6 +1,6 @@
 <!-- 状態 | 間違い（赤）・注意（黄）・使えない・読み取りのみ・filled。 -->
 <script setup lang="ts">
-import { ArTextarea, ArGrid } from "@arrow/ui";
+import { ArTextarea, ArGrid } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

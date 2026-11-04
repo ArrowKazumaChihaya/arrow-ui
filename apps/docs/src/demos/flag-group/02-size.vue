@@ -1,6 +1,6 @@
 <!-- 大きさ（sm・md・lg） | 各項目は ArCheckbox なので、チェックと同じ段（sm＝設定の行、md＝ふつう、lg＝スマホ）。variant="card" で選ぶカードにもできる。 -->
 <script setup lang="ts">
-import { ArFlagGroup } from "@arrow/ui";
+import { ArFlagGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 const days = ["日", "月", "火", "水", "木", "金", "土"].map((label, i) => ({ value: 2 ** i, label }));

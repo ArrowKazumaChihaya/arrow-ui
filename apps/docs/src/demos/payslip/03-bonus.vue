@@ -1,6 +1,6 @@
 <!-- 賞与明細・報酬明細 | 列の数は自由（賞与は 支給／控除／その他 の3列）。合計の箱の単位は unit（既定「円」）。 -->
 <script setup lang="ts">
-import { ArThemeScope, ArPayslip } from "@arrow/ui";
+import { ArThemeScope, ArPayslip } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

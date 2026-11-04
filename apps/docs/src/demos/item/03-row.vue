@@ -1,6 +1,6 @@
 <!-- 区切りの線つきの行（設定・会社情報・社員情報） | variant="row"。項目名の幅は長い名前に合わせて 236px など。直すと「変更あり」と「元に戻す」（changed・revert）、間違いはその場で直し方まで（error）、説明は「詳細」。 -->
 <script setup lang="ts">
-import { ArItem, ArRadioGroup, ArTextInput } from "@arrow/ui";
+import { ArItem, ArRadioGroup, ArTextInput } from "@s_and_a/arrow-ui";
 import { computed, reactive } from "vue";
 
 const base = { over: "25", inner: "0", over60: "25", holiday: "35", sum: "pay" };

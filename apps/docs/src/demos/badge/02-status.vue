@@ -1,6 +1,6 @@
 <!-- 状態の点 | status で「点＋言葉」。ok＝出勤中、accent＝処理中（淡い輪つき）、warn＝未提出、danger＝エラー、neutral＝退勤。色だけで伝えず、必ず言葉を添える。札にしたいときは ArTag。 -->
 <script setup lang="ts">
-import { ArBadge } from "@arrow/ui";
+import { ArBadge } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

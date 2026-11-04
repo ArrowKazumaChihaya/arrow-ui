@@ -1,7 +1,7 @@
 <!-- 選択肢の中に部品を置く | #label で名前の所に部品（札など）、#extra で選択肢の下に表や入力（type="radio" のとき）。extra はラジオの外なので、中の入力を押してもラジオは切り替わらない。checked で選んだ選択肢だけ出し分けられる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArRadioGroup, ArSelect, ArTag, ArTextInput } from "@arrow/ui";
+import { ArRadioGroup, ArSelect, ArTag, ArTextInput } from "@s_and_a/arrow-ui";
 const how = ref<string>("split");
 const branch = ref<string | null>("shibuya");
 const memo = ref("");

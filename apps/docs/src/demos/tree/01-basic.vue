@@ -1,7 +1,7 @@
 <!-- 基本 | 店舗・部署の階層。押すと選び（淡いテーマ色）、∨ で開け閉め。↑↓ で移り、→ で開く、← で閉じる・親へ、Enter で選ぶ、文字で飛ぶ。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArTree, type ArTreeKey } from "@arrow/ui";
+import { ArTree, type ArTreeKey } from "@s_and_a/arrow-ui";
 const selected = ref<ArTreeKey | null>("shibuya");
 const expanded = ref<ArTreeKey[]>(["arrow", "tokyo"]);
 const items = [

@@ -1,6 +1,6 @@
 <!-- シフト画面の表（board） | variant="board"：外枠なし、見出しは角の丸い淡いテーマ色の帯、行は高さ50。名前の下に小さな説明（sub・色の四角つき）、空欄は「—」、合計は灰色の帯（footer に label と span）。#before-rows に「シフト追加」、#below に「表示内容」を置く。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, type ArTableColumn, type ArTableSort } from "@arrow/ui";
+import { ArButton, ArTable, type ArTableColumn, type ArTableSort } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 type Row = { id: number; name: string; pattern: string; color: string; start: string[]; end: string[]; in: string; out: string; bs: string; be: string };
 const rows: Row[] = [

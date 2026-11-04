@@ -1,6 +1,6 @@
 <!-- 表の下に置く（上に開く） | 表の #below に置くときは placement="top-start"。見出しのないまとまりも使える。 -->
 <script setup lang="ts">
-import { ArViewOptions } from "@arrow/ui";
+import { ArViewOptions } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const shown = ref(["av", "time", "note"]);
 </script>

@@ -1,4 +1,4 @@
-/**デザインを作るための入口（@arrow/ui/デザイン）。部品を読み込まないので Node でも軽い。 */
+/**デザインを作るための入口（@s_and_a/arrow-ui/デザイン）。部品を読み込まないので Node でも軽い。 */
 export { defineDesign, ArDesignError } from "./design";
 export type { ArDesign } from "./design";
 export type { ArIconName } from "./icons";

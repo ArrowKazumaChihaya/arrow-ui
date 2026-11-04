@@ -1,6 +1,6 @@
 <!-- 自動で高さ | autosize は打った量に合わせて高さを変える。{ minRows, maxRows } で上限・下限（超えたら中でスクロール）。 -->
 <script setup lang="ts">
-import { ArTextarea, ArStack } from "@arrow/ui";
+import { ArTextarea, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref("改行すると\n高さが\n伸びます");
 const b = ref("");

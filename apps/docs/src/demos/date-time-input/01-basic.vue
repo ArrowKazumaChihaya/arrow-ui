@@ -1,6 +1,6 @@
 <!-- 日時 | 日付と、時と分のプルダウン（分は5分刻み）。値は "YYYY-MM-DD HH:mm:ss"。どちらかが空なら null。 -->
 <script setup lang="ts">
-import { ArDateTimeInput } from "@arrow/ui";
+import { ArDateTimeInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const v = ref<string | null>("2026-11-03 09:00:00");
 const e = ref<string | null>(null);

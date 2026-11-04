@@ -1,7 +1,7 @@
 <!-- 年月 | 年はプルダウン、月は数字の欄（全角でも入る）。1〜12 以外は受け付けない。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArYearMonthInput, ArCluster, ArStack } from "@arrow/ui";
+import { ArYearMonthInput, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 const v = ref<string | null>("2026-10");
 const e = ref<string | null>("2019-04");
 </script>

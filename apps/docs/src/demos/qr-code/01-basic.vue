@@ -1,7 +1,7 @@
 <!-- 基本 | 打刻用の QR。点は ink。期限切れ（status="expired"）は白い幕と「作り直す」ボタン（refresh を出す）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArCluster, ArQRCode } from "@arrow/ui";
+import { ArCluster, ArQRCode } from "@s_and_a/arrow-ui";
 const t = ref(1793000000);
 const status = ref<"active" | "expired">("expired");
 function refresh() {

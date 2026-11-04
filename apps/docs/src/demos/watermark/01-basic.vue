@@ -1,6 +1,6 @@
 <!-- 透かし | 給与・書類の画面に。中身の上に、うすい文字を斜めに並べる（押す操作は下に通る）。配列で行を重ねられる。 -->
 <script setup lang="ts">
-import { ArWatermark } from "@arrow/ui";
+import { ArWatermark } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

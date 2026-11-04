@@ -1,6 +1,6 @@
 <!-- 下線のタブ | カードの中の中身の切り替え。アイコン・件数の札・使えないタブ。 -->
 <script setup lang="ts">
-import { ArTabs } from "@arrow/ui";
+import { ArTabs } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const b = ref("member");
 const detail = [

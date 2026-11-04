@@ -1,6 +1,6 @@
 <!-- プレビュー（給与明細書・5人分） | 上の段に ‹ 1 / 5 ›・「末永 修也（1人目）」・大きさ（70〜150%）。中身は page slot の HTML（製品が PDF の画像を渡すなら pages）。紙にフォーカスして ←→ でページ、+ − で大きさ。 -->
 <script setup lang="ts">
-import { ArPdfViewer } from "@arrow/ui";
+import { ArPdfViewer } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 const P = [
   ["0001", "末永 修也", "ARROW事業部", "役員", "420,000", "460,525", "398,855"],

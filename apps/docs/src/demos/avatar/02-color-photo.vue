@@ -1,6 +1,6 @@
 <!-- 写真・決めた色・部品の中の丸 | src で写真、color で社員ごとに決めた [地, 文字] の色。シフト表・チャートの名前の列、ヘッダーの管理ページ、セレクトの人の選択肢の頭文字の丸も、すべてこの部品（sm＝28・xs＝24）。 -->
 <script setup lang="ts">
-import { ArAvatar } from "@arrow/ui";
+import { ArAvatar } from "@s_and_a/arrow-ui";
 
 const photo =
   "data:image/svg+xml;utf8," +

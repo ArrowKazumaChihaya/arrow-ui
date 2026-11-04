@@ -1,6 +1,6 @@
 <!-- 書類の流れ | 書類の申請・確認の手順を上から順に並べる。2つ目からは arrow で上に「下へ進む」矢印を出す（既定で出る。最初のまとまりは :arrow="false"）。instruction は枠の見出し、中身は slot。 -->
 <script setup lang="ts">
-import { ArButton, ArDocumentBlock } from "@arrow/ui";
+import { ArButton, ArDocumentBlock } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

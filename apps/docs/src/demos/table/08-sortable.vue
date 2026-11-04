@@ -1,6 +1,6 @@
 <!-- 行のドラッグ並べ替え（sortableRows） | 勤務種別やシフトパターンのように、並び順そのものを決める表。つまみ ⠿ をつかんで上下へ動かすか、つまみにフォーカスして Alt+↑↓。並べた行は v-model:rows で受け取り、reorder（key・from・to）で保存する。つまみの置き場所はデザインが決める（remix は左の専用の列、classic は今の ARROW と同じ1列目の頭）。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, type ArTableColumn, type ArTableReorder } from "@arrow/ui";
+import { ArButton, ArTable, type ArTableColumn, type ArTableReorder } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 type Row = { id: number; name: string; time: string; rest: string };
 const rows = ref<Row[]>([

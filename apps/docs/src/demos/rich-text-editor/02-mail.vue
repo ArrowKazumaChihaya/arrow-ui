@@ -1,6 +1,6 @@
 <!-- メールの本文（通知のメールテンプレート） | plain で文字と改行だけ（貼り付けも文字だけ・Enter は改行）。toolbar は変数・元に戻す・やり直す。「ARROW 差し込み項目」を押すと下にタブ・探す欄・札のパネル。文字数はツールバーの右（count-placement="toolbar"）。 -->
 <script setup lang="ts">
-import { ArRichTextEditor, type ArVariableGroup } from "@arrow/ui";
+import { ArRichTextEditor, type ArVariableGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 
 const g = (key: string, label: string, names: string[], prefix: string): ArVariableGroup => ({

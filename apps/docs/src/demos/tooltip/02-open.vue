@@ -1,6 +1,6 @@
 <!-- 出したまま | open を渡すと、乗せなくても出しておける（初めての人への案内など）。見本の形：上に出し、矢印は基準の要素の中央を指す。 -->
 <script setup lang="ts">
-import { ArButton, ArTooltip } from "@arrow/ui";
+import { ArButton, ArTooltip } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

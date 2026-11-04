@@ -1,6 +1,6 @@
 <!-- 前へ・次へなし・帯の上 | arrows=false は期間を見せるだけ（今の MonthChanger の isPagenation=false・DateChanger の isChange=false）。inverse はテーマ色の帯の上に置く形（今の社員の切り替え EmployeeChanger）。週・年・社員の切り替えも同じ部品で、label に「2026年11月01日〜2026年11月07日」「2026年」「0002 山田 太郎」を渡す。 -->
 <script setup lang="ts">
-import { ArPeriodNav, ArStack } from "@arrow/ui";
+import { ArPeriodNav, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const people = ["0001 佐藤 花子", "0002 山田 太郎", "0003 鈴木 一郎"];
 const i = ref(1);

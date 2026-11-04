@@ -1,6 +1,6 @@
 <!-- 年末調整の なし／あり（card・lg・2列） | variant="card"・size="lg"・columns で等しい幅の2列。ArChoiceCard の variant="radio" と同じもの（今はこちらで書く）。今の ARROW で箱に入っている所は variant="card" と書く（classic では今の年調の箱になる。省くと classic は丸と文字だけ）。説明つき（description）は名前の下に灰色の文字。 -->
 <script setup lang="ts">
-import { ArRadioGroup, ArThemeScope } from "@arrow/ui";
+import { ArRadioGroup, ArThemeScope } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const ins = ref<boolean | null>(false);
 const prev = ref<boolean | null>(true);

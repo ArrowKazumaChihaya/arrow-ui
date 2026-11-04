@@ -1,6 +1,6 @@
 <!-- 操作・帯 | #action で右に操作のボタンを置く。banner はページの上いっぱいに置く帯（角丸なし）。 -->
 <script setup lang="ts">
-import { ArAlert, ArButton, ArStack } from "@arrow/ui";
+import { ArAlert, ArButton, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const shown = ref(true);
 </script>

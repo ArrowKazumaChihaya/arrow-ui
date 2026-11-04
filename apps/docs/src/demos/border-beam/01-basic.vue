@@ -1,6 +1,6 @@
 <!-- 光るふち | 新しい機能の案内などに1画面1つまで。色はテーマ色の淡い光。動きを減らす設定では止まる（active=false でも止まる）。 -->
 <script setup lang="ts">
-import { ArBorderBeam } from "@arrow/ui";
+import { ArBorderBeam } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

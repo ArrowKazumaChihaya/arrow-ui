@@ -1,7 +1,7 @@
 <!-- 横（設定の画面） | layout="inline" でラベルを左（120px・右寄せ）に。validator で自分で確かめる（終了は開始より後、など）。 -->
 <script setup lang="ts">
-import { ArForm, ArField, ArTextInput, ArInputNumber, ArStepper, ArButton } from "@arrow/ui";
-import type { ArFormRule } from "@arrow/ui";
+import { ArForm, ArField, ArTextInput, ArInputNumber, ArStepper, ArButton } from "@s_and_a/arrow-ui";
+import type { ArFormRule } from "@s_and_a/arrow-ui";
 import { reactive } from "vue";
 const model = reactive({ name: "渋谷店", wage: 1100 as number | null, people: 2, phone: "03-1234" });
 const rules: Record<string, ArFormRule[]> = {

@@ -1,6 +1,6 @@
 <!-- 開く・閉じる | ok-text を渡すと足に「キャンセル」と主なボタンが出る。開くと中の最初の入力にフォーカスし、Esc・× で閉じる。幕を押して閉じるのは close-on-scrim のときだけ。 -->
 <script setup lang="ts">
-import { ArModal, ArButton, ArField, ArTextInput } from "@arrow/ui";
+import { ArModal, ArButton, ArField, ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(false);
 const name = ref("");

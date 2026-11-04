@@ -1,6 +1,6 @@
 <!-- まとまりの見出し | 四角い箱のアイコン・見出し・件数の札。#actions に見出しの横の操作（ArButton subtle）、#end に右端のもの（ArField layout="toolbar" ＋ ArSegmented）。collapsible なら見出しを押して下を開け閉めできる。 -->
 <script setup lang="ts">
-import { ArButton, ArField, ArSectionHead, ArSegmented, ArStack } from "@arrow/ui";
+import { ArButton, ArField, ArSectionHead, ArSegmented, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const mode = ref("time");
 const open = ref(true);

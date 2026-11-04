@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方：ダウンロード | 今の ARROW の Download は href を渡した ArButton（a 要素）。add＋ダウンロードのアイコン、cancel は文字だけ（幅200px）。 -->
 <script setup lang="ts">
-import { ArButton } from "@arrow/ui";
+import { ArButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

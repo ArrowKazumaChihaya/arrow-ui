@@ -1,6 +1,6 @@
 <!-- ページ送り | 今のページはテーマ色。件数の選択はセレクト、右に全件数。表の下・右寄せに置く。size="sm" は枠のない小さなページ送り。 -->
 <script setup lang="ts">
-import { ArPagination, ArStack } from "@arrow/ui";
+import { ArPagination, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const page = ref(5);
 const size = ref(20);

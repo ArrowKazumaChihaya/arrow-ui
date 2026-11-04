@@ -1,6 +1,6 @@
 <!-- 大きさと形（sm・md・lg ／ plain・card） | 四角はラジオの丸と同じ段（sm 16・md 18・lg 18）。card はラジオの card と同じ面（年末調整の「メールを送る」など）。使い分け：sm＝設定の行・表の上、md＝ふつう、lg＝年末調整・スマホ（説明の文を入れる）。 -->
 <script setup lang="ts">
-import { ArCheckbox, ArSelect } from "@arrow/ui";
+import { ArCheckbox, ArSelect } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 const a = ref(true);

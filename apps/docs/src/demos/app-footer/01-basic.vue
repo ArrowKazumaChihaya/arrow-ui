@@ -1,7 +1,7 @@
 <!-- PC の画面の足 | 左にリンク、右に問い合わせのボタン、下に著作権。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArAppFooter } from "@arrow/ui";
+import { ArAppFooter } from "@s_and_a/arrow-ui";
 const last = ref("");
 </script>
 

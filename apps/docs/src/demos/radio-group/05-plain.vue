@@ -1,6 +1,6 @@
 <!-- 文字だけ（plain・設定の行） | variant="plain" は丸と文字だけ。設定の行・表の中など密集した所で使う（設定のキャンバスの .cf-op：丸18・13.5px・行32、横の間20）。sm はさらに詰める（丸16・13px・行30）。 -->
 <script setup lang="ts">
-import { ArRadioGroup } from "@arrow/ui";
+import { ArRadioGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const unit = ref<string | null>("month");
 const who = ref<string | null>("all");

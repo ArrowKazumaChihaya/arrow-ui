@@ -1,6 +1,6 @@
 <!-- 横に並べる・上に「すべて」 | checkAll で上に「すべて」。一部だけ選んでいるときは indeterminate。押せない選択肢は「すべて」でも変わらない。 -->
 <script setup lang="ts">
-import { ArCheckboxGroup, ArStack } from "@arrow/ui";
+import { ArCheckboxGroup, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const who = ref<string[]>(["manager"]);
 const stores = ref<number[]>([1, 3]);

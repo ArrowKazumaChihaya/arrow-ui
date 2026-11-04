@@ -1,7 +1,7 @@
 <!-- 土日の色・マスの中身 | weekendColors で日曜を赤・土曜を青に。マスの中身は cell slot に自由に置ける（人数・提出など）。週の始まりは weekStart（1 で月曜）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArCalendar } from "@arrow/ui";
+import { ArCalendar } from "@s_and_a/arrow-ui";
 const date = ref<string | null>(null);
 const count = (d: number) => [4, 4, 3, 3, 4, 5, 3][d % 7];
 </script>

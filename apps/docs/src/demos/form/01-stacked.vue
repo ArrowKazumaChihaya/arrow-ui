@@ -1,7 +1,7 @@
 <!-- 縦（ポップアップ） | ラベルが上。rules を渡すと送るときと項目から出たときに確かめ、間違いを項目の下に出す（required なら必須の札も付く）。summary で上に間違いのまとめ。 -->
 <script setup lang="ts">
-import { ArForm, ArField, ArTextInput, ArSelect, ArTextarea, ArButton, ArCluster } from "@arrow/ui";
-import type { ArFormRule } from "@arrow/ui";
+import { ArForm, ArField, ArTextInput, ArSelect, ArTextarea, ArButton, ArCluster } from "@s_and_a/arrow-ui";
+import type { ArFormRule } from "@s_and_a/arrow-ui";
 import { reactive, ref } from "vue";
 const model = reactive({ title: "", store: null as string | number | null, memo: "" });
 const rules: Record<string, ArFormRule[]> = {

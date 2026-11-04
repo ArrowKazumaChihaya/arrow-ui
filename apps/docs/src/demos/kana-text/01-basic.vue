@@ -1,6 +1,6 @@
 <!-- フリガナつきの氏名 | 名前の上に小さくフリガナ。スマホの幅（768px 以下）と inline では「名前（フリガナ）」の1行。 -->
 <script setup lang="ts">
-import { ArKanaText, ArStack } from "@arrow/ui";
+import { ArKanaText, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

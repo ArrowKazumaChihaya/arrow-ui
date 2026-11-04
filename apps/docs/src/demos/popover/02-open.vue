@@ -1,7 +1,7 @@
 <!-- 開いたまま | v-model:open で開け閉めを持てる。見本の形：基準の下に出し、矢印は基準の要素の中央を指す。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArPopover, ArStack } from "@arrow/ui";
+import { ArButton, ArPopover, ArStack } from "@s_and_a/arrow-ui";
 const open = ref(true);
 </script>
 

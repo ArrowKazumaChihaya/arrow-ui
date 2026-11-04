@@ -1,6 +1,6 @@
 <!-- 大きさと状態 | size="sm" はスマホ（四角54）。件数が100以上なら「99+」。href を渡すとリンク、disabled は押せない（未契約の機能など）。 -->
 <script setup lang="ts">
-import { ArMenuTile } from "@arrow/ui";
+import { ArMenuTile } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

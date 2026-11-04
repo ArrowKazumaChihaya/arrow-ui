@@ -1,6 +1,6 @@
 <!-- 1か月のチャート（勤怠詳細・マイページ） | 1日＝1行。帯は勤怠の種類ごとの色、上の細い線がシフト、下の細い線が深夜、休憩は斜線、打刻もれは赤い斜線。帯に乗せると種類・時間帯・時間数。日付を押すと select（その日の大きなチャート）。 -->
 <script setup lang="ts">
-import { ArTimeChart, type ArTimeChartBar, type ArTimeChartRow } from "@arrow/ui";
+import { ArTimeChart, type ArTimeChartBar, type ArTimeChartRow } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 
 const H = (h: number, m = 0) => h * 60 + m;

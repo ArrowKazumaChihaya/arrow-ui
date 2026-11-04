@@ -1,8 +1,8 @@
 <!-- 選ぶタイル（書類の種類） | variant="tile"。小さなアイコンと名前、下に件数（description）。選ぶとテーマ色の面。右の札は tag。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArChoiceCard, ArThemeScope } from "@arrow/ui";
-import type { ArIconName } from "@arrow/ui";
+import { ArChoiceCard, ArThemeScope } from "@s_and_a/arrow-ui";
+import type { ArIconName } from "@s_and_a/arrow-ui";
 const kind = ref("pay");
 const kinds: [string, string, ArIconName, string][] = [
   ["join", "入社関連", "users", "4種類"], ["out", "退社関連", "user", "5種類"], ["pay", "給与関連", "yen", "7種類"], ["remu", "報酬関連", "hand", "4種類"],

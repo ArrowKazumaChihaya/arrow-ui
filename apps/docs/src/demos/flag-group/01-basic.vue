@@ -1,7 +1,7 @@
 <!-- ビットのチェック | 曜日などをビットの合計の1つの数で受け渡す。allowed で出す項目を絞れる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArFlagGroup, ArStack } from "@arrow/ui";
+import { ArFlagGroup, ArStack } from "@s_and_a/arrow-ui";
 const week = [
   { value: 1, label: "日" },
   { value: 2, label: "月" },

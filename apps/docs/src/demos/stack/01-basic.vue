@@ -1,6 +1,6 @@
 <!-- 縦に並べる | gap は余白の段階（0〜8）だけを受け取る。px は書かない。 -->
 <script setup lang="ts">
-import { ArStack } from "@arrow/ui";
+import { ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

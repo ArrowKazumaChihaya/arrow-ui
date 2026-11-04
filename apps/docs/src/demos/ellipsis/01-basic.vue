@@ -1,6 +1,6 @@
 <!-- 切り詰め | 枠に入らない文字を「…」で切る。切れているときだけ、指を置く・Tab で止まると全文を吹き出しで出す。 -->
 <script setup lang="ts">
-import { ArEllipsis, ArStack } from "@arrow/ui";
+import { ArEllipsis, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- 段落 | 本文は 13.5px・行の高さ1.75。size="sm" は補足の段落。ellipsis に行数を渡すと、その行数で切る。 -->
 <script setup lang="ts">
-import { ArParagraph, ArStack } from "@arrow/ui";
+import { ArParagraph, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

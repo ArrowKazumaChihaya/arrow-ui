@@ -1,7 +1,7 @@
 <!-- やり方を選ぶ（社員を追加の4択） | variant="option"。value を渡さないふつうのボタンで、押すと select（次の画面へ進む）。おすすめは tag="推奨" tag-tone="ok"。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArChoiceCard, ArThemeScope } from "@arrow/ui";
+import { ArChoiceCard, ArThemeScope } from "@s_and_a/arrow-ui";
 const last = ref("");
 </script>
 

@@ -1,6 +1,6 @@
 <!-- 保存中 | 押したら保存まで行うので、保存中は loading（つまみの中で回る印、押せない）。横の文字はラベルとして親が出す。 -->
 <script setup lang="ts">
-import { ArSwitch, ArCluster } from "@arrow/ui";
+import { ArSwitch, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const on = ref(false);
 const saving = ref(false);

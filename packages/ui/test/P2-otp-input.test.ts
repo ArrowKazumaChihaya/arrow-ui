@@ -3,7 +3,7 @@ import { nextTick } from "vue";
 import ArOtpInput from "../src/components/ArOtpInput.vue";
 import ArUiProvider from "../src/provider/ArUiProvider.vue";
 import { h } from "vue";
-import classicDesign from "@arrow/ui-design-classic";
+import classicDesign from "@s_and_a/arrow-ui-design-classic";
 
 afterEach(() => {
   document.body.innerHTML = "";

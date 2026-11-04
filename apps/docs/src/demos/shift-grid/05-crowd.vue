@@ -1,6 +1,6 @@
 <!-- 30 人・31 日 | 多い人数・多い日数でも重くならない（マスごとの部品を作らず、イベントと吹き出しは表で1つ）。見出しと名前の列は固定、表は縦にも動く。 -->
 <script setup lang="ts">
-import { ArShiftGrid } from "@arrow/ui";
+import { ArShiftGrid } from "@s_and_a/arrow-ui";
 import { patterns, TODAY, useShiftGridDemo } from "./_data";
 
 const { members, cells, days, on } = useShiftGridDemo({ crowd: true });

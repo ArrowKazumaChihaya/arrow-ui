@@ -34,7 +34,7 @@ const options = {
   skipLibCheck: true,
   noEmit: true,
   baseUrl: root,
-  paths: { "@arrow/ui-tokens": ["packages/ui-tokens/src/index.ts"] },
+  paths: { "@s_and_a/arrow-ui-tokens": ["packages/ui-tokens/src/index.ts"] },
   types: [],
 };
 const host = ts.createCompilerHost(options);

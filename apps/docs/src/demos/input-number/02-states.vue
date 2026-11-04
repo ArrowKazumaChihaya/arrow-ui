@@ -1,6 +1,6 @@
 <!-- 大きさと状態 | sm・md・lg。最小・最大に届くと▲▼の片方が押せなくなる。間違い・使えない・読み取りのみ・空（placeholder）。 -->
 <script setup lang="ts">
-import { ArInputNumber, ArCluster, ArStack } from "@arrow/ui";
+import { ArInputNumber, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const v = ref<number | null>(10);
 const empty = ref<number | null>(null);

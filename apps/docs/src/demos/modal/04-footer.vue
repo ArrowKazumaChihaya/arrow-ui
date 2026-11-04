@@ -1,6 +1,6 @@
 <!-- 足の補足・大きさ | footer-note で足の左に補足（概算の説明など）。#footer で右のボタンを自由に並べる。size は sm 420・md 640・lg 880・xl 1100・full、width で数でも決められる。 -->
 <script setup lang="ts">
-import { ArModal, ArButton, ArCluster } from "@arrow/ui";
+import { ArModal, ArButton, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(false);
 const size = ref<"sm" | "md" | "lg" | "xl" | "full">("lg");

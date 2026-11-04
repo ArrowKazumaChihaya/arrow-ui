@@ -1,6 +1,6 @@
 <!-- 時刻の範囲 | 2つの時刻を「〜」でつなぐ。終わりが始まり以前なら、終わりを赤くして下に直し方を出す。夜勤は overnight（29:00 など）。 -->
 <script setup lang="ts">
-import { ArTimeRange, ArStack, type ArTimeRangeValue } from "@arrow/ui";
+import { ArTimeRange, ArStack, type ArTimeRangeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<ArTimeRangeValue>({ start: "09:00", end: "18:00" });
 const bad = ref<ArTimeRangeValue>({ start: "09:00", end: "08:30" });

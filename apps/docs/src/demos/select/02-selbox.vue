@@ -1,6 +1,6 @@
 <!-- 店舗の選択（selbox） | variant="selbox" はアイコン＋名前＋下向きの印。シフト画面の「店舗」と同じ形。選択肢が7つ以上なので探す欄が出る。 -->
 <script setup lang="ts">
-import { ArSelect, ArCluster } from "@arrow/ui";
+import { ArSelect, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const store = ref<string | number | null>("all");
 const stores = [

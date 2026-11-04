@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Form と同じ：ラベルが左（幅 25%＝label-col 6/24・右寄せ・後ろに「:」）、入力が右。 -->
 <script setup lang="ts">
-import { ArForm, ArField, ArTextInput, ArSelect } from "@arrow/ui";
+import { ArForm, ArField, ArTextInput, ArSelect } from "@s_and_a/arrow-ui";
 import { reactive } from "vue";
 const model = reactive({ name: "山田 太郎", type: "part" as string | null });
 const types = [

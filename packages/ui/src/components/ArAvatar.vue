@@ -4,7 +4,7 @@
  * 地は淡いテーマ色。シフト画面のように人を見分けたいときは seed で人ごとの色にする。
  * ArAvatarGroup に入れると白い縁で重なる。
  */
-import { computed, inject } from "vue";
+import { computed, inject, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
 import type { ArAvatarProps } from "./ArAvatar.contract";
 import { arAvatarToneOf } from "./avatar";
@@ -25,6 +25,8 @@ const group = inject<{ size: () => ArAvatarProps["size"] } | null>("ar-avatar-gr
 const shown = computed(() => props.text ?? (props.name ? Array.from(props.name.trim())[0] ?? "" : ""));
 const toneValue = computed(() => props.tone ?? (props.seed !== undefined ? arAvatarToneOf(props.seed) : "accent"));
 const sizeValue = computed(() => props.size ?? group?.size() ?? "md");
+const imageFailed = ref(false);
+watch(() => props.src, () => { imageFailed.value = false; });
 const name = computed(() => props.label ?? props.name);
 const colorStyle = computed(() => (props.color ? { background: props.color[0], color: props.color[1] } : undefined));
 </script>
@@ -41,7 +43,7 @@ const colorStyle = computed(() => (props.color ? { background: props.color[0], c
     :aria-hidden="name ? undefined : 'true'"
     :style="colorStyle"
   >
-    <img v-if="src" :src="src" alt="" data-part="image" />
+    <img v-if="src && !imageFailed" :src="src" alt="" data-part="image" @error="imageFailed = true" />
     <ArIcon v-else-if="icon" :name="icon" size="sm" data-part="icon" />
     <span v-else data-part="text" aria-hidden="true">{{ shown }}</span>
   </span>

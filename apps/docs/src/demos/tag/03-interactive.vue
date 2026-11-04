@@ -1,6 +1,6 @@
 <!-- 外す・追加・選べる札 | closable で × を出して外せる（close）。dashed は点線の「タグを追加」。checkable は選べる札（CheckableTag）で、選ぶとテーマ色の塗り（v-model:checked、aria-pressed）。 -->
 <script setup lang="ts">
-import { ArTag } from "@arrow/ui";
+import { ArTag } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const tags = ref(["早番", "遅番"]);
 const stores = ref<Record<string, boolean>>({ 渋谷店: true, 新宿店: false, 池袋店: false });

@@ -1,7 +1,7 @@
 <!-- 基本 | 月の表示。見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠。マスの印は events（朝礼・不足1 など）。←→↑↓ で日を移り、PageUp / PageDown で月を変え、Enter で選ぶ。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArCalendar } from "@arrow/ui";
+import { ArCalendar } from "@s_and_a/arrow-ui";
 const date = ref("2026-10-15");
 const month = ref("2026-10");
 const events = [

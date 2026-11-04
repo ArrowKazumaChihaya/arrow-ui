@@ -1,6 +1,6 @@
 <!-- 行をまたぐセル（報酬一覧・勤怠の集計） | 1人を2行（報酬／所得税）で見せ、コード・氏名・差引支給額・状態は rowSpan で2行をまたぐ（下の行は 0 を返して出さない）。 -->
 <script setup lang="ts">
-import { ArTable, ArThemeScope, type ArTableColumn } from "@arrow/ui";
+import { ArTable, ArThemeScope, type ArTableColumn } from "@s_and_a/arrow-ui";
 
 type Row = { id: string; code: string; name: string; line: "報酬" | "所得税"; amount: string; real: string; state: string };
 const people = [

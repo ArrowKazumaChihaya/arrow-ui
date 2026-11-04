@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Yearmonth と同じ値（月が空の形も）。 -->
 <script setup lang="ts">
-import { ArYearMonthInput } from "@arrow/ui";
+import { ArYearMonthInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<string | null>("2026-11");
 const b = ref<string | null>(null);

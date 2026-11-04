@@ -1,6 +1,6 @@
 <!-- 遅れ・出さない | delay で出るまでの時間（ミリ秒）を変えられる。disabled のときは出さない。押せないボタンに理由を出すときは、ボタンを span で包む。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArTooltip } from "@arrow/ui";
+import { ArButton, ArCluster, ArTooltip } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

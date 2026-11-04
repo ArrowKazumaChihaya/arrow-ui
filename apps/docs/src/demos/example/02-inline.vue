@@ -1,6 +1,6 @@
 <!-- 例を入れて確かめる（1行） | variant="inline"。例の入力を default スロットに置き、結果（result）は入れるたびに変わる。丸め設定の「例で確かめる」。 -->
 <script setup lang="ts">
-import { ArExample, ArTimeInput, ArStack, type ArTimeValue } from "@arrow/ui";
+import { ArExample, ArTimeInput, ArStack, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 const inT = ref<ArTimeValue>({ time: "08:57", day: "same" });
 const outT = ref<ArTimeValue>({ time: "17:08", day: "same" });

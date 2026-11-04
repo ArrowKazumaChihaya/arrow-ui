@@ -1,6 +1,6 @@
 <!-- 閉じられるタブ | variant="card"。×か Delete キーで close、「＋」で add。消す・足すは使う側が items を変える。 -->
 <script setup lang="ts">
-import { ArTabs, type ArTabItem } from "@arrow/ui";
+import { ArTabs, type ArTabItem } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const items = ref<ArTabItem[]>([{ key: "10", label: "10月分", closable: true }, { key: "11", label: "11月分", closable: true }]);
 const tab = ref("10");

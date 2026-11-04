@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { paletteNames, paletteSlots, tokenNames, cssVar } from "@arrow/ui-tokens";
+import { paletteNames, paletteSlots, tokenNames, cssVar } from "@s_and_a/arrow-ui-tokens";
 import { designs, palette } from "../state";
 import DemoBox from "../DemoBox.vue";
 import { demosOf } from "../demos";

@@ -1,6 +1,6 @@
 <!-- 目次 | 長いフォーム（社員情報など）の目次。押すとその場所へスクロールし、今いるところはテーマ色の線と文字。container でスクロールする箱を渡す。 -->
 <script setup lang="ts">
-import { ArAnchor, ArCluster } from "@arrow/ui";
+import { ArAnchor, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const cur = ref("basic");
 const items = [

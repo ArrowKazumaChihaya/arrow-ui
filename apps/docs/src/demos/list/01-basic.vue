@@ -1,6 +1,6 @@
 <!-- 人の一覧 | 1行は「頭文字の丸・名前と説明・右の操作」。group が続く間は淡いテーマ色の見出しでまとめる（スクロールしても上に残る）。off は薄く出す。 -->
 <script setup lang="ts">
-import { ArButton, ArList } from "@arrow/ui";
+import { ArButton, ArList } from "@s_and_a/arrow-ui";
 const items = [
   { key: 1, title: "佐藤 美咲", description: "09:00〜18:00 ／ 渋谷店", avatar: true, group: "勤務可能な人（提出）" },
   { key: 2, title: "田中 健", description: "13:00〜22:00", avatar: true, group: "勤務可能な人（提出）" },

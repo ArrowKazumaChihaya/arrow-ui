@@ -1,6 +1,6 @@
 <!-- 件数と点 | 子（アイコンのボタン）の右上に重ねる。件数は赤（重要）かテーマ色（tone="accent"）。max を超えると「99+」。dot は数を出さない点。子がなければその場に出す。 -->
 <script setup lang="ts">
-import { ArBadge, ArButton } from "@arrow/ui";
+import { ArBadge, ArButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

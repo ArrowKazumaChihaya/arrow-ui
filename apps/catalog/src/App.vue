@@ -24,11 +24,11 @@ import {
   type ArTableColumn,
   type ArTableSort,
   type ArTimeValue,
-} from "@arrow/ui";
-import { ArUiProvider } from "@arrow/ui";
-import { remixDesign } from "@arrow/ui-design-remix";
-import { classicDesign } from "@arrow/ui-design-classic";
-import { paletteNames } from "@arrow/ui-tokens";
+} from "@s_and_a/arrow-ui";
+import { ArUiProvider } from "@s_and_a/arrow-ui";
+import { remixDesign } from "@s_and_a/arrow-ui-design-remix";
+import { classicDesign } from "@s_and_a/arrow-ui-design-classic";
+import { paletteNames } from "@s_and_a/arrow-ui-tokens";
 
 const params = new URLSearchParams(location.search);
 const designs = { remix: remixDesign, classic: classicDesign } as const;
@@ -115,7 +115,7 @@ const eventInvalid = computed(
       <div class="cat-head">
         <div>
           <h1>ARROW UI カタログ</h1>
-          <p>@arrow/ui の部品を、デザイン とテーマ色を替えて確かめる画面です。</p>
+          <p>@s_and_a/arrow-ui の部品を、デザイン とテーマ色を替えて確かめる画面です。</p>
         </div>
         <div class="cat-ctrl">
           <label>デザイン

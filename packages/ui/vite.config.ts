@@ -10,7 +10,7 @@ export default defineConfig({
     },
     cssCodeSplit: false,
     rollupOptions: {
-      external: ["vue", "@arrow/ui-tokens"],
+      external: ["vue", "@s_and_a/arrow-ui-tokens"],
       output: { assetFileNames: "style.css" },
     },
   },

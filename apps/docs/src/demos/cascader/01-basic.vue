@@ -1,6 +1,6 @@
 <!-- 店舗・部署の階層 | 段ごとの列で選ぶ。選んだ道筋は淡いテーマ色、最後の段はチェック。閉店した店舗は disabled。→ ← で段を移る。 -->
 <script setup lang="ts">
-import { ArCascader, ArStack } from "@arrow/ui";
+import { ArCascader, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const store = ref<(string | number)[] | null>(["arrow", "tokyo", "shibuya"]);
 const dept = ref<(string | number)[] | null>(null);

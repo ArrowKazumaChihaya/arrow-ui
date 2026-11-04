@@ -13,7 +13,7 @@ import {
   type ArTableColumn,
   type ArTableEditValue,
   type ArWeekday,
-} from "@arrow/ui";
+} from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 
 const open = ref(true);

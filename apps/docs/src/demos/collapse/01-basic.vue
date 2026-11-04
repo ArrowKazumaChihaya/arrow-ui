@@ -1,6 +1,6 @@
 <!-- 折りたたみ | 見出しは bg-2 の地に太字、開くと矢印が下を向く。v-model で開いている key。extra は見出しの右の補足。accordion で1つだけ開く。↑↓ Home End で見出しを移る。 -->
 <script setup lang="ts">
-import { ArCollapse } from "@arrow/ui";
+import { ArCollapse } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(["live"]);
 const open2 = ref<string[]>([]);

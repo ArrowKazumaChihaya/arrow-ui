@@ -1,7 +1,7 @@
 import { computed, ref, watch } from "vue";
-import type { ArPaletteName } from "@arrow/ui";
-import { remixDesign } from "@arrow/ui-design-remix";
-import { classicDesign } from "@arrow/ui-design-classic";
+import type { ArPaletteName } from "@s_and_a/arrow-ui";
+import { remixDesign } from "@s_and_a/arrow-ui-design-remix";
+import { classicDesign } from "@s_and_a/arrow-ui-design-classic";
 
 export const designs = [remixDesign, classicDesign] as const;
 export type ViewMode = "remix" | "classic" | "both";

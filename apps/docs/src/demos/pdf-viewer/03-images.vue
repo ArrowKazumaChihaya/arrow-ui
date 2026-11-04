@@ -1,6 +1,6 @@
 <!-- ページの画像・1ページだけ | pages に製品が PDF から作った画像を渡す（ここでは SVG の画像）。1ページなら classic は「‹ 1 / 1 ›」を出さない。src を渡すとブラウザの PDF 表示を iframe で出す（#page と #zoom を付ける）。 -->
 <script setup lang="ts">
-import { ArPdfViewer, ArStack } from "@arrow/ui";
+import { ArPdfViewer, ArStack } from "@s_and_a/arrow-ui";
 const pageImg = (n: number, title: string) =>
   "data:image/svg+xml;utf8," +
   encodeURIComponent(

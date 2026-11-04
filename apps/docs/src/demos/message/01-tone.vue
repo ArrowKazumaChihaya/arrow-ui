@@ -1,6 +1,6 @@
 <!-- 種類 | 上の真ん中に短く出る白い札。ok は緑のチェック、info はテーマ色、warn は橙、danger は赤、loading は回る輪。 -->
 <script setup lang="ts">
-import { ArMessage, ArStack } from "@arrow/ui";
+import { ArMessage, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- 見本の枠（合意書類の書類詳細） | :toolbar="false" で上の段を消すと、灰色の地に白い紙を置いた枠だけ。紙の中は page slot。 -->
 <script setup lang="ts">
-import { ArPdfViewer } from "@arrow/ui";
+import { ArPdfViewer } from "@s_and_a/arrow-ui";
 const th = "border: 1px solid #888; background: #D1D5D8; padding: 5px 7px; width: 80px; text-align: center; font-weight: 400; white-space: nowrap";
 const td = "border: 1px solid #888; padding: 5px 7px";
 </script>

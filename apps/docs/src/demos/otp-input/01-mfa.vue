@@ -1,7 +1,7 @@
 <!-- 二段階認証 | ログインの「メール6桁コード」。1桁ずつの箱に入れ、メールの6桁を1つ目の箱に貼り付けると全部の箱に入る。全部入ると complete。送った直後は resend-in の秒数だけ再送を押せない。classic は今の ARROW と同じ1つの欄。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArField, ArOtpInput } from "@arrow/ui";
+import { ArButton, ArField, ArOtpInput } from "@s_and_a/arrow-ui";
 const code = ref("482");
 const tried = ref(false);
 const done = ref("");

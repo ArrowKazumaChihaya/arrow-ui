@@ -1,6 +1,6 @@
 <!-- 時刻 | 高さ36・角丸9。数字を打つ（「930」「９：３０」も 09:30）か、↑↓で step ずつ動かす。確定（Enter・フォーカスが外れる）で commit が出る。読めない時刻は赤い枠。 -->
 <script setup lang="ts">
-import { ArTimeInput, ArCluster, type ArTimeValue } from "@arrow/ui";
+import { ArTimeInput, ArCluster, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const start = ref<ArTimeValue>({ time: "10:00", day: "same" });
 const empty = ref<ArTimeValue>({ time: null, day: "same" });

@@ -1,6 +1,6 @@
 <!-- 時間の表（列いっぱい） | block で列の幅いっぱい。勤務メンバーの表と同じ並び（シフト・勤怠・休憩）。打刻がないときは「打刻と同じ」。 -->
 <script setup lang="ts">
-import { ArTimeInput, type ArTimeValue } from "@arrow/ui";
+import { ArTimeInput, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { reactive } from "vue";
 const t = (time: string | null, day: "same" | "prev" = "same"): ArTimeValue => ({ time, day });
 const rows = reactive([

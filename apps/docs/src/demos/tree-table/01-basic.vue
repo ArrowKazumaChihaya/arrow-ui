@@ -1,6 +1,6 @@
 <!-- 店舗の一覧（動かせる木） | 1列目が木。開け閉め・字下げ・つなぎの線。draggable でつまみ ⠿ をつかみ、行の上（前）・まん中（子に）・下（後）へ動かす。キーボードはつまみで Alt+↑↓（前後）・Alt+→（すぐ上の行の子に）・Alt+←（親の外へ）。動かした後の木は v-model:rows、動かした1行は drop で受け取る。行では ↑↓→← で移り・開け閉めする。 -->
 <script setup lang="ts">
-import { ArButton, ArTreeTable, type ArTreeTableDrop } from "@arrow/ui";
+import { ArButton, ArTreeTable, type ArTreeTableDrop } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 type Row = { id: number; name: string; code: string; staff: number; children?: Row[] };
 const rows = ref<Row[]>([

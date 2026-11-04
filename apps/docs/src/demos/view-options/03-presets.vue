@@ -1,6 +1,6 @@
 <!-- 会社で保存する組み合わせ | presets に保存した組み合わせ（会社／自分）を渡すと上に並び、押すとその組み合わせになる（apply）。今の選び方と同じものに印。saveScopes に company を入れると「会社の既定として保存」、「名前をつけて保存」で名前の欄と保存のボタン（save-preset）。× は delete-preset。部品はブラウザーにも API にも書かない。保存は製品が API でして presets を変える（ここでは見本の中の配列を変えている）。 -->
 <script setup lang="ts">
-import { ArViewOptions, type ArViewOptionGroup, type ArViewOptionPreset, type ArViewOptionPresetDraft } from "@arrow/ui";
+import { ArViewOptions, type ArViewOptionGroup, type ArViewOptionPreset, type ArViewOptionPresetDraft } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const shown = ref(["cnt", "short", "ev"]);
 const open = ref(false);

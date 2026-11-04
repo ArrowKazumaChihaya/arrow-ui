@@ -1,8 +1,8 @@
 <!-- 子のメニューと「メニュー」の一覧 | 項目の children は、押すとメニューの真上に子の段が出る（今の ARROW のスマホのフッターと同じく、押すと navigate も出す。右半分の項目は右に寄せる。↑ キーで子の段へ、Escape で閉じる）。max（既定5）より多い項目は右端の「メニュー」に入り、押すと下から一覧が出る（親と子を順にタイルで並べる。今の ARROW のメニューのページ）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArBottomNav } from "@arrow/ui";
-import type { ArAppNavItem } from "@arrow/ui";
+import { ArBottomNav } from "@s_and_a/arrow-ui";
+import type { ArAppNavItem } from "@s_and_a/arrow-ui";
 /** 製品の leftMenuList・rightMenuList（title・icon・submenu）を ArAppNavItem に直した形。 */
 const items: ArAppNavItem[] = [
   { key: "shift", label: "シフト", icon: "cal", palette: "blue", children: [{ key: "shift-submit", label: "シフト提出" }, { key: "shift-regist", label: "シフト登録" }, { key: "shift-view", label: "シフト閲覧" }] },

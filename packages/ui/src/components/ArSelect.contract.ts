@@ -1,4 +1,4 @@
-/** ArSelect 1.2 の契約。 */
+/** ArSelect 1.3 の契約。 */
 import type { ArIconName } from "../icons";
 import type { ArButtonTone } from "./ArButton.contract";
 
@@ -14,6 +14,10 @@ export interface ArSelectOption {
   dot?: string;
   /** 頭に出す丸の文字（人の名前なら頭文字。例：「佐」）。 */
   avatar?: string;
+  /** 人の写真の URL。読み込めない場合は avatar の頭文字を出す。 */
+  avatarSrc?: string;
+  /** 頭文字の背景色を安定して選ぶ社員IDなど。 */
+  avatarSeed?: string | number;
   /** 丸の地の色（人ごとの色）。省くとテーマ色の淡い色。 */
   avatarColor?: string;
   /** 丸の文字の色。 */

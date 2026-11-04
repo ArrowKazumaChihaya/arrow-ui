@@ -1,6 +1,6 @@
 <!-- 文字の候補・状態 | 文字だけの候補（メールのドメインなど）。empty-text を渡すと、合う候補がないときに知らせる。大きさ・使えない。 -->
 <script setup lang="ts">
-import { ArAutoComplete, ArCluster } from "@arrow/ui";
+import { ArAutoComplete, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const v = ref("");
 const w = ref("");

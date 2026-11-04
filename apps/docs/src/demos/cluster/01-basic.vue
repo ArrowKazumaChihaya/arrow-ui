@@ -1,6 +1,6 @@
 <!-- 横に並べて折り返す | ボタンやタグの並び。justify="between" で両端に分ける。 -->
 <script setup lang="ts">
-import { ArCluster, ArButton, ArTextInput } from "@arrow/ui";
+import { ArCluster, ArButton, ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const q = ref("");
 </script>

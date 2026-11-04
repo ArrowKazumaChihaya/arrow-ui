@@ -1,6 +1,6 @@
 <!-- 表の下に置く | #below は表の8px下。ページ送り（ArPagination）や「表示内容」のプルダウンを置く。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, type ArTableColumn } from "@arrow/ui";
+import { ArButton, ArTable, type ArTableColumn } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 type Row = { id: number; name: string; code: string };
 const all: Row[] = Array.from({ length: 12 }, (_, i) => ({ id: i, name: ["佐藤 美咲", "田中 健", "山本 葵", "鈴木 大地"][i % 4]!, code: `S${1001 + i}` }));

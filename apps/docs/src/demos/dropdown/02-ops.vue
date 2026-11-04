@@ -1,6 +1,6 @@
 <!-- 説明つきのメニュー | description を渡すと、シフト画面の「操作」メニューと同じ2行の項目（アイコンの箱・太字・説明）。group で見出し（「登録する」「見る・出力する」）。 -->
 <script setup lang="ts">
-import { ArDropdown, type ArMenuItem } from "@arrow/ui";
+import { ArDropdown, type ArMenuItem } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(true);
 const ops: ArMenuItem[] = [

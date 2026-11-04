@@ -1,8 +1,8 @@
 <!-- スマホの日の詳細（RxSpDay） | スマホでカレンダーの日を押すと、下から日の詳細が出る。右上の ×、前の日・日付と曜日・次の日、要約の札（人件費・公開中）の下に、製品が「勤務メンバー」「表示内容」「勤務可能な人」を置く。見本は contained で 390px の枠の中に出している（製品では画面全体に出す）。 -->
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArButton, ArField, ArSectionHead, ArSegmented, ArShiftDaySheet, ArTable, ArViewOptions } from "@arrow/ui";
-import type { ArTableColumn, ArViewOptionGroup } from "@arrow/ui";
+import { ArButton, ArField, ArSectionHead, ArSegmented, ArShiftDaySheet, ArTable, ArViewOptions } from "@s_and_a/arrow-ui";
+import type { ArTableColumn, ArViewOptionGroup } from "@s_and_a/arrow-ui";
 
 const open = ref(true);
 const day = ref(21);

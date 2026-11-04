@@ -1,5 +1,5 @@
 /** ArMenuTile 1.0 の契約。メニュー画面のタイル（テーマ色の四角に線のアイコン、下に名前、右上に件数）。 */
-import type { ArPaletteName } from "@arrow/ui-tokens";
+import type { ArPaletteName } from "@s_and_a/arrow-ui-tokens";
 import type { ArIconName } from "../icons";
 
 export interface ArMenuTileProps {

@@ -1,7 +1,7 @@
 <!-- 状態と桁数 | invalid（間違い）・disabled（押せない）。桁数は length（4桁の暗証番号など）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArOtpInput } from "@arrow/ui";
+import { ArOtpInput } from "@s_and_a/arrow-ui";
 const a = ref("4821");
 const b = ref("482193");
 const c = ref("");

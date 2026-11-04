@@ -1,6 +1,6 @@
 <!-- 形 | 右から出る板。幕は ink の42%、頭は白（アイコン＋題＋閉じる）、足は bg-2。contained で親の中に出せる。ARROW のシフト画面では日の詳細は横から出さない（配置を変えない）。 -->
 <script setup lang="ts">
-import { ArDrawer, ArButton, ArField, ArSelect, ArTextInput } from "@arrow/ui";
+import { ArDrawer, ArButton, ArField, ArSelect, ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const open = ref(true);
 const store = ref("shibuya");

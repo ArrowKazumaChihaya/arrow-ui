@@ -1,6 +1,6 @@
 <!-- 大きさ・色・記録中 | スマホは size="md"（高さ136）。色は palette で変えられる（既定は出勤・休憩開始＝blue、退勤・休憩終了＝green）。loading は記録している途中（押せない）。名前とアイコンは label・icon で変えられる（シフト外出勤など）。 -->
 <script setup lang="ts">
-import { ArPunchButton } from "@arrow/ui";
+import { ArPunchButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

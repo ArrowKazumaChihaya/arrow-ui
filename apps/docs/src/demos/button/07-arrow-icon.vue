@@ -1,6 +1,6 @@
 <!-- 今の ARROW の種類：アイコン | アイコンは文字の前（classic は今の ARROW のアイコンの形）。blink は文字とアイコンを1秒ごとに点滅させる。 -->
 <script setup lang="ts">
-import { ArButton } from "@arrow/ui";
+import { ArButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

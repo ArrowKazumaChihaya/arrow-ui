@@ -7,23 +7,26 @@
       "vitest/globals"
     ],
     "paths": {
-      "@arrow/ui-tokens": [
+      "@s_and_a/arrow-ui-tokens": [
         "packages/ui-tokens/src/index.ts"
       ],
-      "@arrow/ui": [
+      "@s_and_a/arrow-ui": [
         "packages/ui/src/index.ts"
       ],
-      "@arrow/ui/requirements": [
+      "@s_and_a/arrow-ui/requirements": [
         "packages/ui/src/requirements/index.ts"
       ],
-      "@arrow/ui-design-remix": [
+      "@s_and_a/arrow-ui-design-remix": [
         "packages/ui-design-remix/src/index.ts"
       ],
-      "@arrow/ui-design-classic": [
+      "@s_and_a/arrow-ui-design-classic": [
         "packages/ui-design-classic/src/index.ts"
       ],
-      "@arrow/ui/design": [
+      "@s_and_a/arrow-ui/design": [
         "packages/ui/src/design-entry.ts"
+      ],
+      "@s_and_a/arrow-ui/product": [
+        "packages/ui/src/product/index.ts"
       ]
     }
   },

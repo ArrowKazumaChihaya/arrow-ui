@@ -1,6 +1,6 @@
 <!-- 種類 | 行の中に添える小さな札。テーマ色（既定）・イベント・灰色。押せない。 -->
 <script setup lang="ts">
-import { ArChip, ArCluster, ArStack, ArThemeScope } from "@arrow/ui";
+import { ArChip, ArCluster, ArStack, ArThemeScope } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- 空の状態 | 何もないことと次の一手を言葉で書く。絵は使わず線のアイコン（icon）。#action に次の一手のボタン。size="md" はカードの中の広い場所。 -->
 <script setup lang="ts">
-import { ArButton, ArEmpty } from "@arrow/ui";
+import { ArButton, ArEmpty } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

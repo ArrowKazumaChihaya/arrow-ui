@@ -1,7 +1,7 @@
 <!-- スマホの日の詳細 | variant="mobile"（RxSpDay のシートの中）。名前の列が細く（頭文字なし）、時間の場所は横にすべらせる。操作の行は折り返す。指ではバーを押してドラッグ、空いた行は横にすべらせるだけ（追加は Enter・マウス）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArShiftChart, type ArShiftChartRow, type ArShiftChartChange } from "@arrow/ui";
+import { ArShiftChart, type ArShiftChartRow, type ArShiftChartChange } from "@s_and_a/arrow-ui";
 const H = (h: number) => h * 60;
 const rows = ref<ArShiftChartRow[]>([
   { key: 101, name: "千速 一真", seed: 0, color: "#D2483F", shifts: [{ start: H(13), end: H(22) }], breaks: [{ start: H(17), end: H(18) }] },

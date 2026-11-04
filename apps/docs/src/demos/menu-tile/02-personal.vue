@@ -1,7 +1,7 @@
 <!-- マイページのメニュー | 札なしの四角（variant="plain"）。件数のある所は、名前の下に赤い一言（note）で理由を書く（「12月分 未提出」「エラー 2日」）。件数は文字（「!」）も渡せる。 -->
 <script setup lang="ts">
-import { ArMenuTile } from "@arrow/ui";
-import type { ArIconName, ArPaletteName } from "@arrow/ui";
+import { ArMenuTile } from "@s_and_a/arrow-ui";
+import type { ArIconName, ArPaletteName } from "@s_and_a/arrow-ui";
 const tiles: { label: string; icon: ArIconName; palette: ArPaletteName; count?: number | string; note?: string }[] = [
   { label: "シフト", icon: "cal", palette: "blue" },
   { label: "シフト提出", icon: "note", palette: "blue", count: "!", note: "12月分 未提出" },

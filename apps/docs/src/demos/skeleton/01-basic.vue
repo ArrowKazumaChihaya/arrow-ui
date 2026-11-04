@@ -1,6 +1,6 @@
 <!-- 形 | 読み込み中の形。line-2 の地に淡い光。丸（avatar）と行（rows・widths）、ボタン・入力の形。読み込めたら loading=false で中身を出す。 -->
 <script setup lang="ts">
-import { ArSkeleton, ArStack, ArCluster } from "@arrow/ui";
+import { ArSkeleton, ArStack, ArCluster } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- 形と大きさ（card・plain ／ sm・md・lg） | 形を省くとカード（remix。classic は今の ARROW と同じ四角と文字）。variant="plain" は設定の行など密集した所。columns でカードを等しい幅の列に並べる。大きさはラジオと同じ段。 -->
 <script setup lang="ts">
-import { ArCheckboxGroup, type ArCheckboxValue } from "@arrow/ui";
+import { ArCheckboxGroup, type ArCheckboxValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 const kinds = ref<ArCheckboxValue[]>(["part", "staff"]);

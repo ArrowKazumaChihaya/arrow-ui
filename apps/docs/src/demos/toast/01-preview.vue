@@ -1,6 +1,6 @@
 <!-- 形 | 操作のあと画面の下に出る黒い帯（.toast）。チェックの印＋言葉＋「閉じる」。元に戻せる操作には undo-text で「元に戻す」を足す。contained で親の下に出せる。 -->
 <script setup lang="ts">
-import { ArToast } from "@arrow/ui";
+import { ArToast } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref(true);
 const b = ref(true);

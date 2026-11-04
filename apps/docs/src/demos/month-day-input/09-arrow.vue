@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の MonthDay と同じ値。 -->
 <script setup lang="ts">
-import { ArMonthDayInput } from "@arrow/ui";
+import { ArMonthDayInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<string | null>("11-03");
 const b = ref<string | null>(null);

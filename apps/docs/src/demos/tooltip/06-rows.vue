@@ -1,6 +1,6 @@
 <!-- 見出しと行の吹き出し | content slot の中で tip-row・tip-label・tip-value を使うと、シフト表のマスの吹き出し（.r-tip）と同じ「見出しの行＋ラベルと値の行」になる。ライブラリの吹き出しは、マス・帯・省いた文字・つまみの値まで、すべてこの1つの形。 -->
 <script setup lang="ts">
-import { ArButton, ArTooltip } from "@arrow/ui";
+import { ArButton, ArTooltip } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

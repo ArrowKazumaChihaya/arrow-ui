@@ -1,6 +1,6 @@
 <!-- 意味の色と飾り | type は意味の色。mark・code・kbd・del・underline・strong を組み合わせられる。 -->
 <script setup lang="ts">
-import { ArText, ArLink, ArParagraph } from "@arrow/ui";
+import { ArText, ArLink, ArParagraph } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

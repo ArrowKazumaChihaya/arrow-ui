@@ -1,7 +1,7 @@
 <!-- 人を選ぶ | avatar（頭文字の丸）と description（右の小さな文字）。登録済みの人は disabled で選べない。名前・コードで探せる（keywords）。 -->
 <script setup lang="ts">
-import { ArSelect } from "@arrow/ui";
-import type { ArSelectOption } from "@arrow/ui";
+import { ArSelect } from "@s_and_a/arrow-ui";
+import type { ArSelectOption } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const member = ref<string | number | null>(null);
 const people: ArSelectOption[] = [

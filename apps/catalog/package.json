@@ -1,5 +1,5 @@
 {
-  "name": "@arrow/catalog",
+  "name": "@s_and_a/arrow-ui-catalog",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@arrow/ui": "0.1.1",
-    "@arrow/ui-design-remix": "0.1.1",
-    "@arrow/ui-design-classic": "0.1.1",
+    "@s_and_a/arrow-ui": "0.1.1",
+    "@s_and_a/arrow-ui-design-remix": "0.1.1",
+    "@s_and_a/arrow-ui-design-classic": "0.1.1",
     "vue": "^3.5.22"
   }
 }

@@ -1,7 +1,7 @@
 <!-- 狭い所の長い名前（スマホ 375px） | 画面の幅 375px（左右 16px の余白で中は 343px）の横並び（店舗の選択と「操作」のボタン）に置いても、長い店舗名は「…」で切れて下向きの印に重ならない。製品の UI/Select と同じく、ArSelect をもう1つの箱で包み（$attrs を渡す形）、その箱を横並びの中に置いた形でも同じ。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArSelect } from "@arrow/ui";
+import { ArButton, ArSelect } from "@s_and_a/arrow-ui";
 const long = "ARROW事業部 東京都渋谷区神南一丁目 第二ビル店（本館・新館）";
 const options = [
   { value: 1, label: long },

@@ -1,6 +1,6 @@
 <!-- 承認の進み具合（一覧） | layout="list"（既定）。番号の丸・段の名前と承認する人・状態の札。済み（done）・あなたの番（current）・まだ（todo）・差し戻し（denied）。 -->
 <script setup lang="ts">
-import { ArApprovalFlow, ArStack, type ArApprovalStep } from "@arrow/ui";
+import { ArApprovalFlow, ArStack, type ArApprovalStep } from "@s_and_a/arrow-ui";
 const steps: ArApprovalStep[] = [
   { title: "店長の承認", who: "末永 修也", state: "done", status: "承認済　10/31 18:02" },
   { title: "人事の承認", who: "千速 一真（あなた）", state: "current" },

@@ -1,6 +1,6 @@
 <!-- リンク | 文中の行き先。テーマ色の文字と下線。別のタブで開くなら target="_blank"。 -->
 <script setup lang="ts">
-import { ArLink, ArCluster } from "@arrow/ui";
+import { ArLink, ArCluster } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

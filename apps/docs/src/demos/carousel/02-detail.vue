@@ -1,6 +1,6 @@
 <!-- 説明つき・自動で切り替え | { title, description } で説明を添える。autoplay（true＝5秒、数＝ミリ秒）で自動で切り替え、乗せている間・フォーカスの間は止まる。テーマ色はまわりのページの色を引き継ぐ。 -->
 <script setup lang="ts">
-import { ArCarousel, ArThemeScope, ArGrid } from "@arrow/ui";
+import { ArCarousel, ArThemeScope, ArGrid } from "@s_and_a/arrow-ui";
 const items = [
   { title: "年末年始のシフト募集", description: "12月10日までに希望を出してください。" },
   { title: "勤怠のしめ日が変わります", description: "来月から毎月20日しめになります。" },

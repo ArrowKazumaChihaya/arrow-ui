@@ -1,6 +1,6 @@
 <!-- 大きさと状態 | sm（30）・md（38）・lg（44）。間違い（赤）・注意（黄）・使えない・読み取りのみ・filled（枠なしの灰色）。 -->
 <script setup lang="ts">
-import { ArTextInput, ArCluster, ArStack } from "@arrow/ui";
+import { ArTextInput, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const v = ref("");
 </script>

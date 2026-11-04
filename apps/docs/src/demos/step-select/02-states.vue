@@ -1,6 +1,6 @@
 <!-- 済み・今・次 | status で段の状態を決めて渡すこともできる。道しるべを出さないときは :crumbs="false"、矢印を出さないときは :connectors="false"。 -->
 <script setup lang="ts">
-import { ArStepSelect, ArThemeScope } from "@arrow/ui";
+import { ArStepSelect, ArThemeScope } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

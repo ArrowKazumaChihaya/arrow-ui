@@ -1,6 +1,6 @@
 <!-- 横のメニュー・浮かぶ子メニュー | horizontal はタブと同じ下線（子メニューは下に浮かぶ）。vertical は子メニューを右に浮かせる。 -->
 <script setup lang="ts">
-import { ArMenu, ArStack, type ArMenuItem } from "@arrow/ui";
+import { ArMenu, ArStack, type ArMenuItem } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref("shift");
 const b = ref("store");

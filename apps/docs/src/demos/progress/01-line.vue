@@ -1,6 +1,6 @@
 <!-- 線・刻み | 進行はテーマ色、取り込み中（active）は光が流れる、終わり（100%）は緑のチェック、失敗は赤。刻み（steps）は「いくつ中いくつ」。 -->
 <script setup lang="ts">
-import { ArProgress, ArStack } from "@arrow/ui";
+import { ArProgress, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

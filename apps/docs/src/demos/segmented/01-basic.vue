@@ -1,6 +1,6 @@
 <!-- 切り替え | 2〜4つの表示の切り替え。地は淡い灰色、選んでいるものは白い面にテーマ色の文字。count で文字の右に件数の丸（「備考 2」）。←→ で選び直せる。 -->
 <script setup lang="ts">
-import { ArSegmented, ArStack } from "@arrow/ui";
+import { ArSegmented, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref("new");
 const b = ref("time");

@@ -23,7 +23,7 @@ if (!file) {
 }
 const jiti = createJiti(pathToFileURL(file).href, { interopDefault: true });
 const requirements = await jiti.import(file, { default: true });
-const { checkRequirements, formatProblems } = await jiti.import("@arrow/ui/requirements");
+const { checkRequirements, formatProblems } = await jiti.import("@s_and_a/arrow-ui/requirements");
 if (!requirements?.components) {
   console.error(`${path.basename(file)} が defineRequirements({ components }) を default export していません。`);
   process.exit(1);

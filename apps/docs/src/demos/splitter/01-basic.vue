@@ -1,6 +1,6 @@
 <!-- 分割パネル | つまみをドラッグして幅を変え、ダブルクリック（または Enter）で元に戻す。キーボードは ←→、Shift で大きく動く。 -->
 <script setup lang="ts">
-import { ArSplitter, ArStack } from "@arrow/ui";
+import { ArSplitter, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const w = ref<number>();
 const h = ref<number>();

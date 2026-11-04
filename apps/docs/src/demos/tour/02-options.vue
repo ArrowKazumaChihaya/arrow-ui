@@ -1,7 +1,7 @@
 <!-- 幕なし・閉じるボタン・向き | mask=false で幕をかけず、指す要素をテーマ色の枠で示す。closable で右上に閉じるボタン。placement でカードの向き。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArCluster, ArTour } from "@arrow/ui";
+import { ArButton, ArCluster, ArTour } from "@s_and_a/arrow-ui";
 const open = ref(false);
 const a = ref<HTMLElement | null>(null);
 const b = ref<HTMLElement | null>(null);

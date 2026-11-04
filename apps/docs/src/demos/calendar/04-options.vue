@@ -1,7 +1,7 @@
 <!-- 見出しなし・選べない日・前後の月を出さない | showHeader=false で小さなまとまりに。disabledDate で選べない日（締めた日など）。showAdjacent=false で前後の月を空にする。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArCalendar } from "@arrow/ui";
+import { ArCalendar } from "@s_and_a/arrow-ui";
 const date = ref<string | null>("2026-11-12");
 const closed = (d: string) => d < "2026-11-06";
 </script>

@@ -1,7 +1,7 @@
 <!-- 列の幅・図の大きさ | −／＋ で値を変え、真ん中に今の値を出す。シフト表（ArShiftGrid・ArShiftViewTable）と組織図（ArOrgChart）の拡大縮小はこの部品1つ。下限・上限では押せない。md＝ふつう（箱 34）、sm＝密集した所・スマホ（箱 32）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArZoomControl } from "@arrow/ui";
+import { ArZoomControl } from "@s_and_a/arrow-ui";
 
 const w = ref(64);
 const s = ref(48);

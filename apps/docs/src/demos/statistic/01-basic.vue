@@ -1,6 +1,6 @@
 <!-- 大きな数字 | 数字は26px・等幅。prefix・suffix（単位は小さく）、増減は意味の色（増＝緑・減＝赤）。tone で数字の色。size="sm" は小さな箱の中（18px）。 -->
 <script setup lang="ts">
-import { ArCard, ArStatistic } from "@arrow/ui";
+import { ArCard, ArStatistic } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- 大きさ（sm・md・lg） | 外側の高さ sm 30・md 36・lg 42（角丸 9・10・11）。ほかの入力・ボタンの同じ段と高さがそろう。使い分け：sm＝表の上・設定の行、md＝ふつうの切り替え、lg＝スマホ・年末調整。ArRadioGroup の type="button" も同じ形・同じ段。 -->
 <script setup lang="ts">
-import { ArSegmented, ArRadioGroup, ArSelect } from "@arrow/ui";
+import { ArSegmented, ArRadioGroup, ArSelect } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 const v = ref<string | number>("day");

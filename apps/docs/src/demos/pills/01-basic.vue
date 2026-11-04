@@ -1,6 +1,6 @@
 <!-- 選ぶ札 | 絞り込みの選択（高さ30・丸い札）。選んでいる札は淡いテーマ色。1つ選ぶ（既定）か multiple でいくつでも。 -->
 <script setup lang="ts">
-import { ArPills, ArStack, type ArPillValue } from "@arrow/ui";
+import { ArPills, ArStack, type ArPillValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const who = ref<ArPillValue | null>("all");
 const kinds = ref<ArPillValue[]>(["shift", "event"]);

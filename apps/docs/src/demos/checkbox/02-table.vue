@@ -1,6 +1,6 @@
 <!-- 表の行で使う | 見える名前がないので label（読み上げ）を必ず渡す。見出しのチェックは「見えている行をすべて」、一部だけなら indeterminate。 -->
 <script setup lang="ts">
-import { ArCheckbox } from "@arrow/ui";
+import { ArCheckbox } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 const rows = [
   { id: 1, name: "末永 修也", time: "09:00〜18:00" },

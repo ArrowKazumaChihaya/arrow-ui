@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from "vue";
-import { paletteNames } from "@arrow/ui-tokens";
+import { paletteNames } from "@s_and_a/arrow-ui-tokens";
 import { allItems, groups, guides } from "./nav";
 import { designs, mode, palette, type ViewMode } from "./state";
 import Intro from "./pages/Intro.vue";

@@ -1,6 +1,6 @@
 <!-- 日付の表示 | 「11月05日(木)」の形。曜日は日曜・祝日（holiday）が赤、土曜が青、ほかは灰色。format="auto"（既定）は幅 499px 以下の画面で「11/05(木)」。long・short で固定もできる。 -->
 <script setup lang="ts">
-import { ArDateView } from "@arrow/ui";
+import { ArDateView } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

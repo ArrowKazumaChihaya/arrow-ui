@@ -1,7 +1,7 @@
 <!-- 日の要約 | シフト画面の日付の下に置く札の並び。最後の「公開中」は押すと非公開と切り替わる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArDaySummary, ArStack } from "@arrow/ui";
+import { ArDaySummary, ArStack } from "@s_and_a/arrow-ui";
 const pub = ref(true);
 const off = ref(false);
 </script>

@@ -1,6 +1,6 @@
 <!-- useArMessage() | 関数で出す。ArUiProvider の中に ArMessageHost を1つ置いておく。同じ key で出し直すと中身が入れ替わる（送っています… → 送りました）。元に戻せる操作には ArToast を使う。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster, ArMessageHost, useArMessage } from "@arrow/ui";
+import { ArButton, ArCluster, ArMessageHost, useArMessage } from "@s_and_a/arrow-ui";
 const message = useArMessage();
 function send() {
   message.open({ key: "send", tone: "loading", content: "送っています…" });

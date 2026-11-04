@@ -1,6 +1,6 @@
 <!-- 大きさと状態 | sm（30）と md（38）。最小のとき − は押せない。使えない・間違い。 -->
 <script setup lang="ts">
-import { ArStepper, ArCluster } from "@arrow/ui";
+import { ArStepper, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref(1);
 const b = ref(5);

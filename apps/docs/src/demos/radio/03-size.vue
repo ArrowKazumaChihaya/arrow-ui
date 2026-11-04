@@ -1,6 +1,6 @@
 <!-- 大きさと形（sm・md・lg ／ plain・card） | ArRadioGroup の選択肢と同じもの（丸の印・カードの見た目は1つ）。単独で置くときも variant="card"・size・description が使える。 -->
 <script setup lang="ts">
-import { ArRadio } from "@arrow/ui";
+import { ArRadio } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 const v = ref<string | null>("a");

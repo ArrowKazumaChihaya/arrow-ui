@@ -1,6 +1,6 @@
 <!-- 画面の枠 | ヘッダーの下に3pxのテーマ色の線。Sider（設定などの横のメニュー）の選択中はテーマ色の塗り。中身の地は bg、まとまりは白いカード。フッターは白・上に線。 -->
 <script setup lang="ts">
-import { ArLayout, ArMenu } from "@arrow/ui";
+import { ArLayout, ArMenu } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const page = ref("shift");
 const items = [{ key: "shift", label: "シフト" }, { key: "att", label: "勤怠" }, { key: "pay", label: "給与賞与" }, { key: "set", label: "設定" }];

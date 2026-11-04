@@ -1,7 +1,7 @@
 <!-- シフト詳細のチャート | 勤務メンバーの「チャート」表示（シフトのキャンバスの RxChart）。バーはパターンの色・休憩は白い斜線。バーをドラッグで移動、両端で伸び縮み、休憩も動く（ドラッグの間隔できざむ）。シフトのない行をドラッグすると追加、緑の点線の提出を押すと確認してからシフトに。下に1時間ごとの人数（上：シフト　下：募集）と不足。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArModal, ArShiftChart, ArViewOptions, type ArShiftChartRow, type ArShiftChartChange, type ArShiftChartSpan, type ArViewOptionGroup } from "@arrow/ui";
+import { ArButton, ArModal, ArShiftChart, ArViewOptions, type ArShiftChartRow, type ArShiftChartChange, type ArShiftChartSpan, type ArViewOptionGroup } from "@s_and_a/arrow-ui";
 const H = (h: number, m = 0) => h * 60 + m;
 // 製品の形：Shift（shift_shift・shift_plan_break）と Able（able_time）を行に直したもの。data に元のデータを持たせ、イベントでそのまま返す。
 const rows = ref<ArShiftChartRow[]>([

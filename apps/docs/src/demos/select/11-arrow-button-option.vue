@@ -1,7 +1,7 @@
 <!-- 今の ARROW の使い方：選択肢の中のボタン | 今の Select の button 付きの選択肢（BranchSelectorInner の「店舗を追加」・ShiftgroupSelector の「グループを追加」）は actions で出す。選択肢ではないので値にならず、押すと action（今の @click）。tone（add→primary）と width（今の style の width）を渡せる。↑↓ で選択肢の続きとしてボタンへ移り、Enter で押せる。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArSelect } from "@arrow/ui";
+import { ArSelect } from "@s_and_a/arrow-ui";
 const branch = ref<string | number | null>(0);
 const group = ref<string | number | null>(null);
 const log = ref("—");

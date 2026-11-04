@@ -1,7 +1,7 @@
 <!-- プランと支払い方法 | variant="card"（既定）。value と v-model で1つを選ぶ組（role="radiogroup" の箱に並べる。←→で隣へ）。選べない札は disabled と reason（鍵の印と理由）、今の契約は tag。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArChoiceCard, ArThemeScope } from "@arrow/ui";
+import { ArChoiceCard, ArThemeScope } from "@s_and_a/arrow-ui";
 const plan = ref("c");
 const pay = ref("bank");
 </script>

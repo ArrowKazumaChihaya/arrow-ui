@@ -1,7 +1,7 @@
 <!-- 管理者のメニュー | 共通のメニュー画面（/manager/menu）。7列に並べ、色は機能のテーマ色（palette）。やることがある所は右上に件数（count）。remix は白い札（variant="card"・既定）、classic は今の ARROW のタイル。 -->
 <script setup lang="ts">
-import { ArMenuTile } from "@arrow/ui";
-import type { ArIconName, ArPaletteName } from "@arrow/ui";
+import { ArMenuTile } from "@s_and_a/arrow-ui";
+import type { ArIconName, ArPaletteName } from "@s_and_a/arrow-ui";
 const tiles: { label: string; icon: ArIconName; palette: ArPaletteName; count?: number }[] = [
   { label: "シフト", icon: "cal", palette: "blue" },
   { label: "勤怠", icon: "brief", palette: "green" },

@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の TreeSelect と同じ：店舗・部署の木から1つ選ぶ（ツリーの線つき、すべて開いた状態で開く）。幅は画面ごと（ここでは 240px）。 -->
 <script setup lang="ts">
-import { ArTreeSelect } from "@arrow/ui";
+import { ArTreeSelect } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const tree = [
   { value: "hq", label: "本社", children: [{ value: "sales", label: "営業部" }, { value: "admin", label: "総務部" }] },

@@ -1,7 +1,7 @@
 <!-- 種類 | note は入力の下の小さな説明、attention は画面の頭の注意。mark（？）と detail（詳細）は押すと説明を開く。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArInfo, ArStack, ArCluster, ArTextInput } from "@arrow/ui";
+import { ArInfo, ArStack, ArCluster, ArTextInput } from "@s_and_a/arrow-ui";
 const opened = ref(0);
 const v = ref("");
 </script>

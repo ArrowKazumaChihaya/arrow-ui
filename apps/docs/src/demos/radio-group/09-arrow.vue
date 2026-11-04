@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Radio・RadioGroup と同じ並び（選んだ丸は antd の青）。縦は direction="vertical"。 -->
 <script setup lang="ts">
-import { ArRadioGroup } from "@arrow/ui";
+import { ArRadioGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const pay = [
   { value: 1, label: "月給" },

@@ -1,7 +1,7 @@
 <!-- 氏名とフリガナ | 姓・名に分けて入れ、「姓 名」の1つの文字で受け渡す。フリガナはひらがなで打っても確定でカタカナに直る。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArKanaInput, ArField, ArStack } from "@arrow/ui";
+import { ArKanaInput, ArField, ArStack } from "@s_and_a/arrow-ui";
 const name = ref<string | null>("千速 一真");
 const kana = ref<string | null>("チハヤ カズマ");
 const name2 = ref<string | null>(null);

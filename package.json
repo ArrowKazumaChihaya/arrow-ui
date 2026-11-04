@@ -10,19 +10,19 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "build": "npm run build -w @arrow/ui-tokens && npm run build -w @arrow/ui && npm run build -w @arrow/ui-design-remix -w @arrow/ui-design-classic -w @arrow/eslint-plugin-ui",
+    "build": "npm run build -w @s_and_a/arrow-ui-tokens && npm run build -w @s_and_a/arrow-ui && npm run build -w @s_and_a/arrow-ui-design-remix -w @s_and_a/arrow-ui-design-classic -w @s_and_a/eslint-plugin-arrow-ui",
     "typecheck": "node scripts/gen-registry.mjs --check && vue-tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "catalog": "npm run dev -w @arrow/catalog",
-    "catalog:build": "npm run build -w @arrow/catalog",
-    "docs": "npm run dev -w @arrow/docs",
-    "docs:build": "npm run build -w @arrow/docs",
+    "catalog": "npm run dev -w @s_and_a/arrow-ui-catalog",
+    "catalog:build": "npm run build -w @s_and_a/arrow-ui-catalog",
+    "docs": "npm run dev -w @s_and_a/arrow-ui-docs",
+    "docs:build": "npm run build -w @s_and_a/arrow-ui-docs",
     "test:visual": "node apps/catalog/visual.mjs",
     "check": "npm run typecheck && npm run test && npm run build",
     "changeset": "changeset",
     "release": "npm run build && changeset publish",
     "gen": "node scripts/gen-registry.mjs && node scripts/gen-meta.mjs",
-    "release:preview": "npm pack --dry-run --json -w @arrow/ui-tokens -w @arrow/ui -w @arrow/ui-design-remix -w @arrow/ui-design-classic -w @arrow/eslint-plugin-ui"
+    "release:preview": "npm pack --dry-run --json -w @s_and_a/arrow-ui-tokens -w @s_and_a/arrow-ui -w @s_and_a/arrow-ui-design-remix -w @s_and_a/arrow-ui-design-classic -w @s_and_a/eslint-plugin-arrow-ui"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7",

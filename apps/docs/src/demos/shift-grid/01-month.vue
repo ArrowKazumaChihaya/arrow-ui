@@ -1,6 +1,6 @@
 <!-- 月のテーブル（マス） | シフトキャンバスのテーブルタブ。左にパターンの一覧（検索・マスへドラッグ）、上に列の幅（−／＋）とマス／チャート。マスを押して選び（Shift で範囲・ドラッグで範囲）、⌘C・⌘X・⌘V・⌘Z・⌘⇧Z・Delete、右下の印でオートフィル、右クリックで操作。見出しの日付を押すと day-open、提出（希望）を押すと avail（製品が「提出をシフトにしますか？」を出す）。 -->
 <script setup lang="ts">
-import { ArShiftGrid } from "@arrow/ui";
+import { ArShiftGrid } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 import { patterns, TODAY, useShiftGridDemo } from "./_data";
 

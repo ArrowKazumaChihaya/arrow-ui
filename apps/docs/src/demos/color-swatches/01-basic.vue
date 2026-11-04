@@ -1,6 +1,6 @@
 <!-- 色の丸 | イベント・パターンの決まった色。選んでいる色は白と濃い色の2重の輪。←→で選べる。 -->
 <script setup lang="ts">
-import { ArColorSwatches, ArStack } from "@arrow/ui";
+import { ArColorSwatches, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const c = ref("#8E6BC4");
 </script>

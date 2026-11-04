@@ -1,7 +1,7 @@
 <!-- すべての店舗・部署を一度に（閲覧タブ） | シフトのキャンバスの閲覧タブ（RxView）。製品の read-view（is_all_branches）の形をそのまま渡す。この店舗はパターンの色の淡い地と左の線、ほかの店舗・部署は点線の白、有給は灰色の斜線。週・半月・月と列の幅（−／＋）は v-model、検索は部品が名前で絞る。 -->
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArCard, ArDivider, ArPeriodNav, ArShiftViewTable, ArTabs } from "@arrow/ui";
+import { ArCard, ArDivider, ArPeriodNav, ArShiftViewTable, ArTabs } from "@s_and_a/arrow-ui";
 import { branches, halfDates, monthDates, people, shifts, today, totals, weekDates } from "./_data";
 
 const tab = ref("view");

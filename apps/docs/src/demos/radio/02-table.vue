@@ -1,7 +1,7 @@
 <!-- 表の行の頭で1人を選ぶ | 今の ARROW の SelectTd（isRadio）と同じ使い方：行ごとに ArRadio を置き、value に行の id。表の cell-<key> の slot に置く。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArRadio, ArTable } from "@arrow/ui";
+import { ArRadio, ArTable } from "@s_and_a/arrow-ui";
 const picked = ref<number | null>(12);
 const rows = [
   { id: 11, code: "A0011", name: "佐藤 花子", branch: "渋谷店" },

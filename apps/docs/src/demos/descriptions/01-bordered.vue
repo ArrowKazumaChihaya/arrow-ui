@@ -1,6 +1,6 @@
 <!-- 枠つき | variant="bordered"：角丸12の枠、ラベルの地は淡いテーマ色（acc-25）。column で1行の数、span で横につなぐ。#item-<key> で値を差し替える。 -->
 <script setup lang="ts">
-import { ArDescriptions, ArTag } from "@arrow/ui";
+import { ArDescriptions, ArTag } from "@s_and_a/arrow-ui";
 const items = [
   { key: "name", label: "氏名", value: "佐藤 美咲" },
   { key: "code", label: "社員コード", value: "A-1024" },

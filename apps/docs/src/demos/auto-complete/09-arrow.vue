@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Candidate と同じ：押すと候補が開き、先頭の「リセット」（reset-option）で空にできる。打った文字はそのまま値になる。 -->
 <script setup lang="ts">
-import { ArAutoComplete } from "@arrow/ui";
+import { ArAutoComplete } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const types = ["正社員", "アルバイト", "パート", "役員"];
 const a = ref("");

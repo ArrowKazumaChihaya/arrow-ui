@@ -1,6 +1,6 @@
 <!-- 横に2つ（狭いと縦） | 一覧と詳細、操作盤と本文など。stack-below より狭いと縦に積む。 -->
 <script setup lang="ts">
-import { ArSplit } from "@arrow/ui";
+import { ArSplit } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

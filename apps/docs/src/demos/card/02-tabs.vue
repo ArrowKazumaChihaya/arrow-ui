@@ -1,6 +1,6 @@
 <!-- 帯の下のタブ | #tabs にタブを置くと、帯のすぐ下に淡いテーマ色の帯（下に線）としてつながる。 -->
 <script setup lang="ts">
-import { ArCard, ArTabs } from "@arrow/ui";
+import { ArCard, ArTabs } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const tab = ref("calendar");
 const items = [

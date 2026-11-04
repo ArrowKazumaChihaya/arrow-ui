@@ -1,6 +1,6 @@
 <!-- 印刷用 | variant="print"。操作の行・つまみ・案内を出さず、白地・影なしの細い線にする。表の形なので、長いときは見出しの行がページごとに出て、人の行の途中では改ページしない（色はそのまま刷る）。製品は「印刷」（print イベント）でこの形を開いて window.print() する。 -->
 <script setup lang="ts">
-import { ArShiftChart, type ArShiftChartRow } from "@arrow/ui";
+import { ArShiftChart, type ArShiftChartRow } from "@s_and_a/arrow-ui";
 const H = (h: number) => h * 60;
 const rows: ArShiftChartRow[] = [
   { key: 1, name: "千速 一真", seed: 0, color: "#D2483F", shifts: [{ start: H(13), end: H(22) }], breaks: [{ start: H(17), end: H(18) }] },

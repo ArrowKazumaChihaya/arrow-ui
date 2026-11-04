@@ -1,6 +1,6 @@
 <!-- 意味の色 | 角丸7・高さ24。意味の色はどのページでも同じ（提出済＝緑、未提出＝橙、エラー＝赤、イベント＝紫）。種類はテーマ色の淡い札、店長などはテーマ色の塗り。色だけで伝えず、必ず言葉を入れる。 -->
 <script setup lang="ts">
-import { ArTag } from "@arrow/ui";
+import { ArTag } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

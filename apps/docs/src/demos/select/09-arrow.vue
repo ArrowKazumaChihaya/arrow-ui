@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Select と同じ：先頭に「未選択」（null-option）、プルダウンの下に「新規作成」のボタン（actions）。幅は画面ごと（ここでは 200px、表の表示件数は 80px）。 -->
 <script setup lang="ts">
-import { ArSelect } from "@arrow/ui";
+import { ArSelect } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const types = [
   { value: "full", label: "正社員" },

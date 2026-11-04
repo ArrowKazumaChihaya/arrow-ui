@@ -1,7 +1,7 @@
 <!-- 今の ARROW の使い方：入力の順・マスク・数字だけ | class・style は外側の箱、ほかの属性（tabindex・inputmode・maxlength・aria-*）とイベント（@keydown・@beforeinput・@paste・@drop）は中の input へ。input を class で探す仕組み（今の tabindexkey）には input-class。ref から focus()・select()・setSelectionRange()。update:modelValue で直した値（マスク・数字だけ）は、同じ値でも欄にそろう。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArButton, ArCluster, ArStack, ArTextInput } from "@arrow/ui";
+import { ArButton, ArCluster, ArStack, ArTextInput } from "@s_and_a/arrow-ui";
 
 /** 今の UI/Input の mask（"###-####"）と同じ整え方。 */
 function mask(v: string, format: string) {

@@ -1,6 +1,6 @@
 <!-- 削除 | 取り消せない操作は赤。確かめの画面で最後に押すときだけ塗り（danger / danger-fill）。ふだんは枠（danger-subtle / danger-outline）か文字だけ（danger-ghost）。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster } from "@arrow/ui";
+import { ArButton, ArCluster } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

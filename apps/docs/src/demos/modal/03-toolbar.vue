@@ -1,6 +1,6 @@
 <!-- 手順と切り替え・戻る | 頭の下の行に、左は #toolbar（切り替えなど）、右は手順（.stpr）。終わった手順は緑のチェック。足の左に「戻る」、主なボタンの左に補足の文字（footer-note-align="end"）。 -->
 <script setup lang="ts">
-import { ArModal, ArButton, ArSegmented } from "@arrow/ui";
+import { ArModal, ArButton, ArSegmented } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 const open = ref(false);
 const step = ref(1);

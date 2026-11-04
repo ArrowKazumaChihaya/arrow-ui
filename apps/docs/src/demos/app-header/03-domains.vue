@@ -1,8 +1,8 @@
 <!-- 領域のタブ・畳む・子のメニュー・ピルの一覧 | domains で1段目とメニューの間に「人事・労務」「経費精算」のタブ（note で「未契約」を添える）。collapsible で右に「ヘッダーを閉じる」（v-model:collapsed。畳むと右上に「＋」）。メニューの children は指す・フォーカス・指で押す・↓ キーで真下に出る（社員情報 → 社員一覧・有給管理）。ピルの items は指す・押す・↓ キーで下に一覧が出る。top の slot は1段目に足すもの（デザインの選択）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArAppHeader, ArButton } from "@arrow/ui";
-import type { ArAppNavItem } from "@arrow/ui";
+import { ArAppHeader, ArButton } from "@s_and_a/arrow-ui";
+import type { ArAppNavItem } from "@s_and_a/arrow-ui";
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 const menus: ArAppNavItem[] = [
   { key: "shift", label: "シフト", icon: "cal", palette: "blue" },

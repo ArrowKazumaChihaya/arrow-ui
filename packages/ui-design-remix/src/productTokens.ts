@@ -1,6 +1,6 @@
-import { classicTokens } from "@arrow/ui/product";
-import type { DesignTokens } from "@arrow/ui/product";
-import type { ArDesign } from "@arrow/ui/design";
+import { classicTokens } from "@s_and_a/arrow-ui/product";
+import type { DesignTokens } from "@s_and_a/arrow-ui/product";
+import type { ArDesign } from "@s_and_a/arrow-ui/design";
 export function createProductTokens(design: ArDesign): DesignTokens {
 const { tokens: library, palettes } = design;
 return {

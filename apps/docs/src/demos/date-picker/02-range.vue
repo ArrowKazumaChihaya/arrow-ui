@@ -1,6 +1,6 @@
 <!-- 範囲（RangePicker） | 1回目の押下で始まり、2回目で終わり。間は淡いテーマ色、両端は塗り、今日は線。土日は青と赤。 -->
 <script setup lang="ts">
-import { ArDatePicker, ArStack, type ArDateRangeValue } from "@arrow/ui";
+import { ArDatePicker, ArStack, type ArDateRangeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const range = ref<ArDateRangeValue>({ start: "2026-10-06", end: "2026-10-10" });
 </script>

@@ -1,6 +1,6 @@
 <!-- 状態 | 間違い（invalid）・使えない。範囲で終わりが前なら赤くなる。 -->
 <script setup lang="ts">
-import { ArDatePicker, ArStack } from "@arrow/ui";
+import { ArDatePicker, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

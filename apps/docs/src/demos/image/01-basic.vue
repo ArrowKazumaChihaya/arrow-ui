@@ -1,6 +1,6 @@
 <!-- 基本 | 角丸12。乗せる・フォーカスで暗い幕に「プレビュー」、押すと大きく見る。読み込めないときは灰色の箱。 -->
 <script setup lang="ts">
-import { ArCluster, ArImage } from "@arrow/ui";
+import { ArCluster, ArImage } from "@s_and_a/arrow-ui";
 // 見本の画像（テーマ色のグラデーション）。実際には写真の URL を渡す。
 const pic = (a: string, b: string, c: string) =>
   "data:image/svg+xml," +

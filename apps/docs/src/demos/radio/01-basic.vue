@@ -1,7 +1,7 @@
 <!-- 単独で置くラジオ | modelValue（今選ばれている値）と value（このラジオの値）が同じなら選ばれた形。押すと update:modelValue に value（今の ARROW の UI/Radio の value・thisValue と同じ）。同じ name を付けると ←→↑↓ で移れる。中身（default slot）は文字でも部品でもよい。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArCluster, ArRadio, ArStack } from "@arrow/ui";
+import { ArCluster, ArRadio, ArStack } from "@s_and_a/arrow-ui";
 const plan = ref<string | null>("b");
 const none = ref<string | null>(null);
 </script>

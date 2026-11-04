@@ -1,6 +1,6 @@
 <!-- スイッチ | すぐ効く切り替え。36×20・地は field、入ればテーマ色。文字ありは高さ22（入と切の文字は重ならず、幅は長い方に合う）。sm は 28×16。 -->
 <script setup lang="ts">
-import { ArSwitch, ArCluster } from "@arrow/ui";
+import { ArSwitch, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref(true);
 const b = ref(false);

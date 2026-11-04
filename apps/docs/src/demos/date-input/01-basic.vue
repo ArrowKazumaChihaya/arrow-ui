@@ -1,6 +1,6 @@
 <!-- 日付の入力 | 年はプルダウン（ブラウザの select は使わない。数字を打つとその年へ飛ぶ）、月と日は数字（全角も読む・↑↓で1ずつ）。曜日は自動で、日は赤・土は青。 -->
 <script setup lang="ts">
-import { ArDateInput, ArStack } from "@arrow/ui";
+import { ArDateInput, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<string | null>("2026-10-23");
 const b = ref<string | null>("2026-11-01");

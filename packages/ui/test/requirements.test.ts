@@ -3,8 +3,8 @@ import { h } from "vue";
 import { checkRequirements, defineRequirements, formatProblems, satisfies } from "../src/requirements";
 import { defineDesign, ArDesignError, type ArDesign } from "../src/design";
 import ArUiProvider from "../src/provider/ArUiProvider.vue";
-import { remixDesign } from "@arrow/ui-design-remix";
-import { classicDesign } from "@arrow/ui-design-classic";
+import { remixDesign } from "@s_and_a/arrow-ui-design-remix";
+import { classicDesign } from "@s_and_a/arrow-ui-design-classic";
 
 describe("satisfies", () => {
   it.each([

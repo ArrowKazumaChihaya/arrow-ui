@@ -1,6 +1,6 @@
 <!-- つなげる | 入力＋ボタン、ボタンの組を角丸を外側だけ残してつなげる。中の secondary ボタンの枠は入力と同じ色になる。表示の切り替えには ArSegmented を優先する。 -->
 <script setup lang="ts">
-import { ArCompact, ArButton, ArTextInput, ArStack, ArCluster } from "@arrow/ui";
+import { ArCompact, ArButton, ArTextInput, ArStack, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const q = ref("");
 const span = ref("month");

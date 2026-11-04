@@ -1,5 +1,5 @@
 /** 見本のデータ：シフトのキャンバス（Remix.dc.html の閲覧タブ）の 2026年10月を、製品の read-view（is_all_branches）の形に写したもの。 */
-import type { ArShiftViewBranch, ArShiftViewRow, ArShiftViewShift } from "@arrow/ui";
+import type { ArShiftViewBranch, ArShiftViewRow, ArShiftViewShift } from "@s_and_a/arrow-ui";
 
 export const branches: ArShiftViewBranch[] = [
   { id: 1, name: "ARROW事業部" },

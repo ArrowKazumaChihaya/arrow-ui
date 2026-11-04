@@ -1,6 +1,6 @@
 <!-- 表示内容の選択 | 見出しごとのチェックの並び（名前・1行の説明・見え方の見本）。ボタンには選んでいる数。「すべて表示」で全部に戻す。↑↓ で移り Space で切り替え、Escape で閉じる。 -->
 <script setup lang="ts">
-import { ArViewOptions, type ArViewOptionGroup } from "@arrow/ui";
+import { ArViewOptions, type ArViewOptionGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const shown = ref(["cnt", "short", "ev", "sub", "lk"]);
 const open = ref(true);

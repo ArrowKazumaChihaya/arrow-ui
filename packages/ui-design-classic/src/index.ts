@@ -5,10 +5,10 @@
  * 参考：docs/reference/current-*.png（ARROW_front の実際の部品を描いたもの）。
  * 全画面を新しい部品へ移し、remix を全社に出したら、このパッケージごと外して廃止する。
  */
-import { defineDesign } from "@arrow/ui/design";
+import { defineDesign } from "@s_and_a/arrow-ui/design";
 import { covers } from "./covers.generated.js";
 import { classicIcons } from "./icons.js";
-import { derivePalette, mixHex, type ArPalette } from "@arrow/ui-tokens";
+import { derivePalette, mixHex, type ArPalette } from "@s_and_a/arrow-ui-tokens";
 
 /** 今のページの色（section-*）と、押したときの明るい色（section-*-hover）。 */
 const section = (base: string, hover: string, ink = mixHex(base, 0.72, "#000000")): ArPalette => ({
@@ -118,7 +118,7 @@ export const classicDesign = defineDesign({
     ArTooltip: { cellTip: "title" }, // シフトのチャート・閲覧の表・カレンダーの帯やマスの説明は、今の ARROW どおりブラウザの title（OS の吹き出し）
   },
   icons: classicIcons, // 今の ARROW の塗りの絵（public/icons）。ここに無い名前は線のアイコン
-  styles: () => import("@arrow/ui-design-classic/styles.css"),
+  styles: () => import("@s_and_a/arrow-ui-design-classic/styles.css"),
 });
 
 export default classicDesign;

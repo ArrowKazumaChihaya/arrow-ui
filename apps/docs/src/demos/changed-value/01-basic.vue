@@ -1,6 +1,6 @@
 <!-- 変更前→変更後 | 申請や履歴で、どこが変わったかを示す。変わっていなければ今の値だけ。 -->
 <script setup lang="ts">
-import { ArChangedValue, ArStack } from "@arrow/ui";
+import { ArChangedValue, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

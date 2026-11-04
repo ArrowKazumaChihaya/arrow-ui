@@ -1,6 +1,6 @@
 <!-- 例の箱 | 設定がどう効くかを例で見せる。見出し（i の印）と「項目｜値」の行。tag で見出しの横に札、値は tone で色を変える。 -->
 <script setup lang="ts">
-import { ArExample, ArStack } from "@arrow/ui";
+import { ArExample, ArStack } from "@s_and_a/arrow-ui";
 const rate = [
   { label: "法定外残業", value: "1,320円（×120%）", tone: "danger" as const },
   { label: "深夜の法定外残業", value: "1,595円（×145%）" },

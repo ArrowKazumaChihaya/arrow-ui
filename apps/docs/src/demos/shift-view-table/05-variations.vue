@@ -1,6 +1,6 @@
 <!-- 凡例・空・操作なし | legend に配列を渡すとその凡例だけ、patterns でパターンの色を足す。toolbar=false で表・合計・凡例だけ。ownBranchIds を省くとすべての札を「この店舗」の形で出す。行がないとき・検索に当てはまらないときは空の表示。 -->
 <script setup lang="ts">
-import { ArShiftViewTable } from "@arrow/ui";
+import { ArShiftViewTable } from "@s_and_a/arrow-ui";
 import { branches, patterns, people, shifts, today, weekDates } from "./_data";
 </script>
 

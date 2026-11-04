@@ -1,6 +1,6 @@
 <!-- 探す・パスワード・文字数・消す | type="search" は頭に虫めがね（Enter で search）。type="password" は目のボタンで見せる・隠す。show-count で文字数、clearable で消すボタン。 -->
 <script setup lang="ts">
-import { ArTextInput, ArStack } from "@arrow/ui";
+import { ArTextInput, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const q = ref("");
 const pw = ref("password");

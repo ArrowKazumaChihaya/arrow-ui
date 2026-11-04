@@ -1,7 +1,7 @@
 <!-- 再送までの秒数 | resendable で下に「認証コードを再送」。resend-in（送った直後の待ち秒数）を数え、0 になると押せる。押すと resend を出し、cooldown 秒また待つ。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArOtpInput } from "@arrow/ui";
+import { ArOtpInput } from "@s_and_a/arrow-ui";
 const a = ref("");
 const b = ref("");
 const sent = ref(0);

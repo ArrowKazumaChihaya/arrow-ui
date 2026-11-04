@@ -1,6 +1,6 @@
 <!-- 横につなぐセル・行ぜんぶの案内（今の UiTableCell の colspan） | 列の colSpan(row, index) が数を返すと右の列をその数だけまたぎ、またがれた列は出さない（勤怠の時間帯の列をまとめるセル）。止めた列（名前）と止めない列をまたぐセルは止めない。fullRow の行は #full-row で1行いっぱいの案内（チェック・操作の列もまたぐ）。段（lines）・rowSpan・入力の行（editing）と一緒に使える。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, type ArRowKey, type ArTableColumn } from "@arrow/ui";
+import { ArButton, ArTable, type ArRowKey, type ArTableColumn } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 
 const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18];

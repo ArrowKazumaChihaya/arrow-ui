@@ -1,6 +1,6 @@
 <!-- 1つ選ぶ・探す | チェックなしで1つ選ぶ。選んだ行は淡いテーマ色。leaf-only で親を選べなくする。searchable で探す欄（合う部署とその親だけ出る）。 -->
 <script setup lang="ts">
-import { ArTreeSelect, ArCluster } from "@arrow/ui";
+import { ArTreeSelect, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<string | number | null>("tokyo");
 const b = ref<string | number | null>(null);

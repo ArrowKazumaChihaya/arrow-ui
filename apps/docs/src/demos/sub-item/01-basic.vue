@@ -1,6 +1,6 @@
 <!-- 小さな項目 | 上に項目名、下に入力。必須の印（required）。show-title を false にすると入力だけ。 -->
 <script setup lang="ts">
-import { ArSubItem, ArTimeInput, ArTextInput, type ArTimeValue } from "@arrow/ui";
+import { ArSubItem, ArTimeInput, ArTextInput, type ArTimeValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const s = ref<ArTimeValue>({ time: "09:00", day: "same" });
 const e = ref<ArTimeValue>({ time: "18:00", day: "same" });

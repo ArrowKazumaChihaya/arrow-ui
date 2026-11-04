@@ -1,6 +1,6 @@
 <!-- 今の ARROW の種類：大きさ | small→sm（24）・なし→md（32）・large→lg（40）・xlarge→xl（50）。square はアイコンだけ（label で名前を付ける）。 -->
 <script setup lang="ts">
-import { ArButton } from "@arrow/ui";
+import { ArButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

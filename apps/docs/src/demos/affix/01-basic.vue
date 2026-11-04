@@ -1,6 +1,6 @@
 <!-- スクロールしても上に残る帯 | 一番近いスクロールする箱の中で上に張り付く。白の半透明とぼかし、下に線。張り付いた・はがれたは change で分かる。 -->
 <script setup lang="ts">
-import { ArAffix, ArButton, ArCluster } from "@arrow/ui";
+import { ArAffix, ArButton, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const stuck = ref(false);
 </script>

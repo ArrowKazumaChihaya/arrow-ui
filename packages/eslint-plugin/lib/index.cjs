@@ -1,13 +1,13 @@
 "use strict";
 /**
- * @arrow/eslint-plugin-ui
+ * @s_and_a/eslint-plugin-arrow-ui
  * - declared-components：arrow-ui.requires.ts に宣言していない Ar 部品を使わせない
  * - restricted-components：指定した Ar 部品をその場所で使わせない（例：View で ArStack などの並べる基礎）
  */
 const fs = require("node:fs");
 const path = require("node:path");
 
-const LIB = "@arrow/ui";
+const LIB = "@s_and_a/arrow-ui";
 const cache = new Map();
 
 /** requires ファイルの components の中の Ar 部品の名前を読む（型を解かずに文字として読む）。 */
@@ -129,18 +129,18 @@ const restrictedComponents = {
 const LAYOUT = ["ArStack", "ArCluster", "ArGrid", "ArSplit"];
 
 module.exports = {
-  meta: { name: "@arrow/eslint-plugin-ui", version: "0.1.0" },
+  meta: { name: "@s_and_a/eslint-plugin-arrow-ui", version: "0.1.0" },
   rules: { "declared-components": declaredComponents, "restricted-components": restrictedComponents },
   /** 製品向けの推奨設定（eslint 8 の .eslintrc 形式）。View の場所は製品に合わせて変える。 */
   configs: {
     recommended: {
-      plugins: ["@arrow/ui"],
-      rules: { "@arrow/ui/declared-components": "error" },
+      plugins: ["@s_and_a/arrow-ui"],
+      rules: { "@s_and_a/arrow-ui/declared-components": "error" },
       overrides: [
         {
           files: ["src/View/**/*.vue"],
           rules: {
-            "@arrow/ui/restricted-components": [
+            "@s_and_a/arrow-ui/restricted-components": [
               "error",
               { components: LAYOUT, message: "配置は製品のレイアウト層（src/Layout）の部品で行います。" },
             ],

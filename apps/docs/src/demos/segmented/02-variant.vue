@@ -1,6 +1,6 @@
 <!-- 大きさ・アイコン・幅いっぱい・使えない | sm 30・md 36・lg 42。アイコンだけの選択肢は label が読み上げの名前になる。block で等分。 -->
 <script setup lang="ts">
-import { ArSegmented, ArStack } from "@arrow/ui";
+import { ArSegmented, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const v = ref("week");
 const view = ref("cal");

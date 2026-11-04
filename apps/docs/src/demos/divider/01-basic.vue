@@ -1,6 +1,6 @@
 <!-- 区切り線 | ブロック同士は区切り線。文字つきは13px太字。左寄せ・点線・縦の線（文中の項目の区切り・高さ14px）。subtle は淡い線（カードの中のまとまりの区切り）、bleed はカードの本文の左右の余白の外まで伸ばす。 -->
 <script setup lang="ts">
-import { ArCard, ArDivider, ArStack } from "@arrow/ui";
+import { ArCard, ArDivider, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

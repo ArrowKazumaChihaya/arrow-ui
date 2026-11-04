@@ -1,6 +1,6 @@
 <!-- 部署を選ぶ（チェック） | multiple はチェックで選ぶ。親をチェックすると下が全部入り、一部だけ選んでいる親は indeterminate。selbox では「営業部 / 東京営業所」のように上の部署から出す。 -->
 <script setup lang="ts">
-import { ArTreeSelect, ArStack } from "@arrow/ui";
+import { ArTreeSelect, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const depts = ref<(string | number)[]>(["tokyo"]);
 const many = ref<(string | number)[]>(["tokyo", "osaka", "hr"]);

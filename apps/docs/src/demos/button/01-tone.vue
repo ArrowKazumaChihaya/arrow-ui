@@ -1,6 +1,6 @@
 <!-- 種類 | primary はまとまりに1つ。secondary はやめる・戻る、subtle は見出しの横の補助、ghost は表の上の小さな操作、muted は目立たせない操作、link は文中の操作。 -->
 <script setup lang="ts">
-import { ArButton, ArCluster } from "@arrow/ui";
+import { ArButton, ArCluster } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

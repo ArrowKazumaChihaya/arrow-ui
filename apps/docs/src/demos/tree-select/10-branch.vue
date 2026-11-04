@@ -1,6 +1,6 @@
 <!-- 店舗（部署）の階層の選択（BranchSelectorInner の置き換え） | 木の店舗から1つ選ぶ。「全店舗」は値 0 の行として木の先頭に、「部署/店舗追加」は actions（押すと action）、「子店舗を含める」は v-model:include-children（渡したときだけプルダウンの下に出し、オンで下の店舗のある店舗を選ぶと押す所に「子店舗を含む」）。開いている店舗は v-model:expanded（今の storageKey のように製品が localStorage に置けば、開け閉めを覚えておける）。 -->
 <script setup lang="ts">
-import { ArTreeSelect, type ArTreeSelectValue } from "@arrow/ui";
+import { ArTreeSelect, type ArTreeSelectValue } from "@s_and_a/arrow-ui";
 import { ref, watch } from "vue";
 const tree = [
   { value: 0, label: "全店舗" },

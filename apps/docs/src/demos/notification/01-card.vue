@@ -1,6 +1,6 @@
 <!-- 形 | 右上に出る白いカード。印は意味の色、残り時間はテーマ色の線（progress で決まった長さ、duration で動く）。actions で右下に操作を出す。 -->
 <script setup lang="ts">
-import { ArNotification, ArStack } from "@arrow/ui";
+import { ArNotification, ArStack } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

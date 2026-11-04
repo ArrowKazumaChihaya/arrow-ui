@@ -1,6 +1,6 @@
 <!-- 頭文字の丸 | 名前の頭文字。地は淡いテーマ色（tone="accent"）。大きさは xs 24（セレクトの中）・sm 28（表の名前の列・ヘッダー）・md 32・lg 44・xl 60。四角（shape="square"）や意味の色、人の印（icon）もある。 -->
 <script setup lang="ts">
-import { ArAvatar } from "@arrow/ui";
+import { ArAvatar } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

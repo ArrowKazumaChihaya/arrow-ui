@@ -1,6 +1,6 @@
 <!-- 月と日の切り替え | size="md" は月（真ん中を押すと pick、右端に「今日」）、size="lg" は日（曜日の札。日曜は赤・土曜は青）。前へ・次へはアイコンだけなので labels で読み上げの名前を付ける。 -->
 <script setup lang="ts">
-import { ArPeriodNav, ArStack } from "@arrow/ui";
+import { ArPeriodNav, ArStack } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 const m = ref(10);
 const d = ref(21);

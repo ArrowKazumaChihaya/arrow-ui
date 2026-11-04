@@ -1,6 +1,6 @@
 <!-- トランスファー | 左右の一覧でチェックした人を ＞ ＜ で移す（シフト募集の相手・権限の割り当て）。見出しのチェックは見えている分をすべて。人数が多いときは表から選ぶ方を優先。 -->
 <script setup lang="ts">
-import { ArTransfer, ArStack, type ArTransferValue } from "@arrow/ui";
+import { ArTransfer, ArStack, type ArTransferValue } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const people = [
   { value: 1, label: "田中 健", keywords: "たなか" },

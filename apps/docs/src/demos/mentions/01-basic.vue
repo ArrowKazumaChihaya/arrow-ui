@@ -1,6 +1,6 @@
 <!-- ＠で人を呼ぶ | 「@」に続けて打つと合う人が出る（↓↑・Enter・Tab で選ぶ）。呼んだ名前は淡いテーマ色の札。打った量に合わせて高さが伸びる。 -->
 <script setup lang="ts">
-import { ArMentions, ArField } from "@arrow/ui";
+import { ArMentions, ArField } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const text = ref("@佐藤 美咲 さん、明日の朝礼を ");
 const people = [

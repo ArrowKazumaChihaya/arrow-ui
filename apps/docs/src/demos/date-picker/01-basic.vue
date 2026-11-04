@@ -1,6 +1,6 @@
 <!-- カレンダーから選ぶ | ARROW では日付は ArDateInput が基本。カレンダーから選ぶときだけ右のボタンでパネルを開く。←→↑↓で日、PageUp/PageDown で月、Enter で選び「決める」。 -->
 <script setup lang="ts">
-import { ArDatePicker, ArStack } from "@arrow/ui";
+import { ArDatePicker, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const day = ref<string | null>("2026-10-21");
 const quick = ref<string | null>(null);

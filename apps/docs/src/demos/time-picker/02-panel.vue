@@ -1,6 +1,6 @@
 <!-- パネルだけ | inline でパネルをその場に出す。↑↓で動かし、←→で時と分を行き来、Enter で決める。 -->
 <script setup lang="ts">
-import { ArTimePicker, ArCluster } from "@arrow/ui";
+import { ArTimePicker, ArCluster } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref<string | null>("09:00");
 </script>

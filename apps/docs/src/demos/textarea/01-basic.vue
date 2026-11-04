@@ -1,6 +1,6 @@
 <!-- 基本・文字数 | 備考やメモに使う。show-count と maxlength で右下に「10 / 200」。右下のつまみで高さを変えられる。 -->
 <script setup lang="ts">
-import { ArTextarea, ArField, ArStack } from "@arrow/ui";
+import { ArTextarea, ArField, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const memo = ref("本日の売上目標を共有");
 const note = ref("");

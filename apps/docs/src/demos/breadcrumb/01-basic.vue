@@ -1,6 +1,6 @@
 <!-- パンくず | 区切りは「/」か「›」。今のページは太字。menu を渡した項目は cd のアイコンが付き、押すと同じ階層のほかの人・店舗へ移れる。 -->
 <script setup lang="ts">
-import { ArBreadcrumb, ArStack } from "@arrow/ui";
+import { ArBreadcrumb, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const last = ref("");
 </script>

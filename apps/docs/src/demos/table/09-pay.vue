@@ -1,6 +1,6 @@
 <!-- 集計表：左に止める列・2段の見出し・押して開く内訳・表の中の金額の入力・前月との差（給与一覧） | 左の「コード」「氏名」は sticky で止め、端に影。「支給」「控除」の見出しを押すと内訳の列が開き、2段の見出しになる（column-groups・v-model:open-groups）。一括編集では金額を表の中で直し（edit・v-model:edits）、直した欄は黄色。差引支給額の下に前月との差（delta）。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, ArTag, ArThemeScope, type ArTableColumn, type ArTableColumnGroup } from "@arrow/ui";
+import { ArButton, ArTable, ArTag, ArThemeScope, type ArTableColumn, type ArTableColumnGroup } from "@s_and_a/arrow-ui";
 import { computed, ref } from "vue";
 
 type Row = { id: string; code: string; name: string; kind: string; store: string; base: number; over: number; holiday: number; night: number; paid: number; health: number; pension: number; tax: number; prev: number; lock: string };

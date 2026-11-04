@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Input と同じ値で並べる（幅は画面ごとに決める：ここでは 200px と 120px）。数は align="right"。 -->
 <script setup lang="ts">
-import { ArTextInput } from "@arrow/ui";
+import { ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref("");
 const b = ref("山田 太郎");

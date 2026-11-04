@@ -1,6 +1,6 @@
 <!-- 大きさと状態 | sm（30）・md（38）・lg（44）。間違い・使えない・読み込み中（右の印が回る）・選択肢が空。 -->
 <script setup lang="ts">
-import { ArSelect, ArCluster, ArStack } from "@arrow/ui";
+import { ArSelect, ArCluster, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const v = ref<string | number | null>(2);
 const none = ref<string | number | null>(null);

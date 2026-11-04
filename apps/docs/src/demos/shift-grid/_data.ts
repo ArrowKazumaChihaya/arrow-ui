@@ -1,7 +1,7 @@
 // シフトのテーブル（ArShiftGrid）の見本のデータ。シフトキャンバス（Remix.dc.html）の 2026年10月と同じ人・パターン・イベント。
 // 製品の側の役目（イベントを受けてデータを書き換え、元に戻す履歴を持つ）も、ここで簡単に再現する。
 import { computed, ref } from "vue";
-import type { ArShiftGridCell, ArShiftGridDay, ArShiftGridMember, ArShiftGridPattern, ArShiftGridRange, ArShiftGridSpot, ArShiftGridTime } from "@arrow/ui";
+import type { ArShiftGridCell, ArShiftGridDay, ArShiftGridMember, ArShiftGridPattern, ArShiftGridRange, ArShiftGridSpot, ArShiftGridTime } from "@s_and_a/arrow-ui";
 
 const H = (h: number) => Math.round(h * 60);
 const pad = (n: number) => String(n).padStart(2, "0");

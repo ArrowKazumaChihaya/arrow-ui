@@ -5,7 +5,7 @@ import {
   type ArPalette,
   type ArPaletteName,
   type ArTokenValues,
-} from "@arrow/ui-tokens";
+} from "@s_and_a/arrow-ui-tokens";
 import { designedComponents, type ArComponentName } from "./contracts";
 import type { ArIconName } from "./icons";
 

@@ -1,6 +1,6 @@
 <!-- ラベルを左に小さく（toolbar） | layout="toolbar"：カードの頭の絞り込みのように、小さな灰色のラベルを入力の左に添える（幅は文字なり）。シフト画面の「店舗」「表示モード」。 -->
 <script setup lang="ts">
-import { ArCluster, ArField, ArSegmented, ArSelect } from "@arrow/ui";
+import { ArCluster, ArField, ArSegmented, ArSelect } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const store = ref<string | number | null>("arrow");
 const mode = ref("time");

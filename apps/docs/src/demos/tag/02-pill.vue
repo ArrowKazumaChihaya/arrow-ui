@@ -1,6 +1,6 @@
 <!-- 丸い札・件数の札・小さな札 | shape="pill" は線なしの丸い札（状態・件数）。件数は count で数字を等幅に（見出しの横の「4名」）。size="xs" はカレンダーのマスの「不足1」「提出2」。 -->
 <script setup lang="ts">
-import { ArTag } from "@arrow/ui";
+import { ArTag } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

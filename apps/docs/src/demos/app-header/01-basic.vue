@@ -1,8 +1,8 @@
 <!-- PC の画面の頭 | 1段目にロゴ・お知らせ・やること・管理ページ、2段目にメニュー。今いるメニューはテーマ色で塗り、下端にテーマ色の線。項目は props で渡す。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArAppHeader } from "@arrow/ui";
-import type { ArAppNavItem } from "@arrow/ui";
+import { ArAppHeader } from "@s_and_a/arrow-ui";
+import type { ArAppNavItem } from "@s_and_a/arrow-ui";
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 
 const menus: ArAppNavItem[] = [

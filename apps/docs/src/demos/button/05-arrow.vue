@@ -1,6 +1,6 @@
 <!-- 今の ARROW の種類 | 今の ARROW の Button の type との対応：add→primary、edit→edit、delete→danger、lock など→dark、cancel→secondary、info→subtle、bordered→dashed、text→ghost、transround→overlay。今の ARROW と同じく幅150pxの入れ物に block で入れている。 -->
 <script setup lang="ts">
-import { ArButton } from "@arrow/ui";
+import { ArButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArUiProvider } from "@arrow/ui";
+import { ArUiProvider } from "@s_and_a/arrow-ui";
 import type { Demo } from "./demos";
 import { highlight } from "./highlight";
 import { palette, shown, designs } from "./state";

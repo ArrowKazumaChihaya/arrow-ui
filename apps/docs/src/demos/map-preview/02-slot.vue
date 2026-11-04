@@ -1,6 +1,6 @@
 <!-- 製品の地図を敷く | default slot に Google マップの埋め込みや静止画像を渡すと、見本の地の代わりにそれを敷き、ピンと円を重ねる。縮尺が分かるなら radius-px で円の直径を渡す。 -->
 <script setup lang="ts">
-import { ArMapPreview } from "@arrow/ui";
+import { ArMapPreview } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <!-- やることリストの一覧（削除・すべて表示する・多いとき・空のとき） | items の deletable で行の右に ×（pill-item-delete）。hiddenCount が1以上なら下に「すべて表示する」（pill-restore）。行が多いと一覧の中でスクロールし、空のときは emptyText を出す。外す・戻すの保存は製品がして、items と hiddenCount を変える。ピルを押すと一覧を出したままにし、外を押すか Escape で閉じる。 -->
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ArAppHeader, ArButton, ArCluster } from "@arrow/ui";
-import type { ArAppHeaderPill } from "@arrow/ui";
+import { ArAppHeader, ArButton, ArCluster } from "@s_and_a/arrow-ui";
+import type { ArAppHeaderPill } from "@s_and_a/arrow-ui";
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 
 /** 製品の TodoList（title・key・isDeletable）と同じ形のデータ。 */

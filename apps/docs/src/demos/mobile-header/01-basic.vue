@@ -1,7 +1,7 @@
 <!-- スマホの画面の頭 | 左にロゴ、右にお知らせのボタンと件数の丸。下端にテーマ色の線。 -->
 <script setup lang="ts">
 import { ref } from "vue";
-import { ArMobileHeader, ArStack } from "@arrow/ui";
+import { ArMobileHeader, ArStack } from "@s_and_a/arrow-ui";
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 const n = ref(5);
 </script>

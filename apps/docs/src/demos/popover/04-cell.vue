@@ -1,6 +1,6 @@
 <!-- シフトのマス | variant="cell" はマスに乗せたときの時間の表示。濃い地・矢印なし・マスの左下に出し、右の端の列は右にそろえる（placement="bottom-end"）。中身は行ごとに改行（\n）。吹き出しは押せず、下のマスの邪魔をしない。 -->
 <script setup lang="ts">
-import { ArPopover } from "@arrow/ui";
+import { ArPopover } from "@s_and_a/arrow-ui";
 const days = [
   { d: 14, w: "水", s: "09:00〜18:00", b: "12:00〜13:00", tone: "#4F5BD5" },
   { d: 15, w: "木", s: "13:00〜22:00", b: "17:00〜18:00", tone: "#D4483F", lock: true },

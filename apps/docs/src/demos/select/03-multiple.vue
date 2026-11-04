@@ -1,6 +1,6 @@
 <!-- 複数選ぶ | multiple は選んだものを札（淡いテーマ色）で並べ、max-tags を超えると「+n」にまとめる。札の × で外せる。 -->
 <script setup lang="ts">
-import { ArSelect, ArStack } from "@arrow/ui";
+import { ArSelect, ArStack } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const patterns = ref<(string | number)[]>(["early", "late", "night", "full"]);
 const few = ref<(string | number)[]>([]);

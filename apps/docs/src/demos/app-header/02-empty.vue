@@ -1,6 +1,6 @@
 <!-- 件数なし・管理ページのメニューなし | 件数が 0 のピルは丸を出さない。accountMenu を渡さなければ、右上を押すと account を出すだけ。 -->
 <script setup lang="ts">
-import { ArAppHeader, ArThemeScope } from "@arrow/ui";
+import { ArAppHeader, ArThemeScope } from "@s_and_a/arrow-ui";
 const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 </script>
 

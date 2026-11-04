@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の Textarea と同じ値（幅300px・3行・行の高さ20px）。 -->
 <script setup lang="ts">
-import { ArTextarea } from "@arrow/ui";
+import { ArTextarea } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const a = ref("");
 const b = ref("1行目のテキスト\n2行目のテキスト");

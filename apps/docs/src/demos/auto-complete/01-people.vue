@@ -1,6 +1,6 @@
 <!-- 名前の候補 | 打った文字に合う人を出す。頭文字の丸つき、合っている文字はテーマ色の太字。読み（keywords）でも探せる（「さと」で「佐藤」）。 -->
 <script setup lang="ts">
-import { ArAutoComplete } from "@arrow/ui";
+import { ArAutoComplete } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const q = ref("さと");
 const picked = ref<string | number | null>(null);

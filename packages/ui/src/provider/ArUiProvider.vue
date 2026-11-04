@@ -6,7 +6,7 @@
  * scope="self" にすると、html ではなくこの部品の中だけにデザインを当てる（説明の画面で2つのデザインを並べるときなど）。
  */
 import { computed, onBeforeUnmount, provide, ref, toRef, watch } from "vue";
-import type { ArPaletteName } from "@arrow/ui-tokens";
+import type { ArPaletteName } from "@s_and_a/arrow-ui-tokens";
 import type { ArDesign } from "../design";
 import { checkRequirements, formatProblems, type ArRequirements } from "../requirements";
 import { arUiContextKey, useId } from "./context";

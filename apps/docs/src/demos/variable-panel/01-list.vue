@@ -1,6 +1,6 @@
 <!-- 縦のパネル（list） | 書類集計の自作書類の右の「ARROWの変数」。まとまりの見出しの下に「＋ 名前」。探すと名前・変数名に合うものだけ（合わなければ「「…」に合う変数はありません」）。押すと insert（入れる文字・変数・まとまり）。 -->
 <script setup lang="ts">
-import { ArVariablePanel, type ArVariableGroup } from "@arrow/ui";
+import { ArVariablePanel, type ArVariableGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const groups: ArVariableGroup[] = [
   { key: "company", label: "会社情報", items: ["会社名", "会社名(カナ)", "事業所名", "住所", "電話番号", "締め日", "支払日", "支払月"].map((label, i) => ({ key: `company_${i}`, label })) },

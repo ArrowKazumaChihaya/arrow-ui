@@ -1,6 +1,6 @@
 <!-- 大きさ（sm・md・lg） | md がキャンバスの大きさ（card 112・option のアイコン 44・tile 52）。sm は一覧や設定の中、lg はスマホや大きな選択。radio は ArRadioGroup の card と同じ段（sm 30・md 36・lg 42。省くと lg）。 -->
 <script setup lang="ts">
-import { ArChoiceCard } from "@arrow/ui";
+import { ArChoiceCard } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const sizes = ["sm", "md", "lg"] as const;
 const plan = ref<string>("c");

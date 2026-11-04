@@ -1,6 +1,6 @@
 <!-- 名前だけの列・補足の文（勤務可能な人） | avatar を付けて sub を付けない列は、丸を 28px に・名前をさらに太く（board）。emphasis="note" は少し小さな補足の文（備考）。行の右端に ArButton size="xs"（「シフトに入れる」「登録済み」）とアイコンのボタン。 -->
 <script setup lang="ts">
-import { ArButton, ArTable, type ArTableColumn } from "@arrow/ui";
+import { ArButton, ArTable, type ArTableColumn } from "@s_and_a/arrow-ui";
 type Row = { id: number; name: string; tone: "purple" | "yellow"; start: string[]; end: string[]; note: string; added: boolean };
 const rows: Row[] = [
   { id: 3, name: "中口 万由香", tone: "purple", start: ["10:00"], end: ["15:00"], note: "午後は通院のため早めに上がりたいです", added: true },

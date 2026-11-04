@@ -1,6 +1,6 @@
 <!-- 帯つきのカード | band はページの大きなまとまり：白・角丸18・影、頭に高さ54のテーマ色の帯（120度のやわらかいグラデーションに淡い白の丸）。size="sm" は低い帯（46px）。#actions は帯の右。 -->
 <script setup lang="ts">
-import { ArCard, ArButton } from "@arrow/ui";
+import { ArCard, ArButton } from "@s_and_a/arrow-ui";
 </script>
 
 <template>

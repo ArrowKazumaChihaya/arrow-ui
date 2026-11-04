@@ -1,6 +1,6 @@
 <!-- 項目の行 | 左に項目名（幅 title-width、既定 200px）、右に入力。補足（info）と「詳細」、必須の印（required）。中の入力とはスロットの値（id・aria-*）で結ぶ。 -->
 <script setup lang="ts">
-import { ArItem, ArSelect, ArTextInput, ArSwitch } from "@arrow/ui";
+import { ArItem, ArSelect, ArTextInput, ArSwitch } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const round = ref<string | null>("part");
 const name = ref("山田 太郎");

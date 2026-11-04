@@ -1,15 +1,15 @@
-export const install = `npm i @arrow/ui @arrow/ui-design-remix
-npm i -D @arrow/eslint-plugin-ui`;
+export const install = `npm i @s_and_a/arrow-ui @s_and_a/arrow-ui-design-remix
+npm i -D @s_and_a/eslint-plugin-arrow-ui`;
 
 export const viteAlias = `// 当てるデザインのライブラリは、ここ1か所で決める
-const design = process.env.ARROW_DESIGN === "classic" ? "@arrow/ui-design-classic" : "@arrow/ui-design-remix";
+const design = process.env.ARROW_DESIGN === "classic" ? "@s_and_a/arrow-ui-design-classic" : "@s_and_a/arrow-ui-design-remix";
 export default defineConfig({
   resolve: { alias: [{ find: /^@arrow\\/ui-design$/, replacement: design }] },
 });`;
 
 export const appVue = `<script setup lang="ts">
-import { ArUiProvider } from "@arrow/ui";
-import design from "@arrow/ui-design";
+import { ArUiProvider } from "@s_and_a/arrow-ui";
+import design from "@s_and_a/arrow-ui-design";
 import requires from "../arrow-ui.requires";
 </script>
 
@@ -19,11 +19,11 @@ import requires from "../arrow-ui.requires";
   </ArUiProvider>
 </template>`;
 
-export const mainTs = `import "@arrow/ui/style.css";`;
+export const mainTs = `import "@s_and_a/arrow-ui/style.css";`;
 
-export const requiresTs = `import { defineRequirements } from "@arrow/ui/requirements";
-import { remixDesign } from "@arrow/ui-design-remix";
-import { classicDesign } from "@arrow/ui-design-classic";
+export const requiresTs = `import { defineRequirements } from "@s_and_a/arrow-ui/requirements";
+import { remixDesign } from "@s_and_a/arrow-ui-design-remix";
+import { classicDesign } from "@s_and_a/arrow-ui-design-classic";
 
 export default defineRequirements({
   components: {
@@ -36,8 +36,8 @@ export default defineRequirements({
 });`;
 
 export const eslintrc = `module.exports = {
-  plugins: ["@arrow/ui"],
-  extends: ["plugin:@arrow/ui/recommended"],
+  plugins: ["@s_and_a/arrow-ui"],
+  extends: ["plugin:@s_and_a/arrow-ui/recommended"],
 };`;
 
 export const cliOut = `$ npx arrow-ui check
@@ -64,7 +64,7 @@ export const themeScope = `<ArUiProvider :design="design" palette="blue">
   <ArThemeScope palette="green"><AttendancePage /></ArThemeScope>
 </ArUiProvider>`;
 
-export const defineDesignTs = `import { defineDesign } from "@arrow/ui/design";
+export const defineDesignTs = `import { defineDesign } from "@s_and_a/arrow-ui/design";
 
 export const nextDesign = defineDesign({
   id: "next",
@@ -72,7 +72,7 @@ export const nextDesign = defineDesign({
   tokens: { /* すべてのトークンの値 */ },
   palettes: { /* 7つのテーマ色の組 */ },
   covers: { ArButton: "1.0.0" /* 見た目を作ったすべての部品と契約の版 */ },
-  styles: () => import("@arrow/ui-design-next/styles.css"),
+  styles: () => import("@s_and_a/arrow-ui-design-next/styles.css"),
 });`;
 
 export const designCssExample = `/* デザインの CSS は data-ar と data-part だけを相手にする */

@@ -1,6 +1,6 @@
 <!-- 今の ARROW の使い方 | 今の ARROW の FormItem と同じ：必須の赤い「*」、間違いは入力の赤い枠と下の赤い文字。 -->
 <script setup lang="ts">
-import { ArField, ArTextInput } from "@arrow/ui";
+import { ArField, ArTextInput } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 const mail = ref("abc");
 </script>

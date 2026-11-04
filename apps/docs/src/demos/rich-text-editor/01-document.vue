@@ -1,6 +1,6 @@
 <!-- 書類の編集（自作書類） | paper で白い紙の形。ツールバーの「ARROWの変数」はまとまりのメニュー（variables-placement="menu"）、右の ArVariablePanel を押してもカーソルの位置に入る（ref の insertText）。変数は本文の中で札に見え、v-model の値は `{{ $employee_name }}` のただの文字。 -->
 <script setup lang="ts">
-import { ArRichTextEditor, ArVariablePanel, type ArVariableGroup } from "@arrow/ui";
+import { ArRichTextEditor, ArVariablePanel, type ArVariableGroup } from "@s_and_a/arrow-ui";
 import { ref } from "vue";
 
 const groups: ArVariableGroup[] = [
