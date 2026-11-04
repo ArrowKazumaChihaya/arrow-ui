@@ -6768,7 +6768,7 @@
    },
    {
     "name": "labels",
-    "type": "{ weekdays: readonly string[]; month: string; year: string; yearSelect: string; modeSwitch: string; locked?: string | undefined; unpublished?: string | undefined; alert?: string | undefined; }",
+    "type": "{ weekdays: readonly string[]; month: string; day?: string | undefined; year: string; yearSelect: string; modeSwitch: string; locked?: string | undefined; unpublished?: string | undefined; alert?: string | undefined; }",
     "required": false,
     "description": "画面の文字。",
     "default": "{ weekdays: [\"日\", \"月\", \"火\", \"水\", \"木\", \"金\", \"土\"], month: \"月\", year: \"年\", yearSelect: \"年\", modeSwitch: \"表示の切り替え\", locked: \"ロック中\", unpublished: \"非公開\", alert: \"注意\", }"
