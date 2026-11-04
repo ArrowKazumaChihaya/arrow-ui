@@ -1,5 +1,5 @@
 /**
- * ArTable 1.2 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
+ * ArTable 1.4 の契約。並べ替えと絞り込みはしない（データの順番は製品の Logic が決める）。
  * デザインが選べる形（ArDesign.forms.ArTable）：
  * - selectHead："check"（既定。見出しはチェックだけ）／"label"（チェックの左に「全選択」の文字。今の ARROW の SelectTable。classic）。
  * - dragHandle："column"（既定。並べ替えのつまみを左の専用の列に）／"cell"（1列目のセルの頭に。今の ARROW の SortableTable。classic）。
@@ -23,6 +23,19 @@
  *   段のセルは cell-<key> のスロットで差し替えられ、引数の line が段の番号、value がその段の値。
  * - 表の中の入力の種類（列の editor）：amount（金額。既定）・text（文字）・time（時刻。ArTimeInput）・select（選ぶ。ArSelect）。
  *   値は v-model:edits に入る（time は { time, day }、select は選んだ値）。
+ *
+ * 1.3 で、ダイアログの中の従来の表（Table・Th・SortableTable）の置き換えのために足した：
+ * - 入力の行（editing）：その行だけ editor のある列を入力にし、［取り消し］［確定］と commit・cancel（Esc・Ctrl＋Enter）。
+ * - 時間の組の段（editor="time-range"）：1つのセルに「開始〜終了」を段で並べて編集。最後の組が埋まると空の組を足し、× で消す。
+ * - 行のドラッグの並べ替えは 1.1 の sortableRows（reorder・v-model:rows）、セルの結合は列の rowSpan のまま。
+ *
+ * 1.4 で、本体の行のセルを横につなぐために足した（今の UiTableCell の colspan）：
+ * - 列の colSpan(row, index)：数を返すと右の列をその数だけまたぎ、またがれた列のセルは出さない（残りの列の数までに切る）。
+ *   止めた列（sticky）：またぐ列がすべて左に（右に）止めた列のときだけ止める。止めた列と止めない列をまたぐセルは止めない（横にスクロールすると動く）。
+ *   段（lines）：つなぐ数は行ごとに1つで、どの段でも同じ列をまたぐ。段のない列から始まるセルは段もまたぐ。
+ *   rowSpan：上の行の rowSpan がかかっている列はまたがない数を返す（重ねると表が崩れる。数えるのは製品）。
+ *   入力の行（editing）：つないだセルは始まりの列の editor で入力になる。
+ * - 行ぜんぶを1つのセル（fullRow と #full-row）：案内・説明の行。チェック・開く・つまみ・操作の列もまたぐ。全選択には数えない。
  * 並べ替えの状態は v-model:sort（{ key, order } か null）。製品が持つので、画面を移っても製品の store に残せば保てる。
  */
 import type { ArIconName } from "../icons";
@@ -30,8 +43,20 @@ import type { ArAvatarTone } from "./ArAvatar.contract";
 import type { ArSelectOption } from "./ArSelect.contract";
 import type { ArTimeValue } from "./ArTimeInput.contract";
 
-/** 表の中の入力の値。amount・text は文字、time は { time, day }、select は選んだ値（null は未選択）。 */
-export type ArTableEditValue = string | number | null | ArTimeValue;
+/** 時間の組（開始〜終了）。editor="time-range" の値の1つ。時刻は "09:00" でも { time, day } でもよい（入力したものは { time, day }）。 */
+export interface ArTableTimeRange {
+  start: ArTimeValue | string | null;
+  end: ArTimeValue | string | null;
+}
+/** 表の中の入力の値。amount・text は文字、time は { time, day }、select は選んだ値（null は未選択）、time-range は時間の組の配列。 */
+export type ArTableEditValue = string | number | null | ArTimeValue | readonly ArTableTimeRange[];
+
+/** 入力の行の確定（commit）・取り消し（cancel）。values は、その行の入力できる列の今の値（列の key → 値。time-range は空の組を除いた配列）。 */
+export interface ArTableRowEdit<Row> {
+  key: ArRowKey;
+  row: Row;
+  values: Record<string, ArTableEditValue | readonly ArTableEditValue[]>;
+}
 
 export type ArRowKey = string | number;
 
@@ -82,6 +107,11 @@ export interface ArTableColumn<Row> {
   /** 行をまたぐ。数を返すとその行数ぶん下へつなぎ、0 を返すとその行のセルを出さない（上の行のセルがまたいでいる）。 */
   rowSpan?: (row: Row, index: number) => number;
   /**
+   * 横につなぐ。数を返すと右の列をその数だけまたぎ（自分を含む）、またがれた列のセルは出さない（今の UiTableCell の colspan）。
+   * 1 か省くとつながない。止めた列・段・rowSpan との決まりは上の 1.4 の説明。
+   */
+  colSpan?: (row: Row, index: number) => number;
+  /**
    * 表の中の小さな金額の入力にする（高さ24・右寄せ）。値は v-model:edits の「行のkey:列のkey」（stack のときは「:段の番号」を足す）に入る。
    * 関数を渡すと行ごとに入力にするかを決める（ロック中の店舗の人は入力にしない、など）。
    */
@@ -89,10 +119,17 @@ export interface ArTableColumn<Row> {
   /** 入力の読み上げの名前（「末永 修也さんの残業手当」）。段の番号は stack のとき。 */
   editLabel?: (row: Row, line?: number) => string;
   /**
-   * 表の中の入力の種類（edit のとき）。amount＝小さな金額（既定・右寄せ）、text＝文字、
-   * time＝時刻（ArTimeInput の sm。dayShift・overnight を渡せる）、select＝選ぶ（ArSelect の sm。options）。
+   * 表の中の入力の種類（edit のとき・editing の行のとき）。amount＝小さな金額（既定・右寄せ）、text＝文字、
+   * time＝時刻（ArTimeInput の sm。dayShift・overnight を渡せる）、select＝選ぶ（ArSelect の sm。options）、
+   * time-range＝1つのセルに時間の組（開始〜終了）を段で並べて編集する（値は ArTableTimeRange の配列。自動で段に分ける列になる。シフトパターンのシフト・勤怠・休憩）。
    */
-  editor?: "amount" | "text" | "time" | "select";
+  editor?: "amount" | "text" | "time" | "select" | "time-range";
+  /**
+   * editor="time-range"：入力の行で、最後の組が埋まると下に空の組を1つ足す（今の ARROW の「時刻を入れると下に次の行が出る」）。既定 true。
+   * 組の右の × で消せる（removable、既定 true）。
+   */
+  appendEmpty?: boolean;
+  removable?: boolean;
   /** セルの頭に置く小さな文字（時刻の範囲の「〜」など。前の列とつなげて読ませる）。 */
   lead?: string;
   /** editor="select" の選択肢（行ごとに変えるなら関数）。 */
@@ -157,6 +194,11 @@ export interface ArTableLabels {
   dragHandle: string;
   /** 並べ替えたあとに読み上げる文。{n} は新しい順番（1から）。 */
   moved: string;
+  /** 入力の行の確定・取り消しのボタンの名前。 */
+  commit?: string;
+  cancel?: string;
+  /** time-range の組を消すボタンの名前。 */
+  removeRange?: string;
 }
 
 /** 行を並べ替えたとき（reorder）。from・to は rows の中の順番（0から）。 */
@@ -219,6 +261,17 @@ export interface ArTableProps<Row> {
   edits?: Readonly<Record<string, ArTableEditValue>>;
   /** 間違いのある入力の key（赤い枠）。 */
   invalidCells?: readonly string[];
+  /**
+   * 入力に切り替えている行の key（今の ARROW の「追加の行」「編集の行」）。その行だけ editor のある列を入力にし、
+   * 右端に［取り消し］［確定］（#edit-actions で差し替え）を出す。確定は commit、取り消しは cancel（edits からその行の値を消す）。
+   * Esc で取り消し、Ctrl＋Enter で確定。入力の行があるあいだは行の並べ替えのつまみを押せない。
+   */
+  editing?: readonly ArRowKey[];
+  /**
+   * 行ぜんぶを1つのセルにする行（1行いっぱいの案内・説明の行）。true の行は #full-row（{ row, index }）で中身を描く。
+   * チェック・開く・つまみ・操作の列もまたぎ、全選択には数えない。
+   */
+  fullRow?: (row: Row) => boolean;
 }
 
 export interface ArTableEmits<Row> {
@@ -234,10 +287,15 @@ export interface ArTableEmits<Row> {
   "update:openGroups": [keys: string[]];
   /** 表の中の入力の値（v-model:edits）。 */
   "update:edits": [edits: Record<string, ArTableEditValue>];
+  /** 入力の行の［確定］（Ctrl＋Enter）。保存して editing・edits から外すのは製品。 */
+  commit: [edit: ArTableRowEdit<Row>];
+  /** 入力の行の［取り消し］（Esc）。その行の edits は消して update:edits を出してある。 */
+  cancel: [edit: ArTableRowEdit<Row>];
 }
 
 /**
  * slot：
+ * full-row（{ row, index }：fullRow の行の中身）、edit-actions（{ row, commit, cancel }：入力の行の右端。既定は［取り消し］［確定］）、
  * cell-<key>（{ row, value, index, line, Default }：Default は既定の表示を描く部品、line は段に分けた列の段の番号）・head-<key>（{ column }）・foot-<key>（{ value }）・expanded（{ row }）・empty、
  * actions（{ row, index }：行の右端の操作。アイコンだけのボタンに aria-label を付ける）、
  * before-rows（見出しのすぐ下・行の上。シフト画面の「シフト追加」）、
@@ -281,5 +339,8 @@ export type ArTablePart =
   | "cell-input"
   | "cell-editor"
   | "lead"
+  | "range-sep"
+  | "line-remove"
+  | "edit-actions"
   | "delta"
   | "mark";

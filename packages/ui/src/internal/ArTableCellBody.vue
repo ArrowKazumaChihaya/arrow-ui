@@ -10,9 +10,9 @@ import ArAvatar from "../components/ArAvatar.vue";
 import ArIcon from "../components/ArIcon.vue";
 import ArSelect from "../components/ArSelect.vue";
 import ArTimeInput from "../components/ArTimeInput.vue";
-import type { ArTableColumn, ArTableEditValue } from "../components/ArTable.contract";
+import type { ArTableColumn, ArTableEditValue, ArTableLabels } from "../components/ArTable.contract";
 import type { ArTimeValue } from "../components/ArTimeInput.contract";
-import { editKeyOf, isBlankCell, sameEditValue, toTimeValue } from "./table";
+import { editKeyOf, formatTimeRange, isBlankCell, isFilledRange, sameEditValue, toTimeRange, toTimeRanges, toTimeValue } from "./table";
 
 type Row = object;
 const props = withDefaults(
@@ -31,13 +31,20 @@ const props = withDefaults(
     edits: Readonly<Record<string, ArTableEditValue>>;
     invalidCells: readonly string[];
     blank: string;
+    /** この行が入力の行（ArTable の editing）。 */
+    editing?: boolean;
+    /** time-range の列：今の組の並び（入力の行では最後に空の組）。 */
+    lineValues?: readonly unknown[];
+    labels?: Partial<ArTableLabels>;
   }>(),
-  { line: undefined },
+  { line: undefined, editing: false, lineValues: undefined, labels: () => ({}) },
 );
 const emit = defineEmits<{ edit: [key: string, value: ArTableEditValue] }>();
 
 const col = computed(() => props.col);
-const canEdit = computed(() => (typeof col.value.edit === "function" ? col.value.edit(props.row) : !!col.value.edit));
+const canEdit = computed(() =>
+  col.value.edit === undefined ? props.editing && !!col.value.editor : typeof col.value.edit === "function" ? col.value.edit(props.row) : !!col.value.edit,
+);
 const editor = computed(() => col.value.editor ?? "amount");
 const keyFor = (line?: number) => editKeyOf(props.rowKey, col.value.key, line);
 const asText = (v: unknown) => (v === null || v === undefined ? "" : String(v));
@@ -78,13 +85,66 @@ const delta = computed(() => {
   if (d === undefined || d === "" || props.line !== undefined) return null;
   return typeof d === "string" ? { text: d, tone: "muted" as const } : { tone: "muted" as const, ...d };
 });
+/* ---- 時間の組（time-range）：段ごとに「開始〜終了」、× で組を消す。値は列の key に組の配列で入れる ---- */
+const ranges = () => toTimeRanges(props.lineValues ?? []);
+const pairOf = computed(() => toTimeRange(props.value));
+function setRange(part: "start" | "end", v: ArTimeValue) {
+  const all = ranges();
+  const j = props.line ?? 0;
+  while (all.length <= j) all.push({ start: { time: null, day: "same" }, end: { time: null, day: "same" } });
+  all[j] = { ...all[j]!, [part]: v };
+  emit("edit", keyFor(), all);
+}
+function removeRange() {
+  const all = ranges();
+  all.splice(props.line ?? 0, 1);
+  emit("edit", keyFor(), all.filter(isFilledRange));
+}
+const rangeState = computed(() => {
+  const k = keyFor();
+  return [props.invalidCells.includes(k) && "invalid", k in props.edits && !sameEditValue(props.edits[k], toTimeRanges(rawRanges.value)) && "changed"].filter(Boolean).join(" ") || undefined;
+});
+const rawRanges = computed(() => (Array.isArray((props.row as Record<string, unknown>)[col.value.key]) ? (props.row as Record<string, unknown>)[col.value.key] : col.value.value?.(props.row)));
+const rangeLabel = (part: "start" | "end") => `${col.value.editLabel?.(props.row, props.line) ?? col.value.title}${(props.line ?? 0) + 1}の${part === "start" ? "開始" : "終了"}`;
 /** 段に分けた列は、その段の値を1つのセルとして出す（配列の中身を並べない）。 */
 const lineKey = computed(() => props.line);
 </script>
 
 <template>
   <span v-if="col.lead" data-part="lead" aria-hidden="true">{{ col.lead }}</span>
-  <template v-if="canEdit && col.stack && lineKey === undefined">
+  <template v-if="canEdit && editor === 'time-range' && (line ?? 0) >= (lineValues?.length ?? 0)"></template>
+  <span v-else-if="canEdit && editor === 'time-range'" data-part="cell-editor" data-editor="time-range" :data-state="rangeState" @click.stop>
+    <ArTimeInput
+      size="sm"
+      :model-value="pairOf.start"
+      :day-shift="col.dayShift ?? false"
+      :overnight="col.overnight ?? false"
+      :invalid="invalidCells.includes(keyFor())"
+      :label="rangeLabel('start')"
+      @update:model-value="(v: ArTimeValue) => setRange('start', v)"
+    />
+    <span data-part="range-sep" aria-hidden="true">〜</span>
+    <ArTimeInput
+      size="sm"
+      :model-value="pairOf.end"
+      :day-shift="col.dayShift ?? false"
+      :overnight="col.overnight ?? false"
+      :invalid="invalidCells.includes(keyFor())"
+      :label="rangeLabel('end')"
+      @update:model-value="(v: ArTimeValue) => setRange('end', v)"
+    />
+    <button
+      v-if="col.removable !== false && isFilledRange(pairOf)"
+      type="button"
+      data-part="line-remove"
+      :aria-label="`${labels.removeRange ?? 'この時間を消す'}（${(line ?? 0) + 1}）`"
+      @click="removeRange"
+    >
+      <ArIcon line name="x" size="sm" />
+    </button>
+  </span>
+  <template v-else-if="editor === 'time-range'">{{ formatTimeRange(value) || (lineKey !== undefined && lineKey > 0 ? "" : blank) }}</template>
+  <template v-else-if="canEdit && col.stack && lineKey === undefined">
     <span data-part="stack" @click.stop>
       <input
         v-for="(v, j) in linesOf(value)"

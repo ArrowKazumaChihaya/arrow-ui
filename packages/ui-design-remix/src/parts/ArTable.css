@@ -1,4 +1,4 @@
-/* @covers ArTable 1.2.0 */
+/* @covers ArTable 1.4.0 */
 /* ArTable（box＝.lst/.lr：外枠 角丸12・線、見出し34・行44。board＝シフト画面の .v-tr：外枠なし、角の丸い見出し・行50・合計の帯） */
 [data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
@@ -186,3 +186,12 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead>tr[data-tier="2"]>[data-part="header-cell"]{border-radius:0}
 /* 1.2：セルの頭の「〜」（PopRecruit の募集時間の「10:00 〜 19:00」：#A3AEB9・13px、入力との間8） */
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="lead"]{margin-right:8px;color:#A3AEB9;font-size:13px}
+/* 1.3：時間の組（PopBulk・PopRecruit の「10:00 〜 19:00」：入力の間8、「〜」は #A3AEB9。組を消す × は 24px・角丸6 の灰色、押すと赤） */
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"][data-editor="time-range"]{gap:8px}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="range-sep"]{color:#A3AEB9;font-size:13px}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]{width:24px;height:24px;border-radius:6px;color:var(--ar-color-text-faint)}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]:hover{background:#FDECEA;color:var(--ar-color-danger)}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="drag-handle"]:disabled{opacity:.35}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="actions"][data-kind="edit"]{gap:6px}
+/* 1.4：行ぜんぶを1つのセル（案内・説明の行）：上下10・左右12、折り返す、灰色の 12.5px の文 */
+[data-ar-design="remix"] [data-ar="table"] td[data-full]{padding:10px 12px;color:var(--ar-color-text-secondary);font-size:12.5px;line-height:1.6;white-space:normal}

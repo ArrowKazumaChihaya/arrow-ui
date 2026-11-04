@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArShiftGrid 1.0 — シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
+ * ArShiftGrid 1.1 — シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
  * マス（パターン色の淡い面と左の線。1日に2つのシフトは1行に1つずつ）とチャート（6時〜24時の帯。ドラッグで移動・伸縮・ほかの人／日へ移す・空いたマスで追加）。
  * 見出し（曜日の色・今日の印・鍵・目の印・押すと day-open）、イベントの行、人数と募集に対する不足の行、名前の列と見出しの固定、
  * 左のパターンの一覧（検索つき・マスへドラッグ）、列の幅の −／＋、ドラッグでの選択・オートフィル・右クリックの操作。
@@ -182,7 +182,8 @@ const gridH = ref(0);
 const n = computed(() => Math.max(1, props.days.length));
 const autoW = computed(() => {
   if (fitForm.value === "scale") return mode.value === "chart" ? 136 : n.value >= 28 ? 34 : 136;
-  const min = mode.value === "chart" ? 92 : props.compact ? 50 : 30;
+  // 枠に合わせる（remix の既定）：枠の幅から名前の列を引いて日の数で割る。範囲の下限より狭くなるときだけ下限にして横に動かす。
+  const min = props.compact && mode.value === "cell" ? Math.max(zoomRange.value.min, 50) : zoomRange.value.min;
   if (!viewW.value) return min;
   return Math.max(min, Math.floor((viewW.value - nameW.value) / n.value));
 });
@@ -202,6 +203,10 @@ function zoomOut() {
 function zoomIn() {
   if (canZoomIn.value) setWidth(Math.min(zoomRange.value.max, colW.value + zoomRange.value.step));
 }
+/** 「枠に合わせる」に戻す（columnWidth を null にする）。 */
+function fitWidth() {
+  setWidth(null);
+}
 function setMode(m: string | number) {
   const next = m === "chart" ? "chart" : "cell";
   if (next === localMode.value) return;
@@ -214,7 +219,9 @@ function setMode(m: string | number) {
 let ro: ResizeObserver | null = null;
 function measure() {
   if (viewport.value) viewW.value = viewport.value.clientWidth;
-  if (root.value) {
+  const nh = root.value?.querySelector<HTMLElement>("[data-part='head-date']>[data-part='name-head']");
+  if (nh?.offsetWidth) nameW.value = nh.offsetWidth;
+  else if (root.value) {
     const v = parseFloat(getComputedStyle(root.value).getPropertyValue("--sg-name"));
     if (v) nameW.value = v;
   }
@@ -862,7 +869,7 @@ onBeforeUnmount(() => {
   window.removeEventListener("pointermove", onBarMove);
 });
 
-defineExpose({ zoomIn, zoomOut, setMode, clearSelection, columnWidth: colW, canZoomIn, canZoomOut, selection: rect });
+defineExpose({ zoomIn, zoomOut, fitWidth, setMode, clearSelection, columnWidth: colW, canZoomIn, canZoomOut, selection: rect });
 const dayOf = (dv: DayView) => dv.d;
 </script>
 
@@ -880,7 +887,7 @@ const dayOf = (dv: DayView) => dv.d;
     :data-dragging="drag ? '' : undefined"
   >
     <div v-if="controls || $slots.toolbar" data-part="toolbar">
-      <slot name="toolbar" :zoom-in="zoomIn" :zoom-out="zoomOut" :column-width="colW" :can-zoom-in="canZoomIn" :can-zoom-out="canZoomOut" :mode="mode" :set-mode="setMode" />
+      <slot name="toolbar" :zoom-in="zoomIn" :zoom-out="zoomOut" :column-width="colW" :can-zoom-in="canZoomIn" :can-zoom-out="canZoomOut" :fit-width="fitWidth" :fitted="localW == null" :mode="mode" :set-mode="setMode" />
       <template v-if="controls">
         <div data-part="zoom" role="group" :aria-label="L.zoom">
           <button type="button" data-part="zoom-out" :aria-label="L.zoomOut" :disabled="!canZoomOut" @click="zoomOut"><ArIcon name="minus" size="sm" line /></button>

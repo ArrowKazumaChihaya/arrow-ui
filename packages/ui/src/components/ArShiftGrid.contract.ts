@@ -1,5 +1,5 @@
 /**
- * ArShiftGrid 1.0 の契約。シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
+ * ArShiftGrid 1.1 の契約。シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
  * 1行＝1人、1列＝1日。マス（パターン色の淡い面と左の線）とチャート（6時〜24時の帯）の2つの表示を持つ。
  * 部品はデータを書き換えない。選ぶ・コピー・貼り付け・削除・元に戻す・ドラッグでの移動や伸縮は、すべてイベントで知らせる（保存は製品がする）。
  * 時刻は 0:00 からの分（翌日の 3:00 は 1620、前日の 23:00 は -60）。今の ARROW の shift_shift・shift_break の started_at／ended_at と同じ。
@@ -167,7 +167,14 @@ export interface ArShiftGridProps {
   patterns?: readonly ArShiftGridPattern[];
   /** 表示（v-model:mode）。cell＝マス、chart＝チャート（週の表示で、6時〜24時の帯）。 */
   mode?: "cell" | "chart";
-  /** 列の幅（v-model:column-width。px）。null は枠の幅に合わせる。マスとチャートで別の範囲（zoom）。 */
+  /**
+   * 列の幅（v-model:column-width。px）。マスとチャートで別の範囲（zoom）。
+   * 渡さない・null は「枠に合わせる」（remix の既定）：表の枠の幅から名前の列を引き、日の数で割った幅に広げる（1440px の画面の月の表で 31 日がカードに収まる）。
+   * 範囲の下限（マス 28・チャート 80）より狭くなるときだけ下限にして横に動かす。枠の幅が変わればついていく。
+   * −／＋ を押すと、その時の幅から決めた数を update:columnWidth で出す（以後はその幅。列は枠が余ればその幅から広がる）。
+   * 「枠に合わせる」に戻すには null を渡す（または公開の fitWidth()、toolbar スロットの fitWidth）。
+   * classic の週・月（forms.fit="scale"）は今の ARROW と同じく 136px／34px で描いて枠まで縮める。
+   */
   columnWidth?: number | null;
   /** 列の幅の範囲と −／＋ の幅。既定はマス 28〜140（8ずつ）、チャート 80〜280（20ずつ）。 */
   zoom?: { cell?: Partial<ArShiftGridZoom>; chart?: Partial<ArShiftGridZoom> };

@@ -1,4 +1,5 @@
-/* ArShiftGrid の構造：左にパターンの一覧、右に表（名前の列＋日の列の CSS グリッド）と表の下の案内。
+/* 表の枠（viewport）は contain:inline-size：中の表の幅を外へ伝えず、枠の幅は置いた場所で決まる（列の幅を枠から決めるため。表の幅で枠が広がる堂々めぐりを防ぐ）。
+   ArShiftGrid の構造：左にパターンの一覧、右に表（名前の列＋日の列の CSS グリッド）と表の下の案内。
    行は display:contents。見出しの行は上に、名前の列は左に固定（sticky）。列の幅は --sg-col（部品が決める）、名前の列の幅は --sg-name（デザインが決める）。
    チャートの帯は帯の場所の中で left と width を % で置く。 */
 [data-ar="shift-grid"]{--sg-name:168px;display:flex;flex-direction:column;min-width:0;box-sizing:border-box}
@@ -18,7 +19,7 @@
 [data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern"] :is([data-part="pattern-name"],[data-part="pattern-time"]){display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 [data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-hint"]{display:flex}
 [data-ar="shift-grid"]>[data-part="layout"]>[data-part="main"]{flex:1;min-width:0;display:flex;flex-direction:column}
-[data-ar="shift-grid"] [data-part="viewport"]{position:relative;overflow:auto;outline:none;user-select:none;-webkit-user-select:none}
+[data-ar="shift-grid"] [data-part="viewport"]{position:relative;overflow:auto;outline:none;user-select:none;-webkit-user-select:none;contain:inline-size}
 [data-ar="shift-grid"][data-fit="scale"] [data-part="viewport"]{overflow-x:hidden}
 [data-ar="shift-grid"] [data-part="scaler"]{position:relative}
 [data-ar="shift-grid"] [data-part="grid"]{display:grid;grid-template-columns:var(--sg-name) repeat(var(--sg-n),minmax(var(--sg-col),1fr));min-width:calc(var(--sg-name) + var(--sg-n) * var(--sg-col));transform-origin:0 0}
