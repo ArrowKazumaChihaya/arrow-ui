@@ -1,4 +1,4 @@
-/* @covers ArApprovalFlow 1.0.0 */
+/* @covers ArApprovalFlow 1.1.0 */
 /* row（設定の .cf-flow）：間8px、札は 32px・角丸16・内側 0 12px・12.5px 700。先頭の「申請」と済みの段は acc-50 にテーマ色の文字、
    これからの段は白に acc-line の線、いまの番はテーマ色の線を太く、差し戻しは淡い赤。間の › は mute-3（15px）。
    list（勤怠の承認 .stpr の一覧）：外枠 角丸12・線、内側 6px 14px。行は上下10px・下に line-2、「24px の丸｜名前 13.5px 700＋人 12px mute｜札 22px」。
@@ -11,14 +11,14 @@
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] :is([data-part="start"],[data-part="step"]){gap:6px;height:32px;padding:0 12px;border-radius:16px;box-sizing:border-box;font-size:12.5px;font-weight:700;line-height:18.75px}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="start"],[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"][data-state="done"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] :is([data-part="start"],[data-part="step"]) [data-ar="icon"]{width:15px;height:15px}
-[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"]>[data-part="title"]{gap:6px}
+[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"]>[data-part="body"]>[data-part="title"]{gap:6px}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"]:is([data-state="todo"],[data-state="skipped"]){background:#fff;color:var(--ar-accent-ink);box-shadow:inset 0 0 0 1px var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"][data-state="skipped"]{color:var(--ar-color-text-muted);box-shadow:inset 0 0 0 1px var(--ar-color-border);text-decoration:line-through}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"][data-state="current"]{background:#fff;color:var(--ar-accent-ink);box-shadow:inset 0 0 0 2px var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"][data-state="denied"]{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
-[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"]>[data-part="who"]{color:var(--ar-color-text-muted);font-size:11.5px;font-weight:500}
+[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="row"] [data-part="step"]>[data-part="body"]>[data-part="who"]{color:var(--ar-color-text-muted);font-size:11.5px;font-weight:500}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"]{padding:6px 14px;border-radius:12px;background:var(--ar-color-surface);box-shadow:inset 0 0 0 1px var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"]>[data-part="item"]{grid-template-columns:28px minmax(0,1fr) auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--ar-color-border-subtle);font-size:14px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"]>[data-part="item"]{grid-template-columns:28px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--ar-color-border-subtle);font-size:14px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"]>[data-part="item"]:last-child{border-bottom:0}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="mark"]{width:24px;height:24px;border-radius:50%;background:#EEF1F5;color:var(--ar-color-text-secondary);font-size:12px;font-weight:600;line-height:18px}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="mark"][data-state="done"]{background:var(--ar-color-ok);color:#fff}
@@ -30,3 +30,10 @@
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="status"][data-state="done"]{background:var(--ar-color-ok-subtle);color:var(--ar-color-ok)}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="status"][data-state="current"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="status"][data-state="denied"]{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
+
+[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="body"]>[data-part="title"]>[data-ar="icon"]{display:none}
+[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="status"]{max-width:100%;height:auto;min-height:22px;white-space:normal;overflow-wrap:anywhere}
+[data-ar-design="remix"] [data-ar="approval-flow"][data-detailed][data-layout="row"] [data-part="step"]{padding:12px;border-radius:12px;gap:6px}
+[data-ar-design="remix"] [data-ar="approval-flow"][data-detailed][data-layout="row"] [data-part="status"]{font-size:12px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="approval-flow"] [data-part="details"]{font-size:13px;line-height:1.5}
+@media(max-width:600px){[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="step"]{grid-template-columns:minmax(0,1fr)}[data-ar-design="remix"] [data-ar="approval-flow"][data-layout="list"] [data-part="status"]{justify-self:start}}

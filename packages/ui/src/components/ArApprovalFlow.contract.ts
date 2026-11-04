@@ -1,7 +1,7 @@
 import type { ArIconName } from "../icons";
 
 /**
- * ArApprovalFlow 1.0 の契約。承認の流れ（設定の申請設定・勤怠の承認・社員情報の申請）。
+ * ArApprovalFlow 1.1 の契約。承認の流れ（設定の申請設定・勤怠の承認・社員情報の申請）。
  * 段ごとに 済み（done）・あなたの番／いまの番（current）・まだ（todo）・差し戻し（denied）・飛ばした（skipped）。
  * デザインが選べる形（ArDesign.forms.ArApprovalFlow）：
  * - list："list"（既定。layout="list" をそのまま縦の一覧で）／"row"（list も横の札で出す。今の ARROW の AdmitFlowView は横に並んだ丸い札と「→」だけ。classic）。
@@ -48,7 +48,8 @@ export interface ArApprovalFlowProps {
 }
 
 /**
- * slot：step（{ step, index }：row の段の札の中身を差し替える。編集の画面ではここに ArSelect を置く）、
+ * slot：step（{ step, index }：段の札を差し替える（両layoutで同じDOMを保持）。編集の画面ではここに ArSelect を置く）、
+ * details（{ step, index }：共通の題名・状態を保ったまま候補者・履歴・補助操作を追加する。両layoutで同じDOMを保持）、
  * append（row の最後の › の後ろ。「ステップを足す」のボタン）。
  */
-export type ArApprovalFlowPart = "root" | "item" | "start" | "step" | "sep" | "mark" | "body" | "title" | "who" | "status" | "append";
+export type ArApprovalFlowPart = "root" | "item" | "start" | "step" | "sep" | "mark" | "body" | "title" | "who" | "status" | "append" | "details";

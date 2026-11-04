@@ -2,6 +2,8 @@
 
 ## 0.1.2
 
+- ArApprovalFlow 1.1: 承認者・履歴用のdetails slotを追加。縦/横の形でもDOM・入力・focusを保持し、狭い画面の長い段名と状態を折り返す。
+
 - 勤怠チャートの長い分類名と横スクロール中の見出しを保持し、時間帯のキーボード操作と淡色帯の文字を改善。
 
 - Organization charts support anchored pan/pinch gestures, async tree data, and non-overlapping mobile controls. Preserve user zoom and pan across design changes.

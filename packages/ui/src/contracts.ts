@@ -120,7 +120,7 @@ export const contracts = {
   ArWatermark: "1.0.0",
   ArAppFooter: "1.0.0",
   ArAppHeader: "1.1.0",
-  ArApprovalFlow: "1.0.0",
+  ArApprovalFlow: "1.1.0",
   ArBalloon: "1.0.0",
   ArBottomNav: "1.1.0",
   ArChangedValue: "1.2.0",
