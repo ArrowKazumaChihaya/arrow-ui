@@ -10,6 +10,7 @@ export const FOCUSABLE =
   'a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
 
 let openCount = 0;
+const openDialogs: symbol[] = [];
 function lock(on: boolean) {
   if (typeof document === "undefined") return;
   openCount = Math.max(0, openCount + (on ? 1 : -1));
@@ -42,6 +43,7 @@ export function useDialog(opts: {
   const readPalette = usePlacedPalette();
   let returnTo: HTMLElement | null = null;
   let locked = false;
+  const dialogId = Symbol("dialog");
 
   function focusables(): HTMLElement[] {
     const p = opts.panel.value;
@@ -49,6 +51,7 @@ export function useDialog(opts: {
   }
 
   function onKeydown(e: KeyboardEvent) {
+    if (e.defaultPrevented) return;
     if (e.key === "Escape") {
       if (!opts.escapable()) return;
       e.stopPropagation();
@@ -63,7 +66,10 @@ export function useDialog(opts: {
     }
     const first = list[0] as HTMLElement;
     const last = list.at(-1) as HTMLElement;
-    if (e.shiftKey && (document.activeElement === first || document.activeElement === opts.panel.value)) {
+    if (!opts.panel.value?.contains(document.activeElement)) {
+      e.preventDefault();
+      (e.shiftKey ? last : first).focus();
+    } else if (e.shiftKey && (document.activeElement === first || document.activeElement === opts.panel.value)) {
       e.preventDefault();
       last.focus();
     } else if (!e.shiftKey && document.activeElement === last) {
@@ -72,7 +78,18 @@ export function useDialog(opts: {
     }
   }
 
+  // A conditional editor can remove its focused button. The browser then focuses body,
+  // outside the panel's key handler. Keep Escape and Tab working for the top dialog.
+  function onDocumentKeydown(e: KeyboardEvent) {
+    if (openDialogs.at(-1) !== dialogId || !opts.open()) return;
+    if (document.activeElement === document.body || document.activeElement === document.documentElement)
+      onKeydown(e);
+  }
+
   function release() {
+    const index = openDialogs.indexOf(dialogId);
+    if (index >= 0) openDialogs.splice(index, 1);
+    if (typeof document !== "undefined") document.removeEventListener("keydown", onDocumentKeydown);
     if (locked) lock(false);
     locked = false;
   }
@@ -82,6 +99,8 @@ export function useDialog(opts: {
     async (open) => {
       if (typeof document === "undefined") return;
       if (open) {
+        if (!openDialogs.includes(dialogId)) openDialogs.push(dialogId);
+        document.addEventListener("keydown", onDocumentKeydown);
         palette.value = readPalette();
         returnTo = document.activeElement as HTMLElement | null;
         if (opts.lockScroll?.() !== false && !locked) {
@@ -89,6 +108,7 @@ export function useDialog(opts: {
           locked = true;
         }
         await nextTick();
+        if (!opts.open()) return;
         const scope = opts.initial?.() ?? null;
         const first = scope ? Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE))[0] : undefined;
         (first ?? opts.panel.value)?.focus();
