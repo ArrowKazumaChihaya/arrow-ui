@@ -41,7 +41,7 @@ const descriptionItems = computed(() => [
           </div>
           <ArCluster v-if="$slots.actions" :gap="2" data-part="actions"><slot name="actions" /></ArCluster>
         </ArCluster>
-        <ArDescriptions v-if="descriptionItems.length" :items="descriptionItems" :column="2">
+        <ArDescriptions v-if="descriptionItems.length" :items="descriptionItems" :column="Math.min(2, descriptionItems.length)">
           <template #item-profile-tags>
             <ArCluster :gap="1">
               <ArTag v-for="tag in tags" :key="tag.key" :tone="tag.tone ?? 'accent'" size="sm">{{ tag.label }}</ArTag>
