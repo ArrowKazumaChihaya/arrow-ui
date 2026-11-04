@@ -994,14 +994,8 @@ table
   > .logo_wrapper {
   margin-left: -10px !important;
 }
-html {
-  overflow: hidden !important;
-}
-body {
-  width: 100% !important;
-  overflow-x: auto !important;
-  overflow-y: auto !important;
-}
+/* The host document owns page scrolling. Only an open dialog locks the viewport
+   (html[data-ar-modal-open] in structure.css); body is not a fixed-height scroller. */
 *
   ::-webkit-scrollbar {
   width: 8px !important;
