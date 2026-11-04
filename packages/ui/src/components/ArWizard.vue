@@ -12,7 +12,10 @@ const option=computed(()=>{
   return selected;
 });
 const items=computed(()=>props.options.map(item=>({title:item.label})));
-watch(()=>props.value,()=>{if(props.scrollOnChange && typeof document!=='undefined') document.body.scrollTo?.({top:0});});
+watch(()=>props.value,()=>{
+ if(props.scrollOnChange && typeof document!=='undefined')
+  (document.scrollingElement ?? document.documentElement).scrollTo?.({top:0});
+},{flush:'post'});
 </script>
 <template>
   <section data-ar="wizard" data-part="root">

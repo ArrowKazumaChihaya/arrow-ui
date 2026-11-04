@@ -1,0 +1,26 @@
+import { mount } from '@vue/test-utils';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import ArWizard from '../src/components/ArWizard.vue';
+
+const original = Object.getOwnPropertyDescriptor(document, 'scrollingElement');
+afterEach(() => {
+  vi.restoreAllMocks();
+  if (original) Object.defineProperty(document, 'scrollingElement', original);
+  else Reflect.deleteProperty(document, 'scrollingElement');
+});
+
+it.each(['html', 'body'] as const)('scrolls the actual %s document scroller after a step change', async tag => {
+  const scroller = tag === 'html' ? document.documentElement : document.body;
+  const scroll = vi.fn();
+  Object.defineProperty(document, 'scrollingElement', { configurable: true, get: () => scroller });
+  Object.defineProperty(scroller, 'scrollTo', { configurable: true, value: scroll });
+  const wrapper = mount(ArWizard, { props: { value: 1, options: [{value:1,label:'First'}, {value:2,label:'Second'}] } });
+  expect(scroll).not.toHaveBeenCalled();
+  await wrapper.setProps({value:2});
+  expect(scroll).toHaveBeenCalledExactlyOnceWith({top:0});
+  expect(wrapper.get('[data-part="summary"]').text()).toContain('Second');
+  await wrapper.setProps({scrollOnChange:false,value:1});
+  expect(scroll).toHaveBeenCalledTimes(1);
+  wrapper.unmount();
+  Reflect.deleteProperty(scroller,'scrollTo');
+});
