@@ -21,7 +21,8 @@
     "check": "npm run typecheck && npm run test && npm run build",
     "changeset": "changeset",
     "release": "npm run build && changeset publish",
-    "gen": "node scripts/gen-registry.mjs && node scripts/gen-meta.mjs"
+    "gen": "node scripts/gen-registry.mjs && node scripts/gen-meta.mjs",
+    "release:preview": "npm pack --dry-run --json -w @arrow/ui-tokens -w @arrow/ui -w @arrow/ui-design-remix -w @arrow/ui-design-classic -w @arrow/eslint-plugin-ui"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7",

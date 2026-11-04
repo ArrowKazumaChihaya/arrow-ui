@@ -37,7 +37,7 @@ ARROW シリーズで共通に使う Vue 3 のデザインライブラリです�
 - 部品の選択値は公開契約に合わせます。Front の従来の ID 型や nullable 値は利用側の変換で維持し、ライブラリに業務処理を持ち込みません。
 - デザインは `ArUiProvider` で切り替えます。画面の再マウントを必要としないため、入力中の値や表の操作状態を保持できます。
 
-Front 統合用の作業版は `0.1.1` です。`npm run check` の後、Front の `tools/migrations/install-arrow-ui.mjs` で5パッケージを pack し、内容ハッシュ付き tarball と lockfile で固定します。公開レジストリへのリリースとは別の手順です。
+Front 統合用の作業版は `0.1.1` です。配布先は公開 npm レジストリへ変更しました。初回公開までは先行確認用の Front が同梱 tarball を使用しています。公開成功後、Front を通常のバージョン依存と lockfile に切り替えます。
 
 ## 今ある部品（115）
 
@@ -175,4 +175,34 @@ npm run changeset   # 変更の記録（版を上げる）
 
 説明のサイトの API の表は `scripts/gen-meta.mjs` が部品のソース（props の型・JSDoc・既定値・events・slots・data-part）から作ります。見本は `apps/docs/src/demos/<部品>/*.vue` に1つずつ置きます（1行目のコメントが題と説明）。
 
-公開先は GitHub Packages（`@arrow` スコープ）です。製品の `.npmrc` に `@arrow:registry=https://npm.pkg.github.com` と読み取りのトークンを置きます。
+## npm への公開
+
+公開先は `https://registry.npmjs.org/`、アクセスは `public` です。利用者の install に npm/GitHub の認証は必要ありません。公開には npm のアカウント、メール認証、`arrow` Organization の公開権限が必要です。Organization 名は取得・所有を確認してから確定します。
+
+公開するのは次の5パッケージです。アプリ用 workspace は private のままです。
+
+- `@arrow/ui-tokens`
+- `@arrow/ui`
+- `@arrow/ui-design-remix`
+- `@arrow/ui-design-classic`
+- `@arrow/eslint-plugin-ui`
+
+```sh
+npm ci
+npm run check
+npm run release:preview  # 実際に含まれるファイルを確認。公開しない
+npm login --registry=https://registry.npmjs.org/
+npm whoami --registry=https://registry.npmjs.org/
+npm run release         # Changesets が未公開バージョンを公開
+```
+
+パスワード、トークン、ワンタイムコードはリポジトリへ保存しません。公開したバージョン番号は再利用せず、次の変更では `npm run changeset` と `npx changeset version` で版を進めます。
+
+公開後の Front 側では、以下のように取得します。初回公開が完了するまではこの切り替えを行いません。
+
+```sh
+yarn add --exact @arrow/ui@0.1.1 @arrow/ui-tokens@0.1.1 @arrow/ui-design-remix@0.1.1 @arrow/ui-design-classic@0.1.1
+yarn add --dev --exact @arrow/eslint-plugin-ui@0.1.1
+```
+
+Front に残る `resolutions` のファイル参照も公開バージョンへ更新し、`yarn.lock` を生成してから `vendor/arrow-ui` を削除します。別環境では `yarn install --frozen-lockfile` だけで同じ公開版を取得できます。

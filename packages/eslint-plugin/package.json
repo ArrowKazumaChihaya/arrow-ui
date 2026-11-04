@@ -17,6 +17,16 @@
     "vue-eslint-parser": ">=9.0.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArrowKazumaChihaya/arrow-ui.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "homepage": "https://arrowkazumachihaya.github.io/arrow-ui/",
+  "bugs": {
+    "url": "https://github.com/ArrowKazumaChihaya/arrow-ui/issues"
   }
 }

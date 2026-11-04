@@ -20,6 +20,16 @@
     "build": "tsc -p tsconfig.build.json"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArrowKazumaChihaya/arrow-ui.git",
+    "directory": "packages/ui-tokens"
+  },
+  "homepage": "https://arrowkazumachihaya.github.io/arrow-ui/",
+  "bugs": {
+    "url": "https://github.com/ArrowKazumaChihaya/arrow-ui/issues"
   }
 }

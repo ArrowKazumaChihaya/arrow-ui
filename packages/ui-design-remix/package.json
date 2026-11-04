@@ -31,6 +31,16 @@
     "@arrow/ui-tokens": "0.1.1"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArrowKazumaChihaya/arrow-ui.git",
+    "directory": "packages/ui-design-remix"
+  },
+  "homepage": "https://arrowkazumachihaya.github.io/arrow-ui/",
+  "bugs": {
+    "url": "https://github.com/ArrowKazumaChihaya/arrow-ui/issues"
   }
 }

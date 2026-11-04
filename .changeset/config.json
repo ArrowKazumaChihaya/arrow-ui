@@ -2,8 +2,18 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "fixed": [["@arrow/ui", "@arrow/ui-tokens", "@arrow/ui-design-remix", "@arrow/ui-design-classic"]],
-  "access": "restricted",
+  "fixed": [
+    [
+      "@arrow/ui",
+      "@arrow/ui-tokens",
+      "@arrow/ui-design-remix",
+      "@arrow/ui-design-classic"
+    ]
+  ],
+  "access": "public",
   "baseBranch": "main",
-  "ignore": ["@arrow/catalog"]
+  "ignore": [
+    "@arrow/catalog",
+    "@arrow/docs"
+  ]
 }
