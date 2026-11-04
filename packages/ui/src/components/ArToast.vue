@@ -3,18 +3,20 @@
  * ArToast 1.0 — 操作のあと画面の下の真ん中に出る黒い帯（.toast）。チェックの印＋言葉＋「元に戻す」「閉じる」。
  * シフト画面で「〜を変更しました」と知らせるときに使う。上に短く出すだけなら useArMessage()。
  */
-import { onBeforeUnmount, watch } from "vue";
+import { onBeforeUnmount, watch, type PropType } from "vue";
 import ArIcon from "./ArIcon.vue";
 import type { ArToastProps } from "./ArToast.contract";
 
-const props = withDefaults(defineProps<ArToastProps>(), {
-  message: undefined,
-  icon: "check",
-  undoText: undefined,
-  closeText: "閉じる",
-  duration: 6,
-  offset: undefined,
-  contained: false,
+// icon は ArIconName | false。型の宣言だと実行時の型が Boolean だけになるため、実行時の宣言で書く（型は契約と同じ）。
+const props = defineProps({
+  open: { type: Boolean, required: true },
+  message: { type: String, default: undefined },
+  icon: { type: [String, Boolean] as PropType<ArToastProps["icon"]>, default: "check" },
+  undoText: { type: String, default: undefined },
+  closeText: { type: String, default: "閉じる" },
+  duration: { type: Number, default: 6 },
+  offset: { type: Number, default: undefined },
+  contained: { type: Boolean, default: false },
 });
 const emit = defineEmits<{ "update:open": [open: boolean]; close: []; undo: [] }>();
 

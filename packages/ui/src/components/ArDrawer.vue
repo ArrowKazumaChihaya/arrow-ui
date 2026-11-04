@@ -10,7 +10,9 @@ import { useDialog } from "../internal/dialog";
 import ArIcon from "./ArIcon.vue";
 import type { ArDrawerProps } from "./ArDrawer.contract";
 
+defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArDrawerProps>(), {
+  zIndex: undefined,
   icon: undefined,
   placement: "right",
   width: undefined,
@@ -52,11 +54,13 @@ const { onKeydown, palette } = useDialog({
     <Transition name="ar-drawer">
       <div
         v-if="open"
+        v-bind="$attrs"
         data-ar="drawer"
         data-part="root"
         :data-placement="placement"
         :data-contained="contained || undefined"
         :data-ar-palette="palette"
+        :style="zIndex != null ? { zIndex } : undefined"
         @keydown="onKeydown"
       >
         <div data-part="scrim" aria-hidden="true" @click="closeOnScrim && close()" />

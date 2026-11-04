@@ -6,6 +6,8 @@ import type { ArIconName } from "../icons";
  * - buttonText："plain"（既定。ボタンの文字はそのまま）／"antd"（ant-design-vue と同じく、2 文字の漢字・かなの文字の間に空白を入れる：「登録」→「登 録」。classic）。
  */
 export interface ArModalProps {
+  /** 重なりの順（z-index）。ほかの重なり（ant-design-vue のポップアップなど）の上に出したいときに渡す。 */
+  zIndex?: number;
   open: boolean;
   title: string;
   /** 題の下の1行の説明。 */

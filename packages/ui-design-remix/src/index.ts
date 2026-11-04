@@ -3,7 +3,7 @@
  * 落ち着いた青を基本に、ページごとのテーマ色・やわらかい帯・角丸10の部品。テーマ色の上の文字はすべて白。
  */
 import { defineDesign } from "@arrow/ui/design";
-import { covers } from "./covers.generated";
+import { covers } from "./covers.generated.js";
 import { derivePalette } from "@arrow/ui-tokens";
 
 export const remixDesign = defineDesign({
