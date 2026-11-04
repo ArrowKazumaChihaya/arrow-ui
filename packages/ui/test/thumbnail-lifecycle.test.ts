@@ -32,6 +32,10 @@ const revokeDescriptor = Object.getOwnPropertyDescriptor(
   URL,
   "revokeObjectURL",
 );
+const contextDescriptor = Object.getOwnPropertyDescriptor(
+  HTMLCanvasElement.prototype,
+  "getContext",
+);
 beforeEach(() => {
   probes.length = 0;
   createUrl
