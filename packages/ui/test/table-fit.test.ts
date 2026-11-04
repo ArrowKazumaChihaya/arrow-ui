@@ -4,7 +4,7 @@ import ArTable from "../src/components/ArTable.vue";
 
 it("fitting a table and wrapping long text preserve the edited row, selection, and action payload", async () => {
   const rows = [{ id: 7, name: "契約書", reason: "就業時間を確認したい\n長い否認理由" }];
-  const w = mount(ArTable, {
+  const w = mount(ArTable<(typeof rows)[number]>, {
     props: {
       rows,
       columns: [
