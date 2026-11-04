@@ -15,6 +15,7 @@
 
 /* 並べるための基礎 */
 [data-ar="stack"]{display:flex;flex-direction:column;gap:var(--ar-gap);min-width:0}
+[data-ar="stack"]>*{min-width:0;max-width:100%;box-sizing:border-box}
 [data-ar="stack"][data-align="start"]{align-items:flex-start}
 [data-ar="stack"][data-align="center"]{align-items:center}
 [data-ar="stack"][data-align="end"]{align-items:flex-end}

@@ -9,3 +9,8 @@
 [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{display:inline-flex;align-items:center;justify-content:center;font-style:normal;box-sizing:border-box}
 [data-ar="period-nav"]>[data-part="today"]{position:absolute;right:0;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;white-space:nowrap;box-sizing:border-box;margin:0;cursor:pointer;font-family:inherit}
 [data-ar="period-nav"]>[data-part="today"]:disabled{cursor:default}
+
+/* Long payroll period labels must fit alongside both navigation arrows. */
+[data-ar="period-nav"],[data-ar="period-nav"]>[data-part="center"]{max-width:100%}
+[data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="text"]{min-width:0;white-space:normal;overflow-wrap:anywhere}
+[data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="caret"],[data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{flex:none}
