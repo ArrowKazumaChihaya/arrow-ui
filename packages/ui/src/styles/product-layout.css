@@ -4760,7 +4760,10 @@ ul.fr-dropdown-list
 @media screen and (max-width: 959px) {
   .root_component[data-v-ui5bc3f455d2e5] {
     padding: var(--arrow-page-padding-tablet, 25px 30px 60px);
-    margin: var(--menu-header-height, 50px) 0 65px;
+    margin: 0;
+  }
+  .slim_layout .root_component[data-v-ui5bc3f455d2e5] {
+    margin-top: 50px;
   }
 }
 @media screen and (max-width: 499px) {
@@ -34821,5 +34824,22 @@ table:has(tbody > tr)
 .date_component
   .invalid_date {
   margin-left: 5px;
+}
+/* Breadcrumb and actions form a wrapping toolbar in every skin. */
+[data-ui-part="pageHeader"]:has(>[data-ar="breadcrumb"]) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+  margin-bottom: 16px;
+}
+[data-ui-part="pageHeader"]>[data-ar="breadcrumb"] {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+[data-ui-part="pageHeader"]>[data-ar="button"] {
+  max-width: 100%;
+  white-space: normal;
 }
 }

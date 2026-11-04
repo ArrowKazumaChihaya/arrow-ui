@@ -458,6 +458,11 @@
         "ja": "ポップオーバー"
       },
       {
+        "slug": "profile-card",
+        "name": "ArProfileCard",
+        "ja": "プロフィールカード"
+      },
+      {
         "slug": "qr-code",
         "name": "ArQRCode",
         "ja": "QRコード"

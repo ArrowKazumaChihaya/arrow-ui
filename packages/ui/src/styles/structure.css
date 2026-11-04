@@ -40,9 +40,9 @@
 [data-ar="grid"][data-cols="10"]{grid-template-columns:repeat(10,minmax(0,1fr))}
 [data-ar="grid"][data-cols="11"]{grid-template-columns:repeat(11,minmax(0,1fr))}
 [data-ar="grid"][data-cols="12"]{grid-template-columns:repeat(12,minmax(0,1fr))}
-[data-ar="grid"][data-min="sm"]{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
-[data-ar="grid"][data-min="md"]{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-[data-ar="grid"][data-min="lg"]{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+[data-ar="grid"][data-min="sm"]{grid-template-columns:repeat(auto-fill,minmax(min(160px,100%),1fr))}
+[data-ar="grid"][data-min="md"]{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}
+[data-ar="grid"][data-min="lg"]{grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr))}
 [data-ar="split"]{container-type:inline-size;min-width:0}
 [data-ar="split"]>[data-part="track"]{display:grid;gap:var(--ar-gap);grid-template-columns:var(--ar-split-start) minmax(0,1fr)}
 [data-ar="split"]>[data-part="track"][data-align="start"]{align-items:start}
