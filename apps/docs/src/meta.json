@@ -5615,7 +5615,7 @@
  },
  {
   "name": "ArTimeRange",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "時刻の範囲（09:00 〜 18:00）。2つの ArTimeInput を「〜」でつなぐ。\nvalidate なら終わりが始まり以前のとき終わりを赤くし、下に直し方を言葉で出す。",
   "props": [
    {
@@ -5629,6 +5629,13 @@
     "type": "boolean",
     "required": false,
     "description": "終わりは 24:00 以降（例 29:00）も受ける（夜勤）。",
+    "default": "false"
+   },
+   {
+    "name": "startOvernight",
+    "type": "boolean",
+    "required": false,
+    "description": "開始にも24時以降を許可する。翌日開始のイベントなど。",
     "default": "false"
    },
    {
@@ -5685,6 +5692,16 @@
     "name": "update:modelValue",
     "payload": "[value: ArTimeRangeValue]",
     "description": "どちらかを確定したときに出す。"
+   },
+   {
+    "name": "update:start",
+    "payload": "[value: string | null]",
+    "description": "変更した側だけを通知する。製品の独立した開始・終了の編集値へ接続する。"
+   },
+   {
+    "name": "update:end",
+    "payload": "[value: string | null]",
+    "description": ""
    }
   ],
   "slots": [],

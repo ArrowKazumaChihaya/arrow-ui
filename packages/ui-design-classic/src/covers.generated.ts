@@ -125,7 +125,7 @@ export const covers = {
   ArTimeInput: "1.1.0",
   ArTimeline: "1.0.0",
   ArTimePicker: "1.0.0",
-  ArTimeRange: "1.0.0",
+  ArTimeRange: "1.1.0",
   ArTitle: "1.0.0",
   ArToast: "1.0.0",
   ArTooltip: "1.1.0",

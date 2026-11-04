@@ -31,3 +31,6 @@
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]{grid-column:3;justify-self:end;position:static;transform:none}
 /* 1.1：祝日の名前（date と holidays。PopRecruitDays の「11/3（火・祝） 文化の日」と同じく、日曜の赤の小さな文字） */
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="holiday"]{color:var(--ar-color-sun);font-size:11.5px;font-weight:600;line-height:1.4;white-space:nowrap}
+
+/* Employee titles may wrap; arrows retain their own column. */
+[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{height:auto;min-height:36px;font-size:18px;line-height:1.5}

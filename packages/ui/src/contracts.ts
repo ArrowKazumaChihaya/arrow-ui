@@ -68,7 +68,7 @@ export const contracts = {
   ArTextInput: "1.1.0",
   ArTimeInput: "1.1.0",
   ArTimePicker: "1.0.0",
-  ArTimeRange: "1.0.0",
+  ArTimeRange: "1.1.0",
   ArTransfer: "1.0.0",
   ArTreeSelect: "1.1.0",
   ArUpload: "1.2.0",

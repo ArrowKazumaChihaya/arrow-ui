@@ -1,6 +1,6 @@
 /* ArTextInput の構造（並び・押せる部位の形だけ） */
 [data-ar="text-input"][data-block]{display:flex;width:100%}
-[data-ar="text-input"]{cursor:text}
+[data-ar="text-input"]{cursor:text;max-width:100%}
 [data-ar="text-input"][data-state~="disabled"]{cursor:not-allowed}
 [data-ar="text-input"]>[data-part="input"]:disabled{cursor:not-allowed}
 [data-ar="text-input"]>[data-part="input"]::-ms-reveal{display:none}

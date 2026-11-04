@@ -12,6 +12,7 @@ import type { ArTimeRangeProps, ArTimeRangeValue } from "./ArTimeRange.contract"
 
 const props = withDefaults(defineProps<ArTimeRangeProps>(), {
   overnight: false,
+  startOvernight: false,
   step: 5,
   size: "md",
   invalid: false,
@@ -20,14 +21,22 @@ const props = withDefaults(defineProps<ArTimeRangeProps>(), {
   label: undefined,
   labels: () => ({ start: "開始", end: "終了", separator: "〜", reversed: "終了は開始より後の時刻にしてください" }),
 });
-const emit = defineEmits<{ "update:modelValue": [value: ArTimeRangeValue] }>();
+const emit = defineEmits<{
+  "update:modelValue": [value: ArTimeRangeValue];
+  "update:start": [value: string | null];
+  "update:end": [value: string | null];
+}>();
 
 const reversed = computed(() => {
   const s = toMinutes(props.modelValue.start);
   const e = toMinutes(props.modelValue.end);
   return props.validate && s !== null && e !== null && e <= s;
 });
-const set = (key: "start" | "end", v: ArTimeValue) => emit("update:modelValue", { ...props.modelValue, [key]: v.time });
+function set(key: "start" | "end", v: ArTimeValue) {
+  emit("update:modelValue", { ...props.modelValue, [key]: v.time });
+  if (key === "start") emit("update:start", v.time);
+  else emit("update:end", v.time);
+}
 </script>
 
 <template>
@@ -45,6 +54,7 @@ const set = (key: "start" | "end", v: ArTimeValue) => emit("update:modelValue", 
         :model-value="{ time: modelValue.start, day: 'same' }"
         :size="size"
         :step="step"
+        :overnight="startOvernight"
         :invalid="invalid"
         :disabled="disabled"
         :label="`${label ?? ''}${labels.start}`"

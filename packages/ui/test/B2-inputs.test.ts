@@ -74,6 +74,22 @@ describe("ArTimeInput の追加・ArTimeRange", () => {
     expect(w.get('[data-part="note"]').text()).toBe("打刻と同じ");
     expect(w.attributes("data-state")).toContain("note");
   });
+  it("範囲：翌日開始・未入力と、変更した側だけの通知を保持する", async () => {
+    const w = mount(ArTimeRange, {
+      props: { modelValue: { start: "25:00", end: "29:00" }, overnight: true, startOvernight: true },
+    });
+    const start = w.get('[data-part="start"] input');
+    await start.setValue("26:30");
+    await start.trigger("blur");
+    expect(w.emitted("update:start")?.at(-1)).toEqual(["26:30"]);
+    expect(w.emitted("update:end")).toBeUndefined();
+    expect(w.emitted("update:modelValue")?.at(-1)).toEqual([{ start: "26:30", end: "29:00" }]);
+    const end = w.get('[data-part="end"] input');
+    await end.setValue("");
+    await end.trigger("blur");
+    expect(w.emitted("update:end")?.at(-1)).toEqual([null]);
+    expect(w.emitted("update:start")).toHaveLength(1);
+  });
   it("範囲：終わりが始まり以前なら赤くして直し方を出す", () => {
     const w = mount(ArTimeRange, { props: { modelValue: { start: "09:00", end: "08:30" } } });
     expect(w.attributes("data-state")).toContain("invalid");

@@ -5,6 +5,9 @@ export function createProductTokens(design: ArDesign): DesignTokens {
 const { tokens: library, palettes } = design;
 return {
   ...classicTokens,
+  "page-padding": "26px 32px 80px",
+  "page-padding-tablet": "20px 24px 86px",
+  "page-padding-mobile": "16px 12px 86px",
   "color-primary": palettes.blue.accent,
   "color-link": palettes.blue["accent-ink"],
   "color-danger": library["color.danger"],

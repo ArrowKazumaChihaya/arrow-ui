@@ -34,3 +34,6 @@
 [data-ar-design="classic"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{height:36px;padding:0;border:0;background:none;color:#fff;font-size:18px;line-height:36px}
 /* 1.1：祝日は今の DateChanger と同じく曜日の文字を赤にするだけ（名前は出さない。読み上げには入る） */
 [data-ar-design="classic"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="holiday"]{display:none}
+
+/* Employee titles may wrap; arrows retain their own column. */
+[data-ar-design="classic"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{height:auto;min-height:36px;font-size:18px;line-height:1.5}

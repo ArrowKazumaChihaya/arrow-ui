@@ -207,11 +207,6 @@
 [data-ar-design="remix"] [data-ar="modal"] table tr:last-child > td:not([data-ui-fixed], [data-ui-fixed] *) {
   border-bottom: 0;
 }
-[data-ar-design="remix"] [data-ar="modal"] .control_wrap:not([data-ui-fixed], [data-ui-fixed] *) {
-  border: 1px solid var(--ar-color-border, #e6ebf0);
-  border-radius: 12px;
-  background: var(--ar-color-surface-alt, #f8fafc);
-}
 [data-ar-design="remix"] [data-ar="modal"] img[src$="apply.png"]:not([data-ui-fixed], [data-ui-fixed] *) {
   width: 28px;
   height: auto;
@@ -318,3 +313,8 @@
 [data-ar-design="remix"] .menu_wrap[data-v-uid32255837481]:not([data-ui-fixed], [data-ui-fixed] *) {margin:12px auto;padding:12px;border-radius:14px}
 [data-ar-design="remix"] .app-grid[data-v-uid32255837481]:not([data-ui-fixed], [data-ui-fixed] *) {grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 }
+
+/* A card or dialog is the surface. Structural groups inside it do not draw another frame. */
+[data-ar-design="remix"] :is([data-ar="card"],[data-ar="modal"],[data-ui-part="section"],[data-ui-part="panel"]) :is([data-ui-part="section"],[data-ui-part="panel"]):not([data-ui-fixed], [data-ui-fixed] *) {border:0;border-radius:0;background:transparent}
+/* A viewport provides scrolling; tables and cards own their visible boundaries. */
+[data-ar-design="remix"] [data-ui-part="tableViewport"]:not([data-ui-fixed], [data-ui-fixed] *) {border:0}
