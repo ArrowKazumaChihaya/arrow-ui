@@ -1,4 +1,4 @@
-/* @covers ArShiftGrid 1.0.0 */
+/* @covers ArShiftGrid 1.1.0 */
 /* ArShiftGrid：今の ARROW のシフトのテーブルタブ（src/View/Manager/Shift/List/Table の Weekly・Monthly・ShiftPattern）。
    ハーネスで描いて実測（refs/qa/feedback/ArShiftGrid-classic-*.png）：
    日付の行 48px（枠なし・13px、日/祝は red・土は blue、週は「18 (日)」、月は「01」と「木」の2行、今日は #e2f3ff の地・上の角丸6・下の 3px のテーマ色の線）、非公開の目の印 12px、

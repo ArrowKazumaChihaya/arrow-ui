@@ -146,6 +146,35 @@ describe("ArShiftGrid", () => {
     expect(cell(w, 1, 2).findAll('[data-part="avail-bar"]')).toHaveLength(1);
   });
 
+  it("列の幅の既定は枠に合わせる（31日がカードの幅 1174px に収まる）、−／＋ のあと null で戻る、下限より狭いときだけ下限", async () => {
+    let vw = 1174;
+    Object.defineProperty(HTMLElement.prototype, "clientWidth", { configurable: true, get(this: HTMLElement) { return this.dataset?.part === "viewport" ? vw : 0; } });
+    try {
+      const month = Array.from({ length: 31 }, (_, i) => ({ date: `2026-10-${String(i + 1).padStart(2, "0")}` }));
+      const w = mount(ArShiftGrid, { props: { ...base, days: month, controls: true } });
+      await nextTick();
+      expect(w.get('[data-part="zoom-value"]').text()).toBe("32px");
+      await w.get('[data-part="zoom-in"]').trigger("click");
+      expect(w.emitted("update:columnWidth")!.at(-1)).toEqual([40]);
+      await w.setProps({ columnWidth: 40 });
+      expect(w.get('[data-part="zoom-value"]').text()).toBe("40px");
+      await w.setProps({ columnWidth: null });
+      expect(w.get('[data-part="zoom-value"]').text()).toBe("32px");
+      (w.vm as unknown as { zoomOut: () => void; fitWidth: () => void }).zoomOut();
+      (w.vm as unknown as { fitWidth: () => void }).fitWidth();
+      expect(w.emitted("update:columnWidth")!.at(-1)).toEqual([null]);
+      vw = 800;
+      const n = mount(ArShiftGrid, { props: { ...base, days: month, controls: true } });
+      await nextTick();
+      expect(n.get('[data-part="zoom-value"]').text()).toBe("28px");
+      const c = mount(ArShiftGrid, { props: { ...base, days: month.slice(17, 24), mode: "chart", controls: true } });
+      await nextTick();
+      expect(c.get('[data-part="zoom-value"]').text()).toBe("90px");
+    } finally {
+      delete (HTMLElement.prototype as unknown as { clientWidth?: number }).clientWidth;
+    }
+  });
+
   it("チャート：帯の取っ手を右へドラッグすると chart-change（15分きざみ）", async () => {
     const w = mount(ArShiftGrid, { props: { ...base, mode: "chart" }, attachTo: document.body });
     const track = cell(w, 0, 0).get('[data-part="bar-track"]').element as HTMLElement;

@@ -1,4 +1,4 @@
-/* @covers ArShiftGrid 1.0.0 */
+/* @covers ArShiftGrid 1.1.0 */
 /* ArShiftGrid：シフトキャンバスのテーブルタブ（RxTable・RxBar・RxTableOpts・RxSpTable）。
    表 .v-tw（角丸14・ln の内側の線・白）、見出し .v-h1（42px・acc-50・12px 700、曜日 10px 600、今日は 22px の acc の丸と下の 2px の線、非公開は薄く）、
    .v-h2（30px・鍵／目の印 12px #8592A0、チャートは 6 12 18 24 の 9.5px の目盛り）、.v-h3 イベント（10px 700 の色の点と名前）、

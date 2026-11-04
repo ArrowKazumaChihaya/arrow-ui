@@ -8,9 +8,14 @@
 import { useId } from "../provider/context";
 import type { ArRadioValue, ArRadioGroupProps } from "./ArRadioGroup.contract";
 
-withDefaults(defineProps<ArRadioGroupProps>(), { type: "radio", direction: "horizontal", block: false, disabled: false });
+const props = withDefaults(defineProps<ArRadioGroupProps>(), { type: "radio", direction: "horizontal", block: false, disabled: false });
 const emit = defineEmits<{ "update:modelValue": [value: ArRadioValue] }>();
 const name = useId("ar-radio");
+/** 無効のまとまり・無効の項目は、change が届いても値を出さない（選んでいる項目をもう一度選んでも出さない）。 */
+function pick(o: { value: ArRadioValue; disabled?: boolean }) {
+  if (props.disabled || o.disabled || o.value === props.modelValue) return;
+  emit("update:modelValue", o.value);
+}
 </script>
 
 <template>
@@ -37,7 +42,7 @@ const name = useId("ar-radio");
           :value="String(o.value)"
           :checked="o.value === modelValue"
           :disabled="disabled || o.disabled"
-          @change="emit('update:modelValue', o.value)"
+          @change="pick(o)"
         />
         <span v-if="type === 'radio'" data-part="mark" aria-hidden="true" />
       </span>

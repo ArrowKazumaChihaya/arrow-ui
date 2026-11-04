@@ -1,4 +1,4 @@
-/* @covers ArTable 1.2.0 */
+/* @covers ArTable 1.4.0 */
 /* ArTable（今の ARROW の表 Component/Table：見出しは白地・テーマ色の1px枠・中央・13px、行は上に #E8E8E8 の線だけ、行高32。並べ替えは ▲▼（#BFBFBF・向きだけ #1677FF）。チェックは灰枠 #808080） */
 [data-ar-design="classic"] [data-ar="table"]{color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
 /* 今の表は table-layout:fixed・幅100%（幅を決めない列は同じ幅に分ける。行の操作の列も1列として数える）。操作のボタンは左に寄せる */
@@ -100,3 +100,11 @@
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="cell-editor"]{line-height:normal}
 /* 1.2：セルの頭の「〜」（今の ARROW の募集の表の UiText「〜」：本文と同じ色・13px、間4） */
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="lead"]{margin-right:4px}
+/* 1.3：時間の組（今の .shift_pattern_time_col.edit：Time の箱・「〜」・Time の箱を間4で）。組を消す × は今の cancel の絵の色（黒）、押せないつまみは薄く */
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="cell-editor"][data-editor="time-range"]{gap:4px}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]{width:22px;height:22px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]:hover{color:#FF4D4F}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="drag-handle"]:disabled{opacity:.3}
+[data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"][data-kind="edit"]{gap:4px}
+/* 1.4：行ぜんぶを1つのセル（今の UiTableCell(colspan) の案内の行：ふつうのセルと同じ字で、折り返す） */
+[data-ar-design="classic"] [data-ar="table"] td[data-full]{white-space:normal;text-overflow:clip}

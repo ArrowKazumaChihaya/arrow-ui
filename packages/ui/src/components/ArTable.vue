@@ -1,12 +1,14 @@
 <script setup lang="ts" generic="Row extends object">
 /**
- * ArTable 1.2 — 表。
+ * ArTable 1.4 — 表。
  * box（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。
  * 見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。
  * 並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。
  * ページ送りは #below に ArPagination を置く。
  * sortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。
  * 1.1：右に止める列・2段の見出し（押すとまとまりが開く）・行をまたぐセル・表の中の小さな金額の入力・3段の金額・数字の下の差の行。
+ * 1.4：横につなぐセル（列の colSpan）・行ぜんぶを1つのセル（fullRow と #full-row）。
+ * 1.3：入力の行（editing・commit・cancel）・時間の組の段（editor="time-range"）。
  * 1.2：スロットの引数 Default（既定の表示）・段に分ける列（lines。段の高さを列をまたいで揃える）・入力の種類（文字・時刻・選ぶ）。
  */
 import { computed, h, markRaw, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch, type FunctionalComponent } from "vue";
@@ -23,8 +25,11 @@ import type {
   ArTableLabels,
   ArTableProps,
   ArTableReorder,
+  ArTableRowEdit,
   ArTableSort,
 } from "./ArTable.contract";
+import { editKeyOf, isFilledRange, toTimeRanges } from "../internal/table";
+import ArButton from "./ArButton.vue";
 
 const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   variant: "box",
@@ -46,6 +51,8 @@ const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   openGroups: () => [],
   edits: () => ({}),
   invalidCells: () => [],
+  editing: () => [],
+  fullRow: undefined,
 });
 const emit = defineEmits<{
   "update:selected": [keys: ArRowKey[]];
@@ -56,6 +63,8 @@ const emit = defineEmits<{
   reorder: [move: ArTableReorder];
   "update:openGroups": [keys: string[]];
   "update:edits": [edits: Record<string, ArTableEditValue>];
+  commit: [edit: ArTableRowEdit<Row>];
+  cancel: [edit: ArTableRowEdit<Row>];
 }>();
 const slots = useSlots();
 
@@ -109,23 +118,73 @@ function toggleGroups(keys: string | readonly string[]) {
 const togglesOpen = (c: ArTableColumn<Row>) => (typeof c.toggles === "string" ? [c.toggles] : [...(c.toggles ?? [])]).some((k) => openSet.value.has(k));
 
 /* ---- 表の中の入力・段に分けた列・既定の表示 ---- */
-const canEdit = (row: Row, c: ArTableColumn<Row>) => (typeof c.edit === "function" ? c.edit(row) : !!c.edit);
+/* 入力の行（editing）：その行だけ editor のある列を入力にする */
+const editingSet = computed(() => new Set(props.editing));
+const anyEditing = computed(() => props.editing.length > 0);
+const isEditing = (row: Row) => editingSet.value.has(keyOf(row));
+/** 入力にするか：edit を渡した列はそれに従い、省いた列は editing の行で editor があるとき。 */
+const canEdit = (row: Row, c: ArTableColumn<Row>) =>
+  c.edit === undefined ? isEditing(row) && !!c.editor : typeof c.edit === "function" ? c.edit(row) : !!c.edit;
 const linesOf = (v: unknown): unknown[] => (Array.isArray(v) ? v : [v]);
+const isRangeCol = (c: ArTableColumn<Row>) => c.editor === "time-range";
+const isLineCol = (c: ArTableColumn<Row>) => !!c.lines || isRangeCol(c);
 /** 段に分ける列があるか（あれば1つの行を段の数の tr に分け、段のない列は段をまたぐ）。 */
-const lineCols = computed(() => cols.value.filter((c) => c.lines));
+const lineCols = computed(() => cols.value.filter(isLineCol));
 const anyLines = computed(() => lineCols.value.length > 0);
+/** 時間の組の列の今の組（入力中は edits の値。入力の行で最後が埋まっていれば空の組を1つ足す）。 */
+function rangesOf(row: Row, c: ArTableColumn<Row>) {
+  const k = editKeyOf(keyOf(row), c.key);
+  const cur = k in props.edits ? toTimeRanges(props.edits[k]) : toTimeRanges(valueOf(row, c));
+  if (canEdit(row, c) && c.appendEmpty !== false && (cur.length === 0 || isFilledRange(cur[cur.length - 1]!)))
+    cur.push({ start: { time: null, day: "same" }, end: { time: null, day: "same" } });
+  return cur;
+}
+/** 段に分けた列の段の値の並び。 */
+const linesFor = (row: Row, c: ArTableColumn<Row>): unknown[] => (isRangeCol(c) ? rangesOf(row, c) : linesOf(valueOf(row, c)));
 /** 行の段の数＝段に分ける列の配列のいちばん長いもの。 */
 const lineCount = (row: Row) => {
   let n = 1;
   for (const c of lineCols.value) {
-    const v = valueOf(row, c);
+    const v = isRangeCol(c) ? rangesOf(row, c) : valueOf(row, c);
     if (Array.isArray(v)) n = Math.max(n, v.length);
   }
   return n;
 };
 /** セルの値（段に分けた列ではその段の値）。 */
-const cellValue = (row: Row, c: ArTableColumn<Row>, line?: number) => (line === undefined ? valueOf(row, c) : linesOf(valueOf(row, c))[line]);
-const lineOf = (c: ArTableColumn<Row>, j: number) => (c.lines ? j : undefined);
+const cellValue = (row: Row, c: ArTableColumn<Row>, line?: number) => (line === undefined ? valueOf(row, c) : linesFor(row, c)[line]);
+const lineOf = (c: ArTableColumn<Row>, j: number) => (isLineCol(c) ? j : undefined);
+/** 入力の行の今の値（列の key → 値）。 */
+function rowValues(row: Row): Record<string, ArTableEditValue | readonly ArTableEditValue[]> {
+  const out: Record<string, ArTableEditValue | readonly ArTableEditValue[]> = {};
+  for (const c of props.columns) {
+    if (!canEdit(row, c)) continue;
+    const k = editKeyOf(keyOf(row), c.key);
+    if (isRangeCol(c)) out[c.key] = rangesOf(row, c).filter(isFilledRange);
+    else if (c.lines) out[c.key] = linesOf(valueOf(row, c)).map((v, j) => (`${k}:${j}` in props.edits ? props.edits[`${k}:${j}`]! : (v as ArTableEditValue)));
+    else out[c.key] = k in props.edits ? props.edits[k]! : (valueOf(row, c) as ArTableEditValue);
+  }
+  return out;
+}
+function commitRow(row: Row) {
+  emit("commit", { key: keyOf(row), row, values: rowValues(row) });
+}
+function cancelRow(row: Row) {
+  const prefix = `${String(keyOf(row))}:`;
+  const values = rowValues(row);
+  const rest = Object.fromEntries(Object.entries(props.edits).filter(([k]) => !k.startsWith(prefix)));
+  if (Object.keys(rest).length !== Object.keys(props.edits).length) emit("update:edits", rest);
+  emit("cancel", { key: keyOf(row), row, values });
+}
+function onRowKey(e: KeyboardEvent, row: Row) {
+  if (!isEditing(row) || e.defaultPrevented) return;
+  if (e.key === "Escape") {
+    e.preventDefault();
+    cancelRow(row);
+  } else if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+    commitRow(row);
+  }
+}
 function onEdit(k: string, v: ArTableEditValue) {
   emit("update:edits", { ...props.edits, [k]: v });
 }
@@ -140,6 +199,9 @@ const bodyProps = (row: Row, c: ArTableColumn<Row>, i: number, line?: number) =>
   edits: props.edits,
   invalidCells: props.invalidCells,
   blank: props.blank,
+  editing: isEditing(row),
+  lineValues: isRangeCol(c) ? linesFor(row, c) : undefined,
+  labels: L.value,
   onEdit,
 });
 /**
@@ -167,7 +229,7 @@ function defaultOf(row: Row, c: ArTableColumn<Row>, line?: number): FunctionalCo
 const spanOf = (row: Row, c: ArTableColumn<Row>, i: number) => (c.rowSpan ? c.rowSpan(row, i) : 1);
 /** td の rowspan：段のない列は行の段の数ぶん（rowSpan でまたぐときは、またぐ行の段の数の合計）。 */
 const rowspanOf = (row: Row, c: ArTableColumn<Row>, i: number) => {
-  if (c.lines) return 1;
+  if (isLineCol(c)) return 1;
   const base = spanOf(row, c, i);
   if (!anyLines.value) return base;
   let n = 0;
@@ -191,6 +253,9 @@ const L = computed<ArTableLabels>(() => ({
   actions: "操作",
   dragHandle: "並べ替え（ドラッグ、または Alt+↑↓）",
   moved: "{n} 番目に移しました",
+  commit: "確定",
+  cancel: "取り消す",
+  removeRange: "この時間を消す",
   ...props.labels,
 }));
 
@@ -215,7 +280,7 @@ const footCells = computed(() => {
   }
   return out;
 });
-const hasActions = computed(() => !!slots.actions);
+const hasActions = computed(() => !!slots.actions || anyEditing.value);
 
 /* ---- 左に固定する列：見出しのセルの位置を測って left にする ---- */
 const tableEl = ref<HTMLTableElement | null>(null);
@@ -296,9 +361,71 @@ const stickAttr = (c: ArTableColumn<Row>) => (colSticky(c) ? "start" : colEnd(c)
 const edgeAttr = (c: ArTableColumn<Row>) => (c.key === lastSticky.value ? "start" : c.key === firstEnd.value ? "end" : undefined);
 const stickStyle = (c: ArTableColumn<Row>) => (colSticky(c) ? stick(c.key) : colEnd(c) ? { right: `${rights.value[c.key] ?? 0}px` } : undefined);
 
+/* ---- 横につなぐ（列の colSpan）・行ぜんぶを1つのセルに（fullRow） ---- */
+interface ColLayout {
+  span: Map<string, number>;
+  hidden: Set<string>;
+}
+/** 行ごとに、横につなぐ数（列の key → n）と、またがれて出さない列。数は残りの列の数までに切る。 */
+const layouts = computed(() => {
+  const out = new Map<Row, ColLayout>();
+  const list = cols.value;
+  if (!list.some((c) => c.colSpan)) return out;
+  props.rows.forEach((row, i) => {
+    const span = new Map<string, number>();
+    const hidden = new Set<string>();
+    for (let k = 0; k < list.length; k++) {
+      const c = list[k]!;
+      if (hidden.has(c.key) || !c.colSpan) continue;
+      const n = Math.max(1, Math.min(Math.floor(c.colSpan(row, i)) || 1, list.length - k));
+      if (n < 2) continue;
+      span.set(c.key, n);
+      for (let m = 1; m < n; m++) hidden.add(list[k + m]!.key);
+    }
+    if (span.size) out.set(row, { span, hidden });
+  });
+  return out;
+});
+const colSpanOf = (row: Row, c: ArTableColumn<Row>) => layouts.value.get(row)?.span.get(c.key) ?? 1;
+const isCovered = (row: Row, c: ArTableColumn<Row>) => !!layouts.value.get(row)?.hidden.has(c.key);
+/** つないだセルがまたぐ列（自分を含む）。 */
+const spannedCols = (row: Row, c: ArTableColumn<Row>) => {
+  const k = cols.value.indexOf(c);
+  return cols.value.slice(k, k + colSpanOf(row, c));
+};
+/** 止めた列：またぐ列がすべて左（右）に止めた列のときだけ止める。止めた列と止めない列をまたぐセルは止めない（横にスクロールすると一緒に動く）。 */
+const cellStick = (row: Row, c: ArTableColumn<Row>): "start" | "end" | undefined => {
+  if (colSpanOf(row, c) < 2) return stickAttr(c);
+  const list = spannedCols(row, c);
+  if (list.every(colSticky)) return "start";
+  if (list.every(colEnd)) return "end";
+  return undefined;
+};
+const cellStickStyle = (row: Row, c: ArTableColumn<Row>) => {
+  const s = cellStick(row, c);
+  if (s === "start") return stick(c.key);
+  if (s === "end") {
+    const last = spannedCols(row, c).at(-1)!;
+    return { right: `${rights.value[last.key] ?? 0}px` };
+  }
+  return undefined;
+};
+const cellStickEdge = (row: Row, c: ArTableColumn<Row>) => {
+  const s = cellStick(row, c);
+  if (!s) return undefined;
+  const list = spannedCols(row, c);
+  if (s === "start") return list.some((x) => x.key === lastSticky.value) ? "start" : undefined;
+  return c.key === firstEnd.value ? "end" : undefined;
+};
+const cellEdge = (row: Row, c: ArTableColumn<Row>) => {
+  const list = spannedCols(row, c);
+  return c === cols.value[0] ? "first" : list.at(-1) === cols.value[cols.value.length - 1] ? "last" : undefined;
+};
+const isFull = (row: Row) => !!props.fullRow?.(row);
+
 /* ---- 選ぶ・開く・並べ替え ---- */
 const selectedSet = computed(() => new Set(props.selected));
-const allKeys = computed(() => props.rows.map(keyOf));
+const allKeys = computed(() => props.rows.filter((r) => !isFull(r)).map(keyOf));
 const allState = computed(() => {
   const n = allKeys.value.filter((k) => selectedSet.value.has(k)).length;
   return n === 0 ? "none" : n === allKeys.value.length ? "all" : "some";
@@ -367,6 +494,7 @@ function onHandleKey(e: KeyboardEvent, i: number) {
   moveRow(i, i + (e.key === "ArrowUp" ? -1 : 1), true);
 }
 function onRowDragStart(e: DragEvent, row: Row) {
+  if (anyEditing.value) return e.preventDefault();
   if (!props.sortableRows || armed.value !== keyOf(row)) return e.preventDefault();
   dragging.value = keyOf(row);
   e.dataTransfer?.setData("text/plain", String(keyOf(row)));
@@ -568,8 +696,11 @@ const colspan = computed(
             </td>
           </tr>
           <template v-for="(row, i) in rows" :key="keyOf(row)">
+            <tr v-if="isFull(row)" data-part="row" data-full :data-state="rowState(row)" @click="emit('row-click', row, i)">
+              <td data-part="cell" data-full :colspan="colspan"><slot name="full-row" :row="row" :index="i" /></td>
+            </tr>
             <tr
-              v-for="j in anyLines ? lineCount(row) : 1"
+              v-for="j in isFull(row) ? 0 : anyLines ? lineCount(row) : 1"
               :key="j"
               data-part="row"
               :data-state="rowState(row)"
@@ -582,6 +713,7 @@ const colspan = computed(
               @dragover="onRowDragOver($event, row)"
               @drop="onRowDrop"
               @dragend="endDrag"
+              @keydown="onRowKey($event, row)"
               @mouseenter="anyLines && (hoverKey = keyOf(row))"
               @mouseleave="anyLines && hoverKey === keyOf(row) && (hoverKey = null)"
             >
@@ -592,6 +724,7 @@ const colspan = computed(
                     data-part="drag-handle"
                     :data-key="keyOf(row)"
                     :aria-label="L.dragHandle"
+                    :disabled="anyEditing || undefined"
                     @click.stop
                     @keydown="onHandleKey($event, i)"
                     @mousedown="armed = keyOf(row)"
@@ -645,21 +778,22 @@ const colspan = computed(
               </template>
               <template v-for="c in cols" :key="c.key">
                 <td
-                  v-if="(j === 1 || c.lines) && spanOf(row, c, i) > 0"
+                  v-if="(j === 1 || isLineCol(c)) && spanOf(row, c, i) > 0 && !isCovered(row, c)"
                   data-part="cell"
                   :rowspan="rowspanOf(row, c, i) > 1 ? rowspanOf(row, c, i) : undefined"
+                  :colspan="colSpanOf(row, c) > 1 ? colSpanOf(row, c) : undefined"
                   :data-align="alignOf(c)"
                   :data-numeric="c.numeric || undefined"
                   :data-emphasis="c.emphasis"
-                  :data-blank="(!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!c.lines || j === 1)) || undefined"
-                  :data-sticky="stickAttr(c)"
-                  :data-sticky-edge="edgeAttr(c)"
+                  :data-blank="(!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!isLineCol(c) || j === 1)) || undefined"
+                  :data-sticky="cellStick(row, c)"
+                  :data-sticky-edge="cellStickEdge(row, c)"
                   :data-total="c.total || undefined"
                   :data-group-start="groupStart(c) || undefined"
                   :data-editing="canEdit(row, c) || undefined"
-                  :data-line-cell="(anyLines && c.lines) || undefined"
-                  :data-edge="c === cols[0] ? 'first' : c === cols[cols.length - 1] ? 'last' : undefined"
-                  :style="stickStyle(c)"
+                  :data-line-cell="(anyLines && isLineCol(c)) || undefined"
+                  :data-edge="cellEdge(row, c)"
+                  :style="cellStickStyle(row, c)"
                 >
                   <button
                     v-if="sortableRows && !handleColumn && c === cols[0] && j === 1"
@@ -667,6 +801,7 @@ const colspan = computed(
                     data-part="drag-handle"
                     :data-key="keyOf(row)"
                     :aria-label="L.dragHandle"
+                    :disabled="anyEditing || undefined"
                     @click.stop
                     @keydown="onHandleKey($event, i)"
                     @mousedown="armed = keyOf(row)"
@@ -695,7 +830,13 @@ const colspan = computed(
                 :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
                 @click.stop
               >
-                <span data-part="actions"><slot name="actions" :row="row" :index="i" /></span>
+                <span v-if="isEditing(row)" data-part="actions" data-kind="edit">
+                  <slot name="edit-actions" :row="row" :commit="() => commitRow(row)" :cancel="() => cancelRow(row)">
+                    <ArButton tone="muted" size="sm" icon="x" :label="L.cancel" @click="cancelRow(row)" />
+                    <ArButton tone="primary" size="sm" icon="check" :label="L.commit" @click="commitRow(row)" />
+                  </slot>
+                </span>
+                <span v-else data-part="actions"><slot name="actions" :row="row" :index="i" /></span>
               </td>
             </tr>
             <tr v-if="expandable && isOpen(row)" data-part="expanded-row">
