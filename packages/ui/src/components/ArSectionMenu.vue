@@ -9,18 +9,33 @@ const props=withDefaults(defineProps<ArSectionMenuProps>(),{label:'項目',scrol
 const emit=defineEmits<ArSectionMenuEmits>();
 const position=ref<string>();
 const selected=computed(()=>props.scroll ? position.value : props.value);
-const options=computed(()=>{
+function flattenItems(items:readonly ArMenuItem[],prefix='',ancestorDisabled=false):ArSelectOption[]{
  const result:ArSelectOption[]=[];
- const visit=(items:readonly ArMenuItem[],prefix='')=>{for(const item of items){if(item.type==='divider')continue; if(item.children?.length)visit(item.children,`${prefix}${item.label} > `);else result.push({value:item.key,label:prefix+item.label,disabled:item.disabled});}};
- visit(props.items);return result;
-});
+ for(const item of items){
+  if(item.type==='divider')continue;
+  const disabled=ancestorDisabled || !!item.disabled || !!item.locked;
+  if(item.children?.length)result.push(...flattenItems(item.children,`${prefix}${item.label} > `,disabled));
+  else result.push({value:item.key,label:prefix+item.label,disabled,icon:item.locked?'lock':item.icon});
+ }
+ return result;
+}
+const options=computed(()=>flattenItems(props.items));
 function select(key:ArSelectValue | ArSelectValue[] | null){
  if(typeof key!=='string')return;
+ const option=options.value.find(item=>item.value===key);
+ if(!option || option.disabled)return;
  if(props.scroll){document.getElementById(key)?.scrollIntoView({behavior:'smooth',block:'start'});position.value=key;}
  else emit('update:value',key);
 }
 let opened:string[]=[];
-function onOpen(keys:string[]){const key=keys.find(k=>!opened.includes(k));opened=keys; if(key){const item=props.items.find(i=>i.type!=='divider' && i.key===key);if(item && item.type!=='divider')select(item.children?.find(i=>i.type!=='divider')?.key ?? null);}}
+function onOpen(keys:string[]){
+ const key=keys.find(k=>!opened.includes(k));opened=keys;
+ if(!key)return;
+ const item=props.items.find(i=>i.type!=='divider' && i.key===key);
+ if(!item || item.type==='divider' || item.disabled || item.locked)return;
+ const candidate=flattenItems(item.children ?? [item]).find(option=>!option.disabled);
+ select(candidate?.value ?? null);
+}
 function updatePosition(){
  if(!props.scroll)return;
  let nearest:string|undefined;let distance=Infinity;
