@@ -27,3 +27,4 @@
 [data-ar="time-chart"][data-mode="day"]>[data-part="grid"]>[data-part="row"]>[data-part="row-label"]>[data-part="date"]{white-space:normal;overflow-wrap:anywhere;max-width:100%;line-height:1.5;padding-block:6px}
 [data-ar="time-chart"] [data-part="bar"]:focus-visible{outline:2px solid var(--ar-color-text);outline-offset:2px}
 
+[data-ar="time-chart"] [data-part="sub"]{min-width:0;max-width:100%;overflow-wrap:anywhere;line-height:1.5}
