@@ -26,3 +26,9 @@
 [data-ar-design="classic"] [data-ar="card"][data-flush]>[data-part="body"]{padding:0}
 [data-ar-design="classic"] [data-ar="card"][data-flush]:not([data-variant="band"]){padding:0}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="body"]:empty{display:none}
+
+/* Retain classic's compact band without clipping long page titles or actions. */
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]{height:auto;min-height:36px;flex-wrap:wrap}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]){height:auto;min-height:38px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{flex-wrap:wrap}

@@ -44,3 +44,16 @@
 [data-ar-design="remix"] [data-ar="card"][data-variant="plain"][data-size="sm"]{padding:8px 10px}
 
 [data-ar-design="remix"] [data-ar="card"][data-flush]>[data-part="body"]{--ar-card-pad-x:0px;padding:0}
+
+/* Page titles can contain long company/employee names. Keep the complete title and
+   actions in the same flow instead of letting absolute actions cover the title. */
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]{height:auto;min-height:54px;padding-block:8px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]{height:auto;min-height:46px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]){display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:relative;right:auto;top:auto;transform:none;flex-wrap:wrap}
+@media(max-width:640px){
+  [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]{min-height:50px;padding-inline:12px}
+  [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]>[data-part="title"]{font-size:17px}
+  [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]){display:flex;flex-wrap:wrap;gap:8px}
+}
