@@ -1413,9 +1413,6 @@ table
   opacity: 0;
 }
 /* Document scrolling belongs to the host; only an open dialog locks it. */
-*:where([data-ui-fixed], [data-ui-fixed] *) {
-  outline: none !important;
-}
 *
   :where([data-ui-fixed], [data-ui-fixed] *)::-webkit-scrollbar {
   width: 8px !important;

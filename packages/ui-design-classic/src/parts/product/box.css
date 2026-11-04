@@ -115,9 +115,6 @@
   opacity: 0;
 }
 /* Document scrolling belongs to the host; only an open dialog locks it. */
-*:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  outline: none !important;
-}
 *
   :where([data-ar-design="classic"], [data-ar-design="classic"] *)::-webkit-scrollbar {
   width: 8px !important;
