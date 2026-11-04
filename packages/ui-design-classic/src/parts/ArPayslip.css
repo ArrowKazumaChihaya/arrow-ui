@@ -53,3 +53,5 @@
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>:is(dt,dd){white-space:normal;overflow-wrap:anywhere}
 @media(max-width:767px){[data-ar-design="classic"] [data-ar="payslip"]{padding:16px 12px}}
+
+[data-ar-design="classic"] [data-ar="payslip"] [data-part="row"]{align-items:stretch}
