@@ -1,4 +1,4 @@
-<!-- 横の手順 | ページの手順。今はテーマ色、済みは淡い面、エラーは赤（items の status か、今の手順なら status="error"）。 -->
+<!-- 横の手順 | ページの手順。今はテーマ色、済みは淡い面、エラーは赤（items の status か、今の手順なら status="error"）。幅が足りないとき（手順1つあたり 150px 未満）は、名前と数字が重ならないよう縦の並びに切り替わる（responsive。false で切り替えない）。 -->
 <script setup lang="ts">
 import { ArSteps } from "@arrow/ui";
 </script>

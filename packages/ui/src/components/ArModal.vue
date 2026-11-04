@@ -124,9 +124,7 @@ const { onKeydown, palette } = useDialog({
             <h2 :id="`${id}-title`" data-part="title"><slot name="title">{{ title }}</slot></h2>
             <p v-if="description" :id="`${id}-desc`" data-part="description">{{ description }}</p>
           </div>
-          <button v-if="closable && !confirm" type="button" data-part="close" :aria-label="labels.close" @click="close">
-            <ArIcon line name="x" />
-          </button>
+          <ArButton v-if="closable && !confirm" data-part="close" tone="muted" icon="x" :label="labels.close" @click="close" />
         </header>
         <div v-if="steps?.length || $slots.toolbar" data-part="nav" :data-toolbar="$slots.toolbar ? '' : undefined">
           <div v-if="$slots.toolbar" data-part="toolbar"><slot name="toolbar" /></div>

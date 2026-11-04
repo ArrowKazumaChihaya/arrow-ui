@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArDateRange 1.0 — 期間の入力。2つの ArDateInput を「〜」でつなぎ、右に日数（30日間）を出す。
+ * ArDateRange 1.1 — 期間の入力。2つの ArDateInput を「〜」でつなぎ、右に日数（30日間）を出す。
  * 終わりの日が始まりの日より前なら両方を赤くし、下に直し方を言葉で出す。1か月・半月などのボタンとは親がつなぐ。
  */
 import { computed } from "vue";
@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<ArDateRangeProps>(), {
   showDays: true,
   invalid: false,
   validate: true,
+  size: "md",
   disabled: false,
   label: undefined,
   labels: () => ({
@@ -39,6 +40,7 @@ const set = (key: "start" | "end", v: string | null) => emit("update:modelValue"
   <div
     data-ar="date-range"
     data-part="root"
+    :data-size="size"
     role="group"
     :aria-label="label"
     :data-state="[bad && 'invalid', disabled && 'disabled'].filter(Boolean).join(' ') || undefined"
@@ -51,6 +53,7 @@ const set = (key: "start" | "end", v: string | null) => emit("update:modelValue"
         :max-year="maxYear"
         :invalid="bad"
         :disabled="disabled"
+        :size="size"
         :label="`${label ?? ''}${labels.start}`"
         @update:model-value="(v) => set('start', v)"
       />
@@ -62,6 +65,7 @@ const set = (key: "start" | "end", v: string | null) => emit("update:modelValue"
         :max-year="maxYear"
         :invalid="bad"
         :disabled="disabled"
+        :size="size"
         :label="`${label ?? ''}${labels.end}`"
         @update:model-value="(v) => set('end', v)"
       />

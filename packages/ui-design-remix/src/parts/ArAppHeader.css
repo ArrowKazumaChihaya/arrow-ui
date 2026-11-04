@@ -11,10 +11,11 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="todo"]{background:#FFF0EE;color:#B4322C}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]:hover{filter:brightness(.97)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>:is([data-part="pill"],[data-part="account"]):focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-part="count"]{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#DC2525;color:#fff;font-size:11px;font-weight:700;line-height:normal}
+/* ピルの件数は ArBadge（count の赤 #DC2525・18・角丸9・縁なし） */
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]{height:36px;gap:8px;padding:0 6px;border:0;border-radius:10px;background:none;color:var(--ar-color-text-secondary);font-size:13px;font-weight:600}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]:hover,[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"][data-state~="open"]{background:#F3F6F9}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="avatar"]{width:28px;height:28px;border-radius:50%;background:#E8EEF4;color:#3B4A5A;font-size:12px;font-weight:700}
+/* 管理ページの頭文字の丸は ArAvatar（size="sm"：28・12px 700、tone="neutral"）。ヘッダーの白い地の上なので灰を一段濃く（Header .v-av） */
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="avatar"]{background:#E8EEF4;color:#3B4A5A}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="account-icon"]{display:none}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]{gap:4px;padding:2px 24px 8px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]{height:36px;gap:7px;padding:0 12px;border-radius:10px;background:none;color:var(--ar-color-text-secondary);font-size:13px;font-weight:700;line-height:1.5;font-feature-settings:"palt" 1;transition:background .12s}
@@ -22,12 +23,9 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:hover{background:#F2F5F8;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
-/* 管理ページのメニュー（Dropdown .r-ddm：角丸14・行34） */
-[data-ar-design="remix"] [data-ar="app-account-menu"]{min-width:200px;padding:6px;background:#fff;border-radius:14px;box-shadow:0 18px 44px rgba(31,41,51,.2),0 0 0 1px rgba(31,41,51,.07)}
-[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]{gap:8px;height:34px;padding:0 10px;border-radius:7px;background:none;color:var(--ar-color-text);font-size:13.5px;outline:0}
-[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]:is(:hover,:focus-visible){background:var(--ar-color-hover)}
-[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]>[data-part="menu-arrow"]{margin-left:auto;color:var(--ar-color-text-faint)}
+/* 管理ページのメニューは dropdown-menu と同じ形（ArDropdown.css の共通のルール）。幅だけここで決める */
+[data-ar-design="remix"] [data-ar="app-account-menu"]{min-width:200px}
+[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]>[data-part="menu-arrow"][data-ar="icon"]{margin-left:auto;color:var(--ar-color-text-faint)}
 /* 画面の足（.v-fo：左に文字のリンク、右に白いボタン。下に .v-cp の著作権：11px・左寄せ・下に26px） */
 [data-ar-design="remix"] [data-ar="app-footer"]{padding:30px 32px 0;color:var(--ar-color-text);font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]{align-items:center;gap:6px;padding-bottom:10px}
@@ -46,7 +44,8 @@
 [data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]{width:44px;height:44px;padding:0;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]:hover{background:#F1F4F7;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]>[data-part="count"]{top:6px;right:5px;min-width:17px;height:17px;padding:0 4px;border:2px solid #fff;border-radius:9px;background:#DC2525;color:#fff;font-size:10.5px;font-weight:700;line-height:1}
+/* ベルの件数は ArBadge（18・白い2pxの縁）。中心は前と同じ所（17の丸のとき top6・right5） */
+[data-ar-design="remix"] [data-ar="mobile-header"]>[data-part="notice"]>[data-part="count"]{top:5px;right:4px}
 /* 下のメニュー（.v-bn：高さ66・アイコン22・9.5px の太字・今いるものは淡いテーマ色） */
 [data-ar-design="remix"] [data-ar="bottom-nav"]{height:66px;padding:6px 4px 8px;background:rgba(255,255,255,.96);box-shadow:0 -1px 0 var(--ar-color-border),0 -8px 24px rgba(31,41,51,.06);font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="bottom-nav"][data-fixed]{height:calc(66px + env(safe-area-inset-bottom,0px));padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
@@ -55,19 +54,20 @@
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
 /* ピルの一覧・領域のタブ・畳む・子のメニュー（remix）：白い面と淡い線、テーマ色の文字 */
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]{min-width:260px;margin-top:6px;padding:6px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]{max-height:min(360px,calc(100vh - 140px))}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]{gap:2px;border-radius:8px}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover{background:var(--ar-accent-faint)}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-item"]{padding:8px 10px;border-radius:8px;color:var(--ar-color-text);font-size:13px;line-height:1.45}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover>[data-part="pill-item"]{color:var(--ar-accent-ink)}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]{width:28px;height:28px;margin:3px 2px 0 0;border-radius:7px;color:var(--ar-color-text-muted);font-size:17px;line-height:1}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]:hover{background:#FDECEC;color:#C8312B}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-empty"]{padding:14px 10px;color:var(--ar-color-text-muted);font-size:12.5px;text-align:center}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]{margin-top:4px;padding:8px 10px 4px;border-top:1px solid var(--ar-color-border-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;text-align:right}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]:hover{text-decoration:underline}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill-list"]>[data-part="pill-restore"]:focus-visible{outline:0;box-shadow:0 0 0 2px var(--ar-accent-ring);border-radius:6px}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]{min-width:260px;margin-top:6px;padding:6px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]{max-height:min(360px,calc(100vh - 140px))}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]{gap:2px;border-radius:8px}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover{background:var(--ar-accent-faint)}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-item"]{padding:8px 10px;border-radius:8px;color:var(--ar-color-text);font-size:13px;line-height:1.45}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover>[data-part="pill-item"]{color:var(--ar-accent-ink)}
+/* 行の削除 × は ArButton（tone="muted"・アイコンだけ・sm＝30）。ホバーは削除の淡い赤 */
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]{margin:2px 2px 0 0}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-delete"]:hover:not(:disabled){background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
+/* 一覧が空のときは ArEmpty（sm） */
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-restore"]{margin-top:4px;padding:8px 10px 4px;border-top:1px solid var(--ar-color-border-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;text-align:right}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-restore"]:hover{text-decoration:underline}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-restore"]:focus-visible{outline:0;box-shadow:0 0 0 2px var(--ar-accent-ring);border-radius:6px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"]>[data-part="domain-note"]{color:var(--ar-color-text-muted);font-size:10.5px;font-weight:500}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}

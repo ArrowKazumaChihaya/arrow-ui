@@ -1,4 +1,4 @@
-<!-- ラジオ | 18px の丸。選ぶと枠5のテーマ色。7つ以上なら ArSelect。←→↑↓で選べる。 -->
+<!-- ラジオ | 形を省くとカード（variant="card"・年末調整の なし／あり と同じ形。classic は今の ARROW と同じ丸と文字）。丸は 18px、選ぶと枠5のテーマ色。7つ以上なら ArSelect。←→↑↓で選べる。 -->
 <script setup lang="ts">
 import { ArRadioGroup, ArStack } from "@arrow/ui";
 import { ref } from "vue";

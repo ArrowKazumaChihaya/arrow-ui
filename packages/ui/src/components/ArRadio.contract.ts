@@ -1,5 +1,5 @@
-/** ArRadio 1.0 の契約。単独で置くラジオ（表の行の頭の選択・選択肢の行の中に表や入力を置く画面）。 */
-import type { ArRadioValue } from "./ArRadioGroup.contract";
+/** ArRadio 1.1 の契約。単独で置くラジオ（表の行の頭の選択・選択肢の行の中に表や入力を置く画面）。ArRadioGroup の各選択肢もこれで描く。 */
+import type { ArChoiceSize, ArChoiceVariant, ArRadioValue } from "./ArRadioGroup.contract";
 
 export interface ArRadioProps {
   /**
@@ -18,6 +18,14 @@ export interface ArRadioProps {
   label?: string;
   /** input の id（ArField の label と結ぶ）。 */
   id?: string;
+  /**
+   * 1.1：形。plain（既定）＝丸と文字だけ。card＝選ぶカード（ArRadioGroup の card と同じ。年末調整の なし／あり）。
+   */
+  variant?: ArChoiceVariant;
+  /** 1.1：大きさ（sm・md・lg。ArRadioGroup と同じ段）。 */
+  size?: ArChoiceSize;
+  /** 1.1：名前の下の説明。 */
+  description?: string;
 }
 export interface ArRadioEmits {
   "update:modelValue": [value: ArRadioValue];
@@ -25,4 +33,4 @@ export interface ArRadioEmits {
   change: [value: ArRadioValue];
 }
 /** slot：default（丸の右の中身。文字でも部品でもよい。中身は丸と一緒に押せる）。 */
-export type ArRadioPart = "root" | "control" | "input" | "mark" | "label";
+export type ArRadioPart = "root" | "control" | "input" | "mark" | "label" | "description";

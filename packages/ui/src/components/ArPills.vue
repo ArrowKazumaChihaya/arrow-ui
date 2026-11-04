@@ -3,6 +3,7 @@
  * ArPills 1.0 — 絞り込みの選択（全員・末永・中口…）。高さ30・丸い札。選んでいる札は淡いテーマ色。
  * 1つ選ぶ（既定）か、multiple でいくつでも。各札は押すたびに切り替わる（aria-pressed）。
  */
+import ArBadge from "./ArBadge.vue";
 import type { ArPillValue, ArPillsProps } from "./ArPills.contract";
 
 const props = withDefaults(defineProps<ArPillsProps>(), { multiple: false, allowClear: false, disabled: false });
@@ -34,7 +35,7 @@ function press(v: ArPillValue) {
       :disabled="disabled || o.disabled"
       @click="press(o.value)"
     >
-      {{ o.label }}<span v-if="o.count !== undefined" data-part="count">{{ o.count }}</span>
+      {{ o.label }}<ArBadge v-if="o.count !== undefined" data-part="count" :count="o.count" tone="neutral" variant="subtle" show-zero label="" />
     </button>
   </div>
 </template>

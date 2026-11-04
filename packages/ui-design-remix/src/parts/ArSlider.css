@@ -1,7 +1,7 @@
 /* @covers ArSlider 1.0.0 */
 /* ArSlider：.ad-sl（高さ22・線5px・テーマ色の帯、つまみは白16にテーマ色の輪2px、吹き出しは ink の 600 11.5px、目盛り 11px mute） */
 [data-ar-design="remix"] [data-ar="slider"]{padding:0 8px}
-[data-ar-design="remix"] [data-ar="slider"][data-tooltip="always"]{padding-top:26px}
+[data-ar-design="remix"] [data-ar="slider"][data-tooltip="always"]{padding-top:38px}
 [data-ar-design="remix"] [data-ar="slider"][data-marks]{padding-bottom:20px}
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]{height:22px}
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="line"]{height:5px;border-radius:3px;background:var(--ar-color-border-subtle)}
@@ -9,7 +9,8 @@
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"]{width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--ar-accent),0 2px 6px rgba(31,41,51,.2);cursor:grab;outline:0;transition:box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"]:hover,[data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"]:focus-visible,[data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"][data-state~="dragging"]{box-shadow:0 0 0 2px var(--ar-accent),0 0 0 6px var(--ar-accent-ring),0 2px 6px rgba(31,41,51,.2)}
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"][data-state~="dragging"]{cursor:grabbing}
-[data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"]>[data-part="tooltip"]{bottom:calc(100% + 3px);padding:3px 7px;border-radius:6px;background:var(--ar-color-text);color:#fff;font-size:11.5px;font-weight:600;line-height:1.5;font-family:var(--ar-font-family-numeric)}
+/* つまみの上の値は ArTooltip と同じ吹き出し（ArTooltip.css の共通のルール：.r-tip）。ここは置く所だけ */
+[data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="handle"]>[data-part="tooltip"]{bottom:calc(100% + 4px)}
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="dot"]{width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="dot"][data-state~="on"]{box-shadow:0 0 0 2px var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="slider"]>[data-part="rail"]>[data-part="mark"]{top:20px;font-size:11px;color:var(--ar-color-text-muted)}

@@ -1,4 +1,4 @@
-/* @covers ArSteps 1.0.0 */
+/* @covers ArSteps 1.1.0 */
 /* ArSteps：今の ARROW の手順（UI/Step ＝ ant-design-vue の Steps small・ラベルは下）。
  * 丸24px・12px。済み：#E6F4FF の丸に #1677FF のチェック・線も #1677FF。今：#1677FF の数字（丸は透明）。まだ：rgba(0,0,0,.06) の丸。題 14px（まだは .45）。
  * 縦（direction="vertical"）は ant-design-vue の縦の Steps（丸32・題16px）。mini はラベル横の small。 */
@@ -36,3 +36,6 @@
 [data-ar-design="classic"] [data-ar="steps"][data-size="mini"]>[data-part="connector"]{width:32px;height:1px;background:rgba(5,5,5,.06)}
 /* 今の Step は手順の帯の上 20px・下 15px、左右に幅の 2% の余白（.step_wrap） */
 [data-ar-design="classic"] [data-ar="steps"]:not([data-direction="vertical"]):not([data-size="mini"]){margin:20px 0 15px;padding-inline:2%;box-sizing:border-box}
+/* 縦のときも、エラーの丸は × の絵だけにする（数字の「!」が重ならないように） */
+[data-ar-design="classic"] [data-ar="steps"][data-direction="vertical"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="icon"]{font-size:0}
+[data-ar-design="classic"] [data-ar="steps"][data-direction="vertical"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="icon"]::before{width:14px;height:14px}

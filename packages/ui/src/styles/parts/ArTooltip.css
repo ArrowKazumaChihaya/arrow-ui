@@ -3,3 +3,6 @@
 [data-ar="tooltip"][data-part="root"]>[data-part="panel"]{position:relative;display:block;box-sizing:border-box}
 [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{position:absolute;pointer-events:none}
 [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"]{position:relative;display:block}
+[data-ar="tooltip"][data-part="root"]:has(>[data-part="panel"][data-hover-tip]){pointer-events:none}
+/* 1.1 行の並び（content slot の中の tip-row は1行ずつ） */
+[data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"] [data-part="tip-row"]{display:block}

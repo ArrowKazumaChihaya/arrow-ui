@@ -5,6 +5,7 @@
  */
 import { computed, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArBadge from "./ArBadge.vue";
 import ArDrawer from "./ArDrawer.vue";
 import ArNavSheet from "../internal/ArNavSheet.vue";
 import type { ArMobileHeaderProps } from "./ArMobileHeader.contract";
@@ -48,7 +49,7 @@ function onNav(key: string, e: MouseEvent) {
       @click="emit('notice')"
     >
       <ArIcon :name="icon" size="lg" />
-      <span v-if="count" data-part="count" aria-hidden="true">{{ count > 99 ? "99+" : count }}</span>
+      <ArBadge v-if="count" data-part="count" :count="count" ring label="" aria-hidden="true" />
     </button>
     <button
       v-if="menus?.length"

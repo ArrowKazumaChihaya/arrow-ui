@@ -1,8 +1,9 @@
-/* @covers ArAvatar 1.0.0, ArAvatarGroup 1.0.0 */
+/* @covers ArAvatar 1.1.0, ArAvatarGroup 1.0.0 */
 /* ArAvatar（.ad-av / .v-av：頭文字・700・地は淡いテーマ色。人ごとの色はシフト画面の AVC） */
 [data-ar-design="remix"] [data-ar="avatar"]{font-feature-settings:"palt" 1;width:32px;height:32px;border-radius:50%;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:13px;font-weight:700}
 [data-ar-design="remix"] [data-ar="avatar"][data-size="xs"]{width:24px;height:24px;font-size:11px}
-[data-ar-design="remix"] [data-ar="avatar"][data-size="sm"]{width:26px;height:26px;font-size:11px}
+/* sm＝28（.v-av の表の名前の列：28・12px。1.1 で 26 から） */
+[data-ar-design="remix"] [data-ar="avatar"][data-size="sm"]{width:28px;height:28px;font-size:12px}
 [data-ar-design="remix"] [data-ar="avatar"][data-size="lg"]{width:44px;height:44px;font-size:16px}
 [data-ar-design="remix"] [data-ar="avatar"][data-size="xl"]{width:60px;height:60px;font-size:22px}
 [data-ar-design="remix"] [data-ar="avatar"][data-shape="square"]{border-radius:10px}

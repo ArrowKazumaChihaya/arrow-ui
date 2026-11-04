@@ -13,5 +13,7 @@
 [data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]{gap:16px;overflow:visible;border-radius:0;background:none;box-shadow:none}
 [data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]{width:40px;height:40px;border-radius:50%;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);transition:background .2s}
 [data-ar-design="classic"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]:hover{background:rgba(0,0,0,.06)}
-[data-ar-design="classic"] [data-ar="float-button"]>[data-part="badge"],[data-ar-design="classic"] [data-ar="float-button"]>[data-part="item"]>[data-part="badge"]{top:-4px;right:-4px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:12px;line-height:20px;box-shadow:0 0 0 1px #fff}
+/* 件数は ArBadge（classic は antd の Badge：20・角丸10・#FF4D4F・12px・白い1pxの縁＝前と同じ）。位置と余白だけ */
+[data-ar-design="classic"] [data-ar="float-button"]>[data-part="badge"],[data-ar-design="classic"] [data-ar="float-button"]>[data-part="item"]>[data-part="badge"]{top:-4px;right:-4px}
+[data-ar-design="classic"] [data-ar="float-button"] [data-part="badge"]>[data-part="count"]{padding:0 6px}
 [data-ar-design="classic"] [data-ar="float-button"]>[data-part="item"]>[data-part="badge"]{top:0;right:0}

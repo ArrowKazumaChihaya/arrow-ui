@@ -1,4 +1,4 @@
-/* @covers ArTimeInput 1.0.0, ArTimeRange 1.0.0, ArDurationInput 1.0.0 */
+/* @covers ArTimeInput 1.1.0, ArTimeRange 1.0.0, ArDurationInput 1.1.0 */
 /* ArTimeInput（ui-Time）。classic は forms で fields: "split"・dayToggle: "link"（今の形）を選ぶ。
    下の single（1つの箱）の決まりは、forms を外したときの形（箱の値は今の Input と同じ）。 */
 [data-ar-design="classic"] [data-ar="time-input"]{height:32px;align-items:center;gap:3px;border:0;border-radius:0;background:none;box-shadow:none;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000;overflow:visible}
@@ -14,10 +14,7 @@
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]:hover:not(:disabled){color:#4096FF}
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]:disabled{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="time-input"][data-state~="note"]>[data-part="note"]{height:30px;padding:0 8px;border:1px dashed #D9D9D9;border-radius:6px;font-size:12px;line-height:28px;color:rgba(0,0,0,.45);box-sizing:border-box}
-[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]{height:26px}
-[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]>[data-part="input"]{height:25px;line-height:25px}
 [data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]{height:40px}
-[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]>[data-part="input"]{width:64px;height:38px;font-size:16px;border-radius:8px}
 [data-ar-design="classic"] [data-ar="time-input"][data-block]>[data-part="input"]{width:auto}
 /* ArTimeRange：2つの時刻を「〜」（13px の黒）でつなぐ */
 [data-ar-design="classic"] [data-ar="time-range"]>[data-part="row"]{gap:4px;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
@@ -46,3 +43,21 @@
 [data-ar-design="classic"] [data-ar="time-input"]>[data-ar="select"]{width:60px;height:32px;min-height:32px;margin-top:2px;padding:0 29px 0 11px;border-radius:6px}
 /* ===== ArDurationInput（今の ui-Time の isNormalTime=false）：時間の箱は0を詰めない。幅58ではみ出す（今と同じ）。 */
 [data-ar-design="classic"] [data-ar="duration-input"]{width:58px;min-width:58px;height:32px;color:#000;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+/* ===== 大きさの段（sm・lg）。今の ARROW の時刻は md だけ（32 の入れ物に 27×30 の箱）なので、sm・lg は antd の Input の small 24・large 40（角丸 4・8、lg は 16px）で作る。md はそのまま。 */
+[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]{height:24px;line-height:24px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]>[data-part="input"]{height:24px;line-height:22px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]>[data-part="input"]{width:64px;height:40px;font-size:16px;line-height:38px;border-radius:8px}
+[data-ar-design="classic"] :is([data-ar="time-input"]:is([data-fields="split"],[data-fields="select"]),[data-ar="duration-input"])[data-size="sm"]{height:24px}
+[data-ar-design="classic"] :is([data-ar="time-input"]:is([data-fields="split"],[data-fields="select"]),[data-ar="duration-input"])[data-size="lg"]{height:40px}
+[data-ar-design="classic"] :is([data-ar="time-input"][data-size="sm"]>input:is([data-part="hour"],[data-part="minute"]),[data-ar="duration-input"][data-size="sm"]>input){width:22px;height:24px;border-radius:4px;line-height:22px}
+[data-ar-design="classic"] :is([data-ar="time-input"][data-size="lg"]>input:is([data-part="hour"],[data-part="minute"]),[data-ar="duration-input"][data-size="lg"]>input){width:34px;height:40px;border-radius:8px;font-size:16px;line-height:38px}
+[data-ar-design="classic"] :is([data-ar="time-input"][data-size="sm"]>:is([data-part="separator"],[data-part="unit"],[data-part="day-toggle"][data-kind="link"]),[data-ar="duration-input"][data-size="sm"]>[data-part="unit"]){height:24px;line-height:24px}
+[data-ar-design="classic"] :is([data-ar="time-input"][data-size="lg"]>:is([data-part="separator"],[data-part="unit"],[data-part="day-toggle"][data-kind="link"]),[data-ar="duration-input"][data-size="lg"]>[data-part="unit"]){height:40px;line-height:40px}
+[data-ar-design="classic"] [data-ar="time-input"]:is([data-fields="split"],[data-fields="select"])[data-size="sm"]{width:50px;min-width:50px}
+[data-ar-design="classic"] [data-ar="time-input"]:is([data-fields="split"],[data-fields="select"])[data-size="lg"]{width:74px;min-width:74px}
+[data-ar-design="classic"] [data-ar="time-input"]:is([data-fields="split"],[data-fields="select"])[data-size="sm"][data-day-shift]{width:63px;min-width:63px}
+[data-ar-design="classic"] [data-ar="time-input"]:is([data-fields="split"],[data-fields="select"])[data-size="lg"][data-day-shift]{width:89px;min-width:89px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"]>[data-ar="select"]{height:24px;min-height:24px;margin-top:0;border-radius:4px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]>[data-ar="select"]{width:72px;height:40px;min-height:40px;margin-top:0;border-radius:8px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="sm"][data-state~="note"]>[data-part="note"]{height:24px;line-height:22px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="time-input"][data-size="lg"][data-state~="note"]>[data-part="note"]{height:40px;line-height:38px;border-radius:8px}

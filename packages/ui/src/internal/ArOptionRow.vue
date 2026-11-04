@@ -6,6 +6,7 @@
  */
 import { computed } from "vue";
 import ArIcon from "../components/ArIcon.vue";
+import ArAvatar from "../components/ArAvatar.vue";
 import type { ArIconName } from "../icons";
 import type { ArTextPiece } from "./options";
 
@@ -21,6 +22,8 @@ const props = withDefaults(
     avatar?: string;
     avatarColor?: string;
     avatarInk?: string;
+    /** 頭文字の丸（ArAvatar）の大きさ。xs＝24（ふつう）、sm＝28（人を選ぶ一覧）。 */
+    avatarSize?: "xs" | "sm";
     icon?: ArIconName;
     /** 頭の色の小さな丸（パターンの色など）。 */
     dot?: string;
@@ -42,6 +45,7 @@ const props = withDefaults(
     avatar: undefined,
     avatarColor: undefined,
     avatarInk: undefined,
+    avatarSize: "xs",
     icon: undefined,
     dot: undefined,
     description: undefined,
@@ -56,8 +60,9 @@ const state = computed(
     [props.selected && "selected", props.path && "path", props.active && "active", props.disabled && "disabled"].filter(Boolean).join(" ") ||
     undefined,
 );
-const avatarStyle = computed(() =>
-  props.avatarColor || props.avatarInk ? { background: props.avatarColor, color: props.avatarInk } : undefined,
+/** 頭文字の丸の地と文字の色（渡されたときだけ）。 */
+const avatarColor = computed(() =>
+  props.avatarColor || props.avatarInk ? ([props.avatarColor ?? "", props.avatarInk ?? ""] as const) : undefined,
 );
 </script>
 
@@ -71,7 +76,7 @@ const avatarStyle = computed(() =>
     :data-state="state"
     :data-has-avatar="avatar !== undefined || undefined"
   >
-    <span v-if="avatar !== undefined" data-part="avatar" aria-hidden="true" :style="avatarStyle">{{ avatar }}</span>
+    <ArAvatar v-if="avatar !== undefined" data-part="avatar" :size="avatarSize" :text="avatar" :color="avatarColor" />
     <ArIcon v-else-if="icon" :name="icon" size="sm" data-part="option-icon" />
     <span v-else-if="dot" data-part="option-dot" aria-hidden="true" :style="{ background: dot }" />
     <span data-part="option-label"

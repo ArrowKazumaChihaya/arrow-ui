@@ -14,7 +14,8 @@
 [data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]:is([data-state~="selected"],[data-state~="path"])>[data-part="option-more"]{color:var(--ar-accent)}
 [data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-icon"]{color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="option-desc"]{font-size:11.25px;font-weight:400;line-height:16.875px;color:var(--ar-color-text-muted)}
-[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="avatar"]{width:24px;height:24px;border-radius:50%;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:11px;font-weight:700;box-shadow:0 0 0 2px #fff}
+/* 選択肢の頭文字の丸は ArAvatar（xs＝24、人を選ぶ一覧は sm＝28）。ふつうの一覧は白い 2px の縁 */
+[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]>[data-part="avatar"]{box-shadow:0 0 0 2px #fff}
 [data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"][data-state~="disabled"]>[data-part="avatar"]{opacity:.55}
 [data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"],[data-ar="tree-select-panel"]) [data-part="empty"]{gap:6px;padding:14px 10px;font-size:12.5px;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"],[data-ar="tree-select-panel"]) [data-part="empty"]>[data-part="spinner"]{width:14px;height:14px;color:var(--ar-accent)}
@@ -31,6 +32,6 @@
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"]{height:38px;padding:0 8px;border-radius:8px;font-size:13px;font-weight:600}
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"][data-state~="selected"]{font-weight:600}
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"][data-state~="disabled"]{color:#A9B2BC;font-weight:600}
-[data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"]>[data-part="avatar"]{width:26px;height:26px;box-shadow:none}
+[data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"]>[data-part="avatar"]{box-shadow:none}
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"][data-state~="disabled"]>[data-part="avatar"]{opacity:1}
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"]>[data-part="option-desc"]{font-size:11px;font-weight:700;line-height:16px}

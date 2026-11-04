@@ -1,10 +1,17 @@
-/* ArRadio：丸（本物の input を重ねる）と中身の横並び。ArRadioGroup の選択肢の下に置く中身（extra）。 */
+/* ArRadio：丸（本物の input を重ねる）と中身の横並び。ArRadioGroup の選択肢も ArRadio（data-part="item"）。選択肢の下に置く中身（extra）。 */
 [data-ar="radio"]{display:inline-flex;align-items:center;cursor:pointer;vertical-align:middle;box-sizing:border-box}
 [data-ar="radio"]>[data-part="control"]{position:relative;display:inline-flex;flex:none}
 [data-ar="radio"]>[data-part="control"]>[data-part="input"]{position:absolute;inset:0;margin:0;opacity:0;cursor:inherit;width:100%;height:100%}
 [data-ar="radio"]>[data-part="control"]>[data-part="mark"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:none}
 [data-ar="radio"]>[data-part="label"]{min-width:0}
 [data-ar="radio"][data-state~="disabled"]{cursor:not-allowed}
+/* 説明つき：丸の右に名前と説明を縦に積む（丸は1行目の高さにそろえる） */
+:is([data-ar="radio"],[data-ar="checkbox"])[data-desc]{display:inline-grid;grid-template-columns:auto minmax(0,1fr);align-items:start}
+:is([data-ar="radio"],[data-ar="checkbox"])[data-desc]>[data-part="control"]{grid-row:1/span 2}
+:is([data-ar="radio"],[data-ar="checkbox"])[data-desc]>[data-part="description"]{grid-column:2;min-width:0}
+/* カード：面ごと押せる。1行目に丸をそろえる */
+:is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]{align-items:flex-start;text-align:left;min-width:0;-webkit-tap-highlight-color:transparent}
+[data-ar="radio"]>[data-part="label"]>[data-part="tag"]{display:inline-flex;align-items:center;vertical-align:middle}
 [data-ar="radio-group"]>[data-part="extra"]{box-sizing:border-box;min-width:0}
 [data-ar="radio-group"]:not([data-direction="vertical"])>[data-part="extra"]{flex-basis:100%}
 [data-ar="radio-group"]>[data-part="extra"]:empty{display:none}

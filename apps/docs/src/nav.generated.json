@@ -361,6 +361,11 @@
         "slug": "weekday-picker",
         "name": "ArWeekdayPicker",
         "ja": "曜日の選択"
+      },
+      {
+        "slug": "zoom-control",
+        "name": "ArZoomControl",
+        "ja": "拡大・縮小（−／＋）"
       }
     ]
   },

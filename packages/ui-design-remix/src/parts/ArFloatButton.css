@@ -10,5 +10,6 @@
 [data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]+[data-part="item"]{border-top:1px solid var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]:hover{background:var(--ar-color-hover);color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="float-button"]>[data-part="badge"]{top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-color-danger);color:#fff;font-size:11px;font-weight:700;line-height:18px;box-shadow:0 0 0 2px #fff}
-[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]>[data-part="badge"]{top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--ar-color-danger);color:#fff;font-size:10px;font-weight:700;line-height:16px;box-shadow:0 0 0 2px #fff}
+/* 件数は ArBadge（count の赤・18・角丸9・白い2pxの縁）。位置だけここで決める */
+[data-ar-design="remix"] [data-ar="float-button"]>[data-part="badge"]{top:-4px;right:-4px}
+[data-ar-design="remix"] [data-ar="float-button"][data-shape="group"]>[data-part="item"]>[data-part="badge"]{top:3px;right:3px}

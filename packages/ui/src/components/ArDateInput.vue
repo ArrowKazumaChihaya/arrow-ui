@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArDateInput 1.0 — 日付の入力。年はプルダウン（ブラウザの select は使わない）、月と日は数字（全角も読む）。
+ * ArDateInput 1.1 — 日付の入力。年はプルダウン（ブラウザの select は使わない）、月と日は数字（全角も読む）。
  * 曜日は自動で出す（日は赤、土は青）。31日のまま2月にすると末日に寄せる。
  * 年：↓・Enter・Space で開き、↑↓で動かし Enter で決める。数字を打つとその年へ飛ぶ（ArYearInput と同じプルダウン）。
  * 月・日：数字を打って Enter かフォーカスが外れたら確定。↑↓で1ずつ動く。
@@ -26,6 +26,7 @@ const props = withDefaults(defineProps<ArDateInputProps>(), {
   era: false,
   showWeekday: true,
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   id: undefined,
@@ -128,6 +129,7 @@ function setYear(y: number | null) {
   <span
     data-ar="date-input"
     data-part="root"
+    :data-size="size"
     role="group"
     :aria-label="label"
     :data-era="era || undefined"

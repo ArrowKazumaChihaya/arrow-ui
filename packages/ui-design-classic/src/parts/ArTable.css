@@ -34,13 +34,6 @@
 [data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="asc"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="asc"],[data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"][data-order="desc"]>[data-part="sort-icon"]>[data-shape="caret"][data-dir="desc"]{fill:#1677FF}
 [data-ar-design="classic"] [data-ar="table"] th>[data-part="sort"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
 /* チェック（ARROW の Check：16・角丸4・枠は灰 #808080 のまま、選ぶと #1677FF の塗り） */
-[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="check-box"]{width:16px;height:16px;border:1px solid #808080;border-radius:4px;background:#fff;color:#fff;transition:all .3s}
-[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="check-box"]>[data-ar="icon"]{width:11px;height:11px;stroke-width:3.4}
-[data-ar-design="classic"] [data-ar="table"] [data-part="check"][data-state="checked"]>[data-part="check-box"]{background:#1677FF}
-[data-ar-design="classic"] [data-ar="table"] [data-part="check"][data-state="indeterminate"]>[data-part="check-box"]{background:#fff;color:#1677FF}
-[data-ar-design="classic"] [data-ar="table"] [data-part="check"][data-state="indeterminate"]>[data-part="check-box"]>[data-ar="icon"]{width:8px;height:8px;background:#1677FF;stroke:none}
-[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="select"]:focus-visible+[data-part="check-box"]{outline:2px solid #91CAFF;outline-offset:1px}
-[data-ar-design="classic"] [data-ar="table"] [data-part="check"]>[data-part="select"]:disabled+[data-part="check-box"]{background:rgba(0,0,0,.04)}
 /* 開く（antd の展開ボタン：17×17・角丸4・枠 #F0F0F0）と開いた行 */
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="expand-toggle"]{width:17px;height:17px;align-items:center;justify-content:center;border:1px solid #F0F0F0;border-radius:4px;background:#fff;color:rgba(0,0,0,.88);box-sizing:border-box}
 [data-ar-design="classic"] [data-ar="table"] tr[data-part="expanded-row"]>td{padding:6px 8px;border-top:1px solid #E8E8E8;background:#FAFAFA;line-height:20px}

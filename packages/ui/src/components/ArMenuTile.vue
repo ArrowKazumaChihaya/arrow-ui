@@ -5,6 +5,7 @@
  */
 import { computed } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArBadge from "./ArBadge.vue";
 import type { ArMenuTileProps } from "./ArMenuTile.contract";
 
 const props = withDefaults(defineProps<ArMenuTileProps>(), {
@@ -55,7 +56,7 @@ function onClick(e: MouseEvent) {
   >
     <span data-part="icon" :data-icon="icon">
       <ArIcon :name="icon" />
-      <span v-if="countText" data-part="count" aria-hidden="true">{{ countText }}</span>
+      <ArBadge v-if="countText" data-part="count" :count="countText" ring label="" aria-hidden="true" />
     </span>
     <span data-part="label">{{ label }}</span>
     <span v-if="note" data-part="note">{{ note }}</span>

@@ -1,4 +1,4 @@
-/* @covers ArDateInput 1.1.0, ArDateRange 1.0.0 */
+/* @covers ArDateInput 1.1.0, ArDateRange 1.1.0 */
 /* ArDateInput（ui-Dates）：年は Select（77×32・角丸6・枠 #D9D9D9・14px・右に 12px の ∨ rgba(0,0,0,.25)）、
    単位は間を空けず 13px の黒（行32）、月日は 32×32 の Input（余白0・中央）。不正な日付は月日の枠が #D10C1D。 */
 [data-ar-design="classic"] [data-ar="date-input"]{gap:0;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
@@ -29,3 +29,16 @@
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]{background:currentColor;-webkit-mask:var(--classic-down) center/12px 12px no-repeat;mask:var(--classic-down) center/12px 12px no-repeat}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]>*{display:none}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"][data-state~="open"]>[data-part="value"]{color:rgba(0,0,0,.25)}
+/* 大きさの段（sm・lg）。今の ARROW の日付は md（32）だけなので、antd の small 24・large 40（角丸 4・8、lg は 16px）。単位の行の高さも合わせる。 */
+[data-ar-design="classic"] [data-ar="date-input"][data-size="sm"]{line-height:24px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="sm"]>:is([data-part="year"],input){height:24px;border-radius:4px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="sm"]>[data-part="year"]{width:70px;padding:0 25px 0 7px;line-height:22px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="sm"]>[data-part="year"]>[data-part="arrow"]{right:7px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="sm"]>input{width:26px;line-height:22px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]{line-height:40px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]>:is([data-part="year"],input){height:40px;border-radius:8px;font-size:16px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]>[data-part="year"]{width:86px;line-height:38px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]>input{width:40px;line-height:38px}
+[data-ar-design="classic"] [data-ar="date-input"][data-era]:is([data-size="sm"],[data-size="lg"])>[data-part="year"]{width:auto;min-width:135px}
+[data-ar-design="classic"] [data-ar="date-range"][data-size="sm"]>[data-part="row"]{line-height:24px}
+[data-ar-design="classic"] [data-ar="date-range"][data-size="lg"]>[data-part="row"]{line-height:40px}

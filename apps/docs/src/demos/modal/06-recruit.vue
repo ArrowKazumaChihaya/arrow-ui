@@ -95,7 +95,7 @@ const note = computed(() => (step.value === 0 ? "「次へ」で1日ごとの時
         </ArField>
         <ArField label="募集する時間と人数">
           <ArTable v-model:edits="ruleEdits" :columns="ruleColumns" :rows="rules" row-key="id" caption="募集する時間と人数" density="compact">
-            <template #cell-days="{ row }"><ArWeekdayPicker v-model="row.days" size="sm" :label="`決まり${row.id}の曜日`" /></template>
+            <template #cell-days="{ row }"><ArWeekdayPicker v-model="row.days" size="xs" :label="`決まり${row.id}の曜日`" /></template>
             <template #cell-count="{ row }"><ArStepper v-model="row.count" :min="0" variant="split" size="sm" label="人数" /></template>
             <template #actions="{ row }"><ArButton tone="muted" size="sm" icon="x" :label="`決まり${row.id}を消す`" @click="rules = rules.filter((r) => r !== row)" /></template>
           </ArTable>

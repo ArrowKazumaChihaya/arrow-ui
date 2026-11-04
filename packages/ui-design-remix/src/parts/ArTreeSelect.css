@@ -7,19 +7,11 @@
 [data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="disabled"]{background:none;color:#A3AEB9}
 [data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="group"]{color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="switch"]{width:18px;color:var(--ar-color-text-muted);cursor:pointer}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"]{width:18px;height:18px;border:1px solid #AEB9C4;border-radius:5px;background:#fff;color:#fff;transition:background-color var(--ar-motion-fast),border-color var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"]:is([data-state="on"],[data-state="mixed"]){border-color:var(--ar-accent);background:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"]>[data-ar="icon"]{width:13px;height:13px;stroke-width:3}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"]>[data-part="dash"]{width:8px;height:2px;border-radius:1px;background:#fff}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]:hover>[data-part="check"][data-state="off"]{border-color:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="disabled"]>[data-part="check"]{border-color:var(--ar-color-field);background:var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="node-label"]>[data-part="match"]{color:var(--ar-accent-ink);font-weight:700}
 /* 1.1：プルダウンの下に「子店舗を含める」（.chk と同じ 18px・角丸5 のチェック、13px の文字）と操作のボタン。押す所の「子店舗を含む」は淡いテーマ色の小さな札 */
 [data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]{gap:6px;margin:6px -6px -6px;padding:8px 14px;border-top:1px solid var(--ar-color-border-subtle)}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]{gap:8px;height:28px;border-radius:7px;color:var(--ar-color-text);font-size:13px;font-weight:600}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]>[data-part="include-box"]{width:18px;height:18px;border:1px solid #AEB9C4;border-radius:5px;background:#fff;color:#fff;transition:background-color var(--ar-motion-fast),border-color var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"][data-state~="on"]>[data-part="include-box"]{border-color:var(--ar-accent);background:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]>[data-part="include-box"]>[data-ar="icon"]{width:13px;height:13px;stroke-width:3}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]:hover>[data-part="include-box"]{border-color:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]:has(>input:focus-visible)>[data-part="include-box"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
+[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]{gap:8px;height:28px;min-height:0;border-radius:7px;color:var(--ar-color-text);font-size:13px;font-weight:600}
+/* 複数の行のチェックと「子店舗を含める」は ArCheckbox（印は _choice.css）。行を hover したら印もテーマ色の枠。 */
+[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]:hover:not([data-state~="disabled"])>[data-ar="checkbox"]>[data-part="control"]>[data-part="box"]{border-color:var(--ar-accent)}
+[data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]>[data-part="label"]{font-weight:600}
 [data-ar-design="remix"] [data-ar="tree-select"]>[data-part="include-mark"]{margin-left:6px;padding:1px 7px;border-radius:999px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11px;font-weight:700;line-height:1.5}

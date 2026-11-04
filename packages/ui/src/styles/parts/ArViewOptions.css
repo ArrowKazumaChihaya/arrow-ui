@@ -20,7 +20,7 @@
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>:is([data-part="preset-scope"],[data-part="preset-default"]){flex:none;white-space:nowrap}
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-apply"]>[data-part="preset-check"]{flex:none;visibility:hidden}
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"][data-state~="on"]>[data-part="preset-apply"]>[data-part="preset-check"]{visibility:visible}
-[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;border:0;background:none;cursor:pointer;font-family:inherit;box-sizing:border-box}
+[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="presets"]>[data-part="preset"]>[data-part="preset-delete"]{flex:none}
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]{display:flex;flex-wrap:wrap;justify-content:space-between}
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>button,[data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]>[data-part="save-actions"]>button{margin:0;border:0;background:none;cursor:pointer;font-family:inherit}
 [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="save"]>[data-part="save-form"]{display:flex;flex-direction:column;width:100%}

@@ -5,6 +5,7 @@
  */
 import { computed } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArButton from "./ArButton.vue";
 import type { ArIconName } from "../icons";
 import type { ArNotificationProps } from "./ArNotification.contract";
 
@@ -35,9 +36,7 @@ const line = computed(() => {
       <strong data-part="title">{{ title }}</strong>
       <div v-if="description || $slots.default" data-part="description"><slot>{{ description }}</slot></div>
     </div>
-    <button v-if="closable" type="button" data-part="close" :aria-label="closeLabel" @click="emit('close')">
-      <ArIcon line name="x" size="sm" />
-    </button>
+    <ArButton v-if="closable" data-part="close" tone="muted" icon="x" size="sm" :label="closeLabel" @click="emit('close')" />
     <div v-if="$slots.actions || actions?.length" data-part="actions">
       <slot name="actions">
         <button

@@ -13,12 +13,6 @@
 [data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-icon"]{width:14px;height:14px}
 [data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-input"]{color:rgba(0,0,0,.88);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:14px;line-height:1.5714}
 [data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="search"]>[data-part="search-input"]::placeholder{color:rgba(0,0,0,.25);opacity:1}
-[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]{height:32px;border:1px solid #d9d9d9;border-radius:6px;background:#fff}
-[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]{width:30px;height:30px;border:0;border-radius:5px;background:none;color:rgba(0,0,0,.88);transition:color .2s}
-[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:hover:not(:disabled){color:#4096ff}
-[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:focus-visible{outline:0;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
-[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-button"]:disabled{color:rgba(0,0,0,.25)}
-[data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="toolbar"]>[data-part="zoom"]>[data-part="zoom-value"]{min-width:48px;color:rgba(0,0,0,.88);font-size:12px;line-height:30px}
 /* 表 */
 [data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]{background:#fff}
 [data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="scroll"]:focus-visible{outline:2px solid rgba(5,145,255,.2)}
@@ -64,3 +58,4 @@
 [data-ar-design="classic"] [data-ar="shift-view-table"]>[data-part="legend"]>[data-part="legend-item"]>[data-part="swatch"][data-kind="pattern"]{border:0;background:var(--ar-svt-chip,var(--ar-accent))}
 /* スマホ：説明と検索は1行ずつ */
 [data-ar-design="classic"] [data-ar="shift-view-table"][data-size="sm"]>[data-part="toolbar"]>:is([data-part="note"],[data-part="search"]){width:100%}
+/* 列の幅の −／＋ は ArZoomControl（classic の箱の形＝前と同じ値） */

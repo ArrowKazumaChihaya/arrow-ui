@@ -19,7 +19,7 @@ const dirty = computed(() => (Object.keys(base) as (keyof typeof base)[]).filter
 <template>
 <div style="width: 1080px; max-width: 100%; box-sizing: border-box; padding: 8px 24px; border-radius: 18px; background: #fff">
   <ArItem variant="row" title="シフトサマリー計算期間" title-width="236px" info="シフトサマリーの計算期間を変更できます" detail :changed="changed('sum')" @revert="v.sum = base.sum" @detail="opened.n++">
-    <template #default="c"><ArRadioGroup v-bind="c" v-model="v.sum" :options="sums" label="シフトサマリー計算期間" /></template>
+    <template #default="c"><ArRadioGroup v-bind="c" v-model="v.sum" variant="plain" :options="sums" label="シフトサマリー計算期間" /></template>
   </ArItem>
   <ArItem variant="row" title="法定外残業" title-width="236px" info="25%以上の設定が義務付けられています" detail :error="err('over')" :changed="changed('over')" @revert="v.over = base.over">
     <template #default="c"><ArTextInput v-bind="c" v-model="v.over" align="right" suffix="%" :invalid="!!err('over')" style="width: 110px" /></template>

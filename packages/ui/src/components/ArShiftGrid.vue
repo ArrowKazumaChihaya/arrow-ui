@@ -9,9 +9,13 @@
  */
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArAvatar from "./ArAvatar.vue";
+import ArZoomControl from "./ArZoomControl.vue";
+import ArEmpty from "./ArEmpty.vue";
 import ArSegmented from "./ArSegmented.vue";
 import ArFloat from "../internal/ArFloat.vue";
 import ShiftGridTip from "../internal/shiftGridTip.vue";
+import ArHoverTip from "../internal/ArHoverTip.vue";
 import { useDesignForm, useId } from "../provider/context";
 import {
   applyDrag,
@@ -276,7 +280,6 @@ type DayView = (typeof dayViews.value)[number];
 const anyEvents = computed(() => show.value.events && props.days.some((d) => d.events?.length));
 const anyShortage = computed(() => show.value.shortage && props.days.some((d) => d.need != null || d.shortage != null));
 
-const TONES: [string, string][] = [["#E3EEFA", "#1F5F99"], ["#FCEBDD", "#9A4A12"], ["#E5F4EC", "#226B47"], ["#F3E8F8", "#6E3E8C"], ["#FFF2CC", "#7A5A00"]];
 function hm(min: number) {
   const h = Math.floor(min / 60);
   const m = min % 60;
@@ -293,8 +296,7 @@ const memberViews = computed(() =>
       if (show.value.days && m.workDays != null) parts.push(fmt(L.value.workDays, { n: m.workDays }));
       if (show.value.off && m.offDays != null) parts.push(fmt(L.value.offDays, { n: m.offDays }));
     } else if (m.summary) parts.push(m.summary);
-    const tone = m.avatarTone ?? TONES[r % TONES.length]!;
-    return { m, r, parts, initial: m.initial ?? m.name.slice(0, 1), avBg: tone[0], avFg: tone[1] };
+    return { m, r, parts, initial: m.initial ?? m.name.slice(0, 1) };
   }),
 );
 
@@ -889,11 +891,18 @@ const dayOf = (dv: DayView) => dv.d;
     <div v-if="controls || $slots.toolbar" data-part="toolbar">
       <slot name="toolbar" :zoom-in="zoomIn" :zoom-out="zoomOut" :column-width="colW" :can-zoom-in="canZoomIn" :can-zoom-out="canZoomOut" :fit-width="fitWidth" :fitted="localW == null" :mode="mode" :set-mode="setMode" />
       <template v-if="controls">
-        <div data-part="zoom" role="group" :aria-label="L.zoom">
-          <button type="button" data-part="zoom-out" :aria-label="L.zoomOut" :disabled="!canZoomOut" @click="zoomOut"><ArIcon name="minus" size="sm" line /></button>
-          <span data-part="zoom-value" aria-live="polite">{{ colW }}px</span>
-          <button type="button" data-part="zoom-in" :aria-label="L.zoomIn" :disabled="!canZoomIn" @click="zoomIn"><ArIcon name="plus" size="sm" line /></button>
-        </div>
+        <ArZoomControl
+          data-part="zoom"
+          :value="`${colW}px`"
+          :out-disabled="!canZoomOut"
+          :in-disabled="!canZoomIn"
+          :size="compact ? 'sm' : 'md'"
+          :label="L.zoom"
+          :out-label="L.zoomOut"
+          :in-label="L.zoomIn"
+          @out="zoomOut"
+          @in="zoomIn"
+        />
         <ArSegmented
           :model-value="mode"
           :label="L.modeLabel"
@@ -917,7 +926,7 @@ const dayOf = (dv: DayView) => dv.d;
             role="button"
             tabindex="0"
             :draggable="editable ? 'true' : 'false'"
-            :title="L.patternDrag"
+            :data-tip="L.patternDrag"
             :aria-label="`${p.name} ${patTime(p)}`"
             @dragstart="patStart($event, p)"
             @dragend="patEnd"
@@ -928,7 +937,7 @@ const dayOf = (dv: DayView) => dv.d;
             <span data-part="pattern-swatch" :style="{ background: p.color }" aria-hidden="true" />
             <span><b data-part="pattern-name">{{ p.name }}</b><small v-if="patTime(p)" data-part="pattern-time">{{ patTime(p) }}</small></span>
           </div>
-          <div v-if="q && !shownPatterns.length" data-part="pattern-none" role="status">{{ fmt(L.patternNone, { q }) }}</div>
+          <ArEmpty v-if="q && !shownPatterns.length" data-part="pattern-none" role="status" size="sm" icon="search" :text="fmt(L.patternNone, { q })" />
           <span v-if="editable" data-part="pattern-hint"><ArIcon name="info" size="sm" line />{{ L.patternHint }}</span>
         </slot>
       </aside>
@@ -963,7 +972,7 @@ const dayOf = (dv: DayView) => dv.d;
                   data-part="date"
                   role="columnheader"
                   tabindex="0"
-                  :title="dv.label"
+                  :data-tip="dv.label"
                   :aria-label="`${dv.label}${dv.locked ? '・' + L.locked : ''}${dv.unpub ? '・' + L.unpublished : ''}`"
                   :data-tone="dv.tone"
                   :data-today="dv.today ? '' : undefined"
@@ -995,7 +1004,7 @@ const dayOf = (dv: DayView) => dv.d;
               <div v-if="anyEvents" data-part="head-event" role="row">
                 <div data-part="name-head" role="rowheader">{{ L.events }}</div>
                 <div v-for="dv in dayViews" :key="dv.d.date" data-part="status" role="gridcell" :data-today="dv.today ? '' : undefined">
-                  <span v-for="(ev, i) in dv.d.events ?? []" :key="i" data-part="event" :title="ev.time ? `${ev.name}　${ev.time}` : ev.name" :style="ev.color ? { '--sg-ev': ev.color } : undefined">
+                  <span v-for="(ev, i) in dv.d.events ?? []" :key="i" data-part="event" :data-tip="ev.time ? `${ev.name}　${ev.time}` : ev.name" :style="ev.color ? { '--sg-ev': ev.color } : undefined">
                     <i data-part="event-dot" aria-hidden="true" /><span>{{ ev.name }}</span>
                   </span>
                 </div>
@@ -1008,13 +1017,10 @@ const dayOf = (dv: DayView) => dv.d;
                   @dragover="rowOver($event, mv.r)"
                   @drop.stop="rowDrop($event, mv.r)"
                 >
-                  <span v-if="editable" data-part="grip" draggable="true" :title="L.reorder" :aria-label="L.reorder" @dragstart="rowStart($event, mv.r)" @dragend="rowEnd">
+                  <span v-if="editable" data-part="grip" draggable="true" :data-tip="L.reorder" :aria-label="L.reorder" @dragstart="rowStart($event, mv.r)" @dragend="rowEnd">
                     <ArIcon name="grip" size="sm" line />
                   </span>
-                  <span v-if="show.avatar" data-part="avatar" :style="{ background: mv.avBg, color: mv.avFg }" aria-hidden="true">
-                    <img v-if="mv.m.avatar" :src="mv.m.avatar" alt="" />
-                    <template v-else>{{ mv.initial }}</template>
-                  </span>
+                  <ArAvatar v-if="show.avatar" data-part="avatar" size="sm" :seed="mv.r" :color="mv.m.avatarTone" :src="mv.m.avatar" :text="mv.initial" />
                   <span data-part="member">
                     <span v-if="show.code && mv.m.code" data-part="code">{{ mv.m.code }}</span>
                     <b data-part="member-name">{{ mv.m.name }}</b>
@@ -1102,6 +1108,7 @@ const dayOf = (dv: DayView) => dv.d;
                     <span data-part="bar-label">{{ drag && barsOf(mv.r, c).state ? barsOf(mv.r, c).times.map(spanShort).join(" / ") : cv(mv.r, c).barLabel }}</span>
                   </span>
                   <span v-if="fillHere(mv.r, c)" data-part="fill-handle" aria-hidden="true" />
+                  <ArIcon v-if="cv(mv.r, c).locked && show.locked" line name="lock" data-part="lock" aria-hidden="true" />
                 </div>
               </div>
               <div v-if="show.count" data-part="foot" role="row">
@@ -1116,7 +1123,7 @@ const dayOf = (dv: DayView) => dv.d;
                   data-part="foot-cell"
                   role="gridcell"
                   :data-state="dv.shortage ? 'short' : 'ok'"
-                  :title="dv.shortTip || undefined"
+                  :data-tip="dv.shortTip || undefined"
                 >
                   {{ dv.shortage ? fmt(L.shortageCell, { n: dv.shortage }) : L.none }}
                 </div>
@@ -1145,6 +1152,7 @@ const dayOf = (dv: DayView) => dv.d;
       </div>
     </div>
     <ShiftGridTip ref="tip" :form="tipForm" />
+    <ArHoverTip :root="root" />
     <ArFloat :id="`${uid}-menu`" :open="!!menu" :anchor="menu?.el ?? null" placement="right-start" ar="shift-grid-menu" role="menu" @close="menu = null">
       <div ref="menuPanel" data-part="menu" @keydown="onMenuKey">
         <button v-for="it in menuItems" :key="it.k" type="button" data-part="menu-item" role="menuitem" :data-item="it.k === 'open' ? (it.ic === 'pen' ? 'edit' : 'add') : it.k" :disabled="it.dis" @click="runMenu(it.k)">

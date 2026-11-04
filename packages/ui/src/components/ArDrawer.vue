@@ -8,6 +8,7 @@ import { computed, ref } from "vue";
 import { useArUi, useId } from "../provider/context";
 import { useDialog } from "../internal/dialog";
 import ArIcon from "./ArIcon.vue";
+import ArButton from "./ArButton.vue";
 import type { ArDrawerProps } from "./ArDrawer.contract";
 
 defineOptions({ inheritAttrs: false });
@@ -69,9 +70,7 @@ const { onKeydown, palette } = useDialog({
             <ArIcon v-if="icon" :name="icon" size="sm" data-part="icon" />
             <h2 :id="`${id}-title`" data-part="title">{{ title }}</h2>
             <div v-if="$slots.extra" data-part="extra"><slot name="extra" /></div>
-            <button v-if="closable" type="button" data-part="close" :aria-label="labels.close" @click="close">
-              <ArIcon line name="x" size="sm" />
-            </button>
+            <ArButton v-if="closable" data-part="close" tone="muted" icon="x" :size="placement === 'bottom' ? 'lg' : 'md'" :label="labels.close" @click="close" />
           </header>
           <div data-part="body"><slot /></div>
           <footer v-if="$slots.footer" data-part="footer"><slot name="footer" /></footer>

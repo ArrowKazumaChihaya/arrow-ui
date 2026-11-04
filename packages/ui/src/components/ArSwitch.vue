@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /**
- * ArSwitch 1.0 — すぐ効く切り替え（公開中／非公開など）。押したら保存まで行うときは loading を出す。
- * 文字ありのときは「入」と「切」の文字を同じ場所に重ねて置き、見えるのは片方だけ。幅は長い方に合わせて変わらない。
+ * ArSwitch 1.1 — すぐ効く切り替え（公開中／非公開など）。押したら保存まで行うときは loading を出す。
+ * 大きさは sm・md・lg（1.1 で lg を足した）。文字ありのときは「入」と「切」の文字を同じ場所に重ねて置き、見えるのは片方だけ。幅は長い方に合わせて変わらない。
  */
 import { computed } from "vue";
 import type { ArSwitchProps } from "./ArSwitch.contract";

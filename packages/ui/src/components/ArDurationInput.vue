@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArDurationInput 1.0 — 時間の長さの入力（「1 時間 30 分」）。値は分。
+ * ArDurationInput 1.1 — 時間の長さの入力（「1 時間 30 分」）。値は分。
  * 時間と分の2つの箱を単位の文字でつなぐ。分を2桁（または6〜9）打つと次の入力へ移る。空の分で Backspace・端の ←→ で隣の箱へ。
  * 値の確定は箱からフォーカスが外れたとき・Enter だけ。分が空なら null、時間だけ空なら 0 時間。
  */
@@ -10,6 +10,7 @@ import type { ArDurationInputProps } from "./ArDurationInput.contract";
 const props = withDefaults(defineProps<ArDurationInputProps>(), {
   maxHours: 999,
   invalid: false,
+  size: "md",
   disabled: false,
   label: undefined,
   id: undefined,
@@ -95,7 +96,7 @@ function onFocusOut(e: FocusEvent) {
 </script>
 
 <template>
-  <span ref="root" data-ar="duration-input" data-part="root" role="group" :aria-label="label" :data-state="state" @focusout="onFocusOut">
+  <span ref="root" data-ar="duration-input" data-part="root" :data-size="size" role="group" :aria-label="label" :data-state="state" @focusout="onFocusOut">
     <input
       :id="id"
       ref="hourEl"

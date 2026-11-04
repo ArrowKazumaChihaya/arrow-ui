@@ -15,6 +15,7 @@ import { computed, h, markRaw, nextTick, onBeforeUnmount, onMounted, ref, useSlo
 import ArTableCellBody from "../internal/ArTableCellBody.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
+import ArCheckbox from "./ArCheckbox.vue";
 import { useDesignForm } from "../provider/context";
 import type {
   ArRowKey,
@@ -574,10 +575,7 @@ const colspan = computed(
                   :aria-label="L.selectAll"
                   @change="toggleAll"
                 />
-                <span data-part="check-box" aria-hidden="true">
-                  <ArIcon line v-if="allState === 'some'" name="minus" size="sm" />
-                  <ArIcon line v-else-if="allState === 'all'" name="check" size="sm" />
-                </span>
+                <ArCheckbox decorative data-part="check-box" :model-value="allState === 'all'" :indeterminate="allState === 'some'" :disabled="!rows.length" />
               </span>
             </th>
             <th
@@ -751,9 +749,7 @@ const colspan = computed(
                       :aria-label="L.selectRow"
                       @change="toggleRow(row)"
                     />
-                    <span data-part="check-box" aria-hidden="true">
-                      <ArIcon line v-if="selectedSet.has(keyOf(row))" name="check" size="sm" />
-                    </span>
+                    <ArCheckbox decorative data-part="check-box" :model-value="selectedSet.has(keyOf(row))" />
                   </span>
                 </td>
                 <td

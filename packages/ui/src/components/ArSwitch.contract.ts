@@ -1,4 +1,4 @@
-/** ArSwitch 1.0 の契約。 */
+/** ArSwitch 1.1 の契約。 */
 export interface ArSwitchProps {
   modelValue: boolean;
   /** 読み上げ用の名前（例：「この日を公開する」）。 */
@@ -7,8 +7,11 @@ export interface ArSwitchProps {
   onText?: string;
   /** 切れているときにつまみの右に出す文字（例：「非公開」）。 */
   offText?: string;
-  /** md：36×20（文字ありは高さ22）。sm：28×16（文字は出さない）。 */
-  size?: "sm" | "md";
+  /**
+   * 大きさ（ラジオ・チェックと同じ段）。sm：28×16（設定の行など密集した所。文字は出さない）。md：36×20（文字ありは高さ22）。
+   * 1.1：lg：44×24（年末調整・スマホ。文字ありは高さ26）。
+   */
+  size?: "sm" | "md" | "lg";
   disabled?: boolean;
   /**
    * 入っているときの色。default：部品の既定の色（classic は antd の青 #1677FF＝今の ARROW の Toggle、remix はテーマ色）。

@@ -1,16 +1,5 @@
-/* @covers ArCheckbox 1.0.0, ArCheckboxGroup 1.0.0 */
-/* ArCheckbox：デザインシステムの .chk（18px・角丸5・枠1.5 #AEB9C4）。indeterminate はテーマ色に白い横線（8×2）。 */
-[data-ar-design="remix"] [data-ar="checkbox"]{gap:8px;font-size:13.5px;line-height:1.5;color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]{width:18px;height:18px;border-radius:5px;border:1.5px solid #AEB9C4;background:#fff;color:#fff;transition:background var(--ar-motion-fast),border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]>[data-ar="icon"]{width:13px;height:13px;stroke-width:3}
-[data-ar-design="remix"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]>[data-part="mark"][data-kind="dash"]{width:8px;height:2px;border-radius:1px;background:currentColor}
-[data-ar-design="remix"] [data-ar="checkbox"]:hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="box"]{border-color:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="checkbox"]:is([data-state~="checked"],[data-state~="indeterminate"])>[data-part="control"]>[data-part="box"]{background:var(--ar-accent);border-color:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="checkbox"]:is([data-state~="checked"],[data-state~="indeterminate"]):hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="box"]{background:var(--ar-accent-strong);border-color:var(--ar-accent-strong)}
-[data-ar-design="remix"] [data-ar="checkbox"]>[data-part="control"]>[data-part="input"]:focus-visible+[data-part="box"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="checkbox"][data-state~="disabled"]{color:var(--ar-color-text-faint)}
-[data-ar-design="remix"] [data-ar="checkbox"][data-state~="disabled"]>[data-part="control"]>[data-part="box"]{background:var(--ar-color-surface-alt);border-color:var(--ar-color-border);color:var(--ar-color-text-faint)}
-/* ArCheckboxGroup：横は 18px あけて折り返す、縦は 10px。上の「すべて」の下は 10px。 */
-[data-ar-design="remix"] [data-ar="checkbox-group"]>[data-part="list"]{gap:10px 18px}
-[data-ar-design="remix"] [data-ar="checkbox-group"][data-direction="vertical"]>[data-part="list"]{gap:10px}
-[data-ar-design="remix"] [data-ar="checkbox-group"]>[data-ar="checkbox"]{margin-bottom:10px}
+/* @covers ArCheckbox 1.1.0, ArCheckboxGroup 1.1.0 */
+/* ArCheckbox・ArCheckboxGroup：デザインシステムの .chk（18px・角丸5・枠1.5 #AEB9C4）。indeterminate はテーマ色に白い横線。
+   四角の印・カード・大きさの段・並びの間は _choice.css（ラジオと共通）。 */
+/* 見た目だけのチェック（decorative）：親（メニューの項目・木の行）を押す。親が hover なら印もテーマ色の枠 */
+[data-ar-design="remix"] [data-ar="checkbox"][data-decorative]{cursor:inherit}

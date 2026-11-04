@@ -23,5 +23,6 @@
 [data-ar-design="remix"] [data-ar="step-select"]>[data-part="step"][data-state~="done"]>[data-part="head"]>[data-part="marker"]{background:#E8F6EF;color:#1E7A4C}
 [data-ar-design="remix"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="marker"]>[data-ar="icon"]{width:15px;height:15px}
 [data-ar-design="remix"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{margin-right:2px;font-size:15px;font-weight:700;line-height:1.5}
-[data-ar-design="remix"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="count"]{height:22px;margin-left:-2px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+/* 件数の札は ArTag（shape="pill" tone="accent"：22・角丸11・12px 700） */
+[data-ar-design="remix"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="count"]{margin-left:-2px}
 [data-ar-design="remix"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="extra"]{gap:8px}

@@ -29,7 +29,7 @@ export const remixDesign = defineDesign({
     "color.warn-subtle": "#FFF1DB",
     "color.warn-line": "#E8B66B",
     "color.ok": "#1E7A4C",
-    "color.ok-subtle": "#E6F3EC",
+    "color.ok-subtle": "#E3F4EA",
     "color.sun": "#C8322B",
     "color.sat": "#2563C9",
     "color.event": "#8E6BC4",

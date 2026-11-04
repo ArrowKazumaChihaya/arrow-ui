@@ -1,5 +1,7 @@
 /* @covers ArEllipsis 1.0.0 */
-/* 全文の吹き出しは Tooltip（.ad-tip：濃い面・12.5px・角丸8） */
+/* 全文の吹き出しの見た目は ArTooltip.css の共通のルール（.r-tip：矢印なし・基準から4px）。ここは幅と矢印・間だけ */
 [data-ar-design="remix"] [data-ar="ellipsis"][data-state~="cut"]:focus-visible{outline:2px solid var(--ar-accent);border-radius:3px}
-[data-ar-design="remix"] [data-ar="ellipsis-tip"]{max-width:280px;padding:6px 10px;border-radius:8px;background:var(--ar-color-text);color:#fff;font:500 12.5px/1.5 var(--ar-font-family);box-shadow:0 10px 24px -8px rgba(15,23,32,.5)}
-[data-ar-design="remix"] [data-ar="ellipsis-tip"]{font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="ellipsis-tip"]{max-width:280px}
+[data-ar-design="remix"] [data-ar="ellipsis-tip"]::after{display:none}
+[data-ar-design="remix"] [data-ar="ellipsis-tip"][data-placement^="top"]{transform:translateY(4px)}
+[data-ar-design="remix"] [data-ar="ellipsis-tip"][data-placement^="bottom"]{transform:translateY(-4px)}

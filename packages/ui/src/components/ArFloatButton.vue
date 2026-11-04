@@ -5,6 +5,7 @@
  */
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArBadge from "./ArBadge.vue";
 import type { ArFloatButtonProps } from "./ArFloatButton.contract";
 
 const props = withDefaults(defineProps<ArFloatButtonProps>(), {
@@ -64,7 +65,7 @@ function onClick(e: MouseEvent) {
       @click="emit('select', it.key)"
     >
       <ArIcon :name="it.icon" data-part="icon" size="sm" />
-      <span v-if="showBadge(it.badge)" data-part="badge" aria-hidden="true">{{ it.badge }}</span>
+      <ArBadge v-if="showBadge(it.badge)" data-part="badge" :count="it.badge" ring label="" aria-hidden="true" />
     </button>
   </div>
   <component
@@ -81,6 +82,6 @@ function onClick(e: MouseEvent) {
     @click="onClick"
   >
     <ArIcon :line="!icon" :name="icon ?? (backTop ? 'up' : 'plus')" data-part="icon" />
-    <span v-if="showBadge(badge)" data-part="badge" aria-hidden="true">{{ badge }}</span>
+    <ArBadge v-if="showBadge(badge)" data-part="badge" :count="badge" ring label="" aria-hidden="true" />
   </component>
 </template>

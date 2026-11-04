@@ -1,5 +1,6 @@
 /* ui-design-remix の見た目。scripts/gen-registry.mjs が parts/ から作る。手で直さない。 */
 @import "./parts/_base.css";
+@import "./parts/_choice.css";
 @import "./parts/_picker.css";
 @import "./parts/_product.css";
 @import "./parts/ArAffix.css";
@@ -130,3 +131,4 @@
 @import "./parts/ArWizard.css";
 @import "./parts/ArYearInput.css";
 @import "./parts/ArZipInput.css";
+@import "./parts/ArZoomControl.css";

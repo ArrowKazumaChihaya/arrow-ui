@@ -1,13 +1,2 @@
-/* @covers ArRadio 1.0.0 */
-/* ArRadio：ArRadioGroup の .radio と同じ（18px の丸・枠1.5 #AEB9C4、選ぶと枠5のテーマ色、13.5px）。 */
-[data-ar-design="remix"] [data-ar="radio"]{gap:8px;color:var(--ar-color-text);font-size:13.5px;line-height:1.5}
-[data-ar-design="remix"] [data-ar="radio"]>[data-part="control"]>[data-part="mark"]{width:18px;height:18px;border:1.5px solid #AEB9C4;border-radius:50%;background:#fff;transition:border var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
-[data-ar-design="remix"] [data-ar="radio"]:hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="radio"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{border:5px solid var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="radio"]>[data-part="control"]>[data-part="input"]:focus-visible+[data-part="mark"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="radio"][data-state~="invalid"]:not([data-state~="checked"])>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-color-danger,#D93A32)}
-[data-ar-design="remix"] [data-ar="radio"][data-state~="disabled"]{color:var(--ar-color-text-faint)}
-[data-ar-design="remix"] [data-ar="radio"][data-state~="disabled"]>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-color-border);background:var(--ar-color-surface-alt)}
-[data-ar-design="remix"] [data-ar="radio"][data-state~="disabled"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{border-color:var(--ar-color-field)}
-/* ArRadioGroup の選択肢の下の中身（extra）：丸の右の文字の頭にそろえる */
-[data-ar-design="remix"] [data-ar="radio-group"]>[data-part="extra"]{padding-left:26px}
+/* @covers ArRadio 1.1.0 */
+/* ArRadio：丸の印・カード・大きさの段は _choice.css（ArRadioGroup・ArChoiceCard の radio・ArCheckbox と共通。ここに重ねて書かない）。 */

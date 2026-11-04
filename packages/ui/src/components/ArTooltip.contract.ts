@@ -3,7 +3,13 @@ import type { ArPlacement } from "../internal/floating";
 /** 吹き出しを置く向き（基準の要素から見て）。-start / -end は端をそろえる。 */
 export type ArTooltipPlacement = ArPlacement;
 
-/** ArTooltip 1.0 の契約。default slot が基準の要素（ボタンなど）。 */
+/**
+ * ArTooltip 1.1 の契約。default slot が基準の要素（ボタンなど）。
+ * ライブラリの吹き出しの形はこれ1つ（remix はシフトのキャンバスの .r-tip：#1F2933・11.5px 600・角丸9・余白 7/10・影・矢印なし・基準から4px）。
+ * ArShiftGrid のマス・ArEllipsis・ArPopover の cell・ArSlider のつまみの値・ArShiftChart などの「1つだけ動かす吹き出し」も同じ見た目で描く。
+ * 1.1：content slot の中で「見出しの行＋ラベルと値の行」を並べるときは data-part="tip-row"（見出しの行は data-head）・"tip-label"・"tip-value" を使う。
+ * デザインの形（forms）：ArTooltip.cellTip＝"float"（吹き出し。既定）か "title"（部品の中のマス・帯の説明をブラウザの title で出す。classic の今の ARROW）。
+ */
 export interface ArTooltipProps {
   /** 吹き出しの文字（短い説明）。長い中身は content slot。 */
   title?: string;
@@ -23,4 +29,4 @@ export interface ArTooltipProps {
 export interface ArTooltipEmits {
   "update:open": [open: boolean];
 }
-export type ArTooltipPart = "trigger" | "root" | "panel" | "arrow" | "body";
+export type ArTooltipPart = "trigger" | "root" | "panel" | "arrow" | "body" | "tip-row" | "tip-label" | "tip-value";

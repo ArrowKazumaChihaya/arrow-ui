@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArWeekdayPicker 1.0 — 曜日をいくつでも選ぶ（繰り返し・一括登録の決まり）。
+ * ArWeekdayPicker 1.1 — 曜日をいくつでも選ぶ（繰り返し・一括登録の決まり）。大きさは xs（表の行）・sm・md・lg。
  * 選んだ曜日はテーマ色の塗り、選んでいない日・祝は赤、土は青の文字。各ボタンは押すたびに切り替わる（aria-pressed）。
  */
 import { computed } from "vue";

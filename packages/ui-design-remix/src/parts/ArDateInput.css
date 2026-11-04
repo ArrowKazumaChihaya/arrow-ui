@@ -1,7 +1,8 @@
-/* @covers ArDateInput 1.1.0, ArDateRange 1.0.0 */
-/* ArDateInput：.dti（年 76×36・月日 40×36・角丸9・600 14px、単位は 13px ink-2、曜日 12px mute。日は赤・土は青） */
+/* @covers ArDateInput 1.1.0, ArDateRange 1.1.0 */
+/* ArDateInput：.dti（年 76×36・月日 40×36・600 14px、単位は 13px ink-2、曜日 12px mute。日は赤・土は青）。
+   大きさの段（data-size）：sm 30（年 70・月日 36・13px）／md 36（.dti のまま）／lg 42（年 84・月日 46・15px）、角丸 9／10／11。 */
 [data-ar-design="remix"] [data-ar="date-input"]{font-feature-settings:"palt" 1;gap:4px;font-size:13px;color:var(--ar-color-text-secondary)}
-[data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"],[data-ar-design="remix"] [data-ar="date-input"]>input{height:36px;border:1px solid var(--ar-color-field);border-radius:9px;background:#fff;color:var(--ar-color-text);font:600 14px var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"],[data-ar-design="remix"] [data-ar="date-input"]>input{height:var(--ar-size-control-md);border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font:600 14px var(--ar-font-family-numeric);font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"]{width:76px;padding:0 20px 0 9px}
 [data-ar-design="remix"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]{right:5px;width:14px;height:14px;stroke-width:2;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="date-input"]>input{width:40px;padding:0;text-align:center}
@@ -24,3 +25,16 @@
 [data-ar-design="remix"] [data-ar="date-input"]>[data-part="error"]{margin-left:8px;color:var(--ar-color-danger-ink);font-size:12.5px;font-weight:600;white-space:nowrap}
 /* 和暦（era）：年のプルダウンは文字なりの幅（ArYearInput と同じ） */
 [data-ar-design="remix"] [data-ar="date-input"][data-era]>[data-part="year"]{width:auto;min-width:136px}
+/* 大きさの段 */
+[data-ar-design="remix"] [data-ar="date-input"][data-size="sm"]{font-size:12.5px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="sm"]>:is([data-part="year"],input){height:var(--ar-size-control-sm);border-radius:9px;font-size:13px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="sm"]>[data-part="year"]{width:70px;padding:0 18px 0 8px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="sm"]>input{width:36px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="sm"]>[data-part="weekday"]{font-size:11.5px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="lg"]{font-size:14px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="lg"]>:is([data-part="year"],input){height:var(--ar-size-control-lg);border-radius:11px;font-size:15px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="lg"]>[data-part="year"]{width:84px;padding:0 22px 0 10px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="lg"]>input{width:46px}
+[data-ar-design="remix"] [data-ar="date-input"][data-size="lg"]>[data-part="weekday"]{font-size:13px}
+[data-ar-design="remix"] [data-ar="date-input"][data-era]:is([data-size="sm"],[data-size="lg"])>[data-part="year"]{width:auto}
+[data-ar-design="remix"] [data-ar="date-range"][data-size="lg"]>[data-part="row"]>[data-part="days"]{font-size:13.5px}

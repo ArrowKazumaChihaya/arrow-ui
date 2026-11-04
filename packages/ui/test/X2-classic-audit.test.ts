@@ -91,7 +91,8 @@ describe("X2：classic の監査で足した形と動き", () => {
     expect(w.emitted("navigate")?.[0]?.[0]).toBe("list");
     await w.get('[data-part="pill"]').trigger("pointerenter");
     await nextTick();
-    await w.get('[data-part="pill-item"]').trigger("click");
+    // 一覧は ArFloat に載せて出す先へ出すので、document から探す
+    document.querySelector<HTMLElement>('[data-part="pill-item"]')!.click();
     expect(w.emitted("pill-item")?.[0]).toEqual(["todo", "t1"]);
     await w.setProps({ collapsed: true });
     expect(w.find('[data-part="domains"]').exists()).toBe(false);

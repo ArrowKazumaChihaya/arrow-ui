@@ -22,7 +22,7 @@ export interface ArTextInputProps {
   type?: "text" | "search" | "password" | "tel" | "email" | "url" | "number";
   /** 何も入っていないときの薄い文字。 */
   placeholder?: string;
-  /** 大きさ。sm＝高さ30・md＝38・lg＝44。 */
+  /** 大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。 */
   size?: "sm" | "md" | "lg";
   /** 見え方。outlined＝白地に枠（ふつう）。filled＝枠なしの灰色の地。 */
   variant?: "outlined" | "filled";
