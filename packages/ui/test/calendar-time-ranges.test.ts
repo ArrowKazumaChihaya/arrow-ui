@@ -3,6 +3,14 @@ import { describe, expect, it } from 'vitest';
 import ArCalendar from '../src/components/ArCalendar.vue';
 
 describe('calendar勤務時間', () => {
+  it('日付の読み上げ末尾を利用側の言語に合わせる', () => {
+    const calendar = mount(ArCalendar, { props: {
+      month: '2026-11', showHeader: false,
+      labels: { weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], year: '/', month: '/', day: '', yearSelect: 'Year', modeSwitch: 'View' },
+    } });
+    expect(calendar.get('[data-date="2026-11-04"]').attributes('aria-label')).toBe('2026/11/4');
+    calendar.unmount();
+  });
   for (const variant of ['board', 'sheet'] as const) {
     it(`${variant}: 分割勤務・翌日終了を省略せず読み上げ、日付の選択を維持する`, async () => {
       const calendar = mount(ArCalendar, {

@@ -266,7 +266,7 @@ const cellLabel = (c: ArCalendarCell) => {
   const L = props.labels;
   const extra = [m?.locked && L.locked, m?.unpublished && L.unpublished, m?.alert && L.alert].filter(Boolean);
   const times = c.inMonth ? timesOf(c.date).map(timeLabel) : [];
-  return `${c.year}${L.year}${c.month}${L.month}${c.day}日${extra.length ? `（${extra.join("・")}）` : ""}${times.length ? ` ${times.join("、")}` : ""}`;
+  return `${c.year}${L.year}${c.month}${L.month}${c.day}${L.day ?? "日"}${extra.length ? `（${extra.join("・")}）` : ""}${times.length ? ` ${times.join("、")}` : ""}`;
 };
 /** board の日付：月の1日は「10/1」のように月を添える。 */
 const firstDay = useDesignForm<"inMonth" | "always">("ArCalendar", "firstDay", "inMonth");

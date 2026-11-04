@@ -54,6 +54,8 @@ export interface ArCalendarProps {
   labels?: {
     weekdays: readonly string[];
     month: string;
+    /** 日付の末尾。英語などで不要な場合は空文字。省略時は「日」。 */
+    day?: string;
     year: string;
     yearSelect: string;
     modeSwitch: string;
