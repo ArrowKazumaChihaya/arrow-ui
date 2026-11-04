@@ -4,7 +4,7 @@ npm i -D @s_and_a/eslint-plugin-arrow-ui`;
 export const viteAlias = `// 当てるデザインのライブラリは、ここ1か所で決める
 const design = process.env.ARROW_DESIGN === "classic" ? "@s_and_a/arrow-ui-design-classic" : "@s_and_a/arrow-ui-design-remix";
 export default defineConfig({
-  resolve: { alias: [{ find: /^@arrow\\/ui-design$/, replacement: design }] },
+  resolve: { alias: [{ find: /^@s_and_a\\/arrow-ui-design$/, replacement: design }] },
 });`;
 
 export const appVue = `<script setup lang="ts">
