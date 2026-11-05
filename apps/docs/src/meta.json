@@ -5036,6 +5036,13 @@
     "default": "3"
    },
    {
+    "name": "block",
+    "type": "boolean",
+    "required": false,
+    "description": "親の配置幅いっぱいに広げる。横幅のあるメモ・住所・経路の入力用。",
+    "default": "false"
+   },
+   {
     "name": "autosize",
     "type": "boolean | ArTextareaAutosize",
     "required": false,
@@ -7134,7 +7141,7 @@
     "name": "column",
     "type": "number",
     "required": false,
-    "description": "1行に並べる項目の数。",
+    "description": "広い配置で1行に並べる項目の数。狭い配置では1列へ折り返す。",
     "default": "3"
    },
    {
@@ -7868,6 +7875,13 @@
   "description": "",
   "props": [
    {
+    "name": "layout",
+    "type": "'default' | 'compact'",
+    "required": false,
+    "description": "compact keeps the identity, metadata and actions together above a detail page.",
+    "default": "\"default\""
+   },
+   {
     "name": "title",
     "type": "string",
     "required": false,
@@ -7926,6 +7940,8 @@
   ],
   "parts": [
    "root",
+   "summary",
+   "header",
    "identity",
    "photo",
    "name",
@@ -8223,7 +8239,7 @@
    },
    {
     "name": "density",
-    "type": "'regular' | 'compact'",
+    "type": "'compact' | 'regular'",
     "required": false,
     "description": "行の高さ。compact は詰めた表（ポップアップの中の長い一覧など）。",
     "default": "\"regular\""

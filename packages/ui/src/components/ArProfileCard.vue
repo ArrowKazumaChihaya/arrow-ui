@@ -12,7 +12,7 @@ import type { ArProfileCardProps } from "./ArProfileCard.contract";
 
 const props = withDefaults(defineProps<ArProfileCardProps>(), {
   title: undefined, name: undefined, kana: undefined, code: undefined, image: undefined, tagsLabel: undefined,
-  items: () => [], tags: () => [],
+  layout: "default", items: () => [], tags: () => [],
 });
 const descriptionItems = computed(() => [
   ...props.items,
@@ -21,13 +21,13 @@ const descriptionItems = computed(() => [
 </script>
 
 <template>
-  <article data-ar="profile-card" data-part="root">
+  <article data-ar="profile-card" data-part="root" :data-layout="layout">
     <ArCard :variant="title ? 'band' : 'elevated'" :title="title" :icon="title ? 'users' : undefined">
-      <ArStack :gap="4">
-        <ArCluster :gap="4" justify="between" align="start">
+      <ArStack :gap="4" data-part="summary">
+        <ArCluster :gap="4" justify="between" align="start" data-part="header">
           <div data-part="identity">
             <div data-part="photo">
-              <ArAvatar :src="image" :name="name" size="xl" />
+              <ArAvatar :src="image" :name="name" :size="layout === 'compact' ? 'lg' : 'xl'" />
               <slot name="photo-actions" />
             </div>
             <ArStack :gap="1">
@@ -41,7 +41,7 @@ const descriptionItems = computed(() => [
           </div>
           <ArCluster v-if="$slots.actions" :gap="2" data-part="actions"><slot name="actions" /></ArCluster>
         </ArCluster>
-        <ArDescriptions v-if="descriptionItems.length" :items="descriptionItems" :column="Math.min(2, descriptionItems.length)">
+        <ArDescriptions v-if="descriptionItems.length" :items="descriptionItems" :column="Math.min(2, descriptionItems.length)" :variant="layout === 'compact' ? 'plain' : 'bordered'">
           <template #item-profile-tags>
             <ArCluster :gap="1">
               <ArTag v-for="tag in tags" :key="tag.key" :tone="tag.tone ?? 'accent'" size="sm">{{ tag.label }}</ArTag>

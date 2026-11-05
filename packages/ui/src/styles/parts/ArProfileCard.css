@@ -6,3 +6,16 @@
 [data-ar="profile-card"] [data-part="name"]{margin:0;overflow-wrap:anywhere}
 [data-ar="profile-card"] [data-ar="descriptions"] dd{overflow-wrap:anywhere}
 @container(max-width:600px){[data-ar="profile-card"] [data-ar="descriptions"]>[data-part="list"]{grid-template-columns:auto minmax(0,1fr)}}
+
+/* Compact identity header for pages whose primary content is the detail below it. */
+[data-ar="profile-card"][data-layout="compact"] [data-part="summary"]{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px}
+[data-ar="profile-card"][data-layout="compact"] [data-part="header"]{display:contents}
+[data-ar="profile-card"][data-layout="compact"] [data-part="identity"]{flex:0 1 auto;align-items:center;gap:12px}
+[data-ar="profile-card"][data-layout="compact"] [data-part="summary"]>[data-ar="descriptions"]{flex:1 1 24rem;min-width:0}
+[data-ar="profile-card"][data-layout="compact"] [data-ar="descriptions"]>[data-part="list"]{display:flex;flex-wrap:wrap;gap:8px 12px}
+[data-ar="profile-card"][data-layout="compact"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"]{display:flex;align-items:baseline;gap:6px;min-width:0;max-width:100%;padding-bottom:0}
+[data-ar="profile-card"][data-layout="compact"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{flex:none}
+[data-ar="profile-card"][data-layout="compact"] [data-part="footer"]{flex:0 1 auto;min-width:0}
+@container(max-width:600px){
+  [data-ar="profile-card"][data-layout="compact"] [data-part="summary"]>[data-ar="descriptions"]{flex-basis:100%}
+}

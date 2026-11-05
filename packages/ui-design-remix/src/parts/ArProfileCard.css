@@ -38,3 +38,6 @@
     flex: none;
   }
 }
+
+[data-ar-design="remix"] [data-ar="profile-card"][data-layout="compact"] [data-part="name"]{font-size:18px}
+[data-ar-design="remix"] [data-ar="profile-card"][data-layout="compact"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"]{padding:4px 8px;border-radius:6px;background:var(--ar-color-surface-alt)}
