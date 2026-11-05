@@ -34,6 +34,6 @@
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{flex-wrap:wrap}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"] [data-ar="button"]:is([data-tone="ghost"],[data-tone="muted"],[data-tone="link"]):not(:disabled,[aria-disabled="true"]){color:#fff}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"] [data-ar="button"]:is([data-tone="ghost"],[data-tone="muted"],[data-tone="link"]):hover:not(:disabled,[aria-disabled="true"]){background:rgba(255,255,255,.16)}
-[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]:has(>:is([data-ar="cluster"],[data-ar="stack"])){padding:10px}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="footer"]:has(>:is([data-ar="cluster"],[data-ar="stack"])){margin-inline:0;margin-bottom:0}
-[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>:is([data-ar="cluster"],[data-ar="stack"]){height:auto;min-width:0}
+[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]:has(>:is([data-ar="cluster"],[data-ar="stack"],[data-ar="grid"])){padding:10px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="footer"]:has(>:is([data-ar="cluster"],[data-ar="stack"],[data-ar="grid"])){margin-inline:0;margin-bottom:0}
+[data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>:is([data-ar="cluster"],[data-ar="stack"],[data-ar="grid"]){height:auto;min-width:0}

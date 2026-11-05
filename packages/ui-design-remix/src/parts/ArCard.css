@@ -58,8 +58,8 @@
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"] [data-ar="button"]:is([data-tone="ghost"],[data-tone="muted"],[data-tone="link"]):hover:not(:disabled,[aria-disabled="true"]){background:rgba(255,255,255,.16)}
 /* Form action groups need natural height when buttons wrap. Direct footer
    buttons retain the segmented card footer used by compact summaries. */
-[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]:has(>:is([data-ar="cluster"],[data-ar="stack"])){padding:12px 18px}
-[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>:is([data-ar="cluster"],[data-ar="stack"]){height:auto;min-width:0}
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]:has(>:is([data-ar="cluster"],[data-ar="stack"],[data-ar="grid"])){padding:12px 18px}
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>:is([data-ar="cluster"],[data-ar="stack"],[data-ar="grid"]){height:auto;min-width:0}
 @media(max-width:640px){
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]{min-height:50px;padding-inline:12px}
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]>[data-part="title"]{font-size:17px}

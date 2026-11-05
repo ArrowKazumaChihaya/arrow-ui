@@ -163,6 +163,19 @@ const eventInvalid = computed(
         </ArStack>
       </section>
 
+      <section class="cat-sec" id="card-footer-layout">
+        <h2>カード下部の操作配置</h2>
+        <ArStack :gap="4">
+          <ArCard v-for="justify in ['start', 'end', 'between'] as const" :key="justify" :title="justify" :data-test="justify">
+            フォームの操作
+            <template #footer><ArCluster :gap="2" :justify="justify"><ArButton tone="secondary">キャンセル</ArButton><ArButton>保存</ArButton></ArCluster></template>
+          </ArCard>
+          <ArCard title="縦配置" data-test="stack"><template #footer><ArStack :gap="2"><ArButton>補助操作</ArButton><ArButton>保存</ArButton></ArStack></template></ArCard>
+          <ArCard title="格子配置" data-test="grid"><template #footer><ArGrid :columns="2" :gap="2"><ArButton>補助操作</ArButton><ArButton>保存</ArButton></ArGrid></template></ArCard>
+          <ArCard title="直接置く操作" data-test="segmented"><template #footer><ArButton>操作1</ArButton><ArButton>操作2</ArButton></template></ArCard>
+        </ArStack>
+      </section>
+
       <section class="cat-sec" id="field-responsive">
         <h2>配置幅に合わせる入力欄</h2>
         <ArStack :gap="5">

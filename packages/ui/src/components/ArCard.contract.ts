@@ -24,6 +24,6 @@ export interface ArCardProps {
 
 /**
  * slot：title（見出し。title prop の代わりに補足や札を配置できる）、default（本文）、actions（見出しの右の操作・「詳しく」）、tabs（帯のすぐ下のタブの帯）、
- * cover（上の絵の場所）、footer（下に並ぶアイコンの操作。1つずつ区切る）。
+ * cover（上の絵の場所）、footer（直接置いた操作は1つずつ区切る。フォームはArCluster/ArStack/ArGridでまとめ、内部の配置指定を保つ）。
  */
 export type ArCardPart = "root" | "cover" | "head" | "title" | "icon" | "actions" | "tabs" | "body" | "footer";
