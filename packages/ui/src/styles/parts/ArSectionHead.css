@@ -1,9 +1,10 @@
 /* ArSectionHead の構造：見出しの部分・操作・右端を横に並べ、右端は残りの幅の右に寄せる。 */
 [data-ar="section-head"]{display:flex;align-items:center;flex-wrap:wrap;min-width:0;box-sizing:border-box}
-[data-ar="section-head"]>[data-part="toggle"]{display:inline-flex;align-items:center;min-width:0;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left}
+[data-ar="section-head"]>[data-part="toggle"]{display:inline-flex;align-items:center;min-width:0;max-width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left}
 [data-ar="section-head"]>button[data-part="toggle"]{cursor:pointer}
 [data-ar="section-head"]>[data-part="toggle"]>[data-part="icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
-[data-ar="section-head"]>[data-part="toggle"]>[data-part="title"]{margin:0;white-space:nowrap}
+[data-ar="section-head"]>[data-part="toggle"]>[data-part="title"]{min-width:0;margin:0;white-space:normal;overflow-wrap:anywhere}
+[data-ar="section-head"]>[data-part="toggle"]>[data-part="caret"]{flex:none}
 [data-ar="section-head"]>[data-part="toggle"]>[data-part="count"]{display:inline-flex;align-items:center;flex:none;white-space:nowrap;box-sizing:border-box}
 [data-ar="section-head"]>[data-part="actions"]{display:flex;align-items:center;flex-wrap:wrap;min-width:0}
 [data-ar="section-head"]>[data-part="end"]{display:flex;align-items:center;margin-left:auto;min-width:0}
