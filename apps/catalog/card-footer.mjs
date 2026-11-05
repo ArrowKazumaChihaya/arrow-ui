@@ -17,6 +17,7 @@ try {
     for (const design of ["classic", "remix"]) {
       await page.locator('[data-test="design"]').selectOption(design);
       await page.waitForFunction(d => document.querySelector('[data-ar-design]')?.getAttribute('data-ar-design') === d, design);
+      await page.waitForFunction(() => getComputedStyle(document.querySelector('#card-footer-layout [data-test="segmented"] [data-part="footer"]')).display === 'flex');
       for (const justify of ["start", "end", "between"]) {
         const group = section.locator(`[data-test="${justify}"] [data-ar="cluster"]`);
         const bounds = await group.evaluate(el => ({
