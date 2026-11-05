@@ -12,6 +12,13 @@ const option=computed(()=>{
   return selected;
 });
 const items=computed(()=>props.options.map(item=>({title:item.label})));
+const nextLabel=computed(()=>{
+  if(option.value.nextText !== undefined) return option.value.nextText;
+  const destination=props.options[current.value+1];
+  return destination && props.labels.nextStep
+    ? props.labels.nextStep.replace('{step}', destination.label)
+    : props.labels.next;
+});
 watch(()=>props.value,()=>{
  if(props.scrollOnChange && typeof document!=='undefined')
   (document.scrollingElement ?? document.documentElement).scrollTo?.({top:0});
@@ -24,7 +31,7 @@ watch(()=>props.value,()=>{
     <div data-part="content"><slot /></div>
     <div v-if="!disabled && option" data-part="actions">
       <ArButton v-if="option.isPrev!==false" tone="secondary" size="lg" @click="emit('prev')">{{option.prevText ?? labels.prev}}</ArButton>
-      <ArButton v-if="option.isNext!==false" tone="primary" size="lg" @click="emit('next')">{{option.nextText ?? labels.next}}</ArButton>
+      <ArButton v-if="option.isNext!==false" tone="primary" size="lg" @click="emit('next')">{{nextLabel}}</ArButton>
     </div>
   </section>
 </template>

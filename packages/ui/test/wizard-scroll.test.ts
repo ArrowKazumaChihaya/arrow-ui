@@ -3,6 +3,22 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import ArWizard from '../src/components/ArWizard.vue';
 
 const original = Object.getOwnPropertyDescriptor(document, 'scrollingElement');
+it('names the next destination while preserving explicit completion actions and legacy labels', async () => {
+  const wrapper = mount(ArWizard, { props: {
+    value: 1,
+    options: [{value: 1, label: 'Income'}, {value: 5, label: 'Review', nextText: 'Submit'}],
+    labels: {steps: 'Steps', prev: 'Back', next: 'Next', nextStep: 'Next ({step})'},
+    scrollOnChange: false,
+  }});
+  expect(wrapper.get('[data-tone="primary"]').text()).toBe('Next (Review)');
+  await wrapper.get('[data-tone="primary"]').trigger('click');
+  expect(wrapper.emitted('next')).toHaveLength(1);
+  await wrapper.setProps({value: 5});
+  expect(wrapper.get('[data-tone="primary"]').text()).toBe('Submit');
+  await wrapper.setProps({value: 1, labels: {steps: 'Steps', prev: 'Back', next: 'Next'}});
+  expect(wrapper.get('[data-tone="primary"]').text()).toBe('Next');
+  wrapper.unmount();
+});
 afterEach(() => {
   vi.restoreAllMocks();
   if (original) Object.defineProperty(document, 'scrollingElement', original);

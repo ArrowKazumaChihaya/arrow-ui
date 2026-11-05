@@ -11,7 +11,8 @@ export interface ArWizardProps {
   value: number;
   options: readonly ArWizardOption[];
   disabled?: boolean;
-  labels?: { steps: string; prev: string; next: string };
+  /** nextStep may contain {step}; an explicit option.nextText still takes precedence. */
+  labels?: { steps: string; prev: string; next: string; nextStep?: string };
   scrollOnChange?: boolean;
 }
 export interface ArWizardEmits { prev: []; next: []; }

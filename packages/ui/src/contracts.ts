@@ -35,7 +35,7 @@ export const contracts = {
   ArSteps: "1.1.0",
   ArStepSelect: "1.0.0",
   ArTabs: "1.1.0",
-  ArWizard: "1.0.0",
+  ArWizard: "1.1.0",
   ArAutoComplete: "1.0.0",
   ArCascader: "1.0.0",
   ArCheckbox: "1.1.0",

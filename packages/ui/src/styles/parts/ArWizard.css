@@ -1,1 +1,17 @@
 [data-ar="wizard"]>[data-part="summary"]{display:none}[data-ar="wizard"]>[data-part="content"]{padding:24px 0}[data-ar="wizard"]>[data-part="actions"]{display:flex;justify-content:center;gap:24px;padding:24px 0}@media(max-width:700px){[data-ar="wizard"]>[data-part="steps"]{display:none}[data-ar="wizard"]>[data-part="summary"]{display:block}}
+[data-ar="wizard"] > [data-part="actions"] > [data-ar="button"] {
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  min-height: 44px;
+  white-space: normal;
+}
+[data-ar="wizard"] > [data-part="actions"] > [data-ar="button"] > [data-part="label"] {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  [data-ar="wizard"] > [data-part="actions"] { gap: 12px; }
+  [data-ar="wizard"] > [data-part="actions"] > [data-ar="button"] { flex: 1; }
+  [data-ar="wizard"] > [data-part="actions"] > [data-ar="button"][data-tone="primary"] { flex-grow: 2; }
+}
