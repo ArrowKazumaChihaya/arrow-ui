@@ -4,6 +4,8 @@ import {
   ArAlert,
   ArApprovalFlow,
   ArCard,
+  ArChangedValue,
+  ArDescriptions,
   ArCheckbox,
   ArRadioGroup,
   ArSelect,
@@ -220,6 +222,17 @@ const eventInvalid = computed(
           </div>
           <ArCluster><ArTextarea v-model="fieldDraft" label="既定幅のメモ" /></ArCluster>
         </ArStack>
+      </section>
+
+      <section class="cat-sec" id="changed-value-responsive">
+        <h2>狭い欄での変更前後</h2>
+        <div style="width:320px;max-width:100%">
+          <ArDescriptions :column="1" :items="[{key:'zip',label:'郵便番号'},{key:'phone',label:'携帯電話番号'},{key:'address',label:'住所'}]">
+            <template #item-zip><ArChangedValue before="1000001" after="0012345" /></template>
+            <template #item-phone><ArChangedValue before="09001234567" after="08001234567" /></template>
+            <template #item-address><ArChangedValue before="変更前の長い住所と建物名を表示する検証用テストビル101" after="変更後の長い住所と建物名を表示する検証用テストビル202" /></template>
+          </ArDescriptions>
+        </div>
       </section>
 
       <section class="cat-sec" id="approval-details-responsive">
