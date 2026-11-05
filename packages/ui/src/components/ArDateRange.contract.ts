@@ -23,6 +23,8 @@ export interface ArDateRangeProps {
   disabled?: boolean;
   /** 読み上げ用の名前（例：「募集する期間」）。 */
   label?: string;
+  /** 外側のラベルから始まりの日の年入力へ移動するid。 */
+  id?: string;
   labels?: { start: string; end: string; separator: string; days: (n: number) => string; reversed: string };
 }
 export interface ArDateRangeEmits {

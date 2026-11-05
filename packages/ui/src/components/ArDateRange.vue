@@ -48,6 +48,7 @@ const set = (key: "start" | "end", v: string | null) => emit("update:modelValue"
     <div data-part="row">
       <ArDateInput
         v-bind="inputProps"
+        :id="id"
         data-part="start"
         :model-value="modelValue.start"
         :min-year="minYear"

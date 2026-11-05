@@ -2914,6 +2914,12 @@
     "description": "読み上げ用の名前（例：「募集する期間」）。"
    },
    {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "外側のラベルから始まりの日の年入力へ移動するid。"
+   },
+   {
     "name": "labels",
     "type": "{ start: string; end: string; separator: string; days: (n: number) => string; reversed: string; }",
     "required": false,

@@ -101,9 +101,12 @@ describe("ArDateRange・ArDatePicker", () => {
   it("範囲入力でも不正日付の補正禁止・入力中の更新・翻訳を保つ", async () => {
     const w = mount(ArDateRange, { props: {
       modelValue: { start: "2026-02-01", end: "2026-11-30" },
+      id: "publication-period",
       labels: { start: "Start ", end: "End ", separator: "–", days: (n: number) => `${n} days`, reversed: "Check the end date" },
       inputProps: { invalidDate: "message", updateOnInput: true, pad: "zero", showWeekday: false, labels: { year: "Year", month: "Month", day: "Day", weekdays: [], invalidDate: "Invalid date" } },
     } });
+    expect(w.get('#publication-period').attributes("role")).toBe("combobox");
+    expect(w.findAll('#publication-period')).toHaveLength(1);
     await w.get('[aria-label="Start Day"]').setValue("31");
     expect(w.emitted("update:modelValue")?.at(-1)).toEqual([{ start: null, end: "2026-11-30" }]);
     expect(w.text()).toContain("Invalid date");
