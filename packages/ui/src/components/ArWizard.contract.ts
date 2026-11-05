@@ -10,6 +10,8 @@ export interface ArWizardOption {
 export interface ArWizardProps {
   value: number;
   options: readonly ArWizardOption[];
+  /** Actual destination when the consumer skips optional steps; navigation remains consumer-owned. */
+  nextValue?: number;
   disabled?: boolean;
   /** nextStep may contain {step}; an explicit option.nextText still takes precedence. */
   labels?: { steps: string; prev: string; next: string; nextStep?: string };

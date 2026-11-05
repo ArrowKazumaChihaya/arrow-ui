@@ -25,6 +25,24 @@ afterEach(() => {
   else Reflect.deleteProperty(document, 'scrollingElement');
 });
 
+it('names the consumer-selected destination when optional steps are skipped', async () => {
+  const wrapper = mount(ArWizard, {props: {
+    value: 1, nextValue: 3,
+    options: [{value: 1, label: 'Eligibility'}, {value: 2, label: 'Amount'}, {value: 3, label: 'Review', nextText: 'Submit'}],
+    labels: {steps: 'Steps', prev: 'Back', next: 'Next', nextStep: 'Next ({step})'},
+    scrollOnChange: false,
+  }});
+  expect(wrapper.get('[data-tone="primary"]').text()).toBe('Next (Review)');
+  await wrapper.setProps({nextValue: 2});
+  expect(wrapper.get('[data-tone="primary"]').text()).toBe('Next (Amount)');
+  await wrapper.setProps({value: 3, nextValue: 4});
+  expect(wrapper.get('[data-tone="primary"]').text()).toBe('Submit');
+  await wrapper.setProps({value: 1, nextValue: 99});
+  expect(wrapper.get('[data-tone="primary"]').text()).toBe('Next');
+  expect(wrapper.emitted('next')).toBeUndefined();
+  wrapper.unmount();
+});
+
 it.each(['html', 'body'] as const)('scrolls the actual %s document scroller after a step change', async tag => {
   const scroller = tag === 'html' ? document.documentElement : document.body;
   const scroll = vi.fn();

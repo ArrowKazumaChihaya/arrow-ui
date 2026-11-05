@@ -14,7 +14,9 @@ const option=computed(()=>{
 const items=computed(()=>props.options.map(item=>({title:item.label})));
 const nextLabel=computed(()=>{
   if(option.value.nextText !== undefined) return option.value.nextText;
-  const destination=props.options[current.value+1];
+  const destination=props.nextValue === undefined
+    ? props.options[current.value+1]
+    : props.options.find(item=>item.value===props.nextValue);
   return destination && props.labels.nextStep
     ? props.labels.nextStep.replace('{step}', destination.label)
     : props.labels.next;
