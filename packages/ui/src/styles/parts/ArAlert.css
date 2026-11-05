@@ -2,3 +2,8 @@
 [data-ar="alert"]>[data-part="icon"]{flex:none}
 [data-ar="alert"]>[data-part="action"]{display:flex;align-items:center;flex:none}
 [data-ar="alert"]>[data-part="close"]{align-items:center;justify-content:center}
+/* Actions belong beside short guidance on wide surfaces, then below it on narrow ones. */
+[data-ar="alert"]:has(>[data-part="action"]){flex-wrap:wrap;container-type:inline-size;inline-size:100%;box-sizing:border-box}
+@container(max-width:480px){
+  [data-ar="alert"][data-part="root"]>[data-part="action"]{flex-basis:100%;justify-content:flex-end;order:1;margin:0}
+}
