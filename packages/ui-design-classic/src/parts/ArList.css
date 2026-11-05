@@ -16,3 +16,7 @@
 [data-ar-design="classic"] [data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="avatar"]{align-self:flex-start}
 [data-ar-design="classic"] [data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"][data-state~="off"]>[data-part="meta"]{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="list"][data-size="sm"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]{padding:8px 16px}
+
+@container ar-list (max-width:480px){
+  [data-ar-design="classic"] [data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="actions"]{margin-left:0;padding-right:0}
+}
