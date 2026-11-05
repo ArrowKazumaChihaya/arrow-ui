@@ -1,5 +1,11 @@
 # @s_and_a/arrow-ui
 
+## 0.1.8
+
+### Patch Changes
+
+- 7eebac0: 固定目次を本文より手前に表示し、長い節の途中で次の節が選択表示になる問題を修正する。
+
 ## 0.1.7
 
 ### Patch Changes
