@@ -1,14 +1,14 @@
 /* @covers ArWizard 1.2.0 */
 /* Composed from the active design’s public controls. */
 
-[data-ar="wizard"][data-layout="form"] {
+[data-ar-design="remix"] [data-ar="wizard"][data-layout="form"] {
   inline-size: 100%;
   max-inline-size: 48rem;
   margin-inline: auto;
 }
-[data-ar="wizard"][data-layout="form"] > [data-part="actions"] {
+[data-ar-design="remix"] [data-ar="wizard"][data-layout="form"] > [data-part="actions"] {
   justify-content: space-between;
 }
-[data-ar="wizard"][data-layout="form"] > [data-part="actions"] > [data-tone="primary"] {
+[data-ar-design="remix"] [data-ar="wizard"][data-layout="form"] > [data-part="actions"] > [data-tone="primary"] {
   margin-inline-start: auto;
 }
