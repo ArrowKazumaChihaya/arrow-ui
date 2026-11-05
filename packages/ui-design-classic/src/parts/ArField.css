@@ -5,8 +5,8 @@
 [data-ar-design="classic"] [data-ar="field"]>[data-part="label"]{display:flex;align-items:center;font-size:14px;font-weight:600;color:rgba(0,0,0,.88);line-height:32px;min-height:32px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="stacked"]>[data-part="label"]{padding-bottom:8px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]{column-gap:0}
-[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;height:auto;white-space:normal;overflow-wrap:anywhere;text-align:right;line-height:22px;padding-block:5px}
-[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]::after{content:":";position:relative;margin-inline:2px 8px}
+[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{display:block;min-width:0;height:auto;white-space:normal;overflow-wrap:anywhere;text-align:right;line-height:22px;padding:5px 8px 5px 0}
+[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]::after{content:":";position:relative;margin-inline:2px 0}
 [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"][data-empty]::after{content:none}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="label"]:has(>[data-part="required"])::before{content:"*";display:inline-block;margin-inline-end:4px;color:#FF4D4F;font-family:SimSun,sans-serif;font-size:14px;line-height:1}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
