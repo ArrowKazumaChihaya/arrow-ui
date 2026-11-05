@@ -39,6 +39,10 @@ ARROW シリーズで共通に使う Vue 3 のデザインライブラリです�
 
 Front は公開 npm の通常のバージョン依存と lockfile を使用します。インストールに GitHub/npm 認証やローカル tarball は不要です。各パッケージは変更内容に応じて個別にバージョンを進めます。
 
+デザイン刷新の開発中は、Frontの`feature/design-renewal-prep`からこのリポジトリのソースを直接読み込みます。**全体の修正と検証が完了するまでnpm公開・認証依頼は停止します。** Frontとこのcheckoutを同じ親ディレクトリへ置き、ライブラリ側で`npm ci`、Front側で`yarn install --frozen-lockfile`と`yarn dev`を実行してください（このディレクトリ名は`arrow-ui`）。Frontの起動ログに`arrow-ui: local source (...)`が出れば、部品・トークン・新旧テーマの`src`を使用しています。通常の部品やCSSの編集はビルド・pack・公開なしで反映されます。部品の追加や契約変更では従来どおり`npm run gen`で登録を更新します。
+
+別配置ならFrontで`ARROW_UI_CHECKOUT=/absolute/path/to/arrow-ui yarn dev`を指定します。Frontの型検査・単体テスト・ブラウザ検証・buildも同じソースを使用します。公開成果物を検証するときだけ`ARROW_UI_CHECKOUT=npm`を指定し、npm公開後にはそのモードでも確認します。Frontに隣接checkoutがない通常のインストールはlockfileの公開版を使用します。
+
 ## 今ある部品（115）
 
 Ant Design の全種類と、ARROW 特有の部品です。どの部品も remix と classic の両方の見た目があります。
