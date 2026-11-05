@@ -46,7 +46,7 @@ const keyOf = (s: ArApprovalStep, i: number) => s.key ?? i;
             <span data-part="title"><ArIcon v-if="s.state === 'done'" line name="check" size="sm" />{{ s.title }}</span>
             <span v-if="s.who" data-part="who">{{ s.who }}</span>
           </div>
-          <span data-part="status" :data-state="s.state">{{ statusOf(s) }}</span>
+          <span v-if="statusOf(s)" data-part="status" :data-state="s.state">{{ statusOf(s) }}</span>
           <div v-if="$slots.details" data-part="details"><slot name="details" :step="s" :index="i" /></div>
         </div>
       </slot>

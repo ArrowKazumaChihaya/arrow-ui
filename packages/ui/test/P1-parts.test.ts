@@ -124,6 +124,17 @@ describe("P1：ArApprovalFlow", () => {
     expect(items.map((i) => i.get('[data-part="status"]').text())).toEqual(["承認済", "あなたの番", "まだ"]);
     w.unmount();
   });
+  it("明示した空の状態文は空の札を出さず、省略時は既定の状態文を使う", () => {
+    for (const design of [classicDesign, remixDesign]) {
+      const w = inDesign(design, ArApprovalFlow, {steps:[
+        {title:"申請",state:"done",status:""},
+        {title:"確認",state:"current"},
+      ]});
+      expect(w.findAll('[data-part="status"]')).toHaveLength(1);
+      expect(w.get('[data-part="status"]').text()).toBe("あなたの番");
+      w.unmount();
+    }
+  });
   it("row：先頭の「申請」と › でつなぐ。classic は list も横の札", () => {
     const w = inDesign(remixDesign, ArApprovalFlow, { steps, layout: "row", start: "申請" });
     expect(w.get('[data-part="start"]').text()).toBe("申請");
