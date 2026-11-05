@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArApprovalFlow 1.1 — 承認の流れ。済み・あなたの番・まだ（差し戻し・飛ばした）を段ごとに。
+ * ArApprovalFlow 1.2 — 承認の流れ。済み・あなたの番・まだ・停滞・差し戻し・飛ばしたを段ごとに。
  * row は横の札を › でつなぎ（設定の承認フロー）、list は番号の丸と状態の札の縦の一覧（勤怠・社員情報の承認）。
  */
 import { computed } from "vue";
@@ -24,6 +24,7 @@ const L = computed<ArApprovalFlowLabels>(() => ({
   todo: "まだ",
   denied: "差し戻し",
   skipped: "スキップ",
+  blocked: "承認者の確認待ち",
   flow: "承認の流れ",
   ...props.labels,
 }));
@@ -38,7 +39,7 @@ const keyOf = (s: ArApprovalStep, i: number) => s.key ?? i;
     </li>
     <li v-for="(s, i) in steps" :key="keyOf(s, i)" data-part="item" :data-state="s.state" :aria-current="s.state === 'current' ? 'step' : undefined">
       <span v-if="start || i > 0" data-part="sep" aria-hidden="true"><ArIcon line name="cr" size="sm" /></span>
-      <span data-part="mark" :data-state="s.state" aria-hidden="true"><template v-if="s.state === 'done'">✓</template><template v-else-if="s.state === 'denied'">×</template><template v-else>{{ i + 1 }}</template></span>
+      <span data-part="mark" :data-state="s.state" aria-hidden="true"><template v-if="s.state === 'done'">✓</template><template v-else-if="s.state === 'denied'">×</template><template v-else-if="s.state === 'blocked'">!</template><template v-else>{{ i + 1 }}</template></span>
       <slot name="step" :step="s" :index="i">
         <div data-part="step" :data-state="s.state">
           <div data-part="body">

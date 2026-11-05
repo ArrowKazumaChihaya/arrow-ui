@@ -1,12 +1,12 @@
 import type { ArIconName } from "../icons";
 
 /**
- * ArApprovalFlow 1.1 の契約。承認の流れ（設定の申請設定・勤怠の承認・社員情報の申請）。
+ * ArApprovalFlow 1.2 の契約。承認の流れ（設定の申請設定・勤怠の承認・社員情報の申請）。
  * 段ごとに 済み（done）・あなたの番／いまの番（current）・まだ（todo）・差し戻し（denied）・飛ばした（skipped）。
  * デザインが選べる形（ArDesign.forms.ArApprovalFlow）：
  * - list："list"（既定。layout="list" をそのまま縦の一覧で）／"row"（list も横の札で出す。今の ARROW の AdmitFlowView は横に並んだ丸い札と「→」だけ。classic）。
  */
-export type ArApprovalState = "done" | "current" | "todo" | "denied" | "skipped";
+export type ArApprovalState = "done" | "current" | "todo" | "denied" | "skipped" | "blocked";
 
 export interface ArApprovalStep {
   /** 見分ける値（省くと順番）。 */
@@ -27,6 +27,8 @@ export interface ArApprovalFlowLabels {
   todo: string;
   denied: string;
   skipped: string;
+  /** 承認者不足などで進行できない状態。否認・差し戻しとは区別する。 */
+  blocked: string;
   /** 流れの名前（読み上げ）。 */
   flow: string;
 }

@@ -1,4 +1,4 @@
-/* @covers ArApprovalFlow 1.1.0 */
+/* @covers ArApprovalFlow 1.2.0 */
 /* 今の ARROW の承認フロー（Config/AdmitFlowView.vue・Workflow/ApprovalFlow.vue）：#F0F0F0 の地・角丸8・内側8px、中央寄せ。
    札は白・角丸16・内側6px・最小幅90・14px 600、下に人（10px #5C5C5C）と状態（10px 600）。札の間は「→」（#6C757D 16px bold）。
    申請＝#585858 の2px線、承認済＝#69AF8A、いまの番（承認待ち）＝#ED9118 の点線、差し戻し＝#CA3A31、まだ＝#797C7E・400・線なし。
@@ -16,6 +16,7 @@
 [data-ar-design="classic"] [data-ar="approval-flow"] [data-part="step"][data-state="done"]{color:#69AF8A;border:2px solid #69AF8A}
 [data-ar-design="classic"] [data-ar="approval-flow"] [data-part="step"][data-state="current"]{color:#ED9118;border:2px dashed #ED9118}
 [data-ar-design="classic"] [data-ar="approval-flow"] [data-part="step"][data-state="denied"]{color:#CA3A31;border:2px solid #CA3A31}
+[data-ar-design="classic"] [data-ar="approval-flow"] [data-part="step"][data-state="blocked"]{color:#874D00;border:2px solid #FAAD14;background:#FFFBE6}
 [data-ar-design="classic"] [data-ar="approval-flow"] [data-part="step"]:is([data-state="todo"],[data-state="skipped"]){color:#797C7E;font-weight:400}@media (max-width:750px){[data-ar-design="classic"] [data-ar="approval-flow"] :is([data-part="start"],[data-part="step"]){min-width:68px;min-height:23px;padding:4px;border-radius:14px;font-size:11px}}@media (max-width:600px){[data-ar-design="classic"] [data-ar="approval-flow"]{flex-direction:column;gap:1px}}
 
 [data-ar-design="classic"] [data-ar="approval-flow"] [data-part="body"]{flex-direction:column;gap:5px}

@@ -133,6 +133,22 @@ describe("P1：ArApprovalFlow", () => {
     expect(c.get('[data-ar="approval-flow"]').attributes("data-layout")).toBe("row");
     c.unmount();
   });
+  it("承認者不足の停滞と否認を別の状態・表示にする", () => {
+    for (const design of [classicDesign, remixDesign]) {
+      const w = inDesign(design, ArApprovalFlow, {
+        steps: [
+          { title: "人事の確認", state: "blocked" },
+          { title: "以前の申請", state: "denied" },
+        ],
+        labels: { blocked: "承認者不足" },
+      });
+      const blocked = w.get('[data-part="item"][data-state="blocked"]');
+      expect(blocked.get('[data-part="status"]').text()).toBe("承認者不足");
+      expect(blocked.get('[data-part="mark"]').text()).toBe("!");
+      expect(w.get('[data-part="item"][data-state="denied"] [data-part="mark"]').text()).toBe("×");
+      w.unmount();
+    }
+  });
   it("詳細スロットの編集値・フォーカス・操作は list と row の往復でも保持する", async () => {
     const design = shallowRef(remixDesign);
     let opened = 0;
