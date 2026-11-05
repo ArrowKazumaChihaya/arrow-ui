@@ -16,7 +16,7 @@ export interface ArDescriptionsItem {
 export interface ArDescriptionsProps {
   /** 項目。 */
   items: readonly ArDescriptionsItem[];
-  /** 1行に並べる項目の数。 */
+  /** 広い配置で1行に並べる項目の数。狭い配置では1列へ折り返す。 */
   column?: number;
   /**
    * 形。bordered＝枠つきの表（ラベルの地は淡いテーマ色）、plain＝枠なしで「ラベル 値」を並べる（日の要約の形）。

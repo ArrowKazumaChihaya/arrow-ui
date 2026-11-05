@@ -1,13 +1,23 @@
 /* ArDescriptions の構造。bordered は「ラベル｜値」を1組として列に並べる（項目の div は display:contents） */
-[data-ar="descriptions"]{min-width:0}
+[data-ar="descriptions"]{min-width:0;width:100%;container:ar-descriptions / inline-size}
 [data-ar="descriptions"]>[data-part="header"]{display:flex;align-items:center;justify-content:space-between;gap:8px}
 [data-ar="descriptions"]>[data-part="header"]>[data-part="title"]{margin:0}
 [data-ar="descriptions"]>[data-part="list"]{display:grid;margin:0;min-width:0}
-[data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),auto minmax(0,1fr))}
+[data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-visible-columns,var(--ar-desc-columns,3)),minmax(0,2fr) minmax(0,3fr))}
 [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]{display:contents}
-[data-ar="descriptions"][data-variant="plain"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr))}
+[data-ar="descriptions"][data-variant="plain"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-visible-columns,var(--ar-desc-columns,3)),minmax(0,1fr))}
 [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]{display:flex;align-items:baseline;min-width:0}
 [data-ar="descriptions"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){margin:0;min-width:0}
-[data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr))}
+[data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-visible-columns,var(--ar-desc-columns,3)),minmax(0,1fr))}
 [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]{display:flex;flex-direction:column;align-items:stretch;min-width:0}
 [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){overflow-wrap:anywhere;white-space:pre-wrap}
+
+/* Keep span responsive without remounting slots or creating implicit columns. */
+[data-ar="descriptions"][data-variant="bordered"][data-layout="inline"]>[data-part="list"]>[data-part="item"]>[data-part="value"]{grid-column:span calc(var(--ar-desc-visible-span,var(--ar-desc-item-span,1))*2 - 1)}
+[data-ar="descriptions"]:is([data-variant="plain"],[data-layout="stacked"])>[data-part="list"]>[data-part="item"]{grid-column:span var(--ar-desc-visible-span,var(--ar-desc-item-span,1))}
+[data-ar="descriptions"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){overflow-wrap:anywhere}
+@container ar-descriptions (max-width:720px){
+  [data-ar="descriptions"]>[data-part="list"]{--ar-desc-visible-columns:1;--ar-desc-visible-span:1}
+  [data-ar="descriptions"][data-variant="plain"][data-layout="inline"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{flex:0 1 40%}
+  [data-ar="descriptions"][data-variant="plain"][data-layout="inline"]>[data-part="list"]>[data-part="item"]>[data-part="value"]{flex:1 1 60%}
+}

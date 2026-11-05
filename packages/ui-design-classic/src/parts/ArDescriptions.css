@@ -8,10 +8,10 @@
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]>[data-part="label"]::after{content:":";margin:0 8px 0 2px}
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{border:1px solid rgba(5,5,5,.06);border-radius:8px;overflow:hidden}
 /* 区切りの線は 1px のすき間に影で描く（最後の行・最後の列の外側には線を足さない＝antd の表と同じ高さ 38）。 */
-[data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{gap:1px;grid-template-columns:repeat(var(--ar-desc-columns,3),auto auto)}
+[data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{gap:1px;grid-template-columns:repeat(var(--ar-desc-visible-columns,var(--ar-desc-columns,3)),minmax(0,2fr) minmax(0,3fr))}
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>:is([data-part="label"],[data-part="value"]){padding:8px 16px;box-shadow:1px 0 0 rgba(5,5,5,.06),0 1px 0 rgba(5,5,5,.06),1px 1px 0 rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);white-space:nowrap}
-[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-columns,3),minmax(0,1fr));row-gap:12px}
+[data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);white-space:normal}
+[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-visible-columns,var(--ar-desc-columns,3)),minmax(0,1fr));row-gap:12px}
 [data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]{gap:4px;padding-bottom:0}
 [data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{color:rgba(0,0,0,.65);font-size:13px;white-space:normal}
 [data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]::after{content:none}

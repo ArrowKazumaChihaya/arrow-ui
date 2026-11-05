@@ -169,12 +169,13 @@ describe("ArDescriptions・ArStatistic・ArCountdown", () => {
     expect(w.findAll("dt").map((node) => node.text())).toEqual(["希望日", "申請事由(任意)"]);
     expect(w.findAll("dd").map((node) => node.text())).toEqual(["11月4日（水）", note]);
     const value = w.findAll("dd")[1]!.element;
-    expect(w.findAll('[data-part="item"]')[1]!.attributes("style")).toContain("span 2");
+    expect(w.findAll('[data-part="item"]')[1]!.attributes("style")).toContain("--ar-desc-item-span: 2");
     expect(w.findAll("dd")[1]!.attributes("style")).toBeUndefined();
     await w.setProps({ layout: "inline" });
     expect(w.findAll("dd")[1]!.element).toBe(value);
     expect(w.findAll("dd")[1]!.text()).toBe(note);
-    if (variant === "bordered") expect(w.findAll("dd")[1]!.attributes("style")).toContain("span 3");
+    expect(w.findAll("dd")[1]!.attributes("style")).toBeUndefined();
+    expect(w.findAll('[data-part="item"]')[1]!.attributes("style")).toContain("--ar-desc-item-span: 2");
     w.unmount();
   });
   it("説明リストは dt/dd で、slot で値を差し替えられ、span で横につなぐ", () => {
@@ -184,7 +185,7 @@ describe("ArDescriptions・ArStatistic・ArCountdown", () => {
     });
     expect(w.findAll("dt").map((d) => d.text())).toEqual(["氏名", "雇用形態", "備考"]);
     expect(w.findAll("dd")[1]!.text()).toBe("パート");
-    expect(w.findAll("dd")[2]!.attributes("style")).toContain("span 5");
+    expect(w.findAll('[data-part="item"]')[2]!.attributes("style")).toContain("--ar-desc-item-span: 3");
   });
   it("統計は3桁ごとに区切り、単位と増減を出す", () => {
     const w = mount(ArStatistic, { props: { title: "今月の人件費", value: 1284500, prefix: "¥", trend: "down", trendValue: "3.2%" } });

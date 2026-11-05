@@ -23,10 +23,10 @@ const cols = computed(() => ({ "--ar-desc-columns": String(props.column) }));
         :key="it.key"
         data-part="item"
         :data-tone="it.tone"
-        :style="(variant === 'plain' || layout === 'stacked') && span(it) > 1 ? { gridColumn: `span ${span(it)}` } : undefined"
+        :style="{ '--ar-desc-item-span': span(it) }"
       >
         <dt data-part="label"><slot :name="`label-${it.key}`" :item="it">{{ it.label }}</slot></dt>
-        <dd data-part="value" :style="variant === 'bordered' && layout === 'inline' && span(it) > 1 ? { gridColumn: `span ${span(it) * 2 - 1}` } : undefined"><slot :name="`item-${it.key}`" :item="it">{{ it.value }}</slot></dd>
+        <dd data-part="value"><slot :name="`item-${it.key}`" :item="it">{{ it.value }}</slot></dd>
       </div>
     </dl>
   </div>
