@@ -32,9 +32,9 @@ export interface ArModalProps {
   contained?: boolean;
   /** スマホ（幅640px以下）では画面いっぱい（.fsc）にする。 */
   mobileFullscreen?: boolean;
-  /** confirm：確かめの小さなポップアップ（左に印・本文なし）。 */
+  /** confirm：確かめの小さなポップアップ。説明と任意の本文、操作ボタンをまとめる。 */
   variant?: "default" | "confirm";
-  /** 題の左の印（confirm の既定は alert）。 */
+  /** 題に添える印（confirm の既定は alert）。位置はテーマが決める。 */
   icon?: ArIconName;
   /** 印の色。warn 橙・danger 赤・info テーマ色・ok 緑。 */
   iconTone?: "warn" | "danger" | "info" | "ok";

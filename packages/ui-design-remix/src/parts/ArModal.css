@@ -12,9 +12,6 @@
 [data-ar-design="remix"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="warn"]{color:#E39A2D}
 [data-ar-design="remix"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="danger"]{color:var(--ar-color-danger)}
 [data-ar-design="remix"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="ok"]{color:var(--ar-color-ok)}
-/* 確かめ（confirm）：説明は ink-2 寄りの13px、足は右寄せで左右16px */
-[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:4px;line-height:1.6}
-[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="footer"]{padding:12px 16px}
 /* 手順 .stpr（頭の下の行。左に切り替えなどを置ける） */
 [data-ar-design="remix"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]{gap:10px;padding:10px 22px;border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"][data-toolbar]{padding:12px 22px}
@@ -64,3 +61,14 @@
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-start"]:has([data-part="note"]){flex-basis:100%}
   [data-ar-design="remix"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-part="note"]{flex-basis:100%}
 }
+
+/* 確認：共通デザイン原稿の一枚のカード。入力フォームの帯・区切り線を使わない。 */
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]{flex-direction:column;align-items:flex-start;gap:12px;padding:22px 22px 12px;border:0}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"]{align-items:center;justify-content:center;width:36px;height:36px;margin:0;border-radius:10px;background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="warn"]{background:color-mix(in srgb,#E39A2D 10%,var(--ar-color-surface))}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="danger"]{background:color-mix(in srgb,var(--ar-color-danger) 10%,var(--ar-color-surface))}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="ok"]{background:color-mix(in srgb,var(--ar-color-ok) 10%,var(--ar-color-surface))}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:16px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:8px;line-height:1.6}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="body"]{padding:0 22px 16px;font-size:13px;line-height:1.6}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="footer"]{padding:4px 22px 20px;background:var(--ar-color-surface);border:0}

@@ -26,7 +26,7 @@ async function hide() {
   <ArButton icon="eyeoff" @click="hide">一覧から隠す…</ArButton>
   <span v-if="result" style="font-size: 13px">{{ result }}</span>
 </ArCluster>
-<div style="position: relative; height: 230px; margin-top: 16px; border-radius: 12px; overflow: hidden; background: #EEF2F6">
+<div style="position: relative; height: 300px; margin-top: 16px; border-radius: 12px; overflow: hidden; background: #EEF2F6">
   <ArModal
     v-model:open="preview"
     contained
