@@ -1,4 +1,5 @@
 /* ui-design-remix の見た目。scripts/gen-registry.mjs が parts/ から作る。手で直さない。 */
+@import "./parts/_ai-chat.css";
 @import "./parts/_base.css";
 @import "./parts/_choice.css";
 @import "./parts/_picker.css";
