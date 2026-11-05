@@ -25,6 +25,9 @@ try {
       assert.equal(await input.evaluate((el, old) => el === old, original), true);
       const fields = section.locator('[data-ar="field"]');
       for (const field of await fields.all()) {
+        const name = (await field.locator(':scope > [data-part="label"]').textContent()).replace(/\s+/g, " ").trim();
+        assert.equal(await field.getByRole("textbox", { name, exact: true }).count(), 1, `${design}/${width}: decoration must not change the input name: ${name}`);
+        if (await field.getAttribute("data-layout") !== "inline") continue;
         const geometry = await field.evaluate((el) => {
           const bounds = el.getBoundingClientRect();
           const labelElement = el.querySelector(':scope > [data-part="label"]');

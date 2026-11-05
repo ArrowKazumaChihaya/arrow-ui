@@ -198,6 +198,9 @@ const eventInvalid = computed(
               <ArTextInput v-model="fieldDraft" v-bind="field" block />
             </ArField>
           </div>
+          <ArField label="ツールバーの項目" layout="toolbar" v-slot="field">
+            <ArTextInput v-model="fieldDraft" v-bind="field" />
+          </ArField>
         </ArStack>
       </section>
 

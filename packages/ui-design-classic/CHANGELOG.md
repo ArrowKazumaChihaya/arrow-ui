@@ -1,5 +1,11 @@
 # @s_and_a/arrow-ui-design-classic
 
+## 0.1.8
+
+### Patch Changes
+
+- フォームの区切り記号と必須記号を読み上げ名から除き、幅やテーマの切り替えで入力欄の名前が変わらないよう修正。表示と必須情報は保持。
+
 ## 0.1.7
 
 ### Patch Changes
