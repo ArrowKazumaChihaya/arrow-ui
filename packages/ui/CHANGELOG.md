@@ -1,5 +1,11 @@
 # @s_and_a/arrow-ui
 
+## 0.1.7
+
+### Patch Changes
+
+- ArTextarea に block を追加し、メモや経路欄を親の幅まで広げられるようにする。省略時の幅と入力イベントは維持する。
+
 ## 0.1.6
 
 ### Patch Changes

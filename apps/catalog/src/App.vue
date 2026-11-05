@@ -10,6 +10,8 @@ import {
   ArTabs,
   ArTag,
   ArTextInput,
+  ArTextarea,
+  ArItem,
   ArButton,
   ArCluster,
   ArDateInput,
@@ -201,6 +203,17 @@ const eventInvalid = computed(
           <ArField label="ツールバーの項目" layout="toolbar" v-slot="field">
             <ArTextInput v-model="fieldDraft" v-bind="field" />
           </ArField>
+        </ArStack>
+      </section>
+
+      <section class="cat-sec" id="textarea-responsive">
+        <h2>配置幅を使うメモ</h2>
+        <ArStack :gap="4">
+          <ArItem title="メモ" variant="row"><ArTextarea v-model="fieldDraft" label="メモ" block /></ArItem>
+          <div style="width:320px;max-width:100%">
+            <ArItem title="狭い欄の経路" variant="row"><ArTextarea v-model="fieldDraft" label="狭い欄の経路" block /></ArItem>
+          </div>
+          <ArCluster><ArTextarea v-model="fieldDraft" label="既定幅のメモ" /></ArCluster>
         </ArStack>
       </section>
 

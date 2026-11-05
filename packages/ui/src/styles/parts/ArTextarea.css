@@ -1,5 +1,6 @@
 /* ArTextarea の構造 */
 [data-ar="textarea"]{display:flex;flex-direction:column;min-width:0;box-sizing:border-box}
+[data-ar="textarea"][data-block]{width:100%;max-width:100%}
 [data-ar="textarea"]>[data-part="input"]{display:block;width:100%;box-sizing:border-box;margin:0;font:inherit;color:inherit;outline:0}
 [data-ar="textarea"][data-resize="vertical"]>[data-part="input"]{resize:vertical}
 [data-ar="textarea"][data-resize="none"]>[data-part="input"]{resize:none}

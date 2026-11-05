@@ -12,6 +12,7 @@ defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArTextareaProps>(), {
   placeholder: undefined,
   rows: 3,
+  block: false,
   autosize: false,
   maxlength: undefined,
   showCount: false,
@@ -85,6 +86,7 @@ defineExpose({ focus: () => el.value?.focus(), blur: () => el.value?.blur(), tex
     v-bind="rootAttrs"
     data-ar="textarea"
     data-part="root"
+    :data-block="block || undefined"
     :data-size="size"
     :data-variant="variant"
     :data-resize="auto ? 'none' : resize"

@@ -13,6 +13,8 @@ export interface ArTextareaProps {
   placeholder?: string;
   /** 行数（autosize のときは使わない）。 */
   rows?: number;
+  /** 親の配置幅いっぱいに広げる。横幅のあるメモ・住所・経路の入力用。 */
+  block?: boolean;
   /** 中身に合わせて高さを変える。true か { minRows, maxRows }。 */
   autosize?: boolean | ArTextareaAutosize;
   /** 入れられる文字数の上限。 */
