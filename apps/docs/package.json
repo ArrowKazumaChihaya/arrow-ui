@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@s_and_a/arrow-ui": "0.1.4",
-    "@s_and_a/arrow-ui-design-remix": "0.1.5",
+    "@s_and_a/arrow-ui-design-remix": "0.1.6",
     "@s_and_a/arrow-ui-design-classic": "0.1.5",
     "vue": "^3.5.22"
   }
