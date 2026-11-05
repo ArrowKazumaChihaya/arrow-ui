@@ -344,6 +344,13 @@
     "default": "\"md\""
    },
    {
+    "name": "fixed",
+    "type": "'start' | 'end'",
+    "required": false,
+    "description": "幅を固定する側。end は本文の右に補助欄を置く。幅の段階は start を使う。",
+    "default": "\"start\""
+   },
+   {
     "name": "gap",
     "type": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8",
     "required": false,
@@ -10672,6 +10679,13 @@
     "required": false,
     "description": "枠の上に「下へ進む」矢印を出す（前のまとまりから続くとき）。",
     "default": "true"
+   },
+   {
+    "name": "variant",
+    "type": "'default' | 'step'",
+    "required": false,
+    "description": "step は手順表示と併用する、左寄せのコンパクトなまとまり。段間の矢印を出さない。",
+    "default": "\"default\""
    }
   ],
   "emits": [],
