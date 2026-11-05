@@ -37,7 +37,7 @@ ARROW シリーズで共通に使う Vue 3 のデザインライブラリです�
 - 部品の選択値は公開契約に合わせます。Front の従来の ID 型や nullable 値は利用側の変換で維持し、ライブラリに業務処理を持ち込みません。
 - デザインは `ArUiProvider` で切り替えます。画面の再マウントを必要としないため、入力中の値や表の操作状態を保持できます。
 
-Front 統合用の作業版は `0.1.1` です。配布先は公開 npm レジストリへ変更しました。初回公開までは先行確認用の Front が同梱 tarball を使用しています。公開成功後、Front を通常のバージョン依存と lockfile に切り替えます。
+Front は公開 npm の通常のバージョン依存と lockfile を使用します。インストールに GitHub/npm 認証やローカル tarball は不要です。各パッケージは変更内容に応じて個別にバージョンを進めます。
 
 ## 今ある部品（115）
 
@@ -198,11 +198,11 @@ npm run release         # Changesets が未公開バージョンを公開
 
 パスワード、トークン、ワンタイムコードはリポジトリへ保存しません。公開したバージョン番号は再利用せず、次の変更では `npm run changeset` と `npx changeset version` で版を進めます。
 
-5 パッケージの `0.1.1` は公開済みです（公開元コミット `e169d71`）。Front 側では、以下のように取得できます。
+5 パッケージは公開済みです。新しく導入するときは、以下で現在の公開版を取得し、実際に解決されたバージョンを package.json と yarn.lock に固定します。既存Frontでは、更新済みのlockfileを使って `yarn install --frozen-lockfile` を実行してください。
 
 ```sh
-yarn add --exact @s_and_a/arrow-ui@0.1.1 @s_and_a/arrow-ui-tokens@0.1.1 @s_and_a/arrow-ui-design-remix@0.1.1 @s_and_a/arrow-ui-design-classic@0.1.1
-yarn add --dev --exact @s_and_a/eslint-plugin-arrow-ui@0.1.1
+yarn add --exact @s_and_a/arrow-ui @s_and_a/arrow-ui-tokens @s_and_a/arrow-ui-design-remix @s_and_a/arrow-ui-design-classic
+yarn add --dev --exact @s_and_a/eslint-plugin-arrow-ui
 ```
 
 Front の `feature/design-renewal-prep` は通常の npm 依存へ移行済みです。`resolutions` と `yarn.lock` も公開版を参照し、旧 `vendor/arrow-ui` は削除しました。別環境では `yarn install --frozen-lockfile` だけで同じ公開版を取得できます。
