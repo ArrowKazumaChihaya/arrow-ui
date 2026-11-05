@@ -88,6 +88,7 @@ const pageTabs = [
   { key: "view", label: "閲覧", icon: "eye" as const },
 ];
 const title = ref("朝礼");
+const fieldDraft = ref("入力途中の会社名 0012345");
 const search = ref("");
 const store = ref<string | number | null>(1);
 const stores = [
@@ -159,6 +160,25 @@ const eventInvalid = computed(
               <ArAlert tone="warn" title="勤怠ロック中">10月20日までの勤怠はロックされています。変更は管理者に依頼してください。</ArAlert>
             </ArStack>
           </ArCard>
+        </ArStack>
+      </section>
+
+      <section class="cat-sec" id="field-responsive">
+        <h2>配置幅に合わせる入力欄</h2>
+        <ArStack :gap="5">
+          <ArField label="会社名" required layout="inline" label-size="lg" help="狭い配置ではラベルを上に移します。" v-slot="field">
+            <ArTextInput v-model="fieldDraft" v-bind="field" />
+          </ArField>
+          <div style="width:320px;max-width:100%">
+            <ArField label="長い項目名と入力値を省略せずに表示する欄" required layout="inline" label-size="lg" help="PCの狭いカード内でも入力幅を確保します。" v-slot="field">
+              <ArTextInput v-model="fieldDraft" v-bind="field" />
+            </ArField>
+          </div>
+          <div style="width:260px;max-width:100%">
+            <ArField label="固定幅の指定がある項目" layout="inline" label-width="70%" error="入力内容を確認してください。" v-slot="field">
+              <ArTextInput v-model="fieldDraft" v-bind="field" />
+            </ArField>
+          </div>
         </ArStack>
       </section>
 

@@ -17,3 +17,12 @@
 [data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]{gap:4px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{min-height:0;color:#000;font-size:13px;font-weight:400;line-height:32px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]::after{content:"："}
+
+/* 狭い入力欄は親幅で縦配置へ。画面幅が広いダイアログやカラム内も同じ扱い。 */
+[data-ar-design="classic"] [data-ar="field"][data-layout="inline"]{container-type:inline-size;container-name:ar-field;min-width:0;grid-template-columns:minmax(0,var(--ar-field-label)) minmax(0,1fr)}
+@container ar-field (max-width:480px){
+  [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"],
+  [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="control"]{grid-column:1/-1;min-width:0}
+  [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-start;text-align:left;white-space:normal;overflow:visible;height:auto;margin-bottom:6px;overflow-wrap:anywhere}
+  [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]::after{content:none}
+}

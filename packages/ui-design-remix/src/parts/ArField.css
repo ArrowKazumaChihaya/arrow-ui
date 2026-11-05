@@ -12,3 +12,11 @@
 /* toolbar：シフト画面の .v-st（12.5px 600・mute・入力との間 8px） */
 [data-ar-design="remix"] [data-ar="field"][data-layout="toolbar"]{gap:8px}
 [data-ar-design="remix"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{gap:4px;font-size:12.5px;font-weight:600;line-height:18.75px;color:var(--ar-color-text-muted)}
+
+/* 狭い入力欄は親幅で縦配置へ。画面幅が広いダイアログやカラム内も同じ扱い。 */
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{container-type:inline-size;container-name:ar-field;min-width:0;grid-template-columns:minmax(0,var(--ar-field-label)) minmax(0,1fr)}
+@container ar-field (max-width:480px){
+  [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"],
+  [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]{grid-column:1/-1;min-width:0}
+  [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-start;text-align:left;white-space:normal;overflow:visible;height:auto;margin-bottom:6px;overflow-wrap:anywhere}
+}
