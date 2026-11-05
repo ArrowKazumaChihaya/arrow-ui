@@ -69,6 +69,31 @@ function partsOf(time: string | null, blankZeroHour: boolean): [string, string] 
 const [h0, m0] = partsOf(props.modelValue.time, !props.select);
 const hourText = ref(h0);
 const minuteText = ref(m0);
+let projectedDraft: { text: string; hour: string; minute: string } | null = null;
+
+// A design can change the field shape while the same control remains mounted.
+// Transfer its local draft without submitting it or restoring stale inactive fields.
+watch(fields, (shape, previous) => {
+  if (shape === previous || props.select || props.note) return;
+  const hadFocus = root.value?.contains(document.activeElement) ?? false;
+  if (shape === "split") {
+    const parsed = parseTime(text.value, maxHour.value);
+    const parts = parsed === undefined ? text.value.split(":", 2) : partsOf(parsed, true);
+    hourText.value = parts[0] ?? "";
+    minuteText.value = parts[1] ?? "";
+    projectedDraft = { text: text.value, hour: hourText.value, minute: minuteText.value };
+  } else {
+    if (projectedDraft && projectedDraft.hour === hourText.value && projectedDraft.minute === minuteText.value) {
+      text.value = projectedDraft.text;
+    } else {
+      const parsed = joinParts(hourText.value, minuteText.value, false);
+      text.value = parsed === undefined || (parsed === null && (hourText.value || minuteText.value))
+        ? `${hourText.value}:${minuteText.value}` : parsed ?? "";
+    }
+    projectedDraft = null;
+  }
+  if (hadFocus) nextTick(() => root.value?.querySelector<HTMLInputElement>("input")?.focus());
+});
 
 watch(
   () => props.modelValue.time,
@@ -123,7 +148,15 @@ function commit() {
     return;
   }
   unreadable.value = false;
-  if (!split.value && !props.select) text.value = parsed ?? "";
+  // Commit may run while focused, when the external-value watcher intentionally
+  // leaves the active draft alone. Update the inactive representation here too.
+  text.value = parsed ?? "";
+  if (!split.value && !props.select) {
+    const [hour, minute] = partsOf(parsed, true);
+    hourText.value = hour;
+    minuteText.value = minute;
+  }
+  projectedDraft = null;
   if (parsed !== props.modelValue.time) send({ time: parsed, day: day.value });
 }
 
