@@ -26,7 +26,7 @@ watch(()=>props.value,()=>{
 </script>
 <template>
   <section data-ar="wizard" data-part="root">
-    <div data-part="steps"><ArSteps :items="items" :current="current" :label="labels.steps" /></div>
+    <div data-part="steps"><ArSteps :items="items" :current="current" :label="labels.steps" size="mini" /></div>
     <p data-part="summary" aria-live="polite">{{current+1}} / {{options.length}} — {{option?.label}}</p>
     <div data-part="content"><slot /></div>
     <div v-if="!disabled && option" data-part="actions">
