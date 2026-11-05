@@ -78,7 +78,7 @@ export const contracts = {
   ArAvatar: "1.1.1",
   ArAvatarGroup: "1.0.0",
   ArBadge: "1.1.0",
-  ArCalendar: "1.2.0",
+  ArCalendar: "1.3.0",
   ArCard: "1.1.0",
   ArCarousel: "1.0.0",
   ArCollapse: "1.1.0",

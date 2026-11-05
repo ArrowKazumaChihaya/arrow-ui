@@ -239,7 +239,7 @@ const timeMap = computed(() => {
   return result;
 });
 const timesOf = (date: string) => timeMap.value.get(date) ?? [];
-const timeLabel = (range: ArCalendarTimeRange) => range.label ?? `${range.start}〜${range.end}`;
+const timeLabel = (range: ArCalendarTimeRange) => range.label ?? (range.end ? `${range.start}〜${range.end}` : range.start);
 const eventsOf = (date: string) => eventMap.value.get(date) ?? [];
 const weekendOf = (wd: number) => (props.weekendColors ? (wd === 0 ? "sun" : wd === 6 ? "sat" : undefined) : undefined);
 const dayTone = (c: ArCalendarCell) => (props.weekendColors && marksOf(c)?.holiday ? "sun" : weekendOf(c.weekday));
@@ -380,7 +380,7 @@ const calRoot = ref<HTMLElement | null>(null);
           <div v-if="c.inMonth && timesOf(c.date).length" data-part="times">
             <span v-for="(range, index) in timesOf(c.date)" :key="index" data-part="time-range" :title="timeLabel(range)" aria-hidden="true">
               <span data-part="time-start">{{ range.start }}</span>
-              <span data-part="time-end">{{ range.end }}</span>
+              <span v-if="range.end" data-part="time-end">{{ range.end }}</span>
             </span>
           </div>
         </div>

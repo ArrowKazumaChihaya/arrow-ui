@@ -12,6 +12,21 @@ describe('calendar勤務時間', () => {
     calendar.unmount();
   });
   for (const variant of ['board', 'sheet'] as const) {
+    it(`${variant}: 単独の打刻時刻は空の終了や区切りを出さず0時・翌日と読み上げを保持する`, () => {
+      const calendar = mount(ArCalendar, { props: {
+        variant, month: '2026-11', showHeader: false,
+        timeRanges: [
+          { date: '2026-11-04', start: '00:00' },
+          { date: '2026-11-04', start: '25:10', label: '翌日出勤 25:10' },
+        ],
+      } });
+      const day = calendar.get('[data-date="2026-11-04"]');
+      expect(day.attributes('aria-label')).toBe('2026年11月4日 00:00、翌日出勤 25:10');
+      expect(day.findAll('[data-part="time-start"]').map(node => node.text())).toEqual(['00:00', '25:10']);
+      expect(day.findAll('[data-part="time-end"]')).toHaveLength(0);
+      expect(day.findAll('[data-part="time-range"]').map(node => node.attributes('title'))).toEqual(['00:00', '翌日出勤 25:10']);
+      calendar.unmount();
+    });
     it(`${variant}: 分割勤務・翌日終了を省略せず読み上げ、日付の選択を維持する`, async () => {
       const calendar = mount(ArCalendar, {
         props: {

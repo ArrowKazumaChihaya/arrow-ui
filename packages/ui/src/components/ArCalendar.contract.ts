@@ -1,5 +1,5 @@
 /**
- * ArCalendar 1.2 の契約。月の表示（マスの中身は cell slot）と、年の表示（12か月）。
+ * ArCalendar 1.3 の契約。月の表示（マスの中身は cell slot）と、年の表示（12か月）。
  * デザインが選べる形（ArDesign.forms.ArCalendar）：
  * - firstDay："inMonth"（既定。board の月の1日だけ「10/1」と月を添える）／"always"（形によらず、前後の月の1日も「12/1」と月を添える。今の ARROW の Calendar。classic）。
  */
@@ -46,7 +46,7 @@ export interface ArCalendarProps {
   showAdjacent?: boolean;
   /** マスに出す小さな印（朝礼・不足1 など）。マスの下に寄せて並べる。ほかの中身は cell slot。 */
   events?: readonly ArCalendarEvent[];
-  /** 日ごとの勤務時間。狭いマスでも開始・終了を2行で省略せず表示する。値の計算・整形は利用側で行う。 */
+  /** 日ごとの勤務時間・打刻時刻。狭いマスでも開始・終了を2行で省略せず表示する。値の計算・整形は利用側で行う。 */
   timeRanges?: readonly ArCalendarTimeRange[];
   /** 読み上げ用の名前（例：「シフトのカレンダー」）。 */
   label?: string;
@@ -93,8 +93,9 @@ export interface ArCalendarEvent {
 export interface ArCalendarTimeRange {
   date: string;
   start: string;
-  end: string;
-  /** 店舗名などを含む読み上げ・ツールチップ。省略時は開始〜終了。 */
+  /** 終了を省くと出勤時刻などの単独の時刻を表示する。 */
+  end?: string;
+  /** 店舗名などを含む読み上げ・ツールチップ。省略時は開始〜終了、終了がなければ開始だけ。 */
   label?: string;
 }
 /** 日ごとの状態の印（cellMarks が返す）。 */

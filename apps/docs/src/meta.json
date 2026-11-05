@@ -6666,7 +6666,7 @@
  },
  {
   "name": "ArCalendar",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "月の表示のカレンダー（見出しは淡いテーマ色、今日はテーマ色の丸、選んだ日はテーマ色の枠）。\nマスの中身は cell slot（イベント・不足など）。年の表示（12か月）にも切り替えられる。\nsize=\"mini\" は小さなカレンダー（設定のシフトテンプレートの「カレンダーで確かめる」）：見出しは絵と題だけ、マスに札と小さな文字、下に footer slot。\nキーボード：←→↑↓ で日を移り、PageUp / PageDown で月（Shift で年）、Home / End で週の端、Enter / Space で選ぶ。",
   "props": [
    {
@@ -6783,7 +6783,7 @@
     "name": "timeRanges",
     "type": "readonly ArCalendarTimeRange[]",
     "required": false,
-    "description": "日ごとの勤務時間。狭いマスでも開始・終了を2行で省略せず表示する。値の計算・整形は利用側で行う。",
+    "description": "日ごとの勤務時間・打刻時刻。狭いマスでも開始・終了を2行で省略せず表示する。値の計算・整形は利用側で行う。",
     "default": "[]"
    },
    {

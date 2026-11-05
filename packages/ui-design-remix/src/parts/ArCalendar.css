@@ -1,4 +1,4 @@
-/* @covers ArCalendar 1.2.0 */
+/* @covers ArCalendar 1.3.0 */
 /* ArCalendar：デザインシステムの .ad-calf（角丸12・線の枠・見出しの段 8/10 と下線、曜日は淡いテーマ色の 28px、マスは 54px・線 #F0F3F6・12px 中太の数字、
    今日はテーマ色の 20px の丸、選んだ日は acc-25 の地と 1.5px の枠、前後の月は #A3AEB9）と .ev（行事の印）、.seg（月／年の切り替え）。 */
 [data-ar-design="remix"] [data-ar="calendar"]:not([data-variant="board"],[data-size="mini"]){border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-border);overflow:hidden;color:var(--ar-color-text);font-size:14px;line-height:1.5}
