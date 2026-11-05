@@ -4,6 +4,7 @@
 [data-ar="text"][data-ellipsis]{display:inline-flex;align-items:baseline;max-width:100%;vertical-align:bottom}
 [data-ar="text"][data-ellipsis]>[data-part="content"]{display:inline-block;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
 [data-ar="text"]>[data-part="copy"]{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin:0;padding:0;border:0;background:none;cursor:pointer;font:inherit;flex:none}
+[data-ar="paragraph"][data-preserve-lines]{white-space:pre-wrap;overflow-wrap:anywhere}
 [data-ar="paragraph"][data-ellipsis="line"]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 [data-ar="paragraph"][data-ellipsis="rows"]{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
 [data-ar="link"]{display:inline-flex;align-items:center;cursor:pointer}

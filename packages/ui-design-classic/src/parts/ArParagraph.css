@@ -1,4 +1,4 @@
-/* @covers ArParagraph 1.0.0 */
+/* @covers ArParagraph 1.1.0 */
 /* ArParagraph：ant-design-vue 4 の Typography.Paragraph（14px・1.5714・下に1em） */
 [data-ar-design="classic"] [data-ar="paragraph"]{margin:0 0 1em;font-size:14px;line-height:1.5714;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="paragraph"][data-size="sm"]{font-size:12px}

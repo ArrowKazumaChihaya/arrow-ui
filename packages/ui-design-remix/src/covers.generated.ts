@@ -76,7 +76,7 @@ export const covers = {
   ArOtpInput: "1.0.0",
   ArPageHeading: "1.0.0",
   ArPagination: "1.0.0",
-  ArParagraph: "1.0.0",
+  ArParagraph: "1.1.0",
   ArPayslip: "1.1.0",
   ArPayslipLine: "1.0.0",
   ArPayslipTable: "1.0.0",

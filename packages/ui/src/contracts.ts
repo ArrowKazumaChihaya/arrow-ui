@@ -21,7 +21,7 @@ export const contracts = {
   ArFloatButton: "1.0.0",
   ArIcon: "1.0.0",
   ArLink: "1.0.0",
-  ArParagraph: "1.0.0",
+  ArParagraph: "1.1.0",
   ArSegmented: "1.2.0",
   ArText: "1.0.0",
   ArTitle: "1.0.0",

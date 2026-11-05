@@ -1,11 +1,11 @@
 <script setup lang="ts">
 /**
- * ArParagraph 1.0 — 段落（本文 13.5px・行の高さ1.75）。長い文は行数で切れる。
+ * ArParagraph 1.1 — 段落。自由記述の改行を保ち、長い文は行数で切れる。
  */
 import { computed, ref } from "vue";
 import type { ArParagraphProps } from "./ArParagraph.contract";
 
-const props = withDefaults(defineProps<ArParagraphProps>(), { type: undefined, size: "md", strong: false, ellipsis: false });
+const props = withDefaults(defineProps<ArParagraphProps>(), { type: undefined, size: "md", strong: false, preserveLines: false, ellipsis: false });
 const el = ref<HTMLElement | null>(null);
 const rows = computed(() => (props.ellipsis === true ? 1 : props.ellipsis || 0));
 function onEnter() {
@@ -24,6 +24,7 @@ function onEnter() {
     :data-type="type"
     :data-size="size"
     :data-strong="strong || undefined"
+    :data-preserve-lines="preserveLines || undefined"
     :data-ellipsis="rows ? (rows === 1 ? 'line' : 'rows') : undefined"
     :style="rows > 1 ? { '-webkit-line-clamp': rows } : undefined"
     @mouseenter="onEnter"
