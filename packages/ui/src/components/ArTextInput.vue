@@ -55,7 +55,7 @@ const emit = defineEmits<{
 }>();
 
 const attrs = useAttrs();
-const accessibleLabel = computed(() => typeof attrs["aria-label"] === "string" ? attrs["aria-label"] : props.id ? undefined : props.label);
+const accessibleLabel = computed(() => typeof attrs["aria-label"] === "string" ? attrs["aria-label"] : props.label);
 const rootAttrs = computed(() => ({ class: attrs.class, style: attrs.style }));
 const inputAttrs = computed(() => {
   const { class: _c, style: _s, ...rest } = attrs;
