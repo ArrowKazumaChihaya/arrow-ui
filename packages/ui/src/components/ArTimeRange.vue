@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArTimeRange 1.0 — 時刻の範囲（09:00 〜 18:00）。2つの ArTimeInput を「〜」でつなぐ。
+ * ArTimeRange 1.2 — 時刻の範囲（09:00 〜 18:00）。2つの ArTimeInput を「〜」でつなぐ。
  * validate なら終わりが始まり以前のとき終わりを赤くし、下に直し方を言葉で出す。
  */
 import { computed } from "vue";
@@ -18,6 +18,8 @@ const props = withDefaults(defineProps<ArTimeRangeProps>(), {
   invalid: false,
   validate: true,
   disabled: false,
+  startNote: undefined,
+  endNote: undefined,
   label: undefined,
   labels: () => ({ start: "開始", end: "終了", separator: "〜", reversed: "終了は開始より後の時刻にしてください" }),
 });
@@ -33,6 +35,7 @@ const reversed = computed(() => {
   return props.validate && s !== null && e !== null && e <= s;
 });
 function set(key: "start" | "end", v: ArTimeValue) {
+  if (props.disabled || (key === "start" ? props.startNote : props.endNote)) return;
   emit("update:modelValue", { ...props.modelValue, [key]: v.time });
   if (key === "start") emit("update:start", v.time);
   else emit("update:end", v.time);
@@ -51,6 +54,7 @@ function set(key: "start" | "end", v: ArTimeValue) {
     <div data-part="row">
       <ArTimeInput
         data-part="start"
+        :note="startNote"
         :model-value="{ time: modelValue.start, day: 'same' }"
         :size="size"
         :step="step"
@@ -63,6 +67,7 @@ function set(key: "start" | "end", v: ArTimeValue) {
       <span data-part="separator" aria-hidden="true">{{ labels.separator }}</span>
       <ArTimeInput
         data-part="end"
+        :note="endNote"
         :model-value="{ time: modelValue.end, day: 'same' }"
         :size="size"
         :step="step"

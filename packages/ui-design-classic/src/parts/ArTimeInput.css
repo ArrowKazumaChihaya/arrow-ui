@@ -1,4 +1,4 @@
-/* @covers ArTimeInput 1.1.0, ArTimeRange 1.1.0, ArDurationInput 1.1.0 */
+/* @covers ArTimeInput 1.1.0, ArTimeRange 1.2.0, ArDurationInput 1.1.0 */
 /* ArTimeInput（ui-Time）。classic は forms で fields: "split"・dayToggle: "link"（今の形）を選ぶ。
    下の single（1つの箱）の決まりは、forms を外したときの形（箱の値は今の Input と同じ）。 */
 [data-ar-design="classic"] [data-ar="time-input"]{height:32px;align-items:center;gap:3px;border:0;border-radius:0;background:none;box-shadow:none;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000;overflow:visible}
@@ -13,7 +13,7 @@
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]{padding:0;border:0;background:none;color:#1677FF;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]:hover:not(:disabled){color:#4096FF}
 [data-ar-design="classic"] [data-ar="time-input"]>[data-part="day-toggle"]:disabled{color:rgba(0,0,0,.25)}
-[data-ar-design="classic"] [data-ar="time-input"][data-state~="note"]>[data-part="note"]{height:30px;padding:0 8px;border:1px dashed #D9D9D9;border-radius:6px;font-size:12px;line-height:28px;color:rgba(0,0,0,.45);box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="time-input"][data-state~="note"]>[data-part="note"]{height:30px;padding:0 8px;border:1px dashed #D9D9D9;border-radius:6px;font-size:12px;line-height:28px;color:var(--ar-color-text-secondary);box-sizing:border-box}
 [data-ar-design="classic"] [data-ar="time-input"][data-size="lg"]{height:40px}
 [data-ar-design="classic"] [data-ar="time-input"][data-block]>[data-part="input"]{width:auto}
 /* ArTimeRange：2つの時刻を「〜」（13px の黒）でつなぐ */

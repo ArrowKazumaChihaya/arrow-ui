@@ -1,4 +1,4 @@
-/** ArTimeRange 1.1 の契約。 */
+/** ArTimeRange 1.2 の契約。 */
 export interface ArTimeRangeValue {
   /** "HH:mm"。未入力は null。 */
   start: string | null;
@@ -19,6 +19,10 @@ export interface ArTimeRangeProps {
   /** 終わりが始まり以前のとき、終わりを赤くして下に直し方を出す。 */
   validate?: boolean;
   disabled?: boolean;
+  /** 開始を入力の代わりに固定の説明として表示する。例：選んだシフトの開始時刻。modelValueは保持し、この側の更新を通知しない。 */
+  startNote?: string;
+  /** 終了を入力の代わりに固定の説明として表示する。例：選んだシフトの終了時刻。modelValueは保持し、この側の更新を通知しない。 */
+  endNote?: string;
   /** 読み上げ用の名前（例：「イベントの時間」）。 */
   label?: string;
   labels?: { start: string; end: string; separator: string; reversed: string };

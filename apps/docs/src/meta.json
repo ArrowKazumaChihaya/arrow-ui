@@ -5641,7 +5641,7 @@
  },
  {
   "name": "ArTimeRange",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "時刻の範囲（09:00 〜 18:00）。2つの ArTimeInput を「〜」でつなぐ。\nvalidate なら終わりが始まり以前のとき終わりを赤くし、下に直し方を言葉で出す。",
   "props": [
    {
@@ -5698,6 +5698,18 @@
     "required": false,
     "description": "",
     "default": "false"
+   },
+   {
+    "name": "startNote",
+    "type": "string",
+    "required": false,
+    "description": "開始を入力の代わりに固定の説明として表示する。例：選んだシフトの開始時刻。modelValueは保持し、この側の更新を通知しない。"
+   },
+   {
+    "name": "endNote",
+    "type": "string",
+    "required": false,
+    "description": "終了を入力の代わりに固定の説明として表示する。例：選んだシフトの終了時刻。modelValueは保持し、この側の更新を通知しない。"
    },
    {
     "name": "label",
