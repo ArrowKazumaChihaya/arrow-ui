@@ -34,6 +34,7 @@
 [data-ar-design="classic"] [data-ar="steps"][data-size="mini"]{gap:12px}
 [data-ar-design="classic"] [data-ar="steps"][data-size="mini"]>[data-part="step"]>[data-part="body"]{gap:8px}
 [data-ar-design="classic"] [data-ar="steps"][data-size="mini"]>[data-part="connector"]{width:32px;height:1px;background:rgba(5,5,5,.06)}
+[data-ar-design="classic"] [data-ar="steps"][data-size="mini"][data-compact] [data-part="title"]{font-size:12px;line-height:1.5}
 /* 今の Step は手順の帯の上 20px・下 15px、左右に幅の 2% の余白（.step_wrap） */
 [data-ar-design="classic"] [data-ar="steps"]:not([data-direction="vertical"]):not([data-size="mini"]){margin:20px 0 15px;padding-inline:2%;box-sizing:border-box}
 /* 縦のときも、エラーの丸は × の絵だけにする（数字の「!」が重ならないように） */

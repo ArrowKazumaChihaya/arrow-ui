@@ -51,6 +51,14 @@
 [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="diff"][data-sign="zero"]{color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]>dd{font-size:22px}
-@media (max-width:767px){[data-ar-design="remix"] [data-ar="payslip"]{padding:14px 12px}[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{order:-1}}
+@media (max-width:767px){[data-ar-design="remix"] [data-ar="payslip"]{padding:14px 12px}}
 
 [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr))}
+/* 狭い明細は見出し→合計→内訳。画面幅ではなく配置先の幅を基準にする。 */
+@container ar-payslip (max-width:599px){
+  [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{order:1;grid-template-columns:repeat(2,minmax(0,1fr))}
+  [data-ar-design="remix"] [data-ar="payslip"]>[data-part="columns"]{order:2}
+  [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]{min-width:0;overflow-wrap:anywhere}
+  [data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]>dd{font-size:18px}
+}
+@container ar-payslip (max-width:259px){[data-ar-design="remix"] [data-ar="payslip"]>[data-part="totals"]{grid-template-columns:minmax(0,1fr)}}

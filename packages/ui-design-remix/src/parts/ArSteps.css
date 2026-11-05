@@ -20,6 +20,7 @@
 [data-ar-design="remix"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring);border-radius:8px}
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]{gap:8px}
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]>[data-part="connector"]{width:18px;height:1px;background:var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="steps"][data-size="mini"][data-compact] [data-part="title"]{font-size:12px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]>[data-part="step"]>[data-part="body"]{gap:7px;font-size:13px;font-weight:600;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]>[data-part="step"]>[data-part="body"]>[data-part="icon"]{width:24px;height:24px;border-radius:50%;background:#EEF1F5;color:var(--ar-color-text-secondary);font-size:12px}
 [data-ar-design="remix"] [data-ar="steps"][data-size="mini"]>[data-part="step"]:is([data-status="process"],[data-status="finish"],[data-status="error"])>[data-part="body"]{color:var(--ar-color-text)}
