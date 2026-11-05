@@ -192,3 +192,5 @@
 /* Long comments and document reasons can share the available table width. */
 [data-ar-design="remix"] [data-ar="table"][data-fit]>[data-part="viewport"]>[data-part="table"]{width:100%;table-layout:fixed}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-wrap]{white-space:pre-wrap;overflow-wrap:anywhere;text-overflow:clip;line-height:1.6;padding-block:8px}
+
+[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"][data-wrap]{white-space:normal;overflow-wrap:anywhere;padding-block:6px}

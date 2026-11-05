@@ -71,7 +71,7 @@ export interface ArTableAvatar {
 }
 
 export interface ArTableColumn<Row> {
-  /** 1.5：長い本文をセル内で折り返し、改行を保持する。日付・金額などは省略して従来の表示を保つ。 */
+  /** 1.5：長い見出しと本文をセル内で折り返し、本文の改行を保持する。日付・金額などは省略して従来の表示を保つ。 */
   wrap?: boolean;
   /** 列の名前（slot の名前 cell-<key> にも使う）。 */
   key: string;

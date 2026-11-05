@@ -316,6 +316,18 @@ const eventInvalid = computed(
         </ArTable>
       </section>
 
+      <section class="cat-sec" id="table-wrap">
+        <h2>長い見出しの表</h2>
+        <div style="width:320px;max-width:100%">
+          <ArTable fit caption="有給休暇の履歴" :columns="[
+            { key: 'date', title: '日付', wrap: true },
+            { key: 'expiry', title: '使用期限', wrap: true },
+            { key: 'days', title: '日数', wrap: true, sortable: true },
+            { key: 'type', title: '長い履歴の形態', wrap: true, sortable: true },
+            { key: 'actions', title: '編集 / 削除', wrap: true },
+          ]" :rows="[{ id: 1, date: '2026年11月21日', expiry: '2028年03月31日', days: '0.5日', type: '自動付与', actions: '表示' }]" row-key="id" />
+        </div>
+      </section>
       <section class="cat-sec" id="theme">
         <h2>ArThemeScope</h2>
         <p>中の部品のテーマ色だけを切り替える。どのページにどの色を当てるかは製品のレイアウト層が決める。</p>

@@ -51,3 +51,7 @@
 [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
 [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]:focus-visible{outline:revert}
 [data-ar="table"] td>[data-part="drag-handle"]:disabled{cursor:not-allowed}
+
+/* 折返し列はソートボタンの文字も列幅へ収める。 */
+[data-ar="table"] th[data-wrap]>[data-part="sort"]{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+[data-ar="table"] th[data-wrap]>[data-part="sort"]>span{min-width:0}
