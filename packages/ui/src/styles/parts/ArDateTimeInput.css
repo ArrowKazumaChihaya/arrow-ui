@@ -1,1 +1,4 @@
-[data-ar="date-time-input"]{display:inline-flex;align-items:center;flex-wrap:nowrap;vertical-align:middle}
+/* Keep each date/time control intact while wrapping the two groups in narrow fields. */
+[data-ar="date-time-input"]{display:inline-flex;align-items:center;flex-wrap:wrap;max-inline-size:100%;min-inline-size:0;vertical-align:middle}
+[data-ar="date-time-input"] > [data-ar="date-input"],
+[data-ar="date-time-input"] > [data-ar="time-input"]{flex:0 0 auto}
