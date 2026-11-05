@@ -38,9 +38,15 @@ function onOpen(keys:string[]){
 }
 function updatePosition(){
  if(!props.scroll)return;
- let nearest:string|undefined;let distance=Infinity;
- for(const item of options.value){const section=document.getElementById(String(item.value));if(!section)continue;const next=Math.abs(section.getBoundingClientRect().top-props.scrollOffset);if(next<distance){distance=next;nearest=String(item.value);}}
- position.value=nearest;
+ let current:string|undefined;let currentTop=-Infinity;
+ let upcoming:string|undefined;let upcomingTop=Infinity;
+ for(const item of options.value){
+  const section=document.getElementById(String(item.value));if(!section)continue;
+  const top=section.getBoundingClientRect().top;
+  if(top<=props.scrollOffset && top>currentTop){currentTop=top;current=String(item.value);}
+  else if(top>props.scrollOffset && top<upcomingTop){upcomingTop=top;upcoming=String(item.value);}
+ }
+ position.value=current ?? upcoming;
 }
 onMounted(()=>{updatePosition();document.addEventListener('scroll',updatePosition,true);});
 onBeforeUnmount(()=>document.removeEventListener('scroll',updatePosition,true));

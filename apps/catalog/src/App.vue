@@ -19,6 +19,7 @@ import {
   ArGrid,
   ArModal,
   ArStack,
+  ArSectionMenu,
   ArTable,
   ArThemeScope,
   ArTimeInput,
@@ -215,6 +216,20 @@ const eventInvalid = computed(
           </div>
           <ArCluster><ArTextarea v-model="fieldDraft" label="既定幅のメモ" /></ArCluster>
         </ArStack>
+      </section>
+
+      <section class="cat-sec" id="section-menu-responsive">
+        <h2>長いフォームの目次</h2>
+        <ArSectionMenu scroll :items="[{ key: 'menu-basic', label: '基本情報' }, { key: 'menu-payment', label: '給与設定' }]">
+          <ArStack :gap="6">
+            <ArCard id="menu-basic" title="基本情報" variant="outlined">
+              <ArStack :gap="4"><ArItem v-for="n in 12" :key="n" :title="`項目 ${n}`" variant="row"><ArTextInput :label="`項目 ${n}`" model-value="背景の入力欄" block /></ArItem></ArStack>
+            </ArCard>
+            <ArCard id="menu-payment" title="給与設定" variant="outlined">
+              <ArStack :gap="4"><ArItem v-for="n in 12" :key="n" :title="`給与 ${n}`" variant="row"><ArTextInput :label="`給与 ${n}`" model-value="123456" suffix="円" /></ArItem></ArStack>
+            </ArCard>
+          </ArStack>
+        </ArSectionMenu>
       </section>
 
       <section class="cat-sec" id="form">
