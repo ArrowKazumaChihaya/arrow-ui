@@ -27,7 +27,9 @@ const props = withDefaults(defineProps<ArButtonProps>(), {
 });
 const emit = defineEmits<{ click: [event: MouseEvent] }>();
 const slots = useSlots();
-const iconOnly = computed(() => !slots.default && !!(props.icon || props.iconEnd));
+// Slots can appear/disappear on a responsive parent update. useSlots is not a
+// reactive source for computed caching, so inspect the current slots at render.
+const iconOnly = () => !slots.default && !!(props.icon || props.iconEnd);
 /** 同じ見た目の別名をまとめる（デザインの CSS は元の名前だけを見る）。 */
 const tone = computed(() =>
   props.tone === "danger-fill" ? "danger" : props.tone === "danger-outline" ? "danger-subtle" : props.tone,
@@ -67,15 +69,15 @@ function onClick(e: MouseEvent) {
     :data-shape="shape !== 'default' ? shape : undefined"
     :data-state="state || undefined"
     :data-block="block || undefined"
-    :data-icon-only="iconOnly || undefined"
+    :data-icon-only="iconOnly() || undefined"
     :type="href ? undefined : type"
     :href="href && !inactive ? href : undefined"
     :role="href && inactive ? 'link' : undefined"
     :disabled="href ? undefined : inactive"
     :aria-disabled="(href && inactive) || explains ? 'true' : undefined"
     :aria-busy="loading || undefined"
-    :aria-label="iconOnly ? label : undefined"
-    :title="iconOnly ? label : undefined"
+    :aria-label="iconOnly() ? label : undefined"
+    :title="iconOnly() ? label : undefined"
     @click="onClick"
   >
     <span v-if="loading" data-part="spinner" aria-hidden="true" />

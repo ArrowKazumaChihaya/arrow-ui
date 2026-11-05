@@ -38,3 +38,6 @@
 /* Employee titles may wrap; arrows retain their own column. */
 [data-ar-design="classic"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{height:auto;min-height:36px;font-size:18px;line-height:1.5}
 [data-ar-design="classic"] [data-ar="period-nav"][data-size="md"]>[data-part="center"]>[data-part="label"]{height:auto;min-height:34px;line-height:1.5}
+@media(max-width:600px){
+  [data-ar-design="classic"] [data-ar="period-nav"][data-size="md"]:not([data-inverse])>[data-part="center"]>[data-part="label"]{padding:0 4px;font-size:16px}
+}

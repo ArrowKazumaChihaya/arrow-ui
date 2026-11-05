@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { nextTick } from "vue";
+import { defineComponent, h, nextTick, ref } from "vue";
 import ArButton from "../src/components/ArButton.vue";
 import ArTabs from "../src/components/ArTabs.vue";
 import ArSegmented from "../src/components/ArSegmented.vue";
@@ -17,6 +17,27 @@ describe("ArIcon（追加のアイコン）", () => {
 });
 
 describe("ArButton（種類・形・リンク）", () => {
+  it("幅変更で文字スロットが消えても同じボタンに操作名とアイコン形状を残す", async () => {
+    const compact = ref(false);
+    const host = mount(defineComponent({
+      setup: () => () => h(ArButton, { icon: "gear", label: "デザインを選択" },
+        compact.value ? {} : { default: () => "デザインを選択" }),
+    }));
+    const button = host.get("button");
+    const element = button.element;
+    expect(button.attributes("data-icon-only")).toBeUndefined();
+    compact.value = true;
+    await nextTick();
+    expect(host.get("button").element).toBe(element);
+    expect(button.attributes("data-icon-only")).toBe("true");
+    expect(button.attributes("aria-label")).toBe("デザインを選択");
+    expect(button.attributes("title")).toBe("デザインを選択");
+    compact.value = false;
+    await nextTick();
+    expect(button.attributes("data-icon-only")).toBeUndefined();
+    expect(button.text()).toBe("デザインを選択");
+    host.unmount();
+  });
   it("danger-fill・danger-outline は danger・danger-subtle と同じ見た目の名前になる", () => {
     expect(mount(ArButton, { props: { tone: "danger-fill" }, slots: { default: "削除する" } }).attributes("data-tone")).toBe("danger");
     expect(mount(ArButton, { props: { tone: "danger-outline" }, slots: { default: "削除" } }).attributes("data-tone")).toBe("danger-subtle");
