@@ -8,10 +8,11 @@ withDefaults(defineProps<ArPunchPanelProps>(), { description: undefined, icon: "
 </script>
 
 <template>
-  <section data-ar="punch-panel" data-part="root">
+  <section data-ar="punch-panel" data-part="root" :data-date-separated="dateLabel ? 'true' : undefined">
     <ArCard :title="title" :icon="icon" variant="band">
       <ArStack :gap="5">
         <ArStack :gap="2" align="center">
+          <div v-if="dateLabel" data-part="date">{{ dateLabel }}</div>
           <div data-part="clock">{{ timestamp }}</div>
           <ArParagraph v-if="description" type="secondary" size="sm">{{ description }}</ArParagraph>
         </ArStack>

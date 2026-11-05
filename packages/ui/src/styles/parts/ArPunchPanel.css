@@ -2,3 +2,6 @@
 [data-ar="punch-panel"]{width:100%;max-width:820px;min-width:0;margin-inline:auto}
 [data-ar="punch-panel"] [data-part="clock"]{max-width:100%;min-height:1.5em;text-align:center;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 [data-ar="punch-panel"] [data-part="controls"]>[data-ar="field"][data-layout="toolbar"]>[data-part="control"]{flex:1;min-width:0}
+
+[data-ar="punch-panel"][data-date-separated="true"] [data-part="clock"]{min-height:1.1em;white-space:nowrap}
+[data-ar="punch-panel"] [data-part="date"]{text-align:center}

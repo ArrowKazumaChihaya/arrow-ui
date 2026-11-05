@@ -146,7 +146,7 @@ export const contracts = {
   ArPeriodBox: "1.0.0",
   ArPeriodNav: "1.1.0",
   ArPunchButton: "1.0.0",
-  ArPunchPanel: "1.0.0",
+  ArPunchPanel: "1.1.0",
   ArSaveBar: "1.0.0",
   ArSectionHead: "1.0.0",
   ArShiftChart: "1.0.0",

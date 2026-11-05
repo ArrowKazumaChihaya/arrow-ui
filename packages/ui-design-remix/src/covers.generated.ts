@@ -90,7 +90,7 @@ export const covers = {
   ArProfileCard: "1.0.0",
   ArProgress: "1.0.0",
   ArPunchButton: "1.0.0",
-  ArPunchPanel: "1.0.0",
+  ArPunchPanel: "1.1.0",
   ArQRCode: "1.0.0",
   ArRadio: "1.1.0",
   ArRadioGroup: "1.2.0",
