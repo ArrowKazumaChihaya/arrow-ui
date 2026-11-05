@@ -713,6 +713,16 @@
         "ja": "明細書"
       },
       {
+        "slug": "payslip-line",
+        "name": "ArPayslipLine",
+        "ja": "明細の行"
+      },
+      {
+        "slug": "payslip-table",
+        "name": "ArPayslipTable",
+        "ja": "明細の表"
+      },
+      {
         "slug": "period-box",
         "name": "ArPeriodBox",
         "ja": "期間の箱"

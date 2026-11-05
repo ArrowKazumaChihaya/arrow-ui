@@ -30,3 +30,8 @@
 [data-ar="payslip"]>[data-part="totals"]{grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr))}
 @container ar-payslip (max-width:999px){[data-ar="payslip"]>[data-part="columns"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @container ar-payslip (max-width:599px){[data-ar="payslip"]>[data-part="columns"]{grid-template-columns:minmax(0,1fr)}}
+
+/* 入力中も列幅を保ち、ラベルを入力欄が押し潰さない。 */
+[data-ar="payslip"] [data-part="row"][data-editable]{grid-template-columns:minmax(0,1fr) minmax(80px,1fr)}
+[data-ar="payslip"] [data-part="row"][data-editable] [data-part="value"]{min-width:0;align-items:stretch;white-space:normal}
+[data-ar="payslip"] [data-part="row"][data-editable] [data-part="amount"]{display:block;min-width:0;width:100%}

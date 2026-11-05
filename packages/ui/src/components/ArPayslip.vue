@@ -4,10 +4,13 @@
  * compare で前回と比べる（差は自動で計算。文字の差も渡せる）。値の並べ方は渡した順のまま。
  */
 import { computed } from "vue";
-import ArIcon from "./ArIcon.vue";
-import type { ArPayslipProps, ArPayslipRow, ArPayslipSection, ArPayslipTotal } from "./ArPayslip.contract";
+import ArPayslipTable from "./ArPayslipTable.vue";
+import ArPayslipLine from "./ArPayslipLine.vue";
+import { formatPayslipValue as fmt, isNegativePayslipValue as neg, payslipDifference } from "../internal/payslip";
+import type { ArPayslipProps, ArPayslipTotal } from "./ArPayslip.contract";
 
 const props = withDefaults(defineProps<ArPayslipProps>(), {
+  columns: () => [],
   period: undefined,
   meta: () => [],
   totals: () => [],
@@ -17,21 +20,12 @@ const props = withDefaults(defineProps<ArPayslipProps>(), {
   prevLabel: "前",
 });
 
-const fmt = (v: number | string) => (typeof v === "number" ? v.toLocaleString("ja-JP").replace("-", "−") : v);
-function diffOf(x: { value: number | string; prev?: number | null; diff?: string }) {
-  if (x.diff !== undefined) {
-    const sign = /^[−-]/.test(x.diff) ? "down" : /^\+/.test(x.diff) ? "up" : "zero";
-    return { text: x.diff, sign };
-  }
-  if (typeof x.value !== "number" || x.prev === undefined || x.prev === null) return null;
-  const d = x.value - x.prev;
-  if (d === 0) return { text: props.zeroDiff, sign: "zero" };
-  return { text: (d > 0 ? "+" : "−") + Math.abs(d).toLocaleString("ja-JP"), sign: d > 0 ? "up" : "down" };
-}
-const cols = computed(() => props.columns.map((c) => (Array.isArray(c) ? c : [c]) as ArPayslipSection[]));
-const showRowDiff = (r: ArPayslipRow) => props.compare !== "off" && diffOf(r) !== null;
-const showTotalDiff = (t: ArPayslipTotal) => props.compare !== "off" && diffOf(t) !== null;
-const neg = (v: number | string) => typeof v === "number" && v < 0;
+const cols = computed(() => {
+  const sections = props.columns.map((column) => Array.isArray(column) ? column : [column]);
+  return props.columnCount ? Array.from({ length: props.columnCount }, (_, index) => sections[index] ?? []) : sections;
+});
+const diffOf = (item: ArPayslipTotal) => payslipDifference(item, props.zeroDiff);
+const showTotalDiff = (item: ArPayslipTotal) => props.compare !== "off" && diffOf(item) !== null;
 </script>
 
 <template>
@@ -46,30 +40,11 @@ const neg = (v: number | string) => typeof v === "number" && v < 0;
     </header>
     <div data-part="columns" :style="{ '--ar-payslip-cols': cols.length }">
       <div v-for="(col, ci) in cols" :key="ci" data-part="column">
-        <table v-for="sec in col" :key="sec.title" data-part="section">
-          <thead>
-            <tr><th data-part="section-title" :colspan="2" scope="colgroup">{{ sec.title }}</th></tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="(r, ri) in sec.rows"
-              :key="ri"
-              data-part="row"
-              :data-state="[r.total && 'total', r.big && 'big'].filter(Boolean).join(' ') || undefined"
-            >
-              <th data-part="label" scope="row">{{ r.label }}</th>
-              <td data-part="value" :data-negative="neg(r.value) || undefined">
-                <span data-part="amount"
-                  >{{ fmt(r.value) }}<ArIcon v-if="r.edited" name="pen" line data-part="edited" label="手で直した金額"
-                /></span>
-                <span v-if="showRowDiff(r)" data-part="diff" :data-sign="diffOf(r)!.sign">
-                  <span v-if="compare === 'prev' && typeof r.value === 'number' && r.prev != null" data-part="prev">{{ prevLabel }} {{ fmt(r.prev) }}</span>
-                  <b>{{ diffOf(r)!.text }}</b>
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <slot :name="`column-${ci}`">
+          <ArPayslipTable v-for="section in col" :key="section.title" :title="section.title">
+            <ArPayslipLine v-for="(row, index) in section.rows" :key="index" v-bind="row" :compare="compare" :zero-diff="zeroDiff" :prev-label="prevLabel" />
+          </ArPayslipTable>
+        </slot>
       </div>
     </div>
     <dl v-if="totals.length" data-part="totals">

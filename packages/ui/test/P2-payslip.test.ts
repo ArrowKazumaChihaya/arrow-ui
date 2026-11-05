@@ -1,3 +1,6 @@
+import { defineComponent, ref } from "vue";
+import ArPayslipTable from "../src/components/ArPayslipTable.vue";
+import ArPayslipLine from "../src/components/ArPayslipLine.vue";
 import { mount } from "@vue/test-utils";
 import ArPayslip from "../src/components/ArPayslip.vue";
 
@@ -31,5 +34,39 @@ describe("ArPayslip", () => {
   it("compare=prev は「前 ○○」も出す", () => {
     const w = mount(ArPayslip, { props: { title: "給与明細書", columns, compare: "prev" } });
     expect(w.findAll('[data-part="prev"]').map((p) => p.text())).toContain("前 6,839");
+  });
+});
+
+
+describe("ArPayslip の編集スロット", () => {
+  it("任意の列を編集でき、既定の列・見出し・行名との関連を維持する", async () => {
+    const editor = defineComponent({
+      components: { ArPayslip, ArPayslipTable, ArPayslipLine },
+      setup: () => ({ columns, amount: ref("1250") }),
+      template: `<ArPayslip title="給与明細" :columns="columns" :column-count="4">
+        <template #column-1><ArPayslipTable title="支給"><ArPayslipLine label="基本給" editable>
+          <template #default="{ labelId }"><input v-model="amount" :aria-labelledby="labelId" /></template>
+        </ArPayslipLine></ArPayslipTable></template>
+        <template #column-3><ArPayslipTable title="調整"><ArPayslipLine label="差額" :value="-1200" edited /></ArPayslipTable></template>
+      </ArPayslip>`,
+    });
+    const w = mount(editor);
+    const cols = w.findAll('[data-part="column"]');
+    expect(cols).toHaveLength(4);
+    expect(cols[0]!.text()).toContain("出勤日数");
+    expect(cols[2]!.text()).toContain("税額表区分");
+    expect(cols[3]!.text()).toContain("−1,200");
+    const input = w.get("input");
+    const label = cols[1]!.get('th[scope="row"]');
+    expect(input.attributes("aria-labelledby")).toBe(label.attributes("id"));
+    expect(label.text()).toBe("基本給");
+    expect(cols[1]!.get('tr[data-part="row"]').attributes("data-editable")).toBe("true");
+    await input.setValue("9876");
+    expect(w.vm.amount).toBe("9876");
+    expect(cols[1]!.get("tbody").findAll("tr")).toHaveLength(1);
+  });
+  it("データ配列がなくても指定した列数で表を配置できる", () => {
+    const w = mount(ArPayslip, { props: { title: "明細", columnCount: 2 }, slots: { "column-0": "支給", "column-1": "控除" } });
+    expect(w.findAll('[data-part="column"]').map((col) => col.text())).toEqual(["支給", "控除"]);
   });
 });

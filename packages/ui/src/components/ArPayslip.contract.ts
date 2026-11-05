@@ -46,7 +46,9 @@ export interface ArPayslipProps {
   /** 右上の項目（会社・所属・氏名・社員コード）。classic は今の ARROW と同じく、1つ目（会社）を札なしの大きな会社名として上に出す。 */
   meta?: ArPayslipMeta[];
   /** 列。1つの列に表を1つ、または上から並べる表の配列（その他・差引支給額・振込支給額…）。ふつうは 勤怠／支給／控除／その他 の4列。 */
-  columns: (ArPayslipSection | ArPayslipSection[])[];
+  columns?: (ArPayslipSection | ArPayslipSection[])[];
+  /** column-0〜column-3 slotで入力可能な明細を組むときの列数。配列方式では省略する。 */
+  columnCount?: 1 | 2 | 3 | 4;
   /** 下に並べる合計の箱。 */
   totals?: ArPayslipTotal[];
   /**
@@ -61,5 +63,5 @@ export interface ArPayslipProps {
   /** 「前」の文字。 */
   prevLabel?: string;
 }
-/** slot：toolbar（見出しの右。「明細だけ／前月と比べる」の切り替えなど）。 */
+/** slot：toolbar（見出しの右）、column-0〜column-3（ArPayslipTableとArPayslipLineで構成する列）。 */
 export type ArPayslipPart = "root" | "head" | "title" | "period" | "meta" | "toolbar" | "columns" | "column" | "section" | "section-title" | "row" | "label" | "value" | "edited" | "diff" | "prev" | "totals" | "total" | "unit";

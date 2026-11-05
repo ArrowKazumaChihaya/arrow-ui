@@ -11422,7 +11422,7 @@
  },
  {
   "name": "ArPayslip",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "明細書の紙の形。上に書類名・支給分・会社や氏名、4列の表（勤怠／支給／控除／その他）、下に合計の箱。\ncompare で前回と比べる（差は自動で計算。文字の差も渡せる）。値の並べ方は渡した順のまま。",
   "props": [
    {
@@ -11447,8 +11447,15 @@
    {
     "name": "columns",
     "type": "(ArPayslipSection | ArPayslipSection[])[]",
-    "required": true,
-    "description": "列。1つの列に表を1つ、または上から並べる表の配列（その他・差引支給額・振込支給額…）。ふつうは 勤怠／支給／控除／その他 の4列。"
+    "required": false,
+    "description": "列。1つの列に表を1つ、または上から並べる表の配列（その他・差引支給額・振込支給額…）。ふつうは 勤怠／支給／控除／その他 の4列。",
+    "default": "[]"
+   },
+   {
+    "name": "columnCount",
+    "type": "1 | 2 | 3 | 4",
+    "required": false,
+    "description": "column-0〜column-3 slotで入力可能な明細を組むときの列数。配列方式では省略する。"
    },
    {
     "name": "totals",
@@ -11488,7 +11495,8 @@
   ],
   "emits": [],
   "slots": [
-   "toolbar"
+   "toolbar",
+   "`column-<key>`"
   ],
   "parts": [
    "root",
@@ -11499,20 +11507,127 @@
    "toolbar",
    "columns",
    "column",
-   "section",
-   "section-title",
+   "totals",
+   "total",
+   "unit",
+   "diff"
+  ],
+  "dataAr": "payslip"
+ },
+ {
+  "name": "ArPayslipLine",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"\""
+   },
+   {
+    "name": "value",
+    "type": "string | number",
+    "required": false,
+    "description": "",
+    "default": "\"\""
+   },
+   {
+    "name": "prev",
+    "type": "number | null",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "diff",
+    "type": "string",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "edited",
+    "type": "boolean",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "total",
+    "type": "boolean",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "big",
+    "type": "boolean",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "editable",
+    "type": "boolean",
+    "required": false,
+    "description": "入力欄用にラベルと値の幅を分ける。値や保存処理は利用側が持つ。"
+   },
+   {
+    "name": "compare",
+    "type": "'off' | 'diff' | 'prev'",
+    "required": false,
+    "description": "",
+    "default": "\"off\""
+   },
+   {
+    "name": "zeroDiff",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"±0\""
+   },
+   {
+    "name": "prevLabel",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"前\""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "label",
+   "default"
+  ],
+  "parts": [
    "row",
    "label",
    "value",
    "amount",
    "edited",
    "diff",
-   "prev",
-   "totals",
-   "total",
-   "unit"
+   "prev"
   ],
-  "dataAr": "payslip"
+  "dataAr": "payslip-line"
+ },
+ {
+  "name": "ArPayslipTable",
+  "version": "1.0.0",
+  "description": "",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": ""
+   }
+  ],
+  "emits": [],
+  "slots": [
+   "default"
+  ],
+  "parts": [
+   "section",
+   "section-title"
+  ],
+  "dataAr": "payslip-table"
  },
  {
   "name": "ArPeriodBox",
