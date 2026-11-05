@@ -2,6 +2,7 @@
 import { computed, ref } from "vue";
 import {
   ArAlert,
+  ArApprovalFlow,
   ArCard,
   ArCheckbox,
   ArRadioGroup,
@@ -33,6 +34,8 @@ import { remixDesign } from "@s_and_a/arrow-ui-design-remix";
 import { classicDesign } from "@s_and_a/arrow-ui-design-classic";
 import { paletteNames } from "@s_and_a/arrow-ui-tokens";
 
+const approvalClicked = ref(0);
+const approvalLayout = ref<"row" | "list">("row");
 const sectionCard = ref<"band" | "elevated" | "outlined">("band");
 const params = new URLSearchParams(location.search);
 const designs = { remix: remixDesign, classic: classicDesign } as const;
@@ -217,6 +220,22 @@ const eventInvalid = computed(
           </div>
           <ArCluster><ArTextarea v-model="fieldDraft" label="既定幅のメモ" /></ArCluster>
         </ArStack>
+      </section>
+
+      <section class="cat-sec" id="approval-details-responsive">
+        <h2>詳細を持つ承認フロー</h2>
+        <label>表示 <select v-model="approvalLayout" data-test="approval-layout"><option value="row">横</option><option value="list">縦</option></select></label>
+        <ArCard variant="band" title="承認状況">
+          <ArApprovalFlow :layout="approvalLayout" :steps="[{title:'申請',who:'申請 太郎',state:'done',status:''},{title:'店舗の確認',state:'done'},{title:'人事の確認',state:'current'}]">
+            <template #details="{index}">
+              <ArStack :gap="2">
+                <ArTextarea :label="`承認メモ ${index + 1}`" v-model="fieldDraft" block />
+                <ArCluster><ArButton @click="approvalClicked++">{{ `候補を確認 ${index + 1}` }}</ArButton></ArCluster>
+              </ArStack>
+            </template>
+          </ArApprovalFlow>
+          <output data-test="approval-clicked">{{approvalClicked}}</output>
+        </ArCard>
       </section>
 
       <section class="cat-sec" id="section-menu-responsive">
