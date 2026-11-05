@@ -167,16 +167,16 @@ const eventInvalid = computed(
         <h2>配置幅に合わせる入力欄</h2>
         <ArStack :gap="5">
           <ArField label="会社名" required layout="inline" label-size="lg" help="狭い配置ではラベルを上に移します。" v-slot="field">
-            <ArTextInput v-model="fieldDraft" v-bind="field" />
+            <ArTextInput v-model="fieldDraft" v-bind="field" block />
           </ArField>
           <div style="width:320px;max-width:100%">
             <ArField label="長い項目名と入力値を省略せずに表示する欄" required layout="inline" label-size="lg" help="PCの狭いカード内でも入力幅を確保します。" v-slot="field">
-              <ArTextInput v-model="fieldDraft" v-bind="field" />
+              <ArTextInput v-model="fieldDraft" v-bind="field" block />
             </ArField>
           </div>
           <div style="width:260px;max-width:100%">
             <ArField label="固定幅の指定がある項目" layout="inline" label-width="70%" error="入力内容を確認してください。" v-slot="field">
-              <ArTextInput v-model="fieldDraft" v-bind="field" />
+              <ArTextInput v-model="fieldDraft" v-bind="field" block />
             </ArField>
           </div>
         </ArStack>

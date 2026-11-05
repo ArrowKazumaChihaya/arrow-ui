@@ -19,6 +19,7 @@ try {
     const original = await input.elementHandle();
     for (const design of ["classic", "remix"]) {
       await page.locator('[data-test="design"]').selectOption(design);
+      await page.waitForFunction(() => getComputedStyle(document.querySelector('#field-responsive [data-ar="field"]')).containerName === "ar-field");
       await section.scrollIntoViewIfNeeded();
       assert.equal(await input.inputValue(), "切り替えても保持する 0012345");
       assert.equal(await input.evaluate((el, old) => el === old, original), true);
@@ -29,12 +30,12 @@ try {
           const label = el.querySelector(':scope > [data-part="label"]').getBoundingClientRect();
           const control = el.querySelector(':scope > [data-part="control"]').getBoundingClientRect();
           const input = el.querySelector("input");
-          return { width: bounds.width, label: label.toJSON(), control: control.toJSON(), input: input.getBoundingClientRect().toJSON(), overflow: el.scrollWidth > el.clientWidth + 1 };
+          return { width: bounds.width, label: label.toJSON(), control: control.toJSON(), input: input.getBoundingClientRect().toJSON(), inputBox: input.closest('[data-ar="text-input"]').getBoundingClientRect().toJSON(), overflow: el.scrollWidth > el.clientWidth + 1 };
         });
         assert.equal(geometry.overflow, false, `${design}/${width}: field overflow`);
         if (geometry.width <= 480) {
           assert.ok(geometry.control.top >= geometry.label.bottom, "narrow field label must sit above its control");
-          assert.ok(geometry.input.width >= geometry.width - 4, "narrow input must use the available width");
+          assert.ok(geometry.inputBox.width >= geometry.width - 4 && geometry.input.width >= geometry.width - 40, "narrow input must use the available width");
         } else {
           assert.ok(geometry.control.left > geometry.label.left, "wide field retains inline layout");
         }
