@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArDateRange 1.1 — 期間の入力。2つの ArDateInput を「〜」でつなぎ、右に日数（30日間）を出す。
+ * ArDateRange 1.2 — 期間の入力。2つの ArDateInput を「〜」でつなぎ、右に日数（30日間）を出す。
  * 終わりの日が始まりの日より前なら両方を赤くし、下に直し方を言葉で出す。1か月・半月などのボタンとは親がつなぐ。
  */
 import { computed } from "vue";
@@ -47,6 +47,7 @@ const set = (key: "start" | "end", v: string | null) => emit("update:modelValue"
   >
     <div data-part="row">
       <ArDateInput
+        v-bind="inputProps"
         data-part="start"
         :model-value="modelValue.start"
         :min-year="minYear"
@@ -59,6 +60,7 @@ const set = (key: "start" | "end", v: string | null) => emit("update:modelValue"
       />
       <span data-part="separator" aria-hidden="true">{{ labels.separator }}</span>
       <ArDateInput
+        v-bind="inputProps"
         data-part="end"
         :model-value="modelValue.end"
         :min-year="minYear"

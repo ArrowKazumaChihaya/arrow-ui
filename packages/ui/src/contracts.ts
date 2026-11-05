@@ -45,7 +45,7 @@ export const contracts = {
   ArColorSwatches: "1.0.0",
   ArDateInput: "1.1.0",
   ArDatePicker: "1.1.0",
-  ArDateRange: "1.1.0",
+  ArDateRange: "1.2.0",
   ArDateTimeInput: "1.1.0",
   ArDurationInput: "1.1.0",
   ArField: "1.0.0",

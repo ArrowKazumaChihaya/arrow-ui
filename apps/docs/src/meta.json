@@ -2845,7 +2845,7 @@
  },
  {
   "name": "ArDateRange",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "期間の入力。2つの ArDateInput を「〜」でつなぎ、右に日数（30日間）を出す。\n終わりの日が始まりの日より前なら両方を赤くし、下に直し方を言葉で出す。1か月・半月などのボタンとは親がつなぐ。",
   "props": [
    {
@@ -2865,6 +2865,12 @@
     "type": "number",
     "required": false,
     "description": ""
+   },
+   {
+    "name": "inputProps",
+    "type": "Omit<ArDateInputProps, 'disabled' | 'modelValue' | 'minYear' | 'maxYear' | 'invalid' | 'size' | 'label' | 'id'>",
+    "required": false,
+    "description": "両端の日付の入力規則・翻訳。値、名前、状態、大きさは範囲部品が所有する。"
    },
    {
     "name": "showDays",

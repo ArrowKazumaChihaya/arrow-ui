@@ -98,6 +98,19 @@ describe("ArTimeInput の追加・ArTimeRange", () => {
 });
 
 describe("ArDateRange・ArDatePicker", () => {
+  it("範囲入力でも不正日付の補正禁止・入力中の更新・翻訳を保つ", async () => {
+    const w = mount(ArDateRange, { props: {
+      modelValue: { start: "2026-02-01", end: "2026-11-30" },
+      labels: { start: "Start ", end: "End ", separator: "–", days: (n: number) => `${n} days`, reversed: "Check the end date" },
+      inputProps: { invalidDate: "message", updateOnInput: true, pad: "zero", showWeekday: false, labels: { year: "Year", month: "Month", day: "Day", weekdays: [], invalidDate: "Invalid date" } },
+    } });
+    await w.get('[aria-label="Start Day"]').setValue("31");
+    expect(w.emitted("update:modelValue")?.at(-1)).toEqual([{ start: null, end: "2026-11-30" }]);
+    expect(w.text()).toContain("Invalid date");
+    expect(w.get<HTMLInputElement>('[aria-label="Start Day"]').element.value).toBe("31");
+    expect(w.get<HTMLInputElement>('[aria-label="End Day"]').element.value).toBe("30");
+    w.unmount();
+  });
   it("日数と、逆の範囲の間違い", () => {
     expect(inclusiveDays("2026-11-01", "2026-11-30")).toBe(30);
     expect(addMonths("2026-01-31", 1)).toBe("2026-02-28");

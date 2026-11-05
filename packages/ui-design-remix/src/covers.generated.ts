@@ -32,7 +32,7 @@ export const covers = {
   ArCompact: "1.0.0",
   ArDateInput: "1.1.0",
   ArDatePicker: "1.1.0",
-  ArDateRange: "1.1.0",
+  ArDateRange: "1.2.0",
   ArDateTimeInput: "1.1.0",
   ArDateView: "1.1.0",
   ArDaySummary: "1.0.0",

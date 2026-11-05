@@ -1,4 +1,6 @@
-/** ArDateRange 1.1 の契約。 */
+import type { ArDateInputProps } from "./ArDateInput.contract";
+
+/** ArDateRange 1.2 の契約。 */
 export interface ArDateRangeValue {
   /** "YYYY-MM-DD"。未入力は null。 */
   start: string | null;
@@ -8,6 +10,8 @@ export interface ArDateRangeProps {
   modelValue: ArDateRangeValue;
   minYear?: number;
   maxYear?: number;
+  /** 両端の日付の入力規則・翻訳。値、名前、状態、大きさは範囲部品が所有する。 */
+  inputProps?: Omit<ArDateInputProps, "modelValue" | "minYear" | "maxYear" | "invalid" | "disabled" | "size" | "label" | "id">;
   /** 右に「30日間」（両端を含む日数）を出す。 */
   showDays?: boolean;
   /** 外から渡す間違いの状態（両方を赤くする）。 */

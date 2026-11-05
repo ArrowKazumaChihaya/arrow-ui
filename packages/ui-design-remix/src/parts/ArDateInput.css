@@ -1,4 +1,4 @@
-/* @covers ArDateInput 1.1.0, ArDateRange 1.1.0 */
+/* @covers ArDateInput 1.1.0, ArDateRange 1.2.0 */
 /* ArDateInput：.dti（年 76×36・月日 40×36・600 14px、単位は 13px ink-2、曜日 12px mute。日は赤・土は青）。
    大きさの段（data-size）：sm 30（年 70・月日 36・13px）／md 36（.dti のまま）／lg 42（年 84・月日 46・15px）、角丸 9／10／11。 */
 [data-ar-design="remix"] [data-ar="date-input"]{font-feature-settings:"palt" 1;gap:4px;font-size:13px;color:var(--ar-color-text-secondary)}
