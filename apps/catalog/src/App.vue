@@ -33,6 +33,7 @@ import { remixDesign } from "@s_and_a/arrow-ui-design-remix";
 import { classicDesign } from "@s_and_a/arrow-ui-design-classic";
 import { paletteNames } from "@s_and_a/arrow-ui-tokens";
 
+const sectionCard = ref<"band" | "elevated" | "outlined">("band");
 const params = new URLSearchParams(location.search);
 const designs = { remix: remixDesign, classic: classicDesign } as const;
 const designId = ref<keyof typeof designs>((params.get("design") as keyof typeof designs) ?? "remix");
@@ -220,6 +221,8 @@ const eventInvalid = computed(
 
       <section class="cat-sec" id="section-menu-responsive">
         <h2>長いフォームの目次</h2>
+        <label>目次を囲むカード <select v-model="sectionCard" data-test="section-card"><option value="band">帯</option><option value="elevated">影</option><option value="outlined">枠</option></select></label>
+        <ArCard :variant="sectionCard" title="入力フォーム">
         <ArSectionMenu scroll :items="[{ key: 'menu-basic', label: '基本情報' }, { key: 'menu-payment', label: '給与設定' }]">
           <ArStack :gap="6">
             <ArCard id="menu-basic" title="基本情報" variant="outlined">
@@ -230,6 +233,7 @@ const eventInvalid = computed(
             </ArCard>
           </ArStack>
         </ArSectionMenu>
+        </ArCard>
       </section>
 
       <section class="cat-sec" id="form">
