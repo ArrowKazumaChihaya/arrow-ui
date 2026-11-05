@@ -1,3 +1,4 @@
+[data-ar="changed-value"]{position:relative}
 [data-ar="changed-value"]>[data-part="before"]{text-decoration:none}
 /* 1.1：表（table）と一覧（list） */
 [data-ar="changed-value"][data-layout="table"]{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
