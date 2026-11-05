@@ -164,6 +164,9 @@ describe("Y：ArTreeTable", () => {
 });
 
 describe("Y：ArDateView・ArDocumentBlock・ArLogoSpin", () => {
+  it.each(["", "not-a-date", "2026-13-01", "2026-02-30", new Date(NaN)])("ArDateView rejects invalid dates instead of displaying NaN: %s", (date) => {
+    expect(() => mount(ArDateView, { props: { date }, global: { config: { warnHandler: () => {} } } })).toThrow(RangeError);
+  });
   it("ArDateView：翻訳した書式と曜日を使い、短い表示の曜日を省略できる", async () => {
     const w = mount(ArDateView, { props: { date: "2026-11-03", format: "long", holiday: true, labels: { long: "{day}.{month}.{year}", short: "{day}/{month}", weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] } } });
     expect(w.text()).toBe("03.11.2026(Tue)");

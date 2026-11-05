@@ -5,6 +5,7 @@
  */
 import { computed } from "vue";
 import type { ArDateViewProps } from "./ArDateView.contract";
+import { daysInMonth, splitDate } from "./date";
 
 const props = withDefaults(defineProps<ArDateViewProps>(), { holiday: false, format: "auto", labels: () => ({}), shortWeekday: true });
 const WEEK = ["日", "月", "火", "水", "木", "金", "土"] as const;
@@ -12,9 +13,15 @@ const L = computed(() => ({ long: "{month}月{day}日", short: "{month}/{day}", 
 
 /** "2026-11-05" は時差でずれないよう、その日の日付として読む。 */
 const day = computed(() => {
-  if (props.date instanceof Date) return { y: props.date.getFullYear(), m: props.date.getMonth() + 1, d: props.date.getDate() };
-  const [y, m, d] = String(props.date).slice(0, 10).split("-").map(Number);
-  return { y: y!, m: m!, d: d! };
+  if (props.date instanceof Date) {
+    if (!Number.isFinite(props.date.getTime())) throw new RangeError("Invalid time value");
+    return { y: props.date.getFullYear(), m: props.date.getMonth() + 1, d: props.date.getDate() };
+  }
+  const parts = splitDate(props.date);
+  if (!parts || parts.m < 1 || parts.m > 12 || parts.d < 1 || parts.d > daysInMonth(parts.y, parts.m)) {
+    throw new RangeError("Invalid date value");
+  }
+  return parts;
 });
 const weekday = computed(() => new Date(day.value.y, day.value.m - 1, day.value.d).getDay());
 const tone = computed(() => (props.holiday || weekday.value === 0 ? "sun" : weekday.value === 6 ? "sat" : undefined));
