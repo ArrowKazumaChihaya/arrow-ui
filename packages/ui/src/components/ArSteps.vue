@@ -62,7 +62,7 @@ function pick(i: number) {
 </script>
 
 <template>
-  <ol data-ar="steps" data-part="root" ref="root" :data-direction="shownDirection" :data-responsive="shownDirection !== direction && size !== 'mini' ? '' : undefined" :data-size="size" :aria-label="label">
+  <ol data-ar="steps" data-part="root" ref="root" :data-direction="shownDirection" :data-responsive="shownDirection !== direction && size !== 'mini' ? '' : undefined" :data-compact="size === 'mini' && narrow ? '' : undefined" :data-size="size" :aria-label="label">
     <template v-for="s in steps" :key="s.i">
       <li v-if="size === 'mini' && s.i > 0" data-part="connector" aria-hidden="true" />
       <li data-part="step" :data-status="s.status" :data-disabled="s.disabled || undefined" :aria-current="s.i === current ? 'step' : undefined">
