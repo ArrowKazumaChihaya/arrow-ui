@@ -5,12 +5,12 @@
 import ArIcon from "./ArIcon.vue";
 import type { ArDocumentBlockProps } from "./ArDocumentBlock.contract";
 
-withDefaults(defineProps<ArDocumentBlockProps>(), { instruction: undefined, arrow: true });
+withDefaults(defineProps<ArDocumentBlockProps>(), { instruction: undefined, arrow: true, variant: "default" });
 </script>
 
 <template>
-  <section data-ar="document-block" data-part="root">
-    <div v-if="arrow" data-part="arrow" aria-hidden="true"><ArIcon name="chevrons" /></div>
+  <section data-ar="document-block" data-part="root" :data-variant="variant">
+    <div v-if="arrow && variant !== 'step'" data-part="arrow" aria-hidden="true"><ArIcon name="chevrons" /></div>
     <div data-part="box">
       <p v-if="instruction" data-part="title">{{ instruction }}</p>
       <slot />

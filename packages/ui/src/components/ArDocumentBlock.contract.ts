@@ -4,6 +4,8 @@ export interface ArDocumentBlockProps {
   instruction?: string;
   /** 枠の上に「下へ進む」矢印を出す（前のまとまりから続くとき）。 */
   arrow?: boolean;
+  /** step は手順表示と併用する、左寄せのコンパクトなまとまり。段間の矢印を出さない。 */
+  variant?: "default" | "step";
 }
 /** slot：default（枠の中身）。 */
 export type ArDocumentBlockPart = "root" | "arrow" | "box" | "title";

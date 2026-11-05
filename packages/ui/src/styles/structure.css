@@ -46,6 +46,7 @@
 [data-ar="grid"][data-min="lg"]{grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr))}
 [data-ar="split"]{container-type:inline-size;min-width:0}
 [data-ar="split"]>[data-part="track"]{display:grid;gap:var(--ar-gap);grid-template-columns:var(--ar-split-start) minmax(0,1fr)}
+[data-ar="split"]>[data-part="track"][data-fixed="end"]{grid-template-columns:minmax(0,1fr) var(--ar-split-start)}
 [data-ar="split"]>[data-part="track"][data-align="start"]{align-items:start}
 [data-ar="split"]>[data-part="track"]>*{min-width:0}
 [data-part="track"][data-start="sm"]{--ar-split-start:320px}
