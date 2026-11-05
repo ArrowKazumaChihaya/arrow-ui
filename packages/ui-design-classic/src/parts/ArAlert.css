@@ -27,7 +27,8 @@
 [data-ar-design="classic"] [data-ar="alert"][data-tone="neutral"]>[data-part="icon"]{-webkit-mask:none;mask:none;background:none;color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="alert"][data-tone="neutral"]>[data-part="icon"]>*{display:revert}
 [data-ar-design="classic"] [data-ar="alert"]:not([data-titled]){min-height:40px}
-/* Size containment needs a definite width for alerts with actions. */
+/* Size containment needs a definite width; let the message share a row with its icon. */
+[data-ar-design="classic"] [data-ar="alert"]:has(>[data-part="action"])>[data-part="content"]{flex:1 1 0}
 [data-ar-design="classic"] [data-ar="alert"]:not([data-banner]):not(:has(>[data-part="action"])){width:fit-content}
 [data-ar-design="classic"] [data-ar="alert"][data-titled]{align-items:flex-start;padding:20px 24px;gap:12px}
 [data-ar-design="classic"] [data-ar="alert"][data-titled]>[data-part="icon"]{width:24px;height:24px}
