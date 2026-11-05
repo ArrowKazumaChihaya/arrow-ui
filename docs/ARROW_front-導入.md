@@ -1,21 +1,20 @@
 # ARROW_front への導入手順
 
-設計書の「移行の進め方」の段階1〜3を、ARROW_front の側で行う手順です。
+Frontの導入は実装済みです。以下は今後の更新で守る境界です。
 
-## 段階1：土台
+## 公開パッケージの更新
 
-1. `.npmrc` に `@s_and_a:registry=https://npm.pkg.github.com` を足し、`@s_and_a/arrow-ui`・`@s_and_a/arrow-ui-design-remix`・`@s_and_a/arrow-ui-design-classic`・`@s_and_a/eslint-plugin-arrow-ui` を入れる。
-2. `arrow-ui.requires.ts` をリポジトリ直下に置く（README の例）。最初はシフト画面で使う部品だけ。
-3. `src/main.ts` で `@s_and_a/arrow-ui/style.css` を読み、`App.vue` を `ArUiProvider` で包む。デザインのライブラリは `vite.config.ts` の `@s_and_a/arrow-ui-design` の行き先で決める（移行中は classic、全画面を移したら remix に替えて全社に一度に出す）。
-4. 今の切り替えの仕組みを外す（使わない）：`DesignSwitcher.vue`、`Logic/Design.ts`、`State/DesignState.ts`、localStorage の `arrow.ui-design`。`DesignProvider.vue` は classic の CSS を読むだけにして、`ArUiProvider` の内側に置く。
-5. `package.json` の verify に `arrow-ui check` を足す。`.eslintrc` に `plugin:@s_and_a/arrow-ui/recommended` を足す。
-6. `check:design` は、View の style・class・生の HTML タグの禁止をそのまま続ける。
+`@s_and_a` の配布先は公開npm (`https://registry.npmjs.org/`) です。GitHub Packagesの認証やローカルtarballは不要です。既存 `.npmrc` にこのscopeのGitHub registry指定が残っていたら、公開npmへ変更してください。
 
-## 段階3：シフト画面
+Frontの `package.json` / `resolutions` / `yarn.lock` を公開済みの版へ揃え、利用者は `yarn install --frozen-lockfile` で取得します。未公開のcheckoutでの確認は検証専用にし、通常のinstallと区別します。
 
-1. `src/Layout/` を作る：`ArrowShell`（ヘッダー2段・ページ名からテーマ色を決める）、`ArrowTwoPane`（`ArSplit start="lg"`）、`ArrowBandCard`、`ArrowSection`（ブロックの間 `space.6`）、`ArrowTableBlock`（表の下 `space.2`）、`ArrowFormGrid`、`ArrowModalLayout`。
-2. シフト画面の View を、`Ui*` 部品からレイアウト層とライブラリの部品へ置き換える。業務の動き（次の空の行を出すなど）は Logic に残す。
-3. classic と remix の両方で、入力・Tab の順・固定列・ポップアップ・スマホを確かめる。
+## 責務と切替
+
+- Frontは配置・データ・権限・状態・操作を所有します。色、枠、文字、入力とボタンの外観はライブラリへ置きます。可能な場所はArCard/ArStack/ArDescriptionsなどの公開部品を直接使用します。
+- `Component/Design/DesignProvider.vue` が新旧両テーマと選択状態を接続します。既存のデザイン切替を維持し、デザイン変更だけでViewを再マウントしないでください。
+- 新規のレイアウトwrapperを機械的に増やさず、Frontの既存 `Component/Layout` とライブラリのlayout部品を使います。
+- `yarn format:changed`、`yarn verify`、本番buildに加え、新旧テーマ・375/768/1440pxの画面検証を行います。入力、選択、スクロール、モーダル、権限と空状態も確認します。
+- 検証用の架空データは実データの全route確認と区別します。詳細な現在地はFrontの `docs/design-renewal-integration.md` とroute監査表で管理します。
 
 ## ページとテーマ色
 
@@ -29,7 +28,7 @@
 | 通知 | orange |
 | 会社情報・社員情報・設定 | teal |
 
-この対応は ARROW_front の `ArrowShell` が持つ。ライブラリはページ名を知らない。
+この対応はFrontのページテーマ設定が持つ。ライブラリはページ名を知らない。
 
 ## ArThumbnail 1.2: 非同期保存と画像処理の寿命
 

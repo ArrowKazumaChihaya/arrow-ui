@@ -1,6 +1,6 @@
 {
   "name": "@s_and_a/arrow-ui-design-classic",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "ARROW UI の design：classic",
   "type": "module",
   "sideEffects": [
