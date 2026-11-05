@@ -27,12 +27,21 @@ try {
       for (const field of await fields.all()) {
         const geometry = await field.evaluate((el) => {
           const bounds = el.getBoundingClientRect();
-          const label = el.querySelector(':scope > [data-part="label"]').getBoundingClientRect();
+          const labelElement = el.querySelector(':scope > [data-part="label"]');
+          const label = labelElement.getBoundingClientRect();
+          const labelText = [...labelElement.childNodes].filter(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim()).flatMap(node => {
+            const range = document.createRange();
+            range.selectNodeContents(node);
+            return [...range.getClientRects()].map(rect => rect.toJSON());
+          });
           const control = el.querySelector(':scope > [data-part="control"]').getBoundingClientRect();
           const input = el.querySelector("input");
-          return { width: bounds.width, label: label.toJSON(), control: control.toJSON(), input: input.getBoundingClientRect().toJSON(), inputBox: input.closest('[data-ar="text-input"]').getBoundingClientRect().toJSON(), overflow: el.scrollWidth > el.clientWidth + 1 };
+          return { labelText, width: bounds.width, label: label.toJSON(), control: control.toJSON(), input: input.getBoundingClientRect().toJSON(), inputBox: input.closest('[data-ar="text-input"]').getBoundingClientRect().toJSON(), overflow: el.scrollWidth > el.clientWidth + 1 };
         });
         assert.equal(geometry.overflow, false, `${design}/${width}: field overflow`);
+        for (const text of geometry.labelText) {
+          assert.ok(text.left >= geometry.label.left - 1 && text.right <= geometry.label.right + 1 && text.top >= geometry.label.top - 1 && text.bottom <= geometry.label.bottom + 1, `${design}/${width}: label text is clipped: ${JSON.stringify(geometry)}`);
+        }
         if (geometry.width <= 480) {
           assert.ok(geometry.control.top >= geometry.label.bottom, "narrow field label must sit above its control");
           assert.ok(geometry.inputBox.width >= geometry.width - 4 && geometry.input.width >= geometry.width - 40, "narrow input must use the available width");

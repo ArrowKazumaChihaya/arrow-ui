@@ -182,6 +182,12 @@ const eventInvalid = computed(
           <ArField label="会社名" required layout="inline" label-size="lg" help="狭い配置ではラベルを上に移します。" v-slot="field">
             <ArTextInput v-model="fieldDraft" v-bind="field" block />
           </ArField>
+          <ArField label="この会社での報酬月額割合(小数点を含めて7桁まで)" required layout="inline" label-size="lg" v-slot="field">
+            <ArTextInput v-model="fieldDraft" v-bind="field" block />
+          </ArField>
+          <ArField label="EmployeeInsuranceIdentifierWithoutWordBreaks" layout="inline" label-size="sm" v-slot="field">
+            <ArTextInput v-model="fieldDraft" v-bind="field" block />
+          </ArField>
           <div style="width:320px;max-width:100%">
             <ArField label="長い項目名と入力値を省略せずに表示する欄" required layout="inline" label-size="lg" help="PCの狭いカード内でも入力幅を確保します。" v-slot="field">
               <ArTextInput v-model="fieldDraft" v-bind="field" block />
