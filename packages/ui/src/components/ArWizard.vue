@@ -3,7 +3,7 @@ import {computed, watch} from 'vue';
 import ArSteps from './ArSteps.vue';
 import ArButton from './ArButton.vue';
 import type { ArWizardProps, ArWizardEmits } from './ArWizard.contract';
-const props=withDefaults(defineProps<ArWizardProps>(), {disabled:false, scrollOnChange:true, labels:()=>({steps:'手順',prev:'戻る',next:'次へ'})});
+const props=withDefaults(defineProps<ArWizardProps>(), {disabled:false, layout:"fluid", scrollOnChange:true, labels:()=>({steps:'手順',prev:'戻る',next:'次へ'})});
 const emit=defineEmits<ArWizardEmits>();
 const current=computed(()=>props.options.findIndex(item=>item.value===props.value));
 const option=computed(()=>{
@@ -27,7 +27,7 @@ watch(()=>props.value,()=>{
 },{flush:'post'});
 </script>
 <template>
-  <section data-ar="wizard" data-part="root">
+  <section data-ar="wizard" data-part="root" :data-layout="layout">
     <div data-part="steps"><ArSteps :items="items" :current="current" :label="labels.steps" size="mini" /></div>
     <p data-part="summary" aria-live="polite">{{current+1}} / {{options.length}} — {{option?.label}}</p>
     <div data-part="content"><slot /></div>

@@ -13,6 +13,8 @@ export interface ArWizardProps {
   /** Actual destination when the consumer skips optional steps; navigation remains consumer-owned. */
   nextValue?: number;
   disabled?: boolean;
+  /** form は読みやすい幅で中央に配置。fluid は従来どおり配置先の全幅を使う。 */
+  layout?: "fluid" | "form";
   /** nextStep may contain {step}; an explicit option.nextText still takes precedence. */
   labels?: { steps: string; prev: string; next: string; nextStep?: string };
   scrollOnChange?: boolean;
