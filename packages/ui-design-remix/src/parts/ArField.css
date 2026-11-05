@@ -6,7 +6,7 @@
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{column-gap:14px;align-items:center}
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;overflow-wrap:anywhere;gap:4px;font-size:13.5px;font-weight:600;line-height:20.25px;text-align:right}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{display:block;flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:11px;font-weight:700;line-height:18px}
-[data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{margin-top:4px;font-size:12px;line-height:18px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{margin-top:4px;font-size:12px;line-height:18px;color:var(--ar-color-text-muted);white-space:pre-line;overflow-wrap:anywhere}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{display:flex;gap:6px;align-items:center;margin-top:6px;font-size:12.5px;font-weight:600;line-height:18.75px;color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="error"]>[data-ar="icon"]{flex:none}
 /* toolbar：シフト画面の .v-st（12.5px 600・mute・入力との間 8px） */
