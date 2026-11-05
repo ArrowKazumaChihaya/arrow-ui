@@ -3,10 +3,11 @@
  * ArImage 1.0 — 角丸の画像。乗せる・フォーカスで暗い幕に「プレビュー」、押すと大きく見る（拡大・縮小・元の大きさ・閉じる）。
  * 読み込めないときは灰色の箱に画像の印。プレビューは Escape で閉じ、+ / - / 0 で拡大・縮小・元に戻す。
  */
-import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
 import ArGlyph from "../internal/ArGlyph.vue";
 import { useArUi, useId } from "../provider/context";
+import { useDialog } from "../internal/dialog";
 import type { ArImageProps } from "./ArImage.contract";
 
 defineOptions({ inheritAttrs: false });
@@ -54,7 +55,6 @@ const state = computed(() => [broken.value && "error", loaded.value && "loaded",
 const inner = ref(false);
 const open = computed(() => canPreview.value && (props.previewOpen ?? inner.value));
 const scale = ref(1);
-const root = ref<HTMLElement | null>(null);
 const viewer = ref<HTMLElement | null>(null);
 function setOpen(v: boolean) {
   inner.value = v;
@@ -73,44 +73,25 @@ function onWheel(e: WheelEvent) {
   zoom(e.deltaY < 0 ? 1 : -1);
 }
 function onViewerKey(e: KeyboardEvent) {
-  if (e.key === "Escape") {
-    e.stopPropagation();
-    setOpen(false);
-  } else if (e.key === "+" || e.key === "=") zoom(1);
+  onKeydown(e);
+  if (e.defaultPrevented) return;
+  if (e.key === "+" || e.key === "=") zoom(1);
   else if (e.key === "-") zoom(-1);
   else if (e.key === "0") scale.value = 1;
-  else if (e.key === "Tab" && viewer.value) {
-    const list = Array.from(viewer.value.querySelectorAll<HTMLElement>("button:not([disabled])"));
-    const first = list[0];
-    const last = list.at(-1);
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last?.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first?.focus();
-    }
-  }
 }
-watch(open, async (v) => {
-  if (typeof document === "undefined") return;
-  if (v) {
-    scale.value = 1;
-    document.documentElement.setAttribute("data-ar-modal-open", "");
-    await nextTick();
-    viewer.value?.querySelector<HTMLElement>('[data-part="close"]')?.focus();
-  } else {
-    document.documentElement.removeAttribute("data-ar-modal-open");
-    root.value?.focus?.();
-  }
+const { onKeydown, palette } = useDialog({
+  open: () => open.value,
+  panel: viewer,
+  initial: () => viewer.value,
+  escapable: () => true,
+  onEscape: () => setOpen(false),
 });
-onBeforeUnmount(() => open.value && document.documentElement.removeAttribute("data-ar-modal-open"));
+watch(open, (v) => { if (v) scale.value = 1; });
 </script>
 
 <template>
   <component
     :is="canPreview ? 'button' : 'span'"
-    ref="root"
     v-bind="$attrs"
     data-ar="image"
     data-part="root"
@@ -136,6 +117,8 @@ onBeforeUnmount(() => open.value && document.documentElement.removeAttribute("da
       data-part="viewer"
       role="dialog"
       aria-modal="true"
+      tabindex="-1"
+      :data-ar-palette="palette"
       :aria-label="alt || labels.preview"
       @keydown="onViewerKey"
     >
