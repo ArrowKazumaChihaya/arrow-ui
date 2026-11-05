@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@s_and_a/arrow-ui": "0.1.8",
+    "@s_and_a/arrow-ui": "0.1.9",
     "@s_and_a/arrow-ui-design-remix": "0.1.9",
     "@s_and_a/arrow-ui-design-classic": "0.1.8",
     "vue": "^3.5.22"
