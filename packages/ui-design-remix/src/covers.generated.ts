@@ -143,7 +143,7 @@ export const covers = {
   ArViewOptions: "1.1.0",
   ArWatermark: "1.0.0",
   ArWeekdayPicker: "1.1.0",
-  ArWizard: "1.0.0",
+  ArWizard: "1.1.0",
   ArYearInput: "1.1.0",
   ArYearMonthInput: "1.1.0",
   ArZipInput: "1.2.0",
