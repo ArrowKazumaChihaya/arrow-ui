@@ -4,7 +4,7 @@ import ArParagraph from "../src/components/ArParagraph.vue";
 describe("ArParagraph free text", () => {
   it("retains the original text and can switch line preservation without remounting", async () => {
     const content = "経路の説明\n  乗り換え後の行";
-    const wrapper = mount(ArParagraph, { slots: { default: content } });
+    const wrapper = mount(ArParagraph, { slots: { default: () => content } });
     const element = wrapper.element;
     expect(element.textContent).toBe(content);
     expect(wrapper.attributes("data-preserve-lines")).toBeUndefined();
