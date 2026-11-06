@@ -21,7 +21,11 @@ const props = withDefaults(defineProps<ArFieldProps>(), {
   requiredText: "必須",
   id: undefined,
 });
-defineSlots<{ default(props: ArFieldControlProps): unknown }>();
+const slots = defineSlots<{
+  default(props: ArFieldControlProps): unknown;
+  /** Supplementary text and an optional detail action, beneath the control. */
+  help?(): unknown;
+}>();
 
 const form = inject(arFormKey, null);
 const auto = useId("ar-field");
@@ -40,7 +44,7 @@ const error = computed(() => props.error ?? (props.name && form ? form.errorOf(p
 const required = computed(() => props.required ?? (props.name && form ? form.isRequired(props.name) : false));
 
 const control = computed<ArFieldControlProps>(() => {
-  const describedBy = [error.value && errorId, props.help && helpId].filter(Boolean).join(" ");
+  const describedBy = [error.value && errorId, (props.help || slots.help) && helpId].filter(Boolean).join(" ");
   return {
     id: id.value,
     invalid: !!error.value,
@@ -107,7 +111,7 @@ function onFocusOut(e: FocusEvent) {
     <div data-part="control">
       <slot v-bind="control" />
       <p v-if="error" :id="errorId" data-part="error" role="alert"><ArIcon line name="alert" size="sm" />{{ error }}</p>
-      <p v-if="help" :id="helpId" data-part="help">{{ help }}</p>
+      <div v-if="help || slots.help" :id="helpId" data-part="help"><slot name="help">{{ help }}</slot></div>
     </div>
   </div>
 </template>

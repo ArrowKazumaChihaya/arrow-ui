@@ -265,7 +265,7 @@
 [data-ar-design="remix"] table[data-ui-part="table"] :is(th,td):not([data-ui-fixed], [data-ui-fixed] *) { box-sizing:border-box;padding:10px 12px;border:0;border-bottom:1px solid var(--ar-color-border);vertical-align:middle; }
 [data-ar-design="remix"] table[data-ui-part="table"] th:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-color-bg);font-weight:700;color:var(--ar-color-text-secondary); }
 [data-ar-design="remix"] table[data-ui-part="table"] td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-color-surface); }
-[data-ar-design="remix"] table[data-ui-part="table"] tbody tr:hover>td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-accent-subtle); }
+[data-ar-design="remix"] table[data-ui-part="table"] tbody tr:hover:not([data-add-row])>td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-accent-subtle); }
 [data-ar-design="remix"] table[data-ui-part="table"] tbody tr:last-child>td:not([data-ui-fixed], [data-ui-fixed] *) { border-bottom:0; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_row th:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;top:0;z-index:2; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_col.col1 :is(th,td):first-child:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;left:0;z-index:1; }
@@ -331,6 +331,20 @@
 [data-ar-design="remix"] table[data-ui-part="table"] td [data-ar="button"][data-icon-only]{min-width:30px;min-height:30px}
 [data-ar-design="remix"] table[data-ui-part="table"] td .no_drag{max-width:100%;min-width:0}
 [data-ar-design="remix"] table[data-ui-part="table"] td .branch_selector_component{width:100%;min-width:0;max-width:100%}
+/* Two 30px actions, their gap, and cell padding must fit even in fixed-layout tables. */
+[data-ar-design="remix"] table[data-ui-part="table"] :is(th,td).button{width:100px;min-width:100px;white-space:nowrap;overflow:visible;position:sticky;right:0;z-index:2}
+[data-ar-design="remix"] table[data-ui-part="table"] th.button{z-index:3}
+[data-ar-design="remix"] table[data-ui-part="table"] td.button:has([data-ar="button"]:nth-of-type(3)){width:138px;min-width:138px}
+[data-ar-design="remix"] table[data-ui-part="table"] td.button .no_drag{max-width:none}
+[data-ar-design="remix"] table[data-ui-part="table"] tbody tr[data-add-row]>td{background:var(--ar-color-surface)}
+[data-ar-design="remix"] [data-ui-part="tableViewport"]{box-sizing:border-box;max-width:100%;min-width:0}
+/* Keep sorting tables native: legacy layout used block rows and broke colspan. */
+[data-ar-design="remix"] table[data-ui-part="table"]>tbody.smooth-dnd-container{display:table-row-group!important}
+[data-ar-design="remix"] .sortable_table_component table[data-ui-part="table"]>thead{display:table-header-group}
+@layer arrow-product-layout {
+  [data-ar-design="remix"] .sortable_table_component table[data-ui-part="table"]> :is(thead,tbody)>tr{display:table-row!important}
+  [data-ar-design="remix"] table[data-ui-part="table"]>tbody.smooth-dnd-container>tr{display:table-row!important}
+}
 /* Shared authentication composition, including narrow viewports and text zoom. */
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *){position:relative;isolation:isolate;overflow:clip;background:var(--ar-color-bg);min-height:100dvh}
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"])::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:50% -25% -50%;border-radius:50% 50% 0 0;background:var(--ar-accent-subtle)}
