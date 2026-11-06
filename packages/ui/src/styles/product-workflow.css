@@ -390,9 +390,6 @@ td[data-v-uic75e97f856df] {
 /* @end-component */
 
 /* @component src/Component/Workflow/FieldPreview.vue#0 */
-.field_preview[data-v-ui8dc9c1c223ab] {
-  max-width: 440px;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/HistoryButton.vue#0 */
@@ -481,31 +478,9 @@ fieldset[data-v-ui34a47bbaf561] {
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/FieldAnnotation.vue#0 */
-.field_annotation[data-v-ui359b81f9d1a3] {
-  line-height: 1.6;
-  margin-top: 5px;
-  white-space: pre-wrap;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/FieldEditor.vue#0 */
-.field[data-v-uid078a48a61d0] {
-  width: 320px;
-  max-width: 100%;
-}
-.button_wrap[data-v-uid078a48a61d0] {
-  width: 180px;
-  max-width: 100%;
-}
-.row_actions[data-v-uid078a48a61d0],
-.modal_actions[data-v-uid078a48a61d0] {
-  display: flex;
-  gap: 10px;
-}
-.modal_actions[data-v-uid078a48a61d0] {
-  justify-content: center;
-  flex-wrap: wrap;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/FlowEditor.vue#0 */
@@ -564,43 +539,6 @@ fieldset[data-v-ui34a47bbaf561] {
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/PreviewFields.vue#0 */
-.preview_field[data-v-ui5490a4110cda] {
-  margin-bottom: 25px;
-}
-.preview_label[data-v-ui5490a4110cda],
-.edit_actions[data-v-ui5490a4110cda] {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.preview_label[data-v-ui5490a4110cda] {
-  min-height: 30px;
-}
-.preview_label .dd-origin[data-v-ui5490a4110cda] {
-  display: inline-flex;
-  padding: 6px 4px;
-}
-.preview_label svg[data-v-ui5490a4110cda] {
-  width: 14px;
-  height: 18px;
-}
-.field_controls[data-v-ui5490a4110cda] {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.field_controls .field_preview[data-v-ui5490a4110cda] {
-  width: 320px;
-  max-width: 100%;
-}
-.preview_header .edit_actions[data-v-ui5490a4110cda] {
-  margin-top: 5px;
-}
-.add_field[data-v-ui5490a4110cda] {
-  max-width: 440px;
-  margin-bottom: 25px;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Config.vue#0 */

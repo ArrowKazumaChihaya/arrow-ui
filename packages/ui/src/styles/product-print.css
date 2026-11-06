@@ -44110,9 +44110,6 @@ fieldset[data-v-ui9ae6b325de9c]:where([data-ui-fixed], [data-ui-fixed] *) {
 .workflow_field_input[data-v-uib0445e6d2c7b]:where([data-ui-fixed], [data-ui-fixed] *) {
   border: 0;
 }
-.field_preview[data-v-ui8dc9c1c223ab]:where([data-ui-fixed], [data-ui-fixed] *) {
-  opacity: 0.75;
-}
 fieldset[data-v-ui34a47bbaf561]:where([data-ui-fixed], [data-ui-fixed] *) {
   border: 0;
 }
@@ -44135,10 +44132,6 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ui-fixed], [data-ui-fixed] *) {
 .error[data-v-uia9f709ed20f3]:where([data-ui-fixed], [data-ui-fixed] *) {
   background: white;
   border: 1px solid #ddd;
-}
-.field_annotation[data-v-ui359b81f9d1a3]:where([data-ui-fixed], [data-ui-fixed] *) {
-  font-size: 11px;
-  color: #90959a;
 }
 .warning[data-v-ui14cb7c9eb646]:where([data-ui-fixed], [data-ui-fixed] *) {
   color: #a33;
