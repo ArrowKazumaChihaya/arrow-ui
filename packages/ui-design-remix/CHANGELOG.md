@@ -1,5 +1,11 @@
 # @s_and_a/arrow-ui-design-remix
 
+## Unreleased
+
+- Allow card footer notices and forms to take their natural height; only direct action buttons use the compact segmented footer styling.
+
+- Keep mobile band-card actions at the trailing edge, with long titles wrapping beside or above them consistently.
+
 ## 0.1.10
 
 ### Patch Changes

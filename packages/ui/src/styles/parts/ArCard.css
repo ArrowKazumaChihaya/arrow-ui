@@ -2,4 +2,4 @@
 [data-ar="card"]>[data-part="cover"]{flex:none;overflow:hidden}
 [data-ar="card"]>[data-part="tabs"]{flex:none;min-width:0}
 [data-ar="card"]>[data-part="footer"]{flex:none}
-[data-ar="card"]>[data-part="footer"]>*:not([data-ar="cluster"],[data-ar="stack"],[data-ar="grid"]){display:flex;align-items:center;justify-content:center;min-width:0}
+[data-ar="card"]>[data-part="footer"]>:is(button,a,[role="button"],[data-ar="button"]){display:flex;align-items:center;justify-content:center;min-width:0}
