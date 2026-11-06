@@ -419,18 +419,6 @@ td[data-v-uic75e97f856df] {
 /* @end-component */
 
 /* @component src/Component/Workflow/HistoryButton.vue#0 */
-.workflow_history_button[data-v-ui5b84288ab5fc] {
-  display: inline-block;
-  width: 220px;
-  max-width: 100%;
-  margin-left: auto;
-  margin-bottom: 15px;
-}
-@media screen and (max-width: 599px) {
-  .workflow_history_button[data-v-ui5b84288ab5fc] {
-    margin-left: 0;
-  }
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/NotificationDetails.vue#0 */
@@ -885,42 +873,6 @@ td.value[data-v-ui2b9c5ef3b8f2] {
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Config.vue#0 */
-.title_wrap[data-v-uief578b578b7b] {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-.editor[data-v-uief578b578b7b] {
-  width: 100%;
-}
-.button_wrap[data-v-uief578b578b7b] {
-  width: 180px;
-  max-width: 100%;
-}
-.small_button[data-v-uief578b578b7b] {
-  width: 95px;
-}
-.row_actions[data-v-uief578b578b7b],
-.list_actions[data-v-uief578b578b7b],
-.form_actions[data-v-uief578b578b7b] {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.form_actions[data-v-uief578b578b7b] {
-  justify-content: center;
-  margin-top: 35px;
-}
-.empty[data-v-uief578b578b7b] {
-  margin-top: 20px;
-  padding: 30px 15px;
-  text-align: center;
-}
-.error p[data-v-uief578b578b7b] {
-  margin-bottom: 15px;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Employees.vue#0 */
@@ -1088,89 +1040,7 @@ td.value[data-v-ui2b9c5ef3b8f2] {
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Setting.vue#0 */
-.title_wrap[data-v-uida64472b3143] {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-.section[data-v-uida64472b3143] {
-  margin: 30px 0 20px;
-}
-.field[data-v-uida64472b3143] {
-  width: 300px;
-  max-width: 100%;
-}
-.notification_link[data-v-uida64472b3143] {
-  width: 220px;
-  max-width: 100%;
-  margin-bottom: 25px;
-}
-.help[data-v-uida64472b3143] {
-  margin-bottom: 15px;
-}
-.button_wrap[data-v-uida64472b3143] {
-  width: 140px;
-}
-.actions[data-v-uida64472b3143] {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 30px;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/TagMember.vue#0 */
-.title_wrap[data-v-ui0eca0299ecff] {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-.help[data-v-ui0eca0299ecff] {
-  margin-bottom: 15px;
-}
-.tag_field[data-v-ui0eca0299ecff] {
-  width: 100%;
-  max-width: 260px;
-}
-.assignment[data-v-ui0eca0299ecff] {
-  display: flex;
-  align-items: flex-start;
-  gap: 25px;
-}
-.tag_selection[data-v-ui0eca0299ecff] {
-  flex: 0 0 260px;
-  max-width: 100%;
-}
-.employee_selection[data-v-ui0eca0299ecff] {
-  flex: 1;
-  min-width: 0;
-}
-@media screen and (max-width: 1199px) {
-  .assignment[data-v-ui0eca0299ecff] {
-    flex-direction: column;
-  }
-  .tag_selection[data-v-ui0eca0299ecff] {
-    flex-basis: auto;
-    width: 345px;
-  }
-  .employee_selection[data-v-ui0eca0299ecff] {
-    width: 100%;
-  }
-}
-.button_wrap[data-v-ui0eca0299ecff] {
-  width: 140px;
-}
-.summary[data-v-ui0eca0299ecff] {
-  margin-top: 20px;
-}
-.actions[data-v-ui0eca0299ecff] {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 30px;
-}
 /* @end-component */
