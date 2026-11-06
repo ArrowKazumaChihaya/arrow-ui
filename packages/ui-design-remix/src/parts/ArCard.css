@@ -72,5 +72,6 @@
 [data-ar-design="remix"] [data-ar="card"]>[data-part="head"]>[data-part="actions"]:empty{display:none}
 
 /* Direct footer actions wrap as complete controls in narrow cards. */
-[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]{flex-wrap:wrap}
+/* Equal-height cards keep their actions aligned even when descriptions wrap. */
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]{flex-wrap:wrap;margin-top:auto}
 [data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>[data-ar="button"]{flex:1 1 140px;height:auto;min-height:44px;white-space:normal;line-height:1.5}
