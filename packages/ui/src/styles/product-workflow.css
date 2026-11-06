@@ -509,41 +509,6 @@ fieldset[data-v-ui34a47bbaf561] {
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/FlowEditor.vue#0 */
-.condition[data-v-ui3b048862611f] {
-  line-height: 1.6;
-}
-.condition p + p[data-v-ui3b048862611f] {
-  margin-top: 6px;
-}
-.field[data-v-ui3b048862611f] {
-  width: 300px;
-  max-width: 100%;
-}
-.number_field[data-v-ui3b048862611f] {
-  width: 100px;
-}
-.button_wrap[data-v-ui3b048862611f] {
-  width: 190px;
-  max-width: 100%;
-}
-.row_actions[data-v-ui3b048862611f],
-.modal_actions[data-v-ui3b048862611f] {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.modal_actions[data-v-ui3b048862611f] {
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.tag_condition[data-v-ui3b048862611f] {
-  margin: 20px 0;
-  padding-top: 20px;
-}
-.empty[data-v-ui3b048862611f] {
-  padding: 25px;
-  text-align: center;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/FlowPreview.vue#0 */

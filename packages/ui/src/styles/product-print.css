@@ -44140,12 +44140,6 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ui-fixed], [data-ui-fixed] *) {
   font-size: 11px;
   color: #90959a;
 }
-.tag_condition[data-v-ui3b048862611f]:where([data-ui-fixed], [data-ui-fixed] *) {
-  border-top: 1px solid #ddd;
-}
-.empty[data-v-ui3b048862611f]:where([data-ui-fixed], [data-ui-fixed] *) {
-  border: 1px solid #ddd;
-}
 .warning[data-v-ui14cb7c9eb646]:where([data-ui-fixed], [data-ui-fixed] *) {
   color: #a33;
 }

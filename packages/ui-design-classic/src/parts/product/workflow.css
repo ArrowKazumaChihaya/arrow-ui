@@ -267,12 +267,6 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ar-design="classic"], [data-ar-desig
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/FlowEditor.vue#0 */
-.tag_condition[data-v-ui3b048862611f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  border-top: 1px solid #ddd;
-}
-.empty[data-v-ui3b048862611f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  border: 1px solid #ddd;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Component/FlowPreview.vue#0 */
