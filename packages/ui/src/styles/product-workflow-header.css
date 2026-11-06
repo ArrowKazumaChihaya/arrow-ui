@@ -413,3 +413,52 @@
     margin-top: var(--menu-header-height, 50px) !important;
   }
 }
+
+/* The legacy header relied on the application's reset stylesheet. Keep these
+   structural defaults local to the header instead of resetting rich content. */
+.workflow_menu_layout .header_nav_list[data-v-uidec8f89b1721] {
+  margin: 0;
+  padding: 0;
+}
+.workflow_menu_layout .header_nav_link p[data-v-uidec8f89b1721] {
+  margin-bottom: 0;
+}
+.workflow_menu_layout .news_head[data-v-uidec8f89b1721],
+.workflow_menu_layout .todo_head[data-v-uidec8f89b1721] {
+  margin: 0;
+}
+@media screen and (min-width: 960px) {
+  .workflow_menu_layout .header_inner[data-v-uidec8f89b1721] {
+    --arrow-classic-notice-width: 235px;
+  }
+  .workflow_menu_layout .header_inner > .header_head[data-v-uidec8f89b1721] {
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .workflow_menu_layout .header_inner > .header_head > .design_switcher[data-v-uidec8f89b1721] {
+    margin-left: calc(var(--arrow-classic-notice-width) + 46px);
+    margin-right: 16px;
+    flex: none;
+  }
+  .workflow_menu_layout .header_inner:has(.header_fix_item.todo) > .header_head > .design_switcher[data-v-uidec8f89b1721] {
+    margin-left: calc(2 * var(--arrow-classic-notice-width) + 56px);
+  }
+  .workflow_menu_layout .header_inner > .header_head > .header_login_info[data-v-uidec8f89b1721] {
+    margin-left: auto;
+    flex: none;
+  }
+  .workflow_menu_layout .header_fix_item[data-v-uidec8f89b1721] {
+    width: var(--arrow-classic-notice-width);
+  }
+  .workflow_menu_layout .header_fix_item.todo[data-v-uidec8f89b1721] {
+    margin-left: calc(var(--arrow-classic-notice-width) + 10px);
+  }
+  .workflow_menu_layout .header_menus[data-v-uidec8f89b1721] {
+    padding-top: 0;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1100px) {
+  .workflow_menu_layout .header_inner[data-v-uidec8f89b1721] {
+    --arrow-classic-notice-width: 180px;
+  }
+}
