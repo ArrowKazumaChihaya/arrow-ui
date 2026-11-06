@@ -1,4 +1,4 @@
-/** ArList 1.0 の契約（antd 6 の Listy の形：グループの見出し・右に操作）。 */
+/** ArList 1.1 の契約（antd 6 の Listy の形：グループの見出し・右に操作）。 */
 import type { ArAvatarTone } from "./ArAvatar.contract";
 
 export interface ArListItem {
@@ -8,8 +8,8 @@ export interface ArListItem {
   title: string;
   /** 2行目の灰色の小さな文字（「09:00〜18:00 ／ 渋谷店」）。 */
   description?: string;
-  /** 頭文字の丸。true なら title の1文字目。 */
-  avatar?: boolean | { text?: string; tone?: ArAvatarTone; seed?: string | number };
+  /** 頭文字の丸。true なら title の1文字目。1.1: src を渡すと写真。 */
+  avatar?: boolean | { src?: string; text?: string; tone?: ArAvatarTone; seed?: string | number };
   /** グループの名前。同じ名前が続く間を1つのグループにし、上に見出しを出す。 */
   group?: string;
   /** 薄く出す（登録済み・シフトなし）。 */
@@ -31,7 +31,7 @@ export interface ArListProps {
   size?: "md" | "sm";
 }
 
-/** slot：item（{ item, index }：1行まるごと）・title・description・avatar（{ item }）・actions（{ item, index }：右の操作）・empty・header・footer。 */
+/** slot：item（{ item, index }：1行まるごと）・title・description・avatar（{ item, index }）・actions（{ item, index }：右の操作）・empty・header・footer。 */
 export type ArListPart =
   | "root"
   | "header"

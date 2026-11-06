@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArList 1.0 — 人やものの一覧（antd 6 の Listy の形）。
+ * ArList 1.1 — 人やものの一覧（antd 6 の Listy の形）。
  * 1行は「頭文字の丸・名前と説明・右の操作」。group が続く間を1つにまとめ、淡いテーマ色の見出しを上に出す（スクロールしても残る）。
  */
 import { computed } from "vue";
@@ -22,7 +22,7 @@ const groups = computed(() => {
 });
 const avatarOf = (it: ArListItem) => {
   const a = typeof it.avatar === "object" ? it.avatar : {};
-  return { text: a.text ?? Array.from(it.title.trim())[0] ?? "", tone: a.tone, seed: a.seed };
+  return { src: a.src, text: a.text ?? Array.from(it.title.trim())[0] ?? "", tone: a.tone, seed: a.seed };
 };
 </script>
 
@@ -42,13 +42,13 @@ const avatarOf = (it: ArListItem) => {
             >
               <slot name="item" :item="item" :index="index">
                 <span v-if="item.avatar || $slots.avatar" data-part="avatar">
-                  <slot name="avatar" :item="item"><ArAvatar v-bind="avatarOf(item)" :size="size === 'sm' ? 'sm' : 'md'" /></slot>
+                  <slot name="avatar" :item="item" :index="index"><ArAvatar v-bind="avatarOf(item)" :size="size === 'sm' ? 'sm' : 'md'" /></slot>
                 </span>
                 <div data-part="meta">
-                  <b data-part="title"><slot name="title" :item="item">{{ item.title }}</slot></b>
-                  <span v-if="item.description || $slots.description" data-part="description">
-                    <slot name="description" :item="item">{{ item.description }}</slot>
-                  </span>
+                  <b data-part="title"><slot name="title" :item="item" :index="index">{{ item.title }}</slot></b>
+                  <div v-if="item.description || $slots.description" data-part="description">
+                    <slot name="description" :item="item" :index="index">{{ item.description }}</slot>
+                  </div>
                 </div>
                 <div v-if="$slots.actions" data-part="actions"><slot name="actions" :item="item" :index="index" /></div>
               </slot>

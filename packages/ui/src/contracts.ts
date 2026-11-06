@@ -86,7 +86,7 @@ export const contracts = {
   ArDescriptions: "1.1.0",
   ArEmpty: "1.0.0",
   ArImage: "1.0.0",
-  ArList: "1.0.0",
+  ArList: "1.1.0",
   ArMapPreview: "1.0.0",
   ArOrgChart: "1.1.0",
   ArPdfViewer: "1.0.0",

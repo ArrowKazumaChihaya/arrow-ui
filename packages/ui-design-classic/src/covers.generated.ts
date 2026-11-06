@@ -59,7 +59,7 @@ export const covers = {
   ArKanaText: "1.0.0",
   ArLayout: "1.0.0",
   ArLink: "1.0.0",
-  ArList: "1.0.0",
+  ArList: "1.1.0",
   ArLogoSpin: "1.0.0",
   ArMapPreview: "1.0.0",
   ArMentions: "1.0.0",
