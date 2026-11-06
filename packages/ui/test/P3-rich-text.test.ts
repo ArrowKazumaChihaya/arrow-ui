@@ -59,6 +59,42 @@ describe("ArRichTextEditor", () => {
     expect(v).toContain("{{ $company_name }}");
     w.unmount();
   });
+  it("変数の差し込みを同じ編集トランザクションで取り消し・やり直せる", async () => {
+    const original = Object.getOwnPropertyDescriptor(document, "execCommand");
+    const w = mount(ArRichTextEditor, { props: { modelValue: "こんにちは", plain: true, toolbar: ["variables", "undo", "redo"], variables: groups }, attachTo: document.body });
+    const content = w.find('[data-part="content"]').element as HTMLElement;
+    let inserted: Node[] = [];
+    Object.defineProperty(document, "execCommand", { configurable: true, value: (command: string, _ui: boolean, html: string) => {
+      if (command === "insertHTML") {
+        const fragment = document.createElement("template");
+        fragment.innerHTML = html;
+        inserted = [...fragment.content.childNodes];
+        content.append(...inserted);
+      } else if (command === "undo") {
+        inserted.forEach((node) => node.parentNode?.removeChild(node));
+      } else if (command === "redo") {
+        content.append(...inserted);
+      } else return false;
+      content.dispatchEvent(new Event("input", { bubbles: true }));
+      return true;
+    }});
+    try {
+      await w.find('[data-tool="variables"]').trigger("click");
+      await w.find('[data-part="variables"] [data-part="item"]').trigger("click");
+      expect(content.textContent).toBe("こんにちは{{ $company_name }}");
+      expect(w.find('[data-part="token"]').exists()).toBe(true);
+      await w.find('[data-tool="undo"]').trigger("click");
+      expect(content.textContent).toBe("こんにちは");
+      expect(w.emitted("update:modelValue")!.at(-1)![0]).toBe("こんにちは");
+      await w.find('[data-tool="redo"]').trigger("click");
+      expect(content.textContent).toBe("こんにちは{{ $company_name }}");
+      expect(w.emitted("update:modelValue")!.at(-1)![0]).not.toContain("data-part");
+    } finally {
+      w.unmount();
+      if (original) Object.defineProperty(document, "execCommand", original);
+      else Reflect.deleteProperty(document, "execCommand");
+    }
+  });
   it("menu の変数：まとまりを開くと一覧", async () => {
     const w = mount(ArRichTextEditor, { props: { modelValue: "", toolbar: ["variables"], variables: groups, variablesPlacement: "menu" }, attachTo: document.body });
     await w.find('[data-tool="variables"]').trigger("click");

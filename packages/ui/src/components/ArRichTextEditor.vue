@@ -129,6 +129,7 @@ const chars = ref(0);
 const words = ref(0);
 const empty = ref(true);
 let lastEmitted: string | null = null;
+let inserting = false;
 
 const clean = (html: string) => (props.plain ? plainHtml(html) : sanitizeHtml(html));
 function render(html: string) {
@@ -172,6 +173,7 @@ onBeforeUnmount(() => document.removeEventListener("selectionchange", onSelectio
 
 /* 変数を打ち込んだときも札にする（カーソルは札の後ろへ） */
 function onInput() {
+  if (inserting) return;
   const el = content.value;
   if (!el) return;
   const text = el.textContent ?? "";
@@ -270,23 +272,32 @@ function exec(cmd: string, value?: string): boolean {
 function insertAt(html: string) {
   if (!editable.value) return;
   restore();
-  const safe = props.plain ? plainHtml(html) : sanitizeHtml(html);
-  if (!exec("insertHTML", safe)) {
-    const sel = window.getSelection();
-    const r = sel && sel.rangeCount ? sel.getRangeAt(0) : null;
-    if (r) {
-      r.deleteContents();
-      const t = document.createElement("template");
-      t.innerHTML = safe;
-      const last = t.content.lastChild;
-      r.insertNode(t.content);
-      if (last) placeCaretAfter(last);
+  const prepared = document.createElement("div");
+  prepared.innerHTML = clean(html);
+  decorateTokens(prepared, pattern.value);
+  // Insert the token and its decoration in one browser editing transaction.
+  // Replacing its text node afterwards disconnects the browser's undo record.
+  inserting = true;
+  try {
+    if (!exec("insertHTML", prepared.innerHTML)) {
+      const sel = window.getSelection();
+      const r = sel && sel.rangeCount ? sel.getRangeAt(0) : null;
+      if (r) {
+        r.deleteContents();
+        const fragment = document.createDocumentFragment();
+        fragment.append(...prepared.childNodes);
+        const last = fragment.lastChild;
+        r.insertNode(fragment);
+        if (last) placeCaretAfter(last);
+      }
     }
+  } finally {
+    inserting = false;
   }
-  decorateTokens(content.value!, pattern.value);
   const sel = window.getSelection();
   if (sel && sel.rangeCount) saved = sel.getRangeAt(0).cloneRange();
   sync();
+  refreshState();
 }
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 function insertText(text: string) {
