@@ -209,9 +209,6 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ar-design="classic"], [data-ar-desig
 /* @end-component */
 
 /* @component src/Component/Workflow/ReassignmentEditor.vue#0 */
-fieldset[data-v-ui788c63d2858f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  border: 0;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/RequestComparison.vue#0 */
@@ -227,9 +224,6 @@ fieldset[data-v-ui788c63d2858f]:where([data-ar-design="classic"], [data-ar-desig
 /* @end-component */
 
 /* @component src/Component/Workflow/RequestHistory.vue#0 */
-.submission[data-v-ui02ea7d5be25d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  border-top: 1px solid #ddd;
-}
 /* @end-component */
 
 /* @component src/View/Common/Workflow/Create.vue#0 */
@@ -244,24 +238,9 @@ fieldset[data-v-ui788c63d2858f]:where([data-ar-design="classic"], [data-ar-desig
 /* @end-component */
 
 /* @component src/View/Common/Workflow/McpSettings.vue#0 */
-.field_info[data-v-ui3fcd59d89fce]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
-  color: #5f5f5f;
-}
 /* @end-component */
 
 /* @component src/View/Common/Workflow/Request.vue#0 */
-.draft_help[data-v-ui97c69ad12d87]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  color: #666;
-  font-size: 13px;
-}
-.error[data-v-ui97c69ad12d87]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  background: white;
-  border: 1px solid #ddd;
-}
-.upload_status[data-v-ui97c69ad12d87]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
-}
 /* @end-component */
 
 /* @component src/View/Common/Workflow/Requests.vue#0 */

@@ -44123,12 +44123,6 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ui-fixed], [data-ui-fixed] *) {
 .error[data-v-ui34a47bbaf561]:where([data-ui-fixed], [data-ui-fixed] *) {
   color: #c53030;
 }
-fieldset[data-v-ui788c63d2858f]:where([data-ui-fixed], [data-ui-fixed] *) {
-  border: 0;
-}
-.submission[data-v-ui02ea7d5be25d]:where([data-ui-fixed], [data-ui-fixed] *) {
-  border-top: 1px solid #ddd;
-}
 .target_choice[data-v-ui3e3cac4b75f9]:where([data-ui-fixed], [data-ui-fixed] *) {
   border: 0;
 }
@@ -44136,21 +44130,6 @@ fieldset[data-v-ui788c63d2858f]:where([data-ui-fixed], [data-ui-fixed] *) {
 .error[data-v-ui3e3cac4b75f9]:where([data-ui-fixed], [data-ui-fixed] *) {
   background: white;
   border: 1px solid #ddd;
-}
-.field_info[data-v-ui3fcd59d89fce]:where([data-ui-fixed], [data-ui-fixed] *) {
-  font-size: 11px;
-  color: #5f5f5f;
-}
-.draft_help[data-v-ui97c69ad12d87]:where([data-ui-fixed], [data-ui-fixed] *) {
-  color: #666;
-  font-size: 13px;
-}
-.error[data-v-ui97c69ad12d87]:where([data-ui-fixed], [data-ui-fixed] *) {
-  background: white;
-  border: 1px solid #ddd;
-}
-.upload_status[data-v-ui97c69ad12d87]:where([data-ui-fixed], [data-ui-fixed] *) {
-  font-size: 13px;
 }
 .form_name[data-v-uia9f709ed20f3]:where([data-ui-fixed], [data-ui-fixed] *) {
   color: #777;

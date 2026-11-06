@@ -404,7 +404,6 @@ td[data-v-uic75e97f856df] {
 
 /* @component src/Component/Workflow/FieldInput.vue#0 */
 .workflow_field_input[data-v-uib0445e6d2c7b] {
-  max-width: 440px;
   width: 100%;
   min-width: 0;
   padding: 0;
@@ -466,29 +465,9 @@ fieldset[data-v-ui34a47bbaf561] {
 /* @end-component */
 
 /* @component src/Component/Workflow/ReassignmentEditor.vue#0 */
-fieldset[data-v-ui788c63d2858f] {
-  min-width: 0;
-  padding: 0;
-  margin: 0;
-}
-.selection[data-v-ui788c63d2858f] {
-  margin: 15px 0;
-}
-.help[data-v-ui788c63d2858f] {
-  margin-bottom: 25px;
-  line-height: 1.6;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/RequestComparison.vue#0 */
-.workflow_request_comparison[data-v-uibcdd648214ff] {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-.change_kind[data-v-uibcdd648214ff] {
-  display: inline-block;
-  margin-right: 10px;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/RequestContentView.vue#0 */
@@ -506,129 +485,15 @@ td.value[data-v-ui2b9c5ef3b8f2] {
 /* @end-component */
 
 /* @component src/View/Common/Workflow/Component/RequestEditor.vue#0 */
-.row_actions[data-v-ui1e330e3b0fa9] {
-  display: flex;
-  gap: 8px;
-  min-width: 88px;
-}
-.row_actions[data-v-ui1e330e3b0fa9] .ant_button_wrap {
-  flex: 0 0 32px;
-}
-.short_field[data-v-ui1e330e3b0fa9] {
-  width: 280px;
-  max-width: 100%;
-}
-.text_field[data-v-ui1e330e3b0fa9] {
-  max-width: 440px;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/RequestHistory.vue#0 */
-.history[data-v-ui02ea7d5be25d] {
-  margin-top: 35px;
-}
-.submission[data-v-ui02ea7d5be25d] {
-  padding: 20px 0;
-}
-.button_wrap[data-v-ui02ea7d5be25d] {
-  width: 175px;
-}
-.comment[data-v-ui02ea7d5be25d] {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  line-height: 1.6;
-}
 /* @end-component */
 
 /* @component src/View/Common/Workflow/McpSettings.vue#0 */
-.workflow_mcp[data-v-ui3fcd59d89fce] {
-  max-width: 1100px;
-}
-.help[data-v-ui3fcd59d89fce],
-.connection_form[data-v-ui3fcd59d89fce],
-.credential[data-v-ui3fcd59d89fce] {
-  margin-bottom: 25px;
-}
-.connection_input[data-v-ui3fcd59d89fce] {
-  max-width: 100%;
-}
-.connection_input[data-v-ui3fcd59d89fce] .ant-space-item {
-  max-width: 100%;
-}
-.credential[data-v-ui3fcd59d89fce] textarea {
-  margin-bottom: 10px;
-}
-.connection_id[data-v-ui3fcd59d89fce],
-.field[data-v-ui3fcd59d89fce] {
-  overflow-wrap: anywhere;
-}
-.field_info[data-v-ui3fcd59d89fce] {
-  line-height: 16px;
-}
-.permission[data-v-ui3fcd59d89fce] {
-  text-align: center;
-}
-.selected_count[data-v-ui3fcd59d89fce] {
-  margin-bottom: 10px;
-}
-.actions[data-v-ui3fcd59d89fce] {
-  margin-top: 25px;
-}
-.back_action[data-v-ui3fcd59d89fce] {
-  margin-top: 25px;
-}
-.error[data-v-ui3fcd59d89fce] {
-  margin-bottom: 20px;
-}
 /* @end-component */
 
 /* @component src/View/Common/Workflow/Request.vue#0 */
-.detail_tabs[data-v-ui97c69ad12d87] {
-  margin-bottom: 25px;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-.definition_refresh[data-v-ui97c69ad12d87] {
-  margin-bottom: 20px;
-}
-.title_wrap[data-v-ui97c69ad12d87] {
-  margin-bottom: 25px;
-}
-.draft_help[data-v-ui97c69ad12d87] {
-  margin-bottom: 25px;
-}
-.copy_help[data-v-ui97c69ad12d87] {
-  line-height: 1.6;
-  white-space: normal;
-}
-.actions[data-v-ui97c69ad12d87] {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 25px 0;
-}
-.button_wrap[data-v-ui97c69ad12d87] {
-  width: 175px;
-}
-.preview_body[data-v-ui97c69ad12d87] {
-  max-height: 65vh;
-  overflow: auto;
-  padding: 5px;
-}
-.error[data-v-ui97c69ad12d87] {
-  padding: 25px;
-  text-align: center;
-}
-.upload_status[data-v-ui97c69ad12d87] {
-  margin: 12px 0;
-}
-.upload_status .actions[data-v-ui97c69ad12d87] {
-  margin: 10px 0;
-}
-.filename[data-v-ui97c69ad12d87] {
-  overflow-wrap: anywhere;
-}
 /* @end-component */
 
 /* @component src/View/Manager/Workflow/Company.vue#0 */
