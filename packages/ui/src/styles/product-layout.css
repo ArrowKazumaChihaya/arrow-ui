@@ -10452,19 +10452,6 @@ table
     min-width: 0;
   }
 }
-.title_wrap[data-v-ui990d3e09f28b],
-.status_content_wrap[data-v-ui990d3e09f28b] {
-  width: 600px;
-  margin: 0 auto;
-}
-.status_content_wrap[data-v-ui990d3e09f28b] {
-  margin-top: 20px;
-}
-@media screen and (max-width: 499px) {
-  .status_wrap[data-v-ui990d3e09f28b] {
-    padding: 0px 10px;
-  }
-}
 .payment_wrap[data-v-ui2d6e0f7bf55e] {
   padding: 15px;
 }
@@ -29902,114 +29889,6 @@ table.disable
   min-width: var(--shift-table-name-width);
   max-width: var(--shift-table-name-width);
 }
-.title_wrap[data-v-ui3902e4404f47] {
-  width: 805px;
-  margin: 0 auto;
-}
-.credit_agree_wrap[data-v-ui3902e4404f47] {
-  margin: 10px auto 0;
-  max-width: 500px;
-  width: 500px;
-}
-.law_wrap[data-v-ui3902e4404f47] {
-  margin-top: 35px;
-  padding: 0 30px;
-}
-.law_wrap
-  h3[data-v-ui3902e4404f47] {
-  margin-bottom: 10px;
-}
-.law_wrap
-  p[data-v-ui3902e4404f47] {
-  line-height: 15px;
-}
-.agree_check_wrap[data-v-ui3902e4404f47] {
-  margin-top: 30px;
-  text-align: center;
-}
-.exec_button_wrap[data-v-ui3902e4404f47] {
-  margin-top: 10px;
-  text-align: center;
-}
-.submit_button[data-v-ui3902e4404f47] {
-  padding: 0 30px;
-  height: 50px;
-  cursor: pointer;
-}
-@media screen and (max-width: 499px) {
-  .title_wrap[data-v-ui3902e4404f47],
-  .status_content_wrap[data-v-ui3902e4404f47] {
-    width: 100%;
-  }
-  .status_content_wrap
-    .card_wrap[data-v-ui3902e4404f47] {
-    padding: 15px;
-    width: 100%;
-  }
-  .status_content_wrap
-    .card_wrap
-    label
-    input[data-v-ui3902e4404f47] {
-    height: 30px !important;
-  }
-  .credit_card_wrap[data-v-ui3902e4404f47] {
-    padding: 10px;
-  }
-}
-.title_wrap[data-v-ui71a1676fdcad] {
-  width: 805px;
-  margin: 0 auto;
-}
-.credit_agree_wrap[data-v-ui71a1676fdcad] {
-  margin: 10px auto 0;
-  max-width: 500px;
-  width: 500px;
-}
-.law_wrap[data-v-ui71a1676fdcad] {
-  margin-top: 35px;
-  padding: 0 30px;
-}
-.law_wrap
-  h3[data-v-ui71a1676fdcad] {
-  margin-bottom: 10px;
-}
-.law_wrap
-  p[data-v-ui71a1676fdcad] {
-  line-height: 15px;
-}
-.agree_check_wrap[data-v-ui71a1676fdcad] {
-  margin-top: 30px;
-  text-align: center;
-}
-.exec_button_wrap[data-v-ui71a1676fdcad] {
-  margin-top: 10px;
-  text-align: center;
-}
-.submit_button[data-v-ui71a1676fdcad] {
-  padding: 0 30px;
-  height: 50px;
-  cursor: pointer;
-}
-@media screen and (max-width: 499px) {
-  .title_wrap[data-v-ui71a1676fdcad],
-  .status_content_wrap[data-v-ui71a1676fdcad] {
-    width: 100%;
-  }
-  .status_content_wrap
-    .card_wrap[data-v-ui71a1676fdcad] {
-    padding: 15px;
-    width: 100%;
-  }
-  .status_content_wrap
-    .card_wrap
-    label
-    input[data-v-ui71a1676fdcad] {
-    height: 30px !important;
-  }
-  .credit_card_wrap[data-v-ui71a1676fdcad] {
-    padding: 10px;
-  }
-}
 .title_wrap[data-v-ui0251e5fbfbc7],
 .status_content_wrap[data-v-ui0251e5fbfbc7] {
   width: 805px;
@@ -30136,60 +30015,6 @@ table.disable
 .exec_button_wrap[data-v-uiea4000de206d] {
   margin-top: 30px;
   text-align: center;
-}
-.title_wrap[data-v-uia446262dc887] {
-  width: 805px;
-  margin: 0 auto;
-}
-.credit_agree_wrap[data-v-uia446262dc887] {
-  margin: 10px auto 0;
-  max-width: 500px;
-  width: 500px;
-}
-.law_wrap[data-v-uia446262dc887] {
-  margin-top: 35px;
-  padding: 0 30px;
-}
-.law_wrap
-  h3[data-v-uia446262dc887] {
-  margin-bottom: 10px;
-}
-.law_wrap
-  p[data-v-uia446262dc887] {
-  line-height: 15px;
-}
-.agree_check_wrap[data-v-uia446262dc887] {
-  margin-top: 30px;
-  text-align: center;
-}
-.exec_button_wrap[data-v-uia446262dc887] {
-  margin-top: 10px;
-  text-align: center;
-}
-.submit_button[data-v-uia446262dc887] {
-  padding: 0 30px;
-  height: 50px;
-  cursor: pointer;
-}
-@media screen and (max-width: 499px) {
-  .title_wrap[data-v-uia446262dc887],
-  .status_content_wrap[data-v-uia446262dc887] {
-    width: 100%;
-  }
-  .status_content_wrap
-    .card_wrap[data-v-uia446262dc887] {
-    padding: 15px;
-    width: 100%;
-  }
-  .status_content_wrap
-    .card_wrap
-    label
-    input[data-v-uia446262dc887] {
-    height: 30px !important;
-  }
-  .credit_card_wrap[data-v-uia446262dc887] {
-    padding: 10px;
-  }
 }
 .title_wrap[data-v-ui36a143fd4076],
 .status_content_wrap[data-v-ui36a143fd4076] {

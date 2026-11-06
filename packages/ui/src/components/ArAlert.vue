@@ -19,6 +19,7 @@ const props = defineProps({
   banner: { type: Boolean, default: false },
 });
 const emit = defineEmits<{ close: [] }>();
+defineSlots<{ default?: () => unknown; title?: () => unknown; action?: () => unknown }>();
 const defaults: Record<NonNullable<ArAlertProps["tone"]>, ArIconName> = { info: "info", ok: "check", warn: "alert", danger: "alert", neutral: "lock" };
 const iconName = computed<ArIconName | null>(() => (props.icon === false ? null : (props.icon ?? defaults[props.tone])));
 </script>
