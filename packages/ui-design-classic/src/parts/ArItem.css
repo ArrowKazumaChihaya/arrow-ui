@@ -30,3 +30,6 @@
 [data-ar-design="classic"] [data-ar="item"]>[data-part="aside"]>[data-part="changed"]{border-color:#91CAFF;background:#E6F4FF;color:#0958D9}
 [data-ar-design="classic"] [data-ar="item"][data-variant="row"]{column-gap:0}
 [data-ar-design="classic"] [data-ar="item"][data-variant="row"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]>[data-ar="icon"]{display:none}
+
+/* An explicit Stack gap owns spacing between its direct form rows. */
+[data-ar-design="classic"] [data-ar="stack"]:not([data-gap="0"])>[data-ar="item"]{margin-bottom:0}
