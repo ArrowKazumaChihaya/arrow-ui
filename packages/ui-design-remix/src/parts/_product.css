@@ -338,6 +338,7 @@
 [data-ar-design="remix"] table[data-ui-part="table"] td.button .no_drag{max-width:none}
 [data-ar-design="remix"] table[data-ui-part="table"] tbody tr[data-add-row]>td{background:var(--ar-color-surface)}
 [data-ar-design="remix"] [data-ui-part="tableViewport"]{box-sizing:border-box;max-width:100%;min-width:0}
+[data-ar-design="remix"] table[data-ui-part="table"] td p[data-ui-part="text"]{margin:0;line-height:1.6}
 /* Keep sorting tables native: legacy layout used block rows and broke colspan. */
 [data-ar-design="remix"] table[data-ui-part="table"]>tbody.smooth-dnd-container{display:table-row-group!important}
 [data-ar-design="remix"] .sortable_table_component table[data-ui-part="table"]>thead{display:table-header-group}
