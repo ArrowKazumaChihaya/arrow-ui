@@ -33,7 +33,7 @@
 [data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{font-size:11px;line-height:1.5;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{gap:4px}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{width:7px;height:7px;border-radius:2px}
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="actions"]{gap:2px}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="actions"]{gap:8px}
 
 /* 並べ替えの印（上下の山。いま並べている向きだけ濃く） */
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="sort"]{gap:2px;color:inherit;font:inherit;letter-spacing:inherit;border-radius:4px}

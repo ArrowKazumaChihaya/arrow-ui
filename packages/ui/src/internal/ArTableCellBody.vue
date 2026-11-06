@@ -75,7 +75,7 @@ const timeOf = (v: ArTableEditValue): ArTimeValue => toTimeValue(v);
 const avatar = computed(() => {
   const a = typeof col.value.avatar === "function" ? col.value.avatar(props.row) : {};
   const text = a.text ?? (Array.from(String(props.value ?? "").trim())[0] ?? "");
-  return { text, tone: a.tone, seed: a.tone ? undefined : (a.seed ?? props.index) };
+  return { text, src: a.src, tone: a.tone, seed: a.tone ? undefined : (a.seed ?? props.index) };
 });
 const sub = computed(() => {
   const v = col.value.sub?.(props.row);
@@ -206,7 +206,7 @@ const lineKey = computed(() => props.line);
       <span v-for="(v, j) in linesOf(value)" :key="j">{{ isBlankCell(v) ? "" : v }}</span>
     </span>
     <span v-else-if="col.avatar" data-part="person" :data-single="!col.sub || undefined">
-      <ArAvatar v-if="showAvatar !== false" v-bind="avatar" :size="variant === 'board' && col.sub ? 'md' : 'sm'" />
+      <ArAvatar v-if="showAvatar !== false" aria-hidden="true" v-bind="avatar" :size="variant === 'board' && col.sub ? 'md' : 'sm'" />
       <span data-part="name">
         <b>{{ value }}</b>
         <small v-if="sub" data-part="sub">

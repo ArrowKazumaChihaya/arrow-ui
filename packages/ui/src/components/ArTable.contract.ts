@@ -62,6 +62,8 @@ export type ArRowKey = string | number;
 
 /** 名前の列の頭文字の丸。 */
 export interface ArTableAvatar {
+  /** 写真URL。読み込めない場合は頭文字へ戻る。表示内容のサムネイル設定も適用する。 */
+  src?: string;
   /** 丸に出す文字。省くと値の1文字目。 */
   text?: string;
   /** 色。省くと seed から人ごとの色を選ぶ（seed もなければテーマ色）。 */
