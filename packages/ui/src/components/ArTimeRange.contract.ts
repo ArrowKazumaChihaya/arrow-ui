@@ -14,6 +14,9 @@ export interface ArTimeRangeProps {
   step?: 1 | 5 | 10 | 15 | 30;
   /** 時刻の欄の大きさの段（ArTimeInput と同じ）。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。 */
   size?: "sm" | "md" | "lg";
+  /** 1.3: Keep the application's explicit tab order when used inside editable tables. */
+  startTabindex?: number;
+  endTabindex?: number;
   /** 外から渡す間違いの状態（両方を赤くする）。 */
   invalid?: boolean;
   /** 終わりが始まり以前のとき、終わりを赤くして下に直し方を出す。 */

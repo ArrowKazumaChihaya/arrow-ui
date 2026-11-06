@@ -15,6 +15,8 @@ const props = withDefaults(defineProps<ArTimeRangeProps>(), {
   startOvernight: false,
   step: 5,
   size: "md",
+  startTabindex: undefined,
+  endTabindex: undefined,
   invalid: false,
   validate: true,
   disabled: false,
@@ -56,6 +58,7 @@ function set(key: "start" | "end", v: ArTimeValue) {
         data-part="start"
         :note="startNote"
         :model-value="{ time: modelValue.start, day: 'same' }"
+        :tabindex="startTabindex"
         :size="size"
         :step="step"
         :overnight="startOvernight"
@@ -69,6 +72,7 @@ function set(key: "start" | "end", v: ArTimeValue) {
         data-part="end"
         :note="endNote"
         :model-value="{ time: modelValue.end, day: 'same' }"
+        :tabindex="endTabindex"
         :size="size"
         :step="step"
         :overnight="overnight"

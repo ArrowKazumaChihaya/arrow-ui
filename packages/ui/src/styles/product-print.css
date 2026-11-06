@@ -11059,31 +11059,6 @@ img[data-v-ui5da0fe7fab61]:where([data-ui-fixed], [data-ui-fixed] *) {
   width: 100%;
   margin-top: 15px;
 }
-.title_wrap[data-v-ui23e11d076a6a]:where([data-ui-fixed], [data-ui-fixed] *),
-.edit_wrap[data-v-ui23e11d076a6a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  max-width: 759px;
-  margin: 0 auto;
-}
-.create_button_wrap[data-v-ui23e11d076a6a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  text-align: center;
-  margin-top: 20px;
-}
-.title_wrap[data-v-ui687f65bfdc2d]:where([data-ui-fixed], [data-ui-fixed] *),
-.edit_wrap[data-v-ui687f65bfdc2d]:where([data-ui-fixed], [data-ui-fixed] *) {
-  max-width: 759px;
-  margin: 0 auto;
-}
-.create_button_wrap[data-v-ui687f65bfdc2d]:where([data-ui-fixed], [data-ui-fixed] *) {
-  text-align: center;
-  margin-top: 20px;
-}
-.view_pdf_wrap[data-v-ui687f65bfdc2d]:where([data-ui-fixed], [data-ui-fixed] *) {
-  max-width: 759px;
-  margin: 0 auto;
-}
-.update_button_wrap[data-v-ui687f65bfdc2d]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 20px;
-}
 .add_employee_title[data-v-uid4f05df672d4]:where([data-ui-fixed], [data-ui-fixed] *) {
   text-align: center;
   font-weight: 600;

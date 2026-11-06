@@ -1,4 +1,4 @@
-/* @covers ArTimeInput 1.1.0, ArTimeRange 1.2.0, ArDurationInput 1.1.0 */
+/* @covers ArTimeInput 1.1.0, ArTimeRange 1.3.0, ArDurationInput 1.1.0 */
 /* ArTimeInput（ui-Time）。classic は forms で fields: "split"・dayToggle: "link"（今の形）を選ぶ。
    下の single（1つの箱）の決まりは、forms を外したときの形（箱の値は今の Input と同じ）。 */
 [data-ar-design="classic"] [data-ar="time-input"]{height:32px;align-items:center;gap:3px;border:0;border-radius:0;background:none;box-shadow:none;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000;overflow:visible}

@@ -5700,7 +5700,7 @@
  },
  {
   "name": "ArTimeRange",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "時刻の範囲（09:00 〜 18:00）。2つの ArTimeInput を「〜」でつなぐ。\nvalidate なら終わりが始まり以前のとき終わりを赤くし、下に直し方を言葉で出す。",
   "props": [
    {
@@ -5736,6 +5736,18 @@
     "required": false,
     "description": "時刻の欄の大きさの段（ArTimeInput と同じ）。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。",
     "default": "\"md\""
+   },
+   {
+    "name": "startTabindex",
+    "type": "number",
+    "required": false,
+    "description": "1.3: Keep the application's explicit tab order when used inside editable tables."
+   },
+   {
+    "name": "endTabindex",
+    "type": "number",
+    "required": false,
+    "description": ""
    },
    {
     "name": "invalid",
@@ -10890,7 +10902,7 @@
  },
  {
   "name": "ArFlagGroup",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ビットの合計の数をチェックの並びで入れる（今の Flag）。\n各項目は ArCheckbox（1.1：size・variant をそのまま渡す。見た目は ArCheckbox と1つ）。入れると合計にそのビットを足し、外すと引く（ほかのビットはそのまま残す）。",
   "props": [
    {

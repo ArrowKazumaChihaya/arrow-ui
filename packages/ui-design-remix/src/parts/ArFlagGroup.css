@@ -1,4 +1,4 @@
-/* @covers ArFlagGroup 1.1.0, ArFlagView 1.0.0 */
+/* @covers ArFlagGroup 1.2.0, ArFlagView 1.0.0 */
 /* チェックの並びの間は _choice.css（ArCheckboxGroup と同じ段） */
 /* 立っている項目は小さな札で並べる */
 [data-ar-design="remix"] [data-ar="flag-view"]{gap:4px}

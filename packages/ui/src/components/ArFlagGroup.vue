@@ -25,6 +25,7 @@ function set(bit: number, on: boolean) {
       :model-value="has(o.value)"
       :size="size"
       :variant="variant"
+      :description="o.description"
       :disabled="disabled || o.disabled"
       @update:model-value="set(o.value, $event)"
     >{{ o.label }}</ArCheckbox>

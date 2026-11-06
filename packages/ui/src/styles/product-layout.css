@@ -7889,31 +7889,6 @@ img[data-v-ui5da0fe7fab61] {
   width: 100%;
   margin-top: 15px;
 }
-.title_wrap[data-v-ui23e11d076a6a],
-.edit_wrap[data-v-ui23e11d076a6a] {
-  max-width: 759px;
-  margin: 0 auto;
-}
-.create_button_wrap[data-v-ui23e11d076a6a] {
-  text-align: center;
-  margin-top: 20px;
-}
-.title_wrap[data-v-ui687f65bfdc2d],
-.edit_wrap[data-v-ui687f65bfdc2d] {
-  max-width: 759px;
-  margin: 0 auto;
-}
-.create_button_wrap[data-v-ui687f65bfdc2d] {
-  text-align: center;
-  margin-top: 20px;
-}
-.view_pdf_wrap[data-v-ui687f65bfdc2d] {
-  max-width: 759px;
-  margin: 0 auto;
-}
-.update_button_wrap[data-v-ui687f65bfdc2d] {
-  margin-top: 20px;
-}
 .add_employee_title[data-v-uid4f05df672d4] {
   text-align: center;
 }

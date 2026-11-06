@@ -5,6 +5,8 @@ export interface ArFlagOption {
   /** この項目のビット（1・2・4・8…）。 */
   value: number;
   label: string;
+  /** 1.2: Explanation below the option label, rendered by ArCheckbox in both designs. */
+  description?: string;
   disabled?: boolean;
 }
 export interface ArFlagGroupProps {

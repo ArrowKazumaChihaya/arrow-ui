@@ -1,4 +1,4 @@
-/* @covers ArFlagGroup 1.1.0, ArFlagView 1.0.0 */
+/* @covers ArFlagGroup 1.2.0, ArFlagView 1.0.0 */
 /* 今の Flag（ui-Flag：Check を inline-block・行30で並べる）と FlagView（ui-FlagView：13px の黒・行32・名前の間10） */
 [data-ar-design="classic"] [data-ar="flag-group"]{column-gap:0;line-height:30px}
 [data-ar-design="classic"] [data-ar="flag-group"][data-direction="vertical"]{row-gap:0}
