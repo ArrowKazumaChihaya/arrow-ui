@@ -9365,6 +9365,12 @@
   "description": "ポップアップ。\n頭（題・1行の説明・閉じる）、手順（頭の下）、中身、足（左に補足・戻る、右にキャンセルと主なボタン）。\n開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所にフォーカスを戻す。\nスマホ（幅640px以下）では画面いっぱいになる（mobileFullscreen）。確かめは variant=\"confirm\" か useArConfirm()。",
   "props": [
    {
+    "name": "scrollKey",
+    "type": "string | number",
+    "required": false,
+    "description": "本文の画面（タブ等）が切り替わったら先頭に戻すためのキー。currentStepの変更でも本文を先頭に戻す。"
+   },
+   {
     "name": "zIndex",
     "type": "number",
     "required": false,

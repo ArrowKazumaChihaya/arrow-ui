@@ -5,7 +5,7 @@
  * 開くと中の最初の入力にフォーカスし、Tab は中で回る。閉じると開く前の場所にフォーカスを戻す。
  * スマホ（幅640px以下）では画面いっぱいになる（mobileFullscreen）。確かめは variant="confirm" か useArConfirm()。
  */
-import { computed, ref, useSlots } from "vue";
+import { computed, ref, useSlots, watch } from "vue";
 import { useArUi, useDesignForm, useId } from "../provider/context";
 import { useDialog } from "../internal/dialog";
 import ArIcon from "./ArIcon.vue";
@@ -56,6 +56,15 @@ const ui = useArUi();
 /** 出す先。Provider が scope="self" なら、そのデザインの範囲の中に出す。 */
 const target = computed(() => (props.teleportTo === "body" && ui?.portal.value ? ui.portal.value : (props.teleportTo ?? "body")));
 const panel = ref<HTMLElement | null>(null);
+
+watch(
+  () => [props.currentStep, props.scrollKey],
+  () => {
+    const body = panel.value?.querySelector<HTMLElement>(':scope > [data-part="body"]');
+    if (body) body.scrollTop = 0;
+  },
+  { flush: "post" },
+);
 
 const confirm = computed(() => props.variant === "confirm");
 const iconName = computed<ArIconName | undefined>(() => props.icon ?? (confirm.value ? "alert" : undefined));

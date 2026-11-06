@@ -1,5 +1,14 @@
 # @s_and_a/arrow-ui
 
+## 0.1.10
+
+### Patch Changes
+
+- 2a66110: 旧ヘッダーのリスト・段落にブラウザー既定の余白が入り、通知とナビゲーションが現行 ARROW より大きくずれる問題を修正。デザイン切替の領域を通知の右側に確保し、狭い PC 幅でも重ならないようにする。
+- Reset modal body scroll when its current step or explicit scrollKey changes, so multi-step forms begin at the top of each screen.
+
+  Keep narrow-screen modal steps in one evenly spaced row with wrapping labels.
+
 ## 0.1.9
 
 ### Patch Changes

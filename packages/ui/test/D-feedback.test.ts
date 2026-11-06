@@ -57,6 +57,23 @@ describe("ArModal 1.1", () => {
     expect(w.findAll('button[data-part="step-label"]')).toHaveLength(2);
     w.unmount();
   });
+  it("手順・タブの切替では本文の先頭へ戻り、通常の更新ではスクロール位置を保つ", async () => {
+    const w = mount(ArModal, {
+      props: { ...base, open: true, currentStep: 0, scrollKey: "new" },
+      slots: { default: "<p>入力内容</p>" },
+      attachTo: document.body,
+    });
+    const body = w.get<HTMLElement>('[data-part="body"]').element;
+    body.scrollTop = 300;
+    await w.setProps({ title: "入力中" });
+    expect(body.scrollTop).toBe(300);
+    await w.setProps({ currentStep: 1 });
+    expect(body.scrollTop).toBe(0);
+    body.scrollTop = 200;
+    await w.setProps({ scrollKey: "status" });
+    expect(body.scrollTop).toBe(0);
+    w.unmount();
+  });
   it("confirm は alertdialog で、左に印があり × を出さない", () => {
     const w = mount(ArModal, { props: { ...base, open: true, variant: "confirm", okText: "削除する", okTone: "danger" }, attachTo: document.body });
     expect(w.find('[role="alertdialog"]').exists()).toBe(true);

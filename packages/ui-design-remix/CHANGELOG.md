@@ -1,10 +1,23 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 0.1.10
+
+### Patch Changes
+
+- c09b9cb: ArStack に gap を指定したフォーム行で、ArItem 自身の下余白と二重加算される問題を修正。gap が 0 の既存フォーム配置は従来の行間を維持する。
+- Reset modal body scroll when its current step or explicit scrollKey changes, so multi-step forms begin at the top of each screen.
+
+  Keep narrow-screen modal steps in one evenly spaced row with wrapping labels.
+
+- Updated dependencies [2a66110]
+- Updated dependencies
+  - @s_and_a/arrow-ui@0.1.10
+
 ## 0.1.9
 
 ### Patch Changes
 
-- 詳細を持つ承認フローの横配置で、固定の32px高から本文と操作ボタンがはみ出す問題を修正。スマホでは段階と矢印を縦に並べる。
+- 詳細を持つ承認フローの横配置で、固定の 32px 高から本文と操作ボタンがはみ出す問題を修正。スマホでは段階と矢印を縦に並べる。
 
 - 3553f28: 帯・影・枠付きカード内の目次がページスクロールに追従するよう、角丸のクリッピングでスクロールコンテナーを作らない。
 

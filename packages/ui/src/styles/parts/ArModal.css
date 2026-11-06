@@ -30,3 +30,11 @@
 }
 @keyframes ar-fade{from{opacity:0}}
 @keyframes ar-pop{from{opacity:0;transform:translateY(8px) scale(.98)}}
+
+/* Keep every wizard step visible on narrow screens without two uneven rows. */
+@media(max-width:640px){
+  [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]{width:100%;flex-wrap:nowrap;align-items:flex-start}
+  [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]{flex:1;min-width:0;justify-content:center}
+  [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]>[data-part="step-label"]{flex-direction:column;text-align:center;overflow-wrap:anywhere}
+  [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]:not(:last-child)::after{display:none}
+}

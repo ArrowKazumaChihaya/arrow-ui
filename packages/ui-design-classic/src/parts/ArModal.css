@@ -81,3 +81,8 @@
   [data-ar-design="classic"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]{flex:1}
   [data-ar-design="classic"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="button"]{flex:1}
 }
+
+@media(max-width:640px){
+  [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]{gap:8px}
+  [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]{font-size:11px;line-height:1.4}
+}
