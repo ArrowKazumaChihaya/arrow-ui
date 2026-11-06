@@ -433,36 +433,6 @@ td[data-v-uic75e97f856df] {
 }
 /* @end-component */
 
-/* @component src/View/Common/Workflow/Component/ManagementHeader.vue#0 */
-.title_wrap[data-v-uia7bc7c99fd24] {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 25px;
-}
-.settings_button_wrap[data-v-uia7bc7c99fd24] {
-  width: 220px;
-  max-width: 100%;
-  margin-left: auto;
-  margin-bottom: 15px;
-}
-@media screen and (max-width: 499px) {
-  .title_wrap[data-v-uia7bc7c99fd24] {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-.tabs[data-v-uia7bc7c99fd24] {
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-top: 3px;
-  white-space: nowrap;
-  margin-bottom: 20px;
-}
-/* @end-component */
-
 /* @component src/Component/Workflow/NotificationDetails.vue#0 */
 .notification_details[data-v-ui21f51f93f5e9] {
   overflow-wrap: anywhere;
@@ -582,43 +552,6 @@ td.value[data-v-ui2b9c5ef3b8f2] {
 }
 /* @end-component */
 
-/* @component src/View/Common/Workflow/Create.vue#0 */
-.title_wrap[data-v-ui3e3cac4b75f9] {
-  margin-bottom: 25px;
-}
-.target_choice[data-v-ui3e3cac4b75f9] {
-  min-width: 0;
-  padding: 0;
-  margin: 0;
-}
-.copy_help[data-v-ui3e3cac4b75f9] {
-  line-height: 1.6;
-}
-.form_choices[data-v-ui3e3cac4b75f9] {
-  max-width: 440px;
-  margin: 15px auto;
-}
-.form_choices p[data-v-ui3e3cac4b75f9] {
-  margin-top: 10px;
-  white-space: pre-wrap;
-}
-.actions[data-v-ui3e3cac4b75f9] {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 25px;
-}
-.button_wrap[data-v-ui3e3cac4b75f9] {
-  width: 175px;
-}
-.empty[data-v-ui3e3cac4b75f9],
-.error[data-v-ui3e3cac4b75f9] {
-  padding: 25px;
-  text-align: center;
-}
-/* @end-component */
-
 /* @component src/View/Common/Workflow/McpSettings.vue#0 */
 .workflow_mcp[data-v-ui3fcd59d89fce] {
   max-width: 1100px;
@@ -707,57 +640,6 @@ td.value[data-v-ui2b9c5ef3b8f2] {
 }
 .filename[data-v-ui97c69ad12d87] {
   overflow-wrap: anywhere;
-}
-/* @end-component */
-
-/* @component src/View/Common/Workflow/Requests.vue#0 */
-.title_wrap[data-v-uia9f709ed20f3] {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 25px;
-}
-.settings_button_wrap[data-v-uia9f709ed20f3] {
-  width: 220px;
-  max-width: 100%;
-  margin-left: auto;
-  margin-bottom: 15px;
-}
-@media screen and (max-width: 499px) {
-  .title_wrap[data-v-uia9f709ed20f3] {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-.form_filter[data-v-uia9f709ed20f3] {
-  margin-bottom: 12px;
-}
-.detail_search_button_wrap[data-v-uia9f709ed20f3] {
-  width: 175px;
-}
-.short_field[data-v-uia9f709ed20f3] {
-  width: 240px;
-  max-width: 100%;
-}
-.filters[data-v-uia9f709ed20f3] {
-  padding: 15px 0;
-}
-.button_wrap[data-v-uia9f709ed20f3] {
-  width: 140px;
-}
-.form_name[data-v-uia9f709ed20f3] {
-  margin-top: 4px;
-}
-.amount[data-v-uia9f709ed20f3] {
-  text-align: right;
-}
-.empty[data-v-uia9f709ed20f3],
-.error[data-v-uia9f709ed20f3] {
-  padding: 30px;
-  text-align: center;
-  margin-top: 15px;
 }
 /* @end-component */
 
