@@ -70,14 +70,14 @@ const textChanged = computed(() => props.changed ?? props.before !== props.after
     :class="{ changed: textChanged }"
     :data-state="textChanged ? 'changed' : undefined"
   >{{ textChanged ? `${raw(before)} → ${raw(after)}` : raw(after) }}</span>
-  <span v-else data-ar="changed-value" data-part="root" :data-state="isChanged ? 'changed' : undefined">
+  <component :is="$slots.before || $slots.after ? 'div' : 'span'" v-else data-ar="changed-value" data-part="root" :data-rich="$slots.before || $slots.after ? '' : undefined" :data-state="isChanged ? 'changed' : undefined">
     <template v-if="isChanged">
-      <span data-ar-visually-hidden>{{ labels.before }}</span>
-      <s data-part="before">{{ show(before) }}</s>
+      <span :data-ar-visually-hidden="$slots.before || $slots.after ? undefined : ''" data-part="before-label">{{ labels.before }}</span>
+      <component :is="$slots.before ? 'div' : 's'" data-part="before"><slot name="before">{{ show(before) }}</slot></component>
       <span data-part="arrow" aria-hidden="true">→</span>
-      <span data-ar-visually-hidden>{{ labels.after }}</span>
-      <span data-part="after">{{ show(after) }}</span>
+      <span :data-ar-visually-hidden="$slots.before || $slots.after ? undefined : ''" data-part="after-label">{{ labels.after }}</span>
+      <component :is="$slots.after ? 'div' : 'span'" data-part="after"><slot name="after">{{ show(after) }}</slot></component>
     </template>
-    <span v-else data-part="after">{{ show(after) }}</span>
-  </span>
+    <component :is="$slots.after ? 'div' : 'span'" v-else data-part="after"><slot name="after">{{ show(after) }}</slot></component>
+  </component>
 </template>

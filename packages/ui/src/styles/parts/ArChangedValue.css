@@ -12,3 +12,8 @@
 [data-ar="changed-value"][data-layout="list"]{display:flex;flex-direction:column}
 [data-ar="changed-value"][data-layout="list"]>[data-part="row"]>[data-part="change"]{display:flex;flex-wrap:wrap;align-items:baseline}
 [data-ar="changed-value"][data-layout="list"]>[data-part="row"]>[data-part="change"]>[data-part="label"]{width:100%}
+
+/* Rich comparisons keep structured values in valid block containers. */
+[data-ar="changed-value"][data-rich]{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;min-width:0;width:100%;box-sizing:border-box}
+[data-ar="changed-value"][data-rich]>:is([data-part="before"],[data-part="after"]){display:block;min-width:0;max-width:100%;white-space:pre-wrap}
+[data-ar="changed-value"][data-rich]>[data-part="arrow"]{justify-self:start;transform:rotate(90deg)}

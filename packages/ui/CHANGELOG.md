@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add rich before/after slots to ArChangedValue for structured custom fields and image previews. Section navigation now keeps destination headings below the sticky mobile picker and tracks the same scroll offset.
+
 - RemixのARROWページで固定保存バーをスマホ下部メニューの上に配置し、フロートするチャット/ページ上部ボタンが保存操作を覆わないようにする。
 
 ## 0.1.10

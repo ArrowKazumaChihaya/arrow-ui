@@ -31,3 +31,7 @@
 
 /* Context rows in history are not changes: no strike-through or accent emphasis. */
 [data-ar-design="remix"] [data-ar="changed-value"] [data-part="row"]:not([data-state~="changed"]) :is([data-part="before"],[data-part="after"]){text-decoration:none;color:var(--ar-color-text);font-weight:400}
+
+[data-ar-design="remix"] [data-ar="changed-value"][data-rich]>[data-part="before"]{text-decoration:none;padding:8px;border-radius:8px;background:var(--ar-color-bg);color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="changed-value"][data-rich][data-state~="changed"]>[data-part="after"]{padding:8px;border-radius:8px;font-weight:400}
+[data-ar-design="remix"] [data-ar="changed-value"][data-rich]>:is([data-part="before-label"],[data-part="after-label"]){font-size:12px;font-weight:700;color:var(--ar-color-text-secondary)}

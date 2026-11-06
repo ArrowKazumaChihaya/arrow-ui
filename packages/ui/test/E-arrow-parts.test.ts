@@ -177,6 +177,17 @@ describe("ArFlagGroup・ArFlagView", () => {
 });
 
 describe("表示の部品", () => {
+  it("ArChangedValue: rich values preserve blocks and hide prior content when unchanged", () => {
+    const changed = mount(ArChangedValue, { props: { changed: true }, slots: { before: '<div>Previous image</div>', after: '<div>New image</div>' } });
+    expect(changed.element.tagName).toBe("DIV");
+    expect(changed.get('[data-part="before"]').text()).toBe("Previous image");
+    expect(changed.get('[data-part="after"]').text()).toBe("New image");
+    expect(changed.get('[data-part="before-label"]').attributes("data-ar-visually-hidden")).toBeUndefined();
+    const same = mount(ArChangedValue, { props: { changed: false }, slots: { before: '<div>Previous image</div>', after: '<div>New image</div>' } });
+    expect(same.find('[data-part="before"]').exists()).toBe(false);
+    expect(same.text()).toBe("New image");
+  });
+
   it("ArChangedValue：変わったときだけ 前→後", () => {
     const a = mount(ArChangedValue, { props: { before: "9:00", after: "10:00" } });
     expect(a.attributes("data-state")).toBe("changed");

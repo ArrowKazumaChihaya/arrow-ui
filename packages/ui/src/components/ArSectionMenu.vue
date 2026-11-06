@@ -14,6 +14,17 @@ const props=withDefaults(defineProps<ArSectionMenuProps>(),{label:'項目',scrol
 const emit=defineEmits<ArSectionMenuEmits>();
 const position=ref<string>();
 const search=ref('');
+const navigation=ref<HTMLElement>();
+const mobileNavigation=ref<HTMLElement>();
+const navigationInset=ref(0);
+const scrollInset=computed(()=>Math.max(props.scrollOffset,navigationInset.value));
+let navigationObserver:ResizeObserver|undefined;
+function measureNavigation(){
+ const nav=navigation.value;const mobile=mobileNavigation.value;
+ navigationInset.value=nav && mobile && getComputedStyle(mobile).display!=='none'
+  ? nav.getBoundingClientRect().height+(parseFloat(getComputedStyle(nav).top)||0)+8 : 0;
+}
+
 const query=computed(()=>props.searchable ? fold(search.value.trim()) : '');
 function filterItems(items:readonly ArMenuItem[], parentLabel=''):ArMenuItem[]{
  return items.flatMap(item=>{
@@ -85,17 +96,23 @@ function updatePosition(){
  for(const item of options.value){
   const section=document.getElementById(String(item.value));if(!section)continue;
   const top=section.getBoundingClientRect().top;
-  if(top<=props.scrollOffset && top>currentTop){currentTop=top;current=String(item.value);}
-  else if(top>props.scrollOffset && top<upcomingTop){upcomingTop=top;upcoming=String(item.value);}
+  if(top<=scrollInset.value+1 && top>currentTop){currentTop=top;current=String(item.value);}
+  else if(top>scrollInset.value+1 && top<upcomingTop){upcomingTop=top;upcoming=String(item.value);}
  }
  position.value=current ?? upcoming;
 }
-onMounted(()=>{updatePosition();document.addEventListener('scroll',updatePosition,true);});
-onBeforeUnmount(()=>document.removeEventListener('scroll',updatePosition,true));
+onMounted(()=>{
+ measureNavigation();updatePosition();document.addEventListener('scroll',updatePosition,true);
+ window.addEventListener('resize',measureNavigation);
+ if(typeof ResizeObserver!=='undefined' && navigation.value){navigationObserver=new ResizeObserver(measureNavigation);navigationObserver.observe(navigation.value);}
+});
+onBeforeUnmount(()=>{
+ document.removeEventListener('scroll',updatePosition,true);window.removeEventListener('resize',measureNavigation);navigationObserver?.disconnect();
+});
 </script>
 <template>
- <div data-ar="section-menu" data-part="root">
-  <nav data-part="navigation" :aria-label="label" :data-sticky="scroll || undefined">
+ <div data-ar="section-menu" data-part="root" :data-scroll="scroll || undefined" :style="scroll ? { '--ar-section-menu-scroll-offset': `${scrollInset}px` } : undefined">
+  <nav ref="navigation" data-part="navigation" :aria-label="label" :data-sticky="scroll || undefined">
    <div data-part="desktop">
     <ArCard v-if="title || searchable" :title="title ?? label" :icon="icon" variant="band" size="sm">
      <ArStack :gap="2">
@@ -106,7 +123,7 @@ onBeforeUnmount(()=>document.removeEventListener('scroll',updatePosition,true));
     </ArCard>
     <ArMenu v-else mode="inline" :items="items" :selected="selected" :open-keys="menuOpenKeys" :label="label" @select="select" @update:open-keys="onOpen" />
    </div>
-   <div data-part="mobile"><ArSelect block :model-value="selected ?? null" :options="options" :label="label" :searchable="searchable || undefined" :search-placeholder="searchPlaceholder" :empty-text="emptyText" @update:model-value="select" /></div>
+   <div ref="mobileNavigation" data-part="mobile"><ArSelect block :model-value="selected ?? null" :options="options" :label="label" :searchable="searchable || undefined" :search-placeholder="searchPlaceholder" :empty-text="emptyText" @update:model-value="select" /></div>
   </nav>
   <div data-part="content"><slot /></div>
  </div>

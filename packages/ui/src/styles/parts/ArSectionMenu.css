@@ -2,3 +2,6 @@
 
 /* Keep long section names readable in the narrow navigation column. */
 [data-ar="section-menu"] > [data-part="navigation"] [data-ar="menu"][data-mode="inline"] > [data-part="item"] > [data-part="label"]{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+
+/* Section headings must remain below the sticky mobile picker after navigation. */
+[data-ar="section-menu"][data-scroll]>[data-part="content"] [id]{scroll-margin-top:var(--ar-section-menu-scroll-offset,50px)}

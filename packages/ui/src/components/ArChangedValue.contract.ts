@@ -45,3 +45,5 @@ export interface ArChangedValueItem {
   after?: string | number | null;
 }
 export type ArChangedValuePart = "root" | "before" | "arrow" | "after" | "head" | "head-cell" | "row" | "label" | "cell" | "change";
+
+/** Inline layout accepts before/after slots for rich values such as images or dated entries. Pass changed explicitly for slotted content; labels remain visible. */
