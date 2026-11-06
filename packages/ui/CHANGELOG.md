@@ -1,5 +1,9 @@
 # @s_and_a/arrow-ui
 
+## Unreleased
+
+- RemixのARROWページで固定保存バーをスマホ下部メニューの上に配置し、フロートするチャット/ページ上部ボタンが保存操作を覆わないようにする。
+
 ## 0.1.10
 
 ### Patch Changes

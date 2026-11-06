@@ -1126,6 +1126,13 @@ html[data-ar-design] {
     padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
   }
 }
+/* Sticky actions stay above the mobile menu; floating help must not cover Save. */
+html[data-ar-design="remix"] .workflow_menu_layout:has([data-ar="save-bar"][data-sticky]) .ai-chat[data-v-ai-chat] {
+  bottom: calc(var(--arrow-floating-bottom) + 100px);
+}
+html[data-ar-design="remix"]:has(.menu_layout [data-ar="save-bar"][data-sticky]) [data-ar="float-button"][data-fixed][data-arrow-back-top] {
+  --ar-float-button-bottom: calc(var(--arrow-floating-bottom) + 160px);
+}
 .ai-chat[data-v-ai-chat] {
   right: var(--arrow-floating-right);
   bottom: var(--arrow-floating-bottom);
