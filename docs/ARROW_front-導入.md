@@ -2,6 +2,8 @@
 
 Frontの導入は実装済みです。以下は今後の更新で守る境界です。
 
+2026-11-07: remixのArDescriptions（bordered/inline）は、項目名の列を最大14remに抑えます。広い社員情報・承認画面で値の領域を確保し、3列/列結合と480px以下の縦配置を維持します。Frontの架空データ画面で1280/375px、1列/3列/狭いコンテナを確認。classicの指定は変更しません。
+
 ## 公開パッケージの更新
 
 `@s_and_a` の配布先は公開npm (`https://registry.npmjs.org/`) です。GitHub Packagesの認証やローカルtarballは不要です。既存 `.npmrc` にこのscopeのGitHub registry指定が残っていたら、公開npmへ変更してください。
