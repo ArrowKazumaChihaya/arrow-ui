@@ -366,3 +366,9 @@
 [data-ar-design="remix"] .app_popup_text :is(.app_name,.app_caution)[data-v-uibfa8b11a3438]{font-size:12px;line-height:1.4;overflow-wrap:anywhere}
 [data-ar-design="remix"] .app_button_wrap[data-v-uibfa8b11a3438]{display:flex;align-items:center;gap:4px;flex:none}
 [data-ar-design="remix"] .close_app_button[data-v-uibfa8b11a3438]{display:inline-flex;width:30px;height:30px;margin:0;padding:0;line-height:normal}
+
+/* Punch review uses the common stack spacing above its scrollable table. */
+[data-ar-design="remix"] .attendance_table_wrap[data-v-uia097494f994a] { margin-top:0;padding-top:0; }
+[data-ar-design="remix"] .attendance_table_wrap th.branch_id[data-v-uia097494f994a] { min-width:170px; }
+[data-ar-design="remix"] .attendance_table_wrap th.shift.separated[data-v-uia097494f994a] { width:240px;min-width:240px; }
+[data-ar-design="remix"] .attendance_table_wrap th.punch.separated[data-v-uia097494f994a] { width:264px;min-width:264px; }
