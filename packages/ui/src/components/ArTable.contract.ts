@@ -79,7 +79,7 @@ export interface ArTableColumn<Row> {
   title: string;
   /** 寄せ。省くと numeric の列は end、ほかは start。 */
   align?: "start" | "center" | "end";
-  /** px。データに合わせた幅は数で渡してよい。省くと中身に合わせる。 */
+  /** px。データに合わせた幅は数で渡してよい。省くと中身に合わせる。fitを使わない表では、この幅より列を狭めない。 */
   width?: number;
   /**
    * 横にスクロールしても残す。true・"start"＝左に（左から続けて指定する）、"end"＝右に（右から続けて指定する。年調の「反映」）。
@@ -245,6 +245,8 @@ export interface ArTableProps<Row> {
   stickyHeader?: boolean;
   /** 行の高さ。compact は詰めた表（ポップアップの中の長い一覧など）。 */
   density?: "regular" | "compact";
+  /** 本文セルの縦位置。top は説明・添付欄など高さの違う入力を上端で揃える。 */
+  verticalAlign?: "top" | "middle";
   /** 行がないときの文。次にできることを書く（「上の『シフト追加』から登録できます」）。 */
   emptyText?: string;
   /** 行がないときの線のアイコン。 */

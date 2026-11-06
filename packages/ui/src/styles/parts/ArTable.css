@@ -1,5 +1,6 @@
 /* ArTable の構造（形・並び・動き）。色や角丸はデザインが持つ。 */
 [data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td){box-sizing:border-box;vertical-align:middle}
+[data-ar="table"][data-vertical-align="top"]>[data-part="viewport"]>[data-part="table"]>[data-part="body"]>[data-part="row"]>td{vertical-align:top}
 [data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td)[data-col="select"],[data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td)[data-col="expand"]{text-align:center;line-height:0}
 [data-ar="table"]>[data-part="viewport"]>[data-part="table"] :is(th,td)[data-col="actions"]{width:1%;white-space:nowrap}
 [data-ar="table"] th>[data-part="sort"]>[data-part="sort-icon"]{flex:none;display:block}

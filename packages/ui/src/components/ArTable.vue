@@ -43,6 +43,7 @@ const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   footer: null,
   stickyHeader: true,
   density: "regular",
+  verticalAlign: "middle",
   emptyText: "データがありません",
   emptyIcon: undefined,
   blank: "—",
@@ -540,6 +541,7 @@ const colspan = computed(
     :data-variant="variant"
     :data-fit="fit || undefined"
     :data-density="density"
+    :data-vertical-align="verticalAlign"
     :data-sticky-header="stickyHeader || undefined"
     :data-sortable="sortableRows || undefined"
   >
@@ -621,7 +623,7 @@ const colspan = computed(
                 :data-sticky="stickAttr(h.col)"
                 :data-sticky-key="stickAttr(h.col) ? h.col.key : undefined"
                 :data-sticky-edge="edgeAttr(h.col)"
-                :style="stickStyle(h.col)"
+                :style="[stickStyle(h.col), !fit && h.col.width ? { minWidth: `${h.col.width}px` } : undefined]"
                 :aria-sort="ariaSort(h.col)"
                 :data-person="h.col.avatar ? (h.col.sub ? 'with-sub' : 'single') : undefined"
                 :data-total="h.col.total || undefined"

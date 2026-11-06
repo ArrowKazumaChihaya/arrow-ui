@@ -680,7 +680,7 @@
     "name": "fixed",
     "type": "boolean",
     "required": false,
-    "description": "画面の右下に固定する（スマホの「シフト追加」など）。false なら置いた場所に出す。",
+    "description": "画面の右下に固定する（スマホの「シフト追加」など）。false なら置いた場所に出す。\n配置先の固定メニューを避けるときは --ar-float-button-right / --ar-float-button-bottom で位置を指定する。",
     "default": "false"
    },
    {
@@ -2805,6 +2805,18 @@
     "description": "1日なら \"YYYY-MM-DD\"（未入力は null）。range なら { start, end }。"
    },
    {
+    "name": "inputProps",
+    "type": "Omit<ArDateInputProps, 'disabled' | 'modelValue' | 'invalid' | 'size' | 'label' | 'id'>",
+    "required": false,
+    "description": "手入力の日付規則・年候補・翻訳。値、名前、状態、大きさはPicker側が所有する。"
+   },
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "外側のラベルから最初の日付の年入力へ移動するid。"
+   },
+   {
     "name": "range",
     "type": "boolean",
     "required": false,
@@ -2873,7 +2885,7 @@
    },
    {
     "name": "labels",
-    "type": "{ open: string; prev: string; next: string; today: string; ok: string; separator: string; title: (y: number, m: number) => string; weekdays: readonly string[]; days: (n: number) => string; }",
+    "type": "{ open: string; prev: string; next: string; today: string; ok: string; separator: string; title: (y: number, m: number) => string; weekdays: readonly string[]; days: (n: number) => string; start?: string | undefined; end?: string | undefined; calendar?: ((label: string) => string) | undefined; }",
     "required": false,
     "description": "",
     "default": "{ open: \"カレンダーから選ぶ\", prev: \"前の月\", next: \"次の月\", today: \"今日\", ok: \"決める\", separator: \"〜\", title: (y: number, m: number) => `${y}年${m}月`, weekdays: [\"日\", \"月\", \"火\", \"水\", \"木\", \"金\", \"土\"], days: (n: number) => `${n}日間`, }"
@@ -2928,7 +2940,7 @@
    },
    {
     "name": "inputProps",
-    "type": "Omit<ArDateInputProps, 'disabled' | 'modelValue' | 'minYear' | 'maxYear' | 'invalid' | 'size' | 'label' | 'id'>",
+    "type": "Omit<ArDateInputProps, 'disabled' | 'modelValue' | 'invalid' | 'size' | 'label' | 'id' | 'minYear' | 'maxYear'>",
     "required": false,
     "description": "両端の日付の入力規則・翻訳。値、名前、状態、大きさは範囲部品が所有する。"
    },
@@ -8341,6 +8353,13 @@
     "required": false,
     "description": "行の高さ。compact は詰めた表（ポップアップの中の長い一覧など）。",
     "default": "\"regular\""
+   },
+   {
+    "name": "verticalAlign",
+    "type": "'top' | 'middle'",
+    "required": false,
+    "description": "本文セルの縦位置。top は説明・添付欄など高さの違う入力を上端で揃える。",
+    "default": "\"middle\""
    },
    {
     "name": "emptyText",
