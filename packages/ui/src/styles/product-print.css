@@ -44107,10 +44107,6 @@ fieldset[data-v-ui9ae6b325de9c]:where([data-ui-fixed], [data-ui-fixed] *) {
 .schedule_help[data-v-uic75e97f856df]:where([data-ui-fixed], [data-ui-fixed] *) {
   color: #777;
 }
-.expense_table_input[data-v-ui6c7fe69c7ab9]
-  td:where([data-ui-fixed], [data-ui-fixed] *) {
-  vertical-align: top;
-}
 .workflow_field_input[data-v-uib0445e6d2c7b]:where([data-ui-fixed], [data-ui-fixed] *) {
   border: 0;
 }

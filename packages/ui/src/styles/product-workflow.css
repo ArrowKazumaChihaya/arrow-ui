@@ -169,17 +169,6 @@
 /* @end-component */
 
 /* @component src/Component/Workflow/ExpenseCellInput.vue#0 */
-.expense_cell_input[data-v-ui77069c7b5b3d] {
-  width: 100%;
-}
-.money_field[data-v-ui77069c7b5b3d] {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.money_field[data-v-ui77069c7b5b3d] .input_component {
-  min-width: 0;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/ExpensePaymentRecord.vue#0 */
@@ -389,17 +378,6 @@ td[data-v-uic75e97f856df] {
 /* @end-component */
 
 /* @component src/Component/Workflow/ExpenseTableInput.vue#0 */
-.row_actions[data-v-ui6c7fe69c7ab9] {
-  display: flex;
-  gap: 8px;
-  min-width: 88px;
-}
-.row_actions[data-v-ui6c7fe69c7ab9] .ant_button_wrap {
-  flex: 0 0 32px;
-}
-.receipt_reason[data-v-ui6c7fe69c7ab9] {
-  margin-top: 8px;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/FieldInput.vue#0 */

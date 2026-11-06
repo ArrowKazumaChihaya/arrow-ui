@@ -169,10 +169,6 @@ fieldset[data-v-ui9ae6b325de9c]:where([data-ar-design="classic"], [data-ar-desig
 /* @end-component */
 
 /* @component src/Component/Workflow/ExpenseTableInput.vue#0 */
-.expense_table_input[data-v-ui6c7fe69c7ab9]
-  td:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  vertical-align: top;
-}
 /* @end-component */
 
 /* @component src/Component/Workflow/FieldInput.vue#0 */
