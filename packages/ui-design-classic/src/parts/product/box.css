@@ -307,14 +307,7 @@ input[type="number"]:where([data-ar-design="classic"], [data-ar-design="classic"
   display: block;
   clear: both;
 }
-#for_top
-  a:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  display: none;
-  position: fixed;
-  bottom: 0px;
-  right: 50px;
-  z-index: 3;
-}
+
 p.attention:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   font-size: 18px;
   font-weight: 600;

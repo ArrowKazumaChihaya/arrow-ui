@@ -1109,13 +1109,10 @@ input[type="number"]::-webkit-outer-spin-button {
   div:after {
   display: block;
 }
-#for_top
-  a {
-  display: none;
-  position: fixed;
-  bottom: 0px;
-  right: 50px;
-  z-index: 3;
+/* Keep the shared top action above the product chat launcher, including safe areas. */
+[data-ar="float-button"][data-fixed][data-arrow-back-top] {
+  right: calc(18px + env(safe-area-inset-right, 0px));
+  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
 }
 img.fadein_out.show {
   margin-top: 0;

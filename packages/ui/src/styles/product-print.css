@@ -1605,14 +1605,7 @@ input[type="number"]:where([data-ui-fixed], [data-ui-fixed] *)::-webkit-outer-sp
   display: block;
   clear: both;
 }
-#for_top
-  a:where([data-ui-fixed], [data-ui-fixed] *) {
-  display: none;
-  position: fixed;
-  bottom: 0px;
-  right: 50px;
-  z-index: 3;
-}
+
 p.attention:where([data-ui-fixed], [data-ui-fixed] *) {
   font-size: 18px;
   font-weight: 600;
