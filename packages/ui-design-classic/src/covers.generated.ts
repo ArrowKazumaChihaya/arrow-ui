@@ -124,7 +124,7 @@ export const covers = {
   ArText: "1.0.0",
   ArTextarea: "1.1.0",
   ArTextInput: "1.1.0",
-  ArThumbnail: "1.1.0",
+  ArThumbnail: "1.3.0",
   ArTimeChart: "1.1.0",
   ArTimeInput: "1.1.0",
   ArTimeline: "1.0.0",

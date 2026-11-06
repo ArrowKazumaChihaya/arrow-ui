@@ -1,4 +1,4 @@
-/* @covers ArThumbnail 1.1.0 */
+/* @covers ArThumbnail 1.3.0 */
 /* 顔写真：四角は角丸14・丸、写真がないときは淡い灰の面に人の形。カメラは右下の白い丸（32）にテーマ色の線 */
 [data-ar-design="remix"] [data-ar="thumbnail"]>:is([data-part="image"],[data-part="silhouette"]){border-radius:14px;box-shadow:inset 0 0 0 1px rgba(31,41,51,.06)}
 [data-ar-design="remix"] [data-ar="thumbnail"]>[data-part="image"]{border:1px solid var(--ar-color-border)}

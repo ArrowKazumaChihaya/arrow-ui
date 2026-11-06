@@ -31055,42 +31055,6 @@ ul
     font-size: 15px;
   }
 }
-.exec_button_wrap[data-v-ui0136aaddd861]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 30px;
-  text-align: center;
-}
-.bug_report_attention[data-v-ui0136aaddd861]:where([data-ui-fixed], [data-ui-fixed] *) {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 16px;
-  margin-bottom: 20px;
-}
-.bug_report_caution[data-v-ui0136aaddd861]:where([data-ui-fixed], [data-ui-fixed] *) {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  color: #d10c1d;
-  text-align: center;
-  background-color: rgb(255, 244, 141);
-}
-.bug_report_caution
-  .underline[data-v-ui0136aaddd861]:where([data-ui-fixed], [data-ui-fixed] *) {
-  text-decoration: underline;
-}
-.bug_thumbnail_wrap[data-v-ui0136aaddd861]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 315px;
-  height: 199px;
-}
-@media screen and (max-width: 499px) {
-  .bug_report_attention[data-v-ui0136aaddd861]:where([data-ui-fixed], [data-ui-fixed] *) {
-    font-size: 12px;
-    line-height: 14px;
-    margin-bottom: 15px;
-  }
-}
 .inform_wrap[data-v-ui64fb823cea7a]:where([data-ui-fixed], [data-ui-fixed] *) {
   padding: 0 10px;
 }
@@ -31159,15 +31123,6 @@ ul
   top: 3px;
   right: 8px;
   font-size: 10px;
-}
-.create_title[data-v-ui0f030bb52652]:where([data-ui-fixed], [data-ui-fixed] *) {
-  text-align: center;
-  font-weight: 600;
-  font-size: 18px;
-}
-.exec_button_wrap[data-v-ui0f030bb52652]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 30px;
-  text-align: center;
 }
 .count_description[data-v-uid5bdcfb125d7]:where([data-ui-fixed], [data-ui-fixed] *) {
   line-height: 22px !important;
@@ -41320,80 +41275,8 @@ textarea[data-v-ui0ba556b34cde]:where([data-ui-fixed], [data-ui-fixed] *) {
 .croppa-container:where([data-ui-fixed], [data-ui-fixed] *) {
   border: solid 1px black;
 }
-.vue-advanced-cropper__stretcher:where([data-ui-fixed], [data-ui-fixed] *) {
-  pointer-events: none;
-  position: relative;
-  max-width: 100%;
-  max-height: 100%;
-}
 .stencil-preview:where([data-ui-fixed], [data-ui-fixed] *) {
   border: dashed 1px rgba(255, 255, 255, 0.25);
-}
-.cropper_component[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  border: solid 1px #eee;
-  width: 100%;
-}
-.thumbnail_component[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  height: 100%;
-  width: 100%;
-}
-.img_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  border: 1px solid black;
-}
-.camera_button_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 30px;
-  position: absolute;
-  bottom: 3px;
-  right: 3px;
-}
-.submit_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 10px;
-  text-align: center;
-}
-.croppa_block[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  text-align: center;
-  margin: 15px auto 0;
-}
-.cropper_attention_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin: 0 auto;
-  margin-bottom: 10px;
-  width: 350px;
-}
-.croppa_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  position: relative;
-  display: inline-block;
-}
-.submit_button_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  display: inline-block;
-  width: 250px;
-}
-.image_remove_button[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 32px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.rotate_button_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 10px;
-  height: 32px;
-}
-.right_button[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *),
-.left_button[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 32px;
-}
-.right_button[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  float: right;
-}
-.left_button[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-  float: left;
-}
-@media screen and (max-width: 499px) {
-  .camera_button_wrap[data-v-ui45cf24e5a434]:where([data-ui-fixed], [data-ui-fixed] *) {
-    width: 27px;
-  }
 }
 .time_component:where([data-ui-fixed], [data-ui-fixed] *) {
   display: inline-flex;

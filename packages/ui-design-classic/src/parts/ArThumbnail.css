@@ -1,4 +1,4 @@
-/* @covers ArThumbnail 1.1.0 */
+/* @covers ArThumbnail 1.3.0 */
 /* 今の Thumbnail（ui-Thumbnail.png）：1px の黒い枠、写真がないときは #A7A7A7 に白い塗りの人の形、右下 3px に 30px の rgba(0,0,0,.6) の丸いカメラ */
 [data-ar-design="classic"] [data-ar="thumbnail"]{border:1px solid #000}
 [data-ar-design="classic"] [data-ar="thumbnail"][data-shape="circle"],[data-ar-design="classic"] [data-ar="thumbnail"][data-shape="circle"]>:is([data-part="image"],[data-part="silhouette"]){border-radius:50%}

@@ -32,6 +32,8 @@ export interface ArThumbnailProps {
   maxImagePixels?: number;
   /** 画像の説明（読み上げ）。 */
   alt?: string;
+  /** 1.3: Open the existing image in ArImage's viewer without entering the editor. */
+  preview?: boolean;
   /** ポップアップを開いているか（v-model:open。今の isEditting）。省くと部品の中で持つ（カメラのボタンで開く）。 */
   open?: boolean;
   /** 画像とカメラのボタンを出さず、ポップアップだけ（今の dialogOnly。添付の「写真を追加」のボタンから開く）。 */

@@ -19,6 +19,10 @@
 /* 1.1：箱を切り抜く比に（aspect="crop"）、ポップアップだけ（dialogOnly）、自由な範囲（freeCrop）の枠と四隅のつまみ */
 [data-ar="thumbnail"][data-aspect="crop"]{height:var(--ar-thumbnail-height,var(--ar-thumbnail-size,120px))}
 [data-ar="thumbnail"][data-dialog-only]{display:contents}
+/* Fit image previews to narrow fields while preserving their crop ratio. */
+[data-ar="thumbnail"]{max-width:100%;height:auto;aspect-ratio:var(--ar-thumbnail-ratio,1)}
+[data-ar="thumbnail"][data-aspect="crop"]{height:auto}
+[data-ar="thumbnail"]>[data-part="image"]>[data-ar="image"]{display:block;border-radius:inherit}
 [data-ar="thumbnail-editor"][data-free]>[data-part="frame"][data-state~="has-image"]{cursor:default}
 [data-ar="thumbnail-editor"][data-free]>[data-part="frame"]>[data-part="picture"]{margin:0;transform:none}
 [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="crop"]{position:absolute;box-sizing:border-box;cursor:move;touch-action:none}

@@ -8,6 +8,7 @@
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import ArButton from "./ArButton.vue";
 import ArModal from "./ArModal.vue";
+import ArImage from "./ArImage.vue";
 import ArIcon from "./ArIcon.vue";
 import type { ArThumbnailProps } from "./ArThumbnail.contract";
 import { useDesignForm } from "../provider/context";
@@ -23,6 +24,7 @@ const props = withDefaults(defineProps<ArThumbnailProps>(), {
   maxFileBytes: undefined,
   maxImagePixels: undefined,
   alt: "",
+  preview: false,
   open: undefined,
   dialogOnly: false,
   closeOnSave: true,
@@ -70,6 +72,7 @@ const extOk = (name: string) =>
 /** 画面の箱：aspect="crop" は幅 size・高さは切り抜く比。 */
 const boxStyle = computed(() => ({
   "--ar-thumbnail-size": `${props.size}px`,
+  "--ar-thumbnail-ratio": props.aspect === "crop" ? `${props.cropWidth} / ${props.cropHeight}` : "1",
   ...(props.aspect === "crop"
     ? {
         "--ar-thumbnail-height": `${Math.round((props.size * props.cropHeight) / props.cropWidth)}px`,
@@ -99,10 +102,12 @@ const oy = ref(0);
 let objectUrl: string | null = null;
 let imageWork = 0;
 const pendingUrls = new Set<string>();
+const imageLoading = ref(false);
 
 /** A newer selection or a closed editor owns the image; stale work cannot restore it. */
 function cancelImageWork(): number {
   imageWork += 1;
+  imageLoading.value = false;
   for (const url of pendingUrls) URL.revokeObjectURL(url);
   pendingUrls.clear();
   return imageWork;
@@ -163,6 +168,7 @@ function startEdit() {
   cancelImageWork();
   revoke();
   src.value = props.modelValue;
+  imageLoading.value = !!src.value;
   fileName.value = "";
   natural.value = { w: 0, h: 0 };
   open.value = true;
@@ -170,10 +176,16 @@ function startEdit() {
 function onImageLoad(e: Event) {
   const el = e.target as HTMLImageElement;
   if (!open.value || el !== img.value) return;
+  imageLoading.value = false;
   natural.value = { w: el.naturalWidth, h: el.naturalHeight };
   reset();
   if (props.freeCrop)
     crop.value = { x: 0, y: 0, w: el.naturalWidth, h: el.naturalHeight };
+}
+function onImageError(): void {
+  if (!open.value) return;
+  imageLoading.value = false;
+  emit("invalid-image", "load");
 }
 
 /** 先頭の数バイトで画像の種類を確かめる（拡張子は信じない）。 */
@@ -188,12 +200,19 @@ async function load(file: File | undefined | null) {
   if (!extOk(file.name)) return emit("invalid-image", "type");
   if (props.maxFileBytes && file.size > props.maxFileBytes)
     return emit("invalid-image", "bytes");
+  imageLoading.value = true;
   try {
     const valid = await sniff(file);
     if (!isCurrentImageWork(work)) return;
-    if (!valid) return emit("invalid-image", "type");
+    if (!valid) {
+      imageLoading.value = false;
+      return emit("invalid-image", "type");
+    }
   } catch {
-    if (isCurrentImageWork(work)) emit("invalid-image", "load");
+    if (isCurrentImageWork(work)) {
+      imageLoading.value = false;
+      emit("invalid-image", "load");
+    }
     return;
   }
   const url = URL.createObjectURL(file);
@@ -206,19 +225,24 @@ async function load(file: File | undefined | null) {
       probe.naturalWidth * probe.naturalHeight > props.maxImagePixels
     ) {
       releasePending(url);
+      imageLoading.value = false;
       emit("invalid-image", "pixels");
       return;
     }
     pendingUrls.delete(url);
     revoke();
     objectUrl = url;
+    natural.value = { w: 0, h: 0 };
     src.value = url;
     fileName.value = file.name;
     baseName.value = file.name.replace(/\.[^.]+$/, "") || "image";
   };
   probe.onerror = () => {
     releasePending(url);
-    if (isCurrentImageWork(work)) emit("invalid-image", "load");
+    if (isCurrentImageWork(work)) {
+      imageLoading.value = false;
+      emit("invalid-image", "load");
+    }
   };
   probe.src = url;
 }
@@ -321,6 +345,7 @@ const pictureStyle = computed(() => ({
 }));
 
 function submit() {
+  if (imageLoading.value || (src.value && !natural.value.w)) return;
   if (props.freeCrop) return submitFree();
   if (!open.value) return;
   cancelImageWork();
@@ -536,7 +561,10 @@ defineExpose({ edit: startEdit });
     :style="boxStyle"
   >
     <template v-if="!dialogOnly">
-      <img v-if="modelValue" data-part="image" :src="modelValue" :alt="alt" />
+      <span v-if="modelValue && preview" data-part="image">
+        <ArImage :src="modelValue" :alt="alt" width="100%" height="100%" :fit="fit" />
+      </span>
+      <img v-else-if="modelValue" data-part="image" :src="modelValue" :alt="alt" />
       <span
         v-else-if="placeholder === 'picture'"
         data-part="silhouette"
@@ -630,6 +658,7 @@ defineExpose({ edit: startEdit });
             draggable="false"
             :style="freeCrop ? freeStyle : pictureStyle"
             @load="onImageLoad"
+            @error="onImageError"
           />
           <span v-else data-part="empty"
             ><ArIcon name="upload" /><span>{{ labels.choose }}</span></span
@@ -681,7 +710,8 @@ defineExpose({ edit: startEdit });
             <ArButton
               tone="primary"
               size="xl"
-              :disabled="freeCrop && !src"
+              :disabled="(freeCrop && !src) || Boolean(src && !natural.w)"
+              :loading="imageLoading"
               @click="submit"
               >{{ labels.ok }}</ArButton
             >
@@ -742,7 +772,7 @@ defineExpose({ edit: startEdit });
       </div>
       <template v-if="editor !== 'arrow'" #footer>
         <ArButton @click="open = false">{{ labels.cancel }}</ArButton>
-        <ArButton tone="primary" :disabled="freeCrop && !src" @click="submit">{{
+        <ArButton tone="primary" :disabled="(freeCrop && !src) || Boolean(src && !natural.w)" :loading="imageLoading" @click="submit">{{
           labels.ok
         }}</ArButton>
       </template>

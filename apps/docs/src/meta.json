@@ -13262,7 +13262,7 @@
  },
  {
   "name": "ArThumbnail",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "顔写真などの画像（丸／四角）と、右下のカメラのボタン。\nボタンでポップアップを開き、画像を選んで（押す・落とす）、ドラッグで動かし、＋−・ホイールで拡大縮小、左右に90°回して切り抜く。\n切り抜きは canvas だけで行う（ほかのライブラリは使わない）。キーボードでは枠にフォーカスして矢印で動かし、＋−で拡大縮小。\n1.1：v-model:open・dialogOnly・freeCrop（四隅のつまみで範囲を変え、PNG の File を file で渡す。矢印で動かし、Shift＋矢印で大きさ）・accept・placeholder・aspect。",
   "props": [
    {
@@ -13338,6 +13338,13 @@
     "required": false,
     "description": "画像の説明（読み上げ）。",
     "default": "\"\""
+   },
+   {
+    "name": "preview",
+    "type": "boolean",
+    "required": false,
+    "description": "1.3: Open the existing image in ArImage's viewer without entering the editor.",
+    "default": "false"
    },
    {
     "name": "open",

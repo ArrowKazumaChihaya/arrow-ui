@@ -23770,31 +23770,6 @@ ul
     align-self: flex-end;
   }
 }
-.exec_button_wrap[data-v-ui0136aaddd861] {
-  margin-top: 30px;
-  text-align: center;
-}
-.bug_report_attention[data-v-ui0136aaddd861] {
-  line-height: 16px;
-  margin-bottom: 20px;
-}
-.bug_report_caution[data-v-ui0136aaddd861] {
-  line-height: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.bug_thumbnail_wrap[data-v-ui0136aaddd861] {
-  width: 315px;
-  height: 199px;
-}
-@media screen and (max-width: 499px) {
-  .bug_report_attention[data-v-ui0136aaddd861] {
-    line-height: 14px;
-    margin-bottom: 15px;
-  }
-}
 .inform_wrap[data-v-ui64fb823cea7a] {
   padding: 0 10px;
 }
@@ -23836,13 +23811,6 @@ ul
   position: absolute;
   top: 3px;
   right: 8px;
-}
-.create_title[data-v-ui0f030bb52652] {
-  text-align: center;
-}
-.exec_button_wrap[data-v-ui0f030bb52652] {
-  margin-top: 30px;
-  text-align: center;
 }
 .count_description[data-v-uid5bdcfb125d7] {
   line-height: 22px !important;
@@ -32224,69 +32192,6 @@ table
 }
 textarea[data-v-ui0ba556b34cde] {
   line-height: 20px !important;
-}
-.vue-advanced-cropper__stretcher {
-  position: relative;
-  max-width: 100%;
-  max-height: 100%;
-}
-.cropper_component[data-v-ui45cf24e5a434] {
-  width: 100%;
-}
-.thumbnail_component[data-v-ui45cf24e5a434] {
-  height: 100%;
-  width: 100%;
-}
-.img_wrap[data-v-ui45cf24e5a434] {
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
-.camera_button_wrap[data-v-ui45cf24e5a434] {
-  width: 30px;
-  position: absolute;
-  bottom: 3px;
-  right: 3px;
-}
-.submit_wrap[data-v-ui45cf24e5a434] {
-  margin-top: 10px;
-  text-align: center;
-}
-.croppa_block[data-v-ui45cf24e5a434] {
-  text-align: center;
-  margin: 15px auto 0;
-}
-.cropper_attention_wrap[data-v-ui45cf24e5a434] {
-  margin: 0 auto;
-  margin-bottom: 10px;
-  width: 350px;
-}
-.croppa_wrap[data-v-ui45cf24e5a434] {
-  position: relative;
-  display: inline-block;
-}
-.submit_button_wrap[data-v-ui45cf24e5a434] {
-  display: inline-block;
-  width: 250px;
-}
-.image_remove_button[data-v-ui45cf24e5a434] {
-  width: 32px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.rotate_button_wrap[data-v-ui45cf24e5a434] {
-  margin-top: 10px;
-  height: 32px;
-}
-.right_button[data-v-ui45cf24e5a434],
-.left_button[data-v-ui45cf24e5a434] {
-  width: 32px;
-}
-@media screen and (max-width: 499px) {
-  .camera_button_wrap[data-v-ui45cf24e5a434] {
-    width: 27px;
-  }
 }
 .time_component {
   display: inline-flex;
