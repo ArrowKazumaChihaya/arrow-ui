@@ -21766,67 +21766,6 @@ ul
 .view_wrap[data-v-ui899c041dfc10]:first-child:where([data-ui-fixed], [data-ui-fixed] *) {
   margin-top: 0;
 }
-.summary_wrap[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-bottom: 16px;
-}
-.summary_wrap[data-v-uic08ee5ad5c68]
-  .item_component:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-bottom: 3px;
-}
-.employee_target_select[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: min(100%, 360px);
-}
-.content_separator[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  border-top: 1px solid #dbe4ee;
-  margin: 18px 0 40px;
-}
-.multi_target_notice[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin: -20px 0 24px;
-}
-.multi_target_notice
-  p[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  color: #4b5563;
-  font-size: 12px;
-}
-.employee_detail_like_wrap[data-v-uic08ee5ad5c68]
-  .title_wrap:where([data-ui-fixed], [data-ui-fixed] *) {
-  display: none;
-}
-.employee_detail_like_wrap[data-v-uic08ee5ad5c68]
-  .company_base_wrap:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 0;
-}
-.all_section[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 36px;
-  padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
-}
-.all_section[data-v-uic08ee5ad5c68]:first-of-type:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-.all_section_title[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin: 0 0 12px;
-  color: #1f2937;
-  font-size: 15px;
-  font-weight: 700;
-}
-[data-v-uic08ee5ad5c68]
-  .changed:where([data-ui-fixed], [data-ui-fixed] *),
-[data-v-uic08ee5ad5c68]
-  .changed
-  *:where([data-ui-fixed], [data-ui-fixed] *) {
-  color: #c53030 !important;
-  font-weight: 600;
-}
-.empty_wrap[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  padding: 12px 0;
-}
-.empty_wrap
-  p[data-v-uic08ee5ad5c68]:where([data-ui-fixed], [data-ui-fixed] *) {
-  color: #6b7280;
-}
 .view_wrap[data-v-ui15be97c913fc]:where([data-ui-fixed], [data-ui-fixed] *) {
   margin-top: 30px;
 }
@@ -29868,38 +29807,6 @@ table
     min-width: 65px;
   }
 }
-.title_wrap[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *),
-.status_content_wrap[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin: 0 auto;
-}
-.status_content_wrap[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 550px;
-  margin-top: 20px;
-}
-table
-  th.created_at[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 200px;
-}
-table
-  th.button[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 350px;
-}
-@media screen and (max-width: 499px) {
-  .receipt_wrap[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-    padding: 10px;
-  }
-  .status_content_wrap[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-    width: 315px;
-  }
-  table
-    th.created_at[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-    width: 115px;
-  }
-  table
-    th.button[data-v-uifb85cc16828b]:where([data-ui-fixed], [data-ui-fixed] *) {
-    width: 200px;
-  }
-}
 .tab_component[data-v-ui00461df21c75]:where([data-ui-fixed], [data-ui-fixed] *) {
   --tab-width: 130px;
 }
@@ -36369,47 +36276,6 @@ p[data-v-ui53d0c8ae052c]:where([data-ui-fixed], [data-ui-fixed] *) {
 }
 .history_button[data-v-ui255b9e1b9292]:where([data-ui-fixed], [data-ui-fixed] *) {
   margin-left: auto;
-}
-.description_wrap[data-v-uia4ae7007afed]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-bottom: 10px;
-}
-.description_wrap
-  p[data-v-uia4ae7007afed]:where([data-ui-fixed], [data-ui-fixed] *) {
-  font-size: 13px;
-  color: #6b7280;
-}
-.filters_wrap[data-v-uia4ae7007afed]:where([data-ui-fixed], [data-ui-fixed] *) {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
-  margin-bottom: 15px;
-  align-items: flex-end;
-}
-.filters_wrap[data-v-uia4ae7007afed]
-  .item_component:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-bottom: 0;
-}
-.filter_item[data-v-uia4ae7007afed]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 270px;
-  max-width: 100%;
-}
-.employee_history_event_table[data-v-uia4ae7007afed]
-  .search_wrap:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 260px;
-}
-.employee_history_event_table[data-v-uia4ae7007afed]
-  .search_wrap
-  input:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 215px;
-}
-@media screen and (max-width: 499px) {
-  .filter_item[data-v-uia4ae7007afed]:where([data-ui-fixed], [data-ui-fixed] *) {
-    width: 100%;
-  }
-  .employee_history_event_table[data-v-uia4ae7007afed]
-    .search_wrap:where([data-ui-fixed], [data-ui-fixed] *) {
-    max-width: 100%;
-  }
 }
 .create_title[data-v-uibb917286a656]:where([data-ui-fixed], [data-ui-fixed] *) {
   text-align: center;

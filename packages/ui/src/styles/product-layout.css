@@ -15976,44 +15976,6 @@ ul
 .view_wrap[data-v-ui899c041dfc10]:first-child {
   margin-top: 0;
 }
-.summary_wrap[data-v-uic08ee5ad5c68] {
-  margin-bottom: 16px;
-}
-.summary_wrap[data-v-uic08ee5ad5c68]
-  .item_component {
-  margin-bottom: 3px;
-}
-.employee_target_select[data-v-uic08ee5ad5c68] {
-  width: min(100%, 360px);
-}
-.content_separator[data-v-uic08ee5ad5c68] {
-  margin: 18px 0 40px;
-}
-.multi_target_notice[data-v-uic08ee5ad5c68] {
-  margin: -20px 0 24px;
-}
-.employee_detail_like_wrap[data-v-uic08ee5ad5c68]
-  .title_wrap {
-  display: none;
-}
-.employee_detail_like_wrap[data-v-uic08ee5ad5c68]
-  .company_base_wrap {
-  margin-top: 0;
-}
-.all_section[data-v-uic08ee5ad5c68] {
-  margin-top: 36px;
-  padding-top: 16px;
-}
-.all_section[data-v-uic08ee5ad5c68]:first-of-type {
-  margin-top: 0;
-  padding-top: 0;
-}
-.all_section_title[data-v-uic08ee5ad5c68] {
-  margin: 0 0 12px;
-}
-.empty_wrap[data-v-uic08ee5ad5c68] {
-  padding: 12px 0;
-}
 .view_wrap[data-v-ui15be97c913fc] {
   margin-top: 30px;
 }
@@ -22930,38 +22892,6 @@ table
     min-width: 65px;
   }
 }
-.title_wrap[data-v-uifb85cc16828b],
-.status_content_wrap[data-v-uifb85cc16828b] {
-  margin: 0 auto;
-}
-.status_content_wrap[data-v-uifb85cc16828b] {
-  width: 550px;
-  margin-top: 20px;
-}
-table
-  th.created_at[data-v-uifb85cc16828b] {
-  width: 200px;
-}
-table
-  th.button[data-v-uifb85cc16828b] {
-  width: 350px;
-}
-@media screen and (max-width: 499px) {
-  .receipt_wrap[data-v-uifb85cc16828b] {
-    padding: 10px;
-  }
-  .status_content_wrap[data-v-uifb85cc16828b] {
-    width: 315px;
-  }
-  table
-    th.created_at[data-v-uifb85cc16828b] {
-    width: 115px;
-  }
-  table
-    th.button[data-v-uifb85cc16828b] {
-    width: 200px;
-  }
-}
 .tab_component
   .tab_item[data-v-ui00461df21c75] {
   display: inline-block;
@@ -28171,42 +28101,6 @@ p[data-v-ui53d0c8ae052c] {
 }
 .history_button[data-v-ui255b9e1b9292] {
   margin-left: auto;
-}
-.description_wrap[data-v-uia4ae7007afed] {
-  margin-bottom: 10px;
-}
-.filters_wrap[data-v-uia4ae7007afed] {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
-  margin-bottom: 15px;
-  align-items: flex-end;
-}
-.filters_wrap[data-v-uia4ae7007afed]
-  .item_component {
-  margin-bottom: 0;
-}
-.filter_item[data-v-uia4ae7007afed] {
-  width: 270px;
-  max-width: 100%;
-}
-.employee_history_event_table[data-v-uia4ae7007afed]
-  .search_wrap {
-  width: 260px;
-}
-.employee_history_event_table[data-v-uia4ae7007afed]
-  .search_wrap
-  input {
-  width: 215px;
-}
-@media screen and (max-width: 499px) {
-  .filter_item[data-v-uia4ae7007afed] {
-    width: 100%;
-  }
-  .employee_history_event_table[data-v-uia4ae7007afed]
-    .search_wrap {
-    max-width: 100%;
-  }
 }
 .create_title[data-v-uibb917286a656] {
   text-align: center;
