@@ -8,6 +8,8 @@
 [data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="meta"]{flex:1;min-width:0}
 [data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="meta"]>*{display:block;min-width:0;white-space:normal;overflow-wrap:anywhere}
 [data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>[data-part="actions"]{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;flex:none;max-width:100%;min-width:0}
+/* A whole-row layout supplied through #item uses the available row width. */
+[data-ar="list"]>[data-part="viewport"]>[data-part="group"]>[data-part="items"]>[data-part="item"]>:is([data-ar="stack"],[data-ar="grid"]){flex:1 1 100%;min-width:0}
 
 /* 狭い配置では操作を下へ送り、氏名・説明の表示幅を確保する。 */
 @container ar-list (max-width:480px){
