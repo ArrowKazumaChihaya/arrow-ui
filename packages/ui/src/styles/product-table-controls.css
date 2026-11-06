@@ -1,0 +1,62 @@
+/* Shared table toolbar geometry. Keep search and primary actions reachable at
+   any container width; table contents may scroll, these controls must not. */
+.table_component > .control_wrap {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 100%;
+  min-width: 0;
+}
+.table_component > .control_wrap > .left_control {
+  flex: 1 1 280px;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+.table_component > .control_wrap > .left_control > [data-ui-part="box"] {
+  width: 100%;
+  min-width: 0;
+}
+.table_component > .control_wrap .branch_control_wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+.table_component > .control_wrap .search_wrap {
+  display: block;
+  flex: 1 1 220px;
+  width: auto;
+  min-width: min(160px, 100%);
+  max-width: 100%;
+  margin: 0;
+}
+.table_component > .control_wrap .search_wrap > [data-ar="text-input"] {
+  display: flex;
+  width: 100%;
+}
+.table_component > .control_wrap .search_control_wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+.table_component > .control_wrap > .right_control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  margin-inline-start: auto;
+}

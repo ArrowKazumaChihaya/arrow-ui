@@ -69,7 +69,19 @@ function onLabelClick(e: MouseEvent) {
   const el = document.getElementById(id.value);
   if (!el || ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(el.tagName)) return;
   e.preventDefault();
-  el.focus();
+  // Composite controls put the field id on a group. Focus its first usable
+  // input instead of calling focus() on a non-focusable div/span.
+  if (el.tabIndex >= 0 && el.getAttribute("aria-disabled") !== "true") {
+    el.focus();
+    return;
+  }
+  const controls = el.querySelectorAll<HTMLElement>(
+    'input:not([type="hidden"]):not(:disabled), select:not(:disabled), textarea:not(:disabled), button:not(:disabled), [tabindex]:not([tabindex="-1"])',
+  );
+  const first = Array.from(controls).find(
+    (control) => control.getAttribute("aria-disabled") !== "true" && control.getClientRects().length > 0,
+  );
+  first?.focus();
 }
 function onFocusOut(e: FocusEvent) {
   if (!form || !props.name) return;
