@@ -4,7 +4,7 @@
  * 右に入力と、その下の間違い・補足・「詳細」。row の形では行の上に区切りの線、右に「変更あり／元に戻す」。
  * 中の入力とは default スロットの値（id・aria-*）を v-bind して結ぶ。項目名を押すと入力へ。
  */
-import { computed, useSlots } from "vue";
+import { computed, nextTick, useSlots } from "vue";
 import { useId } from "../provider/context";
 import ArIcon from "./ArIcon.vue";
 import ArButton from "./ArButton.vue";
@@ -63,6 +63,10 @@ function onLabelClick(e: MouseEvent) {
   const el = document.getElementById(id.value);
   if (!el || ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(el.tagName)) return;
   e.preventDefault();
+  focusControl(el);
+}
+function focusControl(el: HTMLElement): void {
+  if (el.matches(":disabled") || el.getAttribute("aria-disabled") === "true") return;
   if (el.tabIndex >= 0 && el.getAttribute("aria-disabled") !== "true") {
     el.focus();
     return;
@@ -73,6 +77,16 @@ function onLabelClick(e: MouseEvent) {
     'input:not([type="hidden"]):not(:disabled), select:not(:disabled), textarea:not(:disabled), button:not(:disabled), [tabindex]:not([tabindex="-1"])',
   );
   Array.from(controls).find((control) => control.getAttribute("aria-disabled") !== "true" && control.getClientRects().length > 0)?.focus();
+}
+async function onRevert(e: MouseEvent): Promise<void> {
+  const trigger = e.currentTarget;
+  emit("revert", e);
+  await nextTick();
+  // A reverted row removes its action. Keep keyboard users at that field,
+  // but preserve focus deliberately moved by the consumer (for example to a dialog).
+  if (props.changed || (document.activeElement !== document.body && document.activeElement !== trigger)) return;
+  const el = document.getElementById(id.value);
+  if (el) focusControl(el);
 }
 </script>
 
@@ -108,7 +122,7 @@ function onLabelClick(e: MouseEvent) {
     <div v-if="hasAside" data-part="aside">
       <slot name="aside">
         <span data-part="changed">{{ changedText }}</span>
-        <ArButton v-if="revertable" tone="muted" size="sm" icon="undo" @click="emit('revert', $event)">{{ revertText }}</ArButton>
+        <ArButton v-if="revertable" tone="muted" size="sm" icon="undo" @click="onRevert">{{ revertText }}</ArButton>
       </slot>
     </div>
   </div>

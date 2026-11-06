@@ -17,6 +17,22 @@ function inDesign(design: typeof classicDesign, comp: unknown, props: Record<str
 }
 
 describe("P1：ArItem 1.1（行・？・間違い・未登録・変更あり）", () => {
+  it("returns focus to the field after its revert action disappears", async () => {
+    const changed = shallowRef(true);
+    const App = defineComponent(() => () => h(ArItem, {
+      title: "Rate", changed: changed.value, onRevert: () => { changed.value = false; },
+    }, { default: (control: Record<string, string>) => h("input", control) }));
+    const w = mount(App, { attachTo: document.body });
+    try {
+      const action = w.get<HTMLButtonElement>('[data-part="aside"] button');
+      action.element.focus();
+      await action.trigger("click");
+      await nextTick();
+      expect(w.find('[data-part="aside"]').exists()).toBe(false);
+      expect(document.activeElement).toBe(w.get("input").element);
+    } finally { w.unmount(); }
+  });
+
   it("間違いは入力の aria-invalid と aria-describedby に結ぶ。変更ありで「元に戻す」が revert を出す", async () => {
     const w = mount(ArItem, {
       props: { title: "法定外残業", variant: "row", error: "25以上の数字にしてください", info: "25%以上", changed: true, caption: "補足" },
