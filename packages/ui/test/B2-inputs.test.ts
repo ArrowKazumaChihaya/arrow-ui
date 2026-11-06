@@ -98,6 +98,22 @@ describe("ArTimeInput の追加・ArTimeRange", () => {
 });
 
 describe("ArDateRange・ArDatePicker", () => {
+  it("カレンダーを加えても手入力の無効日付を補正せず年範囲・ラベル接続を保つ", async () => {
+    const w = mount(ArDatePicker, { props: {
+      modelValue: "2026-02-01", id: "holiday-date", label: "Leave ",
+      inputProps: {
+        minYear: 1930, maxYear: 2027, invalidDate: "message", updateOnInput: true,
+        labels: { year: "Year", month: "Month", day: "Day", weekdays: [], invalidDate: "Invalid date" },
+      },
+    } });
+    expect(w.findAll('#holiday-date')).toHaveLength(1);
+    expect(w.get('#holiday-date').attributes('role')).toBe('combobox');
+    await w.get('[aria-label="Leave Day"]').setValue('31');
+    expect(w.emitted('update:modelValue')?.at(-1)).toEqual([null]);
+    expect(w.text()).toContain('Invalid date');
+    expect(w.get<HTMLInputElement>('[aria-label="Leave Day"]').element.value).toBe('31');
+    w.unmount();
+  });
   it("範囲入力でも不正日付の補正禁止・入力中の更新・翻訳を保つ", async () => {
     const w = mount(ArDateRange, { props: {
       modelValue: { start: "2026-02-01", end: "2026-11-30" },

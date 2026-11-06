@@ -1,9 +1,14 @@
 /** ArDatePicker 1.1 の契約。 */
 import type { ArDateRangeValue } from "./ArDateRange.contract";
+import type { ArDateInputProps } from "./ArDateInput.contract";
 
 export interface ArDatePickerProps {
   /** 1日なら "YYYY-MM-DD"（未入力は null）。range なら { start, end }。 */
   modelValue: string | null | ArDateRangeValue;
+  /** 手入力の日付規則・年候補・翻訳。値、名前、状態、大きさはPicker側が所有する。 */
+  inputProps?: Omit<ArDateInputProps, "modelValue" | "invalid" | "disabled" | "size" | "label" | "id">;
+  /** 外側のラベルから最初の日付の年入力へ移動するid。 */
+  id?: string;
   /** 範囲を選ぶ（RangePicker）。間は淡いテーマ色、両端は塗り。 */
   range?: boolean;
   /** 選べる最初の日・最後の日（"YYYY-MM-DD"）。 */
@@ -31,6 +36,9 @@ export interface ArDatePickerProps {
     title: (y: number, m: number) => string;
     weekdays: readonly string[];
     days: (n: number) => string;
+    start?: string;
+    end?: string;
+    calendar?: (label: string) => string;
   };
 }
 export interface ArDatePickerEmits {

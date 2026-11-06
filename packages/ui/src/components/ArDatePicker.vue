@@ -156,27 +156,32 @@ function setRange(key: "start" | "end", v: string | null) {
     <div data-part="row">
       <template v-if="range">
         <ArDateInput
+          v-bind="inputProps"
+          :id="id"
           data-part="start"
           :model-value="rangeValue.start"
           :invalid="bad"
           :disabled="disabled"
           :size="size"
-          :label="`${label ?? ''}始まり`"
+          :label="`${label ?? ''}${labels.start ?? '始まり'}`"
           @update:model-value="(v) => setRange('start', v)"
         />
         <span data-part="separator" aria-hidden="true">{{ labels.separator }}</span>
         <ArDateInput
+          v-bind="inputProps"
           data-part="end"
           :model-value="rangeValue.end"
           :invalid="bad"
           :disabled="disabled"
           :size="size"
-          :label="`${label ?? ''}終わり`"
+          :label="`${label ?? ''}${labels.end ?? '終わり'}`"
           @update:model-value="(v) => setRange('end', v)"
         />
       </template>
       <ArDateInput
         v-else
+        v-bind="inputProps"
+        :id="id"
         data-part="start"
         :model-value="single"
         :invalid="invalid"
@@ -207,7 +212,7 @@ function setRange(key: "start" | "end", v: string | null) {
       :anchor="root"
       ar="date-picker-panel"
       role="dialog"
-      :label="label ? `${label}のカレンダー` : labels.open"
+      :label="label ? (labels.calendar?.(label) ?? `${label}のカレンダー`) : labels.open"
       @close="setOpen(false)"
     >
       <ArCalendarPanel
