@@ -43,7 +43,7 @@ const colorStyle = computed(() => (props.color ? { background: props.color[0], c
     :aria-hidden="name ? undefined : 'true'"
     :style="colorStyle"
   >
-    <img v-if="src && !imageFailed" :src="src" alt="" data-part="image" @error="imageFailed = true" />
+    <img v-if="src && !imageFailed" :src="src" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-part="image" @error="imageFailed = true" />
     <ArIcon v-else-if="icon" :name="icon" size="sm" data-part="icon" />
     <span v-else data-part="text" aria-hidden="true">{{ shown }}</span>
   </span>

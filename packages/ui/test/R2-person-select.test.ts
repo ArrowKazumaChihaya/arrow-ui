@@ -28,6 +28,7 @@ describe("person selection", () => {
 
   it("falls back to initials after an image error and retries when the person changes", async () => {
     const w = mount(ArAvatar, { props: { name: "山田", src: "/missing.png" } });
+    expect(w.get("img").attributes()).toMatchObject({ loading: "lazy", decoding: "async", referrerpolicy: "no-referrer" });
     await w.get("img").trigger("error");
     expect(w.find("img").exists()).toBe(false);
     expect(w.text()).toBe("山");
