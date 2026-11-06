@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<ArChoiceCardProps>(), {
   disabled: false,
   size: undefined,
   name: undefined,
+  chevron: false,
 });
 const emit = defineEmits<{ "update:modelValue": [value: ArChoiceValue]; select: [value: ArChoiceValue | undefined] }>();
 
@@ -129,5 +130,6 @@ function onKeydown(e: KeyboardEvent) {
       <span v-if="reason" data-part="reason"><ArIcon name="lock" line />{{ reason }}</span>
       <slot />
     </span>
+    <ArIcon v-if="chevron && variant === 'option'" data-part="chevron" name="cr" aria-hidden="true" />
   </button>
 </template>

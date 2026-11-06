@@ -52,7 +52,7 @@ watch(()=>props.value,()=>{
     <div data-part="content"><slot /></div>
     <div v-if="!disabled && option" data-part="actions">
       <ArButton v-if="option.isPrev!==false" tone="secondary" size="lg" @click="emit('prev')">{{option.prevText ?? labels.prev}}</ArButton>
-      <ArButton v-if="option.isNext!==false" tone="primary" size="lg" @click="emit('next')">{{nextLabel}}</ArButton>
+      <ArButton v-if="option.isNext!==false" tone="primary" :intent="option.nextIntent" size="lg" @click="emit('next')">{{nextLabel}}</ArButton>
     </div>
   </section>
 </template>

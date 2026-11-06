@@ -20,6 +20,8 @@ export interface ArChoiceCardProps {
    * 新しく書くときは ArRadioGroup（variant="card"・size="lg"・columns）を使う。
    */
   variant?: "card" | "option" | "tile" | "radio";
+  /** option の右端に遷移先を示す矢印を表示する。選択状態の印とは区別する。 */
+  chevron?: boolean;
   /** 1つを選ぶ組で使うときの、この札の値。v-model（modelValue）と同じなら選ばれている。渡すと role="radio"。 */
   value?: ArChoiceValue;
   /** 組の今の値（v-model）。 */
@@ -47,4 +49,4 @@ export interface ArChoiceCardEmits {
   select: [value: ArChoiceValue | undefined];
 }
 /** slot：default（説明の下に足す中身）。 */
-export type ArChoiceCardPart = "root" | "check" | "icon" | "body" | "title" | "tag" | "description" | "reason";
+export type ArChoiceCardPart = "root" | "check" | "icon" | "body" | "title" | "tag" | "description" | "reason" | "chevron";

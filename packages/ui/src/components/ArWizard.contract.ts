@@ -6,6 +6,8 @@ export interface ArWizardOption {
   isNext?: boolean;
   prevText?: string;
   nextText?: string;
+  /** Semantic intent for this step’s final action; navigation steps keep the theme colour. */
+  nextIntent?: "add" | "edit" | "delete";
 }
 export interface ArWizardProps {
   value: number;

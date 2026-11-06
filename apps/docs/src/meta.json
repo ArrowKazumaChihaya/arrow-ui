@@ -2421,6 +2421,13 @@
     "default": "\"card\""
    },
    {
+    "name": "chevron",
+    "type": "boolean",
+    "required": false,
+    "description": "option の右端に遷移先を示す矢印を表示する。選択状態の印とは区別する。",
+    "default": "false"
+   },
+   {
     "name": "value",
     "type": "ArChoiceValue",
     "required": false,
@@ -2501,7 +2508,8 @@
    "icon",
    "body",
    "description",
-   "reason"
+   "reason",
+   "chevron"
   ],
   "dataAr": "choice-card"
  },

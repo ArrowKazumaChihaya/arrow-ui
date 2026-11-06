@@ -7,6 +7,7 @@
    大きさ（1.1）：md がキャンバスの値。sm は一回り小さく（設定・一覧の中）、lg は一回り大きく（スマホ・大きな選択）。 */
 [data-ar-design="remix"] [data-ar="choice-card"]{color:var(--ar-color-text);font-family:var(--ar-font-family);background:#FFFFFF;transition:background-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),border-color var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="choice-card"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
+[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="chevron"]{color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="title"]{gap:8px}
 [data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"]{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;letter-spacing:0;white-space:nowrap}
 [data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"][data-tone="ok"]{background:#E6F3EC;color:#1E7A4C}

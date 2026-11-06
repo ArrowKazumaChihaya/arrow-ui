@@ -12,3 +12,4 @@
 [data-ar="choice-card"]>[data-part="body"]>[data-part="description"],[data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]{max-width:100%;overflow-wrap:anywhere}
 [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]{display:flex;align-items:flex-start}
 [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]>[data-ar="icon"]{flex:none}
+[data-ar="choice-card"]>[data-part="chevron"]{flex:none;align-self:center;width:16px;height:16px}
