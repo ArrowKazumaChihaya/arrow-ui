@@ -11,3 +11,6 @@
 
 /* ARROW page actions clear the fixed mobile navigation (the product shell supplies the dock offset). */
 html[data-ar-design="remix"] .menu_layout [data-ar="save-bar"][data-sticky]{bottom:var(--arrow-floating-bottom,16px)}
+
+/* Leave the desktop help dock outside the action hit targets, even at the page end. */
+@media (min-width:960px){html[data-ar-design="remix"] .menu_layout [data-ar="save-bar"][data-sticky]{padding-inline-end:76px}}

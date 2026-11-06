@@ -7,3 +7,6 @@
 
 /* Product shells keep page actions above their fixed navigation and safe-area inset. */
 html[data-ar-design="remix"] .menu_layout [data-ar="affix"][data-position="bottom"]{--ar-affix-bottom-inset:var(--arrow-floating-bottom,16px)}
+
+/* Leave the desktop help dock outside the action hit targets, even at the page end. */
+@media (min-width:960px){html[data-ar-design="remix"] .menu_layout [data-ar="affix"][data-position="bottom"]{padding-inline-end:76px}}

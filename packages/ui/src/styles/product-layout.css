@@ -1127,10 +1127,11 @@ html[data-ar-design] {
   }
 }
 /* Sticky actions stay above the mobile menu; floating help must not cover Save. */
-html[data-ar-design="remix"] .workflow_menu_layout:has([data-ar="save-bar"][data-sticky]) .ai-chat[data-v-ai-chat] {
+
+html[data-ar-design="remix"]:has(.menu_layout :is([data-ar="save-bar"][data-sticky], [data-ar="affix"][data-position="bottom"])) .ai-chat[data-v-ai-chat] {
   bottom: calc(var(--arrow-floating-bottom) + 100px);
 }
-html[data-ar-design="remix"]:has(.menu_layout [data-ar="save-bar"][data-sticky]) [data-ar="float-button"][data-fixed][data-arrow-back-top] {
+html[data-ar-design="remix"]:has(.menu_layout :is([data-ar="save-bar"][data-sticky], [data-ar="affix"][data-position="bottom"])) [data-ar="float-button"][data-fixed][data-arrow-back-top] {
   --ar-float-button-bottom: calc(var(--arrow-floating-bottom) + 160px);
 }
 .ai-chat[data-v-ai-chat] {
@@ -4771,6 +4772,9 @@ ul.fr-dropdown-list
   padding: var(--arrow-page-padding, 30px 35px 80px);
   margin: 0 auto;
   min-height: calc(100vh - 240px);
+}
+.root_component.form[data-v-ui5bc3f455d2e5] {
+  max-width: var(--arrow-form-max-width, 880px);
 }
 .root_component.slim[data-v-ui5bc3f455d2e5] {
   min-height: calc(100vh - 50px);
