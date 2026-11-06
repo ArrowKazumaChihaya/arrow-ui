@@ -70,3 +70,7 @@
 
 /* A conditional actions slot can remain mounted while its content is empty. */
 [data-ar-design="remix"] [data-ar="card"]>[data-part="head"]>[data-part="actions"]:empty{display:none}
+
+/* Direct footer actions wrap as complete controls in narrow cards. */
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]{flex-wrap:wrap}
+[data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>[data-ar="button"]{flex:1 1 140px;height:auto;min-height:44px;white-space:normal;line-height:1.5}

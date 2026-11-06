@@ -366,6 +366,7 @@ td[data-v-uic75e97f856df] {
 
 /* @component src/Component/Workflow/FieldInput.vue#0 */
 .workflow_field_input[data-v-uib0445e6d2c7b] {
+  border: 0;
   width: 100%;
   min-width: 0;
   padding: 0;

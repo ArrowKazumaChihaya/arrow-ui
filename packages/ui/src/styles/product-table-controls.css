@@ -69,3 +69,6 @@
 .branch_selector_component .branch_selector_wrap{min-width:0;max-width:100%;height:auto}
 .branch_selector_component .branch_selector_wrap [data-ar="tree-select"]{width:100%;max-width:100%;min-width:0}
 .table_component>.control_wrap .left_control .branch_selector_component{width:100%;max-width:320px;min-width:0}
+
+/* Expanded filters need their own gap before rows or the mobile sort control. */
+[data-ar-design="remix"] .table_component > .panel_wrap:has(> *) { margin-block-end: 12px; }

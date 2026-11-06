@@ -17,3 +17,6 @@
 [data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="header-extra"]{gap:8px;padding:0 14px 0 4px;background:var(--ar-color-surface-alt);font-size:12px;font-weight:500}
 [data-ar-design="remix"] [data-ar="collapse"][data-ghost]>[data-part="panel"]>[data-part="header"]>[data-part="header-extra"]{background:none}
 [data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="title"]{gap:6px}
+@media (max-width: 767px){
+  [data-ar-design="remix"] [data-ar="collapse"]>[data-part="panel"]>[data-part="body"]{padding-inline:14px}
+}
