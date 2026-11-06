@@ -1,4 +1,15 @@
-[data-ar="wizard"]>[data-part="summary"]{display:none}[data-ar="wizard"]>[data-part="content"]{padding:24px 0}[data-ar="wizard"]>[data-part="actions"]{display:flex;justify-content:center;gap:24px;padding:24px 0}@media(max-width:700px){[data-ar="wizard"]>[data-part="steps"]{display:none}[data-ar="wizard"]>[data-part="summary"]{display:block}}
+[data-ar="wizard"]>[data-part="content"]{padding:24px 0}[data-ar="wizard"]>[data-part="actions"]{display:flex;justify-content:center;gap:24px;padding:24px 0}
+[data-ar="wizard"] > [data-part="steps"] {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 4px 0;
+  scrollbar-width: thin;
+}
+[data-ar="wizard"] > [data-part="steps"]:focus-visible {
+  outline: 2px solid var(--ar-accent);
+  outline-offset: 2px;
+}
 [data-ar="wizard"] > [data-part="actions"] > [data-ar="button"] {
   min-width: 0;
   max-width: 100%;
@@ -11,7 +22,24 @@
   overflow-wrap: anywhere;
 }
 @media (max-width: 700px) {
-  [data-ar="wizard"] > [data-part="actions"] { gap: 12px; }
+  [data-ar="wizard"] > [data-part="content"] { padding: 16px 0; }
+  [data-ar="wizard"] > [data-part="actions"] { gap: 12px; padding: 16px 0; }
   [data-ar="wizard"] > [data-part="actions"] > [data-ar="button"] { flex: 1; }
   [data-ar="wizard"] > [data-part="actions"] > [data-ar="button"][data-tone="primary"] { flex-grow: 2; }
+  /* Keep the whole journey available without squeezing eight labels into the screen. */
+  [data-ar="wizard"] > [data-part="steps"] > [data-ar="steps"] {
+    width: max-content;
+    min-width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  [data-ar="wizard"] > [data-part="steps"] > [data-ar="steps"] > [data-part="step"] { flex: none; }
+  [data-ar="wizard"] > [data-part="steps"] > [data-ar="steps"] > [data-part="connector"] { display: block; }
+  [data-ar="wizard"] > [data-part="steps"] > [data-ar="steps"] > [data-part="step"] > [data-part="body"] {
+    flex-direction: row;
+    text-align: start;
+    width: auto;
+  }
+  [data-ar="wizard"] > [data-part="steps"] > [data-ar="steps"] > [data-part="step"] > [data-part="body"] > [data-part="content"] { width: auto; }
+  [data-ar="wizard"] > [data-part="steps"] > [data-ar="steps"] > [data-part="step"] > [data-part="body"] > [data-part="content"] > [data-part="title"] { white-space: nowrap; }
 }

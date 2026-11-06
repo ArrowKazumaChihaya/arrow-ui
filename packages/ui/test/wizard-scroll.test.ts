@@ -58,3 +58,27 @@ it.each(['html', 'body'] as const)('scrolls the actual %s document scroller afte
   wrapper.unmount();
   Reflect.deleteProperty(scroller,'scrollTo');
 });
+
+it('reveals the active step in the horizontal rail without moving the page when scrolling is disabled', async () => {
+  const pageScroll = vi.fn();
+  Object.defineProperty(document.documentElement, 'scrollTo', { configurable: true, value: pageScroll });
+  const wrapper = mount(ArWizard, { props: {
+    value: 1, scrollOnChange: false,
+    options: [{value: 1, label: 'Start'}, {value: 2, label: 'Details'}, {value: 3, label: 'Review'}],
+  }});
+  const viewport = wrapper.get<HTMLElement>('[data-part="steps"]').element;
+  Object.defineProperty(viewport, 'clientWidth', { configurable: true, value: 300 });
+  Object.defineProperty(viewport, 'scrollWidth', { configurable: true, value: 600 });
+  vi.spyOn(viewport, 'getBoundingClientRect').mockReturnValue(new DOMRect(10, 0, 300, 40));
+  vi.spyOn(wrapper.get('[data-part="step"]:last-child').element, 'getBoundingClientRect').mockImplementation(() => new DOMRect(510 - viewport.scrollLeft, 0, 100, 24));
+  vi.spyOn(wrapper.get('[data-part="step"]:first-child').element, 'getBoundingClientRect').mockImplementation(() => new DOMRect(10 - viewport.scrollLeft, 0, 100, 24));
+  await wrapper.setProps({value: 3});
+  expect(viewport.scrollLeft).toBe(300);
+  await wrapper.setProps({disabled: true});
+  expect(viewport.scrollLeft).toBe(300);
+  await wrapper.setProps({value: 1});
+  expect(viewport.scrollLeft).toBe(0);
+  expect(pageScroll).not.toHaveBeenCalled();
+  wrapper.unmount();
+  Reflect.deleteProperty(document.documentElement, 'scrollTo');
+});

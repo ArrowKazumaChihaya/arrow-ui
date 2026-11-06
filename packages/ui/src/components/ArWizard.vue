@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, watch} from 'vue';
+import {computed, onBeforeUnmount, onMounted, ref, watch} from 'vue';
 import ArSteps from './ArSteps.vue';
 import ArButton from './ArButton.vue';
 import type { ArWizardProps, ArWizardEmits } from './ArWizard.contract';
@@ -12,6 +12,25 @@ const option=computed(()=>{
   return selected;
 });
 const items=computed(()=>props.options.map(item=>({title:item.label})));
+const stepsViewport = ref<HTMLElement | null>(null);
+function revealCurrentStep() {
+  const viewport = stepsViewport.value;
+  const step = viewport?.querySelector<HTMLElement>('[aria-current="step"]');
+  if (!viewport || !step || viewport.scrollWidth <= viewport.clientWidth) return;
+  const bounds = viewport.getBoundingClientRect();
+  const currentBounds = step.getBoundingClientRect();
+  if (currentBounds.left < bounds.left) viewport.scrollLeft += currentBounds.left - bounds.left;
+  else if (currentBounds.right > bounds.right) viewport.scrollLeft += currentBounds.right - bounds.right;
+}
+let stepsObserver: ResizeObserver | undefined;
+onMounted(() => {
+  revealCurrentStep();
+  if (!stepsViewport.value || typeof ResizeObserver === 'undefined') return;
+  stepsObserver = new ResizeObserver(revealCurrentStep);
+  stepsObserver.observe(stepsViewport.value);
+});
+onBeforeUnmount(() => stepsObserver?.disconnect());
+watch(current, revealCurrentStep, {flush:'post'});
 const nextLabel=computed(()=>{
   if(option.value.nextText !== undefined) return option.value.nextText;
   const destination=props.nextValue === undefined
@@ -28,8 +47,8 @@ watch(()=>props.value,()=>{
 </script>
 <template>
   <section data-ar="wizard" data-part="root" :data-layout="layout">
-    <div data-part="steps"><ArSteps :items="items" :current="current" :label="labels.steps" size="mini" /></div>
-    <p data-part="summary" aria-live="polite">{{current+1}} / {{options.length}} — {{option?.label}}</p>
+    <div ref="stepsViewport" data-part="steps" role="region" :aria-label="labels.steps" tabindex="0"><ArSteps :items="items" :current="current" :label="labels.steps" size="mini" /></div>
+    <p data-part="summary" data-ar-visually-hidden aria-live="polite">{{current+1}} / {{options.length}} — {{option?.label}}</p>
     <div data-part="content"><slot /></div>
     <div v-if="!disabled && option" data-part="actions">
       <ArButton v-if="option.isPrev!==false" tone="secondary" size="lg" @click="emit('prev')">{{option.prevText ?? labels.prev}}</ArButton>
