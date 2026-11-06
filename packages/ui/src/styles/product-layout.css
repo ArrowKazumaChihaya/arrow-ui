@@ -1114,6 +1114,11 @@ html[data-ar-design] {
   --arrow-floating-right: calc(18px + env(safe-area-inset-right, 0px));
   --arrow-floating-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
 }
+@media (min-width: 960px) {
+  html[data-ar-design="remix"]:has(.menu_layout):has(.ai-chat) {
+    --ar-app-footer-end-inset: calc(var(--arrow-floating-right) + 58px);
+  }
+}
 @media (max-width: 959px) {
   html[data-ar-design] {
     --arrow-floating-right: calc(14px + env(safe-area-inset-right, 0px));
