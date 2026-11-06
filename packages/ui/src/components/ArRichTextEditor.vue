@@ -6,7 +6,7 @@
  * キーボード：ツールバーは ←→ Home End で道具を移り（Tab で止まるのは1つ）、メニューは ↑↓ Enter Escape。
  * 本文では Ctrl/⌘+B・I・U・Z・Shift+Z（ブラウザの編集の操作）。
  */
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useAttrs, useSlots, watch } from "vue";
 import ArFloat from "../internal/ArFloat.vue";
 import ArVariablePanel from "./ArVariablePanel.vue";
 import { froalaGlyphs, lineGlyphs, type EditorGlyph } from "../internal/editorGlyphs";
@@ -23,6 +23,7 @@ import { useDesignForm, useId } from "../provider/context";
 import type { ArRichTextEditorLabels, ArRichTextEditorProps, ArRichTextTool } from "./ArRichTextEditor.contract";
 import type { ArVariableGroup, ArVariableItem } from "./ArVariablePanel.contract";
 
+defineOptions({ inheritAttrs: false });
 const defaultLabels: ArRichTextEditorLabels = {
   toolbar: "書式",
   fontSize: "文字の大きさ",
@@ -56,6 +57,7 @@ const defaultLabels: ArRichTextEditorLabels = {
 };
 
 const props = withDefaults(defineProps<ArRichTextEditorProps>(), {
+  id: undefined,
   modelValue: "",
   toolbar: () =>
     ["variables", "|", "fontSize", "bold", "italic", "underline", "color", "|", "align", "paragraph", "list", "|", "table", "pageBreak", "spacer", "undo", "redo", "help"] as const,
@@ -100,6 +102,15 @@ defineSlots<{ "footer-extra"?: () => unknown; "toolbar-end"?: () => unknown }>()
 const slots = useSlots();
 const L = computed<ArRichTextEditorLabels>(() => ({ ...defaultLabels, ...props.labels }));
 const id = useId("ar-rte");
+const contentId = computed(() => props.id ?? `${id}-content`);
+const attrs = useAttrs();
+const rootAttrs = computed(() => ({ class: attrs.class, style: attrs.style }));
+const contentAttrs = computed(() => {
+  const { class: _class, style: _style, ...rest } = attrs;
+  return rest;
+});
+const accessibleLabel = computed(() => typeof attrs["aria-label"] === "string" ? attrs["aria-label"] : props.label);
+const invalidState = computed(() => props.invalid || attrs["aria-invalid"] === "true" || attrs["aria-invalid"] === true);
 const placementForm = useDesignForm<"inline" | "menu">("ArRichTextEditor", "variables", "inline");
 const iconForm = useDesignForm<"line" | "froala">("ArRichTextEditor", "icons", "line");
 const varButtonForm = useDesignForm<"label" | "icon">("ArRichTextEditor", "variableButton", "label");
@@ -536,7 +547,7 @@ const countText = computed(() =>
 const over = computed(() => !!props.maxLength && chars.value > props.maxLength);
 const state = computed(
   () =>
-    [focused.value && "focused", props.disabled && "disabled", props.readonly && "readonly", (props.invalid || over.value) && "invalid", empty.value && "empty"]
+    [focused.value && "focused", props.disabled && "disabled", props.readonly && "readonly", (invalidState.value || over.value) && "invalid", empty.value && "empty"]
       .filter(Boolean)
       .join(" ") || undefined,
 );
@@ -547,6 +558,7 @@ const bodyStyle = computed(() => ({ minHeight: props.minHeight, maxHeight: props
 
 <template>
   <div
+    v-bind="rootAttrs"
     data-ar="rich-text-editor"
     data-part="root"
     :data-state="state"
@@ -561,7 +573,7 @@ const bodyStyle = computed(() => ({ minHeight: props.minHeight, maxHeight: props
       data-part="toolbar"
       role="toolbar"
       :aria-label="L.toolbar"
-      :aria-controls="`${id}-content`"
+      :aria-controls="contentId"
       @keydown="onToolbarKey"
     >
       <template v-for="t in tools" :key="t.key">
@@ -629,15 +641,16 @@ const bodyStyle = computed(() => ({ minHeight: props.minHeight, maxHeight: props
     <div data-part="body" :style="paper ? bodyStyle : undefined">
       <div data-part="paper" :style="paper ? { width: paperWidth } : bodyStyle">
         <div
-          :id="`${id}-content`"
+          v-bind="contentAttrs"
+          :id="contentId"
           ref="content"
           data-part="content"
           role="textbox"
           aria-multiline="true"
-          :aria-label="label"
+          :aria-label="accessibleLabel"
           :aria-disabled="disabled || undefined"
           :aria-readonly="readonly || undefined"
-          :aria-invalid="invalid || over || undefined"
+          :aria-invalid="invalidState || over || undefined"
           :contenteditable="editable ? 'true' : 'false'"
           :tabindex="disabled ? -1 : 0"
           spellcheck="false"

@@ -1,4 +1,4 @@
-/* @covers ArRichTextEditor 1.0.0 */
+/* @covers ArRichTextEditor 1.1.0 */
 /* ArRichTextEditor：書類集計キャンバスの自作書類の編集（.edw 角丸12・field の内側の線、.tbar #F8FAFC の段 6px 8px と下線、.tb 高さ32 角丸8 700 12.5px・乗せると白、
    .tb.av テーマ色の塗り、.tsep 1×20、.edbody #E9EDF1 の地 18px、.pdfs 白い紙 560px 40px 44px・明朝 11.5px・表の線 #888、.vv 変数の札、.edft 下の段 12px）と、
    通知キャンバスのメールテンプレートの編集（線 #E6EBF0 の枠・30px の「ARROW 差し込み項目」・.v-ib 30px の元に戻す・右端の「194文字」・本文 500 13.5px 行1.9 の 14px 16px）。 */

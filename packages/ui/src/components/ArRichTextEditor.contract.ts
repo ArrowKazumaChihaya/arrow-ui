@@ -30,6 +30,8 @@ export type ArRichTextTool =
   | "spacer";
 
 export interface ArRichTextEditorProps {
+  /** 1.1: ID of the editable textbox, for field labels and descriptions. */
+  id?: string;
   /** 本文の HTML（v-model）。plain のときは文字と `<br>` だけ。 */
   modelValue?: string;
   /**

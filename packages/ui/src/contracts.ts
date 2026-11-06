@@ -58,7 +58,7 @@ export const contracts = {
   ArRadio: "1.1.0",
   ArRadioGroup: "1.2.0",
   ArRate: "1.0.0",
-  ArRichTextEditor: "1.0.0",
+  ArRichTextEditor: "1.1.0",
   ArSelect: "1.3.0",
   ArSlider: "1.0.0",
   ArStepper: "1.1.0",

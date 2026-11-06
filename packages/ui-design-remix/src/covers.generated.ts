@@ -97,7 +97,7 @@ export const covers = {
   ArRate: "1.0.0",
   ArResult: "1.0.0",
   ArRibbon: "1.0.0",
-  ArRichTextEditor: "1.0.0",
+  ArRichTextEditor: "1.1.0",
   ArSaveBar: "1.0.0",
   ArSectionHead: "1.0.0",
   ArSectionMenu: "1.1.0",

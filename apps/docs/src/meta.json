@@ -4272,9 +4272,15 @@
  },
  {
   "name": "ArRichTextEditor",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "書式のツールバー・変数のメニュー・文字数のある文章の入力（書類集計の自作書類・通知のメールテンプレート）。\n依存を増やさず contenteditable で作る。値は HTML（v-model）。危ないタグと属性は入るときも出すときも消す。\n変数（`{{ $employee_name }}`）は本文の中で札に見せる（値はただの文字のまま）。plain なら文字と改行だけ。\nキーボード：ツールバーは ←→ Home End で道具を移り（Tab で止まるのは1つ）、メニューは ↑↓ Enter Escape。\n本文では Ctrl/⌘+B・I・U・Z・Shift+Z（ブラウザの編集の操作）。",
   "props": [
+   {
+    "name": "id",
+    "type": "string",
+    "required": false,
+    "description": "1.1: ID of the editable textbox, for field labels and descriptions."
+   },
    {
     "name": "modelValue",
     "type": "string",

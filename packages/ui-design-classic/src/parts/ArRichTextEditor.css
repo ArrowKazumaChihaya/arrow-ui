@@ -1,4 +1,4 @@
-/* @covers ArRichTextEditor 1.0.0 */
+/* @covers ArRichTextEditor 1.1.0 */
 /* ArRichTextEditor：今の ARROW の Froala 4.2.1（MailTemplateContent.vue・CustomDocumentContent.vue。froala_editor.pkgd.min.css と本番 index.html の地の文字）を実測。
    枠は角丸10・#CCCCCC の1px。ツールバーは白・高さ50（上の枠1・ボタンの段48・下に左右9pxをあけた #EFEFEF の1pxの線）・ボタンは 38×40・外側 4px 2px・角丸4・#333 の 24px の塗りの絵、
    乗せると #EBEBEB、押している（太字など）は絵が #0098F7、開いたメニューのボタンは #D6D6D6、元に戻せないときは #BDBDBD で薄さ .3。まとまりの間は 12px と 17px（区切りの線はない）・最後のまとまりは右端。
