@@ -8,6 +8,7 @@
 [data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]{gap:2px;font-size:16px}
 [data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"][data-trend="up"]{color:#3F8600}
 [data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"][data-trend="down"]{color:#CF1322}
+[data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]:is([data-tone="neutral"],[data-trend="flat"]){color:rgba(0,0,0,.65)}
 [data-ar-design="classic"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]>[data-ar="icon"]{width:14px;height:14px}
 [data-ar-design="classic"] [data-ar="statistic"][data-tone="ok"]>[data-part="content"]{color:#3F8600}
 [data-ar-design="classic"] [data-ar="statistic"][data-tone="warn"]>[data-part="content"]{color:#D48806}

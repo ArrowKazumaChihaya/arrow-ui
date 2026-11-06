@@ -15,6 +15,9 @@ const props = withDefaults(defineProps<ArStatisticProps>(), {
   suffix: undefined,
   trend: undefined,
   trendValue: undefined,
+  trendTone: "auto",
+  trendLabel: undefined,
+  trendPlacement: "inline",
   tone: "default",
   size: "md",
 });
@@ -34,9 +37,9 @@ const text = computed(() =>
       <span v-if="prefix" data-part="prefix">{{ prefix }}</span>
       <span data-part="value"><slot>{{ text }}</slot></span>
       <small v-if="suffix" data-part="suffix">{{ suffix }}</small>
-      <span v-if="trend" data-part="trend" :data-trend="trend">
-        <ArIcon line :name="trend === 'up' ? 'up' : 'down'" size="sm" />
-        <span data-ar-visually-hidden>{{ trend === "up" ? "増加" : "減少" }}</span>{{ trendValue }}
+      <span v-if="trend" data-part="trend" :data-trend="trend" :data-tone="trendTone" :data-placement="trendPlacement">
+        <ArIcon v-if="trend !== 'flat'" line :name="trend === 'up' ? 'up' : 'down'" size="sm" />
+        <span data-ar-visually-hidden>{{ trendLabel ?? (trend === "up" ? "増加" : trend === "down" ? "減少" : "変化なし") }}</span>{{ trendValue }}
       </span>
     </div>
   </div>

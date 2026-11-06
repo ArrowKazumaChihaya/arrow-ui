@@ -8213,15 +8213,35 @@
    },
    {
     "name": "trend",
-    "type": "'up' | 'down'",
+    "type": "'up' | 'down' | 'flat'",
     "required": false,
-    "description": "増減。up＝増えた（緑）、down＝減った（赤）。"
+    "description": "増減。flat は変化なし。色の意味は trendTone で指定できる。"
    },
    {
     "name": "trendValue",
     "type": "string",
     "required": false,
     "description": "増減の値（「3.2%」）。"
+   },
+   {
+    "name": "trendTone",
+    "type": "'neutral' | 'auto'",
+    "required": false,
+    "description": "auto は従来の増＝緑・減＝赤。善悪を表さない比較には neutral を使う。",
+    "default": "\"auto\""
+   },
+   {
+    "name": "trendLabel",
+    "type": "string",
+    "required": false,
+    "description": "読み上げる比較の説明。未指定時は「増加」「減少」「変化なし」。"
+   },
+   {
+    "name": "trendPlacement",
+    "type": "'inline' | 'below'",
+    "required": false,
+    "description": "増減の配置。狭い集計カードでは below で値の下へ置ける。",
+    "default": "\"inline\""
    },
    {
     "name": "tone",

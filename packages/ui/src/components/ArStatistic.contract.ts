@@ -14,10 +14,16 @@ export interface ArStatisticProps {
   prefix?: string;
   /** 数字の後ろの単位（「名」「/ 9名」）。 */
   suffix?: string;
-  /** 増減。up＝増えた（緑）、down＝減った（赤）。 */
-  trend?: "up" | "down";
+  /** 増減。flat は変化なし。色の意味は trendTone で指定できる。 */
+  trend?: "up" | "down" | "flat";
   /** 増減の値（「3.2%」）。 */
   trendValue?: string;
+  /** auto は従来の増＝緑・減＝赤。善悪を表さない比較には neutral を使う。 */
+  trendTone?: "auto" | "neutral";
+  /** 読み上げる比較の説明。未指定時は「増加」「減少」「変化なし」。 */
+  trendLabel?: string;
+  /** 増減の配置。狭い集計カードでは below で値の下へ置ける。 */
+  trendPlacement?: "inline" | "below";
   /** 数字の色（未提出＝warn、不足＝danger など）。 */
   tone?: "default" | "ok" | "warn" | "danger";
   /** 大きさ。sm は数字の箱の中（18px）。 */

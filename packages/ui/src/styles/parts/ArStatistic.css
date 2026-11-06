@@ -2,3 +2,4 @@
 [data-ar="statistic"]>[data-part="title"]{display:flex;align-items:center}
 [data-ar="statistic"]>[data-part="content"]{display:flex;align-items:baseline;flex-wrap:wrap;font-variant-numeric:tabular-nums}
 [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]{display:inline-flex;align-items:center;align-self:center}
+[data-ar="statistic"]>[data-part="content"]>[data-part="trend"][data-placement="below"]{flex-basis:100%;min-width:0;overflow-wrap:anywhere}

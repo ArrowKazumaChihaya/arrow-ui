@@ -193,6 +193,16 @@ describe("ArDescriptions・ArStatistic・ArCountdown", () => {
     expect(w.get('[data-part="trend"]').attributes("data-trend")).toBe("down");
     expect(w.get('[data-part="trend"]').text()).toContain("減少");
   });
+  it("増減の善悪を決めずに下へ配置でき、変化なしには方向アイコンを出さない", async () => {
+    const w = mount(ArStatistic, { props: { value: "1日", trend: "up", trendValue: "+1日", trendTone: "neutral", trendPlacement: "below", trendLabel: "前月比" } });
+    const trend = w.get('[data-part="trend"]');
+    expect(trend.attributes("data-tone")).toBe("neutral");
+    expect(trend.attributes("data-placement")).toBe("below");
+    expect(trend.text()).toContain("前月比");
+    await w.setProps({ trend: "flat", trendValue: "0日" });
+    expect(trend.find('[data-ar="icon"]').exists()).toBe(false);
+    expect(trend.text()).toContain("0日");
+  });
   it("しめきりまでの残りは残りが少ないと warn、0 で finish", async () => {
     vi.useFakeTimers();
     const now = Date.now();

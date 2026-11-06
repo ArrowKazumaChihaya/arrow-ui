@@ -8,6 +8,7 @@
 [data-ar-design="remix"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]{font-size:14px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"][data-trend="up"]{color:var(--ar-color-ok)}
 [data-ar-design="remix"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"][data-trend="down"]{color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]:is([data-tone="neutral"],[data-trend="flat"]){color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="statistic"]>[data-part="content"]>[data-part="trend"]>[data-ar="icon"]{width:15px;height:15px}
 [data-ar-design="remix"] [data-ar="statistic"][data-tone="ok"]>[data-part="content"]{color:var(--ar-color-ok)}
 [data-ar-design="remix"] [data-ar="statistic"][data-tone="warn"]>[data-part="content"]{color:var(--ar-color-warn)}
