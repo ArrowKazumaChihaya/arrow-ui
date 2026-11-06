@@ -24,6 +24,7 @@ const show = (v: string | number | null | undefined) => (v === null || v === und
 const isChanged = computed(() => props.changed ?? show(props.before) !== show(props.after));
 const form = computed(() => props.layout ?? (props.items ? "table" : "inline"));
 const H = computed<ArChangedValueHeaders>(() => ({ label: "項目", before: "変更前", after: "変更後", list: "項目（変更前 → 変更後）", ...props.headers }));
+const itemChanged = (it: ArChangedValueItem) => show(it.before) !== show(it.after);
 const keyOf = (it: ArChangedValueItem) => it.key ?? it.label;
 /** text：今の UI/ChangedValue と同じ（null は空の文字、変わったかはそのまま比べる）。 */
 const raw = (v: string | number | null | undefined) => (v === null || v === undefined ? "" : String(v));
@@ -41,22 +42,22 @@ const textChanged = computed(() => props.changed ?? props.before !== props.after
       </tr>
     </thead>
     <tbody>
-      <tr v-for="it in items ?? []" :key="keyOf(it)" data-part="row">
+      <tr v-for="it in items ?? []" :key="keyOf(it)" data-part="row" :data-state="itemChanged(it) ? 'changed' : undefined">
         <th data-part="label" scope="row">{{ it.label }}</th>
-        <td data-part="cell" data-col="before"><s data-part="before">{{ show(it.before) }}</s></td>
+        <td data-part="cell" data-col="before"><component :is="itemChanged(it) ? 's' : 'span'" data-part="before">{{ show(it.before) }}</component></td>
         <td data-part="cell" data-col="after">
-          <span data-part="change"><span data-part="arrow" aria-hidden="true">→</span><span data-ar-visually-hidden>{{ labels.after }}</span><b data-part="after">{{ show(it.after) }}</b></span>
+          <span data-part="change"><span v-if="itemChanged(it)" data-part="arrow" aria-hidden="true">→</span><span data-ar-visually-hidden>{{ labels.after }}</span><b data-part="after">{{ show(it.after) }}</b></span>
         </td>
       </tr>
     </tbody>
   </table>
   <div v-else-if="form === 'list'" data-ar="changed-value" data-part="root" data-layout="list" role="table" :aria-label="caption">
     <div data-part="head" role="row"><span data-part="head-cell" role="columnheader">{{ H.list }}</span></div>
-    <div v-for="it in items ?? []" :key="keyOf(it)" data-part="row" role="row">
+    <div v-for="it in items ?? []" :key="keyOf(it)" data-part="row" role="row" :data-state="itemChanged(it) ? 'changed' : undefined">
       <span data-part="change" role="cell">
         <b data-part="label">{{ it.label }}</b>
-        <span data-ar-visually-hidden>{{ labels.before }}</span><s data-part="before">{{ show(it.before) }}</s>
-        <span data-part="arrow" aria-hidden="true">→</span>
+        <template v-if="itemChanged(it)"><span data-ar-visually-hidden>{{ labels.before }}</span><s data-part="before">{{ show(it.before) }}</s>
+        <span data-part="arrow" aria-hidden="true">→</span></template>
         <span data-ar-visually-hidden>{{ labels.after }}</span><b data-part="after">{{ show(it.after) }}</b>
       </span>
     </div>

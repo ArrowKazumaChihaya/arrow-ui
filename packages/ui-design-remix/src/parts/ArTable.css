@@ -194,3 +194,6 @@
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-wrap]{white-space:pre-wrap;overflow-wrap:anywhere;text-overflow:clip;line-height:1.6;padding-block:8px}
 
 [data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"][data-wrap]{white-space:normal;overflow-wrap:anywhere;padding-block:6px}
+/* Empty messages stay inside the visible viewport of a horizontally scrollable table. */
+[data-ar-design="remix"] [data-ar="table"]{container:ar-table / inline-size}
+[data-ar-design="remix"] [data-ar="table"] td[data-part="empty"]>[data-ar="empty"]{position:sticky;left:12px;width:calc(100cqw - 24px);max-width:100%;box-sizing:border-box}

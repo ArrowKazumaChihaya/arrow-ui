@@ -28,3 +28,6 @@
 [data-ar-design="remix"] [data-ar="changed-value"][data-layout="list"] [data-part="arrow"]{margin:0}
 /* 1.2 text（今の表記そのままの1つの文）：変わったときは変更後と同じ橙の太字 */
 [data-ar-design="remix"] [data-ar="changed-value"][data-layout="text"][data-state~="changed"]{color:var(--ar-color-warn);font-weight:700}
+
+/* Context rows in history are not changes: no strike-through or accent emphasis. */
+[data-ar-design="remix"] [data-ar="changed-value"] [data-part="row"]:not([data-state~="changed"]) :is([data-part="before"],[data-part="after"]){text-decoration:none;color:var(--ar-color-text);font-weight:400}

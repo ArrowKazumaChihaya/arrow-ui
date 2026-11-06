@@ -6,7 +6,7 @@
    Sticky navigation in the body must follow the page scroll. */
 /* band：白・角丸18・影。帯は54px・18px太字・字間0.08em、テーマ色の120度のやわらかいグラデーションに淡い白の丸 */
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]{border-radius:18px;box-shadow:var(--ar-shadow-card);overflow:clip}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;overflow:hidden;flex:none;flex-wrap:nowrap;height:54px;padding:0 16px;justify-content:center;background:linear-gradient(120deg,var(--ar-accent-hi) 0%,var(--ar-accent) 45%,var(--ar-accent-strong) 100%);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;overflow:clip;flex:none;flex-wrap:nowrap;height:54px;padding:0 16px;justify-content:center;background:linear-gradient(120deg,var(--ar-accent-hi) 0%,var(--ar-accent) 45%,var(--ar-accent-strong) 100%);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::before,[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::before{right:-30px;top:-46px;width:150px;height:150px;background:rgba(255,255,255,.10)}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]::after{left:-40px;bottom:-70px;width:140px;height:140px;background:rgba(255,255,255,.07)}
@@ -52,7 +52,7 @@
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]{height:auto;min-height:54px;padding-block:8px}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]{height:auto;min-height:46px}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}
-[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]){display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]:not(:empty)){display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
 [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{position:relative;right:auto;top:auto;transform:none;flex-wrap:wrap}
 /* Text actions sit on the coloured band, so use its foreground rather than
    the normal surface link colour. Nested action clusters follow the same rule. */
@@ -65,5 +65,8 @@
 @media(max-width:640px){
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]{min-height:50px;padding-inline:12px}
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]>[data-part="title"]{font-size:17px}
-  [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]){display:flex;flex-wrap:wrap;gap:8px}
+  [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]:not(:empty)){display:flex;flex-wrap:wrap;gap:8px}
 }
+
+/* A conditional actions slot can remain mounted while its content is empty. */
+[data-ar-design="remix"] [data-ar="card"]>[data-part="head"]>[data-part="actions"]:empty{display:none}
