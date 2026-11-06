@@ -67,6 +67,9 @@ export interface ArTextInputProps {
   autofocus?: boolean;
   /** 消すボタンの読み上げ。 */
   clearLabel?: string;
+  /** パスワードを見せる・隠すボタンの読み上げ。 */
+  showPasswordLabel?: string;
+  hidePasswordLabel?: string;
   /** 中の input に付ける class（今の ARROW の text_input・tabindexkey など、input を class で探すとき）。 */
   inputClass?: string | readonly string[] | Record<string, boolean>;
   /** 中の input に付ける style。 */

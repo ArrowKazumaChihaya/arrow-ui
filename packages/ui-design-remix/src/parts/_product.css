@@ -358,3 +358,11 @@
 [data-ar-design="remix"] .join-introduction{width:100%;max-width:520px;margin:24px auto}
 [data-ar-design="remix"] .login_wrapper .login__version{position:relative;align-self:flex-start;margin:24px 0 0;font-size:10px;line-height:1.5}
 @media(min-width:768px){[data-ar-design="remix"] .login_wrapper .login__version{position:absolute;left:16px;bottom:12px}}
+/* Login app prompt: keep the icon, wrapped name and actions inside narrow viewports. */
+[data-ar-design="remix"] .app_popup[data-v-uibfa8b11a3438]{height:auto;min-height:50px}
+[data-ar-design="remix"] .app_popup_content[data-v-uibfa8b11a3438]{box-sizing:border-box;display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px}
+[data-ar-design="remix"] .app_popup_content .mark_wrap[data-v-uibfa8b11a3438]{flex:none;width:28px;margin:0;padding:0}
+[data-ar-design="remix"] .app_popup_text[data-v-uibfa8b11a3438]{flex:1;min-width:0;padding:0}
+[data-ar-design="remix"] .app_popup_text :is(.app_name,.app_caution)[data-v-uibfa8b11a3438]{font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+[data-ar-design="remix"] .app_button_wrap[data-v-uibfa8b11a3438]{display:flex;align-items:center;gap:4px;flex:none}
+[data-ar-design="remix"] .close_app_button[data-v-uibfa8b11a3438]{display:inline-flex;width:30px;height:30px;margin:0;padding:0;line-height:normal}

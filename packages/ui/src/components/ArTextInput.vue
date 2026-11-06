@@ -40,6 +40,8 @@ const props = withDefaults(defineProps<ArTextInputProps>(), {
   autocomplete: "off",
   autofocus: false,
   clearLabel: "消す",
+  showPasswordLabel: "パスワードを表示する",
+  hidePasswordLabel: "パスワードを隠す",
   inputClass: undefined,
   inputStyle: undefined,
 });
@@ -173,7 +175,7 @@ defineExpose({
       v-if="type === 'password'"
       type="button"
       data-part="reveal"
-      :aria-label="revealed ? 'パスワードを隠す' : 'パスワードを表示する'"
+      :aria-label="revealed ? hidePasswordLabel : showPasswordLabel"
       :aria-pressed="revealed"
       :disabled="disabled"
       @mousedown.prevent
