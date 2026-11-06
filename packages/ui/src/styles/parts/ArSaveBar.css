@@ -5,3 +5,10 @@
 [data-ar="save-bar"]>[data-part="spacer"]{flex:1}
 [data-ar="save-bar"][data-sticky]{position:sticky;bottom:16px;z-index:20}
 [data-ar="save-bar"][data-summary="hidden"]>:is([data-part="count"],[data-part="items"]){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+/* A settings panel can be narrow independently of the browser viewport. */
+[data-ar="save-bar"]{container:ar-save-bar / inline-size}
+@container ar-save-bar (max-width:480px){
+  [data-ar="save-bar"]>[data-part="count"]{flex-basis:100%;white-space:normal}
+  [data-ar="save-bar"]>:is([data-part="items"],[data-part="spacer"]){display:none}
+  [data-ar="save-bar"]>[data-ar="button"]{flex:1 1 calc(50% - 10px);min-width:0;max-width:100%;white-space:normal}
+}

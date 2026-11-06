@@ -63,7 +63,16 @@ function onLabelClick(e: MouseEvent) {
   const el = document.getElementById(id.value);
   if (!el || ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(el.tagName)) return;
   e.preventDefault();
-  el.focus();
+  if (el.tabIndex >= 0 && el.getAttribute("aria-disabled") !== "true") {
+    el.focus();
+    return;
+  }
+  // Radio/flag groups carry the field id on their container. Focus the first
+  // usable control, as ArField does, instead of a non-focusable wrapper.
+  const controls = el.querySelectorAll<HTMLElement>(
+    'input:not([type="hidden"]):not(:disabled), select:not(:disabled), textarea:not(:disabled), button:not(:disabled), [tabindex]:not([tabindex="-1"])',
+  );
+  Array.from(controls).find((control) => control.getAttribute("aria-disabled") !== "true" && control.getClientRects().length > 0)?.focus();
 }
 </script>
 

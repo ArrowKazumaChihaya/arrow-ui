@@ -46,7 +46,7 @@ const saveLabel = computed(() => props.saveText ?? (texts.value === "arrow" ? "�
     <span v-if="!sm && items.length" data-part="items" :title="items.join('・')">{{ items.join("・") }}</span>
     <span v-else data-part="spacer" />
     <ArButton v-if="errorCount > 0" tone="danger-subtle" size="sm" icon="alert" @click="emit('jump', $event)">{{ errorText.replace("{n}", String(errorCount)) }}</ArButton>
-    <ArButton tone="secondary" :size="sm ? 'sm' : 'md'" :icon="sm ? undefined : texts === 'arrow' ? 'x' : 'undo'" @click="emit('discard', $event)">{{ discardLabel }}</ArButton>
+    <ArButton tone="secondary" :size="sm ? 'sm' : 'md'" :icon="sm ? undefined : texts === 'arrow' ? 'x' : 'undo'" :disabled="saving" @click="emit('discard', $event)">{{ discardLabel }}</ArButton>
     <ArButton tone="primary" :size="sm ? 'sm' : 'md'" icon="check" :loading="saving" :disabled="saveDisabled" :blink="texts === 'arrow'" @click="emit('save', $event)">{{ saveLabel }}</ArButton>
   </div>
 </template>
