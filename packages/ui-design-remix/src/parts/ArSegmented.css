@@ -19,3 +19,9 @@
 /* 件数の丸は ArBadge（テーマ色の塗り。warn・danger・neutral は淡い地。18・角丸9・11px 700）。文字との間 5px、押せないときは灰の塗り */
 [data-ar-design="remix"] [data-ar="segmented"]>[data-part="item"]>[data-part="count"]{margin-left:-1px}
 [data-ar-design="remix"] [data-ar="segmented"]>[data-part="item"]:disabled>[data-part="count"]>[data-part="count"]{background:var(--ar-color-text-faint);color:#fff}
+
+/* Equal-width choices must wrap long labels instead of painting over neighboring choices. */
+[data-ar-design="remix"] [data-ar="segmented"][data-block]>[data-part="item"]{height:auto;min-height:30px;padding-block:4px;white-space:normal;line-height:1.3}
+[data-ar-design="remix"] [data-ar="segmented"][data-block][data-size="sm"]>[data-part="item"]{min-height:24px}
+[data-ar-design="remix"] [data-ar="segmented"][data-block][data-size="lg"]>[data-part="item"]{min-height:36px}
+[data-ar-design="remix"] [data-ar="segmented"][data-block]>[data-part="item"]>[data-part="label"]{min-width:0;overflow-wrap:anywhere}
