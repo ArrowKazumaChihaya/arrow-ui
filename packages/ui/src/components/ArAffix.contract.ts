@@ -2,6 +2,8 @@
 export interface ArAffixProps {
   /** 上に残すときの、スクロールする箱の上端からの距離（px）。 */
   offsetTop?: number;
+  /** 操作の横方向の配置。 */
+  justify?: "start" | "center" | "end" | "between";
   /** 渡すと下に残す（下端からの距離 px）。 */
   offsetBottom?: number;
   /** 残っているときだけ帯の見た目（半透明の白・ぼかし・下の線）にする。false なら常に帯の見た目。 */

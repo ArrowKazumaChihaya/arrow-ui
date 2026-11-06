@@ -4,3 +4,6 @@
 [data-ar-design="remix"] [data-ar="affix"]:is([data-band="always"],[data-state~="affixed"]){background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 [data-ar-design="remix"] [data-ar="affix"][data-position="top"]:is([data-band="always"],[data-state~="affixed"]){border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="affix"][data-position="bottom"]:is([data-band="always"],[data-state~="affixed"]){border-top:1px solid var(--ar-color-border)}
+
+/* Product shells keep page actions above their fixed navigation and safe-area inset. */
+html[data-ar-design="remix"] .menu_layout [data-ar="affix"][data-position="bottom"]{--ar-affix-bottom-inset:var(--arrow-floating-bottom,16px)}
