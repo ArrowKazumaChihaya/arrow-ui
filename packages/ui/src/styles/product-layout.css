@@ -7200,56 +7200,8 @@ table
   width: 2px;
   height: 20px;
 }
-.title_wrap[data-v-ui0daaff57fd5a] {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.title_history_button_wrap[data-v-ui0daaff57fd5a] {
-  margin-left: auto;
-}
-.history_control_wrap[data-v-ui0daaff57fd5a] {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.history_button_wrap[data-v-ui0daaff57fd5a],
-.history_now_button_wrap[data-v-ui0daaff57fd5a] {
-  width: 210px;
-}
-.history_notice[data-v-ui0daaff57fd5a] {
-  margin-bottom: 12px;
-  padding: 8px 10px;
-}
-.history_notice
-  p[data-v-ui0daaff57fd5a] {
-  margin: 0;
-}
-.history_mode[data-v-ui0daaff57fd5a] {
-  padding: 0 8px 8px;
-}
-.menu_wrap[data-v-ui0daaff57fd5a] {
-  width: 100%;
-}
-@media screen and (max-width: 499px) {
-  .history_button_wrap[data-v-ui0daaff57fd5a],
-  .history_now_button_wrap[data-v-ui0daaff57fd5a] {
-    width: 170px;
-  }
-  .company_wrap[data-v-ui0daaff57fd5a] {
-    padding: 0px 10px;
-  }
-}
 .minute_unit[data-v-uia02bbd277828] {
   margin: 0 5px;
-}
-.menu_wrap[data-v-ui692b65319b4c] {
-  width: 100%;
-}
-@media screen and (max-width: 499px) {
-  .config_wrap[data-v-ui692b65319b4c] {
-    padding: 0px 10px;
-  }
 }
 .allowance_wrap[data-v-ui757059c68811] {
   margin-top: 40px;

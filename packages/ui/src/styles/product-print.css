@@ -10284,64 +10284,8 @@ table
   height: 20px;
   transform: translateX(-50%);
 }
-.title_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.title_history_button_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-left: auto;
-}
-.history_control_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.history_button_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *),
-.history_now_button_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 210px;
-}
-.history_notice[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin-bottom: 12px;
-  border: 1px solid #f5d07a;
-  background: #fff6db;
-  border-radius: 6px;
-  padding: 8px 10px;
-}
-.history_notice
-  p[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  margin: 0;
-  color: #8a5a00;
-  font-size: 13px;
-  font-weight: 600;
-}
-.history_mode[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  padding: 0 8px 8px;
-  border-radius: 8px;
-  background: #fffcf2;
-}
-.menu_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 100%;
-}
-@media screen and (max-width: 499px) {
-  .history_button_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *),
-  .history_now_button_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-    width: 170px;
-  }
-  .company_wrap[data-v-ui0daaff57fd5a]:where([data-ui-fixed], [data-ui-fixed] *) {
-    padding: 0px 10px;
-  }
-}
 .minute_unit[data-v-uia02bbd277828]:where([data-ui-fixed], [data-ui-fixed] *) {
   margin: 0 5px;
-}
-.menu_wrap[data-v-ui692b65319b4c]:where([data-ui-fixed], [data-ui-fixed] *) {
-  width: 100%;
-}
-@media screen and (max-width: 499px) {
-  .config_wrap[data-v-ui692b65319b4c]:where([data-ui-fixed], [data-ui-fixed] *) {
-    padding: 0px 10px;
-  }
 }
 .allowance_wrap[data-v-ui757059c68811]:where([data-ui-fixed], [data-ui-fixed] *) {
   margin-top: 40px;

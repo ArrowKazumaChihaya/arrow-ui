@@ -811,8 +811,8 @@
  },
  {
   "name": "ArParagraph",
-  "version": "1.0.0",
-  "description": "段落（本文 13.5px・行の高さ1.75）。長い文は行数で切れる。",
+  "version": "1.1.0",
+  "description": "段落。自由記述の改行を保ち、長い文は行数で切れる。",
   "props": [
    {
     "name": "type",
@@ -832,6 +832,13 @@
     "type": "boolean",
     "required": false,
     "description": "太字。",
+    "default": "false"
+   },
+   {
+    "name": "preserveLines",
+    "type": "boolean",
+    "required": false,
+    "description": "自由記述の改行・連続した空白を保つ。長い単語は配置幅で折り返す。1行の省略表示を優先する。",
     "default": "false"
    },
    {
@@ -1520,9 +1527,42 @@
  },
  {
   "name": "ArSectionMenu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": false,
+    "description": "1.1: Optional heading for the desktop navigation card."
+   },
+   {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'apply' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": ""
+   },
+   {
+    "name": "searchable",
+    "type": "boolean",
+    "required": false,
+    "description": "1.1: Search labels and ancestor labels without changing the selected section or its content.",
+    "default": "false"
+   },
+   {
+    "name": "searchPlaceholder",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "'項目を探す'"
+   },
+   {
+    "name": "emptyText",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "'該当する項目はありません'"
+   },
    {
     "name": "items",
     "type": "readonly ArMenuItem[]",
@@ -1821,7 +1861,7 @@
  },
  {
   "name": "ArWizard",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "props": [
    {
@@ -1837,6 +1877,12 @@
     "description": ""
    },
    {
+    "name": "nextValue",
+    "type": "number",
+    "required": false,
+    "description": "Actual destination when the consumer skips optional steps; navigation remains consumer-owned."
+   },
+   {
     "name": "disabled",
     "type": "boolean",
     "required": false,
@@ -1844,10 +1890,17 @@
     "default": "false"
    },
    {
-    "name": "labels",
-    "type": "{ steps: string; prev: string; next: string; }",
+    "name": "layout",
+    "type": "'fluid' | 'form'",
     "required": false,
-    "description": "",
+    "description": "form は読みやすい幅で中央に配置。fluid は従来どおり配置先の全幅を使う。",
+    "default": "\"fluid\""
+   },
+   {
+    "name": "labels",
+    "type": "{ steps: string; prev: string; next: string; nextStep?: string | undefined; }",
+    "required": false,
+    "description": "nextStep may contain {step}; an explicit option.nextText still takes precedence.",
     "default": "()=>({steps:'手順',prev:'戻る',next:'次へ'})"
    },
    {
@@ -9342,14 +9395,14 @@
     "name": "variant",
     "type": "'default' | 'confirm'",
     "required": false,
-    "description": "confirm：確かめの小さなポップアップ（左に印・本文なし）。",
+    "description": "confirm：確かめの小さなポップアップ。説明と任意の本文、操作ボタンをまとめる。",
     "default": "\"default\""
    },
    {
     "name": "icon",
     "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'apply' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
     "required": false,
-    "description": "題の左の印（confirm の既定は alert）。"
+    "description": "題に添える印（confirm の既定は alert）。位置はテーマが決める。"
    },
    {
     "name": "iconTone",
@@ -11957,7 +12010,7 @@
  },
  {
   "name": "ArPunchPanel",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "props": [
    {
@@ -11971,6 +12024,12 @@
     "type": "string",
     "required": true,
     "description": "利用側の時計が整形した日時。そのまま表示し、この部品自身はタイマーを持たない。"
+   },
+   {
+    "name": "dateLabel",
+    "type": "string",
+    "required": false,
+    "description": "日付を時計と分けて表示する場合に指定。省略時は従来の日時表示を維持する。"
    },
    {
     "name": "description",
@@ -11994,6 +12053,7 @@
   ],
   "parts": [
    "root",
+   "date",
    "clock",
    "controls",
    "actions",

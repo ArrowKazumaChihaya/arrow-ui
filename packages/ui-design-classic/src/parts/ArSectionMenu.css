@@ -1,2 +1,4 @@
-/* @covers ArSectionMenu 1.0.0 */
+/* @covers ArSectionMenu 1.1.0 */
 /* Composed from the active design’s public controls. */
+
+[data-ar-design="classic"] [data-ar="section-menu"] > [data-part="navigation"] [data-ar="menu"][data-mode="inline"] > [data-part="item"]{height:auto;min-height:40px;line-height:1.5;padding-top:8px;padding-bottom:8px}
