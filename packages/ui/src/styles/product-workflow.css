@@ -520,23 +520,9 @@ fieldset[data-v-ui34a47bbaf561] {
 /* @end-component */
 /* @end-component */
 
-/* @component src/View/Manager/Workflow/Component/MasterRowActions.vue#0 */
-.row_actions[data-v-ui07922df652d2] {
-  display: flex;
-  gap: 10px;
-}
-.small_button[data-v-ui07922df652d2],
-.member_button[data-v-ui07922df652d2] {
-  width: 30px;
-}
-/* @end-component */
 
-/* @component src/View/Manager/Workflow/Component/MasterTable.vue#0 */
-.order_help[data-v-ui768199a4628b] {
-  margin: 10px 0 20px;
-  line-height: 1.6;
-}
-/* @end-component */
+
+
 
 /* @component src/View/Manager/Workflow/Component/PreviewFields.vue#0 */
 /* @end-component */
