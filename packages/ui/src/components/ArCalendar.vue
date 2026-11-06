@@ -16,6 +16,7 @@ import type { ArCalendarCell, ArCalendarEvent, ArCalendarTimeRange, ArCalendarPr
 const props = withDefaults(defineProps<ArCalendarProps>(), {
   variant: "sheet",
   size: "default",
+  density: "default",
   title: undefined,
   cellMarks: undefined,
   modelValue: null,
@@ -277,7 +278,7 @@ const calRoot = ref<HTMLElement | null>(null);
 </script>
 
 <template>
-  <div ref="calRoot" data-ar="calendar" data-part="root" :data-mode="mode" :data-variant="variant" :data-size="mini ? 'mini' : undefined">
+  <div ref="calRoot" data-ar="calendar" data-part="root" :data-mode="mode" :data-variant="variant" :data-size="mini ? 'mini' : undefined" :data-density="density">
     <div v-if="showHeader" data-part="header">
       <ArIcon v-if="mini" line name="cal" data-part="heading-icon" />
       <div :id="`${id}-title`" data-part="title" aria-live="polite">{{ title }}</div>

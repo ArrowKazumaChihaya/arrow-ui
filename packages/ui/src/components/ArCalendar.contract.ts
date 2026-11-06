@@ -14,6 +14,8 @@ export interface ArCalendarProps {
    * 見出しはカレンダーの絵と title と extra slot だけ（年の選択・月／年の切り替えはない）、マスは角の丸い淡い地に日付・印（events の札）・小さな文字（events の note）、下に footer slot（凡例）。
    */
   size?: "default" | "mini";
+  /** board の情報密度。compact は個人用の勤務カレンダーなど、1日ごとの情報が少ない表示に使う。 */
+  density?: "default" | "compact";
   /** 見出しの文字（省くと「2026年11月」）。 */
   title?: string;
   /** 日ごとの状態の印（ロック中＝斜線と鍵・非公開＝目の印・注意＝赤い枠）。 */
