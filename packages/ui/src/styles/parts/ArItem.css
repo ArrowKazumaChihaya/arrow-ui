@@ -20,7 +20,7 @@
 [data-ar="item"][data-variant="row"]{container:ar-item / inline-size;min-width:0;max-width:100%;grid-template-columns:minmax(0,var(--ar-item-title,200px)) minmax(0,1fr) auto}
 [data-ar="item"]>[data-part="title"]>[data-part="label"],[data-ar="item"]>[data-part="content"]>[data-part="info"]{overflow-wrap:anywhere}
 [data-ar="item"]>[data-part="content"]>:is([data-ar="select"],[data-ar="tree-select"],[data-ar="cascader"],[data-ar="text-input"]){min-width:0;max-width:100%;box-sizing:border-box}
-[data-ar="item"]>[data-part="content"]>[data-ar="field"]{width:100%;min-width:0}
+[data-ar="item"]>[data-part="content"]>:is([data-ar="field"],[data-ar="stack"]){width:100%;min-width:0}
 @container ar-item (max-width:560px){
   [data-ar="item"][data-variant="row"]>:is([data-part="title"],[data-part="content"],[data-part="aside"]){grid-column:1/-1;min-width:0;max-width:100%}
   [data-ar="item"][data-variant="row"]>[data-part="aside"]{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start}
