@@ -1109,10 +1109,30 @@ input[type="number"]::-webkit-outer-spin-button {
   div:after {
   display: block;
 }
-/* Keep the shared top action above the product chat launcher, including safe areas. */
+/* Shared dock clears the mobile navigation in both skins. */
+html[data-ar-design] {
+  --arrow-floating-right: calc(18px + env(safe-area-inset-right, 0px));
+  --arrow-floating-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+}
+@media (max-width: 959px) {
+  html[data-ar-design] {
+    --arrow-floating-right: calc(14px + env(safe-area-inset-right, 0px));
+    --arrow-floating-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media screen and (max-width: 959px) {
+  /* The final row can scroll above both floating actions and the bottom menu. */
+  .menu_layout > main {
+    padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
+  }
+}
+.ai-chat[data-v-ai-chat] {
+  right: var(--arrow-floating-right);
+  bottom: var(--arrow-floating-bottom);
+}
 [data-ar="float-button"][data-fixed][data-arrow-back-top] {
-  right: calc(18px + env(safe-area-inset-right, 0px));
-  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  --ar-float-button-right: var(--arrow-floating-right);
+  --ar-float-button-bottom: calc(var(--arrow-floating-bottom) + 60px);
 }
 img.fadein_out.show {
   margin-top: 0;

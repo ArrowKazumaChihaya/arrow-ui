@@ -27,7 +27,9 @@ export interface ArFloatButtonProps {
   backTop?: boolean;
   /** backTop のとき、これより下へスクロールしたら出す（px）。 */
   visibilityHeight?: number;
-  /** 画面の右下に固定する（スマホの「シフト追加」など）。false なら置いた場所に出す。 */
+  /** 画面の右下に固定する（スマホの「シフト追加」など）。false なら置いた場所に出す。
+   * 配置先の固定メニューを避けるときは --ar-float-button-right / --ar-float-button-bottom で位置を指定する。
+   */
   fixed?: boolean;
   /** 渡すとリンク（a 要素）にする。 */
   href?: string;

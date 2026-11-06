@@ -6,7 +6,7 @@
 [data-ar-design="classic"] [data-ar="float-button"][data-tone="primary"]:hover{background:var(--ar-accent-hi)}
 [data-ar-design="classic"] [data-ar="float-button"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
 /* 右下に固定するときは antd と同じ 右24・下48 */
-[data-ar-design="classic"] [data-ar="float-button"][data-fixed]{bottom:48px}
+[data-ar-design="classic"] [data-ar="float-button"][data-fixed]{bottom:var(--ar-float-button-bottom,48px)}
 /* アイコンは 18px（antd の FloatButton） */
 [data-ar-design="classic"] [data-ar="float-button"] [data-part="icon"]{width:18px;height:18px}
 /* 並び（グループ）：antd の FloatButton.Group（丸）と同じく、丸を 16px あけて縦に並べる（つないだ1本にはしない） */

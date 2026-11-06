@@ -62,6 +62,7 @@
 [data-ar-design="classic"] [data-ar="mobile-header"]>[data-part="notice"]>[data-part="count"]>[data-part="count"]{width:20px;min-width:20px;height:20px;padding:0;border-radius:10px;background:red;color:#fff;font-size:9px;font-weight:600;line-height:20px;box-shadow:none}
 /* 下のメニュー（959px 以下の footer_inner_slim：#ECECEC・高さ65（下に15）・上に 2px の線、今いる項目は線とアイコンと名前が項目の色） */
 [data-ar-design="classic"] [data-ar="bottom-nav"]{height:65px;padding-bottom:15px;background:#ECECEC;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="bottom-nav"][data-fixed]{height:calc(65px + env(safe-area-inset-bottom,0px));padding-bottom:calc(15px + env(safe-area-inset-bottom,0px))}
 [data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"]{justify-content:flex-start;height:100%;padding:7px;border-top:2px solid #ECECEC;background:none;color:#5C5C5C;font-size:8px;font-weight:600;line-height:1}
 [data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"]>[data-part="icon"]{width:20px;height:20px;flex:none}
 [data-ar-design="classic"] [data-ar="bottom-nav"]>[data-part="item"]>[data-part="label"]{margin-top:4px}
