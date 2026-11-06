@@ -11,11 +11,11 @@
 [data-ar="table"] [data-part="check"]>[data-part="check-box"]{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:none}
 [data-ar="table"] td>[data-part="expand-toggle"]>[data-ar="icon"]{transition:transform .15s}
 [data-ar="table"] [data-part="row"][data-state~="expanded"]>td>[data-part="expand-toggle"]>[data-ar="icon"]{transform:rotate(90deg)}
-[data-ar="table"] td>[data-part="person"]{display:inline-flex;align-items:center;min-width:0;max-width:100%;vertical-align:middle}
-[data-ar="table"] td>[data-part="person"]>[data-part="name"]{display:flex;flex-direction:column;min-width:0}
-[data-ar="table"] td>[data-part="person"]>[data-part="name"]>*{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-[data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]{display:flex;align-items:center}
-[data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{flex:none;display:block}
+[data-ar="table"] td [data-part="person"]{display:inline-flex;align-items:center;min-width:0;max-width:100%;vertical-align:middle}
+[data-ar="table"] td [data-part="person"]>[data-part="name"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="table"] td [data-part="person"]>[data-part="name"]>*{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{display:flex;align-items:center}
+[data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{flex:none;display:block}
 [data-ar="table"] td>[data-part="lines"]{display:inline-flex;flex-direction:column;vertical-align:middle}
 [data-ar="table"] td>[data-part="actions"]{display:inline-flex;align-items:center;justify-content:flex-end;vertical-align:middle}
 @media (prefers-reduced-motion: reduce){[data-ar="table"] td>[data-part="expand-toggle"]>[data-ar="icon"]{transition:none}}

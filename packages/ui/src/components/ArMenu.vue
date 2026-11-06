@@ -158,6 +158,8 @@ const role = computed(() => (props.mode === "horizontal" ? "menubar" : "menu"));
         :is="r.item.href && usable(r.item) && !isParent(r.item) ? 'a' : 'div'"
         v-else
         :href="r.item.href && usable(r.item) && !isParent(r.item) ? r.item.href : undefined"
+        :target="r.item.href && usable(r.item) ? r.item.target : undefined"
+        :rel="r.item.target === '_blank' ? 'noopener noreferrer' : undefined"
         role="menuitem"
         data-part="item"
         :data-key="r.item.key"

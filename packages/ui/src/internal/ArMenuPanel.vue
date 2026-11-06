@@ -87,6 +87,8 @@ defineExpose({ focusAt });
         v-else
         :type="r.item.href && usable(r.item) ? undefined : 'button'"
         :href="usable(r.item) ? r.item.href : undefined"
+        :target="r.item.href && usable(r.item) ? r.item.target : undefined"
+        :rel="r.item.target === '_blank' ? 'noopener noreferrer' : undefined"
         role="menuitem"
         tabindex="-1"
         data-part="item"

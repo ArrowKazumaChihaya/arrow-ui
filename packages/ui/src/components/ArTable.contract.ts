@@ -218,6 +218,10 @@ export interface ArTableProps<Row> {
   fit?: boolean;
   /** 列。 */
   columns: readonly ArTableColumn<Row>[];
+  /** 列・サムネイルの表示を ArViewOptions で切り替える。先頭列と操作列は常に表示する。 */
+  viewOptions?: boolean;
+  viewOptionsLabels?: { label?: string; columns?: string; avatar?: string; all?: string; close?: string };
+
   /** 行のデータ（並べ替え・絞り込み・ページ分けは製品がしたもの）。 */
   rows: readonly Row[];
   /** 行を見分ける値（キーの名前か関数）。 */

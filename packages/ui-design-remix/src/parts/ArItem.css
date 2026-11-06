@@ -47,3 +47,9 @@
 
 /* An explicit Stack gap owns spacing between its direct form rows. */
 [data-ar-design="remix"] [data-ar="stack"]:not([data-gap="0"])>[data-ar="item"]{margin-bottom:0}
+
+/* Labels follow the first control line, even when the value spans several lines. */
+[data-ar-design="remix"] [data-ar="item"]>[data-part="title"]{align-self:start;height:fit-content;align-content:flex-start}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px;white-space:normal}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="info-text"]{white-space:pre-wrap}
+[data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-part="info"]>[data-part="detail"]{display:inline-flex;align-items:center;align-self:baseline;gap:3px;margin:0;line-height:inherit;white-space:nowrap}

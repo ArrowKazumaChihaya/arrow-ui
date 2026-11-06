@@ -11,7 +11,18 @@
  * 1.3：入力の行（editing・commit・cancel）・時間の組の段（editor="time-range"）。
  * 1.2：スロットの引数 Default（既定の表示）・段に分ける列（lines。段の高さを列をまたいで揃える）・入力の種類（文字・時刻・選ぶ）。
  */
-import { computed, h, markRaw, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch, type FunctionalComponent } from "vue";
+import {
+  computed,
+  h,
+  markRaw,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  useSlots,
+  watch,
+  type FunctionalComponent,
+} from "vue";
 import ArTableCellBody from "../internal/ArTableCellBody.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
@@ -31,6 +42,8 @@ import type {
 } from "./ArTable.contract";
 import { editKeyOf, isFilledRange, toTimeRanges } from "../internal/table";
 import ArButton from "./ArButton.vue";
+import ArViewOptions from "./ArViewOptions.vue";
+import type { ArViewOptionGroup } from "./ArViewOptions.contract";
 
 const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   variant: "box",
@@ -56,6 +69,8 @@ const props = withDefaults(defineProps<ArTableProps<Row>>(), {
   invalidCells: () => [],
   editing: () => [],
   fullRow: undefined,
+  viewOptions: false,
+  viewOptionsLabels: () => ({}),
 });
 const emit = defineEmits<{
   "update:selected": [keys: ArRowKey[]];
@@ -74,10 +89,59 @@ const slots = useSlots();
 /* ---- 2段の見出し・開け閉めするまとまり ---- */
 const openSet = computed(() => new Set(props.openGroups));
 const groupMap = computed(() => new Map(props.columnGroups.map((g) => [g.key, g])));
-const groupOf = (c: ArTableColumn<Row>): ArTableColumnGroup | undefined => (c.group ? groupMap.value.get(c.group) : undefined);
+const groupOf = (c: ArTableColumn<Row>): ArTableColumnGroup | undefined =>
+  c.group ? groupMap.value.get(c.group) : undefined;
 const isGroupOpen = (k?: string) => !!k && openSet.value.has(k);
 /** いま出す列（まとまりの開け閉めで出る列が変わる）。 */
-const cols = computed(() => props.columns.filter((c) => !c.show || (c.show === "open") === isGroupOpen(c.group)));
+const hiddenViewKeys = ref<string[]>([]);
+const columnViewKey = (c: ArTableColumn<Row>) => (c.group ? "group:" + c.group : "column:" + c.key);
+const requiredViewKeys = computed(
+  () => new Set(props.columns.filter((c, index) => index === 0 || c.key === "actions").map(columnViewKey)),
+);
+const viewGroups = computed<ArViewOptionGroup[]>(() => {
+  const options = [
+    ...new Map(
+      props.columns
+        .filter((c) => c.key !== "actions")
+        .map((c) => [
+          columnViewKey(c),
+          {
+            key: columnViewKey(c),
+            label: groupOf(c)?.title ?? c.title ?? c.key,
+            disabled: requiredViewKeys.value.has(columnViewKey(c)),
+          },
+        ]),
+    ).values(),
+  ];
+  return [
+    { label: props.viewOptionsLabels.columns ?? "表示項目", options },
+    ...(props.columns.some((c) => !!c.avatar)
+      ? [{ options: [{ key: "avatar", label: props.viewOptionsLabels.avatar ?? "サムネイル" }] }]
+      : []),
+  ];
+});
+const viewShown = computed({
+  get: () =>
+    viewGroups.value
+      .flatMap((group) => group.options)
+      .filter((option) => option.disabled || !hiddenViewKeys.value.includes(option.key))
+      .map((option) => option.key),
+  set: (keys: string[]) => {
+    hiddenViewKeys.value = viewGroups.value
+      .flatMap((group) => group.options)
+      .filter((option) => !option.disabled && !keys.includes(option.key))
+      .map((option) => option.key);
+  },
+});
+const cols = computed(() =>
+  props.columns.filter(
+    (c) =>
+      (!props.viewOptions ||
+        requiredViewKeys.value.has(columnViewKey(c)) ||
+        !hiddenViewKeys.value.includes(columnViewKey(c))) &&
+      (!c.show || (c.show === "open") === isGroupOpen(c.group)),
+  ),
+);
 type HeadCell =
   | { kind: "col"; key: string; col: ArTableColumn<Row>; rowspan: number; collapsed?: ArTableColumnGroup }
   | { kind: "group"; key: string; group: ArTableColumnGroup; colspan: number };
@@ -99,7 +163,8 @@ const head = computed(() => {
       top.push({ kind: "group", key: `g:${g.key}:${i}`, group: g, colspan: n });
       for (let j = 0; j < n; j++) bottom.push({ kind: "col", key: list[i + j]!.key, col: list[i + j]!, rowspan: 1 });
       i += n - 1;
-    } else top.push({ kind: "col", key: c.key, col: c, rowspan: two ? 2 : 1, collapsed: g?.collapsible ? g : undefined });
+    } else
+      top.push({ kind: "col", key: c.key, col: c, rowspan: two ? 2 : 1, collapsed: g?.collapsible ? g : undefined });
   }
   return { two, top, bottom };
 });
@@ -118,7 +183,8 @@ function toggleGroups(keys: string | readonly string[]) {
   for (const k of ks) anyOpen ? next.delete(k) : next.add(k);
   emit("update:openGroups", [...next]);
 }
-const togglesOpen = (c: ArTableColumn<Row>) => (typeof c.toggles === "string" ? [c.toggles] : [...(c.toggles ?? [])]).some((k) => openSet.value.has(k));
+const togglesOpen = (c: ArTableColumn<Row>) =>
+  (typeof c.toggles === "string" ? [c.toggles] : [...(c.toggles ?? [])]).some((k) => openSet.value.has(k));
 
 /* ---- 表の中の入力・段に分けた列・既定の表示 ---- */
 /* 入力の行（editing）：その行だけ editor のある列を入力にする */
@@ -143,7 +209,8 @@ function rangesOf(row: Row, c: ArTableColumn<Row>) {
   return cur;
 }
 /** 段に分けた列の段の値の並び。 */
-const linesFor = (row: Row, c: ArTableColumn<Row>): unknown[] => (isRangeCol(c) ? rangesOf(row, c) : linesOf(valueOf(row, c)));
+const linesFor = (row: Row, c: ArTableColumn<Row>): unknown[] =>
+  isRangeCol(c) ? rangesOf(row, c) : linesOf(valueOf(row, c));
 /** 行の段の数＝段に分ける列の配列のいちばん長いもの。 */
 const lineCount = (row: Row) => {
   let n = 1;
@@ -154,7 +221,8 @@ const lineCount = (row: Row) => {
   return n;
 };
 /** セルの値（段に分けた列ではその段の値）。 */
-const cellValue = (row: Row, c: ArTableColumn<Row>, line?: number) => (line === undefined ? valueOf(row, c) : linesFor(row, c)[line]);
+const cellValue = (row: Row, c: ArTableColumn<Row>, line?: number) =>
+  line === undefined ? valueOf(row, c) : linesFor(row, c)[line];
 const lineOf = (c: ArTableColumn<Row>, j: number) => (isLineCol(c) ? j : undefined);
 /** 入力の行の今の値（列の key → 値）。 */
 function rowValues(row: Row): Record<string, ArTableEditValue | readonly ArTableEditValue[]> {
@@ -163,7 +231,10 @@ function rowValues(row: Row): Record<string, ArTableEditValue | readonly ArTable
     if (!canEdit(row, c)) continue;
     const k = editKeyOf(keyOf(row), c.key);
     if (isRangeCol(c)) out[c.key] = rangesOf(row, c).filter(isFilledRange);
-    else if (c.lines) out[c.key] = linesOf(valueOf(row, c)).map((v, j) => (`${k}:${j}` in props.edits ? props.edits[`${k}:${j}`]! : (v as ArTableEditValue)));
+    else if (c.lines)
+      out[c.key] = linesOf(valueOf(row, c)).map((v, j) =>
+        `${k}:${j}` in props.edits ? props.edits[`${k}:${j}`]! : (v as ArTableEditValue),
+      );
     else out[c.key] = k in props.edits ? props.edits[k]! : (valueOf(row, c) as ArTableEditValue);
   }
   return out;
@@ -193,6 +264,7 @@ function onEdit(k: string, v: ArTableEditValue) {
 }
 const bodyProps = (row: Row, c: ArTableColumn<Row>, i: number, line?: number) => ({
   row,
+  showAvatar: !props.viewOptions || !hiddenViewKeys.value.includes("avatar"),
   col: c as ArTableColumn<object>,
   value: cellValue(row, c, line),
   rowKey: keyOf(row),
@@ -270,7 +342,13 @@ const isBlank = (v: unknown) => v === null || v === undefined || v === "" || (Ar
 const alignOf = (col: ArTableColumn<Row>) => col.align ?? (col.numeric ? "end" : "start");
 /** 合計の行のセル（span でつないだ列は飛ばす）。 */
 const footCells = computed(() => {
-  const out: { col: ArTableColumn<Row>; span: number; raw: ArTableFooterValue | undefined; label?: string; value: string | number }[] = [];
+  const out: {
+    col: ArTableColumn<Row>;
+    span: number;
+    raw: ArTableFooterValue | undefined;
+    label?: string;
+    value: string | number;
+  }[] = [];
   const list = cols.value;
   for (let i = 0; i < list.length; i++) {
     const col = list[i]!;
@@ -319,11 +397,16 @@ function measure() {
   }
   if (!t || (!anySticky.value && !anyEnd.value)) return;
   // 止める列の見出しの幅を端から足していく（スクロール中でも固定の位置に左右されない）
-  const widthOf = (k: string) => t.querySelector<HTMLElement>(`thead th[data-sticky-key="${k}"]`)?.getBoundingClientRect().width ?? 0;
+  const widthOf = (k: string) =>
+    t.querySelector<HTMLElement>(`thead th[data-sticky-key="${k}"]`)?.getBoundingClientRect().width ?? 0;
   const out: Record<string, number> = {};
   let x = 0;
   if (anySticky.value)
-    for (const k of [...(props.selectable ? ["__select"] : []), ...(props.expandable ? ["__expand"] : []), ...stickyKeys.value]) {
+    for (const k of [
+      ...(props.selectable ? ["__select"] : []),
+      ...(props.expandable ? ["__expand"] : []),
+      ...stickyKeys.value,
+    ]) {
       out[k] = Math.round(x * 100) / 100;
       x += widthOf(k);
     }
@@ -361,8 +444,10 @@ const stick = (key: string) => (anySticky.value ? { left: `${lefts.value[key] ??
 const colSticky = (c: ArTableColumn<Row>) => stickyKeys.value.includes(c.key);
 const colEnd = (c: ArTableColumn<Row>) => endKeys.value.includes(c.key);
 const stickAttr = (c: ArTableColumn<Row>) => (colSticky(c) ? "start" : colEnd(c) ? "end" : undefined);
-const edgeAttr = (c: ArTableColumn<Row>) => (c.key === lastSticky.value ? "start" : c.key === firstEnd.value ? "end" : undefined);
-const stickStyle = (c: ArTableColumn<Row>) => (colSticky(c) ? stick(c.key) : colEnd(c) ? { right: `${rights.value[c.key] ?? 0}px` } : undefined);
+const edgeAttr = (c: ArTableColumn<Row>) =>
+  c.key === lastSticky.value ? "start" : c.key === firstEnd.value ? "end" : undefined;
+const stickStyle = (c: ArTableColumn<Row>) =>
+  colSticky(c) ? stick(c.key) : colEnd(c) ? { right: `${rights.value[c.key] ?? 0}px` } : undefined;
 
 /* ---- 横につなぐ（列の colSpan）・行ぜんぶを1つのセルに（fullRow） ---- */
 interface ColLayout {
@@ -451,7 +536,10 @@ function toggleExpand(row: Row) {
 }
 function cycleSort(col: ArTableColumn<Row>) {
   const cur = props.sort?.key === col.key ? props.sort.order : null;
-  emit("update:sort", cur === null ? { key: col.key, order: "asc" } : cur === "asc" ? { key: col.key, order: "desc" } : null);
+  emit(
+    "update:sort",
+    cur === null ? { key: col.key, order: "asc" } : cur === "asc" ? { key: col.key, order: "desc" } : null,
+  );
 }
 const orderOf = (col: ArTableColumn<Row>) => (props.sort?.key === col.key ? props.sort.order : undefined);
 function ariaSort(col: ArTableColumn<Row>) {
@@ -529,7 +617,11 @@ function endDrag() {
 }
 const colspan = computed(
   () =>
-    cols.value.length + (props.selectable ? 1 : 0) + (props.expandable ? 1 : 0) + (hasActions.value ? 1 : 0) + (handleColumn.value ? 1 : 0),
+    cols.value.length +
+    (props.selectable ? 1 : 0) +
+    (props.expandable ? 1 : 0) +
+    (hasActions.value ? 1 : 0) +
+    (handleColumn.value ? 1 : 0),
 );
 </script>
 
@@ -547,7 +639,11 @@ const colspan = computed(
   >
     <div data-part="viewport" role="region" :aria-label="caption" tabindex="0">
       <table ref="tableEl" data-part="table">
-        <caption data-ar-visually-hidden>{{ caption }}</caption>
+        <caption data-ar-visually-hidden>
+          {{
+            caption
+          }}
+        </caption>
         <colgroup>
           <col v-if="handleColumn" data-col="drag" />
           <col v-if="selectable" data-col="select" />
@@ -557,7 +653,9 @@ const colspan = computed(
         </colgroup>
         <thead data-part="head" :data-tiers="head.two ? 2 : undefined">
           <tr>
-            <th v-if="handleColumn" data-part="header-cell" data-col="drag" scope="col" :rowspan="headSpan"><span data-ar-visually-hidden>{{ L.dragHandle }}</span></th>
+            <th v-if="handleColumn" data-part="header-cell" data-col="drag" scope="col" :rowspan="headSpan">
+              <span data-ar-visually-hidden>{{ L.dragHandle }}</span>
+            </th>
             <th
               v-if="selectable"
               data-part="header-cell"
@@ -568,8 +666,13 @@ const colspan = computed(
               scope="col"
               :rowspan="headSpan"
             >
-              <span v-if="selectHead === 'label'" data-part="select-text" aria-hidden="true">{{ L.selectAllText ?? "全選択" }}</span>
-              <span data-part="check" :data-state="allState === 'all' ? 'checked' : allState === 'some' ? 'indeterminate' : undefined">
+              <span v-if="selectHead === 'label'" data-part="select-text" aria-hidden="true">{{
+                L.selectAllText ?? "全選択"
+              }}</span>
+              <span
+                data-part="check"
+                :data-state="allState === 'all' ? 'checked' : allState === 'some' ? 'indeterminate' : undefined"
+              >
                 <input
                   ref="headCheck"
                   data-part="select"
@@ -579,7 +682,13 @@ const colspan = computed(
                   :aria-label="L.selectAll"
                   @change="toggleAll"
                 />
-                <ArCheckbox decorative data-part="check-box" :model-value="allState === 'all'" :indeterminate="allState === 'some'" :disabled="!rows.length" />
+                <ArCheckbox
+                  decorative
+                  data-part="check-box"
+                  :model-value="allState === 'all'"
+                  :indeterminate="allState === 'some'"
+                  :disabled="!rows.length"
+                />
               </span>
             </th>
             <th
@@ -609,7 +718,12 @@ const colspan = computed(
                   aria-expanded="true"
                   @click="toggleGroups(h.group.key)"
                 >
-                  <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon v-else line name="cd" size="sm" />{{ h.group.title }}<span data-part="toggle-hint">{{ h.group.openHint ?? "閉じる" }}</span>
+                  <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon
+                    v-else
+                    line
+                    name="cd"
+                    size="sm"
+                  />{{ h.group.title }}<span data-part="toggle-hint">{{ h.group.openHint ?? "閉じる" }}</span>
                 </button>
                 <template v-else>{{ h.group.title }}</template>
               </th>
@@ -630,8 +744,19 @@ const colspan = computed(
                 :data-collapsed="h.collapsed ? true : undefined"
               >
                 <slot :name="`head-${h.col.key}`" :column="h.col">
-                  <button v-if="h.collapsed" type="button" data-part="group-toggle" aria-expanded="false" @click="toggleGroups(h.collapsed.key)">
-                    <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon v-else line name="cr" size="sm" />{{ h.col.title }}<span data-part="toggle-hint">{{ h.collapsed.closedHint ?? "内訳" }}</span>
+                  <button
+                    v-if="h.collapsed"
+                    type="button"
+                    data-part="group-toggle"
+                    aria-expanded="false"
+                    @click="toggleGroups(h.collapsed.key)"
+                  >
+                    <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon
+                      v-else
+                      line
+                      name="cr"
+                      size="sm"
+                    />{{ h.col.title }}<span data-part="toggle-hint">{{ h.collapsed.closedHint ?? "内訳" }}</span>
                   </button>
                   <button
                     v-else-if="h.col.toggles"
@@ -641,11 +766,31 @@ const colspan = computed(
                     :aria-expanded="togglesOpen(h.col)"
                     @click="toggleGroups(h.col.toggles)"
                   >
-                    <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon v-else line :name="togglesOpen(h.col) ? 'minus' : 'plus'" size="sm" />{{ h.col.title }}
+                    <ArIcon v-if="groupToggle === 'menu'" name="menu" size="sm" /><ArIcon
+                      v-else
+                      line
+                      :name="togglesOpen(h.col) ? 'minus' : 'plus'"
+                      size="sm"
+                    />{{ h.col.title }}
                   </button>
-                  <button v-else-if="h.col.sortable" type="button" data-part="sort" :data-order="orderOf(h.col)" @click="cycleSort(h.col)">
+                  <button
+                    v-else-if="h.col.sortable"
+                    type="button"
+                    data-part="sort"
+                    :data-order="orderOf(h.col)"
+                    @click="cycleSort(h.col)"
+                  >
                     <span>{{ h.col.title }}</span>
-                    <svg data-part="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg
+                      data-part="sort-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
                       <path data-dir="asc" data-shape="chevron" d="m8 9 4-4 4 4" />
                       <path data-dir="desc" data-shape="chevron" d="m8 15 4 4 4-4" />
                       <path data-dir="asc" data-shape="caret" d="M12 2.5 20 11H4Z" />
@@ -656,7 +801,14 @@ const colspan = computed(
                 </slot>
               </th>
             </template>
-            <th v-if="hasActions" data-part="header-cell" data-col="actions" data-align="end" scope="col" :rowspan="headSpan">
+            <th
+              v-if="hasActions"
+              data-part="header-cell"
+              data-col="actions"
+              data-align="end"
+              scope="col"
+              :rowspan="headSpan"
+            >
               <span data-ar-visually-hidden>{{ L.actions }}</span>
             </th>
           </tr>
@@ -673,9 +825,24 @@ const colspan = computed(
                 :aria-sort="ariaSort(h.col)"
               >
                 <slot :name="`head-${h.col.key}`" :column="h.col">
-                  <button v-if="h.col.sortable" type="button" data-part="sort" :data-order="orderOf(h.col)" @click="cycleSort(h.col)">
+                  <button
+                    v-if="h.col.sortable"
+                    type="button"
+                    data-part="sort"
+                    :data-order="orderOf(h.col)"
+                    @click="cycleSort(h.col)"
+                  >
                     <span>{{ h.col.title }}</span>
-                    <svg data-part="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg
+                      data-part="sort-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
                       <path data-dir="asc" data-shape="chevron" d="m8 9 4-4 4 4" />
                       <path data-dir="desc" data-shape="chevron" d="m8 15 4 4 4-4" />
                       <path data-dir="asc" data-shape="caret" d="M12 2.5 20 11H4Z" />
@@ -700,7 +867,13 @@ const colspan = computed(
             </td>
           </tr>
           <template v-for="(row, i) in rows" :key="keyOf(row)">
-            <tr v-if="isFull(row)" data-part="row" data-full :data-state="rowState(row)" @click="emit('row-click', row, i)">
+            <tr
+              v-if="isFull(row)"
+              data-part="row"
+              data-full
+              :data-state="rowState(row)"
+              @click="emit('row-click', row, i)"
+            >
               <td data-part="cell" data-full :colspan="colspan"><slot name="full-row" :row="row" :index="i" /></td>
             </tr>
             <tr
@@ -710,7 +883,13 @@ const colspan = computed(
               :data-state="rowState(row)"
               :data-line="anyLines ? j - 1 : undefined"
               :data-line-last="anyLines && j === lineCount(row) ? '' : undefined"
-              :data-drop="dropAt?.key === keyOf(row) && dragging !== keyOf(row) && j === (dropAt.position === 'before' ? 1 : anyLines ? lineCount(row) : 1) ? dropAt.position : undefined"
+              :data-drop="
+                dropAt?.key === keyOf(row) &&
+                dragging !== keyOf(row) &&
+                j === (dropAt.position === 'before' ? 1 : anyLines ? lineCount(row) : 1)
+                  ? dropAt.position
+                  : undefined
+              "
               :draggable="sortableRows && armed === keyOf(row) ? 'true' : undefined"
               @click="emit('row-click', row, i)"
               @dragstart="onRowDragStart($event, row)"
@@ -722,7 +901,13 @@ const colspan = computed(
               @mouseleave="anyLines && hoverKey === keyOf(row) && (hoverKey = null)"
             >
               <template v-if="j === 1">
-                <td v-if="handleColumn" data-part="cell" data-col="drag" :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined" @click.stop>
+                <td
+                  v-if="handleColumn"
+                  data-part="cell"
+                  data-col="drag"
+                  :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
+                  @click.stop
+                >
                   <button
                     type="button"
                     data-part="drag-handle"
@@ -788,7 +973,10 @@ const colspan = computed(
                   :data-numeric="c.numeric || undefined"
                   :data-emphasis="c.emphasis"
                   :data-wrap="c.wrap || undefined"
-                  :data-blank="(!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!isLineCol(c) || j === 1)) || undefined"
+                  :data-blank="
+                    (!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!isLineCol(c) || j === 1)) ||
+                    undefined
+                  "
                   :data-sticky="cellStick(row, c)"
                   :data-sticky-edge="cellStickEdge(row, c)"
                   :data-total="c.total || undefined"
@@ -845,15 +1033,29 @@ const colspan = computed(
             <tr v-if="expandable && isOpen(row)" data-part="expanded-row">
               <td v-if="handleColumn" data-col="drag" />
               <td v-if="selectable" data-col="select" />
-              <td :colspan="colspan - (selectable ? 1 : 0) - (handleColumn ? 1 : 0)"><slot name="expanded" :row="row" /></td>
+              <td :colspan="colspan - (selectable ? 1 : 0) - (handleColumn ? 1 : 0)">
+                <slot name="expanded" :row="row" />
+              </td>
             </tr>
           </template>
         </tbody>
         <tfoot v-if="footer" data-part="foot">
           <tr>
             <td v-if="handleColumn" data-part="cell" data-col="drag" />
-            <td v-if="selectable" data-part="cell" data-col="select" :data-sticky="anySticky ? 'start' : undefined" :style="stick('__select')" />
-            <td v-if="expandable" data-part="cell" data-col="expand" :data-sticky="anySticky ? 'start' : undefined" :style="stick('__expand')" />
+            <td
+              v-if="selectable"
+              data-part="cell"
+              data-col="select"
+              :data-sticky="anySticky ? 'start' : undefined"
+              :style="stick('__select')"
+            />
+            <td
+              v-if="expandable"
+              data-part="cell"
+              data-col="expand"
+              :data-sticky="anySticky ? 'start' : undefined"
+              :style="stick('__expand')"
+            />
             <td
               v-for="f in footCells"
               :key="f.col.key"
@@ -880,7 +1082,17 @@ const colspan = computed(
         </tfoot>
       </table>
     </div>
-    <div v-if="$slots.below" data-part="below"><slot name="below" /></div>
+    <div v-if="viewOptions || $slots.below" data-part="below">
+      <ArViewOptions
+        v-if="viewOptions"
+        v-model="viewShown"
+        :groups="viewGroups"
+        :label="viewOptionsLabels.label ?? '表示内容'"
+        :labels="{ all: viewOptionsLabels.all ?? 'すべて表示', close: viewOptionsLabels.close ?? '閉じる' }"
+        :disabled="editing.length > 0"
+      />
+      <slot name="below" />
+    </div>
     <span v-if="sortableRows" data-part="status" data-ar-visually-hidden aria-live="polite">{{ announce }}</span>
   </div>
 </template>

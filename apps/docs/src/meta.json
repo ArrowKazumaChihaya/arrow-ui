@@ -510,15 +510,21 @@
  },
  {
   "name": "ArButton",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ボタン。種類（tone）・大きさ・形・アイコン・読み込み中・押せない・幅いっぱい。\nhref を渡すとリンク（a 要素）として出す。\n後ろのアイコン（iconEnd：開く∨など）はいつも線で描く（今の ARROW のボタンには後ろのアイコンが無く、開く印は antd の∨のため）。",
   "props": [
    {
     "name": "tone",
     "type": "ArButtonTone",
     "required": false,
-    "description": "種類。\nprimary：そのまとまりで一番大事な操作（1つだけ）。テーマ色で塗る。\nsecondary：やめる・戻る（白地に枠）。\nsubtle：見出しの横の補助の操作（淡いテーマ色の地）。\nghost：表の上の小さな操作（テーマ色の文字だけ）。\nmuted：目立たせない操作・アイコンだけのボタン（灰色の文字だけ）。\nlink：文中のリンクのような操作（下線）。\ndashed：行や項目を足す（点線。block と合わせると表の上の「シフト追加」）。\ndanger：削除（塗り）。確かめの画面で最後に押すときだけ。danger-fill も同じ。\ndanger-subtle：削除（白地に赤い枠）。danger-outline も同じ。\ndanger-ghost：削除（赤い文字だけ）。\nedit：編集・見出しの横の補助の操作（今の ARROW の edit：classic は緑の塗り、remix は subtle と同じ）。\ndark：ロックなど、色の意味を持たない塗り（今の ARROW の lock・unlock・種類なし：classic は黒の塗り、remix は secondary と同じ）。\noverlay：写真の上に重ねる丸いアイコンのボタン（今の ARROW の transround：半透明の黒い丸に白いアイコン）。\n\n今の ARROW の Button の type との対応：add→primary、cancel→secondary、info→subtle、edit→edit、delete→danger、\nlock・unlock・movie・なし→dark、bordered→dashed、text→ghost、transround→overlay。",
+    "description": "種類。\nprimary：そのまとまりで一番大事な操作（1つだけ）。テーマ色で塗る。\nsecondary：やめる・戻る（白地に枠）。\nsubtle：見出しの横の補助の操作（淡いテーマ色の地）。\nghost：表の上の小さな操作（テーマ色の文字だけ）。\nmuted：目立たせない操作・アイコンだけのボタン（灰色の文字だけ）。\nlink：文中のリンクのような操作（下線）。\ndashed：行や項目を足す（点線。追加操作は通常は内容幅、block は意図的に幅いっぱいにする場合だけ）。\ndanger：削除（塗り）。確かめの画面で最後に押すときだけ。danger-fill も同じ。\ndanger-subtle：削除（白地に赤い枠）。danger-outline も同じ。\ndanger-ghost：削除（赤い文字だけ）。\nedit：編集・見出しの横の補助の操作（今の ARROW の edit：classic は緑の塗り、remix は淡い緑）。\ndark：ロックなど、色の意味を持たない塗り（今の ARROW の lock・unlock・種類なし：classic は黒の塗り、remix は secondary と同じ）。\noverlay：写真の上に重ねる丸いアイコンのボタン（今の ARROW の transround：半透明の黒い丸に白いアイコン）。\n\n今の ARROW の Button の type との対応：add→primary、cancel→secondary、info→subtle、edit→edit、delete→danger、\nlock・unlock・movie・なし→dark、bordered→dashed、text→ghost、transround→overlay。",
     "default": "\"secondary\""
+   },
+   {
+    "name": "intent",
+    "type": "'edit' | 'add' | 'delete'",
+    "required": false,
+    "description": "操作の意味。画面のテーマ色に関係なく add は青、edit は緑、delete は赤。tone の形・大きさは保持する。"
    },
    {
     "name": "size",
@@ -1215,7 +1221,7 @@
  },
  {
   "name": "ArDropdown",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "押すとメニュー。項目にアイコン・説明・見出し・区切り・危ない項目（赤）・使えない・鍵（権限なし）。\n押すもの：default slot（自由）か、label で「操作」ボタン（variant=\"ops\"）・ArButton・Dropdown.Button（split）。\n↓ Enter Space で開き、メニューの中は ↑↓ で移る。Escape・外を押す・Tab で閉じ、押したものにフォーカスを戻す。",
   "props": [
    {
@@ -1333,7 +1339,7 @@
  },
  {
   "name": "ArMenu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "メニュー。inline（子メニューをその場で開く）・vertical（子メニューを右に浮かせる）・horizontal（横に並べる）。\n選んでいる項目：上の段はテーマ色の塗り（白文字）、子は淡い面とテーマ色の文字。権限がない項目は鍵と灰色。\n↑↓（horizontal は ←→）で移り、Enter・Space で選ぶ・子メニューを開く。→ で子メニューを開き、← で閉じる。",
   "props": [
    {
@@ -8277,7 +8283,7 @@
  },
  {
   "name": "ArTable",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "表。\nbox（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。\n見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。\n並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。\nページ送りは #below に ArPagination を置く。\nsortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。\n1.1：右に止める列・2段の見出し（押すとまとまりが開く）・行をまたぐセル・表の中の小さな金額の入力・3段の金額・数字の下の差の行。\n1.4：横につなぐセル（列の colSpan）・行ぜんぶを1つのセル（fullRow と #full-row）。\n1.3：入力の行（editing・commit・cancel）・時間の組の段（editor=\"time-range\"）。\n1.2：スロットの引数 Default（既定の表示）・段に分ける列（lines。段の高さを列をまたいで揃える）・入力の種類（文字・時刻・選ぶ）。",
   "props": [
    {
@@ -8292,6 +8298,20 @@
     "type": "readonly ArTableColumn<Row>[]",
     "required": true,
     "description": "列。"
+   },
+   {
+    "name": "viewOptions",
+    "type": "boolean",
+    "required": false,
+    "description": "列・サムネイルの表示を ArViewOptions で切り替える。先頭列と操作列は常に表示する。",
+    "default": "false"
+   },
+   {
+    "name": "viewOptionsLabels",
+    "type": "{ label?: string | undefined; columns?: string | undefined; avatar?: string | undefined; all?: string | undefined; close?: string | undefined; }",
+    "required": false,
+    "description": "",
+    "default": "{}"
    },
    {
     "name": "rows",
@@ -14021,7 +14041,7 @@
  },
  {
   "name": "ArAuthPanel",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "props": [
    {
@@ -14061,6 +14081,12 @@
     "required": false,
     "description": "",
     "default": "'会社ID'"
+   },
+   {
+    "name": "companyIcon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'apply' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": ""
    }
   ],
   "emits": [],

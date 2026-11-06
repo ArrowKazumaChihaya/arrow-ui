@@ -1,4 +1,4 @@
-/* @covers ArTable 1.5.0 */
+/* @covers ArTable 1.6.0 */
 /* ArTable（box＝.lst/.lr：外枠 角丸12・線、見出し34・行44。board＝シフト画面の .v-tr：外枠なし、角の丸い見出し・行50・合計の帯） */
 [data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
@@ -28,11 +28,11 @@
 [data-ar-design="remix"] [data-ar="table"] [data-part="row"][data-state~="off"]>td [data-part="name"]>b{color:var(--ar-color-text-faint)}
 
 /* 名前の列：頭文字の丸＋名前（＋小さな説明） */
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="person"]{gap:8px}
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>b{font-weight:600;color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]{font-size:11px;line-height:1.5;color:var(--ar-color-text-muted)}
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]{gap:4px}
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{width:7px;height:7px;border-radius:2px}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="person"]{gap:10px}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>b{font-weight:600;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{font-size:11px;line-height:1.5;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{gap:4px}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{width:7px;height:7px;border-radius:2px}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="actions"]{gap:2px}
 
 /* 並べ替えの印（上下の山。いま並べている向きだけ濃く） */
@@ -90,8 +90,8 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="lines"]{line-height:1.45}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="muted"]{font-size:13.5px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-blank]{color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="person"]{gap:10px}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="person"]>[data-part="name"]>b{font-weight:700}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td [data-part="person"]{gap:10px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td [data-part="person"]>[data-part="name"]>b{font-weight:700}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot[data-part="foot"]::before{content:"";display:table-row;height:6px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot[data-part="foot"] [data-part="cell"]{background:#F7F9FB;border-top:0}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot[data-part="foot"]>tr{height:54px}
@@ -102,8 +102,8 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td[data-part="empty"]{border-bottom:1px solid var(--ar-color-border-subtle)}
 /* board の名前だけの列（勤務可能な人）：丸は 28px・12px、間8px、名前はさらに太く。見出しは左に 12px。 */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] th[data-person="single"]:first-child{padding-left:12px}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="person"][data-single]{gap:8px}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="person"][data-single]>[data-part="name"]>b{font-weight:900}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td [data-part="person"][data-single]{gap:10px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td [data-part="person"][data-single]>[data-part="name"]>b{font-weight:900}
 /* board の行の右端の操作：上にそろえ、文字のボタン（「シフトに入れる」）とアイコンのボタンの間は 4px */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]{align-items:flex-start}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]>[data-ar="button"]:not([data-icon-only])+[data-ar="button"]{margin-left:2px}

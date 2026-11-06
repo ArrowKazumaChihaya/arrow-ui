@@ -16,7 +16,7 @@ export const covers = {
   ArBorderBeam: "1.0.0",
   ArBottomNav: "1.1.0",
   ArBreadcrumb: "1.0.0",
-  ArButton: "1.0.0",
+  ArButton: "1.1.0",
   ArCalendar: "1.3.0",
   ArCard: "1.1.0",
   ArCarousel: "1.0.0",

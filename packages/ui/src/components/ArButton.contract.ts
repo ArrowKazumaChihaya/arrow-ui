@@ -28,11 +28,11 @@ export interface ArButtonProps {
    * ghost：表の上の小さな操作（テーマ色の文字だけ）。
    * muted：目立たせない操作・アイコンだけのボタン（灰色の文字だけ）。
    * link：文中のリンクのような操作（下線）。
-   * dashed：行や項目を足す（点線。block と合わせると表の上の「シフト追加」）。
+   * dashed：行や項目を足す（点線。追加操作は通常は内容幅、block は意図的に幅いっぱいにする場合だけ）。
    * danger：削除（塗り）。確かめの画面で最後に押すときだけ。danger-fill も同じ。
    * danger-subtle：削除（白地に赤い枠）。danger-outline も同じ。
    * danger-ghost：削除（赤い文字だけ）。
-   * edit：編集・見出しの横の補助の操作（今の ARROW の edit：classic は緑の塗り、remix は subtle と同じ）。
+   * edit：編集・見出しの横の補助の操作（今の ARROW の edit：classic は緑の塗り、remix は淡い緑）。
    * dark：ロックなど、色の意味を持たない塗り（今の ARROW の lock・unlock・種類なし：classic は黒の塗り、remix は secondary と同じ）。
    * overlay：写真の上に重ねる丸いアイコンのボタン（今の ARROW の transround：半透明の黒い丸に白いアイコン）。
    *
@@ -40,6 +40,8 @@ export interface ArButtonProps {
    * lock・unlock・movie・なし→dark、bordered→dashed、text→ghost、transround→overlay。
    */
   tone?: ArButtonTone;
+  /** 操作の意味。画面のテーマ色に関係なく add は青、edit は緑、delete は赤。tone の形・大きさは保持する。 */
+  intent?: "add" | "edit" | "delete";
   /**
    * 大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。
    * xs＝表の行の中の小さな操作（「シフトに入れる」）、xl＝手順の「次へ」「戻る」などのいちばん大きい操作（新しい見た目では lg と同じ高さ）。

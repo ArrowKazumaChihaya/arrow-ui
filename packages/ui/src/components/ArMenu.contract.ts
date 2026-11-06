@@ -22,6 +22,8 @@ export interface ArMenuItem {
   children?: readonly ArMenuItem[];
   /** 渡すとリンク（a 要素）にする。 */
   href?: string;
+  /** 外部資料を別タブで開く。別タブでは noopener noreferrer を付ける。 */
+  target?: "_blank";
 }
 
 export interface ArMenuProps {

@@ -3,8 +3,8 @@
    必須は .req（11px 700・赤い淡い地・角丸4）、間違いは .derr（12.5px 600・上に6px）、説明は .ad-help（12px・上に4px）。 */
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;line-height:18.75px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="field"][data-layout="stacked"]>[data-part="label"]{margin-bottom:6px}
-[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{column-gap:14px;align-items:center}
-[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;overflow-wrap:anywhere;gap:4px;font-size:13.5px;font-weight:600;line-height:20.25px;text-align:right}
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{column-gap:14px;align-items:start}
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;overflow-wrap:anywhere;gap:4px;font-size:13.5px;font-weight:600;line-height:20.25px;text-align:right;padding-top:8px}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{display:block;flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:11px;font-weight:700;line-height:18px}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{margin-top:4px;font-size:12px;line-height:18px;color:var(--ar-color-text-muted);white-space:pre-line;overflow-wrap:anywhere}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{display:flex;gap:6px;align-items:center;margin-top:6px;font-size:12.5px;font-weight:600;line-height:18.75px;color:var(--ar-color-danger-ink)}
@@ -18,5 +18,5 @@
 @container ar-field (max-width:480px){
   [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"],
   [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]{grid-column:1/-1;min-width:0}
-  [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-start;text-align:left;white-space:normal;overflow:visible;height:auto;margin-bottom:6px;overflow-wrap:anywhere}
+  [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-start;text-align:left;white-space:normal;overflow:visible;height:auto;margin-bottom:6px;overflow-wrap:anywhere;padding-top:0}
 }

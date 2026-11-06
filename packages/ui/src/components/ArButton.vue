@@ -65,6 +65,7 @@ function onClick(e: MouseEvent) {
     data-ar="button"
     data-part="root"
     :data-tone="tone"
+    :data-intent="intent"
     :data-size="size"
     :data-shape="shape !== 'default' ? shape : undefined"
     :data-state="state || undefined"

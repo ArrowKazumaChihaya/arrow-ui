@@ -18,6 +18,7 @@ type Row = object;
 const props = withDefaults(
   defineProps<{
     row: Row;
+    showAvatar?: boolean;
     col: ArTableColumn<Row>;
     /** セルの値（段に分けた列では、その段の値）。 */
     value: unknown;
@@ -205,7 +206,7 @@ const lineKey = computed(() => props.line);
       <span v-for="(v, j) in linesOf(value)" :key="j">{{ isBlankCell(v) ? "" : v }}</span>
     </span>
     <span v-else-if="col.avatar" data-part="person" :data-single="!col.sub || undefined">
-      <ArAvatar v-bind="avatar" :size="variant === 'board' && col.sub ? 'md' : 'sm'" />
+      <ArAvatar v-if="showAvatar !== false" v-bind="avatar" :size="variant === 'board' && col.sub ? 'md' : 'sm'" />
       <span data-part="name">
         <b>{{ value }}</b>
         <small v-if="sub" data-part="sub">

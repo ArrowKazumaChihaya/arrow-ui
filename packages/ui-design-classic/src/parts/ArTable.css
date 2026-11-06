@@ -19,10 +19,10 @@
 [data-ar-design="classic"] [data-ar="table"] [data-part="row"][data-state~="off"]>td{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="table"] [data-sticky-edge]{box-shadow:inset -10px 0 8px -8px rgba(5,5,5,.06)}
 /* 名前の列・何行にも並ぶ値・行の操作（ボタンの間は3px） */
-[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]{gap:8px;line-height:20px}
-[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>b{font-weight:400}
-[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]{gap:4px;font-size:11px;line-height:16px;color:#5F5F5F}
-[data-ar-design="classic"] [data-ar="table"] td>[data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{width:7px;height:7px;border-radius:2px}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="person"]{gap:10px;line-height:20px}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>b{font-weight:400}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{gap:4px;font-size:11px;line-height:16px;color:#5F5F5F}
+[data-ar-design="classic"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{width:7px;height:7px;border-radius:2px}
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="lines"]{line-height:20px}
 [data-ar-design="classic"] [data-ar="table"] td>[data-part="actions"]{gap:3px}
 /* 並べ替えの印（SortMark：▲▼ 12×16、#BFBFBF。並べている向きだけ #1677FF） */

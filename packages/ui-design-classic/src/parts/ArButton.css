@@ -1,4 +1,4 @@
-/* @covers ArButton 1.0.0 */
+/* @covers ArButton 1.1.0 */
 /* ArButton（今の ARROW の Button：ui-Button）。antd の Button に ARROW の上書き（ant_button_wrap）を重ねた形。
    高さ32・角丸6・左右7px・枠1px。文字は .text_wrap（13px 400 游ゴシック・行の高さ30）、アイコンは ARROW のアイコン（16px・文字との間5px）。
    塗りの種類は背景＝枠＝色（primary＝add #4395D4、edit #69AF8A、danger＝delete #CA3A31、dark＝lock など #000）・白い文字・影 0 2px 0 rgba(5,145,255,.1)。
@@ -94,3 +94,15 @@
 /* 今の ARROW のアイコンつきボタンは、アイコンと文字の前後に 13px の空白が1つずつ入る（4.33px）。幅いっぱいでない（中身の幅の）ときだけ見える */
 [data-ar-design="classic"] [data-ar="button"]:not([data-block]):not([data-tone="dashed"]):not([data-tone="ghost"]):not([data-tone="danger-ghost"]):not([data-tone="overlay"])>[data-part="icon"]:has(~[data-part="label"]){margin-left:4.33px}
 [data-ar-design="classic"] [data-ar="button"]:not([data-block]):not([data-tone="dashed"]):not([data-tone="ghost"]):not([data-tone="danger-ghost"]):not([data-tone="overlay"])>[data-part="icon"]~[data-part="label"]{margin-right:4.33px}
+
+/* 操作の意味はページのアクセントに左右されない。disabled の表現は既存契約を維持。 */
+[data-ar-design="classic"] [data-ar="button"][data-intent="add"]{--ar-action:#3578B9;--ar-action-strong:#28639C;--ar-action-ink:#28639C;--ar-action-subtle:#EDF5FC;--ar-action-line:#ADCBE7;--ar-action-ring:rgba(53,120,185,.24)}
+[data-ar-design="classic"] [data-ar="button"]:is([data-intent="edit"],[data-tone="edit"]){--ar-action:#278359;--ar-action-strong:#206C49;--ar-action-ink:#206C49;--ar-action-subtle:#E9F6EE;--ar-action-line:#A8D5BB;--ar-action-ring:rgba(39,131,89,.24)}
+[data-ar-design="classic"] [data-ar="button"][data-intent="delete"]{--ar-action:var(--ar-color-danger);--ar-action-strong:var(--ar-color-danger-ink);--ar-action-ink:var(--ar-color-danger-ink);--ar-action-subtle:var(--ar-color-danger-subtle);--ar-action-line:#EBC2BF;--ar-action-ring:rgba(192,50,43,.22)}
+[data-ar-design="classic"] [data-ar="button"]:is([data-intent],[data-tone="edit"]):not(:disabled,[aria-disabled="true"]){background:var(--ar-action-subtle);color:var(--ar-action-ink);text-shadow:none;box-shadow:none}
+[data-ar-design="classic"] [data-ar="button"][data-intent][data-tone="primary"]:not(:disabled,[aria-disabled="true"]){background:var(--ar-action);color:#fff}
+[data-ar-design="classic"] [data-ar="button"][data-intent][data-tone="dashed"]:not(:disabled,[aria-disabled="true"]){background:#fff;border-color:var(--ar-action-line)}
+[data-ar-design="classic"] [data-ar="button"]:is([data-intent],[data-tone="edit"]):hover:not(:disabled,[aria-disabled="true"]){background:var(--ar-action-subtle);box-shadow:inset 0 0 0 1px var(--ar-action-line)}
+[data-ar-design="classic"] [data-ar="button"][data-intent][data-tone="primary"]:hover:not(:disabled,[aria-disabled="true"]){background:var(--ar-action-strong)}
+[data-ar-design="classic"] [data-ar="button"]:is([data-intent],[data-tone="edit"]):focus-visible:not(:disabled,[aria-disabled="true"]){outline:0;box-shadow:0 0 0 3px var(--ar-action-ring)}
+[data-ar-design="classic"] [data-ar="button"][data-tone="edit"]:not(:disabled,[aria-disabled="true"]){background:var(--ar-action);color:#fff}

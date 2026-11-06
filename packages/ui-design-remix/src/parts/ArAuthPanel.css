@@ -1,7 +1,11 @@
-/* @covers ArAuthPanel 1.0.0 */
+/* @covers ArAuthPanel 1.1.0 */
 [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]{background:var(--ar-color-surface,#fff);border:1px solid var(--ar-color-border);border-radius:18px;overflow:hidden;box-shadow:0 12px 30px #182c4110}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="heading"]{background:linear-gradient(120deg,var(--ar-accent),var(--ar-accent-strong));color:var(--ar-on-accent,#fff);font-size:17px;font-weight:700}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company"]{border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="initial"]{border-radius:8px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-name"]{font-weight:700;font-size:14px}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-code"]{font-size:12px;color:var(--ar-color-text-muted)}
+/* The authentication band follows the same shape and contrast as page headings. */
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="heading"]{background:radial-gradient(circle at 0 100%,#ffffff12 0 90px,transparent 91px),radial-gradient(circle at 100% 0,#ffffff18 0 115px,transparent 116px),linear-gradient(120deg,var(--ar-accent-hi),var(--ar-accent),var(--ar-accent-strong));letter-spacing:.06em}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="initial"]{width:38px;height:38px}
+[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{font-size:11px}

@@ -1,1 +1,7 @@
-{"name": "ArAuthPanel", "ja": "認証画面", "slug": "auth-panel", "group": "レイアウト", "version": "1.0.0"}
+{
+  "name": "ArAuthPanel",
+  "ja": "認証画面",
+  "slug": "auth-panel",
+  "group": "レイアウト",
+  "version": "1.1.0"
+}
