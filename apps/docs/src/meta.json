@@ -14051,6 +14051,13 @@
     "description": ""
    },
    {
+    "name": "icon",
+    "type": "'cal' | 'brief' | 'calc' | 'files' | 'mega' | 'bld' | 'users' | 'gear' | 'todo' | 'bell' | 'cd' | 'cl' | 'cr' | 'plus' | 'x' | 'pen' | 'trash' | 'more' | 'lock' | 'clock' | 'layers' | 'upload' | 'sheet' | 'print' | 'chart' | 'gantt' | 'check' | 'pin' | 'yen' | 'minus' | 'info' | 'alert' | 'moon' | 'play' | 'store' | 'grid' | 'eye' | 'note' | 'repeat' | 'menu' | 'user' | 'coffee' | 'grip' | 'undo' | 'redo' | 'layout' | 'panel' | 'search' | 'out' | 'eyeoff' | 'hand' | 'filter' | 'swap' | 'inbox' | 'help' | 'sort' | 'phone' | 'mail' | 'bug' | 'speaker' | 'hand2' | 'dl' | 'send' | 'xls' | 'star' | 'copy' | 'image' | 'folder' | 'file' | 'home' | 'up' | 'down' | 'zoom' | 'reload' | 'qmark' | 'smile' | 'drag' | 'camera' | 'unlock' | 'pointer' | 'movie' | 'money' | 'checkcircle' | 'exclaim' | 'list' | 'schedule' | 'shift' | 'comment' | 'notice' | 'cut' | 'paste' | 'save' | 'return' | 'zoomout' | 'zoomreset' | 'silhouette' | 'twoperson' | 'manager' | 'card' | 'nocard' | 'keyboard' | 'punchin' | 'punchout' | 'bank' | 'hierarchy' | 'status' | 'chevrons' | 'apply' | 'umbrella' | 'contract' | 'switch-user' | 'globe' | 'walk'",
+    "required": false,
+    "description": "",
+    "default": "\"lock\""
+   },
+   {
     "name": "logo",
     "type": "string",
     "required": false,
@@ -14061,7 +14068,7 @@
     "type": "string",
     "required": false,
     "description": "",
-    "default": "'ARROW'"
+    "default": "\"ARROW\""
    },
    {
     "name": "companyName",
@@ -14080,7 +14087,7 @@
     "type": "string",
     "required": false,
     "description": "",
-    "default": "'会社ID'"
+    "default": "\"会社ID\""
    },
    {
     "name": "companyIcon",

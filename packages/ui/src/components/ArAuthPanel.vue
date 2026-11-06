@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import ArIcon from "./ArIcon.vue";
 import type { ArAuthPanelProps } from "./ArAuthPanel.contract";
-withDefaults(defineProps<ArAuthPanelProps>(), { logoAlt: "ARROW", companyCodeLabel: "会社ID" });
+withDefaults(defineProps<ArAuthPanelProps>(), { logoAlt: "ARROW", companyCodeLabel: "会社ID", icon: "lock" });
 </script>
 <template>
   <section data-ar="auth-panel" data-part="root">
     <img v-if="logo" data-part="logo" :src="logo" :alt="logoAlt" />
     <div data-part="card">
-      <h1 data-part="heading"><ArIcon name="lock" size="sm" />{{ title }}</h1>
+      <h1 data-part="heading"><ArIcon :name="icon" size="sm" />{{ title }}</h1>
       <div data-part="body">
         <div v-if="companyName || companyCode" data-part="company">
           <span data-part="initial" aria-hidden="true"

@@ -2,6 +2,7 @@ import type { ArIconName } from "../icons";
 /** Shared sign-in/reset shell. The consumer owns credentials, authentication and routing. */
 export interface ArAuthPanelProps {
   title: string;
+  icon?: ArIconName;
   logo?: string;
   logoAlt?: string;
   companyName?: string;

@@ -24,9 +24,10 @@ it("hides optional columns and avatars without hiding row identity/actions or ch
   expect(table.find('[data-ar="avatar"]').exists()).toBe(true);
   table.getComponent(ArViewOptions).vm.$emit("update:modelValue", []);
   await table.vm.$nextTick();
-  expect(table.get('td[data-col="name"]').text()).toContain("確認用社員");
-  expect(table.get('td[data-col="actions"]').text()).toBe("編集");
-  expect(table.find('td[data-col="branch"]').exists()).toBe(false);
+  expect(table.findAll('tbody td[data-part="cell"]').map((cell) => cell.text())).toEqual([
+    "", "確認用社員", "編集",
+  ]);
+  expect(table.findAll('thead th').map((cell) => cell.text())).not.toContain("店舗");
   expect(table.find('[data-ar="avatar"]').exists()).toBe(false);
   expect(table.get('tbody input[type="checkbox"]').element).toHaveProperty("checked", true);
   expect(table.emitted("update:selected")).toBeUndefined();
@@ -40,6 +41,6 @@ it("keeps optional columns visible until view options are explicitly enabled", (
     props: { rows: [{ id: 1 }], columns: [{ key: "id", title: "番号" }], rowKey: "id", caption: "一覧" },
   });
   expect(table.findComponent(ArViewOptions).exists()).toBe(false);
-  expect(table.get('td[data-col="id"]').text()).toBe("1");
+  expect(table.get('tbody td[data-part="cell"]').text()).toBe("1");
   table.unmount();
 });
