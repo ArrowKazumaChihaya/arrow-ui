@@ -124,15 +124,7 @@
 }
 /* @end-component */
 
-/* @component src/Component/Workflow/BranchReference.vue#0 */
-.branch_reference[data-v-ui088e6da8f946] {
-  max-width: 100%;
-}
-[data-v-ui088e6da8f946] .table_wrap {
-  max-width: 100%;
-  overflow-x: auto;
-}
-/* @end-component */
+
 
 /* @component src/Component/Workflow/DefinitionHistory.vue#0 */
 .workflow_definition_history[data-v-ui255c6c76f443] {
@@ -141,15 +133,7 @@
 }
 /* @end-component */
 
-/* @component src/Component/Workflow/EmployeeReference.vue#0 */
-.employee_reference[data-v-ui13f530c32d35] {
-  overflow-wrap: anywhere;
-}
-.help[data-v-ui13f530c32d35] {
-  margin: 25px 0;
-  line-height: 1.7;
-}
-/* @end-component */
+
 
 /* @component src/View/Common/Workflow/Component/EmployeeTags.vue#0 */
 .dialog_actions[data-v-ui618871ac83fa] {
@@ -460,22 +444,7 @@ fieldset[data-v-ui34a47bbaf561] {
 /* @component src/View/Common/Workflow/Request.vue#0 */
 /* @end-component */
 
-/* @component src/View/Manager/Workflow/Company.vue#0 */
-.title_wrap[data-v-ui87d7045b391a] {
-  margin-bottom: 25px;
-}
-.reference_help[data-v-ui87d7045b391a] {
-  margin-bottom: 30px;
-  line-height: 1.7;
-}
-.button_wrap[data-v-ui87d7045b391a] {
-  width: 220px;
-  max-width: 100%;
-}
-[data-v-ui87d7045b391a] .menu_content_wrap {
-  min-width: 0;
-}
-/* @end-component */
+
 
 /* @component src/View/Manager/Workflow/Component/FieldAnnotation.vue#0 */
 /* @end-component */
@@ -530,27 +499,7 @@ fieldset[data-v-ui34a47bbaf561] {
 /* @component src/View/Manager/Workflow/Config.vue#0 */
 /* @end-component */
 
-/* @component src/View/Manager/Workflow/Employees.vue#0 */
-.title_wrap[data-v-ui6c52f10775cf] {
-  margin-bottom: 25px;
-}
-.reference_help[data-v-ui6c52f10775cf] {
-  margin-bottom: 25px;
-  line-height: 1.7;
-}
-.button_wrap[data-v-ui6c52f10775cf] {
-  width: 220px;
-  max-width: 100%;
-  margin-top: 20px;
-}
-.employee_reference_page[data-v-ui6c52f10775cf] {
-  max-width: 100%;
-}
-[data-v-ui6c52f10775cf] .table_wrap {
-  max-width: 100%;
-  overflow-x: auto;
-}
-/* @end-component */
+
 
 /* @component src/View/Manager/Workflow/Expenses.vue#0 */
 .month_changer_wrap[data-v-ui03222b1eeb1d] {
