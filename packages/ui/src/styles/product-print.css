@@ -44667,11 +44667,6 @@ fieldset[data-v-ui788c63d2858f]:where([data-ui-fixed], [data-ui-fixed] *) {
 .warning[data-v-ui14cb7c9eb646]:where([data-ui-fixed], [data-ui-fixed] *) {
   color: #a33;
 }
-.table_preview
-  > small[data-v-ui2a90abaf00ff]:where([data-ui-fixed], [data-ui-fixed] *) {
-  color: #90959a;
-  font-size: 11px;
-}
 .selection_total[data-v-ui03222b1eeb1d]:where([data-ui-fixed], [data-ui-fixed] *) {
   font-weight: 600;
 }

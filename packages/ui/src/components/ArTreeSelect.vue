@@ -18,6 +18,7 @@ import type { ArTreeSelectNode, ArTreeSelectProps, ArTreeSelectValue } from "./A
 defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<ArTreeSelectProps>(), {
   multiple: false,
+  checkStrictly: false,
   leafOnly: false,
   expanded: undefined,
   defaultExpandAll: false,
@@ -107,7 +108,7 @@ const values = computed<ArTreeSelectValue[]>(() =>
 const checkedSet = computed(() => new Set(values.value));
 function checkState(n: ArTreeSelectNode): "on" | "mixed" | "off" {
   const leaves = index.value.get(n.value)?.leaves ?? [];
-  if (!n.children?.length) return checkedSet.value.has(n.value) ? "on" : "off";
+  if (props.checkStrictly || !n.children?.length) return checkedSet.value.has(n.value) ? "on" : "off";
   const c = leaves.filter((v) => checkedSet.value.has(v)).length;
   return c === 0 ? "off" : c === leaves.length ? "on" : "mixed";
 }
@@ -194,7 +195,11 @@ function toggle(r: Row) {
   if (r.node.disabled) return;
   active.value = r.node.value;
   if (props.multiple) {
-    const leaves = index.value.get(r.node.value)?.leaves ?? [];
+    if (props.checkStrictly && !selectable(r)) {
+      if (r.hasChildren) setExpanded(r.node.value, !r.isOpen);
+      return;
+    }
+    const leaves = props.checkStrictly ? [r.node.value] : index.value.get(r.node.value)?.leaves ?? [];
     const on = checkState(r.node) !== "on";
     const set = new Set(values.value);
     for (const v of leaves) (on ? set.add(v) : set.delete(v));
@@ -272,7 +277,11 @@ function onKey(e: KeyboardEvent) {
   }
 }
 
-const selectedNodes = computed(() => values.value.map((v) => index.value.get(v)?.node ?? { value: v, label: String(v) }));
+const selectedNodes = computed(() => values.value.map((value) => {
+  const node = index.value.get(value)?.node ?? { value, label: String(value) };
+  const path = props.showPath ? pathOf(value).map((item) => item.label).join(" / ") : "";
+  return { ...node, label: path || node.label };
+}));
 const display = computed(() => {
   const first = values.value[0];
   if (first === undefined) return "";
@@ -337,8 +346,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
     <template v-if="useTags">
       <span v-if="!empty" data-part="tags">
         <span v-for="n in selectedNodes.slice(0, maxTags)" :key="String(n.value)" data-part="tag"
-          >{{ n.label
-          }}<button type="button" data-part="tag-remove" tabindex="-1" :aria-label="`${n.label}を外す`" :disabled="disabled" @mousedown.prevent @click.stop="removeTag(n.value)">
+          ><span data-part="tag-label">{{ n.label }}</span><button type="button" data-part="tag-remove" tabindex="-1" :aria-label="`${n.label}を外す`" :disabled="disabled" @mousedown.prevent @click.stop="removeTag(n.value)">
             <ArIcon line name="x" size="sm" /></button
         ></span>
         <span v-if="selectedNodes.length > maxTags" data-part="tag" data-kind="more">+{{ selectedNodes.length - maxTags }}</span>
@@ -392,7 +400,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
           :aria-level="r.level"
           :aria-expanded="r.hasChildren ? r.isOpen : undefined"
           :aria-selected="multiple ? undefined : values.includes(r.node.value)"
-          :aria-checked="multiple ? (checkState(r.node) === 'mixed' ? 'mixed' : checkState(r.node) === 'on') : undefined"
+          :aria-checked="multiple && (!checkStrictly || selectable(r)) ? (checkState(r.node) === 'mixed' ? 'mixed' : checkState(r.node) === 'on') : undefined"
           :aria-disabled="r.node.disabled || undefined"
           :data-level="r.level"
           :style="{ '--ar-tree-level': r.level - 1 }"
@@ -401,7 +409,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
               !multiple && values.includes(r.node.value) && 'selected',
               r.node.value === active && 'active',
               r.node.disabled && 'disabled',
-              !multiple && !selectable(r) && 'group',
+              (!multiple || checkStrictly) && !selectable(r) && 'group',
             ]
               .filter(Boolean)
               .join(' ') || undefined
@@ -413,7 +421,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
             <ArIcon line v-if="r.hasChildren" :name="r.isOpen ? 'cd' : 'cr'" size="sm" />
           </span>
           <ArCheckbox
-            v-if="multiple"
+            v-if="multiple && (!checkStrictly || selectable(r))"
             decorative
             data-part="check"
             :model-value="checkState(r.node) === 'on'"

@@ -1,4 +1,4 @@
-/* @covers ArTreeSelect 1.1.0 */
+/* @covers ArTreeSelect 1.2.0 */
 /* ArTreeSelect：押す所は ArSelect と同じ（ArSelect.css）。木（.ad-tree）は行30px・角丸7・間6・字下げ22px、開く印は18px幅の mute。
    チェック（.chk）は18px・角丸5・枠 #AEB9C4、チェック・一部は テーマ色の塗りに白い印。1つ選ぶときの選んだ行は淡いテーマ色の太字。 */
 [data-ar-design="remix"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]{gap:6px;height:30px;padding:0 8px 0 calc(var(--ar-tree-level,0) * 22px);border-radius:7px;font-size:13.5px;line-height:20.25px;color:var(--ar-color-text)}

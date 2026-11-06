@@ -27,12 +27,14 @@ export interface ArTreeSelectAction {
 }
 
 export interface ArTreeSelectProps {
-  /** 1つ選ぶときは値か null。multiple のときはチェックした一番下の部署の値の配列。 */
+  /** 1つ選ぶときは値か null。multiple のときは選択IDの配列（既定は葉、checkStrictlyなら親も個別に保持）。 */
   modelValue: ArTreeSelectValue | null | readonly ArTreeSelectValue[];
   /** 部署の木。 */
   tree: readonly ArTreeSelectNode[];
   /** チェックで複数選ぶ。親をチェックすると下が全部入り、一部だけのときは親が indeterminate になる。 */
   multiple?: boolean;
+  /** 1.2: Select parent and child IDs independently in multiple mode. Defaults to false (cascade to leaves). */
+  checkStrictly?: boolean;
   /** 1つ選ぶとき、下のある部署（親）は選べなくする。 */
   leafOnly?: boolean;
   /** 開いている部署の値（v-model:expanded）。省くと、選んでいる部署までを開いて出す。 */
@@ -47,7 +49,7 @@ export interface ArTreeSelectProps {
   variant?: "field" | "selbox";
   /** 頭に出すアイコン（例：bld）。 */
   icon?: ArIconName;
-  /** 押す所に「営業部 / 東京営業所」のように上の部署から出す。 */
+  /** 押す所に「営業部 / 東京営業所」のように上の部署から出す。1.2から複数選択の札にも適用する。 */
   showPath?: boolean;
   /** 札を何枚まで出すか（multiple・field）。残りは「+n」。 */
   maxTags?: number;
@@ -90,6 +92,6 @@ export interface ArTreeSelectEmits {
   action: [value: string];
 }
 
-export type ArTreeSelectPart = "root" | "icon" | "value" | "placeholder" | "tags" | "tag" | "tag-remove" | "clear" | "arrow" | "include-mark";
+export type ArTreeSelectPart = "root" | "icon" | "value" | "placeholder" | "tags" | "tag" | "tag-label" | "tag-remove" | "clear" | "arrow" | "include-mark";
 /** プルダウン（data-ar="tree-select-panel"）の部位。 */
 export type ArTreeSelectPanelPart = "search" | "list" | "node" | "switch" | "check" | "node-label" | "empty" | "footer" | "include" | "include-box" | "include-label" | "action";

@@ -70,7 +70,7 @@ export const contracts = {
   ArTimePicker: "1.0.0",
   ArTimeRange: "1.2.0",
   ArTransfer: "1.0.0",
-  ArTreeSelect: "1.1.0",
+  ArTreeSelect: "1.2.0",
   ArUpload: "1.2.0",
   ArVariablePanel: "1.0.0",
   ArWeekdayPicker: "1.1.0",

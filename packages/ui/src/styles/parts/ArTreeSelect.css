@@ -10,3 +10,7 @@
 [data-ar="tree-select-panel"]>[data-part="footer"]{display:flex;flex-direction:column}
 [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]{position:relative;display:flex;align-items:center;cursor:pointer;user-select:none;-webkit-user-select:none}
 [data-ar="tree-select"]>[data-part="include-mark"]{flex:none;white-space:nowrap}
+
+/* Keep full hierarchy paths inside the input on narrow layouts. */
+[data-ar="tree-select"]>[data-part="tags"]>[data-part="tag"]>[data-part="tag-label"]{min-width:0;white-space:normal;overflow-wrap:anywhere}
+[data-ar="tree-select"]>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]{flex:none}

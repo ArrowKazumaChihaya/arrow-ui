@@ -5890,14 +5890,14 @@
  },
  {
   "name": "ArTreeSelect",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "部署のような木から選ぶ（プルダウンの中に木）。\nmultiple はチェックで選び、一部だけ選んでいる親は indeterminate（テーマ色に白い横線）。1つ選ぶときは選んだ行が淡いテーマ色。\nキーボード：↓↑で行を動く、→ で開く・子へ、← で閉じる・親へ、Enter・Space で選ぶ／チェック、Escape で閉じる。\n1.1：「子店舗を含める」の切り替え（v-model:includeChildren）と、プルダウンの下の操作（actions・action）。",
   "props": [
    {
     "name": "modelValue",
     "type": "ArTreeSelectValue | readonly ArTreeSelectValue[] | null",
     "required": true,
-    "description": "1つ選ぶときは値か null。multiple のときはチェックした一番下の部署の値の配列。"
+    "description": "1つ選ぶときは値か null。multiple のときは選択IDの配列（既定は葉、checkStrictlyなら親も個別に保持）。"
    },
    {
     "name": "tree",
@@ -5910,6 +5910,13 @@
     "type": "boolean",
     "required": false,
     "description": "チェックで複数選ぶ。親をチェックすると下が全部入り、一部だけのときは親が indeterminate になる。",
+    "default": "false"
+   },
+   {
+    "name": "checkStrictly",
+    "type": "boolean",
+    "required": false,
+    "description": "1.2: Select parent and child IDs independently in multiple mode. Defaults to false (cascade to leaves).",
     "default": "false"
    },
    {
@@ -5970,7 +5977,7 @@
     "name": "showPath",
     "type": "boolean",
     "required": false,
-    "description": "押す所に「営業部 / 東京営業所」のように上の部署から出す。",
+    "description": "押す所に「営業部 / 東京営業所」のように上の部署から出す。1.2から複数選択の札にも適用する。",
     "default": "true"
    },
    {
@@ -6114,6 +6121,7 @@
    "icon",
    "tags",
    "tag",
+   "tag-label",
    "tag-remove",
    "placeholder",
    "value",

@@ -1,4 +1,4 @@
-/* @covers ArTreeSelect 1.1.0 */
+/* @covers ArTreeSelect 1.2.0 */
 /* ArTreeSelect（今の ARROW の TreeSelect＝antd 4 の TreeSelect）：押す所は Select と同じ。プルダウンは余白 8px 4px・角丸8。
    行は高さ34・字下げ24px、名前は余白 5px 12px・角丸6・14px、選んだ行は #e6f4ff。チェックは 16px・角丸4・枠 #d9d9d9、チェックは #1677ff。 */
 [data-ar-design="classic"] [data-ar="tree-select-panel"]{padding:8px 4px}
