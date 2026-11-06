@@ -146,6 +146,6 @@ export const covers = {
   ArWizard: "1.2.0",
   ArYearInput: "1.1.0",
   ArYearMonthInput: "1.1.0",
-  ArZipInput: "1.2.0",
+  ArZipInput: "1.3.0",
   ArZoomControl: "1.0.0",
 } as const;

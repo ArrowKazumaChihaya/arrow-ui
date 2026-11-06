@@ -1,2 +1,4 @@
-[data-ar="zip-input"]{display:inline-flex;align-items:center;flex-wrap:wrap;vertical-align:middle}
+[data-ar="zip-input"]{display:inline-flex;align-items:center;flex-wrap:wrap;vertical-align:middle;max-width:100%}
 [data-ar="zip-input"]>[data-part="status"]:empty{display:none}
+[data-ar="zip-input"]>[data-part="status"]{flex-basis:100%;overflow-wrap:anywhere}
+[data-ar="zip-input"]>[data-part="lookup"]{max-width:100%;white-space:normal}

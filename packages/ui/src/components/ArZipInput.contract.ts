@@ -1,10 +1,11 @@
-/** ArZipInput 1.2 の契約。class・style は外側、ほかの属性（tabindex・aria-*）とイベントは中の入力へ。ref から focus()・blur()・select()・input。郵便番号の入力（今の ARROW の Zip：「###-####」の形と、住所を引く）。 */
+/** ArZipInput 1.3 の契約。class・style は外側、ほかの属性（tabindex・aria-*）とイベントは中の入力へ。ref から focus()・blur()・select()・input。郵便番号の入力（今の ARROW の Zip：「###-####」の形と、住所を引く）。 */
 export interface ArZipInputProps {
   /** "123-4567"。空なら null。 */
   modelValue: string | null;
   /**
    * 7桁そろったときに住所を引く関数（製品が渡す。例：郵便番号の API を呼ぶ）。
    * 住所の文字を返すと address を出す。見つからなければ null。渡さなければ引かない。
+   * 渡した場合は、入力済みの番号から検索・再試行できるボタンも表示する。
    */
   lookup?: (zip: string) => Promise<string | null>;
   invalid?: boolean;
@@ -15,7 +16,7 @@ export interface ArZipInputProps {
   label?: string;
   id?: string;
   placeholder?: string;
-  labels?: { searching: string; notFound: string; failed: string };
+  labels?: { searching: string; notFound: string; failed: string; lookup?: string };
 }
 export interface ArZipInputEmits {
   /** 打つたびに出す（"123-4567" の形に直した値）。 */
@@ -23,4 +24,4 @@ export interface ArZipInputEmits {
   /** 住所が見つかったとき。 */
   address: [address: string, zip: string];
 }
-export type ArZipInputPart = "root" | "status";
+export type ArZipInputPart = "root" | "lookup" | "status";

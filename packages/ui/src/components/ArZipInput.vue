@@ -1,11 +1,12 @@
 <script setup lang="ts">
 /**
- * ArZipInput 1.2 — 郵便番号。数字だけを受け付け（全角も読む）、3桁のあとに「-」を自動で入れる。
+ * ArZipInput 1.3 — 郵便番号。数字だけを受け付け（全角も読む）、3桁のあとに「-」を自動で入れる。
  * 7桁そろうと lookup（製品が渡す関数）で住所を引き、見つかれば address を出す。引いている間と見つからないときは右に小さく出す。
  * 1.1：class・style は外側、ほかの属性（tabindex・aria-*）とイベント（keydown など）は中の入力へ渡す。ref から focus()・select()・input。
  */
-import { computed, nextTick, ref, useAttrs } from "vue";
+import { computed, nextTick, onBeforeUnmount, ref, useAttrs, watch } from "vue";
 import ArTextInput from "./ArTextInput.vue";
+import ArButton from "./ArButton.vue";
 import type { ArZipInputProps } from "./ArZipInput.contract";
 
 defineOptions({ inheritAttrs: false });
@@ -17,7 +18,7 @@ const props = withDefaults(defineProps<ArZipInputProps>(), {
   label: undefined,
   id: undefined,
   placeholder: "123-4567",
-  labels: () => ({ searching: "住所を探しています…", notFound: "住所が見つかりませんでした", failed: "住所を引けませんでした" }),
+  labels: () => ({ searching: "住所を探しています…", notFound: "住所が見つかりませんでした", failed: "住所を引けませんでした", lookup: "住所を入れる" }),
 });
 const emit = defineEmits<{ "update:modelValue": [value: string | null]; address: [address: string, zip: string] }>();
 
@@ -28,9 +29,11 @@ function format(text: string): string {
 }
 const status = ref<"idle" | "searching" | "not-found" | "failed">("idle");
 let seq = 0;
+let requestedZip: string | null = null;
 async function find(zip: string) {
-  if (!props.lookup) return;
+  if (!props.lookup || props.disabled || zip.length !== 8) return;
   const my = ++seq;
+  requestedZip = zip;
   status.value = "searching";
   try {
     const address = await props.lookup(zip);
@@ -43,6 +46,20 @@ async function find(zip: string) {
     if (my === seq) status.value = "failed";
   }
 }
+function lookupCurrent() {
+  if (status.value !== "searching") void find(format(props.modelValue ?? ""));
+}
+function resetLookup() {
+  seq++;
+  status.value = "idle";
+  requestedZip = null;
+}
+watch(() => [props.modelValue, props.disabled], () => {
+  if (requestedZip === format(props.modelValue ?? "") && !props.disabled) return;
+  resetLookup();
+});
+watch(() => props.lookup, resetLookup);
+onBeforeUnmount(() => { seq++; });
 const root = ref<HTMLElement | null>(null);
 function onInput(v: string) {
   const z = format(v);
@@ -92,6 +109,16 @@ const statusText = () =>
       :size="size"
       @update:model-value="onInput"
     />
+    <ArButton
+      v-if="lookup"
+      data-part="lookup"
+      tone="secondary"
+      icon="search"
+      :size="size"
+      :disabled="disabled || format(modelValue ?? '').length !== 8"
+      :loading="status === 'searching'"
+      @click="lookupCurrent"
+    >{{ labels.lookup ?? '住所を入れる' }}</ArButton>
     <span data-part="status" role="status" aria-live="polite">{{ statusText() }}</span>
   </span>
 </template>

@@ -158,7 +158,7 @@ export const contracts = {
   ArViewOptions: "1.1.0",
   ArYearInput: "1.1.0",
   ArYearMonthInput: "1.1.0",
-  ArZipInput: "1.2.0",
+  ArZipInput: "1.3.0",
   ArAuthPanel: "1.0.0",
   ArTableHeader: "1.0.0",
 } as const;

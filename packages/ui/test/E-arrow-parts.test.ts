@@ -105,6 +105,46 @@ describe("ArKanaInput・ArKanaText", () => {
 });
 
 describe("ArZipInput", () => {
+  it("入力済みの番号をボタンから検索し、失敗後は再入力せず再試行できる", async () => {
+    const lookup = vi.fn<(zip: string) => Promise<string | null>>()
+      .mockRejectedValueOnce(new Error("offline"))
+      .mockResolvedValueOnce("東京都渋谷区神南");
+    const w = mount(ArZipInput, { props: {
+      modelValue: "150-0041", lookup,
+      labels: { lookup: "Fill address", searching: "Searching", notFound: "Not found", failed: "Try again" },
+    } });
+    expect(lookup).not.toHaveBeenCalled();
+    expect(w.get('[data-part="lookup"]').text()).toBe("Fill address");
+    await w.get('[data-part="lookup"]').trigger("click");
+    await flushPromises();
+    expect(w.get('[data-part="status"]').text()).toBe("Try again");
+    await w.get('[data-part="lookup"]').trigger("click");
+    await flushPromises();
+    expect(w.emitted("address")).toEqual([["東京都渋谷区神南", "150-0041"]]);
+    expect(w.emitted("update:modelValue")).toBeUndefined();
+    await w.setProps({ modelValue: "150-00" });
+    expect(w.get('[data-part="lookup"]').attributes("disabled")).toBeDefined();
+    await w.setProps({ modelValue: "150-0041", disabled: true });
+    expect(w.get('[data-part="lookup"]').attributes("disabled")).toBeDefined();
+    await w.setProps({ lookup: undefined });
+    expect(w.find('[data-part="lookup"]').exists()).toBe(false);
+    w.unmount();
+  });
+
+  it.each(["reset", "disable", "unmount"])("検索中の%s後に古い住所を反映しない", async (action) => {
+    let finish: (value: string | null) => void = () => {};
+    const lookup = vi.fn(() => new Promise<string | null>((resolve) => { finish = resolve; }));
+    const w = mount(ArZipInput, { props: { modelValue: "150-0041", lookup } });
+    await w.get('[data-part="lookup"]').trigger("click");
+    if (action === "reset") await w.setProps({ modelValue: null });
+    else if (action === "disable") await w.setProps({ disabled: true });
+    else w.unmount();
+    finish("東京都渋谷区神南");
+    await flushPromises();
+    expect(w.emitted("address")).toBeUndefined();
+    if (action !== "unmount") w.unmount();
+  });
+
   it("数字だけを ###-#### に整え、7桁そろうと住所を引く", async () => {
     const lookup = vi.fn(async (z: string) => (z === "150-0041" ? "東京都渋谷区神南" : null));
     const w = mount(ArZipInput, { props: { modelValue: null, lookup } });
