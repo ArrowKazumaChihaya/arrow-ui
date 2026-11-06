@@ -10,7 +10,7 @@
     height: 40px;
     font-size: 16px;
   }
-  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"] > [data-part="list"] {
+  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"][data-variant][data-layout] > [data-part="list"] {
     display: flex;
     flex-wrap: wrap;
     gap: 6px 8px;
@@ -19,7 +19,7 @@
     background: transparent;
     overflow: visible;
   }
-  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"] > [data-part="list"] > [data-part="item"] {
+  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"][data-variant][data-layout] > [data-part="list"] > [data-part="item"] {
     display: flex;
     align-items: baseline;
     gap: 6px;
@@ -29,12 +29,12 @@
     border-radius: 6px;
     background: var(--ar-color-surface-alt);
   }
-  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"] > [data-part="list"] > [data-part="item"] > :is([data-part="label"], [data-part="value"]) {
+  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"][data-variant][data-layout] > [data-part="list"] > [data-part="item"] > :is([data-part="label"], [data-part="value"]) {
     padding: 0;
     border: 0;
     background: transparent;
   }
-  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"] > [data-part="list"] > [data-part="item"] > [data-part="label"] {
+  [data-ar-design="remix"] [data-ar="profile-card"] [data-ar="descriptions"][data-variant][data-layout] > [data-part="list"] > [data-part="item"] > [data-part="label"] {
     flex: none;
   }
 }

@@ -25,6 +25,8 @@ const slots = defineSlots<{
   default(props: ArFieldControlProps): unknown;
   /** Supplementary text and an optional detail action, beneath the control. */
   help?(): unknown;
+  /** A separate help button alongside the label; never nested inside the label. */
+  "label-extra"?(): unknown;
 }>();
 
 const form = inject(arFormKey, null);
@@ -105,7 +107,11 @@ function onFocusOut(e: FocusEvent) {
     :data-state="error ? 'invalid' : undefined"
     @focusout="onFocusOut"
   >
-    <label :id="labelId" data-part="label" :for="id" :data-empty="!label || undefined" @click="onLabelClick"
+    <div v-if="$slots['label-extra']" data-part="label">
+      <label :id="labelId" :for="id" @click="onLabelClick">{{ label }}<span v-if="required" data-part="required">{{ requiredText }}</span></label>
+      <slot name="label-extra" />
+    </div>
+    <label v-else :id="labelId" data-part="label" :for="id" :data-empty="!label || undefined" @click="onLabelClick"
       >{{ label }}<span v-if="required" data-part="required">{{ requiredText }}</span></label
     >
     <div data-part="control">

@@ -1,4 +1,5 @@
-/** ArField 1.0 の契約。ラベル・必須・説明・間違いを1つにまとめ、中の入力と結ぶ。 */
+/** Optional label-extra slot places a help trigger beside the label without nesting it in the label.
+ * ArField 1.0 の契約。ラベル・必須・説明・間違いを1つにまとめ、中の入力と結ぶ。 */
 export interface ArFieldProps {
   /** 項目名（.lbl 12.5px 太字）。 */
   label: string;
