@@ -4,6 +4,8 @@
 
 ### Patch Changes
 
+- Stack dialogs, drawers, image previews and floating inputs in opening order so a pre-mounted child popup cannot appear behind a mobile day sheet. Preserve explicit layers, contained previews and scroll locks when closing nested overlays.
+
 - Close a header notice/to-do list when selecting its item, returning focus to the trigger before opening a detail dialog so the floating list cannot cover it.
 
 - Keep long floating menus inside the viewport and scroll their natural-height rows without squeezing multiline descriptions, and separate operation descriptions from disabled reasons. Add optional edit tone to menu items. Group phone page-size/detail-search controls above a full-width search field.

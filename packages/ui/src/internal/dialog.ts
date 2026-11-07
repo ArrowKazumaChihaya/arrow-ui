@@ -6,6 +6,8 @@
  */
 import { getCurrentInstance, nextTick, onBeforeUnmount, ref, watch, type Ref } from "vue";
 
+import { acquireOverlayLayer, releaseOverlayLayer } from "./overlay";
+
 export const FOCUSABLE =
   'a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
 
@@ -38,8 +40,11 @@ export function useDialog(opts: {
   onEscape: () => void;
   /** 後ろのページを止めるか（その場に出すときは止めない）。 */
   lockScroll?: () => boolean;
+  zIndex?: () => number | undefined;
+  baseLayer?: number;
 }) {
   const palette = ref<string | undefined>(undefined);
+  const layer = ref<number | undefined>(undefined);
   const readPalette = usePlacedPalette();
   let returnTo: HTMLElement | null = null;
   let locked = false;
@@ -87,6 +92,7 @@ export function useDialog(opts: {
   }
 
   function release() {
+    releaseOverlayLayer(dialogId);
     const index = openDialogs.indexOf(dialogId);
     if (index >= 0) openDialogs.splice(index, 1);
     if (typeof document !== "undefined") document.removeEventListener("keydown", onDocumentKeydown);
@@ -100,6 +106,9 @@ export function useDialog(opts: {
       if (typeof document === "undefined") return;
       if (open) {
         if (!openDialogs.includes(dialogId)) openDialogs.push(dialogId);
+        layer.value = opts.lockScroll?.() === false
+          ? opts.zIndex?.()
+          : acquireOverlayLayer(dialogId, opts.baseLayer, opts.zIndex?.());
         document.addEventListener("keydown", onDocumentKeydown);
         palette.value = readPalette();
         returnTo = document.activeElement as HTMLElement | null;
@@ -122,5 +131,5 @@ export function useDialog(opts: {
   );
   onBeforeUnmount(release);
 
-  return { onKeydown, palette, focusables };
+  return { onKeydown, palette, focusables, layer };
 }

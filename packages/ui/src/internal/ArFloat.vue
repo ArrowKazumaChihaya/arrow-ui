@@ -9,6 +9,8 @@ import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
 import { useArUi } from "../provider/context";
 import { computePosition, type ArPlacement, type FloatPosition } from "./floating";
 
+import { acquireOverlayLayer, releaseOverlayLayer } from "./overlay";
+
 const props = withDefaults(
   defineProps<{
     open: boolean;
@@ -35,6 +37,8 @@ const panel = ref<HTMLElement | null>(null);
 const pos = ref<FloatPosition | null>(null);
 const width = ref<number | null>(null);
 const palette = ref<string | undefined>(undefined);
+const layer = ref<number | undefined>(undefined);
+const layerId = Symbol("float");
 
 function place() {
   if (!props.open || !props.anchor || !panel.value) return;
@@ -80,22 +84,28 @@ watch(
   () => props.open,
   async (o) => {
     if (o) {
+      layer.value = acquireOverlayLayer(layerId, 1060);
       palette.value = (props.anchor?.closest("[data-ar-palette]") as HTMLElement | null)?.dataset.arPalette;
       pos.value = null;
       await nextTick();
       place();
       bind(true);
-    } else bind(false);
+    } else {
+      releaseOverlayLayer(layerId);
+      bind(false);
+    }
   },
   { immediate: true },
 );
 onBeforeUnmount(() => {
+  releaseOverlayLayer(layerId);
   bind(false);
   cancelAnimationFrame(raf);
 });
 defineExpose({ place, panel });
 
 const style = computed(() => ({
+  zIndex: layer.value,
   top: `${pos.value?.top ?? -9999}px`,
   left: `${pos.value?.left ?? -9999}px`,
   width: props.matchWidth === true && width.value ? `${width.value}px` : undefined,

@@ -79,9 +79,10 @@ function onViewerKey(e: KeyboardEvent) {
   else if (e.key === "-") zoom(-1);
   else if (e.key === "0") scale.value = 1;
 }
-const { onKeydown, palette } = useDialog({
+const { onKeydown, palette, layer } = useDialog({
   open: () => open.value,
   panel: viewer,
+  baseLayer: 1080,
   initial: () => viewer.value,
   escapable: () => true,
   onEscape: () => setOpen(false),
@@ -115,6 +116,7 @@ watch(open, (v) => { if (v) scale.value = 1; });
       ref="viewer"
       data-ar="image"
       data-part="viewer"
+      :style="{ zIndex: layer }"
       role="dialog"
       aria-modal="true"
       tabindex="-1"

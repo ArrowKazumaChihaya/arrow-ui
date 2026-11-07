@@ -91,13 +91,14 @@ function pickStep(i: number) {
   if (props.stepsClickable && i < props.currentStep) emit("update:currentStep", i);
 }
 
-const { onKeydown, palette } = useDialog({
+const { onKeydown, palette, layer } = useDialog({
   open: () => props.open,
   panel,
   initial: () => panel.value?.querySelector<HTMLElement>('[data-part="body"]') ?? (confirm.value ? panel.value?.querySelector<HTMLElement>('[data-part="footer"]') : null),
   escapable: () => props.closable,
   onEscape: close,
   lockScroll: () => !props.contained,
+  zIndex: () => props.zIndex,
 });
 </script>
 
@@ -113,7 +114,7 @@ const { onKeydown, palette } = useDialog({
       :data-contained="contained || undefined"
       :data-mobile="mobileFullscreen && !confirm && size !== 'full' ? 'fullscreen' : undefined"
       :data-ar-palette="palette"
-      :style="zIndex != null ? { zIndex } : undefined"
+      :style="{ zIndex: zIndex ?? layer }"
       @keydown="onKeydown"
     >
       <div data-part="scrim" aria-hidden="true" @click="closeOnScrim && close()" />

@@ -40,13 +40,14 @@ function close() {
   emit("update:open", false);
   emit("close");
 }
-const { onKeydown, palette } = useDialog({
+const { onKeydown, palette, layer } = useDialog({
   open: () => props.open,
   panel,
   initial: () => panel.value?.querySelector<HTMLElement>('[data-part="body"]'),
   escapable: () => props.closable,
   onEscape: close,
   lockScroll: () => !props.contained,
+  zIndex: () => props.zIndex,
 });
 </script>
 
@@ -61,7 +62,7 @@ const { onKeydown, palette } = useDialog({
         :data-placement="placement"
         :data-contained="contained || undefined"
         :data-ar-palette="palette"
-        :style="zIndex != null ? { zIndex } : undefined"
+        :style="{ zIndex: zIndex ?? layer }"
         @keydown="onKeydown"
       >
         <div data-part="scrim" aria-hidden="true" @click="closeOnScrim && close()" />
