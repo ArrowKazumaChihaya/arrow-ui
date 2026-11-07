@@ -74,6 +74,14 @@ describe("ArModal 1.1", () => {
     expect(body.scrollTop).toBe(0);
     w.unmount();
   });
+  it("編集の確認は緑の保存ボタンで確定できる", async () => {
+    const w = mount(ArModal, { props: { ...base, open: true, variant: "confirm", okText: "保存", okTone: "edit" }, attachTo: document.body });
+    const save = w.get('[data-ok]');
+    expect(save.attributes("data-tone")).toBe("edit");
+    await save.trigger("click");
+    expect(w.emitted("ok")).toHaveLength(1);
+    w.unmount();
+  });
   it("confirm は alertdialog で、左に印があり × を出さない", () => {
     const w = mount(ArModal, { props: { ...base, open: true, variant: "confirm", okText: "削除する", okTone: "danger" }, attachTo: document.body });
     expect(w.find('[role="alertdialog"]').exists()).toBe(true);

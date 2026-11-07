@@ -46,8 +46,8 @@ export interface ArModalProps {
   footerNoteAlign?: "start" | "end";
   /** 主なボタンの文字。渡すと足に「キャンセル」と主なボタンを出す（#footer があればそちらが優先）。 */
   okText?: string;
-  /** 主なボタンの種類。削除は danger（赤）。 */
-  okTone?: "primary" | "danger";
+  /** 主なボタンの種類。保存は edit（緑）、削除は danger（赤）。 */
+  okTone?: "primary" | "edit" | "danger";
   okIcon?: ArIconName;
   okDisabled?: boolean;
   okLoading?: boolean;
