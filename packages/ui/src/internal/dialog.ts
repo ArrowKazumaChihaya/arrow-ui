@@ -119,11 +119,20 @@ export function useDialog(opts: {
         await nextTick();
         if (!opts.open()) return;
         const scope = opts.initial?.() ?? null;
-        const first = scope ? Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE))[0] : undefined;
-        (first ?? opts.panel.value)?.focus();
+        const first = scope ? Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE)).find((element) => !element.closest("[inert]")) : undefined;
+        let target = first ?? opts.panel.value;
+        if (first && scope) {
+          const visible = scope.getBoundingClientRect();
+          const candidate = first.getBoundingClientRect();
+          // A link below a long explanation must not skip the opening paragraphs.
+          // Keep normal form autofocus when its first control is already in view.
+          if (candidate.top < visible.top || candidate.bottom > visible.bottom)
+            target = scope.matches(FOCUSABLE) ? scope : opts.panel.value;
+        }
+        target?.focus({ preventScroll: true });
       } else {
         release();
-        returnTo?.focus?.();
+        returnTo?.focus?.({ preventScroll: true });
         returnTo = null;
       }
     },
