@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- Keep long floating menus inside the viewport, and separate operation descriptions from disabled reasons. Add optional edit tone to menu items. Group phone page-size/detail-search controls above a full-width search field.
+- Keep long floating menus inside the viewport and scroll their natural-height rows without squeezing multiline descriptions, and separate operation descriptions from disabled reasons. Add optional edit tone to menu items. Group phone page-size/detail-search controls above a full-width search field.
 
 - Add rich before/after slots to ArChangedValue for structured custom fields and image previews. Section navigation now keeps destination headings below the sticky mobile picker and tracks the same scroll offset.
 
