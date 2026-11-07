@@ -27,7 +27,7 @@ const rows = computed<Row[]>(() => {
   }
   return out;
 });
-const rich = computed(() => rows.value.some((r) => r.kind === "item" && !!r.item.description));
+const rich = computed(() => rows.value.some((r) => r.kind === "item" && !!(r.item.description || r.item.disabledReason)));
 const usable = (it: ArMenuItem) => !it.disabled && !it.locked;
 const buttons = () => [...(root.value?.querySelectorAll<HTMLElement>('[data-part="item"]:not([aria-disabled="true"])') ?? [])];
 
@@ -93,14 +93,14 @@ defineExpose({ focusAt });
         tabindex="-1"
         data-part="item"
         :data-key="r.item.key"
-        :data-tone="r.item.danger ? 'danger' : undefined"
+        :data-tone="r.item.danger ? 'danger' : r.item.tone"
         :data-state="[r.item.key === selected && 'selected', r.item.disabled && 'disabled', r.item.locked && 'locked'].filter(Boolean).join(' ') || undefined"
         :aria-disabled="!usable(r.item) || undefined"
         @click="choose(r.item, $event)"
       >
         <span v-if="rich && (r.item.icon || r.item.locked)" data-part="icon-box"><ArIcon :line="!!r.item.locked" :name="r.item.locked ? 'lock' : r.item.icon!" size="sm" /></span>
         <ArIcon v-else-if="r.item.icon || r.item.locked" :line="!!r.item.locked" :name="r.item.locked ? 'lock' : r.item.icon!" data-part="icon" size="sm" />
-        <span v-if="rich" data-part="text"><span data-part="label">{{ r.item.label }}</span><span v-if="r.item.description" data-part="description">{{ r.item.description }}</span></span>
+        <span v-if="rich" data-part="text"><span data-part="label">{{ r.item.label }}</span><span v-if="r.item.description" data-part="description">{{ r.item.description }}</span><span v-if="!usable(r.item) && r.item.disabledReason" data-part="disabled-reason">{{ r.item.disabledReason }}</span></span>
         <span v-else data-part="label">{{ r.item.label }}</span>
       </component>
     </template>

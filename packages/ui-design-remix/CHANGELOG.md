@@ -4,6 +4,8 @@
 
 ### Patch Changes
 
+- Unify operation-trigger height, green editing entries and readable purpose/disabled text. Keep short mobile headings beside their actions without unnecessary wrapping.
+
 - Align business band headings to the leading edge, independent of header actions. Keep card and page-heading insets consistent; authentication panels retain their centered composition.
 - Keep compact, full-width segmented filters readable with count badges. Allow wrapped labels to increase the control height instead of overflowing a fixed small-size row.
 

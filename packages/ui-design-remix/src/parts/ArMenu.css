@@ -27,3 +27,5 @@
 [data-ar-design="remix"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]:is([data-state~="selected"],[data-state~="active"]){color:var(--ar-accent-ink);font-weight:700;border-bottom-color:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]:is([data-state~="disabled"],[data-state~="locked"]){color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent);border-radius:6px 6px 0 0}
+
+[data-ar-design="remix"] [data-ar="menu"]>[data-part="item"][data-tone="edit"]{color:#206C49}

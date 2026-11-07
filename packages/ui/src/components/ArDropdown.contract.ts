@@ -41,4 +41,4 @@ export interface ArDropdownEmits {
   click: [event: MouseEvent];
 }
 /** default slot（押すもの）は { open, toggle, attrs } を受け取る。attrs を押す要素に v-bind すると aria が付く。 */
-export type ArDropdownPart = "content" | "root" | "trigger" | "icon" | "label" | "caret" | "list" | "group" | "item" | "icon-box" | "text" | "description" | "divider";
+export type ArDropdownPart = "content" | "root" | "trigger" | "icon" | "label" | "caret" | "list" | "group" | "item" | "icon-box" | "text" | "description" | "divider" | "disabled-reason";

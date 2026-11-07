@@ -42,6 +42,8 @@ export function computePosition(
   let left = 0;
   if (s === "bottom" || s === "top") {
     top = s === "bottom" ? anchor.bottom + offset : anchor.top - offset - panel.height;
+    // If neither side fits, keep the complete scrollable panel inside the viewport.
+    top = Math.min(Math.max(margin, top), Math.max(margin, viewport.height - margin - panel.height));
     left = align === "start" ? anchor.left : align === "end" ? anchor.right - panel.width : anchor.left + anchor.width / 2 - panel.width / 2;
     left = Math.min(Math.max(margin, left), Math.max(margin, viewport.width - margin - panel.width));
   } else {

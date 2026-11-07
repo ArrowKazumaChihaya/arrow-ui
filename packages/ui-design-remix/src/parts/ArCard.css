@@ -67,7 +67,7 @@
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]{min-height:50px;padding-inline:12px}
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"][data-size="md"]>[data-part="head"]>[data-part="title"]{font-size:17px}
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]:not(:empty)){display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
-  [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]:not(:empty))>[data-part="title"]{flex:1 1 160px;text-align:left}
+  [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="actions"]:not(:empty))>[data-part="title"]{flex:1 1 auto;text-align:left}
   [data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{margin-inline-start:auto;justify-content:flex-end}
 }
 

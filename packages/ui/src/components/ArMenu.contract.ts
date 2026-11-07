@@ -14,6 +14,10 @@ export interface ArMenuItem {
   description?: string;
   /** 危ない項目（削除など）。赤で出す。区切り線のあと・最後に置く。 */
   danger?: boolean;
+  /** 編集操作の色。danger が true のときは危険色を優先する。 */
+  tone?: "edit";
+  /** 選べない理由。浮かぶメニューでは操作の説明とは別の行に表示する。 */
+  disabledReason?: string;
   /** 選べない。 */
   disabled?: boolean;
   /** 権限がない。鍵のアイコンと灰色で出し、選べない。 */

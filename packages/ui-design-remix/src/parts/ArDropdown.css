@@ -1,6 +1,6 @@
 /* @covers ArDropdown 1.2.0 */
 /* ArDropdown：シフトの「操作」メニューと同じ形（.pop .mi）。説明つきの項目は .v-pop .r-mi（アイコンの箱・2行）。 */
-[data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]{gap:7px;height:38px;padding:0 10px 0 14px;border:0;border-radius:11px;background:var(--ar-accent);color:var(--ar-on-accent);font-size:13.5px;font-weight:700;line-height:normal;text-shadow:var(--ar-on-accent-shadow);box-shadow:0 6px 14px -6px color-mix(in srgb,var(--ar-accent) 80%,transparent);transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]{gap:7px;height:var(--ar-size-control-md);padding:0 10px 0 14px;border:0;border-radius:11px;background:var(--ar-accent);color:var(--ar-on-accent);font-size:13.5px;font-weight:700;line-height:normal;text-shadow:var(--ar-on-accent-shadow);box-shadow:0 6px 14px -6px color-mix(in srgb,var(--ar-accent) 80%,transparent);transition:background var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]:hover:not(:disabled),[data-ar-design="remix"] [data-ar="dropdown"][data-state~="open"]>[data-part="trigger"]{background:var(--ar-accent-strong)}
 [data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]:focus-visible{outline:0;box-shadow:0 6px 14px -6px color-mix(in srgb,var(--ar-accent) 80%,transparent),0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="dropdown"]>[data-part="trigger"]:disabled{background:#EEF1F5;color:var(--ar-color-text-faint);box-shadow:none;text-shadow:none}
@@ -34,3 +34,13 @@
 [data-ar-design="remix"] :is([data-ar="shift-grid-menu"]>[data-part="menu"],[data-ar="app-account-menu"])>[data-part="menu-item"]>[data-ar="icon"]{color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"][data-item="delete"]{color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"][data-item="delete"]>[data-ar="icon"]{color:inherit}
+
+/* Operations keep their purpose visible even when unavailable. */
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"][data-tone="edit"]:not([aria-disabled="true"])>[data-part="icon-box"]{background:#E9F6EE;color:#206C49}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"][data-tone="edit"]>[data-part="text"]>[data-part="label"]{color:#206C49}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="disabled-reason"]{margin-top:3px;font-size:11px;line-height:1.5;white-space:pre-line;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"][aria-disabled="true"]>[data-part="text"]>[data-part="label"]{color:var(--ar-color-text-muted)}
+@media(max-width:599px){
+  [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"][data-rich]>[data-part="item"]{padding:9px 10px;min-height:48px}
+  [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>:is([data-part="description"],[data-part="disabled-reason"]){font-size:12px;line-height:1.5}
+}

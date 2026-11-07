@@ -164,7 +164,7 @@ const role = computed(() => (props.mode === "horizontal" ? "menubar" : "menu"));
         data-part="item"
         :data-key="r.item.key"
         :data-level="r.level"
-        :data-tone="r.item.danger ? 'danger' : undefined"
+        :data-tone="r.item.danger ? 'danger' : r.item.tone"
         :data-state="
           [
             r.item.key === selected && 'selected',

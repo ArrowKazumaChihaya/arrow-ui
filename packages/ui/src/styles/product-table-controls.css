@@ -51,6 +51,10 @@
   min-width: 0;
   max-width: 100%;
 }
+.table_component > .control_wrap .detail_search_button_wrap {
+  width: auto;
+  max-width: 100%;
+}
 .table_component > .control_wrap > .right_control {
   display: flex;
   align-items: center;
@@ -72,3 +76,16 @@
 
 /* Expanded filters need their own gap before rows or the mobile sort control. */
 [data-ar-design="remix"] .table_component > .panel_wrap:has(> *) { margin-block-end: 12px; }
+
+/* A short filter and the page-size control share one row on phones.
+   The search field stays full width below them instead of becoming too narrow. */
+@media (max-width: 599px) {
+  .table_component > .control_wrap .branch_control_wrap:has(> .table_page_size) {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    width: 100%;
+  }
+  .table_component > .control_wrap .branch_control_wrap > .table_page_size { grid-column: 1; grid-row: 1; }
+  .table_component > .control_wrap .branch_control_wrap:has(> .table_page_size) > .search_control_wrap { grid-column: 2; grid-row: 1; justify-self: end; }
+  .table_component > .control_wrap .branch_control_wrap:has(> .table_page_size) > .search_wrap { grid-column: 1 / -1; grid-row: 2; width: 100%; max-width: none; }
+}
