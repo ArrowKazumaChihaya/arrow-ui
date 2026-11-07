@@ -2,10 +2,10 @@
 /* ArTable（box＝.lst/.lr：外枠 角丸12・線、見出し34・行44。board＝シフト画面の .v-tr：外枠なし、角の丸い見出し・行50・合計の帯） */
 [data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
-[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"]{padding:0 4px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11.5px;font-weight:700;letter-spacing:.04em;line-height:1.5;white-space:nowrap;border-bottom:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"]{padding:0 8px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11.5px;font-weight:700;letter-spacing:.04em;line-height:1.5;white-space:nowrap;border-bottom:1px solid var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="table"] thead[data-part="head"]>tr{height:34px}
 [data-ar-design="remix"] [data-ar="table"] :is(tbody[data-part="body"]>tr[data-part="row"],tfoot[data-part="foot"]>tr){height:44px}
-[data-ar-design="remix"] [data-ar="table"] [data-part="cell"]{padding:4px 4px;border-bottom:1px solid var(--ar-color-border-subtle);font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="table"] [data-part="cell"]{padding:4px 8px;border-bottom:1px solid var(--ar-color-border-subtle);font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"]):first-child{padding-left:12px}
 [data-ar-design="remix"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"]):last-child{padding-right:12px}
 [data-ar-design="remix"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="select"]{width:18px;box-sizing:content-box}
@@ -159,11 +159,11 @@
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"][data-tone="danger"]{color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="mark"]{width:12px;height:12px;margin-left:3px;color:var(--ar-accent-ink)}
 /* 上の行のセルがまたいでいる行では、行の最初・最後のセルが表の端の列ではない（端の余白を付けない） */
-[data-ar-design="remix"] [data-ar="table"] tbody td[data-part="cell"]:not([data-col]):first-child:not([data-edge="first"]){padding-left:4px}
-[data-ar-design="remix"] [data-ar="table"] tbody td[data-part="cell"]:not([data-col]):last-child:not([data-edge="last"]){padding-right:4px}
+[data-ar-design="remix"] [data-ar="table"] tbody td[data-part="cell"]:not([data-col]):first-child:not([data-edge="first"]){padding-left:8px}
+[data-ar-design="remix"] [data-ar="table"] tbody td[data-part="cell"]:not([data-col]):last-child:not([data-edge="last"]){padding-right:8px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-part="cell"]:not([data-col]):first-child:not([data-edge="first"]),[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-part="cell"]:not([data-col]):last-child:not([data-edge="last"]){padding-left:8px;padding-right:8px}
-[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th:first-child{padding-left:4px}
-[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th:last-child{padding-right:4px}
+[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th:first-child{padding-left:8px}
+[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th:last-child{padding-right:8px}
 /* 1.2：段に分けた列（lines）。1つの行を段の数の tr に分け、段のない列は段をまたぐ。段の間に線を引かず、段は高さ38（中の時刻・選ぶの入力 32 が収まる。PopRecruitDays の日ごとの段）、最初と最後の段だけ上下に6の余白 */
 [data-ar-design="remix"] [data-ar="table"] tbody[data-part="body"]>tr[data-part="row"][data-line]:not([data-line="0"][data-line-last]){height:38px}
 [data-ar-design="remix"] [data-ar="table"] tr[data-part="row"][data-line]:not([data-line-last])>td[data-line-cell]{border-bottom:0}
