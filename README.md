@@ -39,7 +39,9 @@ ARROW シリーズで共通に使う Vue 3 のデザインライブラリです�
 
 Front は公開 npm の通常のバージョン依存と lockfile を使用します。インストールに GitHub/npm 認証やローカル tarball は不要です。各パッケージは変更内容に応じて個別にバージョンを進めます。
 
-デザイン刷新の開発中は、Frontの`feature/design-renewal-prep`からこのリポジトリのソースを直接読み込みます。**全体の修正と検証が完了するまでnpm公開・認証依頼は停止します。** Frontとこのcheckoutを同じ親ディレクトリへ置き、ライブラリ側で`npm ci`、Front側で`yarn install --frozen-lockfile`と`yarn dev`を実行してください（このディレクトリ名は`arrow-ui`）。Frontの起動ログに`arrow-ui: local source (...)`が出れば、部品・トークン・新旧テーマの`src`を使用しています。通常の部品やCSSの編集はビルド・pack・公開なしで反映されます。部品の追加や契約変更では従来どおり`npm run gen`で登録を更新します。
+2026-11-07の公開依頼により、本体・新テーマの修正版を`0.1.11`としてnpmへ公開します。Frontの通常の`yarn install`・`yarn dev`・buildは公開パッケージを使用します。起動ログの`arrow-ui: installed npm packages`で確認できます。これは現在の修正を配布するリリースであり、全ルート・全条件の動作検証が完了したという意味ではありません。
+
+ライブラリを直接編集するときは、Frontとこのcheckoutを同じ親ディレクトリに置き、ライブラリ側で`npm ci`、Front側で`yarn dev:ui`を実行してください。`arrow-ui: local source (...)`が出れば隣接checkoutを使用しています。部品やCSSの編集にビルド・pack・公開は不要です。部品の追加や契約変更では`npm run gen`で登録を更新します。
 
 別配置ならFrontで`ARROW_UI_CHECKOUT=/absolute/path/to/arrow-ui yarn dev`を指定します。Frontの型検査・単体テスト・ブラウザ検証・buildも同じソースを使用します。公開成果物を検証するときだけ`ARROW_UI_CHECKOUT=npm`を指定し、npm公開後にはそのモードでも確認します。Frontに隣接checkoutがない通常のインストールはlockfileの公開版を使用します。
 

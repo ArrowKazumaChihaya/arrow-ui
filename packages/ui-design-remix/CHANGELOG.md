@@ -1,6 +1,8 @@
 # @s_and_a/arrow-ui-design-remix
 
-## Unreleased
+## 0.1.11
+
+### Patch Changes
 
 - Align business band headings to the leading edge, independent of header actions. Keep card and page-heading insets consistent; authentication panels retain their centered composition.
 - Keep compact, full-width segmented filters readable with count badges. Allow wrapped labels to increase the control height instead of overflowing a fixed small-size row.

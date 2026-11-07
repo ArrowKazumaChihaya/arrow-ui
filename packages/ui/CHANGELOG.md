@@ -1,6 +1,8 @@
 # @s_and_a/arrow-ui
 
-## Unreleased
+## 0.1.11
+
+### Patch Changes
 
 - Add rich before/after slots to ArChangedValue for structured custom fields and image previews. Section navigation now keeps destination headings below the sticky mobile picker and tracks the same scroll offset.
 
