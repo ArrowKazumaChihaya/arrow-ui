@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Align business band headings to the leading edge, independent of header actions. Keep card and page-heading insets consistent; authentication panels retain their centered composition.
+- Keep compact, full-width segmented filters readable with count badges. Allow wrapped labels to increase the control height instead of overflowing a fixed small-size row.
+
 - Allow card footer notices and forms to take their natural height; only direct action buttons use the compact segmented footer styling.
 
 - Keep mobile band-card actions at the trailing edge, with long titles wrapping beside or above them consistently.
