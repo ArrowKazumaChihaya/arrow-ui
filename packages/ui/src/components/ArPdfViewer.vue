@@ -4,7 +4,7 @@
  * toolbar を消すと見本の枠（灰色の地に白い紙）だけ。
  * キーボード：紙の部分にフォーカスして ←→ PageUp PageDown でページ、+ − で大きさ、0 で 100%。
  */
-import { computed, nextTick, ref, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
 import { useDesignForm } from "../provider/context";
 import type { ArPdfViewerLabels, ArPdfViewerProps } from "./ArPdfViewer.contract";
@@ -20,13 +20,14 @@ const props = withDefaults(defineProps<ArPdfViewerProps>(), {
   pageLabel: undefined,
   toolbar: true,
   paperWidth: "560px",
+  fitWidth: undefined,
   paperMinHeight: undefined,
   height: undefined,
   label: undefined,
   labels: () => ({}),
 });
 const emit = defineEmits<{ "update:page": [page: number]; "update:zoom": [zoom: number] }>();
-defineSlots<{ page?: (p: { page: number }) => unknown; "toolbar-end"?: () => unknown }>();
+defineSlots<{ page?: (p: { page: number; width: number | undefined }) => unknown; "toolbar-end"?: () => unknown }>();
 
 const L = computed<ArPdfViewerLabels>(() => ({
   prev: "前のページ",
@@ -79,6 +80,35 @@ const img = computed(() => props.pages[cur.value - 1]);
 const showBar = computed(() => props.toolbar && (bar.value === "full" || count.value > 1));
 const toolbarElement = ref<HTMLElement | null>(null);
 const viewport = ref<HTMLElement | null>(null);
+const paper = ref<HTMLElement | null>(null);
+const pageWidth = ref<number>();
+const availableWidth = ref<number>();
+const paperStyleWidth = computed(() => props.fitWidth && props.fitWidth > 0 && availableWidth.value
+  ? `${Math.min(props.fitWidth, availableWidth.value)}px`
+  : props.paperWidth);
+let paperObserver: ResizeObserver | undefined;
+watch([paper, viewport, () => props.fitWidth], ([element, container]) => {
+  paperObserver?.disconnect();
+  paperObserver = undefined;
+  const measure = () => {
+    if (props.fitWidth && container) {
+      const style = getComputedStyle(container);
+      const width = container.clientWidth - (parseFloat(style.paddingLeft) || 0) - (parseFloat(style.paddingRight) || 0);
+      availableWidth.value = width > 0 ? width : undefined;
+    }
+    // CSS layout width excludes zoom; consumers render once at this width and
+    // the paper applies the requested magnification without double scaling.
+    const width = element?.clientWidth;
+    pageWidth.value = width && width > 0 ? width : undefined;
+  };
+  measure();
+  if (element && typeof ResizeObserver !== "undefined") {
+    paperObserver = new ResizeObserver(measure);
+    paperObserver.observe(element);
+    if (props.fitWidth && container) paperObserver.observe(container);
+  }
+}, { flush: "post" });
+onBeforeUnmount(() => paperObserver?.disconnect());
 watch([bar, showBar], async () => {
   const active = document.activeElement;
   if (!(active instanceof HTMLElement) || !toolbarElement.value?.contains(active)) return;
@@ -141,11 +171,12 @@ function onKey(e: KeyboardEvent) {
       <iframe v-if="src" data-part="frame" :src="iframeSrc" :title="label ?? counter" />
       <div
         v-else
+        ref="paper"
         data-part="paper"
-        :style="{ width: paperWidth, minHeight: paperMinHeight, zoom: z / 100 }"
+        :style="{ width: paperStyleWidth, minHeight: paperMinHeight, zoom: z / 100 }"
       >
         <img v-if="img" data-part="image" :src="img.src" :alt="img.alt ?? L.pageAlt.replace('{n}', String(cur))" draggable="false" />
-        <slot v-else name="page" :page="cur" />
+        <slot v-else name="page" :page="cur" :width="pageWidth" />
       </div>
     </div>
   </div>

@@ -31,8 +31,10 @@ export interface ArPdfViewerProps {
   pageLabel?: (page: number) => string;
   /** 上の段（ページ送り・大きさ）を出す。false で見本の枠だけ。 */
   toolbar?: boolean;
-  /** 紙の幅（100% のとき）。 */
+  /** 紙の幅（100% のとき）。page slot の width はその実測幅（CSS px）で、画面幅変更にも追従する。 */
   paperWidth?: string;
+  /** 100% 表示を表示枠に収めるときの最大幅（CSS px）。指定時は paperWidth より優先し、拡大時はこの基準幅から拡大する。 */
+  fitWidth?: number;
   /** 紙の高さの下限（100% のとき。A4 の見本なら 780px）。 */
   paperMinHeight?: string;
   /** 全体の高さ（例："640px"）。省くと中身の高さ。 */
