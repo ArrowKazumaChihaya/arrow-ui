@@ -54,7 +54,8 @@
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
 /* ピルの一覧・領域のタブ・畳む・子のメニュー（remix）：白い面と淡い線、テーマ色の文字 */
-[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]{min-width:260px;margin-top:6px;padding:6px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
+[data-ar-design="remix"] [data-ar="app-pill-list"]{min-width:min(260px,calc(100vw - 16px));max-width:calc(100vw - 16px)}
+[data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]{min-width:0;margin-top:6px;padding:6px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
 [data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]{max-height:min(360px,calc(100vh - 140px))}
 [data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]{gap:2px;border-radius:8px}
 [data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover{background:var(--ar-accent-faint)}

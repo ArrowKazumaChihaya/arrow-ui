@@ -53,6 +53,29 @@ describe("F1：製品からの指摘（ヘッダー・スマホのメニュー�
     w.unmount();
   });
 
+  it("ArAppHeader：通知を選んだら一覧を閉じ、元のボタンへフォーカスを戻して詳細を開ける", async () => {
+    const w = mount(ArAppHeader, {
+      attachTo: document.body,
+      props: {
+        menus: [],
+        pills: [{ key: "notice", label: "お知らせ", items: [{ key: "n1", label: "通知の詳細" }] }],
+      },
+    });
+    const pill = w.get('[data-part="pill"]');
+    await pill.trigger("click");
+    const item = document.querySelector<HTMLButtonElement>('[data-part="pill-item"]')!;
+    item.focus();
+    item.click();
+    await nextTick();
+    expect(w.emitted("pill-item")?.[0]).toEqual(["notice", "n1"]);
+    expect(document.querySelector('[data-part="pill-list"]')).toBeNull();
+    expect(pill.attributes("aria-expanded")).toBe("false");
+    expect(document.activeElement).toBe(pill.element);
+    await pill.trigger("click");
+    expect(document.querySelector('[data-part="pill-list"]')).not.toBeNull();
+    w.unmount();
+  });
+
   it("ArAppHeader：空のときは emptyText、↓ で一覧・子のメニューの最初へ移る、領域のタブに note", async () => {
     const w = mount(ArAppHeader, {
       attachTo: document.body,

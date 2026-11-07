@@ -4,6 +4,8 @@
 
 ### Patch Changes
 
+- Measure header notice/to-do popup width on its floating container so short mobile triggers cannot place its contents beyond the screen edge.
+
 - Unify operation-trigger height, green editing entries and readable purpose/disabled text. Keep short mobile headings beside their actions without unnecessary wrapping.
 
 - Align business band headings to the leading edge, independent of header actions. Keep card and page-heading insets consistent; authentication panels retain their centered composition.

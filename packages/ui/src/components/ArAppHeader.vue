@@ -149,6 +149,10 @@ function onPillKey(e: KeyboardEvent, p: ArAppHeaderPill) {
     hide(true);
   }
 }
+function onPillItem(pill: string, item: string) {
+  hide(true);
+  emit("pill-item", pill, item);
+}
 async function onDelete(pill: string, item: string) {
   emit("pill-item-delete", pill, item);
   await nextTick();
@@ -301,7 +305,7 @@ function onMenuKey(e: KeyboardEvent) {
       >
         <ul v-if="openPill.items?.length" data-part="pill-rows">
           <li v-for="it in openPill.items" :key="it.key" data-part="pill-row" :data-deletable="it.deletable || undefined">
-            <button type="button" data-part="pill-item" @click="emit('pill-item', openPill.key, it.key)">{{ it.label }}</button>
+            <button type="button" data-part="pill-item" @click="onPillItem(openPill.key, it.key)">{{ it.label }}</button>
             <ArButton
               v-if="it.deletable"
               data-part="pill-delete"
