@@ -93,13 +93,22 @@ function updatePosition(){
  if(!props.scroll)return;
  let current:string|undefined;let currentTop=-Infinity;
  let upcoming:string|undefined;let upcomingTop=Infinity;
+ let last:string|undefined;let lastTop=-Infinity;
  for(const item of options.value){
   const section=document.getElementById(String(item.value));if(!section)continue;
   const top=section.getBoundingClientRect().top;
+  if(top>lastTop){lastTop=top;last=String(item.value);}
   if(top<=scrollInset.value+1 && top>currentTop){currentTop=top;current=String(item.value);}
   else if(top>scrollInset.value+1 && top<upcomingTop){upcomingTop=top;upcoming=String(item.value);}
  }
- position.value=current ?? upcoming;
+ // Short final sections cannot reach the sticky heading when the page runs out of space.
+ // Use the actual scroll container, including a modal body, rather than the document alone.
+ let scroller=navigation.value?.parentElement;
+ while(scroller && !(/auto|scroll/.test(getComputedStyle(scroller).overflowY) && scroller.scrollHeight>scroller.clientHeight))scroller=scroller.parentElement;
+ const atEnd=scroller
+  ? scroller.scrollTop>0 && scroller.scrollTop+scroller.clientHeight>=scroller.scrollHeight-2
+  : window.scrollY>0 && window.scrollY+window.innerHeight>=document.documentElement.scrollHeight-2;
+ position.value=atEnd ? last ?? current ?? upcoming : current ?? upcoming;
 }
 onMounted(()=>{
  measureNavigation();updatePosition();document.addEventListener('scroll',updatePosition,true);
