@@ -372,3 +372,10 @@
 [data-ar-design="remix"] .attendance_table_wrap th.branch_id[data-v-uia097494f994a] { min-width:170px; }
 [data-ar-design="remix"] .attendance_table_wrap th.shift.separated[data-v-uia097494f994a] { width:240px;min-width:240px; }
 [data-ar-design="remix"] .attendance_table_wrap th.punch.separated[data-v-uia097494f994a] { width:264px;min-width:264px; }
+
+/* Keep this in the utility's layer: important declarations reverse layer order. */
+@layer arrow-product-layout {
+  [data-ar-design="remix"] table[data-ui-part="table"] th.n2br {
+    white-space: pre !important;
+  }
+}

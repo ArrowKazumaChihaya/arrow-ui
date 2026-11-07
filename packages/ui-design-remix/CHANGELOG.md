@@ -4,6 +4,8 @@
 
 ### Patch Changes
 
+- Preserve intentional multiline table headings without squeezing Japanese words into vertical one-character columns in narrow attendance summaries.
+
 - Measure header notice/to-do popup width on its floating container so short mobile triggers cannot place its contents beyond the screen edge.
 
 - Unify operation-trigger height, green editing entries and readable purpose/disabled text. Keep short mobile headings beside their actions without unnecessary wrapping.
