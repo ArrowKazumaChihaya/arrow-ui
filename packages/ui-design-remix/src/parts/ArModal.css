@@ -55,6 +55,9 @@
 @media(max-width:640px){
   [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]{flex:1}
   [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="button"]{flex:1}
+  /* ArClusterで操作をまとめても、直接置いたボタンと同じ押しやすい幅にする。補足や別の入力を含むclusterには適用しない。 */
+  [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="cluster"]:only-child:not(:has(>:not([data-ar="button"]))){flex:1}
+  [data-ar-design="remix"] [data-ar="modal"][data-variant="default"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]>[data-ar="cluster"]:only-child:not(:has(>:not([data-ar="button"])))>[data-ar="button"]{flex:1}
 }
 
 /* Supplemental information remains readable on mobile; actions occupy their own row. */
