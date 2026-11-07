@@ -123,7 +123,7 @@ onBeforeUnmount(()=>{
     </ArCard>
     <ArMenu v-else mode="inline" :items="items" :selected="selected" :open-keys="menuOpenKeys" :label="label" @select="select" @update:open-keys="onOpen" />
    </div>
-   <div ref="mobileNavigation" data-part="mobile"><ArSelect block :model-value="selected ?? null" :options="options" :label="label" :searchable="searchable || undefined" :search-placeholder="searchPlaceholder" :empty-text="emptyText" @update:model-value="select" /></div>
+   <div ref="mobileNavigation" data-part="mobile"><ArSelect block :model-value="selected ?? null" :options="options" :label="label" :searchable="searchable || undefined" :search-placeholder="searchPlaceholder" :empty-text="emptyText" @select="select" /></div>
   </nav>
   <div data-part="content"><slot /></div>
  </div>

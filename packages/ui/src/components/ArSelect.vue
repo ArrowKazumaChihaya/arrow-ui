@@ -48,6 +48,8 @@ const emit = defineEmits<{
   "update:modelValue": [value: ArSelectValue | null | ArSelectValue[]];
   /** 選んだ値が変わったとき（v-model と同じ値）。 */
   change: [value: ArSelectValue | null | ArSelectValue[]];
+  /** 選択肢を押したとき。同じ値の選び直しも通知し、フォームの change とは区別する。 */
+  select: [value: ArSelectValue | null];
   /** プルダウンが開いた・閉じた。 */
   "open-change": [open: boolean];
   /** 探す欄に打ったとき。 */
@@ -145,6 +147,7 @@ function commit(v: ArSelectValue | null | ArSelectValue[]) {
 function choose(i: number) {
   const o = flat.value[i];
   if (!o || o.disabled) return;
+  emit("select", o.value === NULL_VALUE ? null : o.value);
   if (o.value === NULL_VALUE) {
     if (props.modelValue != null) commit(props.multiple ? [] : null);
     close();
