@@ -66,6 +66,21 @@ describe("ArTimeInput", () => {
     expect(w.get('[data-part="day-toggle"]').attributes("aria-pressed")).toBe("true");
   });
 
+  it("空欄で選んだ前日を、分数モデルのnull往復後の入力にも使う", async () => {
+    const w = mount(ArTimeInput, { props: { modelValue: { time: null, day: "same" }, dayShift: true } });
+    await w.get('[data-part="day-toggle"]').trigger("click");
+    // The application's minute adapter cannot represent prev for a null time.
+    await w.setProps({ modelValue: { time: null, day: "same" } });
+    expect(w.get('[data-part="day-toggle"]').text()).toBe("前日");
+    await w.get('[data-part="input"]').setValue("23:00");
+    await w.get('[data-part="input"]').trigger("blur");
+    expect(w.emitted("update:modelValue")?.at(-1)).toEqual([{ time: "23:00", day: "prev" }]);
+    await w.setProps({ modelValue: { time: "23:00", day: "prev" } });
+    await w.setProps({ modelValue: { time: null, day: "same" } });
+    expect(w.get('[data-part="day-toggle"]').text()).toBe("当日");
+    w.unmount();
+  });
+
   it("dayShift でなければ切り替えを出さず、day は常に same", async () => {
     const w = mount(ArTimeInput, { props: { modelValue: { time: null, day: "prev" } } });
     expect(w.find('[data-part="day-toggle"]').exists()).toBe(false);

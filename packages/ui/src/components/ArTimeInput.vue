@@ -111,7 +111,14 @@ watch(
 );
 
 const maxHour = computed(() => (props.overnight ? 47 : 23));
-const day = computed(() => (props.dayShift ? props.modelValue.day : "same"));
+// A numeric-minutes consumer represents an empty time as null, so it cannot
+// echo a day choice until a time exists. Keep that choice as an input draft.
+const emptyDay = ref(props.modelValue.day);
+watch(
+  [() => props.modelValue.time, () => props.modelValue.day, () => props.dayShift],
+  () => { emptyDay.value = props.modelValue.day; },
+);
+const day = computed(() => (props.dayShift ? (props.modelValue.time === null ? emptyDay.value : props.modelValue.day) : "same"));
 const empty = computed(() => (split.value || props.select ? !hourText.value && !minuteText.value : !text.value));
 const state = computed(
   () =>
@@ -165,7 +172,9 @@ function toggleDay() {
   const parsed =
     split.value || props.select ? joinParts(hourText.value, minuteText.value, props.select) : parseTime(text.value, maxHour.value);
   const time = parsed === undefined ? props.modelValue.time : parsed;
-  send({ time, day: day.value === "prev" ? "same" : "prev" });
+  const nextDay = day.value === "prev" ? "same" : "prev";
+  if (time === null) emptyDay.value = nextDay;
+  send({ time, day: nextDay });
 }
 
 function shift(base: string, minutes: number): string {
