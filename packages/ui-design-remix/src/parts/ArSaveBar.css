@@ -14,3 +14,8 @@ html[data-ar-design="remix"] .menu_layout [data-ar="save-bar"][data-sticky]{bott
 
 /* Leave the desktop help dock outside the action hit targets, even at the page end. */
 @media (min-width:960px){html[data-ar-design="remix"] .menu_layout [data-ar="save-bar"][data-sticky]{padding-inline-end:76px}}
+
+/* Keep action words together; a narrow container wraps whole buttons instead. */
+@container ar-save-bar (max-width:480px){
+  [data-ar-design="remix"] [data-ar="save-bar"]>[data-ar="button"]{flex:1 0 auto;min-height:40px;padding-inline:10px;font-size:12.5px}
+}
