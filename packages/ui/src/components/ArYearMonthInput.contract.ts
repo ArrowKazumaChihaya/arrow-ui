@@ -17,7 +17,7 @@ export interface ArYearMonthInputProps {
   /** 読み上げ用の名前（例：「対象の月」）。 */
   label?: string;
   id?: string;
-  labels?: { year: string; month: string };
+  labels?: { year: string; month: string; empty?: string };
 }
 export interface ArYearMonthInputEmits {
   /** 年を選んだとき・月を打ったときに出す。月が空・範囲外なら null。 */

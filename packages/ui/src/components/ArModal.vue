@@ -157,7 +157,7 @@ const { onKeydown, palette, layer } = useDialog({
             </li>
           </ol>
         </div>
-        <div v-if="$slots.default" data-part="body"><slot /></div>
+        <div v-if="$slots.default" data-part="body" tabindex="0"><slot /></div>
         <footer v-if="hasStart || hasEnd" data-part="footer">
           <div v-if="hasStart" data-part="footer-start">
             <ArButton v-if="backText" tone="secondary" icon="cl" @click="emit('back')">{{ backText }}</ArButton>

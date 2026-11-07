@@ -76,6 +76,7 @@ function onMonth(e: Event) {
       :model-value="year"
       :years="years"
       :allow-empty="allowEmptyYear"
+      :placeholder="labels.empty ?? '未選択'"
       :label-of="era ? eraLabel : undefined"
       :invalid="invalid"
       :disabled="disabled"
