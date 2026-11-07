@@ -2,7 +2,7 @@
 /* ArUpload：置き場 .ad-up（点線1.5 acc-line・角丸14・acc-25・余白22）、一覧 .ad-file（行34・角丸8・13px、名前は acc-ink）、
    進み具合 .ad-bar（3px・テーマ色）、失敗は赤と理由、写真 .ad-upc（96px・点線 field・角丸12）。 */
 [data-ar-design="remix"] [data-ar="upload"]{gap:12px 22px;font-feature-settings:"palt" 1}
-[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]{flex:0 1 300px;gap:6px;padding:22px;border:1.5px dashed var(--ar-accent-line);border-radius:14px;background:var(--ar-accent-faint);font-size:13.5px;line-height:1.5;color:var(--ar-color-text-secondary);outline:0;transition:background var(--ar-motion-fast),border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]{flex:1 1 300px;gap:6px;padding:22px;border:1.5px dashed var(--ar-accent-line);border-radius:14px;background:var(--ar-accent-faint);font-size:13.5px;line-height:1.5;color:var(--ar-color-text-secondary);outline:0;transition:background var(--ar-motion-fast),border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]:hover{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]:focus-visible{box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="upload"][data-state~="dragover"]>[data-part="drop"]{border-color:var(--ar-accent);background:var(--ar-accent-subtle)}
@@ -11,7 +11,7 @@
 [data-ar-design="remix"] [data-ar="upload"][data-state~="disabled"]>[data-part="drop"]>[data-part="icon"]{color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]>[data-part="title"]{color:var(--ar-color-text);font-weight:700}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="drop"]>[data-part="hint"]>[data-part="pick"]{color:var(--ar-accent-ink);text-decoration:underline;text-underline-offset:2px}
-[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]{flex:0 1 280px}
+[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]{flex:1 1 280px}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]{gap:8px;height:34px;padding:0 8px;border-radius:8px;font-size:13px;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]:hover{background:var(--ar-color-hover)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="name"]{color:var(--ar-accent-ink)}
@@ -21,8 +21,6 @@
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]{width:24px;height:24px;margin-right:-4px;border-radius:6px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]:hover{background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="row"]>[data-part="remove"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]>[data-part="remove"]{display:none}
-[data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]:is(:hover,:focus-within)>[data-part="remove"]{display:inline-flex}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"][data-status="done"]>[data-part="row"]:is(:hover,:focus-within)>[data-part="status"]{display:none}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]{height:3px;margin:-4px 8px 4px 34px;border-radius:2px;background:var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="upload"]>[data-part="files"]>[data-part="file"]>[data-part="bar"]>i{background:var(--ar-accent);transition:width .3s}
