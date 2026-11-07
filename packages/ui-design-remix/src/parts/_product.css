@@ -379,3 +379,42 @@
     white-space: pre !important;
   }
 }
+
+/* Opt-in cards preserve field labels and usable inline editors on narrow tables. */
+[data-ar-design="remix"] [data-ui-responsive="cards"]{container:ar-product-responsive-table / inline-size}
+[data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] :is(th,td).name{width:144px;min-width:144px}
+[data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] :is(th,td).is_selection{width:56px;min-width:56px}
+[data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] :is(th,td).init_type{width:200px;min-width:200px}
+[data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.name [data-ar="text-input"]{width:100%;min-width:0}
+[data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.name>:is(.no_drag,.is_drag){max-width:120px}
+@container ar-product-responsive-table (max-width:767px){
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]{display:block;width:100%;min-width:0;table-layout:auto;border:0;background:transparent}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>thead{display:block;margin-bottom:8px}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>thead>tr>th{display:none}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>thead>tr>th:has([data-ar="info"]){display:flex;align-items:center;gap:6px;width:auto;min-width:0;padding:4px 8px;border:0;border-radius:6px;font-size:11px}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody.smooth-dnd-container{display:grid!important;gap:10px;width:100%;min-width:0}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--ar-color-border);border-radius:12px;background:var(--ar-color-surface);overflow:hidden}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr>td:is([data-label],.button,[colspan]){display:flex;align-items:flex-start;justify-content:space-between;gap:8px;width:auto;min-width:0;max-width:none;position:static;padding:8px 12px;border:0;white-space:normal;text-align:left;background:transparent}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr>td[data-label]::before{content:attr(data-label);flex:1;min-width:0;color:var(--ar-color-text-secondary);font-size:11px;line-height:1.5}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr>td:is(.name,.paymentgroup_id,.init_type,.button,[colspan]:not([colspan="1"])){grid-column:1/-1}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr>td:is(.name,.paymentgroup_id,.init_type){flex-direction:column;align-items:stretch;gap:4px}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr>td.name{background:var(--ar-accent-subtle);font-weight:600}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr>td.blank{display:none}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"]>tbody>tr>td.button{justify-content:flex-end;border-top:1px solid var(--ar-color-border-subtle);background:var(--ar-color-surface)}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.button [data-ar="button"][data-icon-only]{min-width:40px;min-height:40px}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td:is(.name,.paymentgroup_id,.init_type)>:is(.no_drag,.is_drag){display:block;width:100%;min-width:0;max-width:100%}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td .drag_icon_wrap{position:static;float:left;margin-right:8px}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td [data-ar="text-input"]{max-width:100%}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td:not(.name,.paymentgroup_id,.init_type,.button)>.no_drag{width:auto;flex:none}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.button>.no_drag{display:flex;justify-content:flex-end;width:100%}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.name:has(.drag_icon_wrap){position:relative;padding-left:32px}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.name>.drag_icon_wrap{position:absolute;left:10px;top:12px;margin:0}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td:is(.name,.paymentgroup_id) :is([data-ar="text-input"],[data-ar="select"],.paymentgroup_selector_component){width:100%;max-width:100%}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.init_type .row{flex-wrap:wrap;max-width:100%}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] td.init_type .row:first-child>[data-ar="select"]{width:100%}
+  [data-ar-design="remix"] [data-ui-responsive="cards"] table[data-ui-part="table"] tbody>tr:hover>td:not(.name){background:transparent}
+  @layer arrow-product-layout {
+    [data-ar-design="remix"] [data-ui-responsive="cards"].sortable_table_component table[data-ui-part="table"]>thead>tr{display:flex!important;flex-wrap:wrap;gap:6px}
+    [data-ar-design="remix"] [data-ui-responsive="cards"].sortable_table_component table[data-ui-part="table"]>tbody>tr{display:grid!important}
+  }
+}
