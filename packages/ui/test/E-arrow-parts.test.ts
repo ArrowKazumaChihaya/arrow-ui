@@ -105,7 +105,7 @@ describe("ArKanaInput・ArKanaText", () => {
 });
 
 describe("ArZipInput", () => {
-  it("入力済みの番号をボタンから検索し、失敗後は再入力せず再試行できる", async () => {
+  it("自動検索を基本とし、失敗後だけ再試行できる", async () => {
     const lookup = vi.fn<(zip: string) => Promise<string | null>>()
       .mockRejectedValueOnce(new Error("offline"))
       .mockResolvedValueOnce("東京都渋谷区神南");
@@ -114,18 +114,18 @@ describe("ArZipInput", () => {
       labels: { lookup: "Fill address", searching: "Searching", notFound: "Not found", failed: "Try again" },
     } });
     expect(lookup).not.toHaveBeenCalled();
-    expect(w.get('[data-part="lookup"]').text()).toBe("Fill address");
-    await w.get('[data-part="lookup"]').trigger("click");
+    expect(w.find('[data-part="lookup"]').exists()).toBe(false);
+    await w.get("input").setValue("1500041");
     await flushPromises();
     expect(w.get('[data-part="status"]').text()).toBe("Try again");
     await w.get('[data-part="lookup"]').trigger("click");
     await flushPromises();
     expect(w.emitted("address")).toEqual([["東京都渋谷区神南", "150-0041"]]);
-    expect(w.emitted("update:modelValue")).toBeUndefined();
+    expect(w.find('[data-part="lookup"]').exists()).toBe(false);
     await w.setProps({ modelValue: "150-00" });
-    expect(w.get('[data-part="lookup"]').attributes("disabled")).toBeDefined();
+    expect(w.find('[data-part="lookup"]').exists()).toBe(false);
     await w.setProps({ modelValue: "150-0041", disabled: true });
-    expect(w.get('[data-part="lookup"]').attributes("disabled")).toBeDefined();
+    expect(w.find('[data-part="lookup"]').exists()).toBe(false);
     await w.setProps({ lookup: undefined });
     expect(w.find('[data-part="lookup"]').exists()).toBe(false);
     w.unmount();
@@ -135,7 +135,7 @@ describe("ArZipInput", () => {
     let finish: (value: string | null) => void = () => {};
     const lookup = vi.fn(() => new Promise<string | null>((resolve) => { finish = resolve; }));
     const w = mount(ArZipInput, { props: { modelValue: "150-0041", lookup } });
-    await w.get('[data-part="lookup"]').trigger("click");
+    await w.get("input").setValue("1500041");
     if (action === "reset") await w.setProps({ modelValue: null });
     else if (action === "disable") await w.setProps({ disabled: true });
     else w.unmount();

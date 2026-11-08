@@ -1,5 +1,13 @@
 # @s_and_a/arrow-ui
 
+## 0.1.13
+
+### Patch Changes
+
+- Add character-based input widths and field control widths; show the selected tree label without its ancestor path by default. Postal-code address lookup is automatic, with retry only after failure.
+- Keep full-row actions inside horizontally scrollable tables. Allow each shift interval and its handles to move independently; cancel interrupted gestures and show chart times on keyboard focus. Choose black or white text by actual contrast.
+- Add a compact split sidebar size for searchable document catalogs.
+
 ## 0.1.12
 
 ### Patch Changes

@@ -56,3 +56,7 @@
 /* 折返し列はソートボタンの文字も列幅へ収める。 */
 [data-ar="table"] th[data-wrap]>[data-part="sort"]{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 [data-ar="table"] th[data-wrap]>[data-part="sort"]>span{min-width:0}
+
+/* Keep row-wide confirmation controls inside the visible width of a scrolling table. */
+[data-ar="table"]>[data-part="viewport"]{container-type:inline-size}
+[data-ar="table"] td[data-full]>*{position:sticky;left:0;max-inline-size:calc(100cqw - 24px);box-sizing:border-box}

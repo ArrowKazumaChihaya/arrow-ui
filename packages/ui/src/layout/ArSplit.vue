@@ -1,12 +1,12 @@
 <script setup lang="ts">
 /**
- * ArSplit 1.0 — 左右に分ける。左の幅は段階（sm 320 / md 420 / lg 540 / xl 640）。
+ * ArSplit 1.0 — 左右に分ける。左の幅は段階（xs 224 / sm 320 / md 420 / lg 540 / xl 640）。
  * 置かれた場所の幅が stackBelow より狭いと、上下に積む（コンテナクエリ）。
  */
 import type { ArSpace } from "./types";
 withDefaults(
   defineProps<{
-    start?: "sm" | "md" | "lg" | "xl";
+    start?: "xs" | "sm" | "md" | "lg" | "xl";
     /** 幅を固定する側。end は本文の右に補助欄を置く。幅の段階は start を使う。 */
     fixed?: "start" | "end";
     gap?: ArSpace;

@@ -194,8 +194,10 @@ describe("ArTreeSelect", () => {
     expect(nodes[1]?.getAttribute("aria-checked")).toBe("true");
     nodes[0]?.click();
     expect(w.emitted("update:modelValue")?.[0]).toEqual([["tokyo", "osaka"]]);
-    expect(w.findAll('[data-part="tag"]').map((t) => t.text())).toEqual(["営業部 / 東京営業所"]);
+    expect(w.findAll('[data-part="tag"]').map((t) => t.text())).toEqual(["東京営業所"]);
     await w.setProps({ variant: "selbox" });
+    expect(w.text()).toContain("東京営業所");
+    await w.setProps({ showPath: true });
     expect(w.text()).toContain("営業部 / 東京営業所");
     w.unmount();
   });

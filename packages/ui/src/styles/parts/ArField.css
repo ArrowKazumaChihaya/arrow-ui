@@ -1,3 +1,9 @@
 /* ArField の構造（toolbar：ラベルと入力を横に並べ、ラベルは文字なりの幅）。 */
 [data-ar="field"][data-layout="toolbar"]{display:inline-flex;align-items:center;min-width:0;white-space:nowrap}
 [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{flex:none}
+
+[data-ar="field"][data-control-size]>[data-part="control"]>:not([data-part="help"],[data-part="error"]){max-width:var(--ar-field-control-size);min-width:0}
+[data-ar="field"][data-control-size="short"]{--ar-field-control-size:12rem}
+[data-ar="field"][data-control-size="medium"]{--ar-field-control-size:24rem}
+[data-ar="field"][data-control-size="long"]{--ar-field-control-size:36rem}
+[data-ar="field"][data-control-size="full"]{--ar-field-control-size:100%}

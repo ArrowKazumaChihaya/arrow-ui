@@ -21,6 +21,8 @@ export interface ArFieldProps {
   labelSize?: "sm" | "md" | "lg";
   /** inline のラベルの幅（CSS の長さ。例："25%"）。labelSize より優先。ArForm の中では ArForm の labelWidth。 */
   labelWidth?: string;
+  /** Width of the control area: short codes, ordinary names/selects, longer addresses, or full-width content. */
+  controlSize?: "short" | "medium" | "long" | "full";
   /** 必須の札の文字。 */
   requiredText?: string;
   /** 入力の id を決める（省くと自動）。 */

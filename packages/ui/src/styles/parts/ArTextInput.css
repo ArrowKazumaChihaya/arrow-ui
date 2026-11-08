@@ -11,3 +11,6 @@
 [data-ar="text-input"]>[data-part="addon"]{display:inline-flex;align-items:center;align-self:stretch;flex:none;white-space:nowrap;box-sizing:border-box}
 [data-ar="text-input"]>[data-part="input"][data-align="right"]{text-align:right}
 [data-ar="text-input"]>[data-part="input"][data-align="center"]{text-align:center}
+
+[data-ar="text-input"][data-columns]{width:max-content;flex:none}
+[data-ar="text-input"][data-columns]>[data-part="input"]{flex:0 1 var(--ar-input-columns);width:var(--ar-input-columns)}

@@ -33,6 +33,7 @@ const props = withDefaults(defineProps<ArTextInputProps>(), {
   showCount: false,
   maxlength: undefined,
   block: false,
+  columns: undefined,
   label: undefined,
   id: undefined,
   name: undefined,
@@ -58,7 +59,7 @@ const emit = defineEmits<{
 
 const attrs = useAttrs();
 const accessibleLabel = computed(() => typeof attrs["aria-label"] === "string" ? attrs["aria-label"] : props.label);
-const rootAttrs = computed(() => ({ class: attrs.class, style: attrs.style }));
+const rootAttrs = computed(() => ({ class: attrs.class, style: [props.columns ? { "--ar-input-columns": `${props.columns}ch` } : undefined, attrs.style] }));
 const inputAttrs = computed(() => {
   const { class: _c, style: _s, ...rest } = attrs;
   return rest;
@@ -125,6 +126,7 @@ defineExpose({
     :data-size="size"
     :data-variant="variant"
     :data-block="block || undefined"
+    :data-columns="columns || undefined"
     :data-state="
       [invalid && 'invalid', !invalid && warning && 'warning', disabled && 'disabled', readonly && 'readonly'].filter(Boolean).join(' ') || undefined
     "

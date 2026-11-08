@@ -225,6 +225,7 @@ describe("shiftGrid の計算", () => {
     expect(spanLong({ start: -60, end: 1440 })).toBe("前日23:00〜24:00");
     expect(inkOn("#4C5FC4")).toBe("white");
     expect(inkOn("#FFF2CC")).toBe("black");
+    expect(inkOn("#e69038")).toBe("black");
     expect(fillRect({ r0: 0, r1: 0, c0: 0, c1: 1 }, { r: 3, c: 1 })).toEqual({ r0: 0, r1: 3, c0: 0, c1: 1 });
     expect(fillRect({ r0: 0, r1: 0, c0: 0, c1: 1 }, { r: 0, c: 0 })).toBeNull();
     const d = { kind: "move" as const, row: 0, col: 0, toRow: 0, toCol: 0, x0: 0, width: 100, anchor: 0, times: [{ start: 540, end: 1080 }], breaks: [{ start: 720, end: 780 }], next: [], nextBreaks: [], moved: false };
@@ -232,4 +233,41 @@ describe("shiftGrid の計算", () => {
     expect(applyDrag({ ...d, kind: "start" }, 600, 0, 1800, 15).times).toEqual([{ start: 1020, end: 1080 }]);
     expect(applyDrag({ ...d, kind: "new", anchor: 600 }, 90, 360, 1440, 15).times).toEqual([{ start: 600, end: 690 }]);
   });
+});
+
+
+describe("independent chart intervals", () => {
+  const baseDrag = { kind: "move" as const, interval: 1, row: 0, col: 0, toRow: 0, toCol: 0, x0: 0, width: 100, anchor: 0,
+    times: [{start: 540, end: 720}, {start: 840, end: 1080}], breaks: [{start: 600, end: 615}, {start: 900, end: 915}], next: [], nextBreaks: [], moved: false };
+  it("moves only the selected interval and its break", () => {
+    expect(applyDrag(baseDrag, 60, 0, 1800, 15)).toEqual({times: [{start: 540, end: 720}, {start: 900, end: 1140}], breaks: [{start: 600, end: 615}, {start: 960, end: 975}]});
+  });
+  it("keeps intervals from overlapping while resizing either inner edge", () => {
+    expect(applyDrag({...baseDrag, kind: "start"}, -300, 0, 1800, 15).times).toEqual([{start: 540, end: 720}, {start: 720, end: 1080}]);
+    expect(applyDrag({...baseDrag, kind: "end", interval: 0}, 300, 0, 1800, 15).times).toEqual([{start: 540, end: 840}, {start: 840, end: 1080}]);
+  });
+  it("renders both handles for every interval", () => {
+    const w = mount(ArShiftGrid, {props: {...base, mode: "chart"}});
+    expect(cell(w, 0, 2).findAll('[data-part="handle"]')).toHaveLength(4);
+    w.unmount();
+  });
+});
+
+it("moves only the grabbed second interval and cancels interrupted pointer gestures", async () => {
+  const w = mount(ArShiftGrid, { props: { ...base, mode: "chart" }, attachTo: document.body });
+  const c = cell(w, 0, 2);
+  const track = c.get('[data-part="bar-track"]').element as HTMLElement;
+  track.getBoundingClientRect = () => ({ left: 0, top: 0, right: 180, bottom: 16, width: 180, height: 16 }) as DOMRect;
+  const bar = c.findAll('[data-part="bar"]')[1]!;
+  bar.element.dispatchEvent(new MouseEvent("pointerdown", { button: 0, clientX: 120, bubbles: true }));
+  window.dispatchEvent(new MouseEvent("pointermove", { clientX: 130 }));
+  window.dispatchEvent(new MouseEvent("pointerup"));
+  await nextTick();
+  expect(w.emitted("chart-change")?.[0]?.[0]).toMatchObject({ times: [{start:540,end:720},{start:1080,end:1320}] });
+  bar.element.dispatchEvent(new MouseEvent("pointerdown", { button: 0, clientX: 120, bubbles: true }));
+  window.dispatchEvent(new MouseEvent("pointermove", { clientX: 140 }));
+  window.dispatchEvent(new MouseEvent("pointercancel"));
+  window.dispatchEvent(new MouseEvent("pointerup"));
+  expect(w.emitted("chart-change")).toHaveLength(1);
+  w.unmount();
 });

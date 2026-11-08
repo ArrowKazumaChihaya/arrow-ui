@@ -53,6 +53,8 @@ export interface ArTextInputProps {
   maxlength?: number;
   /** 幅を親いっぱいにする。 */
   block?: boolean;
+  /** Expected character count; sizes the editable area while leaving units outside it. Does not limit input. */
+  columns?: number;
   /** 文字の寄せ。数・金額は right（今の ARROW では style で右寄せにしている所）。 */
   align?: "left" | "center" | "right";
   /** 読み上げの名前（ArField の中では不要）。 */

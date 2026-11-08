@@ -56,6 +56,8 @@ export type DragKind = "move" | "start" | "end" | "new";
 
 export interface ChartDrag {
   kind: DragKind;
+  /** Selected interval; omitted for legacy whole-cell operations. */
+  interval?: number;
   row: number;
   col: number;
   /** 移す先（move のとき、ほかの人・日）。 */
@@ -85,6 +87,27 @@ export function applyDrag(d: ChartDrag, dm: number, lo: number, hi: number, step
     return { times: [{ start: Math.min(d.anchor, h), end: Math.max(d.anchor + step, h) }], breaks: [] };
   }
   if (!times.length) return { times, breaks };
+  if (d.interval !== undefined) {
+    const index = d.interval;
+    const selected = times[index];
+    if (!selected) return { times, breaks };
+    const original = { ...selected };
+    const lower = index > 0 ? Math.max(lo, times[index - 1]!.end) : lo;
+    const upper = index + 1 < times.length ? Math.min(hi, times[index + 1]!.start) : hi;
+    const minSpan = Math.min(60, original.end - original.start);
+    if (d.kind === "move") {
+      const delta = Math.max(lower - selected.start, Math.min(upper - selected.end, dm));
+      selected.start += delta;
+      selected.end += delta;
+    } else if (d.kind === "start") selected.start = Math.max(lower, Math.min(selected.end - minSpan, selected.start + dm));
+    else selected.end = Math.min(upper, Math.max(selected.start + minSpan, selected.end + dm));
+    const delta = d.kind === "move" ? selected.start - original.start : 0;
+    breaks = breaks.map((b) => {
+      if (b.end <= original.start || b.start >= original.end) return b;
+      return { start: Math.max(selected.start, b.start + delta), end: Math.min(selected.end, b.end + delta) };
+    }).filter((b) => b.end > b.start);
+    return { times, breaks };
+  }
   const first = times[0]!;
   const last = times[times.length - 1]!;
   if (d.kind === "move") {
@@ -146,7 +169,13 @@ export function inkOn(hex: string): "white" | "black" {
   const r = parseInt(h.slice(0, 2), 16);
   const g = parseInt(h.slice(2, 4), 16);
   const b = parseInt(h.slice(4, 6), 16);
-  return r * 0.299 + g * 0.587 + b * 0.114 < 186 ? "white" : "black";
+  if (![r, g, b].every(Number.isFinite)) return "white";
+  const linear = (channel: number) => {
+    const value = channel / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  };
+  const luminance = 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b);
+  return 1.05 / (luminance + 0.05) >= (luminance + 0.05) / 0.05 ? "white" : "black";
 }
 
 /** 吹き出しの1行（label＝「シフト」、values＝時刻）。label が無い行は見出し（「千速 一真　10月21日（水）」）。 */

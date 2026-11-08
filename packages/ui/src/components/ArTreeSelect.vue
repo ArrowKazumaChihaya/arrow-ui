@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<ArTreeSelectProps>(), {
   placeholder: "選んでください",
   variant: "field",
   icon: undefined,
-  showPath: true,
+  showPath: false,
   maxTags: 2,
   size: "md",
   invalid: false,

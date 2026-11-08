@@ -49,7 +49,7 @@ export interface ArTreeSelectProps {
   variant?: "field" | "selbox";
   /** 頭に出すアイコン（例：bld）。 */
   icon?: ArIconName;
-  /** 押す所に「営業部 / 東京営業所」のように上の部署から出す。1.2から複数選択の札にも適用する。 */
+  /** 押す所に「営業部 / 東京営業所」のように上の部署から出す（既定 false：選択した部署名だけ）。1.2から複数選択の札にも適用する。 */
   showPath?: boolean;
   /** 札を何枚まで出すか（multiple・field）。残りは「+n」。 */
   maxTags?: number;

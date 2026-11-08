@@ -49,6 +49,7 @@
 [data-ar="split"]>[data-part="track"][data-fixed="end"]{grid-template-columns:minmax(0,1fr) var(--ar-split-start)}
 [data-ar="split"]>[data-part="track"][data-align="start"]{align-items:start}
 [data-ar="split"]>[data-part="track"]>*{min-width:0}
+[data-part="track"][data-start="xs"]{--ar-split-start:224px}
 [data-part="track"][data-start="sm"]{--ar-split-start:320px}
 [data-part="track"][data-start="md"]{--ar-split-start:420px}
 [data-part="track"][data-start="lg"]{--ar-split-start:540px}

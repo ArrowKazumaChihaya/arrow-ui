@@ -354,7 +354,7 @@ const cellViews = computed<CellView[][]>(() => {
           style["--sg-c"] = bg;
           style["--sg-ink"] = inkOn(bg);
         }
-      } else if (color) style["--sg-c"] = color;
+      } else if (color) { style["--sg-c"] = color; style["--sg-ink"] = inkOn(color); }
       let lines: string[] = [];
       let detail: TipRow[] = [];
       if (fill) {
@@ -484,7 +484,7 @@ function cellAtPoint(x: number, y: number): { r: number; c: number } | null {
   if (!el || !root.value?.contains(el)) return null;
   return { r: Number(el.dataset.r), c: Number(el.dataset.c) };
 }
-function startBar(e: PointerEvent, r: number, c: number, kind: ChartDrag["kind"]) {
+function startBar(e: PointerEvent, r: number, c: number, kind: ChartDrag["kind"], interval?: number) {
   if (!props.editable || e.button !== 0) return;
   const v = cv(r, c);
   if (v.locked || v.outside || v.readonly) {
@@ -501,27 +501,35 @@ function startBar(e: PointerEvent, r: number, c: number, kind: ChartDrag["kind"]
   const left = box?.left ?? 0;
   const anchor = Math.round((props.chartRange[0] + ((e.clientX - left) / width) * span.value) / props.snap) * props.snap;
   const times = kind === "new" ? [{ start: anchor, end: anchor + props.snap }] : v.times.map((t) => ({ ...t }));
-  drag.value = { kind, row: r, col: c, toRow: r, toCol: c, x0: e.clientX, width, anchor, times, breaks: v.breaks.map((t) => ({ ...t })), next: times, nextBreaks: v.breaks, moved: false };
+  drag.value = { kind, interval, row: r, col: c, toRow: r, toCol: c, x0: e.clientX, width, anchor, times, breaks: v.breaks.map((t) => ({ ...t })), next: times, nextBreaks: v.breaks, moved: false };
   tip.value?.hide();
   anchorPos.value = null;
   headPos.value = null;
   window.addEventListener("pointermove", onBarMove);
   window.addEventListener("pointerup", onBarUp, { once: true });
+  window.addEventListener("pointercancel", cancelBar, { once: true });
 }
 function onBarMove(e: PointerEvent) {
   const d = drag.value;
   if (!d) return;
   const dm = Math.round((((e.clientX - d.x0) / d.width) * span.value) / props.snap) * props.snap;
   let to = { r: d.row, c: d.col };
-  if (d.kind === "move") to = cellAtPoint(e.clientX, e.clientY) ?? { r: d.toRow, c: d.toCol };
+  if (d.kind === "move" && d.times.length === 1) to = cellAtPoint(e.clientX, e.clientY) ?? { r: d.toRow, c: d.toCol };
   const other = to.r !== d.row || to.c !== d.col;
   const lo = d.kind === "new" ? props.chartRange[0] : 0;
   const hi = d.kind === "new" ? props.chartRange[1] : 1800;
   const nx = other ? { times: d.times, breaks: d.breaks } : applyDrag(d, dm, lo, hi, props.snap);
   drag.value = { ...d, toRow: to.r, toCol: to.c, next: nx.times, nextBreaks: nx.breaks, moved: d.moved || dm !== 0 || other };
 }
+function cancelBar() {
+  drag.value = null;
+  window.removeEventListener("pointermove", onBarMove);
+  window.removeEventListener("pointerup", onBarUp);
+  window.removeEventListener("pointercancel", cancelBar);
+}
 function onBarUp() {
   window.removeEventListener("pointermove", onBarMove);
+  window.removeEventListener("pointercancel", cancelBar);
   const d = drag.value;
   drag.value = null;
   if (!d) return;
@@ -698,12 +706,20 @@ function onKey(e: KeyboardEvent) {
     const r = Math.max(0, Math.min(props.members.length - 1, headPos.value ? cur.r + dr : 0));
     const c = Math.max(0, Math.min(props.days.length - 1, headPos.value ? cur.c + dc : 0));
     selectAt(r, c, e.shiftKey && !!anchorPos.value);
-    nextTick(() => document.getElementById(`${uid}-${r}-${c}`)?.scrollIntoView?.({ block: "nearest", inline: "nearest" }));
+    nextTick(() => {
+      const el = document.getElementById(`${uid}-${r}-${c}`);
+      el?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+      const rows = cv(r, c).tip;
+      if (mode.value === "chart" && el && rows.length) tip.value?.show(el, rows, r <= 1);
+      else tip.value?.hide();
+    });
     return;
   }
   if (k === "escape") {
+    cancelBar();
     if (rect.value || clip.value) e.preventDefault();
     clearSelection();
+    tip.value?.hide();
     return;
   }
   if (k === "enter" && rect.value) {
@@ -867,6 +883,8 @@ const scalerStyle = computed(() => (scale.value < 1 && gridH.value ? { height: `
 watch([() => props.days.length, () => props.members.length, colW, mode], () => nextTick(measure));
 onBeforeUnmount(() => {
   ro?.disconnect();
+  cancelBar();
+  window.removeEventListener("pointerup", onSelUp);
   window.removeEventListener("pointermove", onSelMove);
   window.removeEventListener("pointermove", onBarMove);
 });
@@ -1092,17 +1110,13 @@ const dayOf = (dv: DayView) => dv.d;
                         @click="emit('avail', { ...spot(mv.r, c), avail: cv(mv.r, c).avail! })"
                       />
                       <i v-if="cv(mv.r, c).kind === 'leave'" data-part="bar" data-leave="" style="left: 0; width: 100%" />
-                      <i v-for="(t, i) in barsOf(mv.r, c).times" :key="'b' + i" data-part="bar" :style="bar(t)" @pointerdown="startBar($event, mv.r, c, 'move')" />
+                      <i v-for="(t, i) in barsOf(mv.r, c).times" :key="'b' + i" data-part="bar" :style="bar(t)" @pointerdown="startBar($event, mv.r, c, 'move', i)" />
                       <em v-for="(t, i) in barsOf(mv.r, c).breaks" :key="'k' + i" data-part="break" :style="bar(t)" />
-                      <template v-if="editable && !cv(mv.r, c).locked && barsOf(mv.r, c).times.length">
-                        <b data-part="handle" data-side="start" :title="L.resizeStart" :style="{ left: bar(barsOf(mv.r, c).times[0]!).left }" @pointerdown="startBar($event, mv.r, c, 'start')" />
-                        <b
-                          data-part="handle"
-                          data-side="end"
-                          :title="L.resizeEnd"
-                          :style="{ left: `${pct(barsOf(mv.r, c).times[barsOf(mv.r, c).times.length - 1]!.end, chartRange)}%` }"
-                          @pointerdown="startBar($event, mv.r, c, 'end')"
-                        />
+                      <template v-if="editable && !cv(mv.r, c).locked">
+                        <template v-for="(time, index) in barsOf(mv.r, c).times" :key="`handles-${index}`">
+                          <b data-part="handle" data-side="start" :title="`${L.resizeStart} ${spanLong(time)}`" :style="{ left: bar(time).left }" @pointerdown="startBar($event, mv.r, c, 'start', index)" />
+                          <b data-part="handle" data-side="end" :title="`${L.resizeEnd} ${spanLong(time)}`" :style="{ left: `${pct(time.end, chartRange)}%` }" @pointerdown="startBar($event, mv.r, c, 'end', index)" />
+                        </template>
                       </template>
                     </span>
                     <span data-part="bar-label">{{ drag && barsOf(mv.r, c).state ? barsOf(mv.r, c).times.map(spanShort).join(" / ") : cv(mv.r, c).barLabel }}</span>

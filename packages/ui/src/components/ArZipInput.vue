@@ -110,13 +110,12 @@ const statusText = () =>
       @update:model-value="onInput"
     />
     <ArButton
-      v-if="lookup"
+      v-if="lookup && (status === 'failed' || status === 'not-found')"
       data-part="lookup"
       tone="secondary"
       icon="search"
       :size="size"
       :disabled="disabled || format(modelValue ?? '').length !== 8"
-      :loading="status === 'searching'"
       @click="lookupCurrent"
     >{{ labels.lookup ?? '住所を入れる' }}</ArButton>
     <span data-part="status" role="status" aria-live="polite">{{ statusText() }}</span>

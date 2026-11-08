@@ -40,3 +40,5 @@
 [data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"][data-state~="selected"]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"][data-state~="selected"]:focus-visible{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ar-color-text),0 0 0 7px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="color-swatches"][data-grouped]>[data-part="group"]>[data-part="swatch"]:disabled{opacity:.45}
+
+[data-ar-design="remix"] [data-ar="color-picker"][data-state~="readonly"]>[data-part="chip"]{width:34px;padding:0;justify-content:center}

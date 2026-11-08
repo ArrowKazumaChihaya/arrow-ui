@@ -2,7 +2,7 @@
 /* ArBadge（.ad-bdg sup：18・角丸9・700 11px・白い2pxの縁、右上に top-7 right-9。点は8px。状態の点 .ad-st は7px＋7pxの間）
    件数の丸はライブラリでこれ1つ。赤はデザインシステムの count（#DC2525。--ar-remix-count）。白い縁は data-ring（子に重ねるとき既定）。
    variant="subtle"：淡い地に濃い字（タブ・表示内容・切り替えの中の件数）。 */
-[data-ar-design="remix"] [data-ar="badge"]{font-family:var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="badge"]{font-family:var(--ar-font-family-numeric,Arial,sans-serif)}
 [data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-remix-count);color:#fff;font-size:11px;font-weight:700;line-height:1;vertical-align:middle;font-variant-numeric:tabular-nums;box-shadow:none}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="count"]{top:-7px;right:-9px}
 [data-ar-design="remix"] [data-ar="badge"]>[data-part="dot"]{width:8px;height:8px;border-radius:50%;background:var(--ar-remix-count);box-shadow:none}
@@ -31,3 +31,5 @@
 [data-ar-design="remix"] [data-ar="ribbon"][data-tone="danger"]>[data-part="ribbon"]{background:var(--ar-color-danger);color:#fff;text-shadow:none}
 [data-ar-design="remix"] [data-ar="ribbon"][data-tone="ok"]>[data-part="ribbon"]{background:var(--ar-color-ok);color:#fff;text-shadow:none}
 [data-ar-design="remix"] [data-ar="ribbon"][data-tone="warn"]>[data-part="ribbon"]{background:#E39A2D;color:#fff;text-shadow:0 1px 2px rgba(90,40,0,.28)}
+
+[data-ar-design="remix"] [data-ar="badge"][data-standalone]>[data-part="count"]{position:static;top:auto;vertical-align:middle}

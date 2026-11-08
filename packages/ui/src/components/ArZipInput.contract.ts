@@ -5,7 +5,7 @@ export interface ArZipInputProps {
   /**
    * 7桁そろったときに住所を引く関数（製品が渡す。例：郵便番号の API を呼ぶ）。
    * 住所の文字を返すと address を出す。見つからなければ null。渡さなければ引かない。
-   * 渡した場合は、入力済みの番号から検索・再試行できるボタンも表示する。
+   * 入力時に自動検索する。失敗した場合だけ再試行ボタンを表示する。
    */
   lookup?: (zip: string) => Promise<string | null>;
   invalid?: boolean;

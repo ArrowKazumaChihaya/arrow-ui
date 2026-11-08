@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<ArFieldProps>(), {
   layout: undefined,
   labelSize: undefined,
   labelWidth: undefined,
+  controlSize: undefined,
   requiredText: "必須",
   id: undefined,
 });
@@ -102,6 +103,7 @@ function onFocusOut(e: FocusEvent) {
     data-ar="field"
     data-part="root"
     :data-layout="layout"
+    :data-control-size="controlSize"
     :data-label-size="layout === 'inline' ? labelSize : undefined"
     :style="layout === 'inline' && labelWidth ? { '--ar-field-label': labelWidth } : undefined"
     :data-state="error ? 'invalid' : undefined"

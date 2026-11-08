@@ -3,7 +3,7 @@
 [data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
 [data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"]{padding:0 8px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11.5px;font-weight:700;letter-spacing:.04em;line-height:1.5;white-space:nowrap;border-bottom:1px solid var(--ar-color-border-subtle)}
-[data-ar-design="remix"] [data-ar="table"] thead[data-part="head"]>tr{height:34px}
+[data-ar-design="remix"] [data-ar="table"] thead[data-part="head"]>tr{height:42px}
 [data-ar-design="remix"] [data-ar="table"] :is(tbody[data-part="body"]>tr[data-part="row"],tfoot[data-part="foot"]>tr){height:44px}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"]{padding:4px 8px;border-bottom:1px solid var(--ar-color-border-subtle);font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"]):first-child{padding-left:12px}
@@ -62,7 +62,7 @@
 
 /* 空・見出しの下の行・表の下 */
 [data-ar-design="remix"] [data-ar="table"] td[data-part="empty"]{padding:4px 12px}
-[data-ar-design="remix"] [data-ar="table"] tbody[data-part="before-rows"]>tr>td{padding:8px 0 4px}
+[data-ar-design="remix"] [data-ar="table"] tbody[data-part="before-rows"]>tr>td{padding:10px 12px;border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="before-rows"]>tr>td{padding:8px 12px;border-bottom:1px solid var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="below"]{margin-top:8px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"]>[data-part="below"]{margin-top:20px}
@@ -134,7 +134,7 @@
 [data-ar-design="remix"] [data-ar="table"] tbody td[data-total]{background:var(--ar-accent-faint);font-weight:700}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]{gap:4px;border-radius:4px}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]>[data-ar="icon"]{width:14px;height:14px}
-[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]>[data-part="toggle-hint"]{color:var(--ar-color-text-muted);font-size:10.5px;font-weight:600;letter-spacing:0}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]>[data-part="toggle-hint"]{color:var(--ar-color-text-muted);font-size:inherit;font-weight:600;letter-spacing:0}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]:hover{color:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
 /* 見出しの列から開くボタン（年調の「＋ 合計」：.btn.tint.sm 24px・11.5px） */
@@ -197,3 +197,5 @@
 /* Empty messages stay inside the visible viewport of a horizontally scrollable table. */
 [data-ar-design="remix"] [data-ar="table"]{container:ar-table / inline-size}
 [data-ar-design="remix"] [data-ar="table"] td[data-part="empty"]>[data-ar="empty"]{position:sticky;left:12px;width:calc(100cqw - 24px);max-width:100%;box-sizing:border-box}
+/* Keep attendance row actions reachable while scrolling its time columns. */
+[data-ar-design="remix"] td[data-v-ui040a3e8cc0ed]:has(>.operation_col){position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff);box-shadow:-1px 0 var(--ar-color-border-subtle)}

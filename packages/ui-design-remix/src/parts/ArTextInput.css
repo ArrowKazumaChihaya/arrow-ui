@@ -39,3 +39,6 @@
 [data-ar-design="remix"] [data-ar="text-input"][data-size="sm"]>[data-part="addon"][data-side="end"]{border-radius:0 8px 8px 0}
 [data-ar-design="remix"] [data-ar="text-input"][data-size="lg"]>[data-part="addon"]{border-radius:10px 0 0 10px}
 [data-ar-design="remix"] [data-ar="text-input"][data-size="lg"]>[data-part="addon"][data-side="end"]{border-radius:0 10px 10px 0}
+
+/* Single-line fields describe bounded values. Notes and free-form content use ArTextarea. */
+[data-ar-design="remix"] [data-ar="text-input"][data-block]{max-width:var(--ar-field-control-size,24rem)}

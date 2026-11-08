@@ -334,11 +334,11 @@
  {
   "name": "ArSplit",
   "version": "1.0.0",
-  "description": "左右に分ける。左の幅は段階（sm 320 / md 420 / lg 540 / xl 640）。\n置かれた場所の幅が stackBelow より狭いと、上下に積む（コンテナクエリ）。",
+  "description": "左右に分ける。左の幅は段階（xs 224 / sm 320 / md 420 / lg 540 / xl 640）。\n置かれた場所の幅が stackBelow より狭いと、上下に積む（コンテナクエリ）。",
   "props": [
    {
     "name": "start",
-    "type": "'sm' | 'md' | 'lg' | 'xl'",
+    "type": "'sm' | 'md' | 'lg' | 'xs' | 'xl'",
     "required": false,
     "description": "",
     "default": "\"md\""
@@ -528,7 +528,7 @@
    },
    {
     "name": "size",
-    "type": "'sm' | 'md' | 'lg' | 'xl' | 'xs'",
+    "type": "'sm' | 'md' | 'lg' | 'xs' | 'xl'",
     "required": false,
     "description": "大きさの段。`sm`＝設定など密集した所、`md`＝ふつう（既定）、`lg`＝年末調整・スマホなど大きく押しやすくしたい所。同じ段なら入力・セレクト・時刻・日付・ボタンの高さがそろう（新しい見た目 30／36／42・角丸 9／10／11、今の見た目 antd の 24／32／40）。\nxs＝表の行の中の小さな操作（「シフトに入れる」）、xl＝手順の「次へ」「戻る」などのいちばん大きい操作（新しい見た目では lg と同じ高さ）。\n今の ARROW の size との対応：small→sm、なし→md、large→lg、xlarge→xl、square→アイコンだけ（label を渡す）。",
     "default": "\"md\""
@@ -3320,6 +3320,12 @@
     "description": "inline のラベルの幅（CSS の長さ。例：\"25%\"）。labelSize より優先。ArForm の中では ArForm の labelWidth。"
    },
    {
+    "name": "controlSize",
+    "type": "'short' | 'medium' | 'long' | 'full'",
+    "required": false,
+    "description": "Width of the control area: short codes, ordinary names/selects, longer addresses, or full-width content."
+   },
+   {
     "name": "requiredText",
     "type": "string",
     "required": false,
@@ -5403,6 +5409,12 @@
     "default": "false"
    },
    {
+    "name": "columns",
+    "type": "number",
+    "required": false,
+    "description": "Expected character count; sizes the editable area while leaving units outside it. Does not limit input."
+   },
+   {
     "name": "align",
     "type": "'center' | 'left' | 'right'",
     "required": false,
@@ -6056,8 +6068,8 @@
     "name": "showPath",
     "type": "boolean",
     "required": false,
-    "description": "押す所に「営業部 / 東京営業所」のように上の部署から出す。1.2から複数選択の札にも適用する。",
-    "default": "true"
+    "description": "押す所に「営業部 / 東京営業所」のように上の部署から出す（既定 false：選択した部署名だけ）。1.2から複数選択の札にも適用する。",
+    "default": "false"
    },
    {
     "name": "maxTags",
@@ -6659,7 +6671,7 @@
    },
    {
     "name": "size",
-    "type": "'sm' | 'md' | 'lg' | 'xl' | 'xs'",
+    "type": "'sm' | 'md' | 'lg' | 'xs' | 'xl'",
     "required": false,
     "description": "大きさ。xs＝24（セレクトの値・選択肢の中）・sm＝28（表の名前の列・ヘッダー。デザインシステムの .v-av）・md＝32・lg＝44・xl＝60。\n1.1 で sm を 26→28 にした（デザインシステムに 26 は無く、表の名前の列は 28）。"
    },
@@ -6712,7 +6724,7 @@
    },
    {
     "name": "size",
-    "type": "'sm' | 'md' | 'lg' | 'xl' | 'xs'",
+    "type": "'sm' | 'md' | 'lg' | 'xs' | 'xl'",
     "required": false,
     "description": "並べる丸の大きさ（中の ArAvatar に size を渡さないときの既定）。",
     "default": "\"md\""
@@ -10830,7 +10842,7 @@
    },
    {
     "name": "format",
-    "type": "'auto' | 'long' | 'short'",
+    "type": "'short' | 'long' | 'auto'",
     "required": false,
     "description": "書き方。long＝「11月05日(木)」、short＝「11/05(木)」、\nauto＝ふだんは long、幅 499px 以下の画面では short（今の ARROW の DateView と同じ）。",
     "default": "\"auto\""
@@ -14069,7 +14081,7 @@
     "name": "lookup",
     "type": "((zip: string) => Promise<string | null>)",
     "required": false,
-    "description": "7桁そろったときに住所を引く関数（製品が渡す。例：郵便番号の API を呼ぶ）。\n住所の文字を返すと address を出す。見つからなければ null。渡さなければ引かない。\n渡した場合は、入力済みの番号から検索・再試行できるボタンも表示する。"
+    "description": "7桁そろったときに住所を引く関数（製品が渡す。例：郵便番号の API を呼ぶ）。\n住所の文字を返すと address を出す。見つからなければ null。渡さなければ引かない。\n入力時に自動検索する。失敗した場合だけ再試行ボタンを表示する。"
    },
    {
     "name": "invalid",
