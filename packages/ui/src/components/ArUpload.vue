@@ -4,7 +4,7 @@
  * 一覧：済みは緑のチェック、途中はテーマ色の進み具合、失敗は赤と理由。送る処理は親が行い、files に状態を入れる。
  * 置き場は Enter・Space でファイルを選ぶ画面を開く。
  */
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
 import ArButton from "./ArButton.vue";
 import { useDesignForm } from "../provider/context";
@@ -45,6 +45,14 @@ const buttonText = computed(() => (props.files?.length ? (props.labels.change ??
 const trigger = useDesignForm<"drop" | "button">("ArUpload", "trigger", "drop");
 const input = ref<HTMLInputElement | null>(null);
 const over = ref(false);
+const failedPreviews = ref(new Set<string>());
+watch(() => props.files, (files) => {
+  const urls = new Set(files.map((file) => file.url));
+  failedPreviews.value = new Set([...failedPreviews.value].filter((url) => urls.has(url)));
+});
+const remove = (file: ArUploadFile) => {
+  if (!props.disabled && file.status !== "uploading") emit("remove", file);
+};
 const pick = () => !props.disabled && input.value?.click();
 
 function accepts(f: File): boolean {
@@ -127,7 +135,7 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
             <span data-part="name" :title="f.name">{{ f.name }}<template v-if="f.status === 'error' && f.error">（{{ f.error }}）</template></span>
             <ArIcon line v-if="f.status === 'done'" name="check" size="sm" data-part="status" :label="'済み'" />
             <small v-else-if="f.status === 'uploading'" data-part="status">{{ Math.round(f.percent ?? 0) }}%</small>
-            <button v-if="f.status !== 'uploading'" type="button" data-part="remove" :aria-label="`${f.name}を${labels.remove}`" :title="labels.remove" @click="emit('remove', f)">
+            <button v-if="f.status !== 'uploading'" type="button" data-part="remove" :disabled="disabled" :aria-label="`${f.name}を${labels.remove}`" :title="labels.remove" @click="remove(f)">
               <ArIcon line name="trash" size="sm" />
             </button>
           </div>
@@ -147,9 +155,9 @@ const state = computed(() => [over.value && "dragover", props.disabled && "disab
     </template>
     <div v-else data-part="cards">
       <div v-for="f in files" :key="f.id" data-part="card" :data-status="f.status">
-        <img v-if="f.url" :src="f.url" :alt="f.name" />
-        <span v-else data-part="card-name">{{ f.name }}</span>
-        <button type="button" data-part="remove" :aria-label="`${f.name}を${labels.remove}`" :title="labels.remove" @click="emit('remove', f)">
+        <img v-if="f.url && !failedPreviews.has(f.url)" :src="f.url" :alt="f.name" @error="failedPreviews.add(f.url)" />
+        <span v-else data-part="card-name">{{ f.previewFallback ?? f.name }}</span>
+        <button type="button" data-part="remove" :disabled="disabled || f.status === 'uploading'" :aria-label="`${f.name}を${labels.remove}`" :title="labels.remove" @click="remove(f)">
           <ArIcon line name="x" size="sm" />
         </button>
       </div>

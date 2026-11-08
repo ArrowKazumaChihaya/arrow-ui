@@ -13,6 +13,8 @@ export interface ArUploadFile {
   error?: string;
   /** 写真の見本（listType="picture"）。 */
   url?: string;
+  /** 端末で写真を表示できない場合の説明。ファイル自体は選択したまま保持する。 */
+  previewFallback?: string;
 }
 /**
  * ArUpload 1.1 の契約。
