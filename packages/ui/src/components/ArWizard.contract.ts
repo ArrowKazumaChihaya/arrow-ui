@@ -15,6 +15,8 @@ export interface ArWizardProps {
   /** Actual destination when the consumer skips optional steps; navigation remains consumer-owned. */
   nextValue?: number;
   disabled?: boolean;
+  /** Keep back navigation available while the current step is incomplete. */
+  nextDisabled?: boolean;
   /** form は読みやすい幅で中央に配置。fluid は従来どおり配置先の全幅を使う。 */
   layout?: "fluid" | "form";
   /** nextStep may contain {step}; an explicit option.nextText still takes precedence. */

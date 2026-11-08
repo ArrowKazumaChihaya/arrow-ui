@@ -218,6 +218,8 @@ export interface ArTableProps<Row> {
    * 長文の列はwrapを併用する。省略時は各テーマの従来の表幅と横スクロールを維持する。
    */
   fit?: boolean;
+  /** fit時の操作列の幅（px）。省略時は96px。アイコン1つなら56pxなど、操作の数に合わせる。 */
+  actionsWidth?: number;
   /** 列。 */
   columns: readonly ArTableColumn<Row>[];
   /** 列・サムネイルの表示を ArViewOptions で切り替える。先頭列と操作列は常に表示する。 */

@@ -1,5 +1,13 @@
 # @s_and_a/arrow-ui
 
+## 0.1.12
+
+### Patch Changes
+
+- Preserve live day/month drafts while typing dates and advance to the day only when the month is complete. Improve native tree drag handles, repeated dragover performance and nested product-cell indentation.
+- Support editable profile photos, feature palette tags, event colors, fixed-width status tags, configurable table action-column width and disabled wizard progression.
+- Include responsive PDF canvas sizing, initial dialog focus, final-section tracking and loading-overlay focus restoration accumulated since 0.1.11.
+
 ## 0.1.11
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 0.1.12
+
+### Patch Changes
+
+- Align radio choices, field labels, switches, detail actions, button icons and count/status badges. Keep personal menu labels readable inside the viewport.
+- Use uniformly filled shift cells, compact colored events, consistent profile photo actions and multi-line attendance time rows. Keep fixed export documents outside product appearance rules.
+- Style program-editor variables, highlights and help with the shared design. Preserve equal-height card actions and responsive form/table layouts accumulated since 0.1.11.
+- Requires @s_and_a/arrow-ui 0.1.12 or a compatible newer version.
+
 ## 0.1.11
 
 ### Patch Changes

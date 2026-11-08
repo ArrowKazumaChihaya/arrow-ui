@@ -6,7 +6,7 @@
 [data-ar-design="remix"] [data-ar="info"][data-kind="mark"]{justify-content:center;width:22px;height:22px;border-radius:50%;color:var(--ar-color-text-muted);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="info"][data-kind="mark"]>[data-part="icon"]{width:16px;height:16px}
 [data-ar-design="remix"] [data-ar="info"][data-kind="mark"]:hover{background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
-[data-ar-design="remix"] [data-ar="info"][data-kind="detail"]{height:22px;padding:0 6px;border-radius:6px;font-size:11.5px;font-weight:700;color:var(--ar-accent-ink);transition:background var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="info"][data-kind="detail"]{width:fit-content;gap:4px;height:24px;padding:0 6px;border-radius:6px;font-size:11.5px;font-weight:700;color:var(--ar-accent-ink);transition:background var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="info"][data-kind="detail"]:hover{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="info"]:is([data-kind="mark"],[data-kind="detail"]):focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="info"]{font-feature-settings:"palt" 1}

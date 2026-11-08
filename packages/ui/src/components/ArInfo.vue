@@ -39,6 +39,6 @@ const emit = defineEmits<{ open: [] }>();
     @click="href || emit('open')"
   >
     <ArIcon line v-if="kind === 'mark'" name="help" data-part="icon" />
-    <span v-else data-part="text"><slot>{{ text ?? labels.detail }}</slot></span>
+    <template v-else><ArIcon line name="info" data-part="icon" size="sm" /><span data-part="text"><slot>{{ text ?? labels.detail }}</slot></span></template>
   </component>
 </template>

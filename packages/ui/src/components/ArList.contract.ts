@@ -6,6 +6,8 @@ export interface ArListItem {
   key: string | number;
   /** 1行目の太字（名前）。 */
   title: string;
+  /** データに保存した色（イベント等）。指定時は見出しと色の印に反映する。 */
+  color?: string;
   /** 2行目の灰色の小さな文字（「09:00〜18:00 ／ 渋谷店」）。 */
   description?: string;
   /** 頭文字の丸。true なら title の1文字目。1.1: src を渡すと写真。 */

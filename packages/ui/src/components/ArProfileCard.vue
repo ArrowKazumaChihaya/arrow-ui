@@ -13,7 +13,9 @@ import type { ArProfileCardProps } from "./ArProfileCard.contract";
 const props = withDefaults(defineProps<ArProfileCardProps>(), {
   title: undefined, name: undefined, kana: undefined, code: undefined, image: undefined, tagsLabel: undefined,
   layout: "default", items: () => [], tags: () => [],
+  photoEditable: false, photoLabel: "写真を変更",
 });
+const emit = defineEmits<{ "photo-click": [] }>();
 const descriptionItems = computed(() => [
   ...props.items,
   ...(props.tags.length && props.tagsLabel ? [{ key: "profile-tags", label: props.tagsLabel }] : []),
@@ -27,7 +29,10 @@ const descriptionItems = computed(() => [
         <ArCluster :gap="4" justify="between" align="start" data-part="header">
           <div data-part="identity">
             <div data-part="photo">
-              <ArAvatar :src="image" :name="name" :size="layout === 'compact' ? 'lg' : 'xl'" />
+              <button v-if="photoEditable" type="button" data-part="photo-button" :aria-label="photoLabel" :title="photoLabel" @click="emit('photo-click')">
+                <ArAvatar :src="image" :name="name" :size="layout === 'compact' ? 'lg' : 'xl'" />
+              </button>
+              <ArAvatar v-else :src="image" :name="name" :size="layout === 'compact' ? 'lg' : 'xl'" />
               <slot name="photo-actions" />
             </div>
             <ArStack :gap="1">
@@ -35,7 +40,7 @@ const descriptionItems = computed(() => [
               <ArTitle v-if="name" :level="3" data-part="name">{{ name }}</ArTitle>
               <ArText v-if="kana" type="muted" size="sm">{{ kana }}</ArText>
               <ArCluster v-if="tags.length && !tagsLabel" :gap="1">
-                <ArTag v-for="tag in tags" :key="tag.key" :tone="tag.tone ?? 'accent'" size="sm">{{ tag.label }}</ArTag>
+                <ArTag v-for="tag in tags" :key="tag.key" :tone="tag.tone ?? 'accent'" :data-ar-palette="tag.palette" size="sm">{{ tag.label }}</ArTag>
               </ArCluster>
             </ArStack>
           </div>
@@ -44,7 +49,7 @@ const descriptionItems = computed(() => [
         <ArDescriptions v-if="descriptionItems.length" :items="descriptionItems" :column="Math.min(2, descriptionItems.length)" :variant="layout === 'compact' ? 'plain' : 'bordered'">
           <template #item-profile-tags>
             <ArCluster :gap="1">
-              <ArTag v-for="tag in tags" :key="tag.key" :tone="tag.tone ?? 'accent'" size="sm">{{ tag.label }}</ArTag>
+              <ArTag v-for="tag in tags" :key="tag.key" :tone="tag.tone ?? 'accent'" :data-ar-palette="tag.palette" size="sm">{{ tag.label }}</ArTag>
             </ArCluster>
           </template>
         </ArDescriptions>

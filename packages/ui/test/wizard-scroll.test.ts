@@ -82,3 +82,15 @@ it('reveals the active step in the horizontal rail without moving the page when 
   wrapper.unmount();
   Reflect.deleteProperty(document.documentElement, 'scrollTo');
 });
+
+it('keeps backward navigation usable when only the next step is incomplete', async () => {
+  const wrapper = mount(ArWizard, {props: {value: 2, options: [{value:1,label:'Pick'}, {value:2,label:'Details'}, {value:3,label:'Download'}], nextDisabled:true, scrollOnChange:false}});
+  expect(wrapper.get('[data-tone="primary"]').attributes('disabled')).toBeDefined();
+  await wrapper.get('[data-tone="secondary"]').trigger('click');
+  expect(wrapper.emitted('prev')).toHaveLength(1);
+  expect(wrapper.emitted('next')).toBeUndefined();
+  await wrapper.setProps({nextDisabled:false});
+  await wrapper.get('[data-tone="primary"]').trigger('click');
+  expect(wrapper.emitted('next')).toHaveLength(1);
+  wrapper.unmount();
+});

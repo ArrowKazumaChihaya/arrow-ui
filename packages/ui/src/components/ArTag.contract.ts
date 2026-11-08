@@ -15,6 +15,10 @@ export interface ArTagProps {
   icon?: ArIconName;
   /** 件数の札（数字を等幅にする）。 */
   count?: boolean;
+  /** 親の幅に揃える。表の状態列など、文字数の異なる札を同じ幅にする。 */
+  block?: boolean;
+  /** 同じ場所に並ぶ状態ラベルの最小幅（px）。長い翻訳は折り返さず必要な幅まで広がる。 */
+  minWidth?: number;
   /** 右に × を出して外せるようにする（close を出す）。 */
   closable?: boolean;
   /** × の読み上げの名前。 */

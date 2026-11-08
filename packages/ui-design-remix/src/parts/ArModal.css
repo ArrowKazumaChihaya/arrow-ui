@@ -68,7 +68,7 @@
 }
 
 /* 確認：共通デザイン原稿の一枚のカード。入力フォームの帯・区切り線を使わない。 */
-[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]{flex-direction:column;align-items:flex-start;gap:12px;padding:22px 22px 12px;border:0}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]{flex-direction:row;align-items:center;gap:12px;padding:22px 22px 12px;border:0}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"]{align-items:center;justify-content:center;width:36px;height:36px;margin:0;border-radius:10px;background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="warn"]{background:color-mix(in srgb,#E39A2D 10%,var(--ar-color-surface))}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="danger"]{background:color-mix(in srgb,var(--ar-color-danger) 10%,var(--ar-color-surface))}

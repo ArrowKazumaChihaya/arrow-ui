@@ -39,6 +39,8 @@ const avatarOf = (it: ArListItem) => {
               :key="item.key"
               data-part="item"
               :data-state="item.off ? 'off' : undefined"
+              :data-color="item.color ? '' : undefined"
+              :style="item.color ? { '--ar-list-color': item.color } : undefined"
             >
               <slot name="item" :item="item" :index="index">
                 <span v-if="item.avatar || $slots.avatar" data-part="avatar">

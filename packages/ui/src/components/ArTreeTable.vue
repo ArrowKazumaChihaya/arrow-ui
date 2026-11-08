@@ -224,13 +224,24 @@ function onDragStart(e: DragEvent, l: Line) {
   if (!props.draggable || armed.value !== l.key) return e.preventDefault();
   dragging.value = l.key;
   e.dataTransfer?.setData("text/plain", String(l.key));
-  if (e.dataTransfer) e.dataTransfer.effectAllowed = "move";
+  if (e.dataTransfer) {
+    e.dataTransfer.effectAllowed = "move";
+    const row = e.currentTarget as HTMLElement;
+    const box = row.getBoundingClientRect();
+    e.dataTransfer.setDragImage?.(row, e.clientX - box.left, e.clientY - box.top);
+  }
 }
 function onDragOver(e: DragEvent, l: Line) {
   if (dragging.value === null) return;
   const box = (e.currentTarget as HTMLElement).getBoundingClientRect();
   const y = box.height ? (e.clientY - box.top) / box.height : 1;
   const position: ArTreeTableDrop["position"] = y < 0.3 ? "before" : y > 0.7 ? "after" : "inside";
+  // Native dragover fires repeatedly while the pointer stays on the same target.
+  if (over.value?.key === l.key && over.value.position === position) {
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
+    return;
+  }
   if (!canDrop({ key: dragging.value, target: l.key, position })) {
     over.value = null;
     return;
@@ -337,6 +348,7 @@ const hasActions = computed(() => !!slots.actions);
                     v-if="draggable"
                     type="button"
                     data-part="drag-handle"
+                    draggable="true"
                     :data-key="l.key"
                     :aria-label="L.dragHandle"
                     @click.stop
@@ -380,6 +392,7 @@ const hasActions = computed(() => !!slots.actions);
                     v-if="draggable"
                     type="button"
                     data-part="drag-handle"
+                    draggable="true"
                     :data-key="l.key"
                     :aria-label="L.dragHandle"
                     @click.stop

@@ -3,7 +3,7 @@
    件数の丸はライブラリでこれ1つ。赤はデザインシステムの count（#DC2525。--ar-remix-count）。白い縁は data-ring（子に重ねるとき既定）。
    variant="subtle"：淡い地に濃い字（タブ・表示内容・切り替えの中の件数）。 */
 [data-ar-design="remix"] [data-ar="badge"]{font-family:var(--ar-font-family)}
-[data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-remix-count);color:#fff;font-size:11px;font-weight:700;line-height:18px;font-variant-numeric:tabular-nums;box-shadow:none}
+[data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-remix-count);color:#fff;font-size:11px;font-weight:700;line-height:1;vertical-align:middle;font-variant-numeric:tabular-nums;box-shadow:none}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="count"]{top:-7px;right:-9px}
 [data-ar-design="remix"] [data-ar="badge"]>[data-part="dot"]{width:8px;height:8px;border-radius:50%;background:var(--ar-remix-count);box-shadow:none}
 [data-ar-design="remix"] [data-ar="badge"][data-ring]>:is([data-part="count"],[data-part="dot"]){box-shadow:0 0 0 2px var(--ar-color-surface)}

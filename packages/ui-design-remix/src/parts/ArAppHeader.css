@@ -5,7 +5,7 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]{height:38px;gap:8px;padding:0 28px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]{width:128px;padding-left:20px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]>:is(img,svg){height:18px;width:auto}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]{height:26px;gap:7px;padding:0 4px 0 10px;border:0;border-radius:13px;font-size:12.5px;font-weight:600;line-height:normal}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]{height:26px;gap:7px;padding:0 4px 0 10px;border:0;border-radius:13px;font-size:12.5px;font-weight:600;line-height:1.4}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-state="empty"]{padding-right:10px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="notice"]{background:#F1F4F7;color:#3B4A5A}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"][data-tone="todo"]{background:#FFF0EE;color:#B4322C}
@@ -30,9 +30,9 @@
 [data-ar-design="remix"] [data-ar="app-footer"]{padding:30px 32px 0;padding-inline-end:max(32px,var(--ar-app-footer-end-inset,0px));color:var(--ar-color-text);font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]{align-items:center;gap:6px;padding-bottom:10px}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>:is([data-part="links"],[data-part="supports"]){gap:6px}
-[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"]{display:inline-flex;align-items:center;height:30px;padding:0 10px;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600;line-height:normal}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"]{display:inline-flex;align-items:center;height:30px;padding:0 10px;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600;line-height:1.4}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"]:hover{background:#E4EAF0}
-[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]{height:44px;gap:8px;padding:0 14px;border:0;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(31,41,51,.06);color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600;line-height:normal}
+[data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]{height:44px;gap:8px;padding:0 14px;border:0;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(31,41,51,.06);color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600;line-height:1.4}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]:hover{box-shadow:0 1px 2px rgba(31,41,51,.06),0 0 0 1px var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="supports"]>[data-part="support"]>[data-part="support-icon"]{width:15px;height:15px;color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>:is([data-part="links"],[data-part="supports"])>:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
@@ -80,8 +80,8 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"][data-state="on"]{border-bottom-color:var(--ar-accent);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="domain-list"]>[data-part="domain"] [data-ar="icon"]{width:16px;height:16px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="domains"]>[data-part="toggle"]{gap:4px;height:28px;padding:0 10px;border:1px solid var(--ar-color-border);border-radius:8px;background:#fff;color:var(--ar-color-text-secondary);font-size:12px}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]{gap:2px;margin-top:4px;padding:4px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
-[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]{padding:8px 6px;border:0;border-radius:8px;background:none;color:var(--ar-color-text);font-size:13px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]{min-width:max-content;max-width:calc(100vw - 24px);gap:2px;margin-top:4px;padding:4px;border:1px solid var(--ar-color-border);border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]{padding:8px 12px;border:0;border-radius:8px;background:none;color:var(--ar-color-text);font-size:13px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]:hover{background:var(--ar-accent-faint);color:var(--ar-accent-ink)}
 /* 1.1 下のメニューの子の段（メニューの真上に浮かぶ白い段・角丸14・影、タイルは項目と同じ形）と、メニューの一覧（下から出る板の中の4列のタイル） */
 [data-ar-design="remix"] [data-ar="bottom-nav"]>[data-part="submenu"]{left:8px;right:auto;max-width:calc(100% - 16px);bottom:calc(100% + 6px);gap:2px;padding:6px 4px;border:1px solid var(--ar-color-border);border-radius:14px;background:#fff;box-shadow:0 12px 32px rgba(31,41,51,.14)}

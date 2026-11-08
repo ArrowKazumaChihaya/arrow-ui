@@ -41,6 +41,8 @@ function onClick(e: MouseEvent) {
     :data-shape="shape"
     :data-size="size"
     :data-count="count || undefined"
+    :data-block="block || undefined"
+    :style="minWidth === undefined ? undefined : { minWidth: `${minWidth}px`, justifyContent: 'center' }"
     :data-kind="checkable ? 'checkable' : dashed ? 'dashed' : undefined"
     :data-state="state"
     :type="pressable ? 'button' : undefined"

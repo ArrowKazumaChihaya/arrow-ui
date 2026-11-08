@@ -69,3 +69,8 @@
 [data-ar-design="remix"] input:hover:not(:disabled)+[data-ar="checkbox"][data-decorative]>[data-part="control"]>[data-part="box"]{border-color:var(--ar-accent)}
 [data-ar-design="remix"] input:focus-visible+[data-ar="checkbox"][data-decorative]>[data-part="control"]>[data-part="box"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] input:disabled+[data-ar="checkbox"][data-decorative]>[data-part="control"]>[data-part="box"]{background:var(--ar-color-surface-alt);border-color:var(--ar-color-border)}
+
+/* Equal-height choices centre their control and body; descriptions keep their own line. */
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]{align-items:center}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]>[data-part="control"]{align-self:center;margin-top:0}
+[data-ar-design="remix"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"][data-desc]{align-content:center}

@@ -649,7 +649,7 @@ const colspan = computed(
           <col v-if="selectable" data-col="select" />
           <col v-if="expandable" data-col="expand" />
           <col v-for="c in cols" :key="c.key" :style="c.width ? { width: `${c.width}px` } : undefined" />
-          <col v-if="hasActions" data-col="actions" />
+          <col v-if="hasActions" data-col="actions" :style="fit ? { width: `${actionsWidth ?? 96}px` } : undefined" />
         </colgroup>
         <thead data-part="head" :data-tiers="head.two ? 2 : undefined">
           <tr>

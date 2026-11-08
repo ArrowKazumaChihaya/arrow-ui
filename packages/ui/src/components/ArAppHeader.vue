@@ -83,6 +83,13 @@ function show(kind: Kind, key: string, has: boolean) {
   const el = (kind === "pill" ? pillEls : itemEls).get(key);
   if (el) openStyle.value = { left: `${el.offsetLeft}px`, top: `${el.offsetTop + el.offsetHeight}px`, width: `${el.offsetWidth}px` };
   open.value = { kind, key };
+  if (kind === "item") void nextTick(() => {
+    const menu = subEl.value;
+    if (!menu || !isOpen(kind, key)) return;
+    const box = menu.getBoundingClientRect();
+    const overflow = box.right - (document.documentElement.clientWidth - 12);
+    if (overflow > 0) openStyle.value = { ...openStyle.value, left: `${Math.max(12, (el?.offsetLeft ?? 12) - overflow)}px` };
+  });
 }
 function keep() {
   clearTimeout(timer);

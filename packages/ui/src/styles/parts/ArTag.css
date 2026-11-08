@@ -4,3 +4,4 @@ button[data-ar="tag"]:disabled{cursor:not-allowed}
 [data-ar="tag"]>[data-part="close"]{all:unset;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
 [data-ar="tag"]>[data-part="close"]:disabled{cursor:not-allowed}
 [data-ar="tag"][data-count]{font-variant-numeric:tabular-nums}
+[data-ar="tag"][data-block]{display:flex;width:100%;justify-content:center}

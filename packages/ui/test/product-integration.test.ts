@@ -103,6 +103,29 @@ describe('product integration contracts', () => {
   expect(wrapper.get('[data-part="content"]').text()).toBe('変更後');
   wrapper.unmount();
  });
+ it('preserves indentation through product cells and avoids repeated drag validation on one target', async () => {
+  const allowDrop=vi.fn(()=>true);
+  const rows=[{key:1,name:'本店',children:[{key:11,name:'支店'}]},{key:2,name:'移動する店舗'}];
+  const wrapper=mount(ArTreeTable<TestRow>,{
+   props:{rows,rowKey:'key',columns:[{key:'name',title:'店舗'}],caption:'店舗',draggable:true,allowDrop},
+   slots:{cells:({row})=>h(UiTableRow,{},()=>h(UiTableCell,{},()=>row.name))},
+  });
+  const trees=wrapper.findAll<HTMLElement>('[data-part="tree"]');
+  expect(trees.map(node=>node.element.style.getPropertyValue('--ar-tt-depth'))).toEqual(['0','1','0']);
+  const handle=wrapper.get('[data-part="drag-handle"][data-key="2"]');
+  expect(handle.attributes('draggable')).toBe('true');
+  await handle.trigger('mousedown');
+  const source=wrapper.findAll('tbody > tr')[2]!;
+  await source.trigger('dragstart',{dataTransfer:{setData(){},setDragImage(){},effectAllowed:''}});
+  const target=wrapper.findAll('tbody > tr')[1]!;
+  for(let i=0;i<30;i++) await target.trigger('dragover',{clientY:0});
+  expect(allowDrop).toHaveBeenCalledTimes(1);
+  await target.trigger('drop');
+  expect(wrapper.emitted('drop')).toEqual([[{key:2,target:11,position:'after'}]]);
+  expect(allowDrop).toHaveBeenCalledTimes(2);
+  expect(rows.map(row=>row.key)).toEqual([1,2]);
+  wrapper.unmount();
+ });
  it('honors product reparent restrictions for keyboard moves without changing source rows', async () => {
   const rows=[{key:1,name:'本店'},{key:2,name:'支店'}];
   const wrapper=mount(ArTreeTable<TestRow>,{props:{rows,rowKey:'key',columns:[{key:'name',title:'店舗'}],caption:'店舗',draggable:true,allowDrop:drop=>drop.position!=='inside'}});

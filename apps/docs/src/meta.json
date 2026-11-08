@@ -1077,6 +1077,13 @@
     "default": "0"
    },
    {
+    "name": "justify",
+    "type": "'start' | 'center' | 'end' | 'between'",
+    "required": false,
+    "description": "操作の横方向の配置。",
+    "default": "\"start\""
+   },
+   {
     "name": "offsetBottom",
     "type": "number",
     "required": false,
@@ -1867,7 +1874,7 @@
  },
  {
   "name": "ArWizard",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "props": [
    {
@@ -1893,6 +1900,13 @@
     "type": "boolean",
     "required": false,
     "description": "",
+    "default": "false"
+   },
+   {
+    "name": "nextDisabled",
+    "type": "boolean",
+    "required": false,
+    "description": "Keep back navigation available while the current step is incomplete.",
     "default": "false"
    },
    {
@@ -4708,6 +4722,11 @@
     "description": "選んだ値が変わったとき（v-model と同じ値）。"
    },
    {
+    "name": "select",
+    "payload": "[value: ArSelectValue | null]",
+    "description": "選択肢を押したとき。同じ値の選び直しも通知し、フォームの change とは区別する。"
+   },
+   {
     "name": "open-change",
     "payload": "[open: boolean]",
     "description": "プルダウンが開いた・閉じた。"
@@ -5433,6 +5452,20 @@
     "required": false,
     "description": "消すボタンの読み上げ。",
     "default": "\"消す\""
+   },
+   {
+    "name": "showPasswordLabel",
+    "type": "string",
+    "required": false,
+    "description": "パスワードを見せる・隠すボタンの読み上げ。",
+    "default": "\"パスワードを表示する\""
+   },
+   {
+    "name": "hidePasswordLabel",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"パスワードを隠す\""
    },
    {
     "name": "inputClass",
@@ -7461,7 +7494,7 @@
  },
  {
   "name": "ArList",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "人やものの一覧（antd 6 の Listy の形）。\n1行は「頭文字の丸・名前と説明・右の操作」。group が続く間を1つにまとめ、淡いテーマ色の見出しを上に出す（スクロールしても残る）。",
   "props": [
    {
@@ -7811,8 +7844,14 @@
     "name": "paperWidth",
     "type": "string",
     "required": false,
-    "description": "紙の幅（100% のとき）。",
+    "description": "紙の幅（100% のとき）。page slot の width はその実測幅（CSS px）で、画面幅変更にも追従する。",
     "default": "\"560px\""
+   },
+   {
+    "name": "fitWidth",
+    "type": "number",
+    "required": false,
+    "description": "100% 表示を表示枠に収めるときの最大幅（CSS px）。指定時は paperWidth より優先し、拡大時はこの基準幅から拡大する。"
    },
    {
     "name": "paperMinHeight",
@@ -8004,7 +8043,7 @@
  },
  {
   "name": "ArProfileCard",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "props": [
    {
@@ -8045,6 +8084,20 @@
     "description": ""
    },
    {
+    "name": "photoEditable",
+    "type": "boolean",
+    "required": false,
+    "description": "写真を押して編集を始める。編集の権限と保存は利用側が管理する。",
+    "default": "false"
+   },
+   {
+    "name": "photoLabel",
+    "type": "string",
+    "required": false,
+    "description": "",
+    "default": "\"写真を変更\""
+   },
+   {
     "name": "items",
     "type": "readonly ArDescriptionsItem[]",
     "required": false,
@@ -8053,7 +8106,7 @@
    },
    {
     "name": "tags",
-    "type": "readonly { key: string; label: string; tone?: 'danger' | 'ok' | 'accent' | 'neutral' | 'warn' | 'event' | 'solid' | undefined; }[]",
+    "type": "readonly { key: string; label: string; tone?: 'danger' | 'ok' | 'accent' | 'neutral' | 'warn' | 'event' | 'solid' | undefined; palette?: 'blue' | 'green' | 'yellow' | 'pink' | 'orange' | 'teal' | 'amber' | undefined; }[]",
     "required": false,
     "description": "",
     "default": "[]"
@@ -8065,7 +8118,13 @@
     "description": ""
    }
   ],
-  "emits": [],
+  "emits": [
+   {
+    "name": "photo-click",
+    "payload": "[]",
+    "description": ""
+   }
+  ],
   "slots": [
    "photo-actions",
    "actions",
@@ -8077,6 +8136,7 @@
    "header",
    "identity",
    "photo",
+   "photo-button",
    "name",
    "actions",
    "footer"
@@ -8300,7 +8360,7 @@
  },
  {
   "name": "ArTable",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "表。\nbox（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。\n見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。\n並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。\nページ送りは #below に ArPagination を置く。\nsortableRows で行をドラッグ（つまみ）か Alt+↑↓ で並べ替え、update:rows と reorder を出す。\n1.1：右に止める列・2段の見出し（押すとまとまりが開く）・行をまたぐセル・表の中の小さな金額の入力・3段の金額・数字の下の差の行。\n1.4：横につなぐセル（列の colSpan）・行ぜんぶを1つのセル（fullRow と #full-row）。\n1.3：入力の行（editing・commit・cancel）・時間の組の段（editor=\"time-range\"）。\n1.2：スロットの引数 Default（既定の表示）・段に分ける列（lines。段の高さを列をまたいで揃える）・入力の種類（文字・時刻・選ぶ）。",
   "props": [
    {
@@ -8309,6 +8369,12 @@
     "required": false,
     "description": "1.5：利用可能な幅に表を収める。columns.widthを指定した列を優先し、残りを未指定の列へ配分する。\n長文の列はwrapを併用する。省略時は各テーマの従来の表幅と横スクロールを維持する。",
     "default": "false"
+   },
+   {
+    "name": "actionsWidth",
+    "type": "number",
+    "required": false,
+    "description": "fit時の操作列の幅（px）。省略時は96px。アイコン1つなら56pxなど、操作の数に合わせる。"
    },
    {
     "name": "columns",
@@ -8597,7 +8663,7 @@
  },
  {
   "name": "ArTag",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "状態や種類の札（「提出済」「パート」「不足1」「4名」）。色だけで伝えず、必ず言葉を入れる。\ncheckable で選べる札（CheckableTag）、dashed で「タグを追加」、closable で外せる札になる。",
   "props": [
    {
@@ -8633,6 +8699,18 @@
     "required": false,
     "description": "件数の札（数字を等幅にする）。",
     "default": "false"
+   },
+   {
+    "name": "block",
+    "type": "boolean",
+    "required": false,
+    "description": "親の幅に揃える。表の状態列など、文字数の異なる札を同じ幅にする。"
+   },
+   {
+    "name": "minWidth",
+    "type": "number",
+    "required": false,
+    "description": "同じ場所に並ぶ状態ラベルの最小幅（px）。長い翻訳は折り返さず必要な幅まで広がる。"
    },
    {
     "name": "closable",
@@ -9539,9 +9617,9 @@
    },
    {
     "name": "okTone",
-    "type": "'primary' | 'danger'",
+    "type": "'primary' | 'danger' | 'edit'",
     "required": false,
-    "description": "主なボタンの種類。削除は danger（赤）。",
+    "description": "主なボタンの種類。保存は edit（緑）、削除は danger（赤）。",
     "default": "\"primary\""
    },
    {
@@ -10690,7 +10768,10 @@
    }
   ],
   "emits": [],
-  "slots": [],
+  "slots": [
+   "before",
+   "after"
+  ],
   "parts": [
    "root",
    "head",
@@ -10701,7 +10782,9 @@
    "before",
    "change",
    "arrow",
-   "after"
+   "after",
+   "before-label",
+   "after-label"
   ],
   "dataAr": "changed-value"
  },
@@ -13950,7 +14033,7 @@
    },
    {
     "name": "labels",
-    "type": "{ year: string; month: string; }",
+    "type": "{ year: string; month: string; empty?: string | undefined; }",
     "required": false,
     "description": "",
     "default": "{ year: \"年\", month: \"月\" }"

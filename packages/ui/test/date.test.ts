@@ -63,3 +63,37 @@ describe("ArDateInput", () => {
     w.unmount();
   });
 });
+
+
+describe("ArDateInput live segmented entry", () => {
+  it("keeps a one-digit day draft through model echo and accepts the second digit", async () => {
+    const w = mount(ArDateInput, { props: { modelValue: "2026-10-08", pad: "zero", updateOnInput: true,
+      "onUpdate:modelValue": value => { void w.setProps({modelValue: value}); } } });
+    const day = w.get<HTMLInputElement>('[data-part="day"]');
+    await day.setValue("1");
+    expect(day.element.value).toBe("1");
+    await day.setValue("15");
+    expect(w.props("modelValue")).toBe("2026-10-15");
+    await day.setValue("3");
+    await day.trigger("blur");
+    expect(day.element.value).toBe("03");
+    w.unmount();
+  });
+  it("advances 2-9 to day, but waits for a second digit after 1", async () => {
+    const w = mount(ArDateInput, { props: { modelValue: "2026-10-08", pad: "zero" }, attachTo: document.body });
+    const month = w.get<HTMLInputElement>('[data-part="month"]');
+    const day = w.get<HTMLInputElement>('[data-part="day"]');
+    month.element.focus();
+    await month.setValue("1");
+    expect(document.activeElement).toBe(month.element);
+    await month.setValue("12");
+    expect(document.activeElement).toBe(day.element);
+    expect(day.element.selectionStart).toBe(0);
+    expect(day.element.selectionEnd).toBe(2);
+    month.element.focus();
+    await month.setValue("２");
+    expect(document.activeElement).toBe(day.element);
+    expect(w.emitted("update:modelValue")?.at(-1)).toEqual(["2026-02-08"]);
+    w.unmount();
+  });
+});

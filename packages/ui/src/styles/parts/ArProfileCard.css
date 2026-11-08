@@ -19,3 +19,5 @@
 @container(max-width:600px){
   [data-ar="profile-card"][data-layout="compact"] [data-part="summary"]>[data-ar="descriptions"]{flex-basis:100%}
 }
+[data-ar="profile-card"] [data-part="photo-button"]{display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;background:none;border-radius:50%;font:inherit;cursor:pointer}
+[data-ar="profile-card"] [data-part="photo-button"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:3px}

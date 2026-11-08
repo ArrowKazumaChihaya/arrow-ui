@@ -48,6 +48,7 @@ const initialYear = () => props.initialYear ?? Math.max(props.minYear ?? thisYea
 const parts = ref({ y: "", m: "", d: "" });
 /** 打った月日がありえない日（message の形のときだけ）。 */
 const badDate = ref(false);
+const dayInput = ref<HTMLInputElement | null>(null);
 function syncFromValue(v: string | null) {
   const s = splitDate(v);
   if (!s && badDate.value) return; // 「無効な日付」のときは打った数字を残す
@@ -72,7 +73,7 @@ const weekday = computed(() => {
   return { text: props.labels.weekdays[w] ?? "", kind: w === 0 ? "sun" : w === 6 ? "sat" : "weekday" };
 });
 
-function commit() {
+function commit(formatParts = true) {
   const y = toNumber(parts.value.y);
   const m = toNumber(parts.value.m);
   const d = toNumber(parts.value.d);
@@ -89,10 +90,24 @@ function commit() {
     emit("update:modelValue", next);
     void nextTick(() => { ownUpdate = false; });
   }
-  if (!badDate.value && next) {
+  if (formatParts && !badDate.value && next) {
     const s = splitDate(next)!;
     parts.value.m = show(s.m);
     parts.value.d = show(s.d);
+  }
+}
+
+function inputPart(which: "m" | "d", event: Event) {
+  // A live model update must not replace the draft ("1") with a padded value
+  // ("01"): the next keystroke still belongs to this field.
+  if (props.updateOnInput) commit(false);
+  if (which !== "m" || !(event.target instanceof HTMLInputElement)) return;
+  const input = event.target;
+  const month = toNumber(input.value);
+  if (document.activeElement === input && month && month <= 12 &&
+      (input.value.length === 2 || month >= 2)) {
+    dayInput.value?.focus();
+    dayInput.value?.select();
   }
 }
 
@@ -157,12 +172,13 @@ function setYear(y: number | null) {
       :disabled="disabled"
       :aria-label="`${label ?? ''}${labels.month}`"
       :aria-invalid="invalid || badDate || undefined"
-      @input="updateOnInput && commit()"
-      @blur="commit"
+      @input="inputPart('m', $event)"
+      @blur="commit()"
       @keydown="step('m', $event)"
     />
     <span data-part="unit" aria-hidden="true">{{ labels.month }}</span>
     <input
+      ref="dayInput"
       v-model="parts.d"
       data-part="day"
       inputmode="numeric"
@@ -171,8 +187,8 @@ function setYear(y: number | null) {
       :disabled="disabled"
       :aria-label="`${label ?? ''}${labels.day}`"
       :aria-invalid="invalid || badDate || undefined"
-      @input="updateOnInput && commit()"
-      @blur="commit"
+      @input="inputPart('d', $event)"
+      @blur="commit()"
       @keydown="step('d', $event)"
     />
     <span data-part="unit" aria-hidden="true">{{ labels.day }}</span>

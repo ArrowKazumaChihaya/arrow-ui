@@ -29,7 +29,7 @@ export default defineComponent({
     return () => cells(slots.default?.() ?? []).map((node, index) => {
       const attributes = {
         'data-part': 'cell', role: 'gridcell',
-        ...(index === 0 ? { 'data-tree': true, style: { '--ar-tt-depth': props.depth } } : {}),
+        ...(index === 0 ? { 'data-tree': true } : {}),
       };
       const isCell = node.type === 'td' || node.type === 'th' || node.type === UiTableCell;
       if (index !== 0) return isCell ? cloneVNode(node, attributes) : h('td', attributes, [node]);
@@ -39,7 +39,9 @@ export default defineComponent({
         if (typeof original === 'object' && original !== null && !Array.isArray(original)) return renderDefault(original.default);
         return original;
       };
-      const render = () => [h('span', { 'data-part': 'tree' }, [
+      // Keep geometry on the native library element: product cells deliberately
+      // filter decorative inline styles and must not own this tree's indentation.
+      const render = () => [h('span', { 'data-part': 'tree', style: { '--ar-tt-depth': props.depth } }, [
         ...(slots.controls?.() ?? []), h('span', { 'data-part': 'content' }, [content()]),
       ])];
       // Creating native cells anew normalizes their children flags. Mutating a cloned

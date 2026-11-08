@@ -1,4 +1,4 @@
-/* @covers ArProfileCard 1.0.0 */
+/* @covers ArProfileCard 1.1.0 */
 /* The profile composes the design's Card, Avatar, Title, Tag and Descriptions. */
 [data-ar-design="remix"] [data-ar="profile-card"]{color:var(--ar-color-text)}
 
@@ -41,3 +41,5 @@
 
 [data-ar-design="remix"] [data-ar="profile-card"][data-layout="compact"] [data-part="name"]{font-size:18px}
 [data-ar-design="remix"] [data-ar="profile-card"][data-layout="compact"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"]{padding:4px 8px;border-radius:6px;background:var(--ar-color-surface-alt)}
+[data-ar-design="remix"] [data-ar="profile-card"] [data-part="photo-button"]:hover{box-shadow:0 0 0 4px var(--ar-accent-subtle)}
+@container (max-width:600px){[data-ar-design="remix"] [data-ar="profile-card"] [data-part="photo-button"]>[data-ar="avatar"]{width:40px;height:40px;font-size:16px}}

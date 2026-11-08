@@ -35,3 +35,5 @@
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"]>[data-part="avatar"]{box-shadow:none}
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"][data-state~="disabled"]>[data-part="avatar"]{opacity:1}
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"]>[data-part="option-desc"]{font-size:11px;font-weight:700;line-height:16px}
+
+[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]+[data-part="option"]{margin-top:3px}
