@@ -250,6 +250,8 @@
 /* The shift members table: the confirm bar under the row being added or edited. */
 [data-ar-design="remix"] .row_edit_bar:not([data-ui-fixed], [data-ui-fixed] *) {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: flex-end;
   gap: 8px;
   padding: 4px 8px;
