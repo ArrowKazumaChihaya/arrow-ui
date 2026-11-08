@@ -199,3 +199,4 @@
 [data-ar-design="remix"] [data-ar="table"] td[data-part="empty"]>[data-ar="empty"]{position:sticky;left:12px;width:calc(100cqw - 24px);max-width:100%;box-sizing:border-box}
 /* Keep desktop actions reachable; on narrow screens sticky actions would cover time inputs. */
 @media(min-width:640px){[data-ar-design="remix"] td[data-v-ui040a3e8cc0ed]:has(>.operation_col){position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff);box-shadow:-1px 0 var(--ar-color-border-subtle)}}
+@media(max-width:639px){[data-ar-design="remix"] table[data-ui-part="table"] th.button[data-v-ui040a3e8cc0ed]{right:auto}}
