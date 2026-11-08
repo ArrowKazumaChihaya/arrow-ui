@@ -39,7 +39,10 @@ function hide() {
   clearTimeout(timer);
   open.value = false;
 }
-const style = computed(() => (props.lines > 1 ? { "-webkit-line-clamp": String(props.lines) } : undefined));
+const style = computed(() => ({
+  ...(props.lines > 1 ? { "-webkit-line-clamp": String(props.lines) } : {}),
+  maxWidth: typeof props.maxWidth === "number" ? `${props.maxWidth}px` : props.maxWidth,
+}));
 defineExpose({ measure });
 </script>
 

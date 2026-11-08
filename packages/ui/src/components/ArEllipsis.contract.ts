@@ -4,6 +4,8 @@ export interface ArEllipsisProps {
   text?: string;
   /** 何行で切るか。既定 1。 */
   lines?: number;
+  /** 最大幅。数値はpx。内容に合わせて広がるテーブルのセルでも省略幅を固定できる。 */
+  maxWidth?: number | string;
   /** 吹き出しを出す側。 */
   placement?: "top" | "bottom";
 }
