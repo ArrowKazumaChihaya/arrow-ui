@@ -7,6 +7,7 @@
 - Bound single-line form controls, align count badges, help icons and card headings, and keep the to-do hover palette stable.
 - Use the exact shift-pattern fill with contrasting text, center empty/filled chart tracks and show times only in tooltips.
 - Separate add rows, align grouped table headings, standardize normal header height, center readonly color chips and keep attendance row actions visible while scrolling.
+- Let mobile attendance headers scroll with their cells without covering inputs. Wrap inline editing controls and align their actions to the bottom of the row.
 - Requires @s_and_a/arrow-ui 0.1.13 or a compatible newer version.
 
 ## 0.1.12
