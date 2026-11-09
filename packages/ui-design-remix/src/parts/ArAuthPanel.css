@@ -9,3 +9,7 @@
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="heading"]{background:radial-gradient(circle at 0 100%,#ffffff12 0 90px,transparent 91px),radial-gradient(circle at 100% 0,#ffffff18 0 115px,transparent 116px),linear-gradient(120deg,var(--ar-accent-hi),var(--ar-accent),var(--ar-accent-strong));letter-spacing:.06em}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="initial"]{width:38px;height:38px}
 [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{font-size:11px}
+/* Authentication is a focused task: align credentials with the full-width action. */
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="text-input"][data-block]{max-width:100%;height:48px;padding-inline:14px;font-size:16px;border-radius:12px}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="text-input"][data-block]>[data-part="reveal"]{width:36px;height:40px}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="button"][data-block]:is([data-tone="primary"],[data-tone="secondary"]){height:auto;min-height:48px;padding:12px 18px;border-radius:12px;font-size:16px;line-height:1.4;white-space:normal}
