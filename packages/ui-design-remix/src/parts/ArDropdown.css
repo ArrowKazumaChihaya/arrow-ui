@@ -44,3 +44,15 @@
   [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"][data-rich]>[data-part="item"]{padding:9px 10px;min-height:48px}
   [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>:is([data-part="description"],[data-part="disabled-reason"]){font-size:12px;line-height:1.5}
 }
+
+/* プルダウンはすべて給与計算のメニューと同じ板と行にする */
+[data-ar-design="remix"] [data-ar="dropdown-menu"]{border:1px solid #DDE5E6;border-radius:14px;box-shadow:0 14px 34px rgba(35,41,43,.13),0 2px 6px rgba(35,41,43,.06);font-size:14px}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]{padding:8px}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]{gap:12px;min-height:42px;height:auto;padding:10px 12px;border-radius:10px;font-size:14px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]:is(:hover,:focus-visible):not([aria-disabled="true"]){background:#F4F7F8}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="icon-box"]{width:36px;height:36px;border-radius:10px;background:var(--hd-tint,var(--ar-accent-subtle));color:var(--hd-ink,var(--ar-accent-ink))}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="label"]{font-size:14px;font-weight:500}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="description"]{font-size:12px;line-height:1.5;color:#5B676B}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="group"]{padding:8px 12px 4px;font-size:12px;font-weight:500;letter-spacing:.06em;color:#5B676B}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="divider"]{margin:6px 12px;background:#E3EAEB}
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"][data-rich]>[data-part="item"]{min-height:52px;padding:8px 12px;align-items:center;border-radius:10px}

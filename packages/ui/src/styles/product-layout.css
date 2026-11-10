@@ -34304,3 +34304,8 @@ table:has(tbody > tr)
   white-space: normal;
 }
 }
+
+@layer arrow-product-layout {
+  .menu_section_grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px 8px; }
+  .menu_section { margin: 0 0 20px; }
+}

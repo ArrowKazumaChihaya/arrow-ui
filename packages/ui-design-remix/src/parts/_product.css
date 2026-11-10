@@ -442,15 +442,16 @@
 /* Add-only rows are controls, not hoverable data. Raw tree slots use the same treatment. */
 [data-ar-design="remix"] :is(table[data-ui-part="table"],[data-ar="tree-table"]) tbody[data-part="before-rows"] tr:hover>td:not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-color-surface)}
 
-/* ===== スマホのメニュー画面（日々の業務・給与計算・管理） ===== */
-@media(max-width:959px){
-[data-ar-design="remix"] .menu_wrap:has(.menu_section):not([data-ui-fixed], [data-ui-fixed] *){box-sizing:border-box;width:auto;max-width:none;margin:16px;padding:20px 16px;border-radius:20px;background:#fff;box-shadow:none}
+/* ===== メニュー画面（日々の業務・給与計算・管理。PC でもスマホでも中央の1枚の札） ===== */
+[data-ar-design="remix"] .menu_wrap:has(.menu_section):not([data-ui-fixed], [data-ui-fixed] *){box-sizing:border-box;width:auto;max-width:760px;margin:16px auto;padding:20px 16px;border-radius:20px;background:#fff;box-shadow:none}
+@media(max-width:959px){[data-ar-design="remix"] .menu_wrap:has(.menu_section):not([data-ui-fixed], [data-ui-fixed] *){margin:16px}}
+@media(min-width:960px){[data-ar-design="remix"] .menu_wrap:has(.menu_section):not([data-ui-fixed], [data-ui-fixed] *){margin:32px auto;padding:28px 32px}}
 [data-ar-design="remix"] .menu_section:not([data-ui-fixed], [data-ui-fixed] *){margin:0 0 20px}
 [data-ar-design="remix"] .menu_section_title:not([data-ui-fixed], [data-ui-fixed] *){margin:0 0 12px;font-size:12px;font-weight:500;letter-spacing:.06em;color:#5B676B}
-[data-ar-design="remix"] .menu_section_grid:not([data-ui-fixed], [data-ui-fixed] *){display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 8px}
+[data-ar-design="remix"] .menu_section_grid:not([data-ui-fixed], [data-ui-fixed] *){display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:12px 8px}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-variant="plain"]:not([data-ui-fixed], [data-ui-fixed] *){gap:8px;padding:0}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-variant="plain"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){width:60px;height:60px;border-radius:18px;box-shadow:0 4px 12px rgba(35,41,43,.12);background:var(--ar-accent)}
-[data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-variant="plain"]>[data-part="icon"]>[data-ar="icon"]:not([data-ui-fixed], [data-ui-fixed] *){width:28px;height:28px}
+[data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-variant="plain"]>[data-part="icon"]>[data-ar="icon"]:not([data-ui-fixed], [data-ui-fixed] *){width:28px;height:28px;stroke-width:1.7}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-variant="plain"]>[data-part="label"]:not([data-ui-fixed], [data-ui-fixed] *){font-size:12px;font-weight:500;color:#23292B}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-ar-palette="blue"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){background:#4F7FBF}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-ar-palette="green"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){background:#3F8F63}
@@ -458,7 +459,6 @@
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-ar-palette="pink"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){background:#C4568D}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-ar-palette="orange"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){background:#C2691F}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-ar-palette="teal"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){background:#3F8A91}
-}
 
 /* ログイン：カードの下の開発者用の欄と著作権（カードと同じ幅で中央） */
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login:not([data-ui-fixed], [data-ui-fixed] *){display:flex;flex-direction:column;align-items:center;gap:16px}

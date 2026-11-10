@@ -83,3 +83,6 @@
 [data-ar="bottom-nav"]>[data-part="submenu"][data-rich]>[data-part="submenu-item"]{flex-direction:row;justify-content:flex-start;width:auto;text-align:left}
 [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="submenu-icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
 [data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="submenu-text"]{display:flex;flex-direction:column;flex:1;min-width:0}
+[data-ar="app-domain-menu"]>[data-part="domain-menu-item"]>[data-part="domain-menu-icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-label"]{display:inline-flex;flex-direction:column;align-items:center}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-label"]::after{content:attr(data-label);display:block;height:0;overflow:hidden;visibility:hidden;font-weight:700;pointer-events:none}

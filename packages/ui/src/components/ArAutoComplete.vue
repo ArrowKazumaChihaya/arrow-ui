@@ -78,6 +78,11 @@ const rows = computed<Row[]>(() => {
 const enabled = (i: number) => !!rows.value[i] && !rows.value[i]!.opt.disabled;
 const optionId = (i: number) => `${uid}-opt-${i}`;
 const showPanel = computed(() => open.value && (rows.value.length > 0 || props.emptyText !== undefined));
+/** 候補の板の幅は入力の幅（ただし 480px まで）。入力が画面いっぱいに広がっていても、候補は広げすぎない。 */
+const rootWidth = ref(0);
+watch(showPanel, (v) => {
+  if (v && root.value) rootWidth.value = root.value.getBoundingClientRect().width;
+});
 
 function openIfReady() {
   if (props.disabled) return;
@@ -165,8 +170,8 @@ defineExpose({ focus: () => input.value?.focus() });
       @blur="onBlur"
       @keydown="onKey"
     />
-    <ArFloat ar="select-panel" :open="showPanel" :anchor="root" match-width="min" :offset="6" @close="open = false">
-      <div :id="listId" ref="listEl" data-part="list" role="listbox" :aria-label="label" style="max-height: 264px" @mousedown.prevent>
+    <ArFloat ar="select-panel" :open="showPanel" :anchor="root" :offset="6" @close="open = false">
+      <div :id="listId" ref="listEl" data-part="list" role="listbox" :aria-label="label" style="max-height: 264px" :style="{ minWidth: `${Math.min(rootWidth, 480)}px`, maxWidth: 'calc(100vw - 16px)' }" @mousedown.prevent>
         <ArOptionRow
           v-for="(r, i) in rows"
           :id="optionId(i)"

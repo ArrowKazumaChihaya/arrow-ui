@@ -26,3 +26,6 @@
   [data-ar-design="remix"] [data-ar="descriptions"][data-variant="bordered"][data-layout="inline"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{padding:8px 12px 4px;border-bottom:0;font-size:12px}
   [data-ar-design="remix"] [data-ar="descriptions"][data-variant="bordered"][data-layout="inline"]>[data-part="list"]>[data-part="item"]>[data-part="value"]{grid-column:auto;padding:8px 12px 12px}
 }
+
+/* ラベルは上下中央（値が複数行でも項目名が上に寄らない） */
+[data-ar-design="remix"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{display:flex;align-items:center}

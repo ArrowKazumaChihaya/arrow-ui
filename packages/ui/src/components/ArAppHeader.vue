@@ -264,7 +264,8 @@ function onMenuKey(e: KeyboardEvent) {
 }
 
 /** 領域の切り替えをメニューにしたとき（domain-style="menu"）の開閉。 */
-const menuStyle = computed(() => props.domainStyle === "menu" && props.domains.length > 0);
+const menuStyle = computed(() => props.domainStyle === "menu");
+const hasDomainSwitch = computed(() => menuStyle.value && props.domains.length > 0);
 const currentDomain = computed(() => props.domains.find((d) => d.key === props.domain) ?? props.domains[0]);
 const domainMenuId = useId("ar-domain-menu");
 const domainBtn = ref<HTMLButtonElement | null>(null);
@@ -317,6 +318,7 @@ function onDomainMenuKey(e: KeyboardEvent) {
     <div data-part="top">
       <span data-part="logo"><slot name="logo" /></span>
       <template v-if="menuStyle">
+        <template v-if="hasDomainSwitch">
         <span data-part="top-divider" aria-hidden="true" />
         <button
           ref="domainBtn"
@@ -347,11 +349,13 @@ function onDomainMenuKey(e: KeyboardEvent) {
             @click="chooseDomain(d.key)"
             @keydown="onDomainMenuKey"
           >
+            <span v-if="d.icon" data-part="domain-menu-icon"><ArIcon :name="d.icon" /></span>
             <span data-part="domain-menu-label">{{ d.label }}</span>
             <small v-if="d.note" data-part="domain-note">{{ d.note }}</small>
             <ArIcon v-else-if="d.key === currentDomain?.key" line name="check" size="sm" data-part="domain-menu-check" />
           </button>
         </ArFloat>
+        </template>
         <span data-part="top-spacer" aria-hidden="true" />
       </template>
       <button
@@ -381,7 +385,7 @@ function onDomainMenuKey(e: KeyboardEvent) {
         :anchor="openPill ? (pillEls.get(openPill.key) ?? null) : null"
         :placement="menuStyle ? 'bottom-end' : 'bottom-start'"
         :offset="menuStyle ? 12 : 0"
-        match-width
+        :match-width="!menuStyle"
         :close-on-outside="false"
         ar="app-pill-list"
         @close="(r) => hide(r === 'escape')"
@@ -518,7 +522,7 @@ function onDomainMenuKey(e: KeyboardEvent) {
           @blur="hideSoon"
         >
           <span v-if="it.icon" data-part="item-icon" :data-icon="it.icon"><ArIcon :name="it.icon" /></span>
-          <span data-part="item-label">{{ it.label }}</span>
+          <span data-part="item-label" :data-label="it.label">{{ it.label }}</span>
         </component>
       </template>
       <button v-if="menuStyle && collapsible" type="button" data-part="toggle" :aria-expanded="true" @click="emit('update:collapsed', true)">

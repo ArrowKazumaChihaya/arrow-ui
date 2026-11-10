@@ -37,3 +37,11 @@
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"][data-kind="people"] [data-part="option"]>[data-part="option-desc"]{font-size:11px;font-weight:700;line-height:16px}
 
 [data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]+[data-part="option"]{margin-top:3px}
+
+/* プルダウンはすべて給与計算のメニューと同じ板と行にする（白・縁 #DDE5E6・角丸14・余白8。行は角丸10・余白 10/12・14px、乗せると #F4F7F8） */
+[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"],[data-ar="tree-select-panel"]){box-sizing:border-box;border:1px solid #DDE5E6;border-radius:14px;box-shadow:0 14px 34px rgba(35,41,43,.13),0 2px 6px rgba(35,41,43,.06);font-size:14px}
+[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="tree-select-panel"]){padding:8px}
+[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]{gap:10px;min-height:42px;height:auto;padding:10px 12px;border-radius:10px;font-size:14px;line-height:1.5}
+[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"][data-state~="active"]{background:#F4F7F8}
+[data-ar-design="remix"] :is([data-ar="select-panel"],[data-ar="cascader-panel"]) [data-part="option"]:is([data-state~="selected"],[data-state~="path"]){background:color-mix(in srgb,var(--hd-tint,var(--ar-accent-subtle)) 45%,#fff);color:var(--ar-accent-ink);font-weight:700}
+[data-ar-design="remix"] [data-ar="select-panel"] [data-part="group-label"]{padding:8px 12px 4px;font-size:12px;font-weight:500;letter-spacing:.06em;color:#5B676B}
