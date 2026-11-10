@@ -109,3 +109,5 @@
 [data-ar-design="classic"] [data-ar="table"] [data-part="cell"][data-wrap]{white-space:pre-wrap;overflow-wrap:anywhere;text-overflow:clip;line-height:1.6;padding-block:8px}
 
 [data-ar-design="classic"] [data-ar="table"] [data-part="header-cell"][data-wrap]{white-space:normal;overflow-wrap:anywhere;padding-block:6px}
+/* row-click を受けている表だけ、行を押せるカーソルにする（ArTable が data-clickable を付ける）。 */
+[data-ar-design="classic"] [data-ar="table"] tr[data-part="row"][data-clickable]{cursor:pointer}

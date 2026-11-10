@@ -13,6 +13,7 @@
  */
 import {
   computed,
+  getCurrentInstance,
   h,
   markRaw,
   nextTick,
@@ -85,6 +86,8 @@ const emit = defineEmits<{
   cancel: [edit: ArTableRowEdit<Row>];
 }>();
 const slots = useSlots();
+/** 行を押すと何かが起きる表（row-click を受けている）だけ、行を押せる見た目（指のカーソル）にする。 */
+const rowClickable = !!getCurrentInstance()?.vnode.props?.onRowClick;
 
 /* ---- 2段の見出し・開け閉めするまとまり ---- */
 const openSet = computed(() => new Set(props.openGroups));
@@ -872,6 +875,7 @@ const colspan = computed(
               data-part="row"
               data-full
               :data-state="rowState(row)"
+              :data-clickable="rowClickable || undefined"
               @click="emit('row-click', row, i)"
             >
               <td data-part="cell" data-full :colspan="colspan"><slot name="full-row" :row="row" :index="i" /></td>
@@ -881,6 +885,7 @@ const colspan = computed(
               :key="j"
               data-part="row"
               :data-state="rowState(row)"
+              :data-clickable="rowClickable || undefined"
               :data-line="anyLines ? j - 1 : undefined"
               :data-line-last="anyLines && j === lineCount(row) ? '' : undefined"
               :data-drop="

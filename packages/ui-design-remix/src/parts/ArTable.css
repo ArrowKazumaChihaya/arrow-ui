@@ -200,3 +200,5 @@
 /* Keep desktop actions reachable; on narrow screens sticky actions would cover time inputs. */
 @media(min-width:640px){[data-ar-design="remix"] td[data-v-ui040a3e8cc0ed]:has(>.operation_col){position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff);box-shadow:-1px 0 var(--ar-color-border-subtle)}}
 @media(max-width:639px){[data-ar-design="remix"] table[data-ui-part="table"] th.button[data-v-ui040a3e8cc0ed]{right:auto}}
+/* row-click を受けている表だけ、行を押せるカーソルにする（ArTable が data-clickable を付ける）。 */
+[data-ar-design="remix"] [data-ar="table"] tr[data-part="row"][data-clickable]{cursor:pointer}

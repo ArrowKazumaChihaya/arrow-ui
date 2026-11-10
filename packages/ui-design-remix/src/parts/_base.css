@@ -6,3 +6,7 @@
    count＝件数の赤（お知らせ・やること・メニューの件数。ボタン・間違いの赤 danger とは別）、short＝不足、lock＝ロック（勤怠の締め）、
    leave＝休み（有給など。ロックと見分ける灰の斜線）、hope＝希望・出られる時間の地、tip＝吹き出し（シフトのキャンバスの .r-tip） */
 [data-ar-design="remix"]{--ar-remix-count:#DC2525;--ar-remix-short:#B4231C;--ar-remix-short-subtle:#FDECEA;--ar-remix-short-line:#E58A84;--ar-remix-lock:#8592A0;--ar-remix-lock-stripe:repeating-linear-gradient(135deg,#F7F9FB 0 6px,#EEF1F5 6px 12px);--ar-remix-leave-stripe:repeating-linear-gradient(135deg,#F2F3F5 0 4px,#E6E8EB 4px 8px);--ar-remix-hope-subtle:#EEF8F2;--ar-remix-hope-line:#46A574;--ar-remix-tip-bg:#1F2933;--ar-remix-tip-shadow:0 10px 24px -8px rgba(15,23,32,.5)}
+/* キーボードで動かしているときの枠。部品ごとのやわらかい光（accent-ring・24%）は白い地では見分けにくいので、
+   同じテーマ色の濃い文字色（accent-ink）の実線を重ねる。部品ごとの outline:0 より後ろに回らないよう !important。
+   文字入力は外側の枠がフォーカスを描くので対象にしない。 */
+[data-ar-design="remix"] :is(a[href],button,summary,[role="button"],[role="tab"],[role="menuitem"],[role="option"],[role="switch"],[role="combobox"]):not(input,textarea,select):focus-visible{outline:2px solid var(--ar-accent-ink,var(--ar-color-text))!important;outline-offset:2px}
