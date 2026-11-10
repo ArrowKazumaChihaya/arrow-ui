@@ -491,3 +491,7 @@
 /* 警告・案内の枠のすぐ下に続く要素とくっつかないように（ArStack などの間隔を持たない入れ物の中だけ） */
 [data-ar-design="remix"] :not([data-ar="stack"],[data-ar="cluster"],[data-ar="column"],[data-ar="split"],[data-ar="grid"])>[data-ar="alert"]:has(+*):not([data-ui-fixed], [data-ui-fixed] *){margin-bottom:12px}
 [data-ar-design="remix"] .shift_wrap:not([data-ui-fixed], [data-ui-fixed] *){display:flex;flex-direction:column;gap:12px}
+
+/* 勤怠詳細：編集・追加で時刻の入力が出ても、列の幅が変わらないように、時刻の列は常に入力が入る幅を取る */
+[data-ar-design="remix"] :is(.attendance_table_wrap th.shift_start,.attendance_table_wrap th.shift_end,.attendance_table_wrap th.punch_start,.attendance_table_wrap th.punch_end,.attendance_table_wrap th.break_start,.attendance_table_wrap th.break_end,.attendance_table_wrap th.plan_break_start,.attendance_table_wrap th.plan_break_end,.attendance_table_wrap th.actual_break_start,.attendance_table_wrap th.actual_break_end,.attendance_table_wrap th.punch_round_start,.attendance_table_wrap th.punch_round_end,.attendance_table_wrap th.break_round_start,.attendance_table_wrap th.break_round_end):not([data-ui-fixed], [data-ui-fixed] *){min-width:84px}
+[data-ar-design="remix"] .attendance_table_wrap td [data-ar="time-input"]:not([data-ui-fixed], [data-ui-fixed] *){width:100%;min-width:0;box-sizing:border-box}
