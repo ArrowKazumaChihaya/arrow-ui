@@ -72,6 +72,11 @@ export interface ArAppHeaderProps {
   domains?: readonly ArAppNavItem[];
   /** 今の領域の key（domains のどれか）。 */
   domain?: string;
+  /**
+   * 領域の切り替えの見た目。tabs（既定）＝1段目とメニューの間のタブ。menu＝1段目のロゴの右にボタンを置き、押すと領域を選ぶメニューを出す
+   * （段を増やさない。collapsible のときは畳むボタンをメニューの段の右端に置き、畳むとメニューの段を隠す）。
+   */
+  domainStyle?: "tabs" | "menu";
   /** 領域のタブの段を畳めるようにする（右に「ヘッダーを閉じる」、畳むと右上に「＋」）。 */
   collapsible?: boolean;
   /** 畳んでいるか（v-model:collapsed）。 */
@@ -101,4 +106,4 @@ export interface ArAppHeaderEmits {
  * 業務の切り替え（人事・経費）は domains／domain／@domain、ヘッダーを閉じるは collapsible／v-model:collapsed、
  * デザインの選択は #top に置く（ヘッダーの下に別の1行を置かなくてよい）。
  */
-export type ArAppHeaderPart = "root" | "top" | "logo" | "pill" | "count" | "account" | "avatar" | "nav" | "item" | "spacer" | "account-menu" | "pill-list" | "pill-item" | "top-extra" | "domains" | "domain" | "toggle" | "expand" | "submenu" | "submenu-item" | "pill-rows" | "pill-row" | "pill-delete" | "pill-empty" | "pill-restore" | "domain-note";
+export type ArAppHeaderPart = "root" | "top" | "logo" | "pill" | "count" | "account" | "avatar" | "nav" | "item" | "spacer" | "account-menu" | "pill-list" | "pill-item" | "top-extra" | "domains" | "domain" | "toggle" | "expand" | "submenu" | "submenu-item" | "pill-rows" | "pill-row" | "pill-delete" | "pill-empty" | "pill-restore" | "domain-note" | "top-divider" | "top-spacer" | "domain-switch" | "domain-switch-label" | "domain-switch-arrow" | "domain-menu-title" | "domain-menu-item" | "domain-menu-label" | "domain-menu-check";

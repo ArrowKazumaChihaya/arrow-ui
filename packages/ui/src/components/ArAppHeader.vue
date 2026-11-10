@@ -26,6 +26,7 @@ const props = withDefaults(defineProps<ArAppHeaderProps>(), {
   domain: undefined,
   collapsible: false,
   collapsed: false,
+  domainStyle: "tabs",
   labels: () => ({ nav: "メインメニュー", count: "件" }),
 });
 const emit = defineEmits<{
@@ -258,12 +259,97 @@ function onMenuKey(e: KeyboardEvent) {
     closeMenu(false);
   }
 }
+
+/** 領域の切り替えをメニューにしたとき（domain-style="menu"）の開閉。 */
+const menuStyle = computed(() => props.domainStyle === "menu" && props.domains.length > 0);
+const currentDomain = computed(() => props.domains.find((d) => d.key === props.domain) ?? props.domains[0]);
+const domainMenuId = useId("ar-domain-menu");
+const domainBtn = ref<HTMLButtonElement | null>(null);
+const domainOpen = ref(false);
+const domainActive = ref(0);
+function focusDomain() {
+  document.getElementById(`${domainMenuId}-${domainActive.value}`)?.focus();
+}
+async function openDomain(at: number) {
+  domainActive.value = at;
+  domainOpen.value = true;
+  await nextTick();
+  await nextTick();
+  focusDomain();
+}
+function closeDomain(refocus = true) {
+  domainOpen.value = false;
+  if (refocus) domainBtn.value?.focus();
+}
+function chooseDomain(key: string) {
+  closeDomain();
+  emit("domain", key);
+}
+function onDomainBtnKey(e: KeyboardEvent) {
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    const n = props.domains.length;
+    const cur = Math.max(0, props.domains.findIndex((d) => d.key === currentDomain.value?.key));
+    void openDomain(e.key === "ArrowDown" ? cur : (cur + n - 1) % n);
+  }
+}
+function onDomainMenuKey(e: KeyboardEvent) {
+  const n = props.domains.length;
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    domainActive.value = (domainActive.value + (e.key === "ArrowDown" ? 1 : -1) + n) % n;
+    focusDomain();
+  } else if (e.key === "Home" || e.key === "End") {
+    e.preventDefault();
+    domainActive.value = e.key === "Home" ? 0 : n - 1;
+    focusDomain();
+  } else if (e.key === "Tab") {
+    closeDomain(false);
+  }
+}
 </script>
 
 <template>
   <header ref="rootEl" data-ar="app-header" data-part="root">
     <div data-part="top">
       <span data-part="logo"><slot name="logo" /></span>
+      <template v-if="menuStyle">
+        <span data-part="top-divider" aria-hidden="true" />
+        <button
+          ref="domainBtn"
+          type="button"
+          data-part="domain-switch"
+          :data-state="domainOpen ? 'open' : undefined"
+          aria-haspopup="menu"
+          :aria-expanded="domainOpen ? 'true' : 'false'"
+          :aria-controls="domainOpen ? domainMenuId : undefined"
+          @click="domainOpen ? closeDomain() : openDomain(Math.max(0, domains.findIndex((d) => d.key === currentDomain?.key)))"
+          @keydown="onDomainBtnKey"
+        >
+          <span data-part="domain-switch-label">{{ currentDomain?.label }}</span>
+          <ArIcon line name="cd" size="sm" data-part="domain-switch-arrow" />
+        </button>
+        <ArFloat :id="domainMenuId" :open="domainOpen" :anchor="domainBtn" ar="app-domain-menu" placement="bottom-start" role="menu" :label="L.domains" @close="(r) => closeDomain(r === 'escape')">
+          <div data-part="domain-menu-title" aria-hidden="true">{{ L.domains }}</div>
+          <button
+            v-for="(d, i) in domains"
+            :id="`${domainMenuId}-${i}`"
+            :key="d.key"
+            type="button"
+            role="menuitemradio"
+            data-part="domain-menu-item"
+            :aria-checked="d.key === currentDomain?.key ? 'true' : 'false'"
+            :tabindex="i === domainActive ? 0 : -1"
+            @click="chooseDomain(d.key)"
+            @keydown="onDomainMenuKey"
+          >
+            <span data-part="domain-menu-label">{{ d.label }}</span>
+            <small v-if="d.note" data-part="domain-note">{{ d.note }}</small>
+            <ArIcon v-else-if="d.key === currentDomain?.key" line name="check" size="sm" data-part="domain-menu-check" />
+          </button>
+        </ArFloat>
+        <span data-part="top-spacer" aria-hidden="true" />
+      </template>
       <button
         v-for="p in pills"
         :key="p.key"
@@ -329,6 +415,7 @@ function onMenuKey(e: KeyboardEvent) {
       </div>
       </ArFloat>
       <div v-if="$slots.top" data-part="top-extra"><slot name="top" /></div>
+      <span v-if="account && menuStyle" data-part="top-divider" aria-hidden="true" />
       <button
         v-if="account"
         ref="accountBtn"
@@ -366,7 +453,7 @@ function onMenuKey(e: KeyboardEvent) {
         <ArIcon line name="plus" size="sm" />
       </button>
     </div>
-    <div v-if="(domains.length || collapsible) && !collapsed" data-part="domains">
+    <div v-if="!menuStyle && (domains.length || collapsible) && !collapsed" data-part="domains">
       <div data-part="domain-list" role="tablist" :aria-label="L.domains">
         <button
           v-for="d in domains"
@@ -387,7 +474,7 @@ function onMenuKey(e: KeyboardEvent) {
         <ArIcon line name="minus" size="sm" /><span>{{ L.collapse }}</span>
       </button>
     </div>
-    <nav v-if="menus.length || menusEnd.length" data-part="nav" :aria-label="labels.nav">
+    <nav v-if="(menus.length || menusEnd.length) && !(menuStyle && collapsed)" data-part="nav" :aria-label="labels.nav">
       <template v-for="(group, gi) in [menus, menusEnd]" :key="gi">
         <span v-if="gi === 1" data-part="spacer" />
         <component
@@ -416,6 +503,9 @@ function onMenuKey(e: KeyboardEvent) {
           <span data-part="item-label">{{ it.label }}</span>
         </component>
       </template>
+      <button v-if="menuStyle && collapsible" type="button" data-part="toggle" :aria-expanded="true" @click="emit('update:collapsed', true)">
+        <ArIcon line name="minus" size="sm" /><span>{{ L.collapse }}</span>
+      </button>
       <div
         v-if="openItem?.children?.length"
         :id="`${uid}-sub`"

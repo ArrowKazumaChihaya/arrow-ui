@@ -99,6 +99,39 @@ describe("F1：製品からの指摘（ヘッダー・スマホのメニュー�
     w.unmount();
   });
 
+  it("ArAppHeader：domain-style=menu は1段目のボタンから領域を選び、畳むとメニューの段を隠す", async () => {
+    const w = mount(ArAppHeader, {
+      attachTo: document.body,
+      props: {
+        menus: [{ key: "shift", label: "シフト" }],
+        domains: [{ key: "hr", label: "人事・労務" }, { key: "ex", label: "経費精算", note: "未契約" }],
+        domain: "hr",
+        domainStyle: "menu",
+        collapsible: true,
+      },
+    });
+    expect(w.find('[data-part="domains"]').exists()).toBe(false);
+    const btn = w.get('[data-part="domain-switch"]');
+    expect(btn.text()).toBe("人事・労務");
+    expect(btn.attributes("aria-expanded")).toBe("false");
+    await btn.trigger("click");
+    await nextTick();
+    const items = document.querySelectorAll<HTMLElement>('[data-part="domain-menu-item"]');
+    expect(items).toHaveLength(2);
+    expect(items[0]!.getAttribute("aria-checked")).toBe("true");
+    expect(items[1]!.textContent).toContain("未契約");
+    items[1]!.click();
+    await nextTick();
+    expect(w.emitted("domain")?.[0]).toEqual(["ex"]);
+    expect(document.querySelector('[data-part="domain-menu-item"]')).toBeNull();
+    await w.get('[data-part="toggle"]').trigger("click");
+    expect(w.emitted("update:collapsed")?.[0]).toEqual([true]);
+    await w.setProps({ collapsed: true });
+    expect(w.find('[data-part="nav"]').exists()).toBe(false);
+    expect(w.find('[data-part="expand"]').exists()).toBe(true);
+    w.unmount();
+  });
+
   it("ArBottomNav：子のある項目を押すと子の段（navigate も出す）、多い項目は「メニュー」から下の一覧に", async () => {
     const items = [
       { key: "shift", label: "シフト", children: [{ key: "submit", label: "シフト提出" }] },

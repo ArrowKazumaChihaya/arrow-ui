@@ -61,3 +61,12 @@
 [data-ar="nav-sheet"]>[data-part="tile"]>[data-part="tile-label"]{max-width:100%;overflow-wrap:anywhere}
 [data-ar="mobile-header"]>[data-part="menu"]{display:flex;align-items:center;justify-content:center;flex:none;margin:0;cursor:pointer;font-family:inherit;box-sizing:border-box}
 [data-ar="mobile-header"]:not(:has(>[data-part="notice"],>[data-part="actions"]))>[data-part="menu"]{margin-left:auto}
+/* 領域の切り替えをメニューにしたとき（domain-style="menu"）：1段目のロゴの右のボタンと、押すと出るメニュー */
+[data-ar="app-header"]>[data-part="top"]>[data-part="top-divider"]{flex:none}
+[data-ar="app-header"]>[data-part="top"]>[data-part="top-spacer"]{flex:1;min-width:0}
+[data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"]{display:inline-flex;align-items:center;flex:none;margin:0;cursor:pointer;white-space:nowrap;font-family:inherit;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="top"]>[data-part="top-spacer"]~[data-part="account"]{margin-left:0}
+[data-ar="app-domain-menu"]{display:flex;flex-direction:column}
+[data-ar="app-domain-menu"]>[data-part="domain-menu-item"]{display:flex;align-items:center;margin:0;border:0;cursor:pointer;text-align:left;font-family:inherit;white-space:nowrap;box-sizing:border-box}
+[data-ar="app-domain-menu"]>[data-part="domain-menu-item"]>[data-part="domain-menu-label"]{flex:1;min-width:0}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="toggle"]{display:inline-flex;align-items:center;flex:none;margin:0 0 0 8px;cursor:pointer;white-space:nowrap;font-family:inherit;box-sizing:border-box}

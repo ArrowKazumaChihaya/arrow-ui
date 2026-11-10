@@ -1,4 +1,4 @@
-<!-- 領域のタブ・畳む・子のメニュー・ピルの一覧 | domains で1段目とメニューの間に「人事・労務」「経費精算」のタブ（note で「未契約」を添える）。collapsible で右に「ヘッダーを閉じる」（v-model:collapsed。畳むと右上に「＋」）。メニューの children は指す・フォーカス・指で押す・↓ キーで真下に出る（社員情報 → 社員一覧・有給管理）。ピルの items は指す・押す・↓ キーで下に一覧が出る。top の slot は1段目に足すもの（デザインの選択）。 -->
+<!-- 領域の切り替え・畳む・子のメニュー・ピルの一覧 | domains で「人事・労務」「経費精算」を渡す（note で「未契約」を添える）。既定はメニューの上のタブ、domain-style="menu" で1段目のロゴの右のボタンから開くメニューにする。collapsible で右に「ヘッダーを閉じる」（v-model:collapsed。畳むと右上に「＋」）。メニューの children は指す・フォーカス・指で押す・↓ キーで真下に出る（社員情報 → 社員一覧・有給管理）。ピルの items は指す・押す・↓ キーで下に一覧が出る。top の slot は1段目に足すもの（デザインの選択）。 -->
 <script setup lang="ts">
 import { ref } from "vue";
 import { ArAppHeader, ArButton } from "@s_and_a/arrow-ui";
@@ -30,6 +30,7 @@ const last = ref("");
       :domains="[{ key: 'hr', label: '人事・労務', icon: 'users' }, { key: 'expense', label: '経費精算', icon: 'calc', note: '未契約' }]"
       :domain="domain"
       collapsible
+      domain-style="menu"
       :pills="[
         { key: 'notice', label: 'システムからのお知らせ', count: 2, icon: 'speaker', tone: 'notice', items: [{ key: 'n1', label: '新機能リリースのお知らせ' }, { key: 'n2', label: 'メンテナンス予定' }] },
         { key: 'todo', label: 'やることリスト', count: 3, icon: 'todo', tone: 'todo', items: [{ key: 't1', label: '住民税改定' }, { key: 't2', label: '残業承認' }, { key: 't3', label: '打刻修正承認' }] },

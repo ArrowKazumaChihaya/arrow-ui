@@ -10391,6 +10391,13 @@
     "description": "今の領域の key（domains のどれか）。"
    },
    {
+    "name": "domainStyle",
+    "type": "'menu' | 'tabs'",
+    "required": false,
+    "description": "領域の切り替えの見た目。tabs（既定）＝1段目とメニューの間のタブ。menu＝1段目のロゴの右にボタンを置き、押すと領域を選ぶメニューを出す\n（段を増やさない。collapsible のときは畳むボタンをメニューの段の右端に置き、畳むとメニューの段を隠す）。",
+    "default": "\"tabs\""
+   },
+   {
     "name": "collapsible",
     "type": "boolean",
     "required": false,
@@ -10462,6 +10469,16 @@
    "root",
    "top",
    "logo",
+   "top-divider",
+   "domain-switch",
+   "domain-switch-label",
+   "domain-switch-arrow",
+   "domain-menu-title",
+   "domain-menu-item",
+   "domain-menu-label",
+   "domain-note",
+   "domain-menu-check",
+   "top-spacer",
    "pill",
    "pill-icon",
    "pill-label",
@@ -10486,7 +10503,6 @@
    "domain-list",
    "domain",
    "domain-icon",
-   "domain-note",
    "toggle",
    "nav",
    "spacer",
@@ -10985,6 +11001,12 @@
     "required": false,
     "description": "何行で切るか。既定 1。",
     "default": "1"
+   },
+   {
+    "name": "maxWidth",
+    "type": "string | number",
+    "required": false,
+    "description": "最大幅。数値はpx。内容に合わせて広がるテーブルのセルでも省略幅を固定できる。"
    },
    {
     "name": "placement",
