@@ -2,3 +2,5 @@
 /* Composed from the active design’s public controls. */
 
 [data-ar-design="remix"] [data-ar="section-menu"] > [data-part="navigation"] [data-ar="menu"][data-mode="inline"] > [data-part="item"]{height:auto;min-height:38px;line-height:1.5;padding-top:8px;padding-bottom:8px}
+/* The current section reads the same at every depth: a child is filled like a top-level entry. */
+[data-ar-design="remix"] [data-ar="section-menu"] > [data-part="navigation"] [data-ar="menu"][data-mode="inline"] > [data-part="item"][data-state~="selected"]:not([data-level="0"]){background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
