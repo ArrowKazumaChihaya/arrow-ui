@@ -12,8 +12,13 @@
 }
 [data-ar-design="remix"] .remix_header .header_logo:not([data-ui-fixed], [data-ui-fixed] *) {
   display: block;
-  height: 22px;
+  height: 30px;
   width: auto;
+}
+@media (max-width: 959px) {
+  [data-ar-design="remix"] .remix_header .header_logo:not([data-ui-fixed], [data-ui-fixed] *) {
+    height: 26px;
+  }
 }
 
 /* The day panel's sections sit flat on the panel, as the remix boards draw them. */
@@ -439,7 +444,7 @@
 
 /* ===== スマホのメニュー画面（日々の業務・給与計算・管理） ===== */
 @media(max-width:959px){
-[data-ar-design="remix"] .menu_wrap:has(.menu_section):not([data-ui-fixed], [data-ui-fixed] *){margin:16px;padding:20px 16px;border-radius:20px;background:#fff;box-shadow:none}
+[data-ar-design="remix"] .menu_wrap:has(.menu_section):not([data-ui-fixed], [data-ui-fixed] *){box-sizing:border-box;width:auto;max-width:none;margin:16px;padding:20px 16px;border-radius:20px;background:#fff;box-shadow:none}
 [data-ar-design="remix"] .menu_section:not([data-ui-fixed], [data-ui-fixed] *){margin:0 0 20px}
 [data-ar-design="remix"] .menu_section_title:not([data-ui-fixed], [data-ui-fixed] *){margin:0 0 12px;font-size:12px;font-weight:500;letter-spacing:.06em;color:#5B676B}
 [data-ar-design="remix"] .menu_section_grid:not([data-ui-fixed], [data-ui-fixed] *){display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 8px}
@@ -470,3 +475,7 @@
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .reset_demo:not([data-ui-fixed], [data-ui-fixed] *){width:auto;margin:20px 20px 0;background:#F8FAFC}
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login>.login__copyright:not([data-ui-fixed], [data-ui-fixed] *){padding:20px 0;text-align:center;background:var(--ar-color-surface,#fff)}
 }
+
+/* ログインの言語メニューのボタン（案：高さ40・角丸20・縁 #C9D3E0・白。スマホは44） */
+[data-ar-design="remix"] .login__lang [data-part="trigger"]:not([data-ui-fixed], [data-ui-fixed] *){height:40px;padding:0 12px 0 14px;border:1px solid #C9D3E0;border-radius:20px;background:#fff;color:#23292B;font-size:14px;font-weight:500}
+@media(max-width:959px){[data-ar-design="remix"] .login__lang [data-part="trigger"]:not([data-ui-fixed], [data-ui-fixed] *){height:44px;border-radius:22px}}
