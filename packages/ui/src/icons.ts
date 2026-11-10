@@ -113,5 +113,10 @@ export const icons = {
   "switch-user": "<circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M2 21v-1a6 6 0 0 1 6-6h2\"></path><path d=\"M14 14h7M18.5 11.5 21 14l-2.5 2.5M21 19h-7M16.5 16.5 14 19l2.5 2.5\"></path>", // マイページ／管理ページの切り替え
   "globe": "<circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18\"></path>", // 言葉の切り替え（地球）
   "walk": "<circle cx=\"13\" cy=\"4\" r=\"2\"></circle><path d=\"m9 20 3-6 3 3v4M7 12l3-4 4 1 3 3M10 8l-1 6\"></path>", // 出勤（歩く人。打刻の出勤ボタン）
+  "payment": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"></circle><path d=\"M9 8.5l3 4 3-4M12 12.5v4M9.8 13.8h4.4M9.8 15.6h4.4\"></path>", // 給与（円の中の￥）
+  "gift": "<rect x=\"4\" y=\"9\" width=\"16\" height=\"11\" rx=\"2\"></rect><path d=\"M12 9v11M4 13.5h16M12 9c-2.6 0-4.2-1-4.2-2.6S9.6 4 12 9zM12 9c2.6 0 4.2-1 4.2-2.6S14.4 4 12 9z\"></path>", // 賞与
+  "briefcase": "<rect x=\"3.5\" y=\"8\" width=\"17\" height=\"11.5\" rx=\"2.5\"></rect><path d=\"M9 8V6.5A1.5 1.5 0 0 1 10.5 5h3A1.5 1.5 0 0 1 15 6.5V8M3.5 13h17\"></path>", // 報酬
+  "calcheck": "<rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"3\"></rect><path d=\"M8 3v4M16 3v4M3.5 10h17M9 15l2 2 4-4\"></path>", // 年末調整（日付に✓）
+  "logout": "<path d=\"M10 4.5H6.5A1.5 1.5 0 0 0 5 6v12a1.5 1.5 0 0 0 1.5 1.5H10M14 8l4 4-4 4M18 12H9\"></path>", // ログアウト
 } as const;
 export type ArIconName = keyof typeof icons;

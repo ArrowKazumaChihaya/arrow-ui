@@ -7,7 +7,12 @@ const logo = new URL("../_assets/arrow-logo.svg", import.meta.url).href;
 const menus: ArAppNavItem[] = [
   { key: "shift", label: "シフト", icon: "cal", palette: "blue" },
   { key: "attendance", label: "勤怠", icon: "brief", palette: "green", children: [{ key: "attendance-list", label: "勤怠一覧" }, { key: "paid", label: "有給管理" }] },
-  { key: "payment", label: "給与賞与", icon: "calc", palette: "yellow" },
+  { key: "payment", label: "給与計算", icon: "yen", palette: "yellow", children: [
+    { key: "pay", label: "給与", icon: "payment", description: "月次の計算・明細", group: "支給" },
+    { key: "bonus", label: "賞与", icon: "gift", description: "賞与の計算・明細", group: "支給" },
+    { key: "reward", label: "報酬", icon: "briefcase", description: "報酬の計算・支払", group: "支給" },
+    { key: "nencho", label: "年末調整", icon: "calcheck", description: "年次の調整・源泉徴収", group: "年次" },
+  ] },
 ];
 const menusEnd: ArAppNavItem[] = [
   { key: "company", label: "会社情報", icon: "bld", palette: "teal" },
@@ -36,6 +41,9 @@ const last = ref("");
         { key: 'todo', label: 'やることリスト', count: 3, icon: 'todo', tone: 'todo', items: [{ key: 't1', label: '住民税改定' }, { key: 't2', label: '残業承認' }, { key: 't3', label: '打刻修正承認' }] },
       ]"
       :account="{ label: '管理ページ', initial: '管' }"
+      :account-menu="[{ key: 'status', label: '契約状況' }, { key: 'my', label: 'マイページ' }, { key: 'tour', label: '使い方ツアーの設定' }, { key: 'help', label: 'ヘルプ', icon: 'help', separator: true }, { key: 'logout', label: 'ログアウト', icon: 'logout', separator: true }]"
+      :help="{ label: 'ヘルプ' }"
+      @help="last = 'help'"
       @domain="(k) => (domain = k)"
       @navigate="(k) => (last = k)"
       @pill-item="(p, k) => (last = `${p}:${k}`)"

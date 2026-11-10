@@ -71,3 +71,15 @@
 [data-ar="app-domain-menu"]>[data-part="domain-menu-item"]>[data-part="domain-menu-label"]{flex:1;min-width:0}
 [data-ar="app-header"]>[data-part="nav"]>[data-part="toggle"]{display:inline-flex;align-items:center;flex:none;margin:0 0 0 8px;cursor:pointer;white-space:nowrap;font-family:inherit;box-sizing:border-box}
 [data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"]>[data-part="domain-switch-icon"]{display:none}
+[data-ar="app-header"]>[data-part="top"]>[data-part="help"]{display:inline-flex;align-items:center;flex:none;margin:0;cursor:pointer;white-space:nowrap;font-family:inherit;box-sizing:border-box}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"][data-rich]{display:flex;align-items:center;text-align:left}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="submenu-icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="submenu-text"]{display:flex;flex-direction:column;min-width:0}
+[data-ar="app-header"]>[data-part="nav"]>[data-part="submenu"]>[data-part="submenu-divider"]{flex:none}
+[data-ar="app-account-menu"]>[data-part="menu-head"]{display:none}
+[data-ar="app-account-menu"]>[data-part="menu-item"]>[data-part="menu-label"]{flex:1;min-width:0}
+[data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-head"]{display:none}
+[data-ar="bottom-nav"]>[data-part="submenu"][data-rich]{flex-direction:column;justify-content:flex-start}
+[data-ar="bottom-nav"]>[data-part="submenu"][data-rich]>[data-part="submenu-item"]{flex-direction:row;justify-content:flex-start;width:auto;text-align:left}
+[data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="submenu-icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="bottom-nav"]>[data-part="submenu"]>[data-part="submenu-item"]>[data-part="submenu-text"]{display:flex;flex-direction:column;flex:1;min-width:0}

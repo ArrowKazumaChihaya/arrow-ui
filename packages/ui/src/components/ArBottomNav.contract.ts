@@ -36,4 +36,4 @@ export interface ArBottomNavEmits {
   "update:moreOpen": [open: boolean];
 }
 /** 一覧の中身は data-ar="nav-sheet"（tile・tile-icon・tile-label。子は data-kind="child"）。 */
-export type ArBottomNavPart = "root" | "item" | "icon" | "label" | "submenu" | "submenu-item";
+export type ArBottomNavPart = "root" | "item" | "icon" | "label" | "submenu" | "submenu-item" | "submenu-icon" | "submenu-text" | "submenu-desc" | "submenu-arrow";

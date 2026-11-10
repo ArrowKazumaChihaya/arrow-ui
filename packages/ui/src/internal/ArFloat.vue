@@ -46,6 +46,9 @@ function place() {
   if (props.matchWidth) width.value = a.width;
   const p = panel.value.getBoundingClientRect();
   pos.value = computePosition(a, { width: p.width, height: p.height }, props.placement, props.offset);
+  /* 吹き出しの先を基準の要素の中心へ向けるため、画面左端からの中心の位置を渡す（デザインの CSS が使う）。 */
+  panel.value.style.setProperty("--ar-anchor-cx", `${a.left + a.width / 2}px`);
+  panel.value.style.setProperty("--ar-anchor-top", `${a.bottom}px`);
 }
 
 let raf = 0;

@@ -18,6 +18,10 @@ export interface ArAppNavItem {
    * 選ぶと navigate に子の key。
    */
   children?: readonly ArAppNavItem[];
+  /** 子のメニューの2行目の説明（給与計算 → 給与「月次の計算・明細」）。子に icon と description があると、アイコンの四角と2行の行で出す。 */
+  description?: string;
+  /** 子のメニューの見出し（支給・年次）。前の子と違う group の子の前に、区切り線と見出しを出す。 */
+  group?: string;
   /** 名前に小さく添える文字（領域のタブの「未契約」「無効」など。今の ARROW の small）。 */
   note?: string;
 }
@@ -54,6 +58,10 @@ export interface ArAppHeaderPill {
 export interface ArAppAccountAction {
   key: string;
   label: string;
+  /** 右の ›（既定）の代わりに出すアイコン（ログアウト・ヘルプ）。スマホの一覧では左に出す。 */
+  icon?: ArIconName;
+  /** この行の前に区切り線を出す。 */
+  separator?: boolean;
 }
 
 export interface ArAppHeaderProps {
@@ -79,12 +87,14 @@ export interface ArAppHeaderProps {
   domainStyle?: "tabs" | "menu";
   /** 領域のタブの段を畳めるようにする（右に「ヘッダーを閉じる」、畳むと右上に「＋」）。 */
   collapsible?: boolean;
+  /** お知らせ・やることの右に出すヘルプのボタン（押すと help を出す）。スマホ幅では出さない。 */
+  help?: { label: string; icon?: ArIconName };
   /** 畳んでいるか（v-model:collapsed）。 */
   collapsed?: boolean;
   /**
    * 文字。delete＝やることの × の読み上げ（「削除」）、restore＝「すべて表示する」。
    */
-  labels?: { nav: string; count: string; collapse?: string; expand?: string; domains?: string; delete?: string; restore?: string };
+  labels?: { nav: string; count: string; collapse?: string; expand?: string; domains?: string; delete?: string; restore?: string; close?: string };
 }
 export interface ArAppHeaderEmits {
   navigate: [key: string, event: MouseEvent];
@@ -100,10 +110,12 @@ export interface ArAppHeaderEmits {
   /** ピルを押した（一覧を開け閉めするのと一緒に出す）。 */
   pill: [key: string];
   account: [key: string];
+  /** ヘルプのボタンを押した。 */
+  help: [];
 }
 /**
  * slot：logo（ロゴの絵。製品が渡す）、top（1段目のピルの右に置くもの。「デザインを選択」など）。
  * 業務の切り替え（人事・経費）は domains／domain／@domain、ヘッダーを閉じるは collapsible／v-model:collapsed、
  * デザインの選択は #top に置く（ヘッダーの下に別の1行を置かなくてよい）。
  */
-export type ArAppHeaderPart = "root" | "top" | "logo" | "pill" | "count" | "account" | "avatar" | "nav" | "item" | "spacer" | "account-menu" | "pill-list" | "pill-item" | "top-extra" | "domains" | "domain" | "toggle" | "expand" | "submenu" | "submenu-item" | "pill-rows" | "pill-row" | "pill-delete" | "pill-empty" | "pill-restore" | "domain-note" | "top-divider" | "top-spacer" | "domain-switch" | "domain-switch-label" | "domain-switch-icon" | "domain-switch-arrow" | "domain-menu-title" | "domain-menu-item" | "domain-menu-label" | "domain-menu-check";
+export type ArAppHeaderPart = "root" | "top" | "logo" | "pill" | "count" | "account" | "avatar" | "nav" | "item" | "spacer" | "account-menu" | "pill-list" | "pill-item" | "top-extra" | "domains" | "domain" | "toggle" | "expand" | "submenu" | "submenu-item" | "pill-rows" | "pill-row" | "pill-delete" | "pill-empty" | "pill-restore" | "domain-note" | "top-divider" | "top-spacer" | "domain-switch" | "domain-switch-label" | "domain-switch-icon" | "help" | "menu-head" | "menu-divider" | "menu-icon" | "submenu-icon" | "submenu-text" | "submenu-label" | "submenu-desc" | "submenu-group" | "submenu-divider" | "pill-head" | "pill-close" | "domain-switch-arrow" | "domain-menu-title" | "domain-menu-item" | "domain-menu-label" | "domain-menu-check";

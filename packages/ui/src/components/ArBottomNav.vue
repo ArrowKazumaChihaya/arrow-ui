@@ -158,6 +158,8 @@ function onSheetNav(key: string, e: MouseEvent) {
       :aria-label="`${openItem.label} ${L.sub}`"
       :data-align="openIndex >= count / 2 ? 'end' : 'start'"
       :data-ar-palette="openItem.palette"
+      :data-rich="openItem.children.some((c) => c.description) || undefined"
+      :style="{ '--ar-sub-idx': String(openIndex) }"
       @keydown="onSubKey"
     >
       <component
@@ -171,8 +173,15 @@ function onSheetNav(key: string, e: MouseEvent) {
         :type="c.href ? undefined : 'button'"
         @click="onSub(c, $event)"
       >
-        <ArIcon v-if="c.icon ?? openItem.icon" :name="(c.icon ?? openItem.icon)!" data-part="icon" />
-        <span data-part="label">{{ c.label }}</span>
+        <template v-if="c.description">
+          <span data-part="submenu-icon"><ArIcon v-if="c.icon ?? openItem.icon" :name="(c.icon ?? openItem.icon)!" /></span>
+          <span data-part="submenu-text"><span data-part="label">{{ c.label }}</span><span data-part="submenu-desc">{{ c.description }}</span></span>
+          <ArIcon line name="cr" size="sm" data-part="submenu-arrow" />
+        </template>
+        <template v-else>
+          <ArIcon v-if="c.icon ?? openItem.icon" :name="(c.icon ?? openItem.icon)!" data-part="icon" />
+          <span data-part="label">{{ c.label }}</span>
+        </template>
       </component>
     </div>
   </nav>

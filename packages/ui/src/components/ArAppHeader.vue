@@ -27,12 +27,14 @@ const props = withDefaults(defineProps<ArAppHeaderProps>(), {
   collapsible: false,
   collapsed: false,
   domainStyle: "tabs",
+  help: undefined,
   labels: () => ({ nav: "メインメニュー", count: "件" }),
 });
 const emit = defineEmits<{
   navigate: [key: string, event: MouseEvent];
   pill: [key: string];
   account: [key: string];
+  help: [];
   domain: [key: string];
   "update:collapsed": [collapsed: boolean];
   "pill-item": [pill: string, item: string];
@@ -45,6 +47,7 @@ const L = computed(() => ({
   domains: "領域",
   delete: "削除",
   restore: "すべて表示する",
+  close: "閉じる",
   ...props.labels,
 }));
 const uid = useId("ar-app-header");
@@ -330,7 +333,7 @@ function onDomainMenuKey(e: KeyboardEvent) {
           <span data-part="domain-switch-label">{{ currentDomain?.label }}</span>
           <ArIcon line name="cd" size="sm" data-part="domain-switch-arrow" />
         </button>
-        <ArFloat :id="domainMenuId" :open="domainOpen" :anchor="domainBtn" ar="app-domain-menu" placement="bottom-start" role="menu" :label="L.domains" @close="(r) => closeDomain(r === 'escape')">
+        <ArFloat :id="domainMenuId" :open="domainOpen" :anchor="domainBtn" ar="app-domain-menu" placement="bottom-start" :offset="12" role="menu" :label="L.domains" @close="(r) => closeDomain(r === 'escape')">
           <div data-part="domain-menu-title" aria-hidden="true">{{ L.domains }}</div>
           <button
             v-for="(d, i) in domains"
@@ -376,8 +379,8 @@ function onDomainMenuKey(e: KeyboardEvent) {
       <ArFloat
         :open="!!openPill && hasList(openPill)"
         :anchor="openPill ? (pillEls.get(openPill.key) ?? null) : null"
-        placement="bottom-start"
-        :offset="0"
+        :placement="menuStyle ? 'bottom-end' : 'bottom-start'"
+        :offset="menuStyle ? 12 : 0"
         match-width
         :close-on-outside="false"
         ar="app-pill-list"
@@ -397,6 +400,10 @@ function onDomainMenuKey(e: KeyboardEvent) {
         @focusout="hideSoon"
         @keydown="onPopKey($event, listEl)"
       >
+        <div data-part="pill-head">
+          <span>{{ openPill.label }}</span>
+          <ArButton data-part="pill-close" tone="muted" icon="x" size="sm" :label="L.close" @click="hide(true)" />
+        </div>
         <ul v-if="openPill.items?.length" data-part="pill-rows">
           <li v-for="it in openPill.items" :key="it.key" data-part="pill-row" :data-deletable="it.deletable || undefined">
             <button type="button" data-part="pill-item" @click="onPillItem(openPill.key, it.key)">{{ it.label }}</button>
@@ -416,6 +423,10 @@ function onDomainMenuKey(e: KeyboardEvent) {
       </div>
       </ArFloat>
       <div v-if="$slots.top" data-part="top-extra"><slot name="top" /></div>
+      <button v-if="help" type="button" data-part="help" :aria-label="help.label" :title="help.label" @click="emit('help')">
+        <ArIcon line :name="help.icon ?? 'help'" size="sm" data-part="help-icon" />
+        <span data-part="help-label">{{ help.label }}</span>
+      </button>
       <span v-if="account && menuStyle" data-part="top-divider" aria-hidden="true" />
       <button
         v-if="account"
@@ -435,20 +446,26 @@ function onDomainMenuKey(e: KeyboardEvent) {
         <span data-part="account-label">{{ account.label }}</span>
         <ArIcon line v-if="hasMenu" name="cd" size="sm" data-part="account-arrow" />
       </button>
-      <ArFloat :id="menuId" :open="menuOpen" :anchor="accountBtn" ar="app-account-menu" placement="bottom-end" role="menu" :label="account?.label" @close="(r) => closeMenu(r === 'escape')">
-        <button
-          v-for="(a, i) in accountMenu"
-          :id="`${menuId}-${i}`"
-          :key="a.key"
-          type="button"
-          role="menuitem"
-          data-part="menu-item"
-          :tabindex="i === active ? 0 : -1"
-          @click="choose(a.key)"
-          @keydown="onMenuKey"
-        >
-          <span>{{ a.label }}</span><ArIcon line name="cr" size="sm" data-part="menu-arrow" />
-        </button>
+      <ArFloat :id="menuId" :open="menuOpen" :anchor="accountBtn" ar="app-account-menu" placement="bottom-end" :offset="menuStyle ? 12 : 4" role="menu" :label="account?.label" @close="(r) => closeMenu(r === 'escape')">
+        <div v-if="account" data-part="menu-head">
+          <ArAvatar v-if="account.initial" size="sm" tone="neutral" :text="account.initial" data-part="avatar" />
+          <span>{{ account.label }}</span>
+        </div>
+        <template v-for="(a, i) in accountMenu" :key="a.key">
+          <div v-if="a.separator && i > 0" data-part="menu-divider" aria-hidden="true" />
+          <button
+            :id="`${menuId}-${i}`"
+            type="button"
+            role="menuitem"
+            data-part="menu-item"
+            :tabindex="i === active ? 0 : -1"
+            @click="choose(a.key)"
+            @keydown="onMenuKey"
+          >
+            <span data-part="menu-label">{{ a.label }}</span>
+            <ArIcon line :name="a.icon ?? 'cr'" size="sm" :data-part="a.icon ? 'menu-icon' : 'menu-arrow'" />
+          </button>
+        </template>
       </ArFloat>
       <button v-if="collapsible && collapsed" type="button" data-part="expand" :aria-label="L.expand" :title="L.expand" :aria-expanded="false" @click="emit('update:collapsed', false)">
         <ArIcon line name="plus" size="sm" />
@@ -522,17 +539,26 @@ function onDomainMenuKey(e: KeyboardEvent) {
         @focusout="hideSoon"
         @keydown="onPopKey($event, subEl)"
       >
-        <component
-          :is="c.href ? 'a' : 'button'"
-          v-for="c in openItem.children"
-          :key="c.key"
-          data-part="submenu-item"
-          :data-state="c.key === current ? 'on' : undefined"
-          :aria-current="c.key === current ? 'page' : undefined"
-          :href="c.href"
-          :type="c.href ? undefined : 'button'"
-          @click="onSubClick(c, $event)"
-        >{{ c.label }}</component>
+        <template v-for="(c, ci) in openItem.children" :key="c.key">
+          <template v-if="c.group && c.group !== openItem.children[ci - 1]?.group">
+            <div v-if="ci > 0" data-part="submenu-divider" aria-hidden="true" />
+            <div data-part="submenu-group" aria-hidden="true">{{ c.group }}</div>
+          </template>
+          <component
+            :is="c.href ? 'a' : 'button'"
+            data-part="submenu-item"
+            :data-rich="c.icon || c.description ? '' : undefined"
+            :data-state="c.key === current ? 'on' : undefined"
+            :aria-current="c.key === current ? 'page' : undefined"
+            :href="c.href"
+            :type="c.href ? undefined : 'button'"
+            @click="onSubClick(c, $event)"
+          >
+            <span v-if="c.icon" data-part="submenu-icon"><ArIcon :name="c.icon" /></span>
+            <span v-if="c.description" data-part="submenu-text"><span data-part="submenu-label">{{ c.label }}</span><span data-part="submenu-desc">{{ c.description }}</span></span>
+            <template v-else>{{ c.label }}</template>
+          </component>
+        </template>
       </div>
     </nav>
   </header>
