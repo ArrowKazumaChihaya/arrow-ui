@@ -1,5 +1,12 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 0.1.16
+
+### Patch Changes
+
+- ヘッダー・プルダウン・表・説明欄・ツアー・給与明細・メニュー画面の余白、幅、操作感を統一し、PCとスマホの新デザインを整える。
+- Requires @s_and_a/arrow-ui 0.1.16 or a compatible newer version.
+
 ## 0.1.15
 
 ### Patch Changes
