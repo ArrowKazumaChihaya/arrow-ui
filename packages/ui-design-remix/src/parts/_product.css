@@ -479,3 +479,15 @@
 /* ログインの言語メニューのボタン（案：高さ40・角丸20・縁 #C9D3E0・白。スマホは44） */
 [data-ar-design="remix"] .login__lang [data-part="trigger"]:not([data-ui-fixed], [data-ui-fixed] *){height:40px;padding:0 12px 0 14px;border:1px solid #C9D3E0;border-radius:20px;background:#fff;color:#23292B;font-size:14px;font-weight:500}
 @media(max-width:959px){[data-ar-design="remix"] .login__lang [data-part="trigger"]:not([data-ui-fixed], [data-ui-fixed] *){height:44px;border-radius:22px}}
+
+/* ===== 編集中の操作・入力の幅・余白（画面をまたいで揃える） ===== */
+/* 旧画面の固定幅（実行ボタンの枠 78px など）が、アイコン付きの［キャンセル］［保存］を重ねてしまうので、中身の幅にする */
+[data-ar-design="remix"] :is(.exec_button_wrap,.control_button_wrap,.dropdown_button_wrap,.edit_prescribed_button):not([data-ui-fixed], [data-ui-fixed] *){display:inline-flex;width:auto;min-width:0;margin-left:0}
+[data-ar-design="remix"] :is(.exec_button_wrap,.control_button_wrap,.dropdown_button_wrap)+:is(.exec_button_wrap,.control_button_wrap,.dropdown_button_wrap):not([data-ui-fixed], [data-ui-fixed] *){margin-left:8px}
+/* 表の中の金額・数値の入力は、列を押し広げない（既定の幅は入力欄 20 文字分ある） */
+[data-ar-design="remix"] [data-ar="table"] td [data-ar="text-input"]:not([data-ui-fixed], [data-ui-fixed] *){min-width:0}
+[data-ar-design="remix"] [data-ar="table"] td [data-ar="text-input"]>input:not([data-ui-fixed], [data-ui-fixed] *){width:100%;min-width:0}
+[data-ar-design="remix"] [data-ar="table"][data-density="compact"] td [data-ar="text-input"][data-block]:not([data-ui-fixed], [data-ui-fixed] *){min-width:88px;max-width:132px;margin-left:auto}
+/* 警告・案内の枠のすぐ下に続く要素とくっつかないように（ArStack などの間隔を持たない入れ物の中だけ） */
+[data-ar-design="remix"] :not([data-ar="stack"],[data-ar="cluster"],[data-ar="column"],[data-ar="split"],[data-ar="grid"])>[data-ar="alert"]:has(+*):not([data-ui-fixed], [data-ui-fixed] *){margin-bottom:12px}
+[data-ar-design="remix"] .shift_wrap:not([data-ui-fixed], [data-ui-fixed] *){display:flex;flex-direction:column;gap:12px}

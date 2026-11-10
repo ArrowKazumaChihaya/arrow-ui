@@ -1,4 +1,4 @@
-/* @covers ArPayslip 1.1.0, ArPayslipTable 1.0.0, ArPayslipLine 1.0.0 */
+/* @covers ArPayslip 1.2.0, ArPayslipTable 1.0.0, ArPayslipLine 1.0.0 */
 /* ArPayslip（マイページ・給与賞与報酬の明細書：白い紙・角丸14・線と下の1px・padding 18・間14。見出しは 20px/700・字間.1em、下にテーマ色の2pxの線。
    表（.lst）は角丸12・線、頭は acc-50 の地に acc-ink の 11.5px/700。行は高さ38・名前 12.5px ink-2・値は太字の数字。合計の行は acc-25 の地。下の箱（.stat）は角丸12・線・名前11.5px・値15px（差引支給額は22px と acc-50 の地）） */
 [data-ar-design="remix"] [data-ar="payslip"]{gap:14px;padding:18px;border-radius:14px;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--ar-color-border),0 1px 0 var(--ar-color-border);color:var(--ar-color-text);font-family:var(--ar-font-family);font-size:13px;line-height:1.5}

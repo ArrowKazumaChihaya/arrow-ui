@@ -140,7 +140,7 @@ export const contracts = {
   ArMobileHeader: "1.1.0",
   ArMonthDayInput: "1.1.0",
   ArPageHeading: "1.0.0",
-  ArPayslip: "1.1.0",
+  ArPayslip: "1.2.0",
   ArPayslipLine: "1.0.0",
   ArPayslipTable: "1.0.0",
   ArPeriodBox: "1.0.0",

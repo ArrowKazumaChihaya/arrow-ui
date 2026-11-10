@@ -1,4 +1,4 @@
-/* @covers ArPayslip 1.1.0, ArPayslipTable 1.0.0, ArPayslipLine 1.0.0 */
+/* @covers ArPayslip 1.2.0, ArPayslipTable 1.0.0, ArPayslipLine 1.0.0 */
 /* ArPayslip（今の ARROW の給与明細の紙 .payment_slip：白・padding 25。左上に水色の札「給与明細書」（310×35・#9ad1e2・白の22px/600）、会社名 20px/600、
    見出しの表は 17px で下に #9ad1e2 の3pxの線、項目の札は #ddd の 12px。4列の表 .slip_table（列の間0.6%）：線 1px #4daac3・行の高さ33・15px、
    頭と合計の名前は #cbe9f4 の地・600・均等割り付け、行の名前は #cbe9f4 の地・600・左寄せ、値は右寄せ。表と表の間32px。手で直した金額は緑） */

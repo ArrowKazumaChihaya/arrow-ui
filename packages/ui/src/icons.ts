@@ -118,5 +118,6 @@ export const icons = {
   "briefcase": "<rect x=\"3.5\" y=\"8\" width=\"17\" height=\"11.5\" rx=\"2.5\"></rect><path d=\"M9 8V6.5A1.5 1.5 0 0 1 10.5 5h3A1.5 1.5 0 0 1 15 6.5V8M3.5 13h17\"></path>", // 報酬
   "calcheck": "<rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"3\"></rect><path d=\"M8 3v4M16 3v4M3.5 10h17M9 15l2 2 4-4\"></path>", // 年末調整（日付に✓）
   "logout": "<path d=\"M10 4.5H6.5A1.5 1.5 0 0 0 5 6v12a1.5 1.5 0 0 0 1.5 1.5H10M14 8l4 4-4 4M18 12H9\"></path>", // ログアウト
+  "apps": "<rect x=\"4\" y=\"4\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect><rect x=\"13.5\" y=\"4\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect><rect x=\"4\" y=\"13.5\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect><rect x=\"13.5\" y=\"13.5\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect>", // システムの切り替え（2×2の四角）
 } as const;
 export type ArIconName = keyof typeof icons;

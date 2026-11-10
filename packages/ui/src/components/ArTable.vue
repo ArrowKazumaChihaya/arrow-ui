@@ -365,6 +365,13 @@ const footCells = computed(() => {
   return out;
 });
 const hasActions = computed(() => !!slots.actions || anyEditing.value);
+const editableTable = computed(() => props.columns.some((c) => "editor" in c && (c as { editor?: unknown }).editor !== undefined) || !!slots["edit-actions"]);
+/** 操作の列の幅。入力できる表（editor のある列がある表）は、入力の行の［取り消し］［確定］が入る分を常に取っておく（編集・追加にしても列の幅が変わらない）。 */
+const actionsColWidth = computed(() => {
+  if (props.actionsWidth !== undefined) return { width: `${props.actionsWidth}px` };
+  if (editableTable.value) return { width: "136px" };
+  return props.fit ? { width: "96px" } : undefined;
+});
 
 /* ---- 左に固定する列：見出しのセルの位置を測って left にする ---- */
 const tableEl = ref<HTMLTableElement | null>(null);
@@ -652,7 +659,7 @@ const colspan = computed(
           <col v-if="selectable" data-col="select" />
           <col v-if="expandable" data-col="expand" />
           <col v-for="c in cols" :key="c.key" :style="c.width ? { width: `${c.width}px` } : undefined" />
-          <col v-if="hasActions" data-col="actions" :style="fit ? { width: `${actionsWidth ?? 96}px` } : undefined" />
+          <col v-if="hasActions" data-col="actions" :style="actionsColWidth" />
         </colgroup>
         <thead data-part="head" :data-tiers="head.two ? 2 : undefined">
           <tr>

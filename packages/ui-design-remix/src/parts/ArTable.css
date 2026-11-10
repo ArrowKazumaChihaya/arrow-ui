@@ -202,3 +202,7 @@
 @media(max-width:639px){[data-ar-design="remix"] table[data-ui-part="table"] th.button[data-v-ui040a3e8cc0ed]{right:auto}}
 /* row-click を受けている表だけ、行を押せるカーソルにする（ArTable が data-clickable を付ける）。 */
 [data-ar-design="remix"] [data-ar="table"] tr[data-part="row"][data-clickable]{cursor:pointer}
+
+/* board：2行目以降の行（時刻が複数ある人）は低くする。1行 50px のまま行数分だけ高くならないように */
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody[data-part="body"]>tr[data-part="row"][data-line]:not([data-line="0"][data-line-last]){height:36px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody[data-part="body"]>tr[data-part="row"][data-line][data-state~="editing"]:not([data-line="0"][data-line-last]){height:40px}
