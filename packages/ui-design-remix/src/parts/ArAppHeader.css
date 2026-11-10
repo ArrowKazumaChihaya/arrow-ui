@@ -20,6 +20,9 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]{gap:4px;padding:2px 24px 8px}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]{height:36px;gap:7px;padding:0 12px;border-radius:10px;background:none;color:var(--ar-color-text-secondary);font-size:13px;font-weight:700;line-height:1.5;font-feature-settings:"palt" 1;transition:background .12s}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]>[data-ar="icon"]{width:17px;height:17px}
+/* 押すと一覧が開く項目（子のメニューを持つ項目＝aria-expanded がある）には小さな ▼ を付け、直接開く項目と見分けがつくようにする。 */
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][aria-expanded]::after{content:"";flex:none;width:5px;height:5px;margin:-3px 0 0 -2px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;opacity:.6;transform:rotate(45deg);transition:transform .12s}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][aria-expanded][data-state~="open"]::after{margin:3px 0 0 -2px;transform:rotate(-135deg)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:hover{background:#F2F5F8;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-state~="on"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
