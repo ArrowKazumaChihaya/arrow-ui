@@ -78,6 +78,9 @@ export const remixDesign = defineDesign({
     amber: derivePalette("#E07A2E", "#A34F19", "0 1px 2px rgba(90,40,0,.28)"),
   },
   covers,
+  forms: {
+    ArTimeInput: { advance: "on" }, // 「1200」と4桁打ったらその時刻は埋まったので、確定して次の入力へ移る
+  },
   styles: () => import("@s_and_a/arrow-ui-design-remix/styles.css"),
 });
 

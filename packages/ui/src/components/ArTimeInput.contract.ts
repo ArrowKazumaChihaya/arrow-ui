@@ -25,6 +25,7 @@ export interface ArTimeInputLabels {
  * - `fields`：`"single"`（既定）＝「09:30」を1つの箱に打つ。`"split"`＝時と分が別々の箱（今の ARROW：27×30 の箱が2つと「:」）。
  *   split では、時を2桁（または十の位に来ない数）打つと分へ、分を打ち終えると次の時刻の入力へ移る。
  *   空の分で Backspace・箱の端で ←→ を押すと隣の箱へ。時が「00」のときは時の箱を空で見せる（今の ARROW と同じ）。
+ * - `advance`：`"on"`＝single で「1200」のように4桁（または「12:00」）そろったら確定して次に Tab で止まる所へ移る（remix）。`"off"`（既定）＝移らない。
  * - `dayToggle`：`"button"`（既定）＝枠と一体の［当日］［前日］のボタン。`"link"`＝左に1文字の文字のリンク（「当」「前」）。
  */
 export interface ArTimeInputProps {

@@ -39,6 +39,8 @@ const emit = defineEmits<{
 
 const fields = useDesignForm<"single" | "split">("ArTimeInput", "fields", "single");
 const dayToggle = useDesignForm<"button" | "link">("ArTimeInput", "dayToggle", "button");
+/** 4桁そろったら確定して次の入力へ移るか（デザインが選ぶ。既定は移らない）。 */
+const advance = useDesignForm<"on" | "off">("ArTimeInput", "advance", "off");
 /** split の箱で打つか（note・select のときは箱を出さない）。 */
 const split = computed(() => !props.select && fields.value === "split");
 const L = computed<Required<ArTimeInputLabels>>(() => ({
@@ -199,6 +201,29 @@ function onKeydown(e: KeyboardEvent) {
 function onBlur() {
   focused.value = false;
   commit();
+}
+
+/** 次に Tab で止まる所へ（4桁そろった時刻の箱から、次の入力へ移る）。 */
+function focusNextTabbable(from: HTMLElement) {
+  const all = [...document.querySelectorAll<HTMLElement>('input,select,textarea,button,a[href],[tabindex]')].filter(
+    (x) => !(x as HTMLInputElement).disabled && x.tabIndex >= 0 && !x.closest("[hidden],[inert]") && getComputedStyle(x).display !== "none" && getComputedStyle(x).visibility !== "hidden",
+  );
+  const next = all[all.indexOf(from) + 1];
+  if (next) {
+    next.focus();
+    if (next instanceof HTMLInputElement) next.select();
+  }
+}
+/** 「1200」のように4桁打ったらその時刻は埋まったので、確定して次へ移る（「12:00」と打った場合も同じ）。 */
+function onSingleInput(e: Event) {
+  const el = e.target as HTMLInputElement;
+  text.value = el.value;
+  if (advance.value !== "on") return;
+  const raw = el.value.normalize("NFKC");
+  const complete = /^\d{4}$/.test(raw) || /^\d{1,2}:\d{2}$/.test(raw);
+  if (!complete || parseTime(raw, maxHour.value) === undefined) return;
+  commit();
+  nextTick(() => focusNextTabbable(el));
 }
 
 /* ---------- split の動き（今の ARROW の Time.vue と同じ） ---------- */
@@ -423,6 +448,7 @@ const fieldName = (part: string) => (props.label ? `${props.label}の${part}` : 
       :aria-label="id ? undefined : label"
       :aria-invalid="invalid || unreadable ? 'true' : undefined"
       @focus="focused = true"
+      @input="onSingleInput"
       @blur="onBlur"
       @keydown="onKeydown"
     />

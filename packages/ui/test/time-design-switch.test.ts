@@ -49,7 +49,7 @@ describe("time input drafts across design shapes", () => {
     expect(inputValue(wrapper.get('[data-part="minute"]'))).toBe("15");
     wrapper.unmount();
   });
-  for (const draft of ["1230", "12:", "invalid"]) {
+  for (const draft of ["123", "12:", "invalid"]) {
     it(`retains an uncommitted ${draft} draft and focus through a round trip`, async () => {
       const { wrapper, design, changes } = setup(false, "09:00");
       const input = wrapper.get('input');
