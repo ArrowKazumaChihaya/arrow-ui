@@ -148,5 +148,13 @@
 @media (max-width:959px) {
   [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]:has(+[data-part="top-divider"]){margin-right:0}
   [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="top-divider"]{display:none}
-  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"]{height:36px;margin-left:8px;padding:0 8px 0 10px;font-size:13px}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]:has(+[data-part="top-divider"]){order:0}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="top-spacer"]{order:1}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]{order:2;width:44px;height:44px;border-radius:12px;background:none}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"]{order:3;justify-content:center;width:44px;height:44px;margin:0;padding:0;border-radius:12px;background:none;color:var(--ar-color-text-secondary)}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"]>:is([data-part="domain-switch-label"],[data-part="domain-switch-arrow"]){display:none}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"]>[data-part="domain-switch-icon"]{display:inline-block;width:22px;height:22px}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"]:is(:hover,[data-state~="open"]){background:#F3F6F9;filter:none}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="top-extra"]{order:4}
+  [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]{order:5}
 }

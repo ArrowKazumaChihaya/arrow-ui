@@ -326,6 +326,7 @@ function onDomainMenuKey(e: KeyboardEvent) {
           @click="domainOpen ? closeDomain() : openDomain(Math.max(0, domains.findIndex((d) => d.key === currentDomain?.key)))"
           @keydown="onDomainBtnKey"
         >
+          <ArIcon line name="hierarchy" data-part="domain-switch-icon" aria-hidden="true" />
           <span data-part="domain-switch-label">{{ currentDomain?.label }}</span>
           <ArIcon line name="cd" size="sm" data-part="domain-switch-arrow" />
         </button>
