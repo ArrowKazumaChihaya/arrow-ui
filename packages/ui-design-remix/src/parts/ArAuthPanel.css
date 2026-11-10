@@ -13,3 +13,22 @@
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="text-input"][data-block]{max-width:100%;height:48px;padding-inline:14px;font-size:16px;border-radius:12px}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="text-input"][data-block]>[data-part="reveal"]{width:36px;height:40px}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="button"][data-block]:is([data-tone="primary"],[data-tone="secondary"]){height:auto;min-height:48px;padding:12px 18px;border-radius:12px;font-size:16px;line-height:1.4;white-space:normal}
+
+/* ログイン（新デザイン）：ロゴ・会社・入力を1枚の白いカードにまとめる。見出しは読み上げ用に残し、見た目は出さない。
+   スマホでは、ロゴは淡い地の上（背景なし）、カードは下から立ち上がる白い板になる。 */
+[data-ar-design="remix"] [data-ar="auth-panel"]{position:relative;box-sizing:border-box;width:min(440px,100%);padding:36px 40px;border-radius:24px;background:var(--ar-color-surface,#fff);box-shadow:0 20px 50px rgba(35,60,100,.12),0 2px 8px rgba(35,60,100,.06)}
+[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="logo"]{width:auto;height:44px;margin:0 auto 24px;background:none;border:0;box-shadow:none}
+[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]>[data-part="heading"]{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;background:none}
+[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]>[data-part="body"]{padding:0}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company"]{gap:14px;margin-bottom:24px;padding:14px 16px;border:0;border-radius:14px;background:var(--ar-accent-faint,#F2F6FB)}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="initial"]{width:44px;height:44px;border-radius:12px}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-name"]{font-size:15px;color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-code"]{font-size:13px}
+[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{margin-top:20px}
+@media(max-width:767px){
+  [data-ar-design="remix"] [data-ar="auth-panel"]{width:100%;flex:1;display:flex;flex-direction:column;padding:0;border-radius:0;background:none;box-shadow:none}
+  [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="logo"]{height:42px;margin:0 auto 28px}
+  [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]{flex:1;box-sizing:border-box;padding:28px 20px 0;border-radius:28px 28px 0 0;background:var(--ar-color-surface,#fff);box-shadow:0 -8px 30px rgba(35,60,100,.08)}
+  [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{margin:0;padding:12px 20px 20px;background:var(--ar-color-surface,#fff)}
+}

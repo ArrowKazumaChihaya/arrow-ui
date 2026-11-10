@@ -322,7 +322,8 @@
 [data-ar-design="remix"] [data-ui-part="tableViewport"]:not([data-ui-fixed], [data-ui-fixed] *) {border:0}
 
 @media(max-width:767px) {
-  [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *) { min-height:0;justify-content:flex-start;padding:32px 20px; }
+  [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *) { min-height:100dvh;justify-content:flex-start;padding:72px 0 0; }
+  [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login:not([data-ui-fixed], [data-ui-fixed] *) { flex:1;display:flex;flex-direction:column; }
 }
 
 /* Legacy table composition follows the same geometry as ArTable. */
@@ -350,7 +351,12 @@
 }
 /* Shared authentication composition, including narrow viewports and text zoom. */
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *){position:relative;isolation:isolate;overflow:clip;background:var(--ar-color-bg);min-height:100dvh}
-[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *)::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:50% -25% -50%;border-radius:50% 50% 0 0;background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *)::before,[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *)::after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *)::before{left:-180px;top:-220px;width:560px;height:560px;background:color-mix(in srgb,var(--ar-accent) 10%,transparent)}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *)::after{right:-240px;bottom:-320px;width:720px;height:720px;background:color-mix(in srgb,var(--ar-accent) 8%,transparent)}
+/* 言語の切り替えは右上の1つのメニュー（地球・今の言語・▼） */
+[data-ar-design="remix"] .login__lang:not([data-ui-fixed], [data-ui-fixed] *){position:absolute;top:24px;right:32px;z-index:3}
+@media(max-width:767px){[data-ar-design="remix"] .login__lang:not([data-ui-fixed], [data-ui-fixed] *){top:16px;right:16px}}
 [data-ar-design="remix"] [data-ar="auth-panel"] .login__languages:not([data-ui-fixed], [data-ui-fixed] *){border-top:1px solid var(--ar-color-border-subtle);padding-top:12px;margin-top:20px;gap:4px}
 [data-ar-design="remix"] [data-ar="auth-panel"] .login__languages [data-ar="button"]:not([data-ui-fixed], [data-ui-fixed] *){padding-inline:8px;min-width:0;font-size:12px}
 [data-ar-design="remix"] [data-ar="auth-panel"] .login__languages [aria-pressed="true"]:not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
