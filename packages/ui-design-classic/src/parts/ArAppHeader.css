@@ -1,4 +1,4 @@
-/* @covers ArAppHeader 1.1.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.1.0 */
+/* @covers ArAppHeader 1.2.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.2.0 */
 /* 今の MenuLayout のヘッダー（arrow-Header.png）：#EDF3F7 の面・下に 6px の #6CB1B7（その他の色）。
    1段目：ロゴ 100px、上から垂れる 235px のタブ（お知らせ #DFDFDF／やること #FFEAE6・角丸 0 0 12 12）、右に「管理ページ」14px。
    2段目：120×76（右は 100）の白い四角（角丸4・間12）に 42px の丸とアイコン、下に 14px の名前。今いる項目・指した項目は項目の色で塗り、名前は白の太字 */

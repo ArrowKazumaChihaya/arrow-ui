@@ -119,10 +119,10 @@ export const contracts = {
   ArToast: "1.0.0",
   ArWatermark: "1.0.0",
   ArAppFooter: "1.0.0",
-  ArAppHeader: "1.1.0",
+  ArAppHeader: "1.2.0",
   ArApprovalFlow: "1.2.0",
   ArBalloon: "1.0.0",
-  ArBottomNav: "1.1.0",
+  ArBottomNav: "1.2.0",
   ArChangedValue: "1.2.0",
   ArChip: "1.0.0",
   ArDateView: "1.1.0",
@@ -159,7 +159,7 @@ export const contracts = {
   ArYearInput: "1.1.0",
   ArYearMonthInput: "1.1.0",
   ArZipInput: "1.3.0",
-  ArAuthPanel: "1.1.0",
+  ArAuthPanel: "1.2.0",
   ArTableHeader: "1.0.0",
 } as const;
 

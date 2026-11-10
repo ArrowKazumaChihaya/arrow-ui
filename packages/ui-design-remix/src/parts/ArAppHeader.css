@@ -1,4 +1,4 @@
-/* @covers ArAppHeader 1.1.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.1.0 */
+/* @covers ArAppHeader 1.2.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.2.0 */
 /* 画面の頭（Header .v-hd：1段目38・2段目の項目36・今いる項目はテーマ色の塗り・下端3pxのテーマ色の線） */
 [data-ar-design="remix"] [data-ar="app-header"]{z-index:5;background:#fff;box-shadow:0 1px 0 var(--ar-color-border),0 6px 24px rgba(31,41,51,.04);color:var(--ar-color-text);font-size:14px;line-height:1.5;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="app-header"]::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--ar-accent)}
