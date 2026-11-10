@@ -454,3 +454,19 @@
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-ar-palette="orange"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){background:#C2691F}
 [data-ar-design="remix"] .menu_section_grid [data-ar="menu-tile"][data-ar-palette="teal"]>[data-part="icon"]:not([data-ui-fixed], [data-ui-fixed] *){background:#3F8A91}
 }
+
+/* ログイン：カードの下の開発者用の欄と著作権（カードと同じ幅で中央） */
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login:not([data-ui-fixed], [data-ui-fixed] *){display:flex;flex-direction:column;align-items:center;gap:16px}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .reset_demo:not([data-ui-fixed], [data-ui-fixed] *){box-sizing:border-box;display:flex;flex-direction:column;align-items:stretch;gap:12px;width:min(440px,100%);margin:0;padding:14px 16px 16px;border:1.5px dashed #8896AA;border-radius:16px;background:rgba(255,255,255,.7)}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login__test_head:not([data-ui-fixed], [data-ui-fixed] *){display:flex;align-items:center;gap:10px}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login__test_badge:not([data-ui-fixed], [data-ui-fixed] *){flex:none;padding:2px 8px;border-radius:6px;background:#23292B;color:#fff;font-size:12px;font-weight:700;white-space:nowrap}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .reset_demo .login__test_note:not([data-ui-fixed], [data-ui-fixed] *){flex:1;margin:0;font-size:12px;line-height:1.5}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login__test_row:not([data-ui-fixed], [data-ui-fixed] *){display:flex;align-items:center;gap:8px}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login__test_row .form__item__data__import__input:not([data-ui-fixed], [data-ui-fixed] *){flex:1;min-width:0;height:44px;border-radius:10px}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login__test_row .import_btn:not([data-ui-fixed], [data-ui-fixed] *){flex:none;min-height:44px;border-radius:10px;white-space:nowrap}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login>.login__copyright:not([data-ui-fixed], [data-ui-fixed] *){margin:0;font-size:12px;color:#5B676B}
+@media(max-width:959px){
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login:not([data-ui-fixed], [data-ui-fixed] *){align-items:stretch;gap:0}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .reset_demo:not([data-ui-fixed], [data-ui-fixed] *){width:auto;margin:20px 20px 0;background:#F8FAFC}
+[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]) .login>.login__copyright:not([data-ui-fixed], [data-ui-fixed] *){padding:20px 0;text-align:center;background:var(--ar-color-surface,#fff)}
+}
