@@ -1,5 +1,12 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 0.1.17
+
+### Patch Changes
+
+- 勤怠詳細の編集・追加時に列幅が動かないようにし、エラー行と複数行グループのホバー表示、ヘッダーのホバー、横長明細のスマホ表示を改善する。
+- Requires @s_and_a/arrow-ui 0.1.17 or a compatible newer version.
+
 ## 0.1.16
 
 ### Patch Changes
