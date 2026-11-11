@@ -5,3 +5,5 @@
 [data-ar-design="remix"] [data-ar="spin"][data-size="sm"]>[data-part="spinner"],[data-ar-design="remix"] [data-ar="spin"][data-size="sm"]>[data-part="mask"]>[data-part="spinner"]{width:16px;height:16px;border-width:2px}
 [data-ar-design="remix"] [data-ar="spin"][data-size="lg"]>[data-part="spinner"],[data-ar-design="remix"] [data-ar="spin"][data-size="lg"]>[data-part="mask"]>[data-part="spinner"]{width:40px;height:40px;border-width:4px}
 [data-ar-design="remix"] [data-ar="spin"]>[data-part="mask"]{gap:6px;background:rgba(255,255,255,.7)}
+/* 読み込み中の輪（ブロック）：どのページでも、ヘッダーの下にくっつかず、同じ余白の中央に出す */
+[data-ar-design="remix"] [data-ar="spin"][data-block]{padding:56px 0;box-sizing:border-box}
