@@ -1,5 +1,12 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 0.1.20
+
+### Patch Changes
+
+- エラー行をホバーしても警告色が消えないようにし、ArTooltip の補足表示に対応。
+- Requires @s_and_a/arrow-ui 0.1.20 or a compatible newer version.
+
 ## 0.1.19
 
 ### Patch Changes

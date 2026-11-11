@@ -1,5 +1,12 @@
 # @s_and_a/arrow-ui-design-classic
 
+## 0.1.11
+
+### Patch Changes
+
+- ArTooltip の1行補足表示に対応。
+- Requires @s_and_a/arrow-ui 0.1.20 or a compatible newer version.
+
 ## 0.1.9
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @s_and_a/arrow-ui
 
+## 0.1.20
+
+### Patch Changes
+
+- ArPeriodNav に中央ラベルの補足を表示する `hint` を追加し、ArTooltip に1行表示用の `wide` と対象要素を指定する `anchor` を追加。
+
 ## 0.1.19
 
 ### Patch Changes
