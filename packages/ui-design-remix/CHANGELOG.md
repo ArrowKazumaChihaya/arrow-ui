@@ -1,5 +1,12 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 0.1.18
+
+### Patch Changes
+
+- 勤怠詳細の列幅、シフト詳細の行間と余白、給与明細ヘッダーの区切り、お知らせピルのホバー表示、アラート内リンクの視認性を改善する。
+- Requires @s_and_a/arrow-ui 0.1.18 or a compatible newer version.
+
 ## 0.1.17
 
 ### Patch Changes
