@@ -494,3 +494,10 @@
 
 /* 勤怠詳細：編集・追加で時刻の入力が出ても、列の幅が変わらないように、時刻の列は常に入力が入る幅を取る */
 [data-ar-design="remix"] :is(.attendance_table_wrap th.shift_start,.attendance_table_wrap th.shift_end,.attendance_table_wrap th.punch_start,.attendance_table_wrap th.punch_end,.attendance_table_wrap th.break_start,.attendance_table_wrap th.break_end,.attendance_table_wrap th.plan_break_start,.attendance_table_wrap th.plan_break_end,.attendance_table_wrap th.actual_break_start,.attendance_table_wrap th.actual_break_end,.attendance_table_wrap th.punch_round_start,.attendance_table_wrap th.punch_round_end,.attendance_table_wrap th.break_round_start,.attendance_table_wrap th.break_round_end):not([data-ui-fixed], [data-ui-fixed] *){min-width:84px}
+/* 前日切り替えのつく時刻（勤怠・休憩・実休憩）は、入力が入る幅（90px＋余白）を最初から取る */
+[data-ar-design="remix"] :is(.attendance_table_wrap th.punch_start,.attendance_table_wrap th.punch_end,.attendance_table_wrap th.break_start,.attendance_table_wrap th.break_end,.attendance_table_wrap th.actual_break_start,.attendance_table_wrap th.actual_break_end):not([data-ui-fixed], [data-ui-fixed] *){min-width:108px}
+/* 打刻店舗の選択・通勤手当の入力も、編集で列が広がらないように幅を決めておく */
+[data-ar-design="remix"] .attendance_table_wrap th.branch_id:not([data-ui-fixed], [data-ui-fixed] *){min-width:204px}
+[data-ar-design="remix"] .attendance_table_wrap th.carfare:not([data-ui-fixed], [data-ui-fixed] *){min-width:112px}
+[data-ar-design="remix"] .attendance_table_wrap th.work_type:not([data-ui-fixed], [data-ui-fixed] *){min-width:88px}
+[data-ar-design="remix"] .attendance_table_wrap td [data-ar="text-input"]:not([data-ui-fixed], [data-ui-fixed] *){max-width:96px}
