@@ -19,12 +19,14 @@ const props = withDefaults(defineProps<ArTooltipProps>(), {
   hideDelay: 100,
   disabled: false,
   open: undefined,
+  wide: false,
+  anchor: undefined,
 });
 const emit = defineEmits<{ "update:open": [open: boolean] }>();
 const id = useId("ar-tooltip");
 const wrap = ref<HTMLElement | null>(null);
 /** 吹き出しが指す要素：包みの中の最初の操作できる要素（包みが親いっぱいに伸びても中身を指す）。 */
-const anchorEl = computed(() => triggerTarget(wrap.value));
+const anchorEl = computed(() => props.anchor ?? triggerTarget(wrap.value));
 const inner = ref(false);
 const shown = computed(() => !props.disabled && (props.open ?? inner.value));
 const timer = delayed();
@@ -48,8 +50,8 @@ function onFocusIn(e: FocusEvent) {
   if (visible) show(0);
 }
 
-watch(shown, (v) => setAria(triggerTarget(wrap.value), "aria-describedby", v ? id : undefined));
-onMounted(() => shown.value && setAria(triggerTarget(wrap.value), "aria-describedby", id));
+watch(shown, (v) => setAria(anchorEl.value, "aria-describedby", v ? id : undefined));
+onMounted(() => shown.value && setAria(anchorEl.value, "aria-describedby", id));
 onBeforeUnmount(() => timer.clear());
 </script>
 
@@ -77,7 +79,7 @@ onBeforeUnmount(() => timer.clear());
     role="tooltip"
     @close="hide(0)"
   >
-    <span data-part="panel" :data-tone="tone" @mouseenter="timer.clear()" @mouseleave="hide()">
+    <span data-part="panel" :data-tone="tone" :data-wide="wide || undefined" @mouseenter="timer.clear()" @mouseleave="hide()">
       <span data-part="arrow" aria-hidden="true" />
       <span data-part="body"><slot name="content">{{ title }}</slot></span>
     </span>

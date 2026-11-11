@@ -5,8 +5,9 @@
  * 今の期間が変わると読み上げる（aria-live）。前へ・次へはアイコンだけのボタンなので labels で名前を付ける。
  * 1.1：date と holidays から曜日の札と色（日曜・祝日は赤、土曜は青）を決め、祝日の名前を札の横に出す。
  */
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import ArIcon from "./ArIcon.vue";
+import ArTooltip from "./ArTooltip.vue";
 import type { ArPeriodNavProps } from "./ArPeriodNav.contract";
 
 const props = withDefaults(defineProps<ArPeriodNavProps>(), {
@@ -24,7 +25,14 @@ const props = withDefaults(defineProps<ArPeriodNavProps>(), {
   arrows: true,
   inverse: false,
   labels: () => ({ prev: "前へ", next: "次へ", pick: "期間を選ぶ" }),
+  hint: undefined,
 });
+/** 真ん中の文字。hint の吹き出しはここを指す（前へのボタンではなく）。 */
+const labelEl = ref<HTMLElement | null>(null);
+const hintOpen = ref(false);
+const showHint = (open: boolean) => {
+  if (props.hint) hintOpen.value = open;
+};
 const emit = defineEmits<{ prev: []; next: []; pick: [event: MouseEvent]; today: [] }>();
 
 /** date の曜日（0＝日）。読めない日付なら null。 */
@@ -55,17 +63,30 @@ const spoken = computed(() => (day.value ? `（${day.value}${holidayName.value !
       <button
         v-if="pickable"
         type="button"
+        ref="labelEl"
         data-part="label"
         :aria-label="`${label}${spoken}・${labels.pick}`"
         aria-haspopup="dialog"
         @click="emit('pick', $event)"
+        @mouseenter="showHint(true)"
+        @mouseleave="showHint(false)"
+        @focus="showHint(true)"
+        @blur="showHint(false)"
       >
         <span data-part="text" aria-live="polite">{{ label }}</span>
         <em v-if="day" data-part="weekday" :data-tone="tone" :data-holiday="holidayName !== null || undefined">{{ day }}</em>
         <small v-if="holidayName" data-part="holiday">{{ holidayName }}</small>
         <ArIcon name="cd" size="sm" data-part="caret" />
       </button>
-      <b v-else data-part="label" aria-live="polite" :aria-label="spoken ? `${label}${spoken}` : undefined">
+      <b
+        v-else
+        ref="labelEl"
+        data-part="label"
+        aria-live="polite"
+        :aria-label="spoken ? `${label}${spoken}` : undefined"
+        @mouseenter="showHint(true)"
+        @mouseleave="showHint(false)"
+      >
         <span data-part="text">{{ label }}</span>
         <em v-if="day" data-part="weekday" :data-tone="tone" :data-holiday="holidayName !== null || undefined">{{ day }}</em>
         <small v-if="holidayName" data-part="holiday">{{ holidayName }}</small>
@@ -75,5 +96,6 @@ const spoken = computed(() => (day.value ? `（${day.value}${holidayName.value !
       </button>
     </div>
     <button v-if="todayLabel" type="button" data-part="today" :disabled="todayDisabled" @click="emit('today')">{{ todayLabel }}</button>
+    <ArTooltip v-if="hint" :title="hint" :open="hintOpen" :anchor="labelEl" placement="top" wide style="display: none" />
   </div>
 </template>

@@ -14,3 +14,5 @@
 /* 1.1 行の並び（見出しの行＋「ラベル　値」の行）。content slot の中で data-part="tip-row"・"tip-label"・"tip-value" を使う（ArShiftGrid の吹き出しと同じ部位） */
 [data-ar-design="remix"] :is([data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"],[data-ar="shift-grid-tip"]) [data-part="tip-row"]>[data-part="tip-label"]::after{content:"　"}
 @keyframes ar-tooltip-in{from{opacity:0}to{opacity:1}}
+/* wide：期間などの短い1行の説明は、幅を絞らず折り返さない */
+[data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"][data-wide]{max-width:none;white-space:nowrap}

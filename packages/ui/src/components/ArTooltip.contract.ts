@@ -25,6 +25,10 @@ export interface ArTooltipProps {
   disabled?: boolean;
   /** 出ているか（v-model:open）。渡さなければ乗せる・フォーカスで自動。 */
   open?: boolean;
+  /** 1行で出す（幅を絞らず、折り返さない）。期間（「計算期間 2026/10/21 〜 2026/11/20」）のような短い1行の説明に使う。 */
+  wide?: boolean;
+  /** 吹き出しが指す要素。省くと default slot の中の最初の操作できる要素。部品の中の一部（期間の文字など）を指すときに使う。 */
+  anchor?: HTMLElement | null;
 }
 export interface ArTooltipEmits {
   "update:open": [open: boolean];

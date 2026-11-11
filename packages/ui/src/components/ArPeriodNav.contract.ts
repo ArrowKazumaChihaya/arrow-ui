@@ -36,6 +36,8 @@ export interface ArPeriodNavProps {
   nextDisabled?: boolean;
   /** 読み上げの名前。 */
   labels?: { prev: string; next: string; pick: string };
+  /** 真ん中の文字に乗せたとき、その上に1行で出す説明（「計算期間 2026/10/21 〜 2026/11/20」など）。 */
+  hint?: string;
 }
 export interface ArPeriodNavEmits {
   /** 前の期間へ（← のボタン）。 */

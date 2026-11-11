@@ -504,6 +504,8 @@
 
 /* エラーのある行（勤怠詳細など）は淡い赤で塗る */
 [data-ar-design="remix"] table tr.error:not(.adding,.editting)>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-color-danger-subtle)}
+/* エラーのある行に乗せたときは、赤のまま少し濃くする（ホバーの色で赤が消えないように） */
+[data-ar-design="remix"] table tbody tr.error:not(.adding,.editting):is(:hover,[data-group-hover="on"])>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:color-mix(in srgb, var(--ar-color-danger) 16%, var(--ar-color-danger-subtle))}
 /* 1人分が何行にもなる表は、どの行に乗せても同じ人の行をまとめて色を変える */
 [data-ar-design="remix"] table[data-ui-part="table"] tbody tr[data-group-hover="on"]>td:not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-accent-subtle)}
 

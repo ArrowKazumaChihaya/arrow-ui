@@ -17,3 +17,5 @@
 /* 1.1 行の並び（見出しの行＋ラベルと値）：今の ARROW のシフト表の吹き出しと同じく行の間 4px・ラベルの後ろに全角の間 */
 [data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"] [data-part="tip-row"]+[data-part="tip-row"]{margin-top:4px}
 [data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]>[data-part="body"] [data-part="tip-row"]>[data-part="tip-label"]::after{content:"　"}
+/* wide：期間などの短い1行の説明は、幅を絞らず折り返さない */
+[data-ar-design="classic"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"][data-wide]{max-width:none;white-space:nowrap}
