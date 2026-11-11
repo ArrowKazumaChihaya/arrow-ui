@@ -3,7 +3,8 @@
  * ArSpin 1.0 — テーマ色の回る輪。中身（default slot）を包むと、読み込み中は中身の上に白い幕と輪を重ねる。
  */
 import type { ArSpinProps } from "./ArSpin.contract";
-import { nextTick, onBeforeUnmount, ref, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
+import { blockSpinOwner, registerBlockSpin, unregisterBlockSpin } from "./ArSpin.registry";
 
 const props = withDefaults(defineProps<ArSpinProps>(), { spinning: true, size: "md", tip: undefined, block: false, minHeight: undefined });
 const content = ref<HTMLElement | null>(null);
@@ -24,18 +25,29 @@ watch(() => props.spinning, async (spinning) => {
   if (target.closest('[inert], [hidden]') || target.matches(':disabled') || !target.getClientRects().length) return;
   target.focus({ preventScroll: true });
 });
-onBeforeUnmount(() => { suspendedFocus = null; });
+// Loading marks (a wrapping spinner's veil, or a bare block spinner) in the same region must not
+// turn at once: only the first one in reading order is drawn, the others stay hidden until it ends.
+const mark = ref<HTMLElement | null>(null);
+const wrap = ref<HTMLElement | null>(null);
+const id = Symbol("ar-spin");
+const registered = computed(() => (props.spinning ? (wrap.value ?? mark.value) : null));
+watch(registered, (element, previous) => {
+  if (previous && !element) unregisterBlockSpin(id);
+  if (element) registerBlockSpin(id, element);
+}, { immediate: true, flush: "post" });
+onBeforeUnmount(() => { suspendedFocus = null; unregisterBlockSpin(id); });
+const duplicate = computed(() => (registered.value !== null && blockSpinOwner(id) !== id) || undefined);
 </script>
 
 <template>
-  <div v-if="$slots.default" data-ar="spin" data-part="root" data-wrap :data-size="size" :aria-busy="spinning">
+  <div v-if="$slots.default" ref="wrap" data-ar="spin" data-part="root" data-wrap :data-size="size" :aria-busy="spinning">
     <div ref="content" data-part="content" :inert="spinning || undefined"><slot /></div>
-    <div v-if="spinning" data-part="mask" role="status" :aria-label="tip ?? '読み込み中'">
+    <div v-if="spinning" data-part="mask" :data-duplicate="duplicate" role="status" :aria-label="tip ?? '読み込み中'">
       <span data-part="spinner" aria-hidden="true" />
       <span v-if="tip" data-part="tip">{{ tip }}</span>
     </div>
   </div>
-  <span v-else-if="spinning" data-ar="spin" data-part="root" :data-size="size" :data-block="block || undefined" :style="{ minHeight }" role="status" :aria-label="tip ?? '読み込み中'">
+  <span v-else-if="spinning" ref="mark" data-ar="spin" data-part="root" :data-size="size" :data-duplicate="duplicate" :data-block="block || undefined" :style="{ minHeight }" role="status" :aria-label="tip ?? '読み込み中'">
     <span data-part="spinner" aria-hidden="true" />
     <span v-if="tip" data-part="tip">{{ tip }}</span>
   </span>

@@ -186,6 +186,18 @@ function shift(base: string, minutes: number): string {
 }
 
 function onKeydown(e: KeyboardEvent) {
+  // Tab も画面の並び（行ごと・左から右）で進む。DOM の順は表のセルごとに積まれていて、行をまたぐことがある。
+  if (e.key === "Tab" && advance.value === "on") {
+    const el = e.target as HTMLInputElement;
+    const target = nextEntry(el.getBoundingClientRect(), el, e.shiftKey ? -1 : 1);
+    if (target) {
+      e.preventDefault();
+      commit();
+      target.focus();
+      target.select();
+    }
+    return;
+  }
   if (e.key === "Enter") {
     commit();
     return;
@@ -203,16 +215,59 @@ function onBlur() {
   commit();
 }
 
-/** 次に Tab で止まる所へ（4桁そろった時刻の箱から、次の入力へ移る）。 */
-function focusNextTabbable(from: HTMLElement) {
-  const all = [...document.querySelectorAll<HTMLElement>('input,select,textarea,button,a[href],[tabindex]')].filter(
-    (x) => !(x as HTMLInputElement).disabled && x.tabIndex >= 0 && !x.closest("[hidden],[inert]") && getComputedStyle(x).display !== "none" && getComputedStyle(x).visibility !== "hidden",
-  );
-  const next = all[all.indexOf(from) + 1];
-  if (next) {
-    next.focus();
-    if (next instanceof HTMLInputElement) next.select();
+/**
+ * 次に入力する時刻の箱を、画面の並び（行ごと・左から右）で探す。
+ * DOM の順や tabindex には頼らない：セルの中に何行も積んだ表でも、同じ行の右隣が先、行の端まで来たら次の行の左端へ進む。
+ * 時と分が別の箱（split）は、時の箱を入口にする。
+ */
+function nextEntry(from: DOMRect, self: HTMLElement, dir: 1 | -1 = 1): HTMLInputElement | undefined {
+  const region = self.closest('[role="dialog"], [aria-modal="true"], form') ?? document;
+  const entries = [...region.querySelectorAll<HTMLInputElement>('[data-ar="time-input"]>input:is([data-part="input"],[data-part="hour"])')].filter((x) => {
+    if (x === self || x.disabled || x.readOnly || x.closest("[hidden],[inert]")) return false;
+    return x.getClientRects().length > 0;
+  });
+  const mid = (r: DOMRect) => r.top + r.height / 2;
+  const rowTol = Math.max(4, from.height / 2);
+  const sameRow = (r: DOMRect) => Math.abs(mid(r) - mid(from)) <= rowTol;
+  const rects = entries.map((el) => ({ el, r: el.getBoundingClientRect() }));
+  if (dir === 1) {
+    const right = rects.filter(({ r }) => sameRow(r) && r.left > from.left + 1).sort((p, q) => p.r.left - q.r.left)[0];
+    if (right) return right.el;
+    const below = rects.filter(({ r }) => !sameRow(r) && mid(r) > mid(from)).sort((p, q) => mid(p.r) - mid(q.r) || p.r.left - q.r.left);
+    if (below.length === 0) return undefined;
+    const rowMid = mid(below[0]!.r);
+    return below.filter(({ r }) => Math.abs(mid(r) - rowMid) <= rowTol).sort((p, q) => p.r.left - q.r.left)[0]!.el;
   }
+  const left = rects.filter(({ r }) => sameRow(r) && r.left < from.left - 1).sort((p, q) => q.r.left - p.r.left)[0];
+  if (left) return left.el;
+  const above = rects.filter(({ r }) => !sameRow(r) && mid(r) < mid(from)).sort((p, q) => mid(q.r) - mid(p.r) || q.r.left - p.r.left);
+  if (above.length === 0) return undefined;
+  const rowMid = mid(above[0]!.r);
+  return above.filter(({ r }) => Math.abs(mid(r) - rowMid) <= rowTol).sort((p, q) => q.r.left - p.r.left)[0]!.el;
+}
+/** 確定したあと、次の時刻の箱へ。移った先はそのまま打てる（全選択）。見つからなければ次に Tab で止まる所へ。 */
+function advanceFrom(el: HTMLInputElement) {
+  const rect = el.getBoundingClientRect();
+  const go = () => {
+    const target = nextEntry(rect, el);
+    if (target) {
+      target.focus();
+      target.select();
+      return true;
+    }
+    const all = [...document.querySelectorAll<HTMLElement>("input,select,textarea,button,a[href],[tabindex]")].filter(
+      (x) => !(x as HTMLInputElement).disabled && x.tabIndex >= 0 && x.getClientRects().length > 0,
+    );
+    const next = all[all.indexOf(el) + 1];
+    if (next) next.focus();
+    return true;
+  };
+  // 続けて打つ人に間に合うよう、その場で移る。再描画で入力が作り直されて焦点が落ちたときだけ、もう一度移る。
+  go();
+  nextTick(() => requestAnimationFrame(() => {
+    const active = document.activeElement;
+    if (!active || active === document.body || !active.isConnected) go();
+  }));
 }
 /** 「1200」のように4桁打ったらその時刻は埋まったので、確定して次へ移る（「12:00」と打った場合も同じ）。 */
 function onSingleInput(e: Event) {
@@ -223,7 +278,7 @@ function onSingleInput(e: Event) {
   const complete = /^\d{4}$/.test(raw) || /^\d{1,2}:\d{2}$/.test(raw);
   if (!complete || parseTime(raw, maxHour.value) === undefined) return;
   commit();
-  nextTick(() => focusNextTabbable(el));
+  advanceFrom(el);
 }
 
 /* ---------- split の動き（今の ARROW の Time.vue と同じ） ---------- */
@@ -235,6 +290,10 @@ function focusBox(el: HTMLInputElement | null | undefined) {
 }
 /** ページの中の次（前）の時刻の箱へ。 */
 function focusNeighbor(from: HTMLInputElement, dir: 1 | -1) {
+  if (dir === 1) {
+    const target = nextEntry(from.getBoundingClientRect(), from);
+    if (target) return focusBox(target);
+  }
   const all = [...document.querySelectorAll<HTMLInputElement>('[data-ar="time-input"]>input:is([data-part="hour"],[data-part="minute"])')].filter(
     (x) => !x.disabled,
   );

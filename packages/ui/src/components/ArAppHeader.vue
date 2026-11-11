@@ -98,6 +98,21 @@ function show(kind: Kind, key: string, has: boolean) {
 function keep() {
   clearTimeout(timer);
 }
+/** 指で触れたときの「乗った・離れた」では開閉しない（指を離した瞬間に閉じてしまうため）。押したときだけ開く。 */
+function onEnter(e: PointerEvent, kind: Kind, key: string, has: boolean) {
+  if (e.pointerType === "touch") return;
+  show(kind, key, has);
+}
+function onLeave(e: PointerEvent) {
+  if (e.pointerType === "touch") return;
+  hideSoon();
+}
+/** キーボードで来たときだけ、フォーカスで開く（押して来たときは押した処理に任せる）。 */
+function onFocusOpen(e: FocusEvent, kind: Kind, key: string, has: boolean) {
+  const el = e.target as HTMLElement | null;
+  if (el?.matches?.(":focus-visible") === false) return;
+  show(kind, key, has);
+}
 function hideSoon() {
   clearTimeout(timer);
   if (pinned.value) return;
@@ -202,8 +217,13 @@ function onSubClick(c: ArAppNavItem, e: MouseEvent) {
 
 /** 押して出したままの一覧は、外を押すと閉じる。 */
 function onDocPointer(e: PointerEvent) {
-  if (!open.value || !pinned.value) return;
-  if (rootEl.value?.contains(e.target as Node) || listEl.value?.contains(e.target as Node)) return;
+  if (!open.value || !(pinned.value || e.pointerType === "touch")) return;
+  const target = e.target as Node;
+  if (rootEl.value?.contains(target) && !(e.pointerType === "touch" && !pinned.value)) return;
+  if (listEl.value?.contains(target) || subEl.value?.contains(target)) return;
+  // 開いている項目そのものを押したときは、その項目の押した処理に任せる。
+  const owner = open.value.kind === "pill" ? pillEls.get(open.value.key) : itemEls.get(open.value.key);
+  if (owner?.contains(target)) return;
   hide(false);
 }
 onMounted(() => document.addEventListener("pointerdown", onDocPointer, true));
@@ -371,9 +391,9 @@ function onDomainMenuKey(e: KeyboardEvent) {
         :aria-controls="hasList(p) && isOpen('pill', p.key) ? `${uid}-list` : undefined"
         @click="onPillClick(p)"
         @keydown="onPillKey($event, p)"
-        @pointerenter="show('pill', p.key, hasList(p))"
-        @pointerleave="hideSoon"
-        @focus="show('pill', p.key, hasList(p))"
+        @pointerenter="onEnter($event, 'pill', p.key, hasList(p))"
+        @pointerleave="onLeave"
+        @focus="onFocusOpen($event, 'pill', p.key, hasList(p))"
         @blur="hideSoon"
       >
         <ArIcon v-if="p.icon" :name="p.icon" size="sm" data-part="pill-icon" :data-icon="p.icon" />
@@ -399,7 +419,7 @@ function onDomainMenuKey(e: KeyboardEvent) {
         role="group"
         :aria-label="openPill.label"
         @pointerenter="keep"
-        @pointerleave="hideSoon"
+        @pointerleave="onLeave"
         @focusin="keep"
         @focusout="hideSoon"
         @keydown="onPopKey($event, listEl)"
@@ -516,9 +536,9 @@ function onDomainMenuKey(e: KeyboardEvent) {
           @pointerdown="lastPointer = $event.pointerType || 'mouse'"
           @click="onItemClick(it, $event)"
           @keydown="onItemKey($event, it)"
-          @pointerenter="show('item', it.key, hasChildren(it))"
-          @pointerleave="hideSoon"
-          @focus="show('item', it.key, hasChildren(it))"
+          @pointerenter="onEnter($event, 'item', it.key, hasChildren(it))"
+          @pointerleave="onLeave"
+          @focus="onFocusOpen($event, 'item', it.key, hasChildren(it))"
           @blur="hideSoon"
         >
           <span v-if="it.icon" data-part="item-icon" :data-icon="it.icon"><ArIcon :name="it.icon" /></span>
@@ -538,7 +558,7 @@ function onDomainMenuKey(e: KeyboardEvent) {
         role="group"
         :aria-label="openItem.label"
         @pointerenter="keep"
-        @pointerleave="hideSoon"
+        @pointerleave="onLeave"
         @focusin="keep"
         @focusout="hideSoon"
         @keydown="onPopKey($event, subEl)"
