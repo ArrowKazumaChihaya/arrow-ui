@@ -20401,7 +20401,8 @@ table
 }
 .operation_buttons[data-v-uie2762f02657f] {
   display: flex;
-  gap: 0;
+  gap: 8px;
+  justify-content: flex-end;
 }
 .remarks_error[data-v-uie2762f02657f] {
   white-space: pre-wrap;
@@ -20412,7 +20413,12 @@ table
 }
 [data-v-uie2762f02657f]
   th.operations {
-  width: 84px;
+  width: 96px;
+  text-align: right;
+}
+[data-v-uie2762f02657f]
+  table {
+  table-layout: fixed;
 }
 @media screen and (max-width: 499px) {
   .shift_remarks[data-v-uie2762f02657f]
@@ -20424,7 +20430,7 @@ table
   }
   [data-v-uie2762f02657f]
     th.operations {
-    width: 66px;
+    width: 84px;
   }
 }
 .control_table_wrap[data-v-ui4a66d4f24d1d] {

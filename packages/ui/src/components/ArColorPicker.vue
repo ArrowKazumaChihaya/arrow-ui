@@ -111,7 +111,8 @@ function pickSwatch(v: string) {
   hsv.value = hexToHsv(v);
   hexText.value = v;
   emit("update:modelValue", v);
-  if (panel.value === "dialog") setOpen(false);
+  // 決まった色を押したらそこで選び終わり：パレットを閉じて、次の項目へ進めるようにする。
+  setOpen(false);
 }
 </script>
 
