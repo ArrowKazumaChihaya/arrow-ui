@@ -37,5 +37,6 @@
 [data-ar="payslip"] [data-part="row"][data-editable] [data-part="amount"]{display:block;min-width:0;width:100%}
 
 /* layout="wide"：どの幅でも横長の4列のまま、親の幅に合わせて縮めて出す（zoom で縮めるので高さも縮む） */
-[data-ar="payslip"][data-layout="wide"]{width:880px;max-width:none;zoom:var(--ar-payslip-scale,1)}
+[data-ar="payslip"][data-layout="wide"]{width:1000px;max-width:none;zoom:var(--ar-payslip-scale,1)}
+[data-ar="payslip"][data-layout="wide"] [data-part="label"]{overflow-wrap:normal}
 [data-ar="payslip"][data-layout="wide"]>[data-part="columns"]{grid-template-columns:repeat(var(--ar-payslip-cols,4),minmax(0,1fr))}

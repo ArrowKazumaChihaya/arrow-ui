@@ -26,7 +26,7 @@ const cols = computed(() => {
   return props.columnCount ? Array.from({ length: props.columnCount }, (_, index) => sections[index] ?? []) : sections;
 });
 /** wide のとき、親の幅に合わせて縮める割合（1以下）。 */
-const WIDE_WIDTH = 880;
+const WIDE_WIDTH = 1000;
 const root = ref<HTMLElement | null>(null);
 const scale = ref(1);
 let observer: ResizeObserver | undefined;
