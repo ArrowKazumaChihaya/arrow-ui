@@ -198,6 +198,20 @@ function onKeydown(e: KeyboardEvent) {
     }
     return;
   }
+  // 空のまま Backspace：ひとつ前の時刻の箱へ戻り、入っている文字は全選択にする（打ち直し・消しやすい）。
+  if (e.key === "Backspace" && advance.value === "on") {
+    const el = e.target as HTMLInputElement;
+    if (el.value === "" && el.selectionStart === 0 && el.selectionEnd === 0) {
+      const target = nextEntry(el.getBoundingClientRect(), el, -1);
+      if (target) {
+        e.preventDefault();
+        commit();
+        target.focus();
+        target.select();
+      }
+      return;
+    }
+  }
   if (e.key === "Enter") {
     commit();
     return;

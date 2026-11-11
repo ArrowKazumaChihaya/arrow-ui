@@ -499,10 +499,18 @@
 /* 打刻店舗の選択・通勤手当の入力も、編集で列が広がらないように幅を決めておく */
 [data-ar-design="remix"] .attendance_table_wrap th.branch_id:not([data-ui-fixed], [data-ui-fixed] *){min-width:204px}
 [data-ar-design="remix"] .attendance_table_wrap th.carfare:not([data-ui-fixed], [data-ui-fixed] *){min-width:112px}
-[data-ar-design="remix"] .attendance_table_wrap th.work_type:not([data-ui-fixed], [data-ui-fixed] *){min-width:88px}
+[data-ar-design="remix"] .attendance_table_wrap th.work_type:not([data-ui-fixed], [data-ui-fixed] *){min-width:136px}
 [data-ar-design="remix"] .attendance_table_wrap td [data-ar="text-input"]:not([data-ui-fixed], [data-ui-fixed] *){max-width:96px}
 
 /* エラーのある行（勤怠詳細など）は淡い赤で塗る */
 [data-ar-design="remix"] table tr.error:not(.adding,.editting)>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-color-danger-subtle)}
 /* 1人分が何行にもなる表は、どの行に乗せても同じ人の行をまとめて色を変える */
 [data-ar-design="remix"] table[data-ui-part="table"] tbody tr[data-group-hover="on"]>td:not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-accent-subtle)}
+
+/* シフト詳細の時刻の行：p の既定の上下の余白（約15px）を消し、勤怠詳細と同じ行の高さにする */
+[data-ar-design="remix"] .time_cell>.shift_time_col:not([data-ui-fixed], [data-ui-fixed] *){margin:0}
+/* シフト詳細：日付ナビと「勤務メンバー」の間に二重に入る上の余白（15px×2）をなくす */
+[data-ar-design="remix"] .shift_page_component .shift_wrap:not([data-ui-fixed], [data-ui-fixed] *){margin-top:0}
+[data-ar-design="remix"] .shift_wrap:not([data-ui-fixed], [data-ui-fixed] *){margin-top:0}
+/* シフトの開始・終了とシフト休憩の開始・終了（シフト休憩を使う設定）は同じ幅にそろえる */
+[data-ar-design="remix"] :is(.attendance_table_wrap th.shift_start,.attendance_table_wrap th.shift_end,.attendance_table_wrap th.plan_break_start,.attendance_table_wrap th.plan_break_end):not([data-ui-fixed], [data-ui-fixed] *){width:88px;min-width:88px}

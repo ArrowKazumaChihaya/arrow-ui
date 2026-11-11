@@ -1,0 +1,2 @@
+
+ArTimeInput (remix): Backspace in an empty time box moves to the previous time box and selects its text. remix: the attendance detail keeps its columns wide enough (work type 136px; shift and planned-break times share one width), shift detail rows use the same row height as the attendance detail, the double top margin between the date and the member list is removed, and the payslip header separates company, branch and name with thin lines.

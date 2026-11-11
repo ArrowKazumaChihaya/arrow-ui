@@ -74,4 +74,16 @@ describe("ArTimeInput：4桁そろったら確定して次の入力へ移る", (
     expect(document.activeElement).toBe(inputs[0]);
     w.unmount();
   });
+
+  it("空のまま Backspace で、ひとつ前の時刻の箱へ戻り入っている文字を全選択にする", async () => {
+    const w = mount(host(() => [h(ArTimeInput, { modelValue: { time: "09:00", day: "same" } }), time()]), { attachTo: document.body });
+    const inputs = w.findAll('input[data-part="input"]').map((x) => x.element as HTMLInputElement);
+    layout(new Map<Element, [number, number]>([[inputs[0]!, [0, 0]], [inputs[1]!, [100, 0]]]));
+    inputs[1]!.focus();
+    await w.findAll('input[data-part="input"]')[1]!.trigger("keydown", { key: "Backspace" });
+    expect(document.activeElement).toBe(inputs[0]);
+    expect(inputs[0]!.selectionStart).toBe(0);
+    expect(inputs[0]!.selectionEnd).toBe(inputs[0]!.value.length);
+    w.unmount();
+  });
 });
