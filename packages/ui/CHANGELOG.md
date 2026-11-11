@@ -1,5 +1,11 @@
 # @s_and_a/arrow-ui
 
+## 0.1.19
+
+### Patch Changes
+
+- ArColorPickerで既定色を選択した際にパレットを閉じる。備考欄の編集・削除操作の間隔、右寄せ、列幅を安定させる。
+
 ## 0.1.18
 
 ### Patch Changes

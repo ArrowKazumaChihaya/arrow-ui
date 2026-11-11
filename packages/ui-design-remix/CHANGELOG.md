@@ -1,5 +1,12 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 0.1.19
+
+### Patch Changes
+
+- ヘッダーとプルダウンをシフト表の固定列より前面に表示し、ブロック型ロード表示の上下余白を統一する。
+- Requires @s_and_a/arrow-ui 0.1.19 or a compatible newer version.
+
 ## 0.1.18
 
 ### Patch Changes
