@@ -228,6 +228,8 @@ describe("shiftGrid の計算", () => {
     expect(inkOn("#e69038")).toBe("black");
     expect(fillRect({ r0: 0, r1: 0, c0: 0, c1: 1 }, { r: 3, c: 1 })).toEqual({ r0: 0, r1: 3, c0: 0, c1: 1 });
     expect(fillRect({ r0: 0, r1: 0, c0: 0, c1: 1 }, { r: 0, c: 0 })).toBeNull();
+    // 斜めに引くと、縦も横も広げる
+    expect(fillRect({ r0: 0, r1: 0, c0: 0, c1: 1 }, { r: 3, c: 4 })).toEqual({ r0: 0, r1: 3, c0: 0, c1: 4 });
     const d = { kind: "move" as const, row: 0, col: 0, toRow: 0, toCol: 0, x0: 0, width: 100, anchor: 0, times: [{ start: 540, end: 1080 }], breaks: [{ start: 720, end: 780 }], next: [], nextBreaks: [], moved: false };
     expect(applyDrag(d, 60, 0, 1800, 15)).toEqual({ times: [{ start: 600, end: 1140 }], breaks: [{ start: 780, end: 840 }] });
     expect(applyDrag({ ...d, kind: "start" }, 600, 0, 1800, 15).times).toEqual([{ start: 1020, end: 1080 }]);

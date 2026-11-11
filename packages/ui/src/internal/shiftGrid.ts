@@ -143,9 +143,8 @@ export function fillRect(sel: Rect, to: { r: number; c: number }): Rect | null {
   const down = to.r > sel.r1;
   const right = to.c > sel.c1;
   if (!down && !right) return null;
-  // 縦と横のうち、はみ出しが大きい向きへだけ広げる（表計算と同じ）
-  if (down && (!right || to.r - sel.r1 >= to.c - sel.c1)) return { ...sel, r1: to.r };
-  return { ...sel, c1: to.c };
+  // 下へも右へも広げられる（斜めに引くと、縦横とも広げた範囲を、元の範囲の繰り返しで埋める）
+  return { ...sel, r1: down ? to.r : sel.r1, c1: right ? to.c : sel.c1 };
 }
 
 /** 端末が Mac か。 */

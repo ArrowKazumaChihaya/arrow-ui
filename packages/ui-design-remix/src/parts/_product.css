@@ -514,3 +514,5 @@
 [data-ar-design="remix"] .shift_wrap:not([data-ui-fixed], [data-ui-fixed] *){margin-top:0}
 /* シフトの開始・終了とシフト休憩の開始・終了（シフト休憩を使う設定）は同じ幅にそろえる */
 [data-ar-design="remix"] :is(.attendance_table_wrap th.shift_start,.attendance_table_wrap th.shift_end,.attendance_table_wrap th.plan_break_start,.attendance_table_wrap th.plan_break_end):not([data-ui-fixed], [data-ui-fixed] *){width:88px;min-width:88px}
+/* 注意書きの中の文中リンク（「こちら」など）はリンクと分かるよう、下線と太さをつける */
+[data-ar-design="remix"] [data-ar="alert"] :is([data-ui-part="link"],a:not([data-ar])):not([data-ui-fixed], [data-ui-fixed] *){text-decoration:underline;text-underline-offset:3px;font-weight:700}
