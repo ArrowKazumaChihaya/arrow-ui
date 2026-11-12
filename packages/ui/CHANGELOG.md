@@ -1,28 +1,66 @@
 # @s_and_a/arrow-ui
 
+## 0.2.0
+
+### Minor Changes
+
+- 41b7126: Offer a visible address lookup action for a complete postal code, keeping automatic lookup and allowing retries without retyping. Ignore outdated results after a parent reset or disabling the field.
+- 0a681a3: - ArUiProvider 1.2: `tone`（色合い）と `fontScale`（文字の大きさの倍率）を追加。利用者が選んだ見え方を html に当てる。
+  - design: `tones`（色合いごとのトークン・テーマ色の上書き）を追加。remix は「あざやか」「くっきり」を持つ。
+  - 全デザインの CSS の文字の大きさ（px）を `--ar-font-scale` に追従させた（印刷を除く）。`scripts/scale-font-sizes.mjs --check` をテストで確認。
+- ee0064e: Add semantic add/edit/delete button colors, optional table column/avatar visibility, and external-link targets in operation menus. Align linked employee cells, table corners, configuration labels, detail links, and filter controls. Refine the remix authentication panel and responsive login composition against the updated design reference.
+
+### Patch Changes
+
+- b707f17: Add an optional navigation chevron to option cards so task destinations are visually distinct from selected options.
+
+  Allow wizard steps to specify the intent of their final action so saves use the shared green edit styling.
+
+  Keep contained document guides readable by showing a compact preview hint instead of dimming the entire image on focus.
+
+- c89d62b: Keep band headings stable when action controls disappear, preserve readable horizontal anchor labels, and keep empty table messages within the visible viewport. Comparison tables and lists now distinguish unchanged context from changed values.
+- 40b9aaa: Keep long dialog explanations at their opening paragraph. If the first focusable control is outside the visible body, focus the body instead; retain autofocus for visible form inputs and restore the trigger without scrolling the underlying page.
+- b2e01c6: ArEllipsis に最大幅の指定を追加し、自動幅のテーブルでも長い説明を省略して全文のツールチップを使えるようにする。
+- 2dda595: Let stack and grid layouts in custom list items fill the row, keeping detail text and right-aligned actions readable on small screens.
+- 019a32d: Allow translated show/hide labels on password inputs while keeping the existing Japanese defaults.
+- 4cfa55b: Expose the unzoomed paper width to the PDF page slot and update it when the available width changes. Canvas renderers can resize after rotation, viewport changes or panel resizing without losing the selected page or magnifying twice.
+
+  Add an optional maximum fit width. It fits the paper at 100% and preserves that base width during zoom, so responsive percentage widths do not cancel the user's magnification.
+
+- 17e08b8: Add compact board calendar density for personal shift and attendance views, preserving room for multiple time ranges without fixed clipping.
+- 44e1871: Preserve semantic edit/add/delete button colors on band headers and keep phone profile metadata compact without inheriting full description-cell padding.
+
+  Provide a label-extra slot on ArField to align explanatory actions with labels rather than leaving them below controls.
+
+- be173a0: Show the final existing section as active when its scroll container reaches the bottom, including short final sections in pages and modal bodies. Restore normal section tracking when scrolling upward.
+- 903e7d5: Keep sortable product tables in native table layout so headers and spanning add rows align. Contain table viewports on mobile and reserve space for adjacent row actions. Add an accessible ArField help slot for supplementary text and detail actions.
+- 766fcb8: Restore keyboard focus after a wrapping loading spinner finishes. Preserve the previous control without scrolling, unless focus moved elsewhere, the control was removed/disabled/hidden, or an enclosing region remains inert. This keeps consecutive keyboard operations usable after asynchronous saves.
+- 97bd05e: Keep wizard steps visible on mobile as a horizontally scrollable journey and reveal the current step after navigation or resizing, without scrolling the page on initial display.
+- b1e6e8a: Separate expanded table filters from results, remove native fieldset borders around workflow controls, and wrap card footer actions at narrow container widths.
+
 ## 0.1.20
 
 ### Patch Changes
 
-- ArPeriodNav に中央ラベルの補足を表示する `hint` を追加し、ArTooltip に1行表示用の `wide` と対象要素を指定する `anchor` を追加。
+- ArPeriodNav に中央ラベルの補足を表示する `hint` を追加し、ArTooltip に 1 行表示用の `wide` と対象要素を指定する `anchor` を追加。
 
 ## 0.1.19
 
 ### Patch Changes
 
-- ArColorPickerで既定色を選択した際にパレットを閉じる。備考欄の編集・削除操作の間隔、右寄せ、列幅を安定させる。
+- ArColorPicker で既定色を選択した際にパレットを閉じる。備考欄の編集・削除操作の間隔、右寄せ、列幅を安定させる。
 
 ## 0.1.18
 
 ### Patch Changes
 
-- 時刻入力で空欄からBackspaceした際に前の入力へ戻れるようにし、シフトグリッドのオートフィルを縦横同時の斜め方向へ対応する。上書き対象セルもドロップ前に判別できるようにする。
+- 時刻入力で空欄から Backspace した際に前の入力へ戻れるようにし、シフトグリッドのオートフィルを縦横同時の斜め方向へ対応する。上書き対象セルもドロップ前に判別できるようにする。
 
 ## 0.1.17
 
 ### Patch Changes
 
-- 同一領域のロード表示を1つに整理し、時刻入力の4桁確定後・Tab操作による移動順を行単位で安定させる。タッチ端末のヘッダーメニュー開閉と、横長給与明細のスマホ縮小表示も改善する。
+- 同一領域のロード表示を 1 つに整理し、時刻入力の 4 桁確定後・Tab 操作による移動順を行単位で安定させる。タッチ端末のヘッダーメニュー開閉と、横長給与明細のスマホ縮小表示も改善する。
 
 ## 0.1.16
 
@@ -34,8 +72,8 @@
 
 ### Patch Changes
 
-- ArAppHeader に domain-style="menu" を追加。領域（人事・労務／経費精算）の切り替えを、1段目のロゴの右のボタンから開くメニューにする（段を増やさない。畳むボタンはメニューの段の右端）。既定の "tabs" は従来どおり。remix のヘッダーを新デザインにする（1段目 60px・ロゴ 30px・右にお知らせ／やること／アカウント、2段目はアイコン付きのメニューで今いる項目は淡いテーマ色、下端にテーマ色の 3px の線）。
-  スマホ幅（959px 以下）では、領域の切り替えを階層のアイコンだけのボタンにし、ロゴ・お知らせ・やること・領域・アカウントを1段に並べる。
+- ArAppHeader に domain-style="menu" を追加。領域（人事・労務／経費精算）の切り替えを、1 段目のロゴの右のボタンから開くメニューにする（段を増やさない。畳むボタンはメニューの段の右端）。既定の "tabs" は従来どおり。remix のヘッダーを新デザインにする（1 段目 60px・ロゴ 30px・右にお知らせ／やること／アカウント、2 段目はアイコン付きのメニューで今いる項目は淡いテーマ色、下端にテーマ色の 3px の線）。
+  スマホ幅（959px 以下）では、領域の切り替えを階層のアイコンだけのボタンにし、ロゴ・お知らせ・やること・領域・アカウントを 1 段に並べる。
 
 ## 0.1.13
 
@@ -66,7 +104,7 @@
 
 - Add rich before/after slots to ArChangedValue for structured custom fields and image previews. Section navigation now keeps destination headings below the sticky mobile picker and tracks the same scroll offset.
 
-- RemixのARROWページで固定保存バーをスマホ下部メニューの上に配置し、フロートするチャット/ページ上部ボタンが保存操作を覆わないようにする。
+- Remix の ARROW ページで固定保存バーをスマホ下部メニューの上に配置し、フロートするチャット/ページ上部ボタンが保存操作を覆わないようにする。
 
 ## 0.1.10
 

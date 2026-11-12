@@ -1,10 +1,38 @@
 # @s_and_a/arrow-ui-design-classic
 
+## 1.0.0
+
+### Patch Changes
+
+- 41b7126: Offer a visible address lookup action for a complete postal code, keeping automatic lookup and allowing retries without retyping. Ignore outdated results after a parent reset or disabling the field.
+- 0a681a3: - ArUiProvider 1.2: `tone`（色合い）と `fontScale`（文字の大きさの倍率）を追加。利用者が選んだ見え方を html に当てる。
+  - design: `tones`（色合いごとのトークン・テーマ色の上書き）を追加。remix は「あざやか」「くっきり」を持つ。
+  - 全デザインの CSS の文字の大きさ（px）を `--ar-font-scale` に追従させた（印刷を除く）。`scripts/scale-font-sizes.mjs --check` をテストで確認。
+- ee0064e: Add semantic add/edit/delete button colors, optional table column/avatar visibility, and external-link targets in operation menus. Align linked employee cells, table corners, configuration labels, detail links, and filter controls. Refine the remix authentication panel and responsive login composition against the updated design reference.
+- Updated dependencies [b707f17]
+- Updated dependencies [c89d62b]
+- Updated dependencies [40b9aaa]
+- Updated dependencies [b2e01c6]
+- Updated dependencies [2dda595]
+- Updated dependencies [019a32d]
+- Updated dependencies [4cfa55b]
+- Updated dependencies [17e08b8]
+- Updated dependencies [41b7126]
+- Updated dependencies [44e1871]
+- Updated dependencies [be173a0]
+- Updated dependencies [903e7d5]
+- Updated dependencies [766fcb8]
+- Updated dependencies [0a681a3]
+- Updated dependencies [ee0064e]
+- Updated dependencies [97bd05e]
+- Updated dependencies [b1e6e8a]
+  - @s_and_a/arrow-ui@0.2.0
+
 ## 0.1.11
 
 ### Patch Changes
 
-- ArTooltip の1行補足表示に対応。
+- ArTooltip の 1 行補足表示に対応。
 - Requires @s_and_a/arrow-ui 0.1.20 or a compatible newer version.
 
 ## 0.1.9

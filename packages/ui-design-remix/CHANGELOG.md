@@ -1,5 +1,53 @@
 # @s_and_a/arrow-ui-design-remix
 
+## 1.0.0
+
+### Patch Changes
+
+- c1242bb: Keep attendance error rows red when they are hovered directly or as part of a grouped multi-row hover. The hover remains visible by using the darker danger background instead of the theme accent.
+- d50e2c8: Use the full authentication form width for block text inputs and give credential fields and primary/secondary block actions a 48px height and 16px text. Keep compact language and auxiliary actions at their existing size.
+- 2be44bf: Align footers at the bottom of equal-height cards so wrapped descriptions do not shift adjacent actions.
+- b707f17: Add an optional navigation chevron to option cards so task destinations are visually distinct from selected options.
+
+  Allow wizard steps to specify the intent of their final action so saves use the shared green edit styling.
+
+  Keep contained document guides readable by showing a compact preview hint instead of dimming the entire image on focus.
+
+- c89d62b: Keep band headings stable when action controls disappear, preserve readable horizontal anchor labels, and keep empty table messages within the visible viewport. Comparison tables and lists now distinguish unchanged context from changed values.
+- 019a32d: Keep the login app prompt and its accessible close action within narrow screens, including when the text wraps.
+- 17e08b8: Add compact board calendar density for personal shift and attendance views, preserving room for multiple time ranges without fixed clipping.
+- 41b7126: Offer a visible address lookup action for a complete postal code, keeping automatic lookup and allowing retries without retyping. Ignore outdated results after a parent reset or disabling the field.
+- 44e1871: Preserve semantic edit/add/delete button colors on band headers and keep phone profile metadata compact without inheriting full description-cell padding.
+
+  Provide a label-extra slot on ArField to align explanatory actions with labels rather than leaving them below controls.
+
+- c32a22a: Stack bordered description labels above values in narrow panels. Let flag tags grow when text wraps and keep table paragraph spacing consistent.
+- f449684: 案内文の改行を保持し、長い語句をカード幅で折り返す。複数の操作手順や徴収区分ごとの注意が一続きにならないようにする。
+- 903e7d5: Keep sortable product tables in native table layout so headers and spanning add rows align. Contain table viewports on mobile and reserve space for adjacent row actions. Add an accessible ArField help slot for supplementary text and detail actions.
+- 0a681a3: - ArUiProvider 1.2: `tone`（色合い）と `fontScale`（文字の大きさの倍率）を追加。利用者が選んだ見え方を html に当てる。
+  - design: `tones`（色合いごとのトークン・テーマ色の上書き）を追加。remix は「あざやか」「くっきり」を持つ。
+  - 全デザインの CSS の文字の大きさ（px）を `--ar-font-scale` に追従させた（印刷を除く）。`scripts/scale-font-sizes.mjs --check` をテストで確認。
+- ee0064e: Add semantic add/edit/delete button colors, optional table column/avatar visibility, and external-link targets in operation menus. Align linked employee cells, table corners, configuration labels, detail links, and filter controls. Refine the remix authentication panel and responsive login composition against the updated design reference.
+- b1e6e8a: Separate expanded table filters from results, remove native fieldset borders around workflow controls, and wrap card footer actions at narrow container widths.
+- Updated dependencies [b707f17]
+- Updated dependencies [c89d62b]
+- Updated dependencies [40b9aaa]
+- Updated dependencies [b2e01c6]
+- Updated dependencies [2dda595]
+- Updated dependencies [019a32d]
+- Updated dependencies [4cfa55b]
+- Updated dependencies [17e08b8]
+- Updated dependencies [41b7126]
+- Updated dependencies [44e1871]
+- Updated dependencies [be173a0]
+- Updated dependencies [903e7d5]
+- Updated dependencies [766fcb8]
+- Updated dependencies [0a681a3]
+- Updated dependencies [ee0064e]
+- Updated dependencies [97bd05e]
+- Updated dependencies [b1e6e8a]
+  - @s_and_a/arrow-ui@0.2.0
+
 ## 0.1.20
 
 ### Patch Changes
@@ -32,17 +80,17 @@
 
 ### Patch Changes
 
-- ヘッダー・プルダウン・表・説明欄・ツアー・給与明細・メニュー画面の余白、幅、操作感を統一し、PCとスマホの新デザインを整える。
+- ヘッダー・プルダウン・表・説明欄・ツアー・給与明細・メニュー画面の余白、幅、操作感を統一し、PC とスマホの新デザインを整える。
 - Requires @s_and_a/arrow-ui 0.1.16 or a compatible newer version.
 
 ## 0.1.15
 
 ### Patch Changes
 
-- ArAppHeader に domain-style="menu" を追加。領域（人事・労務／経費精算）の切り替えを、1段目のロゴの右のボタンから開くメニューにする（段を増やさない。畳むボタンはメニューの段の右端）。既定の "tabs" は従来どおり。remix のヘッダーを新デザインにする（1段目 60px・ロゴ 30px・右にお知らせ／やること／アカウント、2段目はアイコン付きのメニューで今いる項目は淡いテーマ色、下端にテーマ色の 3px の線）。
-  スマホ幅（959px 以下）では、領域の切り替えを階層のアイコンだけのボタンにし、ロゴ・お知らせ・やること・領域・アカウントを1段に並べる。
+- ArAppHeader に domain-style="menu" を追加。領域（人事・労務／経費精算）の切り替えを、1 段目のロゴの右のボタンから開くメニューにする（段を増やさない。畳むボタンはメニューの段の右端）。既定の "tabs" は従来どおり。remix のヘッダーを新デザインにする（1 段目 60px・ロゴ 30px・右にお知らせ／やること／アカウント、2 段目はアイコン付きのメニューで今いる項目は淡いテーマ色、下端にテーマ色の 3px の線）。
+  スマホ幅（959px 以下）では、領域の切り替えを階層のアイコンだけのボタンにし、ロゴ・お知らせ・やること・領域・アカウントを 1 段に並べる。
 
-- remix のログイン（ArAuthPanel と login_wrapper）を新デザインにする。ロゴ（背景なし）・会社・入力を1枚の白いカードにまとめ、見出しは読み上げ用に残して見た目は出さない。背景は淡い地に2つの円。スマホではロゴを淡い地の上に置き、カードは下から立ち上がる白い板にする。言語の切り替えを右上の .login__lang に置けるようにする。
+- remix のログイン（ArAuthPanel と login_wrapper）を新デザインにする。ロゴ（背景なし）・会社・入力を 1 枚の白いカードにまとめ、見出しは読み上げ用に残して見た目は出さない。背景は淡い地に 2 つの円。スマホではロゴを淡い地の上に置き、カードは下から立ち上がる白い板にする。言語の切り替えを右上の .login\_\_lang に置けるようにする。
 
 - Requires @s_and_a/arrow-ui 0.1.15 or a compatible newer version.
 
