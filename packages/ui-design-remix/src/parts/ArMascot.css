@@ -1,0 +1,3 @@
+/* @covers ArMascot 1.0.0 */
+/* ArMascot（絵はそのまま。大きさは 120px） */
+[data-ar-design="remix"] [data-ar="mascot"]{--ar-mascot-size:120px}

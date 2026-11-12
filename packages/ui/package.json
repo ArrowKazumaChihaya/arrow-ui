@@ -1,6 +1,6 @@
 {
   "name": "@s_and_a/arrow-ui",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "ARROW シリーズ共通の Vue 3 デザインライブラリ（部品・契約・デザインの差し替えの仕組み）",
   "type": "module",
   "sideEffects": [

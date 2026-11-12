@@ -688,6 +688,11 @@
         "ja": "ロゴの読み込み中"
       },
       {
+        "slug": "mascot",
+        "name": "ArMascot",
+        "ja": "マスコット"
+      },
+      {
         "slug": "menu-tile",
         "name": "ArMenuTile",
         "ja": "メニューのタイル"
