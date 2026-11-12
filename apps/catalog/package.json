@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@s_and_a/arrow-ui": "*",
-    "@s_and_a/arrow-ui-design-remix": "*",
-    "@s_and_a/arrow-ui-design-classic": "*",
+    "@s_and_a/arrow-ui": "0.2.0",
+    "@s_and_a/arrow-ui-design-remix": "1.0.0",
+    "@s_and_a/arrow-ui-design-classic": "1.0.0",
     "vue": "^3.5.22"
   }
 }
