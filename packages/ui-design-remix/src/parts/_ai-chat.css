@@ -123,3 +123,60 @@
 @media (prefers-reduced-motion: reduce) {
   [data-ar-design="remix"] :is(.ai-chat__mascot, .ai-chat__mascot-hint)[data-v-ai-chat] { transition: none; }
 }
+/* マスコットとの会話：返事・確認の吹き出しと、そばの入力欄。 */
+[data-ar-design="remix"] .ai-chat__bubble[data-v-ai-chat] {
+  border: 1px solid var(--ar-accent-line);
+  border-radius: 18px 18px 4px 18px;
+  background: var(--ar-color-surface);
+  box-shadow: var(--ar-shadow-pop);
+  color: var(--ar-color-text);
+}
+[data-ar-design="remix"] .ai-chat__bubble-ask[data-v-ai-chat] {
+  color: var(--ar-accent-ink);
+  font-weight: 700;
+}
+[data-ar-design="remix"] .ai-chat__bubble .ai-chat__confirmation-summary[data-v-ai-chat] {
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: var(--ar-radius-control);
+  background: var(--ar-accent-faint);
+}
+[data-ar-design="remix"] .ai-chat__bubble .ai-chat__error[data-v-ai-chat] {
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  border-radius: var(--ar-radius-control);
+}
+[data-ar-design="remix"] .ai-chat__bubble-link[data-v-ai-chat] {
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  color: var(--ar-color-text-muted);
+  font-size:calc(12px * var(--ar-font-scale, 1));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+[data-ar-design="remix"] .ai-chat__bubble-link[data-v-ai-chat]:hover:not(:disabled) { color: var(--ar-accent-ink); }
+[data-ar-design="remix"] .ai-chat__bubble-link[data-v-ai-chat]:disabled { opacity: .5; }
+[data-ar-design="remix"] .ai-chat__quick[data-v-ai-chat] {
+  border: 1px solid var(--ar-accent-line);
+  border-radius: 16px;
+  background: var(--ar-color-surface);
+  box-shadow: var(--ar-shadow-pop);
+}
+[data-ar-design="remix"] .ai-chat__quick[data-v-ai-chat]:focus-within {
+  border-color: var(--ar-accent);
+  box-shadow: var(--ar-shadow-pop), 0 0 0 3px var(--ar-accent-ring);
+}
+[data-ar-design="remix"] .ai-chat .ai-chat__quick textarea[data-v-ai-chat],
+[data-ar-design="remix"] .ai-chat .ai-chat__quick textarea[data-v-ai-chat]:is(:focus, :focus-visible) {
+  /* 枠は外側の入力欄（.ai-chat__quick）が持つ。製品の入力欄の既定の枠は出さない。 */
+  border: 0 !important;
+  outline: 0 !important;
+  background: none !important;
+  box-shadow: none;
+  color: var(--ar-color-text);
+  font: inherit;
+}
+@media (pointer: coarse) {
+  [data-ar-design="remix"] .ai-chat__quick textarea[data-v-ai-chat] { font-size:calc(16px * var(--ar-font-scale, 1)); }
+}
