@@ -274,7 +274,8 @@
 [data-ar-design="remix"] table[data-ui-part="table"] td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-color-surface); }
 /* 列の境目が分かるように、隣り合うセルの間に細い縦線を引く（見出しも同じ。線は表の枠と同じ色を薄めたもの）。 */
 [data-ar-design="remix"] table[data-ui-part="table"]:not(.login__version) :is(th,td)+:is(th,td):not([data-ui-fixed], [data-ui-fixed] *) { border-left:1px solid color-mix(in srgb,var(--ar-color-border) 70%,transparent); }
-[data-ar-design="remix"] table[data-ui-part="table"] tbody tr:hover:not([data-add-row],.error)>td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-accent-subtle); }
+/* 行をまたぐセル（rowspan）がある表は、1行だけ色が変わると表の一部だけ染まって見えるので、行のホバーの色は付けない。 */
+[data-ar-design="remix"] table[data-ui-part="table"]:not(:has(td[rowspan])) tbody tr:hover:not([data-add-row],.error)>td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-accent-subtle); }
 [data-ar-design="remix"] table[data-ui-part="table"] tbody tr:last-child>td:not([data-ui-fixed], [data-ui-fixed] *) { border-bottom:0; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_row th:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;top:0;z-index:2; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_col.col1 :is(th,td):first-child:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;left:0;z-index:1; }

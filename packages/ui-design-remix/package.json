@@ -1,6 +1,6 @@
 {
   "name": "@s_and_a/arrow-ui-design-remix",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "ARROW UI の design：remix",
   "type": "module",
   "sideEffects": [
