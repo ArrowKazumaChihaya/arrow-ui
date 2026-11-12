@@ -62,6 +62,7 @@ export const covers = {
   ArList: "1.1.0",
   ArLogoSpin: "1.0.0",
   ArMapPreview: "1.0.0",
+  ArMascot: "1.0.0",
   ArMentions: "1.0.0",
   ArMenu: "1.0.0",
   ArMenuTile: "1.0.0",

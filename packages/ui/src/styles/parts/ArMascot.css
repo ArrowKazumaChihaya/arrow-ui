@@ -1,0 +1,8 @@
+/* ArMascot の構造と再生の制御。絵の形・色・動きそのものは製品が渡す CSS が持つ。 */
+[data-ar="mascot"]{display:inline-block;width:var(--ar-mascot-size,120px);max-width:100%;line-height:0;vertical-align:middle}
+[data-ar="mascot"]>[data-part="figure"]{display:block}
+[data-ar="mascot"]>[data-part="figure"]>svg{display:block;width:100%;height:auto;overflow:visible}
+[data-ar="mascot"][data-once]>[data-part="figure"]>svg *{animation-iteration-count:1!important}
+[data-ar="mascot"][data-paused]>[data-part="figure"]>svg *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){[data-ar="mascot"]>[data-part="figure"]>svg *{animation:none!important}}
+@media print{[data-ar="mascot"]{display:none}}

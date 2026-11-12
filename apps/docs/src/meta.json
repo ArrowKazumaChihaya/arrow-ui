@@ -27,8 +27,8 @@
  },
  {
   "name": "ArUiProvider",
-  "version": "1.1.0",
-  "description": "アプリに1つ置く。デザインのトークンとテーマ色を配り、宣言した部品がそろっているかを確かめる。\nどのデザインを使うかは製品が起動時に決めて渡す（利用者が選ぶ仕組みは持たない）。\nscope=\"self\" にすると、html ではなくこの部品の中だけにデザインを当てる（説明の画面で2つのデザインを並べるときなど）。",
+  "version": "1.2.0",
+  "description": "アプリに1つ置く。デザインのトークンとテーマ色を配り、宣言した部品がそろっているかを確かめる。\nどのデザインを使うかは製品が起動時に決めて渡す（利用者が選ぶ仕組みは持たない）。\n1.2：tone（色合い）と fontScale（文字の大きさの倍率）を渡すと、利用者が選んだ見え方にする（部品の形は変えない）。\nscope=\"self\" にすると、html ではなくこの部品の中だけにデザインを当てる（説明の画面で2つのデザインを並べるときなど）。",
   "props": [
    {
     "name": "design",
@@ -55,6 +55,19 @@
     "required": false,
     "description": "document：html 全体に当てる（製品）。self：この部品の中だけに当てる。",
     "default": "\"document\""
+   },
+   {
+    "name": "tone",
+    "type": "string",
+    "required": false,
+    "description": "色合い（デザインの tones の名前）。省くか \"standard\" なら標準の色。"
+   },
+   {
+    "name": "fontScale",
+    "type": "number",
+    "required": false,
+    "description": "文字の大きさの倍率（1 が標準）。部品の文字の大きさだけを変え、枠の形は変えない。",
+    "default": "1"
    }
   ],
   "emits": [],
@@ -8893,6 +8906,19 @@
     "type": "boolean",
     "required": false,
     "description": "出ているか（v-model:open）。渡さなければ乗せる・フォーカスで自動。"
+   },
+   {
+    "name": "wide",
+    "type": "boolean",
+    "required": false,
+    "description": "1行で出す（幅を絞らず、折り返さない）。期間（「計算期間 2026/10/21 〜 2026/11/20」）のような短い1行の説明に使う。",
+    "default": "false"
+   },
+   {
+    "name": "anchor",
+    "type": "HTMLElement | null",
+    "required": false,
+    "description": "吹き出しが指す要素。省くと default slot の中の最初の操作できる要素。部品の中の一部（期間の文字など）を指すときに使う。"
    }
   ],
   "emits": [
@@ -11466,6 +11492,70 @@
   "dataAr": "logo-spin"
  },
  {
+  "name": "ArMascot",
+  "version": "1.0.0",
+  "description": "マスコット（動くキャラクター）。製品が渡した絵（SVG）と動き（CSS）を表示し、名前で指定した動きを再生する。\n1回だけの動きは終わると待機の動きへ戻り、motionend を知らせる。動きを減らす設定の人には動かさない。",
+  "props": [
+   {
+    "name": "artwork",
+    "type": "ArMascotArtwork",
+    "required": true,
+    "description": "絵と動きの一式（SVG・CSS・動きの一覧）。製品が用意したものだけを渡す。"
+   },
+   {
+    "name": "motion",
+    "type": "string",
+    "required": false,
+    "description": "再生する動きの名前。artwork.motions にない名前は待機の動きにする。既定は待機の動き。"
+   },
+   {
+    "name": "replay",
+    "type": "number",
+    "required": false,
+    "description": "同じ動きをもう一度最初から再生したいときに、値を変える（回数など）。",
+    "default": "0"
+   },
+   {
+    "name": "loop",
+    "type": "boolean",
+    "required": false,
+    "description": "繰り返すかを動きの既定から変える。"
+   },
+   {
+    "name": "paused",
+    "type": "boolean",
+    "required": false,
+    "description": "動きを止める。",
+    "default": "false"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": true,
+    "description": "読み上げる名前（「シフトくん」など）。"
+   },
+   {
+    "name": "size",
+    "type": "string | number",
+    "required": false,
+    "description": "幅。数値は px。既定はデザインが決める。高さは絵の比率に従う。"
+   }
+  ],
+  "emits": [
+   {
+    "name": "motionend",
+    "payload": "[motion: string]",
+    "description": "1回だけの動きが終わった（このあと待機の動きに戻る）。"
+   }
+  ],
+  "slots": [],
+  "parts": [
+   "root",
+   "figure"
+  ],
+  "dataAr": "mascot"
+ },
+ {
   "name": "ArMenuTile",
   "version": "1.0.0",
   "description": "メニュー画面のタイル。テーマ色の四角に線のアイコン、下に名前、右上に件数（と名前の下の赤い一言）。\n並べ方（7列・4列など）は使う側の ArGrid が決める。読み上げは「名前（一言）」、件数は「〜件」と読む。",
@@ -12159,6 +12249,12 @@
     "required": false,
     "description": "読み上げの名前。",
     "default": "{ prev: \"前へ\", next: \"次へ\", pick: \"期間を選ぶ\" }"
+   },
+   {
+    "name": "hint",
+    "type": "string",
+    "required": false,
+    "description": "真ん中の文字に乗せたとき、その上に1行で出す説明（「計算期間 2026/10/21 〜 2026/11/20」など）。"
    }
   ],
   "emits": [

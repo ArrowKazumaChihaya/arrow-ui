@@ -86,3 +86,40 @@
 @media(max-width:959px) {
   [data-ar-design="remix"] .ai-chat__composer textarea[data-v-ai-chat] { font-size:calc(16px * var(--ar-font-scale, 1)); }
 }
+/* マスコット：右下の入口（押すとチャットが開く）と、チャットの頭の話し相手。絵と色は ArMascot とテーマ色が持つ。 */
+[data-ar-design="remix"] .ai-chat__mascot[data-v-ai-chat] {
+  border: 0;
+  border-radius: 20px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  transition: transform var(--ar-motion-fast);
+}
+[data-ar-design="remix"] .ai-chat__mascot[data-v-ai-chat]:hover { transform: translateY(-3px); }
+[data-ar-design="remix"] .ai-chat__mascot[data-v-ai-chat]:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--ar-accent-ring);
+}
+[data-ar-design="remix"] .ai-chat__mascot [data-ar="mascot"] { filter: drop-shadow(0 4px 6px rgba(21, 35, 55, .14)); }
+[data-ar-design="remix"] .ai-chat__mascot-hint[data-v-ai-chat] {
+  border: 1px solid var(--ar-accent-line);
+  border-radius: 14px 14px 2px 14px;
+  background: var(--ar-color-surface);
+  color: var(--ar-accent-ink);
+  box-shadow: var(--ar-shadow-pop);
+  font-size:calc(12px * var(--ar-font-scale, 1));
+  font-weight: 700;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--ar-motion-fast), transform var(--ar-motion-fast);
+  pointer-events: none;
+}
+[data-ar-design="remix"] .ai-chat__mascot:is(:hover, :focus-visible, .is-greeting) .ai-chat__mascot-hint[data-v-ai-chat] {
+  opacity: 1;
+  transform: none;
+}
+[data-ar-design="remix"] .ai-chat__heading-name[data-v-ai-chat] { color: var(--ar-accent-ink); }
+@media (prefers-reduced-motion: reduce) {
+  [data-ar-design="remix"] :is(.ai-chat__mascot, .ai-chat__mascot-hint)[data-v-ai-chat] { transition: none; }
+}
