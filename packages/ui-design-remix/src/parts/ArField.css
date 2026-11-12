@@ -13,6 +13,9 @@
 [data-ar-design="remix"] [data-ar="field"][data-layout="toolbar"]{gap:8px}
 [data-ar-design="remix"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{gap:4px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600;line-height:18.75px;color:var(--ar-color-text-muted)}
 
+/* 横並びの項目で、スイッチ・チェック・ラジオは入力欄（高さ36px）の縦の真ん中にそろえる（ラベルの8px下げと同じ中心） */
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]>:is([data-ar="switch"],[data-ar="checkbox"],[data-ar="radio-group"],[data-ar="flag-group"]){min-height:36px;align-items:center}
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]>:is([data-ar="switch"],[data-ar="checkbox"]){display:inline-flex}
 /* 狭い入力欄は親幅で縦配置へ。画面幅が広いダイアログやカラム内も同じ扱い。 */
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{container-type:inline-size;container-name:ar-field;min-width:0;grid-template-columns:minmax(0,var(--ar-field-label)) minmax(0,1fr)}
 @container ar-field (max-width:480px){
