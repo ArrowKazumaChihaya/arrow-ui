@@ -282,3 +282,16 @@
   [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="help"]>[data-part="help-label"]{display:none}
   [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="help"]>[data-part="help-icon"]{width:22px;height:22px;color:#2F5E9B}
 }
+
+/* ===== ヘッダーのページ切り替え：アイコンの丸と白いボタン（大きさは変えない） =====
+   文字だけが並んでいて地味という声への対応。classic のアイコンボタンのかわいらしさを、横並びのまま取り入れる。
+   丸の色は項目の palette（--hd-tint / --hd-ink）を使い、palette がなければテーマ色にする。 */
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]{gap:6px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]{border:1px solid #E6ECEF;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(31,41,51,.05);transition:background .12s,border-color .12s,box-shadow .12s,transform .12s}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:has(>[data-part="item-icon"]){padding:0 14px 0 6px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;background:var(--hd-tint,var(--ar-accent-subtle));color:var(--hd-ink,var(--ar-accent-ink));transition:background .12s,color .12s}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-icon"]>[data-ar="icon"]{width:16px;height:16px}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:hover{border-color:var(--hd-line,var(--ar-accent-ring));background:#fff;box-shadow:0 2px 6px rgba(31,41,51,.10);transform:translateY(-1px)}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-state~="on"]{border-color:var(--hd-line,var(--ar-accent-ring));background:var(--hd-tint,var(--ar-accent-subtle));color:var(--hd-ink,var(--ar-accent-ink));box-shadow:none}
+[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-state~="on"]>[data-part="item-icon"]{background:var(--hd-ink,var(--ar-accent));color:#fff}
+@media (prefers-reduced-motion: reduce){[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:hover{transform:none}}
