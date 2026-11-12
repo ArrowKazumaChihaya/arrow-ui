@@ -47,3 +47,6 @@
 [data-ar-design="remix"] [data-ar="select"]>[data-part="value"]>[data-part="value-description"]{color:var(--ar-color-text-muted);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:500;font-variant-numeric:tabular-nums}
 /* Single choices stay readable in wide forms; an ArField can explicitly request a longer control. */
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-block]:not([data-multiple]){max-width:var(--ar-field-control-size,24rem)}
+/* 幅を決めていない選択は、値が切れない最低の幅を持つ。表のセルに直接置いたものはセルの幅いっぱいにして、行ごとの幅のばらつきをなくす。 */
+[data-ar-design="remix"] [data-ar="select"]:not([data-block]){min-width:120px}
+[data-ar-design="remix"] :is(td,th)>[data-ar="select"]:not([data-block]){display:flex;width:100%}
