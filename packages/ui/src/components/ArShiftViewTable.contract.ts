@@ -37,6 +37,8 @@ export interface ArShiftViewRow {
   avatar?: boolean | string;
   /** 頭文字の丸の色を人ごとに選ぶ元（社員の番号など）。省くと key。 */
   avatarSeed?: string | number;
+  /** 写真のURL。渡すと頭文字の丸の代わりに写真を出す（読み込めない場合は頭文字へ戻る）。 */
+  avatarSrc?: string;
   /** 今日の勤怠の印（名前の前の丸）。working＝勤務中（緑の点）、absent＝まだ打刻がない（白抜き）。省くと出さない。データは製品が渡す。 */
   live?: "working" | "absent";
   /** 従業員の検索で名前のほかに当てる文字（かな・社員番号など）。 */

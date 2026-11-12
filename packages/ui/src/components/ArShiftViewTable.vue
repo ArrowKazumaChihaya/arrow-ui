@@ -378,6 +378,7 @@ function dayState(d: { today: boolean }) {
                   data-part="avatar"
                   size="sm"
                   :text="avatarText(row)"
+                  :src="row.avatarSrc"
                   :seed="row.avatarSeed ?? row.key"
                 />
                 <span data-part="name-text">
