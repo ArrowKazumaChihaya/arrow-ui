@@ -28,4 +28,4 @@ jobs:
       - run: npm run build
       - run: npm test
       - name: Publish unpublished workspace versions
-        run: npx changeset publish
+        run: node scripts/publish-unpublished.mjs
