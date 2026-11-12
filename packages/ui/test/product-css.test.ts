@@ -40,4 +40,22 @@ describe('product stylesheet isolation', () => {
       }
     });
   });
+  it('keeps attendance error rows red for direct and grouped hover', () => {
+    const css = postcss.parse(readFileSync(resolve('packages/ui-design-remix/src/parts/_product.css'), 'utf8'));
+    const directHover = css.nodes.find(node =>
+      node.type === 'rule' && node.selector.includes('tbody tr:hover'),
+    );
+    const groupedHover = css.nodes.find(node =>
+      node.type === 'rule' && node.selector.includes('tr[data-group-hover="on"]'),
+    );
+    const errorHover = css.nodes.find(node =>
+      node.type === 'rule' && node.selector.includes('tr.error') && node.selector.includes(':hover'),
+    );
+
+    expect(directHover?.type === 'rule' ? directHover.selector : '').toContain('.error');
+    expect(groupedHover?.type === 'rule' ? groupedHover.selector : '').toContain(':not(.error)');
+    expect(errorHover?.type === 'rule' ? errorHover.toString() : '').toContain(
+      'var(--ar-color-danger)',
+    );
+  });
 });

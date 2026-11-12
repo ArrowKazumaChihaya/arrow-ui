@@ -272,7 +272,7 @@
 [data-ar-design="remix"] table[data-ui-part="table"] :is(th,td):not([data-ui-fixed], [data-ui-fixed] *) { box-sizing:border-box;padding:10px 12px;border:0;border-bottom:1px solid var(--ar-color-border);vertical-align:middle; }
 [data-ar-design="remix"] table[data-ui-part="table"] th:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-color-bg);font-weight:700;color:var(--ar-color-text-secondary); }
 [data-ar-design="remix"] table[data-ui-part="table"] td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-color-surface); }
-[data-ar-design="remix"] table[data-ui-part="table"] tbody tr:hover:not([data-add-row])>td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-accent-subtle); }
+[data-ar-design="remix"] table[data-ui-part="table"] tbody tr:hover:not([data-add-row],.error)>td:not([data-ui-fixed], [data-ui-fixed] *) { background:var(--ar-accent-subtle); }
 [data-ar-design="remix"] table[data-ui-part="table"] tbody tr:last-child>td:not([data-ui-fixed], [data-ui-fixed] *) { border-bottom:0; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_row th:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;top:0;z-index:2; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_col.col1 :is(th,td):first-child:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;left:0;z-index:1; }
@@ -507,7 +507,7 @@
 /* エラーのある行に乗せたときは、赤のまま少し濃くする（ホバーの色で赤が消えないように） */
 [data-ar-design="remix"] table tbody tr.error:not(.adding,.editting):is(:hover,[data-group-hover="on"])>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:color-mix(in srgb, var(--ar-color-danger) 16%, var(--ar-color-danger-subtle))}
 /* 1人分が何行にもなる表は、どの行に乗せても同じ人の行をまとめて色を変える */
-[data-ar-design="remix"] table[data-ui-part="table"] tbody tr[data-group-hover="on"]>td:not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] table[data-ui-part="table"] tbody tr[data-group-hover="on"]:not(.error)>td:not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-accent-subtle)}
 
 /* シフト詳細の時刻の行：p の既定の上下の余白（約15px）を消し、勤怠詳細と同じ行の高さにする */
 [data-ar-design="remix"] .time_cell>.shift_time_col:not([data-ui-fixed], [data-ui-fixed] *){margin:0}
