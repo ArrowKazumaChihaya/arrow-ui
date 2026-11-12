@@ -1,8 +1,8 @@
 /* @covers ArTable 1.7.0 */
 /* ArTable（box＝.lst/.lr：外枠 角丸12・線、見出し34・行44。board＝シフト画面の .v-tr：外枠なし、角の丸い見出し・行50・合計の帯） */
-[data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:13px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
-[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"]{padding:0 8px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:11.5px;font-weight:700;letter-spacing:.04em;line-height:1.5;white-space:nowrap;border-bottom:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"]{padding:0 8px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:700;letter-spacing:.04em;line-height:1.5;white-space:nowrap;border-bottom:1px solid var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="table"] thead[data-part="head"]>tr{height:42px}
 [data-ar-design="remix"] [data-ar="table"] :is(tbody[data-part="body"]>tr[data-part="row"],tfoot[data-part="foot"]>tr){height:44px}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"]{padding:4px 8px;border-bottom:1px solid var(--ar-color-border-subtle);font-variant-numeric:tabular-nums}
@@ -12,8 +12,8 @@
 [data-ar-design="remix"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="expand"]{width:22px;box-sizing:content-box}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-numeric]{font-variant-numeric:tabular-nums;font-family:var(--ar-font-family-numeric)}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="strong"]{font-weight:700}
-[data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="muted"]{color:var(--ar-color-text-muted);font-size:12.5px}
-[data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="note"]{color:var(--ar-color-text-secondary);font-size:12.5px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="muted"]{color:var(--ar-color-text-muted);font-size:calc(12.5px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-emphasis="note"]{color:var(--ar-color-text-secondary);font-size:calc(12.5px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-blank]{color:var(--ar-color-text-muted);font-weight:400}
 
 /* 外枠（box）。見出しと色のついた行は枠の線の上に塗る（.lst と同じ） */
@@ -30,7 +30,7 @@
 /* 名前の列：頭文字の丸＋名前（＋小さな説明） */
 [data-ar-design="remix"] [data-ar="table"] td [data-part="person"]{gap:10px}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>b{font-weight:600;color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{font-size:11px;line-height:1.5;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{font-size:calc(11px * var(--ar-font-scale, 1));line-height:1.5;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]{gap:4px}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="person"]>[data-part="name"]>[data-part="sub"]>[data-part="sub-mark"]{width:7px;height:7px;border-radius:2px}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="actions"]{gap:8px}
@@ -51,14 +51,14 @@
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="expand-toggle"]{width:22px;height:22px;align-items:center;justify-content:center;border-radius:6px;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="expand-toggle"]:hover{background:var(--ar-color-hover);color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="expand-toggle"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:1px}
-[data-ar-design="remix"] [data-ar="table"] tr[data-part="expanded-row"]>td{padding:9px 12px;background:var(--ar-color-surface-alt);color:var(--ar-color-text-secondary);font-size:12.5px;border-bottom:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="table"] tr[data-part="expanded-row"]>td{padding:9px 12px;background:var(--ar-color-surface-alt);color:var(--ar-color-text-secondary);font-size:calc(12.5px * var(--ar-font-scale, 1));border-bottom:1px solid var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="table"] tr[data-part="expanded-row"]>td[data-col="select"]{padding:0 0 0 12px}
 
 /* 合計の行（bg-2・太字・上に線） */
 [data-ar-design="remix"] [data-ar="table"] tfoot[data-part="foot"] [data-part="cell"]{background:var(--ar-color-surface-alt);font-weight:700;border-top:1px solid var(--ar-color-border);border-bottom:0}
 
-[data-ar-design="remix"] [data-ar="table"] tfoot[data-part="foot"] [data-part="foot-label"]{margin-bottom:1px;font-size:10.5px;font-weight:700;line-height:1.25;letter-spacing:.04em;color:var(--ar-color-text-muted)}
-[data-ar-design="remix"] [data-ar="table"] tfoot[data-part="foot"] [data-part="foot-value"]{font-size:14px;font-weight:700;line-height:1.25;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="table"] tfoot[data-part="foot"] [data-part="foot-label"]{margin-bottom:1px;font-size:calc(10.5px * var(--ar-font-scale, 1));font-weight:700;line-height:1.25;letter-spacing:.04em;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="table"] tfoot[data-part="foot"] [data-part="foot-value"]{font-size:calc(14px * var(--ar-font-scale, 1));font-weight:700;line-height:1.25;font-variant-numeric:tabular-nums}
 
 /* 空・見出しの下の行・表の下 */
 [data-ar-design="remix"] [data-ar="table"] td[data-part="empty"]{padding:4px 12px}
@@ -76,7 +76,7 @@
 [data-ar-design="remix"] [data-ar="table"][data-density="compact"] tbody[data-part="body"]>tr[data-part="row"]{height:36px}
 
 /* board：シフト画面の「勤務メンバー」「勤務可能な人」 */
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"]{font-size:13.5px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"]{font-size:calc(13.5px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="header-cell"]{padding:0 8px;border-bottom:0}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="header-cell"]:first-child{border-radius:10px 0 0 10px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="header-cell"]:last-child{border-radius:0 10px 10px 0}
@@ -86,9 +86,9 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] :is([data-part="header-cell"],[data-part="cell"]):last-child{padding-right:8px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="row"]:hover>td{background:#FAFBFD}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-col="actions"]{padding-left:0}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="strong"]{font-size:14.5px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="strong"]{font-size:calc(14.5px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="lines"]{line-height:1.45}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="muted"]{font-size:13.5px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-emphasis="muted"]{font-size:calc(13.5px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="cell"][data-blank]{color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td [data-part="person"]{gap:10px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td [data-part="person"]>[data-part="name"]>b{font-weight:700}
@@ -98,7 +98,7 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot[data-part="foot"] [data-part="cell"]:first-child{border-radius:10px 0 0 10px;padding-left:14px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot[data-part="foot"] [data-part="cell"]:last-child{border-radius:0 10px 10px 0}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"][data-density="compact"] tbody[data-part="body"]>tr[data-part="row"]{height:46px}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"][data-density="compact"] [data-part="cell"]{font-size:13px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"][data-density="compact"] [data-part="cell"]{font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td[data-part="empty"]{border-bottom:1px solid var(--ar-color-border-subtle)}
 /* board の名前だけの列（勤務可能な人）：丸は 28px・12px、間8px、名前はさらに太く。見出しは左に 12px。 */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] th[data-person="single"]:first-child{padding-left:12px}
@@ -107,7 +107,7 @@
 /* board の行の右端の操作：上にそろえ、文字のボタン（「シフトに入れる」）とアイコンのボタンの間は 4px */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]{align-items:flex-start}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td>[data-part="actions"]>[data-ar="button"]:not([data-icon-only])+[data-ar="button"]{margin-left:2px}
-[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"][data-col="select"]>[data-part="select-text"]{margin-right:6px;font-size:12px}
+[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"][data-col="select"]>[data-part="select-text"]{margin-right:6px;font-size:calc(12px * var(--ar-font-scale, 1))}
 /* 行の並べ替え（シフトパターンの一覧と同じ）：左に 24px のつまみの列（⠿ 15px・text-faint・つかむ手のカーソル）。運んでいる行は淡いテーマ色、置く所はテーマ色の線 */
 [data-ar-design="remix"] [data-ar="table"] :is([data-part="header-cell"],[data-part="cell"])[data-col="drag"]{width:24px;box-sizing:content-box;padding-right:0}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="drag-handle"]{width:24px;height:28px;border-radius:6px;color:var(--ar-color-text-faint);cursor:grab}
@@ -138,23 +138,23 @@
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]:hover{color:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
 /* 見出しの列から開くボタン（年調の「＋ 合計」：.btn.tint.sm 24px・11.5px） */
-[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"][data-toggle="column"]{height:24px;padding:0 8px;border-radius:7px;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:11.5px;font-weight:700}
+[data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"][data-toggle="column"]{height:24px;padding:0 8px;border-radius:7px;background:var(--ar-accent-muted);color:var(--ar-accent-ink);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="table"] th>[data-part="group-toggle"][data-toggle="column"]:hover{background:var(--ar-accent-line)}
 /* 行をまたぐセルは上にそろえ、上下に余白（年調の1人3段の行） */
 [data-ar-design="remix"] [data-ar="table"] td[rowspan]{vertical-align:middle}
 /* 3段の金額（年調：課税支給／社会保険料等／所得税）：1段 24px・間 2px・12.5px */
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="stack"]{gap:2px;padding:8px 0}
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="stack"]>*{height:24px;font-size:12.5px;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="stack"]>*{height:24px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-variant-numeric:tabular-nums}
 /* 表の中の小さな金額の入力（高さ24・右寄せ・12.5px 500・角丸6・線 field）。直した欄はテーマ色の線と acc-50（給与のページでは黄色）、間違いは赤い線 */
 [data-ar-design="remix"] [data-ar="table"] td[data-editing]{padding-top:4px;padding-bottom:4px}
-[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"]{width:100%;max-width:108px;height:24px;padding:0 6px;border:1px solid var(--ar-color-field);border-radius:6px;background:#fff;color:var(--ar-color-text);font-size:12.5px;font-weight:500;text-align:right;font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"]{width:100%;max-width:108px;height:24px;padding:0 6px;border:1px solid var(--ar-color-field);border-radius:6px;background:#fff;color:var(--ar-color-text);font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:500;text-align:right;font-variant-numeric:tabular-nums;outline:0;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"]:hover{border-color:var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"]:focus{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"][data-state~="changed"]{border-color:var(--ar-accent);background:var(--ar-accent-subtle);font-weight:700}
 [data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"][data-state~="invalid"]{border-color:var(--ar-color-danger);background:#FFF6F5}
 [data-ar-design="remix"] [data-ar="table"] td[data-align="end"]>[data-part="cell-input"]{display:block;margin-left:auto}
 /* 数字の下の小さな行（前月との差）：11px 700・行の高さ1.3。目立たせる差は #8A4F00 */
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"]{font-size:11px;font-weight:700;line-height:1.3;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"]{font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:1.3;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"][data-tone="warn"]{color:var(--ar-color-warn)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="delta"][data-tone="danger"]{color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="mark"]{width:12px;height:12px;margin-left:3px;color:var(--ar-accent-ink)}
@@ -174,20 +174,20 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] [data-part="row"][data-state~="hover"]>td{background:var(--ar-accent-faint)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="row"][data-state~="hover"]>td{background:#FAFBFD}
 /* 1.2：表の中の文字の入力（editor="text"：高さ32・角丸8・左寄せ。時刻・選ぶは ArTimeInput・ArSelect の sm をそのまま置く） */
-[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"][data-editor="text"]{max-width:none;height:32px;padding:0 10px;border-radius:8px;font-size:13px;font-weight:400;text-align:left}
+[data-ar-design="remix"] [data-ar="table"] td [data-part="cell-input"][data-editor="text"]{max-width:none;height:32px;padding:0 10px;border-radius:8px;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:400;text-align:left}
 /* 1.2：board の2段の見出し：下の段のセルは角を丸めない（角は段をまたぐ左右の端のセルと上の段が持つ） */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead>tr[data-tier="2"]>[data-part="header-cell"]{border-radius:0}
 /* 1.2：セルの頭の「〜」（PopRecruit の募集時間の「10:00 〜 19:00」：#A3AEB9・13px、入力との間8） */
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="lead"]{margin-right:8px;color:#A3AEB9;font-size:13px}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="lead"]{margin-right:8px;color:#A3AEB9;font-size:calc(13px * var(--ar-font-scale, 1))}
 /* 1.3：時間の組（PopBulk・PopRecruit の「10:00 〜 19:00」：入力の間8、「〜」は #A3AEB9。組を消す × は 24px・角丸6 の灰色、押すと赤） */
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"][data-editor="time-range"]{gap:8px}
-[data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="range-sep"]{color:#A3AEB9;font-size:13px}
+[data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="range-sep"]{color:#A3AEB9;font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]{width:24px;height:24px;border-radius:6px;color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="cell-editor"]>[data-part="line-remove"]:hover{background:#FDECEA;color:var(--ar-color-danger)}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="drag-handle"]:disabled{opacity:.35}
 [data-ar-design="remix"] [data-ar="table"] td>[data-part="actions"][data-kind="edit"]{gap:6px}
 /* 1.4：行ぜんぶを1つのセル（案内・説明の行）：上下10・左右12、折り返す、灰色の 12.5px の文 */
-[data-ar-design="remix"] [data-ar="table"] td[data-full]{padding:10px 12px;color:var(--ar-color-text-secondary);font-size:12.5px;line-height:1.6;white-space:normal}
+[data-ar-design="remix"] [data-ar="table"] td[data-full]{padding:10px 12px;color:var(--ar-color-text-secondary);font-size:calc(12.5px * var(--ar-font-scale, 1));line-height:1.6;white-space:normal}
 
 /* Long comments and document reasons can share the available table width. */
 [data-ar-design="remix"] [data-ar="table"][data-fit]>[data-part="viewport"]>[data-part="table"]{width:100%;table-layout:fixed}

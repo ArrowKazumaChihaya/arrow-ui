@@ -17,7 +17,7 @@
 .attention_wrap
   .attention_group
   p[data-v-ui8dc1dbea53ac]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   font-weight: 600;
   line-height: 15px;
 }
@@ -33,7 +33,7 @@
   border-radius: 4px;
   padding: 10px;
   text-align: center;
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   font-weight: 600;
   margin: 8px 10px;
   border: 1px solid black;
@@ -77,7 +77,7 @@
 .attention_wrap
   .attention_group
   p[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   font-weight: 600;
   line-height: 15px;
 }
@@ -93,7 +93,7 @@
   border-radius: 4px;
   padding: 10px;
   text-align: center;
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   font-weight: 600;
   margin: 8px 10px;
   border: 1px solid black;
@@ -113,7 +113,7 @@
 .not_lock_caution[data-v-ui63f52db86fb8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   margin-bottom: 5px;
 }
 /* @end-component */
@@ -126,7 +126,7 @@
 
 /* @component src/View/Manager/Document/DocumentSelect/Join.vue#0 */
 .document_title[data-v-ui10eb4745ea5b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;
@@ -137,7 +137,7 @@
 
 /* @component src/View/Manager/Document/DocumentSelect/Nencho.vue#0 */
 .document_title[data-v-ui2485bbd8688a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;
@@ -148,7 +148,7 @@
 
 /* @component src/View/Manager/Document/DocumentSelect/Other.vue#0 */
 .document_title[data-v-ui9cf364f8c6a4]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;
@@ -159,7 +159,7 @@
 
 /* @component src/View/Manager/Document/DocumentSelect/Payment.vue#0 */
 .document_title[data-v-ui72aa815006c0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;
@@ -170,7 +170,7 @@
 
 /* @component src/View/Manager/Document/DocumentSelect/Remuneration.vue#0 */
 .document_title[data-v-ui035e7192d902]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;
@@ -181,7 +181,7 @@
 
 /* @component src/View/Manager/Document/DocumentSelect/Retire.vue#0 */
 .document_title[data-v-uia17fbcc265f7]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;
@@ -192,7 +192,7 @@
 
 /* @component src/View/Manager/Document/DocumentSelect/SocialIns.vue#0 */
 .document_title[data-v-ui3f7a3faff0a6]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;
@@ -203,7 +203,7 @@
 
 /* @component src/View/Personal/Document/DocumentSelect/Nencho.vue#0 */
 .document_title[data-v-ui2df78fd8e0fa]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 30px;
   text-align: center;
   font-weight: 600;

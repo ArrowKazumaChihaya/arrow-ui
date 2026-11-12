@@ -2,11 +2,11 @@
 /* 今の ARROW の設定（Config/Shift/Base.vue など）：変えると項目の下に antd の Space（間 8px）で
    「キャンセル」（cancel・アイコン cancel）と「実行」（add・点滅・アイコン exec）のボタンが並ぶ。どちらも幅 130px（preset pd81afb28719c）。
    件数と項目名は出さない（forms.ArSaveBar.summary="hidden"。読み上げには残す）。直すところのボタンは ARROW の Button の delete 系を小さく。 */
-[data-ar-design="classic"] [data-ar="save-bar"]{gap:8px;padding:0;background:none;font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="save-bar"]{gap:8px;padding:0;background:none;font:calc(13px * var(--ar-font-scale, 1))/calc(13px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
 [data-ar-design="classic"] [data-ar="save-bar"][data-summary="hidden"]>[data-part="spacer"]{display:none}
 [data-ar-design="classic"] [data-ar="save-bar"]>[data-ar="button"]:is([data-tone="secondary"],[data-tone="primary"]){width:130px}
 [data-ar-design="classic"] [data-ar="save-bar"][data-sticky]{padding:8px 0;background:#fff}
 /* 件数の札は ArTag。classic は今の形（antd の warning の札・#D48806）をここで保つ */
 [data-ar-design="classic"] [data-ar="save-bar"]>[data-part="count"][data-ar="tag"]{height:auto;margin:0;box-shadow:none;font-family:inherit;padding:0;border:0;border-radius:0;background:none;color:inherit;font-size:inherit;font-weight:inherit;line-height:inherit}
-[data-ar-design="classic"] [data-ar="save-bar"][data-summary="show"]>[data-part="count"][data-ar="tag"]{padding:0 7px;border:1px solid #FFE58F;border-radius:4px;background:#FFFBE6;color:#D48806;font-size:12px;line-height:20px}
+[data-ar-design="classic"] [data-ar="save-bar"][data-summary="show"]>[data-part="count"][data-ar="tag"]{padding:0 7px;border:1px solid #FFE58F;border-radius:4px;background:#FFFBE6;color:#D48806;font-size:calc(12px * var(--ar-font-scale, 1));line-height:20px}
 [data-ar-design="classic"] [data-ar="save-bar"][data-summary="show"]>[data-part="items"]{color:rgba(0,0,0,.65)}

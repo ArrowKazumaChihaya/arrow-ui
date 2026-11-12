@@ -13,7 +13,7 @@
 [data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]{width:56px;padding:4px;gap:2px;border-right:1px solid var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]:last-child{border-right:0}
 [data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]{height:28px;line-height:28px;text-align:center;border-radius:7px;font:500 13px var(--ar-font-family-numeric)}
+[data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]{height:28px;line-height:28px;text-align:center;border-radius:7px;font:500 calc(13px * var(--ar-font-scale, 1)) var(--ar-font-family-numeric)}
 [data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"]:hover:not([data-state~="selected"]){background:var(--ar-color-hover)}
 [data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="cols"]>[data-part="col"]>[data-part="cell"][data-state~="selected"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
 [data-ar-design="remix"] [data-ar="time-picker-panel"]>[data-part="foot"]{padding:8px;border-top:1px solid var(--ar-color-border-subtle)}

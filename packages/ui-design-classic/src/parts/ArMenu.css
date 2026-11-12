@@ -1,9 +1,9 @@
 /* @covers ArMenu 1.0.0 */
 /* ArMenu：今の ARROW の左メニュー（UI/Menu ＝ ant-design-vue の inline Menu に ARROW の上書き）。
  * 項目 高さ35.5・13px・左の余白24、選択中は #E8F0FE の地と #1677FF の文字（角丸 0 18 18 0）。子を持つ親は角丸8。子の項目は左に2pxの線（選択中は #1A73E8）。 */
-[data-ar-design="classic"] [data-ar="menu"]{gap:4px;color:rgba(0,0,0,.88);font-size:13px;background:#fff}
+[data-ar-design="classic"] [data-ar="menu"]{gap:4px;color:rgba(0,0,0,.88);font-size:calc(13px * var(--ar-font-scale, 1));background:#fff}
 [data-ar-design="classic"] [data-ar="menu"][data-bordered]:not([data-mode="inline"]){border-right:1px solid rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="menu"]>[data-part="group"]{padding:8px 16px 8px 24px;color:rgba(0,0,0,.45);font-size:13px;line-height:22px}
+[data-ar-design="classic"] [data-ar="menu"]>[data-part="group"]{padding:8px 16px 8px 24px;color:rgba(0,0,0,.45);font-size:calc(13px * var(--ar-font-scale, 1));line-height:22px}
 [data-ar-design="classic"] [data-ar="menu"]>[data-part="divider"]{height:1px;margin:1px 0;background:rgba(5,5,5,.06)}
 [data-ar-design="classic"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"]{gap:10px;height:35.5px;margin:0 4px;padding:0 16px 0 24px;border-radius:0 18px 18px 0;transition:background .3s,color .3s}
 [data-ar-design="classic"] [data-ar="menu"][data-mode="vertical"]>[data-part="item"]{padding-left:16px}

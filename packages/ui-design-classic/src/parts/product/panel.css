@@ -10,7 +10,7 @@
 }
 .card_component
   .card_title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: var(--arrow-card-title-size, 16px);
+  font-size:var(--arrow-card-title-size, calc(16px * var(--ar-font-scale, 1)));
   font-weight: 600;
   margin-bottom: 10px;
 }

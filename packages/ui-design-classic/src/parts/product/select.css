@@ -12,20 +12,20 @@
 }
 .select_component
   .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px !important;
+  font-size:calc(14px * var(--ar-font-scale, 1)) !important;
 }
 .ant-select-dropdown:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   animation-duration: 0.1s;
 }
 .ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .ant-select-selection-placeholder:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px !important;
+  font-size:calc(14px * var(--ar-font-scale, 1)) !important;
 }
 .ant-select-selection-item
   span:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .ant-select-selection-placeholder
   span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px !important;
+  font-size:calc(14px * var(--ar-font-scale, 1)) !important;
   vertical-align: middle !important;
 }
 .ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -49,13 +49,13 @@
   .ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *),
   .ant-select-selection-placeholder:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     margin-left: 8px !important;
-    font-size: var(--arrow-control-font-size-mobile, 13px) !important;
+    font-size:var(--arrow-control-font-size-mobile, calc(13px * var(--ar-font-scale, 1))) !important;
   }
   .ant-select-selection-item
     span:where([data-ar-design="classic"], [data-ar-design="classic"] *),
   .ant-select-selection-placeholder
     span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: var(--arrow-control-font-size-mobile, 13px) !important;
+    font-size:var(--arrow-control-font-size-mobile, calc(13px * var(--ar-font-scale, 1))) !important;
   }
   .ant-select-selection-item:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     line-height: 23px !important;
@@ -71,7 +71,7 @@
     line-height: 25px !important;
   }
   .ant-select-dropdown-menu-item:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 11px !important;
+    font-size:calc(11px * var(--ar-font-scale, 1)) !important;
   }
   .ant-select-dropdown-menu-item.button_option:hover:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     background-color: initial;

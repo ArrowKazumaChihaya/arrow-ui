@@ -3,12 +3,12 @@
    placeholder「000000」。再送は .btn.login__mfa__challenge（260×54・#5c88ac・角丸5・白の16px太字）。箱の形（split）でも同じ地と角丸で描く） */
 [data-ar-design="classic"] [data-ar="otp-input"]{display:flex;width:100%;gap:20px;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;color:#333}
 [data-ar-design="classic"] [data-ar="otp-input"]>[data-part="fields"]{gap:8px}
-[data-ar-design="classic"] [data-ar="otp-input"]>[data-part="fields"]>[data-part="input"]{width:100%;height:54px;padding:0 16px;border:none;border-radius:4px;background:#edf3f7;color:#333;font-size:16px;line-height:normal}
+[data-ar-design="classic"] [data-ar="otp-input"]>[data-part="fields"]>[data-part="input"]{width:100%;height:54px;padding:0 16px;border:none;border-radius:4px;background:#edf3f7;color:#333;font-size:calc(16px * var(--ar-font-scale, 1));line-height:normal}
 [data-ar-design="classic"] [data-ar="otp-input"]>[data-part="fields"]>[data-part="input"]::placeholder{color:#757575}
-[data-ar-design="classic"] [data-ar="otp-input"]>[data-part="fields"]>[data-part="cell"]{width:46px;height:54px;border:none;border-radius:4px;background:#edf3f7;color:#333;font-size:16px;line-height:normal}
+[data-ar-design="classic"] [data-ar="otp-input"]>[data-part="fields"]>[data-part="cell"]{width:46px;height:54px;border:none;border-radius:4px;background:#edf3f7;color:#333;font-size:calc(16px * var(--ar-font-scale, 1));line-height:normal}
 [data-ar-design="classic"] [data-ar="otp-input"]>[data-part="fields"]>[data-part]:focus{outline:2px solid #4495d4;outline-offset:0}
 [data-ar-design="classic"] [data-ar="otp-input"][data-state~="invalid"]>[data-part="fields"]>[data-part]{background:#fff2f0;box-shadow:inset 0 0 0 1px #ff4d4f}
 [data-ar-design="classic"] [data-ar="otp-input"][data-state~="disabled"]>[data-part="fields"]>[data-part]{color:rgba(0,0,0,.25);cursor:not-allowed}
-[data-ar-design="classic"] [data-ar="otp-input"]>[data-part="resend"]{align-self:center;width:260px;max-width:100%;height:54px;border-radius:5px;background:#5c88ac;color:#fff;font-size:16px;font-weight:bold;transition:.3s}
+[data-ar-design="classic"] [data-ar="otp-input"]>[data-part="resend"]{align-self:center;width:260px;max-width:100%;height:54px;border-radius:5px;background:#5c88ac;color:#fff;font-size:calc(16px * var(--ar-font-scale, 1));font-weight:bold;transition:.3s}
 [data-ar-design="classic"] [data-ar="otp-input"]>[data-part="resend"]:focus-visible{outline:2px solid #4495d4;outline-offset:2px}
 [data-ar-design="classic"] [data-ar="otp-input"]>[data-part="resend"]:disabled{opacity:.5}

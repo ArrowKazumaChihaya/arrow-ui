@@ -1,6 +1,6 @@
 /* @covers ArDateView 1.1.0 */
 /* ArDateView（シフト画面の日付の見出しと同じ：数字は等幅・600、曜日は小さめの灰色、土曜は sat・日曜祝日は sun の色） */
-[data-ar-design="remix"] [data-ar="date-view"]{color:var(--ar-color-text);font-size:13px;font-weight:600;line-height:1.4;font-variant-numeric:tabular-nums}
-[data-ar-design="remix"] [data-ar="date-view"]>*>[data-part="weekday"]{margin-left:1px;color:var(--ar-color-text-muted);font-size:12px;font-weight:500}
+[data-ar-design="remix"] [data-ar="date-view"]{color:var(--ar-color-text);font-size:calc(13px * var(--ar-font-scale, 1));font-weight:600;line-height:1.4;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="date-view"]>*>[data-part="weekday"]{margin-left:1px;color:var(--ar-color-text-muted);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:500}
 [data-ar-design="remix"] [data-ar="date-view"]>*>[data-part="weekday"][data-tone="sat"]{color:var(--ar-color-sat)}
 [data-ar-design="remix"] [data-ar="date-view"]>*>[data-part="weekday"][data-tone="sun"]{color:var(--ar-color-sun)}

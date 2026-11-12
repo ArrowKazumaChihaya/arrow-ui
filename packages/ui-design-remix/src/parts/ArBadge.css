@@ -3,7 +3,7 @@
    件数の丸はライブラリでこれ1つ。赤はデザインシステムの count（#DC2525。--ar-remix-count）。白い縁は data-ring（子に重ねるとき既定）。
    variant="subtle"：淡い地に濃い字（タブ・表示内容・切り替えの中の件数）。 */
 [data-ar-design="remix"] [data-ar="badge"]{font-family:var(--ar-font-family-numeric,Arial,sans-serif)}
-[data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-remix-count);color:#fff;font-size:11px;font-weight:700;line-height:1;vertical-align:middle;font-variant-numeric:tabular-nums;box-shadow:none}
+[data-ar-design="remix"] [data-ar="badge"]>[data-part="count"]{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ar-remix-count);color:#fff;font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:1;vertical-align:middle;font-variant-numeric:tabular-nums;box-shadow:none}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="count"]:not([data-standalone])>[data-part="count"]{top:-7px;right:-9px}
 [data-ar-design="remix"] [data-ar="badge"]>[data-part="dot"]{width:8px;height:8px;border-radius:50%;background:var(--ar-remix-count);box-shadow:none}
 [data-ar-design="remix"] [data-ar="badge"][data-ring]>:is([data-part="count"],[data-part="dot"]){box-shadow:0 0 0 2px var(--ar-color-surface)}
@@ -17,7 +17,7 @@
 [data-ar-design="remix"] [data-ar="badge"][data-variant="subtle"][data-tone="neutral"]>[data-part="count"]{background:#EEF1F5;color:#525E6B}
 [data-ar-design="remix"] [data-ar="badge"][data-variant="subtle"][data-tone="warn"]>[data-part="count"]{background:var(--ar-color-warn-subtle);color:var(--ar-color-warn)}
 /* 状態の点＋言葉 */
-[data-ar-design="remix"] [data-ar="badge"][data-mode="status"]{gap:7px;font-size:13px;line-height:1.5;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="badge"][data-mode="status"]{gap:7px;font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.5;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="status"]>[data-part="status-dot"]{width:7px;height:7px;border-radius:50%;background:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="status"][data-tone="ok"]>[data-part="status-dot"]{background:var(--ar-color-ok)}
 [data-ar-design="remix"] [data-ar="badge"][data-mode="status"][data-tone="accent"]>[data-part="status-dot"]{background:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
@@ -25,7 +25,7 @@
 [data-ar-design="remix"] [data-ar="badge"][data-mode="status"][data-tone="danger"]>[data-part="status-dot"]{background:var(--ar-color-danger)}
 
 /* ArRibbon（.ad-rib .rb：上10・右に寄せ、テーマ色の塗り・白い700 11.5px・3/10の余白・角丸6 6 0 6） */
-[data-ar-design="remix"] [data-ar="ribbon"]>[data-part="ribbon"]{top:10px;right:0;padding:3px 10px;border-radius:6px 0 0 6px;background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow);font-family:var(--ar-font-family);font-size:11.5px;font-weight:700;line-height:16px}
+[data-ar-design="remix"] [data-ar="ribbon"]>[data-part="ribbon"]{top:10px;right:0;padding:3px 10px;border-radius:6px 0 0 6px;background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow);font-family:var(--ar-font-family);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:700;line-height:16px}
 [data-ar-design="remix"] [data-ar="ribbon"][data-placement="start"]>[data-part="ribbon"]{right:auto;left:0;border-radius:0 6px 6px 0}
 [data-ar-design="remix"] [data-ar="ribbon"]>[data-part="ribbon"]>[data-part="corner"]{display:none}
 [data-ar-design="remix"] [data-ar="ribbon"][data-tone="danger"]>[data-part="ribbon"]{background:var(--ar-color-danger);color:#fff;text-shadow:none}

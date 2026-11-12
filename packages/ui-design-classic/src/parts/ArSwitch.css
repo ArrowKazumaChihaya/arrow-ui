@@ -13,7 +13,7 @@
 [data-ar-design="classic"] [data-ar="switch"][data-two-way]>[data-part="track"],[data-ar-design="classic"] [data-ar="switch"][data-two-way]:hover:not(:disabled):not([data-state~="loading"])>[data-part="track"]{background:#4096FF}
 [data-ar-design="classic"] [data-ar="switch"][data-tone="accent"]:is([data-state~="on"],[data-two-way])>[data-part="track"],[data-ar-design="classic"] [data-ar="switch"][data-tone="accent"]:is([data-state~="on"],[data-two-way]):hover:not(:disabled):not([data-state~="loading"])>[data-part="track"]{background:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="switch"][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:calc(100% - 20px)}
-[data-ar-design="classic"] [data-ar="switch"]>[data-part="track"]>[data-part="text"]{padding:0 9px 0 24px;font-size:12px;line-height:22px;color:#fff}
+[data-ar-design="classic"] [data-ar="switch"]>[data-part="track"]>[data-part="text"]{padding:0 9px 0 24px;font-size:calc(12px * var(--ar-font-scale, 1));line-height:22px;color:#fff}
 [data-ar-design="classic"] [data-ar="switch"][data-state~="on"]>[data-part="track"]>[data-part="text"]{padding:0 24px 0 9px}
 [data-ar-design="classic"] [data-ar="switch"][data-size="sm"]>[data-part="track"]{min-width:28px;height:16px}
 [data-ar-design="classic"] [data-ar="switch"][data-size="sm"]>[data-part="track"]>[data-part="thumb"]{width:12px;height:12px}
@@ -23,7 +23,7 @@
 [data-ar-design="classic"] [data-ar="switch"]>[data-part="track"]>[data-part="thumb"]>[data-part="spinner"]{width:12px;height:12px;border:2px solid var(--ar-accent);border-right-color:transparent}
 [data-ar-design="classic"] [data-ar="switch"][data-state~="off"]>[data-part="track"]>[data-part="thumb"]>[data-part="spinner"]{border-color:rgba(0,0,0,.25);border-right-color:transparent}
 [data-ar-design="classic"] [data-ar="switch"][data-size="sm"]>[data-part="track"]>[data-part="thumb"]>[data-part="spinner"]{width:8px;height:8px;border-width:1.5px}
-[data-ar-design="classic"] [data-ar="switch"]{color:#000;font:400 13px/22px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="switch"]{color:#000;font:400 calc(13px * var(--ar-font-scale, 1))/calc(22px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
 [data-ar-design="classic"] [data-ar="switch"]>[data-part="before"]{margin-right:5px}
 [data-ar-design="classic"] [data-ar="switch"]>[data-part="after"]{margin-left:4px}
 [data-ar-design="classic"] [data-ar="switch"]>:is([data-part="before"],[data-part="after"]) svg{width:22px;height:22px}

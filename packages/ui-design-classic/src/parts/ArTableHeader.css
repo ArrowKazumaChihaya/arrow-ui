@@ -1,4 +1,4 @@
 /* @covers ArTableHeader 1.0.0 */
-[data-ar-design="classic"] [data-ar="table-header"]{background:var(--ar-color-bg);color:var(--ar-color-text-secondary);font-size:12px;font-weight:700;padding:10px 12px;border-bottom:1px solid var(--ar-color-border)}
+[data-ar-design="classic"] [data-ar="table-header"]{background:var(--ar-color-bg);color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:700;padding:10px 12px;border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="classic"] [data-ar="table-header"] [data-part="sort"]{color:var(--ar-color-text-muted);opacity:.5}
 [data-ar-design="classic"] [data-ar="table-header"] [data-part="sort"][data-sort]{color:var(--ar-accent-ink);opacity:1}

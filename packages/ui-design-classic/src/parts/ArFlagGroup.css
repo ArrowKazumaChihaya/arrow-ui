@@ -3,4 +3,4 @@
 [data-ar-design="classic"] [data-ar="flag-group"]{column-gap:0;line-height:30px}
 [data-ar-design="classic"] [data-ar="flag-group"][data-direction="vertical"]{row-gap:0}
 [data-ar-design="classic"] [data-ar="flag-group"]>[data-ar="checkbox"]{min-height:30px}
-[data-ar-design="classic"] [data-ar="flag-view"]{column-gap:10px;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="flag-view"]{column-gap:10px;font:calc(13px * var(--ar-font-scale, 1))/calc(32px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}

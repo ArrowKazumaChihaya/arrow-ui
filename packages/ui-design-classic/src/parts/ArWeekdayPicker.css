@@ -2,7 +2,7 @@
 /* ArWeekdayPicker（ui-Flag）：今は曜日を Check で横に並べる。ボタンを Check の形に描く（16×16・角丸4・灰 #808080 の枠、選ぶと #1677FF の塗りに白いレ点、
    ラベルは 14px・左5／右10・行30）。曜日の文字は黒のまま。 */
 [data-ar-design="classic"] [data-ar="weekday-picker"]{gap:0}
-[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]{position:relative;gap:5px;height:30px;padding:0 10px 0 0;border:0;background:none;color:rgba(0,0,0,.88);font-size:14px;line-height:30px}
+[data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]{position:relative;gap:5px;height:30px;padding:0 10px 0 0;border:0;background:none;color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));line-height:30px}
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]::before{content:"";width:16px;height:16px;border:1px solid #808080;border-radius:4px;background:#fff;box-sizing:border-box;transition:all .2s}
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"][data-state~="on"]::before{background:#1677FF}
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"][data-state~="on"]::after{content:"";position:absolute;left:5.5px;top:10px;width:5px;height:9px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);box-sizing:border-box}
@@ -12,14 +12,14 @@
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]:disabled::before{background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="weekday-picker"]>[data-part="day"]:disabled::after{border-color:rgba(0,0,0,.25)}
 /* 大きさ：xs（表の行。1.0 の sm）は 13px、sm は行24、lg は行40・16px（印は16pxのまま。antd の Checkbox に大きさは無い） */
-[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="xs"]>[data-part="day"]{font-size:13px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="xs"]>[data-part="day"]{font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="weekday-picker"][data-size="sm"]>[data-part="day"]{height:24px;line-height:24px}
-[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="lg"]>[data-part="day"]{height:40px;font-size:16px;line-height:40px}
+[data-ar-design="classic"] [data-ar="weekday-picker"][data-size="lg"]>[data-part="day"]{height:40px;font-size:calc(16px * var(--ar-font-scale, 1));line-height:40px}
 [data-ar-design="classic"] [data-ar="weekday-picker"][data-size="lg"]>[data-part="day"][data-state~="on"]::after{top:15px}
 [data-ar-design="classic"] [data-ar="weekday-picker"][data-size="sm"]>[data-part="day"][data-state~="on"]::after{top:7px}
 /* ArPills（今の ARROW にないので素の antd 4 の CheckableTag をテーマ色に）：高さ22・角丸4・12px、選ぶとテーマ色の塗りに白、hover はテーマ色の文字。 */
 [data-ar-design="classic"] [data-ar="pills"]{gap:8px}
-[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]{gap:4px;height:22px;padding:0 7px;border:1px solid transparent;border-radius:4px;background:transparent;color:rgba(0,0,0,.88);font-size:12px;line-height:20px;transition:all .2s}
+[data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]{gap:4px;height:22px;padding:0 7px;border:1px solid transparent;border-radius:4px;background:transparent;color:rgba(0,0,0,.88);font-size:calc(12px * var(--ar-font-scale, 1));line-height:20px;transition:all .2s}
 [data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]:hover:not([data-state~="on"]):not(:disabled){color:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"]:active:not(:disabled){background:var(--ar-accent-ink);color:#fff}
 [data-ar-design="classic"] [data-ar="pills"]>[data-part="pill"][data-state~="on"]{background:var(--ar-accent);color:#fff}

@@ -1,5 +1,5 @@
 [data-ar="page-heading"]{box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:10px;margin:0;position:relative}
 [data-ar="page-heading"]>[data-part="label"],[data-ar="page-heading"]>[data-part="suffix"]{position:relative;z-index:1;min-width:0;max-width:100%}
-[data-ar="page-heading"]>[data-part="suffix"]{font-size:13px;letter-spacing:normal}
+[data-ar="page-heading"]>[data-part="suffix"]{font-size:calc(13px * var(--ar-font-scale, 1));letter-spacing:normal}
 
 [data-ar="page-heading"]>[data-part="label"]{overflow-wrap:anywhere}

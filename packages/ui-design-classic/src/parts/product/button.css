@@ -77,7 +77,7 @@
 .ant_button_wrap
   .ant-btn.bordered
   .button_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   padding: 4px 9px;
   padding-right: 10px;
   border-radius: 13px;
@@ -188,7 +188,7 @@
 .ant_button_wrap.large
   .button_content
   .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   font-weight: 600;
 }
 .ant_button_wrap.large
@@ -199,7 +199,7 @@
 .ant_button_wrap.xlarge
   .ant-btn-lg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   padding: 0 30px;
-  font-size: 20px;
+  font-size:calc(20px * var(--ar-font-scale, 1));
   height: 50px;
   font-weight: 600;
 }
@@ -220,7 +220,7 @@
 .ant_button_wrap.xlarge
   .button_content
   .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 18px;
+  font-size:calc(18px * var(--ar-font-scale, 1));
   font-weight: 600;
 }
 .ant_button_wrap.xlarge
@@ -234,7 +234,7 @@
 .ant_button_wrap.small
   .ant-btn-sm:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   padding: 0 15px;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .ant_button_wrap.small
   .button_content
@@ -251,7 +251,7 @@
 .ant_button_wrap.small
   .button_content
   .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   line-height: 21.5px;
 }
 .ant_button_wrap.small
@@ -405,7 +405,7 @@
   .ant_button_wrap
     .ant-btn:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     height: 27px !important;
-    font-size: 11px !important;
+    font-size:calc(11px * var(--ar-font-scale, 1)) !important;
     padding: 0 5.5px !important;
   }
   .ant_button_wrap
@@ -436,13 +436,13 @@
   .ant_button_wrap.bordered
     .button_content
     .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 11px !important;
+    font-size:calc(11px * var(--ar-font-scale, 1)) !important;
     line-height: 14px !important;
   }
   .ant_button_wrap.large
     .button_content
     .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 13px;
+    font-size:calc(13px * var(--ar-font-scale, 1));
     font-weight: 600;
   }
   .ant_button_wrap.large
@@ -453,7 +453,7 @@
   .ant_button_wrap.xlarge
     .ant-btn-lg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     padding: 0 20px !important;
-    font-size: 18px !important;
+    font-size:calc(18px * var(--ar-font-scale, 1)) !important;
     height: 40px !important;
   }
   .ant_button_wrap.xlarge
@@ -473,7 +473,7 @@
   .ant_button_wrap.xlarge
     .button_content
     .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 16px !important;
+    font-size:calc(16px * var(--ar-font-scale, 1)) !important;
   }
   .ant_button_wrap.xlarge
     .button_content

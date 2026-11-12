@@ -7,7 +7,7 @@
 .kana[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   position: absolute;
   top: -15px;
-  font-size: 10px;
+  font-size:calc(10px * var(--ar-font-scale, 1));
 }
 .name_sp[data-v-ui88869ebda791]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   display: none;

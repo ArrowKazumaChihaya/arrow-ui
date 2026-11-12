@@ -14,7 +14,7 @@
   width: 14.2857142857%;
   height: 30px;
   line-height: 30px;
-  font-size: 15px;
+  font-size:calc(15px * var(--ar-font-scale, 1));
   font-weight: 600;
   color: black;
   text-align: center;
@@ -44,7 +44,7 @@
   border-radius: 50%;
   background-color: rgb(240, 240, 240);
   margin: 0 auto;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   font-weight: 600;
   line-height: 30px;
   color: black;
@@ -53,7 +53,7 @@
   table
   td
   .text.first_day[data-v-ui29017bfbd67f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 .calendar_component
   table

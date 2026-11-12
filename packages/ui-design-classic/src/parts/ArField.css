@@ -2,21 +2,21 @@
 /* ArField（今の ARROW の Form.Item）：ラベル 14px 600・行の高さ32。必須は前に赤い *（SimSun 14px #ff4d4f・右に4px）。
    横（horizontal）はラベルの後ろに「:」（左2px・右8px）・右寄せ。縦（vertical）はラベルの下に8px・「:」なし。
    間違いは入力の真下に #ff4d4f 13px（行の高さ13px：div のグローバル指定）、説明は rgba(0,0,0,.45) 14px・行の高さ22px。 */
-[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]{display:flex;align-items:center;font-size:14px;font-weight:600;color:rgba(0,0,0,.88);line-height:32px;min-height:32px}
+[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]{display:flex;align-items:center;font-size:calc(14px * var(--ar-font-scale, 1));font-weight:600;color:rgba(0,0,0,.88);line-height:32px;min-height:32px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="stacked"]>[data-part="label"]{padding-bottom:8px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]{column-gap:0}
 [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{display:block;min-width:0;height:auto;white-space:normal;overflow-wrap:anywhere;text-align:right;line-height:22px;padding:5px 8px 5px 0}
 /* 区切り・必須の記号は装飾。読み上げる項目名と必須テキストは DOM に残す。 */
 [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"]::after{content:":" / "";position:relative;margin-inline:2px 0}
 [data-ar-design="classic"] [data-ar="field"][data-layout="inline"]>[data-part="label"][data-empty]::after{content:none}
-[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]:has(>[data-part="required"])::before{content:"*" / "";display:inline-block;margin-inline-end:4px;color:#FF4D4F;font-family:SimSun,sans-serif;font-size:14px;line-height:1}
+[data-ar-design="classic"] [data-ar="field"]>[data-part="label"]:has(>[data-part="required"])::before{content:"*" / "";display:inline-block;margin-inline-end:4px;color:#FF4D4F;font-family:SimSun,sans-serif;font-size:calc(14px * var(--ar-font-scale, 1));line-height:1}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{font-size:14px;color:rgba(0,0,0,.45);line-height:22px;white-space:pre-line;overflow-wrap:anywhere}
-[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{font-size:13px;color:#FF4D4F;line-height:13px}
+[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{font-size:calc(14px * var(--ar-font-scale, 1));color:rgba(0,0,0,.45);line-height:22px;white-space:pre-line;overflow-wrap:anywhere}
+[data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{font-size:calc(13px * var(--ar-font-scale, 1));color:#FF4D4F;line-height:13px}
 [data-ar-design="classic"] [data-ar="field"]>[data-part="control"]>[data-part="error"]>[data-ar="icon"]{display:none}
 /* toolbar：今の画面の「店舗：」「表示」（13px・黒・コロン） */
 [data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]{gap:4px}
-[data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{min-height:0;color:#000;font-size:13px;font-weight:400;line-height:32px}
+[data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{min-height:0;color:#000;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:400;line-height:32px}
 [data-ar-design="classic"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]::after{content:"：" / ""}
 
 /* 狭い入力欄は親幅で縦配置へ。画面幅が広いダイアログやカラム内も同じ扱い。 */

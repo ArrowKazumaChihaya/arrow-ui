@@ -38,6 +38,19 @@ export interface ArDesign {
    * 絵の中に `<style>`・`<script>` は書かない（ページ全体に効いてしまう）。色は属性（fill="…"）で書く。
    */
   icons?: Partial<Record<ArIconName, string>>;
+  /**
+   * 色合い（利用者が選べる色の強さの段階）。名前 → 上書きするトークンとテーマ色。
+   * 選ばれていないとき（または "standard"）は tokens・palettes のまま。部品の形・大きさは変えず、色だけを変える。
+   * 例：{ vivid: { label: "あざやか", palettes: { blue: { accent: "#3D83D6", … } } } }。
+   */
+  tones?: Record<string, ArDesignTone>;
+}
+
+/** 色合いの1段階。トークンとテーマ色の一部だけを上書きする（無い名前は元の値のまま）。 */
+export interface ArDesignTone {
+  label: string;
+  tokens?: Partial<ArTokenValues>;
+  palettes?: Partial<Record<ArPaletteName, Partial<ArPalette>>>;
 }
 
 export class ArDesignError extends Error {
@@ -60,6 +73,10 @@ export function defineDesign(design: ArDesign): ArDesign {
     if (typeof svg !== "string" || !/^<svg\b[^>]*\bviewBox="[^"]+"[^>]*>[\s\S]*<\/svg>$/.test(svg.trim()))
       problems.push(`アイコン「${name}」の絵が <svg viewBox="…">…</svg> の形ではありません`);
     else if (/<(style|script|foreignObject)\b|\son\w+=/i.test(svg)) problems.push(`アイコン「${name}」の絵に <style>・<script>・on… は書けません`);
+  }
+  for (const [tone, def] of Object.entries(design.tones ?? {})) {
+    if (!/^[a-z][a-z0-9-]*$/.test(tone) || tone === "standard") problems.push(`色合い「${tone}」の名前が使えません（英小文字、standard 以外）`);
+    if (!def?.label) problems.push(`色合い「${tone}」の label がありません`);
   }
   if (notCovered.length) problems.push(`見た目を用意していない部品があります: ${notCovered.join(", ")}`);
   if (problems.length) throw new ArDesignError(`design「${design.id}」を登録できません。\n- ${problems.join("\n- ")}`);

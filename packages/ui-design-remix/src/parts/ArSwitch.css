@@ -8,7 +8,7 @@
 [data-ar-design="remix"] [data-ar="switch"][data-state~="on"]:hover:not(:disabled):not([data-state~="loading"])>[data-part="track"]{background:var(--ar-accent-strong)}
 [data-ar-design="remix"] [data-ar="switch"][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:18px}
 /* 文字あり */
-[data-ar-design="remix"] [data-ar="switch"][data-text]>[data-part="track"]{width:auto;min-width:52px;height:22px;border-radius:11px;padding:0 8px 0 24px;font-size:11px;font-weight:700;line-height:22px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="switch"][data-text]>[data-part="track"]{width:auto;min-width:52px;height:22px;border-radius:11px;padding:0 8px 0 24px;font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:22px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="switch"][data-text][data-state~="on"]>[data-part="track"]{padding:0 24px 0 9px;color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
 [data-ar-design="remix"] [data-ar="switch"][data-text]>[data-part="track"]>[data-part="thumb"]{left:3px}
 [data-ar-design="remix"] [data-ar="switch"][data-text][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:calc(100% - 19px)}
@@ -21,11 +21,11 @@
 [data-ar-design="remix"] [data-ar="switch"][data-size="lg"]>[data-part="track"]{width:44px;height:24px;border-radius:12px}
 [data-ar-design="remix"] [data-ar="switch"][data-size="lg"]>[data-part="track"]>[data-part="thumb"]{width:20px;height:20px}
 [data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:22px}
-[data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text]>[data-part="track"]{min-width:62px;height:26px;border-radius:13px;padding:0 10px 0 28px;font-size:12px;line-height:26px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text]>[data-part="track"]{min-width:62px;height:26px;border-radius:13px;padding:0 10px 0 28px;font-size:calc(12px * var(--ar-font-scale, 1));line-height:26px}
 [data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text][data-state~="on"]>[data-part="track"]{padding:0 28px 0 11px}
 [data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text]>[data-part="track"]>[data-part="thumb"]{left:3px}
 [data-ar-design="remix"] [data-ar="switch"][data-size="lg"][data-text][data-state~="on"]>[data-part="track"]>[data-part="thumb"]{left:calc(100% - 23px)}
-[data-ar-design="remix"] [data-ar="switch"][data-size="lg"]>[data-part="caption"]{margin-left:10px;font-size:14px}
+[data-ar-design="remix"] [data-ar="switch"][data-size="lg"]>[data-part="caption"]{margin-left:10px;font-size:calc(14px * var(--ar-font-scale, 1))}
 /* 状態 */
 [data-ar-design="remix"] [data-ar="switch"]:focus-visible{outline:0}
 [data-ar-design="remix"] [data-ar="switch"]:focus-visible>[data-part="track"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
@@ -37,4 +37,4 @@
 [data-ar-design="remix"] [data-ar="switch"][data-two-way]>[data-part="track"]{background:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="switch"]>[data-part="before"]{margin-right:8px;display:inline-flex}
 [data-ar-design="remix"] [data-ar="switch"]>[data-part="after"]{margin-left:8px;display:inline-flex}
-[data-ar-design="remix"] [data-ar="switch"]>[data-part="caption"]{margin-left:8px;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:600}
+[data-ar-design="remix"] [data-ar="switch"]>[data-part="caption"]{margin-left:8px;color:var(--ar-color-text-secondary);font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600}

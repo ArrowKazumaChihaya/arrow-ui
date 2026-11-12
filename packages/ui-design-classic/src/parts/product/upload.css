@@ -11,7 +11,7 @@
 .ant_button_wrap.xlarge
   .ant-btn-lg:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   padding: 0 30px;
-  font-size: 20px;
+  font-size:calc(20px * var(--ar-font-scale, 1));
   height: 50px;
   font-weight: 600;
 }
@@ -29,7 +29,7 @@
 }
 .ant_button_wrap.xlarge
   .text_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   font-weight: 600;
 }
 .ant_button_wrap.xlarge

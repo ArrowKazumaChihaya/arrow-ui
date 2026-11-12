@@ -13,12 +13,12 @@
 [data-ar-design="classic"] [data-ar="thumbnail"]>[data-part="camera"]>[data-part="camera-icon"]{width:16px;height:16px}
 /* 切り抜きのポップアップ（ui-Thumbnail-modal.png：説明は 13px・行13 の中央の 350px、画像がないときは「ファイルを選択」の大きな塗りのボタン） */
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]{gap:10px}
-[data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="hint"]{width:350px;max-width:100%;margin-bottom:10px;font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="hint"]{width:350px;max-width:100%;margin-bottom:10px;font:calc(13px * var(--ar-font-scale, 1))/calc(13px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]{border:1px solid #EEE;background:#fff;outline:0}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="empty"]{width:100%;height:50px;border:0;border-radius:6px;background:var(--ar-accent);box-shadow:0 2px 0 rgba(5,145,255,.1)}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-state~="empty"]:hover::after{content:"";position:absolute;inset:0;background:#fff;opacity:.1}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]:focus-visible{box-shadow:0 0 0 2px rgba(5,145,255,.25)}
-[data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="empty"]{flex-direction:row;gap:8px;color:#fff;font-size:18px;font-weight:600}
+[data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="empty"]{flex-direction:row;gap:8px;color:#fff;font-size:calc(18px * var(--ar-font-scale, 1));font-weight:600}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="empty"]>[data-ar="icon"]{width:24px;height:24px;stroke-width:2}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"]>[data-part="mask"]{border:1px dashed rgba(255,255,255,.25)}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"]>[data-part="frame"][data-shape="circle"]>[data-part="mask"]{border-radius:50%;box-shadow:0 0 0 999px rgba(0,0,0,.45)}
@@ -27,8 +27,8 @@
    その下 4px に「ファイル未選択」（13px・中央）、11px 下に左右の端の 32px の回すボタン（/icons/rotate_left・rotate_right）、10px 下に 250×50 の「登録」 */
 [data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]{gap:0}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="hint"]{margin:0 auto 28px}
-[data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="frame"]>[data-part="empty"]{font-size:16px;line-height:16px}
-[data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="file"]{margin:4px 0 0;color:rgba(0,0,0,.88);font:13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;text-align:center}
+[data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="frame"]>[data-part="empty"]{font-size:calc(16px * var(--ar-font-scale, 1));line-height:16px}
+[data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="file"]{margin:4px 0 0;color:rgba(0,0,0,.88);font:calc(13px * var(--ar-font-scale, 1))/calc(13px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;text-align:center}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="tools"]{justify-content:space-between;margin-top:11px}
 [data-ar-design="classic"] [data-ar="thumbnail-editor"][data-form="arrow"]>[data-part="tools"]>[data-ar="button"]{width:32px;height:32px;padding:0}
 /* 回すボタンの絵は ArIcon が classic の絵（undo・redo＝今の rotate_left・rotate_right）で描く */

@@ -12,7 +12,7 @@
 }
 .date_component
   .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px !important;
+  font-size:calc(14px * var(--ar-font-scale, 1)) !important;
 }
 .date_component
   .ant-select-dropdown:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

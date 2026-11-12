@@ -1,17 +1,17 @@
 /* @covers ArCollapse 1.1.0 */
 /* ArCollapse（ARROW の Collapse＝antd の ghost：枠も地もなし、見出しは高さ32・13px、右向きの矢印 12px（開くと下）と 12px の間、中身は余白なし 13px） */
-[data-ar-design="classic"] [data-ar="collapse"]{color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
-[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]{gap:12px;min-height:32px;padding:6px 0;font-size:13px;font-weight:400;line-height:20px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="collapse"]{color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]{gap:12px;min-height:32px;padding:6px 0;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:400;line-height:20px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{width:12px;height:12px;stroke-width:2.2;transition:transform .3s}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="icon"]{width:14px;height:14px}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="extra"]{color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:disabled{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
-[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="body"]{padding:0;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="body"]{padding:0;font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px}
 /* 今の見出し（antd の ghost）：最小高さ32で長い見出しは折り返す。矢印は antd の RightOutlined（12px の塗り）を中央に置き、文字との間は12px */
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]{align-items:center;height:auto;min-height:32px;padding:4px 0;line-height:20.43px}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]{margin-top:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M765.7%20486.8L314.9%20134.7A7.97%207.97%200%2000302%20141v77.3c0%204.9%202.3%209.6%206.1%2012.6l360%20281.1-360%20281.1c-3.9%203-6.1%207.7-6.1%2012.6V883c0%206.6%207.6%2010.3%2012.9%206.3l450.8-352.1a31.96%2031.96%200%20000-50.4z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M765.7%20486.8L314.9%20134.7A7.97%207.97%200%2000302%20141v77.3c0%204.9%202.3%209.6%206.1%2012.6l360%20281.1-360%20281.1c-3.9%203-6.1%207.7-6.1%2012.6V883c0%206.6%207.6%2010.3%2012.9%206.3l450.8-352.1a31.96%2031.96%200%20000-50.4z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="arrow"]>*{display:none}
 /* 1.1 見出しのボタンの外の右（header-extra）：見出しと同じ高さ32・間 8px。見出しの部品（#title）は今の #header と同じく文字の行に置く */
-[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="header-extra"]{gap:8px;min-height:32px;padding-left:8px;font-size:13px}
+[data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="header-extra"]{gap:8px;min-height:32px;padding-left:8px;font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="collapse"]>[data-part="panel"]>[data-part="header"]>[data-part="trigger"]>[data-part="title"]{gap:4px}

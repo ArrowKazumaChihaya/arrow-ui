@@ -11,8 +11,8 @@
 [data-ar-design="remix"] [data-ar="progress"][data-type="steps"]>[data-part="track"]>[data-part="step"][data-state="on"]{background:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="progress"][data-type="steps"][data-status="success"]>[data-part="track"]>[data-part="step"][data-state="on"]{background:var(--ar-color-ok)}
 [data-ar-design="remix"] [data-ar="progress"][data-type="steps"][data-status="exception"]>[data-part="track"]>[data-part="step"][data-state="on"]{background:var(--ar-color-danger)}
-[data-ar-design="remix"] [data-ar="progress"][data-type="circle"]{width:96px;height:96px;color:var(--ar-color-text);font-size:18px;font-weight:var(--ar-font-weight-strong)}
-[data-ar-design="remix"] [data-ar="progress"][data-type="circle"][data-size="sm"]{width:56px;height:56px;font-size:12.5px}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"]{width:96px;height:96px;color:var(--ar-color-text);font-size:calc(18px * var(--ar-font-scale, 1));font-weight:var(--ar-font-weight-strong)}
+[data-ar-design="remix"] [data-ar="progress"][data-type="circle"][data-size="sm"]{width:56px;height:56px;font-size:calc(12.5px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="progress"][data-type="circle"]>[data-part="ring"]>[data-part="ring-track"]{stroke:var(--ar-color-border-subtle)}
 [data-ar-design="remix"] [data-ar="progress"][data-type="circle"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="progress"][data-type="circle"][data-status="success"]>[data-part="ring"]>[data-part="ring-bar"]{stroke:var(--ar-color-ok)}

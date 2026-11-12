@@ -1,15 +1,15 @@
 /* @covers ArNotification 1.0.0 */
 /* 右上に出る白いカード（.ad-ntf）。印は意味の色、残り時間はテーマ色の線。 */
-[data-ar-design="remix"] [data-ar="notification"]{width:340px;gap:10px;padding:14px 16px;border-radius:14px;background:var(--ar-color-surface);box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font-size:13px;line-height:1.6;grid-template-columns:22px minmax(0,1fr) 18px;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="notification"]{width:340px;gap:10px;padding:14px 16px;border-radius:14px;background:var(--ar-color-surface);box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.6;grid-template-columns:22px minmax(0,1fr) 18px;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="notification"]>[data-part="icon"]{color:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="notification"][data-tone="ok"]>[data-part="icon"]{color:var(--ar-color-ok)}
 [data-ar-design="remix"] [data-ar="notification"][data-tone="warn"]>[data-part="icon"]{color:#E39A2D}
 [data-ar-design="remix"] [data-ar="notification"][data-tone="danger"]>[data-part="icon"]{color:var(--ar-color-danger)}
-[data-ar-design="remix"] [data-ar="notification"]>[data-part="content"]>[data-part="title"]{margin-bottom:2px;font-size:14px;font-weight:var(--ar-font-weight-strong)}
+[data-ar-design="remix"] [data-ar="notification"]>[data-part="content"]>[data-part="title"]{margin-bottom:2px;font-size:calc(14px * var(--ar-font-scale, 1));font-weight:var(--ar-font-weight-strong)}
 /* 閉じる × は ArButton（tone="muted"・アイコンだけ・sm＝30。前の 18 より押しやすい。見た目の位置は前のまま：上と右へ 6px はみ出す） */
 [data-ar-design="remix"] [data-ar="notification"]>[data-part="close"]{margin:-6px -6px -6px 0}
 [data-ar-design="remix"] [data-ar="notification"]>[data-part="actions"]{gap:6px}
-[data-ar-design="remix"] [data-ar="notification"]>[data-part="actions"]>[data-part="action"]{height:30px;padding:0 10px;border:0;border-radius:9px;font-size:12.5px;font-weight:var(--ar-font-weight-strong);line-height:1;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="notification"]>[data-part="actions"]>[data-part="action"]{height:30px;padding:0 10px;border:0;border-radius:9px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:var(--ar-font-weight-strong);line-height:1;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="notification"]>[data-part="actions"]>[data-part="action"]:hover{background:var(--ar-accent-muted)}
 [data-ar-design="remix"] [data-ar="notification"]>[data-part="actions"]>[data-part="action"][data-tone="plain"]{background:none;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="notification"]>[data-part="actions"]>[data-part="action"][data-tone="plain"]:hover{background:#F1F4F7;color:var(--ar-color-text)}

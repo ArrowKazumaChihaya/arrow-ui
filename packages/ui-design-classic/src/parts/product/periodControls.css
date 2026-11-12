@@ -1,6 +1,6 @@
 @layer arrow-product-classic {/* @component src/View/Personal/BonusEach/Monthly.vue#0 */
 .not_lock[data-v-ui9f53a2fc532c]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   font-weight: 600;
   padding: 5vh 20px 35vh;
   text-align: center;
@@ -29,7 +29,7 @@
 .add_shift_title[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: 20px;
+  font-size:calc(20px * var(--ar-font-scale, 1));
 }
 .month_changer_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .type_changer_wrap[data-v-ui9393aa97849b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -56,7 +56,7 @@
 
 /* @component src/View/Personal/RemunerationEach/Monthly.vue#0 */
 .not_lock[data-v-ui84c13c53bcda]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   font-weight: 600;
   padding: 5vh 20px 35vh;
   text-align: center;
@@ -85,7 +85,7 @@
 .add_shift_title[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: 20px;
+  font-size:calc(20px * var(--ar-font-scale, 1));
 }
 .month_changer_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .type_changer_wrap[data-v-uie2c78344833b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

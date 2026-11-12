@@ -2,8 +2,8 @@
 /* ArQRCode：antd の QRCode（余白12・枠 1px rgba(5,5,5,.06)・角丸8・点 rgba(0,0,0,.88)）。期限切れなどは rgba(255,255,255,.96) の幕に 14px の文字（refs/classic/antd-QRCode.png を実測）。 */
 [data-ar-design="classic"] [data-ar="qr-code"]{padding:12px;border:1px solid transparent;border-radius:8px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="qr-code"][data-bordered]{border-color:rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="qr-code"]>[data-part="message"]{color:rgba(0,0,0,.45);font-size:14px;line-height:22px}
-[data-ar-design="classic"] [data-ar="qr-code"]>[data-part="overlay"]{gap:4px;border-radius:8px;background:rgba(255,255,255,.96);color:rgba(0,0,0,.88);font-size:14px;line-height:22px}
-[data-ar-design="classic"] [data-ar="qr-code"]>[data-part="overlay"]>[data-part="message"]{font-size:14px}
+[data-ar-design="classic"] [data-ar="qr-code"]>[data-part="message"]{color:rgba(0,0,0,.45);font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px}
+[data-ar-design="classic"] [data-ar="qr-code"]>[data-part="overlay"]{gap:4px;border-radius:8px;background:rgba(255,255,255,.96);color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px}
+[data-ar-design="classic"] [data-ar="qr-code"]>[data-part="overlay"]>[data-part="message"]{font-size:calc(14px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="qr-code"][data-state~="scanned"]>[data-part="overlay"]{color:#52C41A}
 [data-ar-design="classic"] [data-ar="qr-code"]>[data-part="overlay"]>[data-part="spinner"]{width:20px;height:20px;border:2px solid rgba(0,0,0,.06);border-top-color:var(--ar-accent);border-radius:50%;box-sizing:border-box}

@@ -1,18 +1,18 @@
 /* @covers ArAuthPanel 1.2.0 */
 [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]{background:var(--ar-color-surface,#fff);border:1px solid var(--ar-color-border);border-radius:18px;overflow:hidden;box-shadow:0 12px 30px #182c4110}
-[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="heading"]{background:linear-gradient(120deg,var(--ar-accent),var(--ar-accent-strong));color:var(--ar-on-accent,#fff);font-size:17px;font-weight:700}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="heading"]{background:linear-gradient(120deg,var(--ar-accent),var(--ar-accent-strong));color:var(--ar-on-accent,#fff);font-size:calc(17px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company"]{border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="initial"]{border-radius:8px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
-[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-name"]{font-weight:700;font-size:14px}
-[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-code"]{font-size:12px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-name"]{font-weight:700;font-size:calc(14px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-code"]{font-size:calc(12px * var(--ar-font-scale, 1));color:var(--ar-color-text-muted)}
 /* The authentication band follows the same shape and contrast as page headings. */
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="heading"]{background:radial-gradient(circle at 0 100%,#ffffff12 0 90px,transparent 91px),radial-gradient(circle at 100% 0,#ffffff18 0 115px,transparent 116px),linear-gradient(120deg,var(--ar-accent-hi),var(--ar-accent),var(--ar-accent-strong));letter-spacing:.06em}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="initial"]{width:38px;height:38px}
-[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{font-size:11px}
+[data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{font-size:calc(11px * var(--ar-font-scale, 1))}
 /* Authentication is a focused task: align credentials with the full-width action. */
-[data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="text-input"][data-block]{max-width:100%;height:48px;padding-inline:14px;font-size:16px;border-radius:12px}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="text-input"][data-block]{max-width:100%;height:48px;padding-inline:14px;font-size:calc(16px * var(--ar-font-scale, 1));border-radius:12px}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="text-input"][data-block]>[data-part="reveal"]{width:36px;height:40px}
-[data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="button"][data-block]:is([data-tone="primary"],[data-tone="secondary"]){height:auto;min-height:48px;padding:12px 18px;border-radius:12px;font-size:16px;line-height:1.4;white-space:normal}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-ar="button"][data-block]:is([data-tone="primary"],[data-tone="secondary"]){height:auto;min-height:48px;padding:12px 18px;border-radius:12px;font-size:calc(16px * var(--ar-font-scale, 1));line-height:1.4;white-space:normal}
 
 /* ログイン（新デザイン）：ロゴ・会社・入力を1枚の白いカードにまとめる。見出しは読み上げ用に残し、見た目は出さない。
    スマホでは、ロゴは淡い地の上（背景なし）、カードは下から立ち上がる白い板になる。 */
@@ -23,8 +23,8 @@
 [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]>[data-part="body"]{padding:0}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company"]{gap:14px;margin-bottom:24px;padding:14px 16px;border:0;border-radius:14px;background:var(--ar-accent-faint,#F2F6FB)}
 [data-ar-design="remix"] [data-ar="auth-panel"] [data-part="initial"]{width:44px;height:44px;border-radius:12px}
-[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-name"]{font-size:15px;color:var(--ar-accent-ink)}
-[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-code"]{font-size:13px}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-name"]{font-size:calc(15px * var(--ar-font-scale, 1));color:var(--ar-accent-ink)}
+[data-ar-design="remix"] [data-ar="auth-panel"] [data-part="company-code"]{font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{margin-top:20px}
 @media(max-width:767px){
   [data-ar-design="remix"] [data-ar="auth-panel"]{width:100%;flex:1;display:flex;flex-direction:column;padding:0;border-radius:0;background:none;box-shadow:none}
@@ -32,4 +32,4 @@
   [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="card"]{flex:1;box-sizing:border-box;padding:28px 20px 0;border-radius:28px 28px 0 0;background:var(--ar-color-surface,#fff);box-shadow:0 -8px 30px rgba(35,60,100,.08)}
   [data-ar-design="remix"] [data-ar="auth-panel"]>[data-part="footer"]{margin:0;padding:12px 20px 20px;background:var(--ar-color-surface,#fff)}
 }
-[data-ar-design="remix"] [data-ar="auth-panel"][data-heading]>[data-part="card"]>[data-part="heading"]{margin:0 0 20px;padding:0;background:none;color:var(--ar-color-text);font-size:20px;letter-spacing:0}
+[data-ar-design="remix"] [data-ar="auth-panel"][data-heading]>[data-part="card"]>[data-part="heading"]{margin:0 0 20px;padding:0;background:none;color:var(--ar-color-text);font-size:calc(20px * var(--ar-font-scale, 1));letter-spacing:0}

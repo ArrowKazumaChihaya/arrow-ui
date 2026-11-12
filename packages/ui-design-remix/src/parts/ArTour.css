@@ -4,8 +4,8 @@
 [data-ar-design="remix"] [data-ar="tour"][data-part="overlay"]>[data-part="spot"]{border-radius:10px;box-shadow:0 0 0 9999px rgba(31,41,51,.45)}
 [data-ar-design="remix"] [data-ar="tour"][data-part="overlay"]:not([data-mask])>[data-part="spot"]{box-shadow:0 0 0 2px var(--ar-accent),0 0 0 6px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="tour"][data-part="overlay"]:not([data-mask])>[data-part="spot"][data-target="none"]{box-shadow:none}
-[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]{width:250px;max-width:calc(100vw - 16px);padding:12px 14px;border-radius:14px;background:#fff;color:var(--ar-color-text);box-shadow:var(--ar-shadow-pop);font-size:13px;line-height:1.5;animation:ar-tour-in .16s ease-out}
-[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="title"]{margin-bottom:4px;font-size:14px;font-weight:700}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]{width:250px;max-width:calc(100vw - 16px);padding:12px 14px;border-radius:14px;background:#fff;color:var(--ar-color-text);box-shadow:var(--ar-shadow-pop);font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.5;animation:ar-tour-in .16s ease-out}
+[data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="title"]{margin-bottom:4px;font-size:calc(14px * var(--ar-font-scale, 1));font-weight:700}
 /* 閉じる × は ArButton（tone="muted"・アイコンだけ・sm＝30。前の 24 より押しやすい） */
 [data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]{top:5px;right:5px}
 [data-ar-design="remix"] [data-ar="tour"][data-part="root"]>[data-part="panel"]>[data-part="close"]+[data-part="title"]{padding-right:28px}

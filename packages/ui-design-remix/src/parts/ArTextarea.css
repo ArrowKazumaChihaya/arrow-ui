@@ -1,11 +1,11 @@
 /* @covers ArTextarea 1.1.0 */
 /* ArTextarea（textarea.inp）：余白 9px 12px・行の高さ1.6・14px 500・角丸10・枠 field。文字数は右下に 11.5px（.ad-cnt）。 */
-[data-ar-design="remix"] [data-ar="textarea"]{color:var(--ar-color-text);font-size:14px;font-weight:500}
-[data-ar-design="remix"] [data-ar="textarea"]>[data-part="input"]{min-height:38px;padding:9px 12px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;font-size:14px;font-weight:500;line-height:1.6;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),background-color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="textarea"]{color:var(--ar-color-text);font-size:calc(14px * var(--ar-font-scale, 1));font-weight:500}
+[data-ar-design="remix"] [data-ar="textarea"]>[data-part="input"]{min-height:38px;padding:9px 12px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;font-size:calc(14px * var(--ar-font-scale, 1));font-weight:500;line-height:1.6;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),background-color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="textarea"]>[data-part="input"]:hover{border-color:#A3AEB9}
 [data-ar-design="remix"] [data-ar="textarea"]>[data-part="input"]:focus{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="textarea"]>[data-part="input"]::placeholder{color:#7B8794;font-weight:500;opacity:1}
-[data-ar-design="remix"] [data-ar="textarea"]>[data-part="count"]{margin-top:4px;font-size:11.5px;line-height:17.25px;font-weight:400;color:var(--ar-color-text-muted);text-align:right;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="textarea"]>[data-part="count"]{margin-top:4px;font-size:calc(11.5px * var(--ar-font-scale, 1));line-height:17.25px;font-weight:400;color:var(--ar-color-text-muted);text-align:right;font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="textarea"][data-variant="filled"]>[data-part="input"]{border-color:transparent;background:#F8FAFC}
 [data-ar-design="remix"] [data-ar="textarea"][data-variant="filled"]>[data-part="input"]:focus{background:#fff;border-color:var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="textarea"][data-state~="invalid"]>[data-part="input"]{border-color:var(--ar-color-danger)}
@@ -15,7 +15,7 @@
 [data-ar-design="remix"] [data-ar="textarea"][data-state~="readonly"]>[data-part="input"]:focus{border-color:var(--ar-color-field);box-shadow:none}
 [data-ar-design="remix"] [data-ar="textarea"][data-state~="disabled"]>[data-part="input"]{background:#F8FAFC;border-color:var(--ar-color-field);color:#A3AEB9;box-shadow:none}
 /* 大きさの段（高さは rows で決める。文字と角丸だけ段に合わせる：sm 13px・角丸9／md 14px・角丸10／lg 15px・角丸11） */
-[data-ar-design="remix"] [data-ar="textarea"][data-size="sm"]{font-size:13px}
-[data-ar-design="remix"] [data-ar="textarea"][data-size="sm"]>[data-part="input"]{padding:6px 10px;border-radius:9px;font-size:13px}
-[data-ar-design="remix"] [data-ar="textarea"][data-size="lg"]{font-size:15px}
-[data-ar-design="remix"] [data-ar="textarea"][data-size="lg"]>[data-part="input"]{padding:10px 14px;border-radius:11px;font-size:15px}
+[data-ar-design="remix"] [data-ar="textarea"][data-size="sm"]{font-size:calc(13px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="textarea"][data-size="sm"]>[data-part="input"]{padding:6px 10px;border-radius:9px;font-size:calc(13px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="textarea"][data-size="lg"]{font-size:calc(15px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="textarea"][data-size="lg"]>[data-part="input"]{padding:10px 14px;border-radius:11px;font-size:calc(15px * var(--ar-font-scale, 1))}

@@ -1,7 +1,7 @@
 @layer arrow-product-classic {/* @component src/View/Common/Component/AiChat.vue#0 */
 .ai-chat[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #283648;
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
 }
 .ai-chat
   button[data-v-ai-chat]:disabled:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -23,7 +23,7 @@
   background: #267ebd;
   box-shadow: 0 4px 16px rgba(27, 71, 100, 0.168627451);
   font-weight: 600;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
 }
 .ai-chat__panel[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border: 1px solid #dbe6ef;
@@ -37,18 +37,18 @@
 }
 .ai-chat__heading
   h2[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   color: #233c55;
   font-weight: 700;
 }
 .ai-chat__spark[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #267ebd;
-  font-size: 27px;
+  font-size:calc(27px * var(--ar-font-scale, 1));
 }
 .ai-chat__subtitle[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .ai-chat__hint[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #64758a;
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 .ai-chat__icon[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border: 0;
@@ -65,10 +65,10 @@
   border: 0;
   background: transparent;
   color: #267ebd;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .ai-chat__status[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
   color: #798595;
 }
 .ai-chat__status.is-ready[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -93,11 +93,11 @@
   background: white;
   color: #39779f;
   border-radius: 8px;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .ai-chat__speaker[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #7b8b9c;
-  font-size: 10px;
+  font-size:calc(10px * var(--ar-font-scale, 1));
 }
 .ai-chat__message
   > p[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -112,13 +112,13 @@
 }
 .ai-chat__tools[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #677e90;
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 .ai-chat__diagnosis[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border: 1px solid #d7e5ef;
   border-radius: 10px;
   background: white;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .ai-chat__diagnosis
   li[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -128,13 +128,13 @@
   li
   small[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #64758a;
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 .ai-chat__diagnosis-status[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border-radius: 4px;
   background: #eef2f6;
   color: #52667b;
-  font-size: 10px;
+  font-size:calc(10px * var(--ar-font-scale, 1));
 }
 .ai-chat__diagnosis
   li.is-applies
@@ -156,16 +156,16 @@
 }
 .ai-chat__pending
   pre[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   background: #fff;
 }
 .ai-chat__pending
   code[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 .ai-chat__thinking[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #5985a5;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .ai-chat__composer[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border-top: 1px solid #e3ebf1;
@@ -181,35 +181,35 @@
   border-radius: 6px;
 }
 .ai-chat__selection[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 .ai-chat__fields[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border-block: 1px solid #e7edf3;
 }
 .ai-chat__field[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border-bottom: 1px solid #f0f3f7;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .ai-chat__disconnect[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border: 0;
   background: transparent;
   color: #64758a;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 @media (max-width: 499px) {
   .ai-chat__launcher[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 13px;
+    font-size:calc(13px * var(--ar-font-scale, 1));
   }
   .ai-chat__composer
     textarea[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
   .ai-chat__search[data-v-ai-chat]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 16px;
+    font-size:calc(16px * var(--ar-font-scale, 1));
   }
 }
 /* @component src/View/Common/Component/AiChatUsage.vue#0 */
 .ai-chat__usage[data-v-ai-chat-usage]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #66778a;
-  font-size: 10px;
+  font-size:calc(10px * var(--ar-font-scale, 1));
   font-variant-numeric: tabular-nums;
 }
 
@@ -231,7 +231,7 @@
 }
 
 .ai-chat__answer:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   color: #1b2430;
 }
 .ai-chat__composer:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -269,7 +269,7 @@
 }
 .ai-chat__report summary:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   cursor: pointer;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #5a6573;
 }
 }

@@ -1,6 +1,6 @@
 /* @covers ArDivider 1.0.0 */
 /* ArDivider：線は line。文字つきは13px太字・ink-2。左寄せは線24px。縦の線は高さ14px。 */
-[data-ar-design="remix"] [data-ar="divider"][data-orientation="horizontal"]{gap:12px;margin:4px 0;font-size:13px;font-weight:700;line-height:1.5;color:var(--ar-color-text-secondary);font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="divider"][data-orientation="horizontal"]{gap:12px;margin:4px 0;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:700;line-height:1.5;color:var(--ar-color-text-secondary);font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="divider"][data-orientation="horizontal"]::before,[data-ar-design="remix"] [data-ar="divider"][data-orientation="horizontal"]::after{height:1px;background:var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="divider"][data-align="start"]::before,[data-ar-design="remix"] [data-ar="divider"][data-align="end"]::after{flex:0 0 24px}
 [data-ar-design="remix"] [data-ar="divider"][data-orientation="horizontal"]:not([data-with-text]){line-height:0}

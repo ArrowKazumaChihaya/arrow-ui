@@ -79,7 +79,7 @@
 .attention_wrap
   .attention_group
   p[data-v-ui35d02d8cf9cc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   font-weight: 600;
   line-height: 15px;
 }
@@ -238,7 +238,7 @@
 .attention_wrap
   .attention_group
   p[data-v-ui21cea13628fb]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   font-weight: 600;
   line-height: 15px;
 }
@@ -281,7 +281,7 @@
 .attention_wrap
   .attention_group
   p[data-v-ui8804cf1b7887]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   font-weight: 600;
   line-height: 15px;
 }
@@ -324,7 +324,7 @@
 .attention_wrap
   .attention_group
   p[data-v-ui36b3371e4ac1]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   font-weight: 600;
   line-height: 15px;
 }

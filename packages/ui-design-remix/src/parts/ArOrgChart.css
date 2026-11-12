@@ -3,7 +3,7 @@
    いちばん上の札は幅176・角丸14・余白 10px 12px・内側 1.5px（子があれば acc-line、無ければ line）と浅い影、建物の絵と 13.5px 700 acc-ink の下線つきの名前・11.5px の ID・人の絵と 12px の人数、
    子の札は幅150・角丸12・余白 8px 10px・内側 1px line・13px の名前、つなぐ線は 2px の acc-line（札の下 18px・横の線・子の上 18px）、上の段の札の間 28px・子の札の間 14px、
    右下の拡大縮小は白・角丸12・余白4・影 0 2px 8px、−＋は 30px の .btn.gm（灰色・乗せると #F1F4F7）・「100%」700 12.5px、左下の案内は 12px ink-2 の白い札）。 */
-[data-ar-design="remix"] [data-ar="org-chart"]{font-feature-settings:"palt" 1;background:radial-gradient(circle,#D9E1E8 1px,transparent 1.2px) 0 0/18px 18px,#F7F9FB;color:var(--ar-color-text);font:400 14px/1.5 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="org-chart"]{font-feature-settings:"palt" 1;background:radial-gradient(circle,#D9E1E8 1px,transparent 1.2px) 0 0/18px 18px,#F7F9FB;color:var(--ar-color-text);font:400 calc(14px * var(--ar-font-scale, 1))/1.5 var(--ar-font-family)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="viewport"]:focus-visible{box-shadow:inset 0 0 0 2px var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="viewport"]>[data-part="canvas"]{gap:28px}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="node"]{width:150px;gap:1px;padding:8px 10px;border:0;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(31,41,51,.08),inset 0 0 0 1px var(--ar-color-border);color:inherit;font:inherit;transition:box-shadow var(--ar-motion-fast)}
@@ -15,14 +15,14 @@
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="node"][data-state~="selected"]{background:var(--ar-accent-faint);box-shadow:0 1px 2px rgba(31,41,51,.08),inset 0 0 0 2px var(--ar-accent)!important}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="node-head"]{gap:6px}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="node-icon"]{flex:none;width:15px;height:15px;color:var(--ar-accent-ink)}
-[data-ar-design="remix"] [data-ar="org-chart"] [data-part="name"]{color:var(--ar-accent-ink);font-size:13px;font-weight:700;line-height:1.5;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ar-accent-line)}
-[data-ar-design="remix"] [data-ar="org-chart"] [data-part="branch"][data-level="0"]>[data-part="node-wrap"]>[data-part="node"] [data-part="name"]{font-size:13.5px}
-[data-ar-design="remix"] [data-ar="org-chart"] [data-part="code"]{color:var(--ar-color-text-muted);font-size:11px;line-height:1.5;font-variant-numeric:tabular-nums}
-[data-ar-design="remix"] [data-ar="org-chart"] [data-part="branch"][data-level="0"]>[data-part="node-wrap"]>[data-part="node"]>[data-part="code"]{font-size:11.5px}
-[data-ar-design="remix"] [data-ar="org-chart"] [data-part="count"]{gap:4px;color:var(--ar-color-text-secondary);font-size:11.5px;line-height:1.5}
-[data-ar-design="remix"] [data-ar="org-chart"] [data-part="branch"][data-level="0"]>[data-part="node-wrap"]>[data-part="node"]>[data-part="count"]{font-size:12px}
+[data-ar-design="remix"] [data-ar="org-chart"] [data-part="name"]{color:var(--ar-accent-ink);font-size:calc(13px * var(--ar-font-scale, 1));font-weight:700;line-height:1.5;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ar-accent-line)}
+[data-ar-design="remix"] [data-ar="org-chart"] [data-part="branch"][data-level="0"]>[data-part="node-wrap"]>[data-part="node"] [data-part="name"]{font-size:calc(13.5px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="org-chart"] [data-part="code"]{color:var(--ar-color-text-muted);font-size:calc(11px * var(--ar-font-scale, 1));line-height:1.5;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="org-chart"] [data-part="branch"][data-level="0"]>[data-part="node-wrap"]>[data-part="node"]>[data-part="code"]{font-size:calc(11.5px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="org-chart"] [data-part="count"]{gap:4px;color:var(--ar-color-text-secondary);font-size:calc(11.5px * var(--ar-font-scale, 1));line-height:1.5}
+[data-ar-design="remix"] [data-ar="org-chart"] [data-part="branch"][data-level="0"]>[data-part="node-wrap"]>[data-part="node"]>[data-part="count"]{font-size:calc(12px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="count-icon"]{width:13px;height:13px}
-[data-ar-design="remix"] [data-ar="org-chart"] [data-part="toggle"]{gap:1px;min-width:18px;height:18px;padding:0 3px;border:1.5px solid var(--ar-accent-line);border-radius:9px;background:#fff;color:var(--ar-accent-ink);font:700 10px/1 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="org-chart"] [data-part="toggle"]{gap:1px;min-width:18px;height:18px;padding:0 3px;border:1.5px solid var(--ar-accent-line);border-radius:9px;background:#fff;color:var(--ar-accent-ink);font:700 calc(10px * var(--ar-font-scale, 1))/1 var(--ar-font-family)}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="toggle"]>[data-ar="icon"]{width:10px;height:10px;stroke-width:2.4}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="toggle"]:hover{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="toggle"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
@@ -32,11 +32,11 @@
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="child"]::before{height:2px;background:var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="org-chart"] [data-part="child"]::after{width:2px;height:18px;margin-left:-1px;background:var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]{gap:4px;padding:4px;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(31,41,51,.12)}
-[data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button{gap:6px;height:30px;padding:0 10px;border:0;border-radius:9px;background:none;color:var(--ar-color-text-muted);font:700 12.5px/normal var(--ar-font-family);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button{gap:6px;height:30px;padding:0 10px;border:0;border-radius:9px;background:none;color:var(--ar-color-text-muted);font:700 calc(12.5px * var(--ar-font-scale, 1))/normal var(--ar-font-family);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button>:is(svg,[data-ar="icon"]){width:15px;height:15px}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button:not(:disabled):hover{background:#F1F4F7;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button:disabled{color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="controls"]>button:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="org-chart"]>[data-part="hint"]{gap:6px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.92);color:var(--ar-color-text-secondary);font-size:12px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="org-chart"]>[data-part="hint"]{gap:6px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.92);color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="org-chart"]>[data-part="hint"]>[data-ar="icon"]{width:14px;height:14px}
 /* 拡大・縮小の −／＋ は ArZoomControl（variant="plain"：30 の角丸9・muted・値 12.5px 700） */

@@ -1,6 +1,6 @@
 /* @covers ArDateView 1.1.0 */
 /* ArDateView（今の Component/DateView：13px・行の高さ13px・黒、曜日は灰 gray、土曜 blue、日曜・祝日 red） */
-[data-ar-design="classic"] [data-ar="date-view"]{color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;font-weight:400;line-height:13px}
+[data-ar-design="classic"] [data-ar="date-view"]{color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:400;line-height:13px}
 [data-ar-design="classic"] [data-ar="date-view"]>*>[data-part="weekday"]{color:gray}
 [data-ar-design="classic"] [data-ar="date-view"]>*>[data-part="weekday"][data-tone="sat"]{color:blue}
 [data-ar-design="classic"] [data-ar="date-view"]>*>[data-part="weekday"][data-tone="sun"]{color:red}

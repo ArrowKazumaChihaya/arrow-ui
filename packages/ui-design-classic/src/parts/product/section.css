@@ -37,7 +37,7 @@
 .multi_target_notice
   p[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #4b5563;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .employee_detail_like_wrap[data-v-uic08ee5ad5c68]
   .title_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -60,7 +60,7 @@
 .all_section_title[data-v-uic08ee5ad5c68]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   margin: 0 0 12px;
   color: #1f2937;
-  font-size: 15px;
+  font-size:calc(15px * var(--ar-font-scale, 1));
   font-weight: 700;
 }
 [data-v-uic08ee5ad5c68]

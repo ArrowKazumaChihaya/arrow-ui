@@ -2,7 +2,7 @@
 /* ArTooltip：シフトのキャンバスの吹き出し .r-tip（bundle.css：地 #1F2933・白い 11.5px 600・行の高さ1.5・角丸9・余白 7/10・
    影 0 10px 24px -8px rgba(15,23,32,.5)・数字は等幅・矢印なし・基準から 4px）。ライブラリの吹き出しの形はこれ1つ。
    ArShiftGrid のマスの吹き出し・ArEllipsis の省いた文字・ArPopover の cell・ArSlider のつまみの値・ArShiftChart などの1つだけ動かす吹き出しも、同じこのルールで描く。 */
-[data-ar-design="remix"] :is([data-ar="tooltip"][data-part="root"]>[data-part="panel"],[data-ar="shift-grid-tip"],[data-ar="ellipsis-tip"],[data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"],[data-ar="slider"]>[data-part="rail"]>[data-part="handle"]>[data-part="tooltip"]){padding:7px 10px;border-radius:9px;background:var(--ar-remix-tip-bg);color:#fff;box-shadow:var(--ar-remix-tip-shadow);font:600 11.5px/1.5 var(--ar-font-family);font-variant-numeric:tabular-nums;font-feature-settings:"palt" 1}
+[data-ar-design="remix"] :is([data-ar="tooltip"][data-part="root"]>[data-part="panel"],[data-ar="shift-grid-tip"],[data-ar="ellipsis-tip"],[data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"],[data-ar="slider"]>[data-part="rail"]>[data-part="handle"]>[data-part="tooltip"]){padding:7px 10px;border-radius:9px;background:var(--ar-remix-tip-bg);color:#fff;box-shadow:var(--ar-remix-tip-shadow);font:600 calc(11.5px * var(--ar-font-scale, 1))/1.5 var(--ar-font-family);font-variant-numeric:tabular-nums;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"]{max-width:240px;white-space:pre-line;animation:ar-tooltip-in .12s ease-out}
 [data-ar-design="remix"] [data-ar="tooltip"][data-part="root"]>[data-part="panel"][data-tone="accent"]{background:var(--ar-accent-ink)}
 /* 矢印は出さない（.r-tip）。吹き出しは矢印のぶん離して置かれるので、基準から 4px の所へ寄せる（矢印なしの .r-tip と同じ間） */

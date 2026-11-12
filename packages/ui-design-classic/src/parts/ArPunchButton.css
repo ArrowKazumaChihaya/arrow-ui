@@ -2,27 +2,27 @@
 /* ArPunchButton（今の ARROW の MyPC打刻 /personal/punch/mypc の .punch_button：350×350・padding 15・角丸5・出勤 #4395d4／退勤 #4eb187。
    上に白い帯の名前（行の高さ40・23px/600）、その下に人の絵 220×220（上に30）。休憩の .break_button は 350×70 で白い帯の名前（18px）だけ。押すと opacity .8） */
 [data-ar-design="classic"] [data-ar="punch-button"]{align-items:center;gap:6px;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
-[data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]{justify-content:flex-start;width:350px;max-width:100%;height:350px;padding:15px;border-radius:5px;background:var(--ar-accent);color:#333;font-size:13px;line-height:normal;text-align:center}
+[data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]{justify-content:flex-start;width:350px;max-width:100%;height:350px;padding:15px;border-radius:5px;background:var(--ar-accent);color:#333;font-size:calc(13px * var(--ar-font-scale, 1));line-height:normal;text-align:center}
 [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]:hover:not(:disabled){opacity:.8}
 [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
-[data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]>[data-part="label"]{order:-1;display:block;width:100%;background:#fff;font-size:23px;font-weight:600;line-height:40px}
+[data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]>[data-part="label"]{order:-1;display:block;width:100%;background:#fff;font-size:calc(23px * var(--ar-font-scale, 1));font-weight:600;line-height:40px}
 [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]>[data-part="icon"]{width:220px;height:220px;margin-top:30px;color:#fff}
 [data-ar-design="classic"] [data-ar="punch-button"][data-size="md"]>[data-part="button"]{width:200px;height:200px}
-[data-ar-design="classic"] [data-ar="punch-button"][data-size="md"]>[data-part="button"]>[data-part="label"]{font-size:18px;line-height:30px}
+[data-ar-design="classic"] [data-ar="punch-button"][data-size="md"]>[data-part="button"]>[data-part="label"]{font-size:calc(18px * var(--ar-font-scale, 1));line-height:30px}
 [data-ar-design="classic"] [data-ar="punch-button"][data-size="md"]>[data-part="button"]>[data-part="icon"]{width:125px;height:125px;margin-top:15px}
 /* 休憩 */
 [data-ar-design="classic"] [data-ar="punch-button"][data-size="sm"]>[data-part="button"]{flex-direction:column;height:70px}
-[data-ar-design="classic"] [data-ar="punch-button"][data-size="sm"]>[data-part="button"]>[data-part="label"]{font-size:18px}
+[data-ar-design="classic"] [data-ar="punch-button"][data-size="sm"]>[data-part="button"]>[data-part="label"]{font-size:calc(18px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="punch-button"][data-size="sm"]>[data-part="button"]>[data-part="icon"]{display:none}
 /* 押せない（今の ARROW では常に押せる。素の antd の無効と同じく薄くして押せない札を出す） */
 [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]:disabled{opacity:.4}
 [data-ar-design="classic"] [data-ar="punch-button"][data-state~="loading"]>[data-part="button"]{cursor:progress}
-[data-ar-design="classic"] [data-ar="punch-button"]>[data-part="reason"]{width:350px;max-width:100%;color:rgba(0,0,0,.45);font-size:12px;line-height:1.5}
+[data-ar-design="classic"] [data-ar="punch-button"]>[data-part="reason"]{width:350px;max-width:100%;color:rgba(0,0,0,.45);font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="classic"] [data-ar="punch-button"][data-size="md"]>[data-part="reason"]{width:200px}
 /* スマホの2列でも旧デザインの人物アイコンと白いラベルを切らない。 */
 @media(max-width:640px){
   [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]{padding:10px}
   [data-ar-design="classic"] [data-ar="punch-button"][data-size="lg"]>[data-part="button"]{height:200px}
-  [data-ar-design="classic"] [data-ar="punch-button"][data-size="lg"]>[data-part="button"]>[data-part="label"]{font-size:18px;line-height:30px}
+  [data-ar-design="classic"] [data-ar="punch-button"][data-size="lg"]>[data-part="button"]>[data-part="label"]{font-size:calc(18px * var(--ar-font-scale, 1));line-height:30px}
   [data-ar-design="classic"] [data-ar="punch-button"]>[data-part="button"]>[data-part="icon"]{width:min(125px,100%);height:125px;margin-top:15px}
 }

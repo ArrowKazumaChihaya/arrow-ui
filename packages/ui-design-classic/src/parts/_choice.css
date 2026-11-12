@@ -5,7 +5,7 @@
    ArRadio・ArRadioGroup（各選択肢は ArRadio）・ArChoiceCard の radio・ArCheckbox・ArCheckboxGroup・ArFlagGroup が使う。 */
 
 /* ラジオ（UI/Radio：文字 14px・丸との間 8px・行の高さは中身なり） */
-[data-ar-design="classic"] [data-ar="radio"]{gap:8px;color:rgba(0,0,0,.88);font-size:14px;line-height:normal}
+[data-ar-design="classic"] [data-ar="radio"]{gap:8px;color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));line-height:normal}
 [data-ar-design="classic"] [data-ar="radio"]>[data-part="control"]>[data-part="mark"]{width:16px;height:16px;border:1px solid #D9D9D9;border-radius:50%;background:#fff;transition:all .2s}
 [data-ar-design="classic"] [data-ar="radio"]:hover:not([data-state~="disabled"])>[data-part="control"]>[data-part="mark"]{border-color:#1677FF}
 [data-ar-design="classic"] [data-ar="radio"][data-state~="checked"]>[data-part="control"]>[data-part="mark"]{background:#1677FF;border-color:#1677FF;box-shadow:inset 0 0 0 4px #1677FF,inset 0 0 0 8px #fff}
@@ -17,7 +17,7 @@
 
 /* チェック（ui-Check：16×16・角丸4・枠は灰 #808080（チェック時・hover・無効でも灰のまま）、チェック時の塗り #1677FF、
    indeterminate は白地の中央に 8px の #1677FF の四角。ラベルは 14px・左5／右10・行30） */
-[data-ar-design="classic"] [data-ar="checkbox"]{gap:5px;padding-right:10px;color:rgba(0,0,0,.88);font-size:14px;line-height:30px}
+[data-ar-design="classic"] [data-ar="checkbox"]{gap:5px;padding-right:10px;color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));line-height:30px}
 [data-ar-design="classic"] [data-ar="checkbox"][data-bare]{padding-right:0;line-height:16px}
 [data-ar-design="classic"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]{width:16px;height:16px;border:1px solid #808080;border-radius:4px;background:#fff;color:#fff;transition:all .2s}
 [data-ar-design="classic"] [data-ar="checkbox"]>[data-part="control"]>[data-part="box"]>[data-ar="icon"]{width:11px;height:11px;stroke-width:3.6}
@@ -30,17 +30,17 @@
 [data-ar-design="classic"] [data-ar="checkbox"][data-decorative]{cursor:inherit;padding-right:0;line-height:16px}
 
 /* 説明（antd の Card の説明と同じ 13px の灰） */
-[data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])>[data-part="description"]{color:rgba(0,0,0,.45);font-size:13px;line-height:1.5714}
+[data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])>[data-part="description"]{color:rgba(0,0,0,.45);font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.5714}
 [data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-state~="disabled"]>[data-part="description"]{color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-desc]>[data-part="control"]{margin-top:3px}
 
 /* 大きさ（plain）：行の高さを antd の段に。sm 24・lg 40（lg は文字16px） */
 [data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="plain"][data-size="sm"]:not([data-bare]){line-height:24px}
-[data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="plain"][data-size="lg"]:not([data-bare]){font-size:16px;line-height:40px}
+[data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="plain"][data-size="lg"]:not([data-bare]){font-size:calc(16px * var(--ar-font-scale, 1));line-height:40px}
 
 /* カード（今の年調の なし／あり）：枠 #D9D9D9・角丸6・地は白・文字14px。hover は枠 #4096FF、選ぶと枠 #1677FF・地 #E6F4FF。
    高さは antd の段（sm 24・md 32・lg 40）。lg が今の年調の箱（高さ40・余白 8px 12px）。 */
-[data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]{gap:8px;min-height:32px;padding:4px 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:14px;font-weight:400;line-height:1.5714;transition:border-color .2s,background-color .2s}
+[data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]{gap:8px;min-height:32px;padding:4px 11px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(14px * var(--ar-font-scale, 1));font-weight:400;line-height:1.5714;transition:border-color .2s,background-color .2s}
 [data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"]>[data-part="control"]{margin-top:3px}
 [data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"][data-size="sm"]{gap:6px;min-height:24px;padding:0 7px;border-radius:4px}
 [data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"][data-size="lg"]{min-height:40px;padding:8px 12px}
@@ -51,7 +51,7 @@
 [data-ar-design="classic"] :is([data-ar="radio"],[data-ar="checkbox"])[data-variant="card"][data-state~="disabled"]{border-color:#D9D9D9;background:rgba(0,0,0,.04);color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="radio"][data-variant="card"][data-state~="checked"][data-state~="disabled"]>[data-part="control"]>[data-part="mark"]{border-color:#D9D9D9;background:rgba(0,0,0,.25);box-shadow:inset 0 0 0 4px #F5F5F5,inset 0 0 0 8px rgba(0,0,0,.25)}
 /* カードの名前の横の札（antd の Tag） */
-[data-ar-design="classic"] [data-ar="radio"]>[data-part="label"]>[data-part="tag"]{margin-left:8px;padding:0 7px;border:1px solid #91CAFF;border-radius:4px;background:#E6F4FF;color:#0958D9;font-size:12px;font-weight:400;line-height:20px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="radio"]>[data-part="label"]>[data-part="tag"]{margin-left:8px;padding:0 7px;border:1px solid #91CAFF;border-radius:4px;background:#E6F4FF;color:#0958D9;font-size:calc(12px * var(--ar-font-scale, 1));font-weight:400;line-height:20px;white-space:nowrap}
 [data-ar-design="classic"] [data-ar="radio"]>[data-part="label"]>[data-part="tag"][data-tone="ok"]{border-color:#B7EB8F;background:#F6FFED;color:#389E0D}
 [data-ar-design="classic"] [data-ar="radio"]>[data-part="label"]>[data-part="tag"][data-tone="neutral"]{border-color:#D9D9D9;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88)}
 
@@ -62,7 +62,7 @@
 [data-ar-design="classic"] [data-ar="radio-group"][data-variant="plain"]:not([data-direction="vertical"])>[data-part="item"]{line-height:32px}
 [data-ar-design="classic"] [data-ar="radio-group"][data-variant="plain"][data-direction="vertical"]>[data-part="item"]{line-height:22px}
 [data-ar-design="classic"] [data-ar="radio-group"][data-variant="plain"][data-size="sm"]>[data-part="item"]{line-height:24px}
-[data-ar-design="classic"] [data-ar="radio-group"][data-variant="plain"][data-size="lg"]>[data-part="item"]{font-size:16px;line-height:40px}
+[data-ar-design="classic"] [data-ar="radio-group"][data-variant="plain"][data-size="lg"]>[data-part="item"]{font-size:calc(16px * var(--ar-font-scale, 1));line-height:40px}
 /* ArCheckboxGroup（ui-Flag：Check を横に並べる・縦は行30で積む） */
 [data-ar-design="classic"] [data-ar="checkbox-group"]>[data-part="list"]{gap:0}
 /* カードの並び：間8 */

@@ -2,7 +2,7 @@
 /* ArTreeSelect（今の ARROW の TreeSelect＝antd 4 の TreeSelect）：押す所は Select と同じ。プルダウンは余白 8px 4px・角丸8。
    行は高さ34・字下げ24px、名前は余白 5px 12px・角丸6・14px、選んだ行は #e6f4ff。チェックは 16px・角丸4・枠 #d9d9d9、チェックは #1677ff。 */
 [data-ar-design="classic"] [data-ar="tree-select-panel"]{padding:8px 4px}
-[data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]{gap:4px;height:34px;padding:0 0 0 calc(var(--ar-tree-level,0) * 24px);font-size:14px;line-height:24px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]{gap:4px;height:34px;padding:0 0 0 calc(var(--ar-tree-level,0) * 24px);font-size:calc(14px * var(--ar-font-scale, 1));line-height:24px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="node-label"]{flex:1;min-width:0;padding:5px 12px;border-radius:6px;transition:background .2s}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="active"]>[data-part="node-label"]{background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"][data-state~="selected"]>[data-part="node-label"]{background:#E6F4FF}
@@ -23,11 +23,11 @@
 /* 1.1：今の BranchSelectorInner の「部署/店舗追加」は木の最後の行に置いた幅130の主ボタン（Button type="add"）。「子店舗を含める」は今の ARROW に無いので、
    素の antd 4 の Checkbox（16px・角丸4・枠 #d9d9d9、チェックは #1677ff）を木の下に置く。押す所の印は antd の Tag（12px・#e6f4ff の地・#1677ff の字・枠 #91caff・角丸4） */
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="footer"]{gap:4px;margin-top:4px;padding:6px 8px 0;border-top:1px solid rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]{gap:8px;height:32px;padding-right:0;color:rgba(0,0,0,.88);font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]{gap:8px;height:32px;padding-right:0;color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px}
 /* チェックは ArCheckbox（_choice.css）。ここは antd の TreeSelect・Checkbox の色だけ（今の ARROW の ui-Check の灰の枠ではなく #D9D9D9、hover と入りは #1677FF、一部は 8px の四角） */
 [data-ar-design="classic"] :is([data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"],[data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"])>[data-part="control"]>[data-part="box"]{border-color:#D9D9D9}
 [data-ar-design="classic"] :is([data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"],[data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]):is([data-state~="checked"])>[data-part="control"]>[data-part="box"],[data-ar-design="classic"] :is([data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="include"]):hover>[data-part="control"]>[data-part="box"],[data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]:hover:not([data-state~="disabled"])>[data-ar="checkbox"]>[data-part="control"]>[data-part="box"]{border-color:#1677FF}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="check"]{margin:0 4px 0 0}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="action"]{padding:4px 0}
 [data-ar-design="classic"] [data-ar="tree-select-panel"]>[data-part="footer"]>[data-part="action"]>[data-ar="button"]{width:130px}
-[data-ar-design="classic"] [data-ar="tree-select"]>[data-part="include-mark"]{margin-left:6px;padding:0 7px;border:1px solid #91CAFF;border-radius:4px;background:#E6F4FF;color:#1677FF;font-size:12px;line-height:20px}
+[data-ar-design="classic"] [data-ar="tree-select"]>[data-part="include-mark"]{margin-left:6px;padding:0 7px;border:1px solid #91CAFF;border-radius:4px;background:#E6F4FF;color:#1677FF;font-size:calc(12px * var(--ar-font-scale, 1));line-height:20px}

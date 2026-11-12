@@ -1,8 +1,9 @@
 <script setup lang="ts">
 /**
- * ArUiProvider 1.1
+ * ArUiProvider 1.2
  * アプリに1つ置く。デザインのトークンとテーマ色を配り、宣言した部品がそろっているかを確かめる。
  * どのデザインを使うかは製品が起動時に決めて渡す（利用者が選ぶ仕組みは持たない）。
+ * 1.2：tone（色合い）と fontScale（文字の大きさの倍率）を渡すと、利用者が選んだ見え方にする（部品の形は変えない）。
  * scope="self" にすると、html ではなくこの部品の中だけにデザインを当てる（説明の画面で2つのデザインを並べるときなど）。
  */
 import { computed, onBeforeUnmount, provide, ref, toRef, watch } from "vue";
@@ -21,8 +22,12 @@ const props = withDefaults(
     requires?: ArRequirements;
     /** document：html 全体に当てる（製品）。self：この部品の中だけに当てる。 */
     scope?: "document" | "self";
+    /** 色合い（デザインの tones の名前）。省くか "standard" なら標準の色。 */
+    tone?: string;
+    /** 文字の大きさの倍率（1 が標準）。部品の文字の大きさだけを変え、枠の形は変えない。 */
+    fontScale?: number;
   }>(),
-  { palette: "blue", requires: undefined, scope: "document" },
+  { palette: "blue", requires: undefined, scope: "document", tone: undefined, fontScale: 1 },
 );
 
 const scopeId = useId("ar-scope");
@@ -60,6 +65,26 @@ watch(
   { immediate: true },
 );
 
+/** 色合いの名前。デザインに無い名前は標準として扱う。 */
+const toneName = computed(() => (props.tone && props.design.tones?.[props.tone] ? props.tone : undefined));
+/** 文字の倍率。読めない値・極端な値は標準へ戻す。 */
+const fontScaleValue = computed(() =>
+  Number.isFinite(props.fontScale) && props.fontScale >= 0.75 && props.fontScale <= 1.5 ? props.fontScale : 1,
+);
+
+watch(
+  [toneName, fontScaleValue, self],
+  ([tone, scale, isSelf]) => {
+    if (!hasDom || isSelf) return;
+    const html = document.documentElement;
+    if (tone) html.setAttribute("data-ar-tone", tone);
+    else html.removeAttribute("data-ar-tone");
+    if (scale === 1) html.style.removeProperty("--ar-font-scale");
+    else html.style.setProperty("--ar-font-scale", String(scale));
+  },
+  { immediate: true },
+);
+
 watch(
   check,
   (c) => {
@@ -71,6 +96,10 @@ watch(
 onBeforeUnmount(() => {
   styleEl?.remove();
   styleEl = null;
+  if (hasDom && !self.value) {
+    document.documentElement.removeAttribute("data-ar-tone");
+    document.documentElement.style.removeProperty("--ar-font-scale");
+  }
 });
 </script>
 
@@ -85,6 +114,8 @@ onBeforeUnmount(() => {
     :data-ar-scope="scopeId"
     :data-ar-design="design.id"
     :data-ar-palette="palette"
+    :data-ar-tone="toneName"
+    :style="fontScaleValue === 1 ? undefined : { '--ar-font-scale': String(fontScaleValue) }"
   >
     <slot />
     <div ref="portal" data-part="portal" />

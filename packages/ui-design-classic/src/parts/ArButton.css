@@ -5,8 +5,8 @@
    押す前（hover）は白 10% の幕。secondary＝cancel（白地・黒い枠）、subtle＝info（白地・#4F92C2 の枠と 700 の文字）、
    dashed＝bordered（#4F92C2 の枠の丸い札・700 の文字。hover で塗る）、ghost＝text（700 の文字と下線）、overlay＝transround（32px の丸・rgba(0,0,0,.6)）。
    幅：今の ARROW のボタンは親の幅いっぱい（画面ごとに 90〜200px の幅を決めている）。同じにするには block を付けて幅のある入れ物に入れる。 */
-[data-ar-design="classic"] [data-ar="button"]{--classic-btn:#000;position:relative;height:32px;padding:0 7px;gap:0;border:1px solid var(--classic-btn);border-radius:6px;background:var(--classic-btn);color:#fff;font:400 14px/30px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;box-shadow:0 2px 0 rgba(5,145,255,.1);text-decoration:none;cursor:pointer;transition:all .2s cubic-bezier(.645,.045,.355,1)}
-[data-ar-design="classic"] [data-ar="button"]>[data-part="label"]{display:inline-block;font:400 13px/30px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="button"]{--classic-btn:#000;position:relative;height:32px;padding:0 7px;gap:0;border:1px solid var(--classic-btn);border-radius:6px;background:var(--classic-btn);color:#fff;font:400 calc(14px * var(--ar-font-scale, 1))/calc(30px * var(--ar-font-scale, 1)) -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;box-shadow:0 2px 0 rgba(5,145,255,.1);text-decoration:none;cursor:pointer;transition:all .2s cubic-bezier(.645,.045,.355,1)}
+[data-ar-design="classic"] [data-ar="button"]>[data-part="label"]{display:inline-block;font:400 calc(13px * var(--ar-font-scale, 1))/calc(30px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;white-space:nowrap}
 [data-ar-design="classic"] [data-ar="button"]>[data-ar="icon"]{flex:none;width:16px;height:16px}
 [data-ar-design="classic"] [data-ar="button"]>[data-ar="icon"]+[data-part="label"]{margin-left:5px}
 [data-ar-design="classic"] [data-ar="button"]>[data-part="label"]+[data-ar="icon"]{margin-left:5px}
@@ -54,15 +54,15 @@
 [data-ar-design="classic"] [data-ar="button"][data-tone="overlay"]{width:32px;padding:0;border:0;border-radius:50%;background:rgba(0,0,0,.6);color:#fff}
 /* 大きさ：sm＝small（高さ24・文字 12px 行の高さ21.5・アイコン14・間3px）、lg＝large（高さ40・文字 14px 600・間3px）、
    xl＝xlarge（高さ50・文字 18px 600・アイコン24・間6px）。角丸はどれも6px。 */
-[data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"]){height:24px;font-size:12px;line-height:22px}
-[data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"])>[data-part="label"]{font-size:12px;line-height:21.5px}
+[data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"]){height:24px;font-size:calc(12px * var(--ar-font-scale, 1));line-height:22px}
+[data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"])>[data-part="label"]{font-size:calc(12px * var(--ar-font-scale, 1));line-height:21.5px}
 [data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"])>[data-ar="icon"]{width:14px;height:14px}
 [data-ar-design="classic"] [data-ar="button"]:is([data-size="sm"],[data-size="xs"])>[data-ar="icon"]+[data-part="label"]{margin-left:3px}
-[data-ar-design="classic"] [data-ar="button"][data-size="lg"]{height:40px;font-size:16px;line-height:38px}
-[data-ar-design="classic"] [data-ar="button"][data-size="lg"]>[data-part="label"]{font-size:14px;font-weight:600}
+[data-ar-design="classic"] [data-ar="button"][data-size="lg"]{height:40px;font-size:calc(16px * var(--ar-font-scale, 1));line-height:38px}
+[data-ar-design="classic"] [data-ar="button"][data-size="lg"]>[data-part="label"]{font-size:calc(14px * var(--ar-font-scale, 1));font-weight:600}
 [data-ar-design="classic"] [data-ar="button"][data-size="lg"]>[data-ar="icon"]+[data-part="label"]{margin-left:3px}
-[data-ar-design="classic"] [data-ar="button"][data-size="xl"]{height:50px;font-size:20px;font-weight:600;line-height:48px}
-[data-ar-design="classic"] [data-ar="button"][data-size="xl"]>[data-part="label"]{font-size:18px;font-weight:600}
+[data-ar-design="classic"] [data-ar="button"][data-size="xl"]{height:50px;font-size:calc(20px * var(--ar-font-scale, 1));font-weight:600;line-height:48px}
+[data-ar-design="classic"] [data-ar="button"][data-size="xl"]>[data-part="label"]{font-size:calc(18px * var(--ar-font-scale, 1));font-weight:600}
 [data-ar-design="classic"] [data-ar="button"][data-size="xl"]>[data-ar="icon"]{width:24px;height:24px}
 [data-ar-design="classic"] [data-ar="button"][data-size="xl"]>[data-ar="icon"]+[data-part="label"]{margin-left:6px}
 /* アイコンだけ（square）：32×32（sm 24・lg 40・xl 50） */

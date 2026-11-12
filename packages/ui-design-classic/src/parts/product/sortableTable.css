@@ -84,7 +84,7 @@
 .draggable_hovering
   table
   th:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
 }
 .sortable_table_component
   table
@@ -130,7 +130,7 @@
   z-index: 1;
   padding: 10px 16px;
   color: rgba(0, 0, 0, 0.25);
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   text-align: center;
   background: #fff;
 }

@@ -1,0 +1,3 @@
+- ArUiProvider 1.2: `tone`（色合い）と `fontScale`（文字の大きさの倍率）を追加。利用者が選んだ見え方を html に当てる。
+- design: `tones`（色合いごとのトークン・テーマ色の上書き）を追加。remix は「あざやか」「くっきり」を持つ。
+- 全デザインの CSS の文字の大きさ（px）を `--ar-font-scale` に追従させた（印刷を除く）。`scripts/scale-font-sizes.mjs --check` をテストで確認。

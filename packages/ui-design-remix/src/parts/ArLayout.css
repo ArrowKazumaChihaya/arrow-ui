@@ -6,4 +6,4 @@
 [data-ar-design="remix"] [data-ar="layout"]>[data-part="sider"]{gap:4px;padding:8px;background:var(--ar-color-surface-alt);border-right:1px solid var(--ar-color-border);box-sizing:border-box}
 [data-ar-design="remix"] [data-ar="layout"][data-has-sider="end"]>[data-part="sider"]{border-right:0;border-left:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="layout"]>[data-part="content"]{background:var(--ar-color-bg)}
-[data-ar-design="remix"] [data-ar="layout"]>[data-part="footer"]{min-height:30px;padding:0 14px;background:#fff;border-top:1px solid var(--ar-color-border);color:var(--ar-color-text-muted);font-size:12px;font-weight:500;box-sizing:border-box}
+[data-ar-design="remix"] [data-ar="layout"]>[data-part="footer"]{min-height:30px;padding:0 14px;background:#fff;border-top:1px solid var(--ar-color-border);color:var(--ar-color-text-muted);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:500;box-sizing:border-box}

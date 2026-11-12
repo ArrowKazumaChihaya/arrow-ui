@@ -14,17 +14,17 @@ span:has(+ input.ant-input):where([data-ar-design="classic"], [data-ar-design="c
   input.ant-input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     height: var(--arrow-control-height-mobile, 27px) !important;
     padding: 4px 4px !important;
-    font-size: var(--arrow-control-font-size-mobile, 13px) !important;
+    font-size:var(--arrow-control-font-size-mobile, calc(13px * var(--ar-font-scale, 1))) !important;
     line-height: var(--arrow-control-height-mobile, 27px) !important;
   }
   input.ant-input
     + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     line-height: var(--arrow-control-height-mobile, 27px) !important;
-    font-size: var(--arrow-control-font-size-mobile, 13px);
+    font-size:var(--arrow-control-font-size-mobile, calc(13px * var(--ar-font-scale, 1)));
   }
   span:has(+ input.ant-input):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     line-height: var(--arrow-control-height-mobile, 27px) !important;
-    font-size: var(--arrow-control-font-size-mobile, 13px);
+    font-size:var(--arrow-control-font-size-mobile, calc(13px * var(--ar-font-scale, 1)));
   }
 }
 /* @end-component */

@@ -2,13 +2,13 @@
 /* ArStepSelect（今の ARROW の書類の流れ Component/DocumentBlock と同じ：箱は 2px gray・角丸10・白・内側 10px 15px、見出しは中央 15px/30px・600・黒。
    段の間は今の矢印の絵（/img/document_apply.png・幅55・上下10）。今の ARROW には番号・済みの印・今の段の強調はないので出さない。
    道しるべは今の Bread（12px のリンク・区切り「>」・左右2px。最後は黒）） */
-[data-ar-design="classic"] [data-ar="step-select"]{color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
-[data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]{margin-bottom:6px;font-size:12px;line-height:1.5}
-[data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]{gap:4px;padding:0;background:none;color:#1677ff;font-size:12px}
+[data-ar-design="classic"] [data-ar="step-select"]{color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px}
+[data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]{margin-bottom:6px;font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5}
+[data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]{gap:4px;padding:0;background:none;color:#1677ff;font-size:calc(12px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]:hover{color:#69b1ff}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]:focus-visible{outline:2px solid #91caff}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"][data-state~="now"]{color:#000;font-weight:600}
-[data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]>[data-part="crumb-label"]{color:inherit;font-size:12px}
+[data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]>[data-part="crumb-label"]{color:inherit;font-size:calc(12px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="crumb"]>[data-part="crumb-label"]::after{content:"："}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="crumbs"]>[data-part="separator"]{width:12px;height:12px;margin:0 2px;color:#000}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="connector"]{margin:10px auto}
@@ -18,8 +18,8 @@
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]:focus-visible{outline:2px solid #91caff}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]{justify-content:center;gap:8px}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="marker"]{display:none}
-[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{font-size:15px;font-weight:600;line-height:30px;text-align:center}
+[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{font-size:calc(15px * var(--ar-font-scale, 1));font-weight:600;line-height:30px;text-align:center}
 /* 件数の札は ArTag。classic は今の形（antd の灰の札）をここで保つ */
-[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="count"][data-ar="tag"]{height:auto;margin:0;box-shadow:none;font-family:inherit;padding:0 7px;border:1px solid #d9d9d9;border-radius:4px;background:rgba(0,0,0,.02);color:inherit;font-size:12px;font-weight:inherit;line-height:20px}
+[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="count"][data-ar="tag"]{height:auto;margin:0;box-shadow:none;font-family:inherit;padding:0 7px;border:1px solid #d9d9d9;border-radius:4px;background:rgba(0,0,0,.02);color:inherit;font-size:calc(12px * var(--ar-font-scale, 1));font-weight:inherit;line-height:20px}
 [data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="extra"]{gap:8px;margin-left:0}
-@media (max-width:499px){[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]{padding:5px 8px}[data-ar-design="classic"] [data-ar="step-select"]>[data-part="connector"]>[data-ar="icon"]:last-child{width:35px;height:32.3px}[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{font-size:12px;line-height:25px}}
+@media (max-width:499px){[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]{padding:5px 8px}[data-ar-design="classic"] [data-ar="step-select"]>[data-part="connector"]>[data-ar="icon"]:last-child{width:35px;height:32.3px}[data-ar-design="classic"] [data-ar="step-select"]>[data-part="step"]>[data-part="head"]>[data-part="title"]{font-size:calc(12px * var(--ar-font-scale, 1));line-height:25px}}

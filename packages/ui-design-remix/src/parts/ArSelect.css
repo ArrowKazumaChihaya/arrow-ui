@@ -1,7 +1,7 @@
 /* @covers ArSelect 1.3.0 */
 /* 押す所（トリガー）は ArCascader・ArTreeSelect も同じ形なので、ここで3つまとめて当てる。 */
 /* ArSelect：field＝入力と同じ枠（.inp・右に下向きの印）、selbox＝店舗の選択（.selbox）。プルダウンは _picker.css。 */
-[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]){height:var(--ar-size-control-md);gap:8px;padding:0 34px 0 12px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font-size:14px;font-weight:500;line-height:normal;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]){height:var(--ar-size-control-md);gap:8px;padding:0 34px 0 12px;border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text);font-size:calc(14px * var(--ar-font-scale, 1));font-weight:500;line-height:normal;transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):hover{border-color:#A3AEB9}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"]):is(:focus,[data-state~="open"]){border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="placeholder"]{color:#7B8794}
@@ -18,22 +18,22 @@
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-multiple]>[data-part="placeholder"]{padding-left:7px}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-multiple]>[data-part="icon"]{margin-left:7px}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]{gap:4px}
-[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]>[data-part="tag"]{gap:4px;height:26px;padding:0 4px 0 9px;border-radius:7px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12.5px;font-weight:600}
+[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]>[data-part="tag"]{gap:4px;height:26px;padding:0 4px 0 9px;border-radius:7px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]>[data-part="tag"][data-kind="more"]{padding:0 7px}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]{opacity:.7;border-radius:4px}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]:hover{opacity:1}
 /* 店舗の選択（.selbox） */
-[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-variant="selbox"]{min-width:180px;padding:0 33px 0 11px;border-color:var(--ar-color-border);border-radius:11px;font-size:13.5px;font-weight:600}
+[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-variant="selbox"]{min-width:180px;padding:0 33px 0 11px;border-color:var(--ar-color-border);border-radius:11px;font-size:calc(13.5px * var(--ar-font-scale, 1));font-weight:600}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-variant="selbox"]:hover{border-color:#C9D3DD}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-variant="selbox"]:is(:focus,[data-state~="open"]){border-color:var(--ar-accent)}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-variant="selbox"]>[data-part="icon"]{color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-variant="selbox"]>[data-part="arrow"]{right:10px;width:15px;height:15px;stroke-width:1.8}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-variant="selbox"]>[data-part="placeholder"]{font-weight:500}
 /* 大きさ */
-[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="sm"]{height:var(--ar-size-control-sm);min-height:var(--ar-size-control-sm);font-size:13px;border-radius:9px;padding-left:10px}
+[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="sm"]{height:var(--ar-size-control-sm);min-height:var(--ar-size-control-sm);font-size:calc(13px * var(--ar-font-scale, 1));border-radius:9px;padding-left:10px}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="sm"][data-multiple]{height:auto;padding:3px 34px 3px 3px}
-[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="sm"]>[data-part="tags"]>[data-part="tag"]{height:22px;border-radius:6px;font-size:12px}
-[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="lg"]{height:var(--ar-size-control-lg);min-height:var(--ar-size-control-lg);font-size:15px;border-radius:11px}
+[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="sm"]>[data-part="tags"]>[data-part="tag"]{height:22px;border-radius:6px;font-size:calc(12px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="lg"]{height:var(--ar-size-control-lg);min-height:var(--ar-size-control-lg);font-size:calc(15px * var(--ar-font-scale, 1));border-radius:11px}
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-size="lg"][data-multiple]{height:auto;padding:7px 34px 7px 7px}
 /* 状態 */
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-state~="invalid"]{border-color:var(--ar-color-danger)}
@@ -44,6 +44,6 @@
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-state~="disabled"]>[data-part="tags"]>[data-part="tag"]{background:var(--ar-color-border-subtle);color:#A3AEB9}
 [data-ar-design="remix"] [data-ar="select-panel"]>[data-part="list"]>[data-part="action"][data-state~="active"]>[data-ar="button"]{box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="select"]>[data-part="value"][data-has-dot]>[data-part="value-text"]{font-weight:700}
-[data-ar-design="remix"] [data-ar="select"]>[data-part="value"]>[data-part="value-description"]{color:var(--ar-color-text-muted);font-size:11.5px;font-weight:500;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="select"]>[data-part="value"]>[data-part="value-description"]{color:var(--ar-color-text-muted);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:500;font-variant-numeric:tabular-nums}
 /* Single choices stay readable in wide forms; an ArField can explicitly request a longer control. */
 [data-ar-design="remix"] :is([data-ar="select"],[data-ar="cascader"],[data-ar="tree-select"])[data-block]:not([data-multiple]){max-width:var(--ar-field-control-size,24rem)}

@@ -6,7 +6,7 @@
   margin-bottom: 10px;
 }
 .change_origin[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 15px;
 }
 .change_origin[data-v-uif7cdd2f334dc]:not(:first-child):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -14,22 +14,22 @@
 }
 .change_origin[data-v-uif7cdd2f334dc]
   *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 15px;
 }
 .change_arrow[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   margin: 10px 0;
   font-weight: bold;
-  font-size: 15px;
+  font-size:calc(15px * var(--ar-font-scale, 1));
 }
 .change_result[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: red;
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 15px;
 }
 .change_result[data-v-uif7cdd2f334dc]
   *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 15px;
 }
 .change_caution[data-v-uif7cdd2f334dc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

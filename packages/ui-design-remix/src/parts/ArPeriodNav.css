@@ -8,16 +8,16 @@
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:hover:not(:disabled){border-color:var(--ar-accent-line);background:var(--ar-accent-subtle);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="arrow"]:disabled{opacity:.45}
-[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]{gap:6px;height:40px;padding:0 14px;border:0;border-radius:12px;background:none;color:var(--ar-color-text);font:700 20px/normal var(--ar-font-family-numeric);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]{gap:6px;height:40px;padding:0 14px;border:0;border-radius:12px;background:none;color:var(--ar-color-text);font:700 calc(20px * var(--ar-font-scale, 1))/normal var(--ar-font-family-numeric);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]{transition:background var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]:hover{background:#F2F5F8}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>button[data-part="label"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="caret"]{color:var(--ar-color-text-muted)}
-[data-ar-design="remix"] [data-ar="period-nav"][data-size="lg"]>[data-part="center"]>[data-part="label"]{align-items:baseline;gap:8px;height:42px;padding:0;font-size:28px;line-height:42px;letter-spacing:.01em}
-[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{height:26px;min-width:26px;padding:0 6px;border-radius:8px;background:#F0F3F6;color:#8A9098;font-size:15px;font-weight:700;line-height:22.5px;transform:translateY(-3px)}
+[data-ar-design="remix"] [data-ar="period-nav"][data-size="lg"]>[data-part="center"]>[data-part="label"]{align-items:baseline;gap:8px;height:42px;padding:0;font-size:calc(28px * var(--ar-font-scale, 1));line-height:42px;letter-spacing:.01em}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"]{height:26px;min-width:26px;padding:0 6px;border-radius:8px;background:#F0F3F6;color:#8A9098;font-size:calc(15px * var(--ar-font-scale, 1));font-weight:700;line-height:22.5px;transform:translateY(-3px)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"][data-tone="sun"]{background:#FDECEA;color:var(--ar-color-sun)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="weekday"][data-tone="sat"]{background:#E8F0FB;color:var(--ar-color-sat)}
-[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]{gap:5px;height:30px;padding:0 12px;border:1px solid var(--ar-color-border);border-radius:9px;background:#fff;color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:700;transition:border-color var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]{gap:5px;height:30px;padding:0 12px;border:1px solid var(--ar-color-border);border-radius:9px;background:#fff;color:var(--ar-color-text-secondary);font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:700;transition:border-color var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:hover:not(:disabled){border-color:var(--ar-accent-line);color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]:disabled{opacity:.45}
@@ -30,11 +30,11 @@
 [data-ar-design="remix"] [data-ar="period-nav"]:has(>[data-part="today"])>[data-part="center"]{grid-column:2}
 [data-ar-design="remix"] [data-ar="period-nav"]>[data-part="today"]{grid-column:3;justify-self:end;position:static;transform:none}
 /* 1.1：祝日の名前（date と holidays。PopRecruitDays の「11/3（火・祝） 文化の日」と同じく、日曜の赤の小さな文字） */
-[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="holiday"]{color:var(--ar-color-sun);font-size:11.5px;font-weight:600;line-height:1.4;white-space:nowrap}
+[data-ar-design="remix"] [data-ar="period-nav"]>[data-part="center"]>[data-part="label"]>[data-part="holiday"]{color:var(--ar-color-sun);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:600;line-height:1.4;white-space:nowrap}
 
 /* Employee titles may wrap; arrows retain their own column. */
-[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{height:auto;min-height:36px;font-size:18px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{height:auto;min-height:36px;font-size:calc(18px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="period-nav"][data-size="md"]>[data-part="center"]>[data-part="label"]{height:auto;min-height:40px;line-height:1.4}
 @media(max-width:600px){
-  [data-ar-design="remix"] [data-ar="period-nav"][data-size="md"]:not([data-inverse])>[data-part="center"]>[data-part="label"]{padding:0 4px;font-size:16px;letter-spacing:0}
+  [data-ar-design="remix"] [data-ar="period-nav"][data-size="md"]:not([data-inverse])>[data-part="center"]>[data-part="label"]{padding:0 4px;font-size:calc(16px * var(--ar-font-scale, 1));letter-spacing:0}
 }

@@ -1,8 +1,8 @@
 /* @covers ArDateInput 1.1.0, ArDateRange 1.2.0 */
 /* ArDateInput（ui-Dates）：年は Select（77×32・角丸6・枠 #D9D9D9・14px・右に 12px の ∨ rgba(0,0,0,.25)）、
    単位は間を空けず 13px の黒（行32）、月日は 32×32 の Input（余白0・中央）。不正な日付は月日の枠が #D10C1D。 */
-[data-ar-design="classic"] [data-ar="date-input"]{gap:0;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
-[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"],[data-ar-design="classic"] [data-ar="date-input"]>input{height:32px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;font-family:var(--ar-font-family);outline:0;box-shadow:none;transition:border-color .2s,box-shadow .2s}
+[data-ar-design="classic"] [data-ar="date-input"]{gap:0;font:calc(13px * var(--ar-font-scale, 1))/calc(32px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"],[data-ar-design="classic"] [data-ar="date-input"]>input{height:32px;border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));font-family:var(--ar-font-family);outline:0;box-shadow:none;transition:border-color .2s,box-shadow .2s}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]{width:77px;padding:0 29px 0 11px;line-height:28px}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"]>[data-part="arrow"]{right:11px;width:12px;height:12px;stroke-width:2.2;color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="date-input"]>input{width:32px;padding:0;line-height:32px;text-align:center}
@@ -14,15 +14,15 @@
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sun"]{color:red}
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="weekday"][data-kind="sat"]{color:blue}
 /* ArDateRange：2つの ui-Dates を「〜」でつなぐ。直し方は ARROW の注意文（13px/600 #D10C1D）。 */
-[data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]{gap:4px 8px;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]{gap:4px 8px;font:calc(13px * var(--ar-font-scale, 1))/calc(32px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
 [data-ar-design="classic"] [data-ar="date-range"]>[data-part="row"]>[data-part="days"]{color:#000}
-[data-ar-design="classic"] [data-ar="date-range"]>[data-part="error"]{gap:4px;margin-top:2px;font:600 13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#D10C1D}
+[data-ar-design="classic"] [data-ar="date-range"]>[data-part="error"]{gap:4px;margin-top:2px;font:600 calc(13px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#D10C1D}
 /* 和暦（era）：年のプルダウンは幅135px（今の ARROW の isNendo） */
 [data-ar-design="classic"] [data-ar="date-input"][data-era]>[data-part="year"]{width:135px}
 /* 未選択の年は antd の薄い文字 */
 [data-ar-design="classic"] [data-ar="date-input"]>[data-part="year"][data-state~="empty"]>[data-part="value"]{color:rgba(0,0,0,.25)}
 /* ありえない日（invalidDate: "message"）：月日の枠を #D10C1D に、右に5px空けて「無効な日付」（13px 600 #D10C1D） */
-[data-ar-design="classic"] [data-ar="date-input"]>[data-part="error"]{margin-left:5px;color:#D10C1D;font-size:13px;font-weight:600;line-height:13px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="date-input"]>[data-part="error"]{margin-left:5px;color:#D10C1D;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:600;line-height:13px;white-space:nowrap}
 /* 年のプルダウンの先頭の「未選択」は #C4C4C4 */
 [data-ar-design="classic"] [data-ar="year-list"]>[data-part="option"][data-kind="null"]>[data-part="option-label"]{color:#C4C4C4}
 /* 年の ∨ は antd の DownOutlined（ArSelect.css の --classic-down）。開いている間は値が薄い（antd） */
@@ -36,7 +36,7 @@
 [data-ar-design="classic"] [data-ar="date-input"][data-size="sm"]>[data-part="year"]>[data-part="arrow"]{right:7px}
 [data-ar-design="classic"] [data-ar="date-input"][data-size="sm"]>input{width:26px;line-height:22px}
 [data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]{line-height:40px}
-[data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]>:is([data-part="year"],input){height:40px;border-radius:8px;font-size:16px}
+[data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]>:is([data-part="year"],input){height:40px;border-radius:8px;font-size:calc(16px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]>[data-part="year"]{width:86px;line-height:38px}
 [data-ar-design="classic"] [data-ar="date-input"][data-size="lg"]>input{width:40px;line-height:38px}
 [data-ar-design="classic"] [data-ar="date-input"][data-era]:is([data-size="sm"],[data-size="lg"])>[data-part="year"]{width:auto;min-width:135px}

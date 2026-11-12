@@ -15,12 +15,12 @@
 }
 .date_component
   .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px !important;
+  font-size:calc(14px * var(--ar-font-scale, 1)) !important;
 }
 .date_component
   .ant-select-selection-selected-value
   span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px !important;
+  font-size:calc(14px * var(--ar-font-scale, 1)) !important;
 }
 .date_component
   .ant-select-dropdown:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -69,13 +69,13 @@
   }
   .date_component
     .ant-select-selection-selected-value:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 13px !important;
+    font-size:calc(13px * var(--ar-font-scale, 1)) !important;
     line-height: 25px;
   }
   .date_component
     .ant-select-selection-selected-value
     span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 13px !important;
+    font-size:calc(13px * var(--ar-font-scale, 1)) !important;
   }
   .date_component
     .ant-input:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

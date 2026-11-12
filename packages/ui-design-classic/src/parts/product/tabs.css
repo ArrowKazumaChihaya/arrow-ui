@@ -9,7 +9,7 @@
   width: var(--tab-width);
   height: 30px;
   line-height: 32px;
-  font-size: 15px;
+  font-size:calc(15px * var(--ar-font-scale, 1));
   font-weight: 600;
   color: var(--arrow-tab-color, gray);
   text-align: center;
@@ -64,7 +64,7 @@
   width: 14px;
   height: 14px;
   color: #fff;
-  font-size: 10px;
+  font-size:calc(10px * var(--ar-font-scale, 1));
   font-weight: 700;
   line-height: 14px;
   background-color: #e58a25;
@@ -88,7 +88,7 @@
     width: var(--tab-sp-width);
     height: 25px;
     line-height: 25px;
-    font-size: 12px;
+    font-size:calc(12px * var(--ar-font-scale, 1));
   }
   .tab_component
     .tab_item.beta[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *)::after {
@@ -96,7 +96,7 @@
     right: 4px;
     width: 12px;
     height: 12px;
-    font-size: 9px;
+    font-size:calc(9px * var(--ar-font-scale, 1));
     line-height: 12px;
   }
   .exclamation_icon_wrap[data-v-ui00461df21c75]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

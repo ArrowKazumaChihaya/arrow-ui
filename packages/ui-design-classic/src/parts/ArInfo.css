@@ -1,12 +1,12 @@
 /* @covers ArInfo 1.0.0 */
 /* 今の Info（ui-Info：detail は 11px・行15 の #1677FF のリンク／mark は 11px の ? #4F92C2／small は 11px #5F5F5F・行15）と Attention（ui-Attention：15px 600 #D10C1D・行20） */
 [data-ar-design="classic"] [data-ar="info"]{font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
-[data-ar-design="classic"] [data-ar="info"][data-kind="note"]{font-size:11px;line-height:15px;color:#5F5F5F}
-[data-ar-design="classic"] [data-ar="info"][data-kind="attention"]{display:inline-flex;margin-bottom:15px;font-size:15px;font-weight:600;line-height:20px;color:#D10C1D}
+[data-ar-design="classic"] [data-ar="info"][data-kind="note"]{font-size:calc(11px * var(--ar-font-scale, 1));line-height:15px;color:#5F5F5F}
+[data-ar-design="classic"] [data-ar="info"][data-kind="attention"]{display:inline-flex;margin-bottom:15px;font-size:calc(15px * var(--ar-font-scale, 1));font-weight:600;line-height:20px;color:#D10C1D}
 [data-ar-design="classic"] [data-ar="info"][data-kind="attention"]>[data-part="icon"]{display:none}
 [data-ar-design="classic"] [data-ar="info"][data-kind="mark"]{height:15px;color:#4F92C2}
 [data-ar-design="classic"] [data-ar="info"][data-kind="mark"]>[data-part="icon"]{width:11px;height:11px;stroke-width:2.2}
-[data-ar-design="classic"] [data-ar="info"][data-kind="detail"]{font-size:11px;line-height:15px;color:#1677FF}
+[data-ar-design="classic"] [data-ar="info"][data-kind="detail"]{font-size:calc(11px * var(--ar-font-scale, 1));line-height:15px;color:#1677FF}
 [data-ar-design="classic"] [data-ar="info"]:is([data-kind="mark"],[data-kind="detail"]):hover{color:#69B1FF}
 [data-ar-design="classic"] [data-ar="info"][data-kind="mark"]:hover{color:#4F92C2;opacity:.8}
 [data-ar-design="classic"] [data-ar="info"]:is([data-kind="mark"],[data-kind="detail"]):focus-visible{outline:1px solid #4096FF;outline-offset:1px}

@@ -1,9 +1,9 @@
 /* @covers ArDescriptions 1.1.0 */
 /* ArDescriptions（素の ant-design-vue 4 の Descriptions。plain＝既定：「ラベル：値」14px、行の下16。bordered（small）＝角丸8・rgba(5,5,5,.06) の枠、ラベルは rgba(0,0,0,.02) の地・余白 8/16、1行の高さ 38） */
 /* 文字は ARROW の地の書体（今の画面は div・td などに游ゴシックが当たり、antd の書体は外の箱だけ）。 */
-[data-ar-design="classic"] [data-ar="descriptions"]{color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:14px;line-height:22px}
+[data-ar-design="classic"] [data-ar="descriptions"]{color:rgba(0,0,0,.88);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px}
 [data-ar-design="classic"] [data-ar="descriptions"]>[data-part="header"]{margin-bottom:20px}
-[data-ar-design="classic"] [data-ar="descriptions"]>[data-part="header"]>[data-part="title"]{font-size:16px;font-weight:600;line-height:24px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="descriptions"]>[data-part="header"]>[data-part="title"]{font-size:calc(16px * var(--ar-font-scale, 1));font-weight:600;line-height:24px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]{padding-bottom:16px}
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="plain"]>[data-part="list"]>[data-part="item"]>[data-part="label"]::after{content:":";margin:0 8px 0 2px}
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]{border:1px solid rgba(5,5,5,.06);border-radius:8px;overflow:hidden}
@@ -13,7 +13,7 @@
 [data-ar-design="classic"] [data-ar="descriptions"][data-variant="bordered"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);white-space:normal}
 [data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]{grid-template-columns:repeat(var(--ar-desc-visible-columns,var(--ar-desc-columns,3)),minmax(0,1fr));row-gap:12px}
 [data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]{gap:4px;padding-bottom:0}
-[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{color:rgba(0,0,0,.65);font-size:13px;white-space:normal}
+[data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]{color:rgba(0,0,0,.65);font-size:calc(13px * var(--ar-font-scale, 1));white-space:normal}
 [data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="label"]::after{content:none}
 [data-ar-design="classic"] [data-ar="descriptions"][data-layout="stacked"]>[data-part="list"]>[data-part="item"]>[data-part="value"]{font-weight:400;line-height:1.7}
 [data-ar-design="classic"] [data-ar="descriptions"]>[data-part="list"]>[data-part="item"][data-tone="danger"]>[data-part="value"]{color:#FF4D4F}

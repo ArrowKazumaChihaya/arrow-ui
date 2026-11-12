@@ -1,17 +1,17 @@
 /* @covers ArField 1.0.0 */
 /* ArField：ラベルが上（.lbl 12.5px 700・下に6px）、横（.ad-form：120px 右寄せ・13.5px 600・縦は真ん中）。
    必須は .req（11px 700・赤い淡い地・角丸4）、間違いは .derr（12.5px 600・上に6px）、説明は .ad-help（12px・上に4px）。 */
-[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;line-height:18.75px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]{display:flex;align-items:center;gap:6px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:700;line-height:18.75px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="field"][data-layout="stacked"]>[data-part="label"]{margin-bottom:6px}
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{column-gap:14px;align-items:start}
-[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;overflow-wrap:anywhere;gap:4px;font-size:13.5px;font-weight:600;line-height:20.25px;text-align:right;padding-top:8px}
-[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{display:block;flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:11px;font-weight:700;line-height:18px}
-[data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{margin-top:4px;font-size:12px;line-height:18px;color:var(--ar-color-text-muted);white-space:pre-line;overflow-wrap:anywhere}
-[data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{display:flex;gap:6px;align-items:center;margin-top:6px;font-size:12.5px;font-weight:600;line-height:18.75px;color:var(--ar-color-danger-ink)}
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;overflow-wrap:anywhere;gap:4px;font-size:calc(13.5px * var(--ar-font-scale, 1));font-weight:600;line-height:20.25px;text-align:right;padding-top:8px}
+[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{display:block;flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:18px}
+[data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{margin-top:4px;font-size:calc(12px * var(--ar-font-scale, 1));line-height:18px;color:var(--ar-color-text-muted);white-space:pre-line;overflow-wrap:anywhere}
+[data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{display:flex;gap:6px;align-items:center;margin-top:6px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600;line-height:18.75px;color:var(--ar-color-danger-ink)}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="error"]>[data-ar="icon"]{flex:none}
 /* toolbar：シフト画面の .v-st（12.5px 600・mute・入力との間 8px） */
 [data-ar-design="remix"] [data-ar="field"][data-layout="toolbar"]{gap:8px}
-[data-ar-design="remix"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{gap:4px;font-size:12.5px;font-weight:600;line-height:18.75px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="field"][data-layout="toolbar"]>[data-part="label"]{gap:4px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600;line-height:18.75px;color:var(--ar-color-text-muted)}
 
 /* 狭い入力欄は親幅で縦配置へ。画面幅が広いダイアログやカラム内も同じ扱い。 */
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{container-type:inline-size;container-name:ar-field;min-width:0;grid-template-columns:minmax(0,var(--ar-field-label)) minmax(0,1fr)}
@@ -23,7 +23,7 @@
 
 /* Context help belongs beside the field label, independent of control width. */
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>label{display:inline-flex;align-items:center;gap:4px;min-width:0}
-[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>label>[data-part="required"]{flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:11px;font-weight:700;line-height:18px}
+[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>label>[data-part="required"]{flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:18px}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-ar="info"]{flex:none}
 
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]>:is([data-ar="select"],[data-ar="tree-select"])[data-block]{max-width:var(--ar-field-control-size,24rem)}

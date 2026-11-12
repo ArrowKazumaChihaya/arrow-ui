@@ -4,7 +4,7 @@
 }
 .item_info_content:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   line-height: 25px;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
 }
 .item_info_img:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   width: 100%;
@@ -13,7 +13,7 @@
   .row:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   margin-bottom: 10px;
   line-height: 30px !important;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
 }
 .item_content
   .row:last-of-type:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -32,7 +32,7 @@
 @media screen and (max-width: 499px) {
   .item_content
     .row:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 13px;
+    font-size:calc(13px * var(--ar-font-scale, 1));
   }
 }
 /* @end-component */
@@ -62,7 +62,7 @@
   padding-bottom: 2px;
   margin-bottom: 10px;
   font-weight: 600;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   text-align: left;
 }
 .item_component
@@ -82,7 +82,7 @@
   font-weight: bold;
   border-radius: 3px;
   margin-left: 3px;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   vertical-align: 1px;
 }
 .item_component
@@ -105,7 +105,7 @@
   text-align: left;
   width: calc(100% - var(--title-width));
   line-height: 30px;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
 }
 .item_component
   .item_content
@@ -114,7 +114,7 @@
 }
 .item_component
   .small_info[data-v-ui16cef7eab4cf]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
   white-space: pre-wrap;
   line-height: 15px !important;
   margin-top: 0px;
@@ -129,7 +129,7 @@
 .item_component
   .small_info[data-v-ui16cef7eab4cf]
   *:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 .item_component
   .small_info
@@ -230,7 +230,7 @@
   font-weight: bold;
   border-radius: 3px;
   margin-left: 3px;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   width: 40px;
   height: 22px;
   line-height: 16px;

@@ -2,8 +2,8 @@
 /* ArSteps：今の ARROW の手順（UI/Step ＝ ant-design-vue の Steps small・ラベルは下）。
  * 丸24px・12px。済み：#E6F4FF の丸に #1677FF のチェック・線も #1677FF。今：#1677FF の数字（丸は透明）。まだ：rgba(0,0,0,.06) の丸。題 14px（まだは .45）。
  * 縦（direction="vertical"）は ant-design-vue の縦の Steps（丸32・題16px）。mini はラベル横の small。 */
-[data-ar-design="classic"] [data-ar="steps"]{color:rgba(0,0,0,.88);font-size:14px}
-[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="icon"]{width:24px;height:24px;border:1px solid transparent;border-radius:24px;box-sizing:border-box;background:rgba(0,0,0,.06);color:rgba(0,0,0,.88);font-size:12px;line-height:1}
+[data-ar-design="classic"] [data-ar="steps"]{color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1))}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="icon"]{width:24px;height:24px;border:1px solid transparent;border-radius:24px;box-sizing:border-box;background:rgba(0,0,0,.06);color:rgba(0,0,0,.88);font-size:calc(12px * var(--ar-font-scale, 1));line-height:1}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="finish"]>[data-part="body"]>[data-part="icon"]{background:#E6F4FF;border-color:#E6F4FF;color:var(--classic-blue)}
 /* 今の手順は antd と同じ #1677FF の丸に白い数。今の ARROW の Step は手順を押せない（disabled）ので、丸の地はなく青い数だけ（ui-Step）＝項目に disabled を付けたとき */
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="process"]>[data-part="body"]>[data-part="icon"]{background:var(--classic-blue);color:#fff}
@@ -12,10 +12,10 @@
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="icon"]{font-size:0}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="icon"]::before{content:"";width:12px;height:12px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M563.8%20512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7%200-9.2%202.1-12.3%205.7L511.6%20449.8%20295.1%20191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8%200-10.5%207.9-6.1%2013.1L459.4%20512%20196.9%20824.9A7.95%207.95%200%2000203%20838h79.8c4.7%200%209.2-2.1%2012.3-5.7l216.5-258.1%20216.5%20258.1c3%203.6%207.5%205.7%2012.3%205.7h79.8c6.8%200%2010.5-7.9%206.1-13.1L563.8%20512z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M563.8%20512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7%200-9.2%202.1-12.3%205.7L511.6%20449.8%20295.1%20191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8%200-10.5%207.9-6.1%2013.1L459.4%20512%20196.9%20824.9A7.95%207.95%200%2000203%20838h79.8c4.7%200%209.2-2.1%2012.3-5.7l216.5-258.1%20216.5%20258.1c3%203.6%207.5%205.7%2012.3%205.7h79.8c6.8%200%2010.5-7.9%206.1-13.1L563.8%20512z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="icon"]{background:#fff;border-color:#FF4D4F;color:#FF4D4F}
-[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{font-size:14px;line-height:24px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{font-size:calc(14px * var(--ar-font-scale, 1));line-height:24px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="wait"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{color:#FF4D4F}
-[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="description"]{font-size:13px;line-height:13px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="description"]{font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px;color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"][data-status="error"]>[data-part="body"]>[data-part="content"]>[data-part="description"]{color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"][data-clickable]:hover>[data-part="content"]>[data-part="title"]{color:var(--classic-blue)}
 [data-ar-design="classic"] [data-ar="steps"]>[data-part="step"]>[data-part="body"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
@@ -27,14 +27,14 @@
 [data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="horizontal"]>[data-part="step"][data-status="finish"]:not(:last-child)::after{background:var(--classic-blue)}
 [data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]{padding-bottom:12px;min-height:58px}
 [data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]{gap:16px}
-[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]>[data-part="icon"]{width:32px;height:32px;border-radius:32px;font-size:14px}
-[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{font-size:16px;line-height:32px}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]>[data-part="icon"]{width:32px;height:32px;border-radius:32px;font-size:calc(14px * var(--ar-font-scale, 1))}
+[data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]>[data-part="body"]>[data-part="content"]>[data-part="title"]{font-size:calc(16px * var(--ar-font-scale, 1));line-height:32px}
 [data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"]:not(:last-child)::before{content:"";position:absolute;left:16px;top:38px;bottom:6px;width:1px;background:rgba(5,5,5,.06)}
 [data-ar-design="classic"] [data-ar="steps"][data-size="default"][data-direction="vertical"]>[data-part="step"][data-status="finish"]:not(:last-child)::before{background:var(--classic-blue)}
 [data-ar-design="classic"] [data-ar="steps"][data-size="mini"]{gap:12px}
 [data-ar-design="classic"] [data-ar="steps"][data-size="mini"]>[data-part="step"]>[data-part="body"]{gap:8px}
 [data-ar-design="classic"] [data-ar="steps"][data-size="mini"]>[data-part="connector"]{width:32px;height:1px;background:rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="steps"][data-size="mini"][data-compact] [data-part="title"]{font-size:12px;line-height:1.5}
+[data-ar-design="classic"] [data-ar="steps"][data-size="mini"][data-compact] [data-part="title"]{font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5}
 /* 今の Step は手順の帯の上 20px・下 15px、左右に幅の 2% の余白（.step_wrap） */
 [data-ar-design="classic"] [data-ar="steps"]:not([data-direction="vertical"]):not([data-size="mini"]){margin:20px 0 15px;padding-inline:2%;box-sizing:border-box}
 /* 縦のときも、エラーの丸は × の絵だけにする（数字の「!」が重ならないように） */

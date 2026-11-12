@@ -2,8 +2,8 @@
 /* 今の Year・Yearmonth・MonthDay（ui-Year / ui-Yearmonth / ui-MonthDay）：
    年は ant-design-vue の Select（77×32・和暦は 135、角丸6・枠 #D9D9D9・14px・右に 12px の ∨ rgba(0,0,0,.25)）、
    単位は間を空けずに 13px の黒（行32）、月日は 32×30（MonthDay は 30×30）の Input（余白0・中央） */
-[data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"]){gap:0;font:13px/32px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
-[data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"],[data-ar-design="classic"] :is([data-ar="year-month-input"],[data-ar="month-day-input"])>input{border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:14px;font-family:var(--ar-font-family);outline:0;transition:border-color .2s,box-shadow .2s}
+[data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"]){gap:0;font:calc(13px * var(--ar-font-scale, 1))/calc(32px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;color:#000}
+[data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"],[data-ar-design="classic"] :is([data-ar="year-month-input"],[data-ar="month-day-input"])>input{border:1px solid #D9D9D9;border-radius:6px;background:#fff;color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));font-family:var(--ar-font-family);outline:0;transition:border-color .2s,box-shadow .2s}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"]{width:77px;height:32px;padding:0 29px 0 11px;line-height:28px}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"])[data-era]>[data-part="year"]{width:135px}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"])>[data-part="year"]>[data-part="arrow"]{right:11px;width:12px;height:12px;color:rgba(0,0,0,.25);background:currentColor;-webkit-mask:var(--classic-down) center/12px 12px no-repeat;mask:var(--classic-down) center/12px 12px no-repeat}
@@ -19,7 +19,7 @@
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-state~="disabled"]>:is([data-part="year"],input){background:rgba(0,0,0,.04);border-color:#D9D9D9;color:rgba(0,0,0,.25);cursor:not-allowed}
 /* 年の一覧（ui-Select-open：余白4・角丸8・行32・文字13px・選んでいる行は #E6F4FF の 600） */
 [data-ar-design="classic"] [data-ar="year-list"]{max-height:256px;padding:4px;background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
-[data-ar-design="classic"] [data-ar="year-list"]>[data-part="option"]{min-height:32px;padding:5px 12px;border-radius:4px;font-size:13px;line-height:22px;color:rgba(0,0,0,.88);box-sizing:border-box}
+[data-ar-design="classic"] [data-ar="year-list"]>[data-part="option"]{min-height:32px;padding:5px 12px;border-radius:4px;font-size:calc(13px * var(--ar-font-scale, 1));line-height:22px;color:rgba(0,0,0,.88);box-sizing:border-box}
 [data-ar-design="classic"] [data-ar="year-list"]>[data-part="option"][data-state~="active"]{background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="year-list"]>[data-part="option"][data-state~="selected"]{background:#E6F4FF;font-weight:600}
 [data-ar-design="classic"] [data-ar="year-list"]>[data-part="option"]>[data-part="check"]{display:none}
@@ -32,7 +32,7 @@
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="sm"]>[data-part="year"]>[data-part="arrow"]{right:7px}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="sm"]>input{width:26px}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]{line-height:40px}
-[data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]>:is([data-part="year"],input){height:40px;border-radius:8px;font-size:16px;line-height:38px}
+[data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]>:is([data-part="year"],input){height:40px;border-radius:8px;font-size:calc(16px * var(--ar-font-scale, 1));line-height:38px}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]>[data-part="year"]{width:86px}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-size="lg"]>input{width:40px}
 [data-ar-design="classic"] :is([data-ar="year-input"],[data-ar="year-month-input"],[data-ar="month-day-input"])[data-era]:is([data-size="sm"],[data-size="lg"])>[data-part="year"]{width:auto;min-width:135px}

@@ -1,6 +1,6 @@
 /* @covers ArTag 1.0.0 */
 /* ArTag（素の ant-design-vue 4 の Tag：高さ22・角丸4・1px 枠・12px/400・行高20・右に 8px の外の余白（antd と同じく並べると間が 8px 増える）。色は status の色、種類はテーマ色に合わせる） */
-[data-ar-design="classic"] [data-ar="tag"]{gap:3px;height:22px;margin-inline-end:8px;padding:0 7px;box-sizing:border-box;border:1px solid #D9D9D9;border-radius:4px;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:12px;font-weight:400;line-height:20px;transition:all .2s}
+[data-ar-design="classic"] [data-ar="tag"]{gap:3px;height:22px;margin-inline-end:8px;padding:0 7px;box-sizing:border-box;border:1px solid #D9D9D9;border-radius:4px;background:rgba(0,0,0,.02);color:rgba(0,0,0,.88);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:calc(12px * var(--ar-font-scale, 1));font-weight:400;line-height:20px;transition:all .2s}
 [data-ar-design="classic"] [data-ar="tag"]>[data-part="icon"]{width:12px;height:12px}
 [data-ar-design="classic"] [data-ar="tag"][data-tone="accent"]{background:var(--ar-accent-subtle);border-color:var(--ar-accent-line);color:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="tag"][data-tone="solid"]{background:var(--ar-accent);border-color:transparent;color:#fff}
@@ -9,7 +9,7 @@
 [data-ar-design="classic"] [data-ar="tag"][data-tone="danger"]{background:#FFF2F0;border-color:#FFCCC7;color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="tag"][data-tone="event"]{background:#F9F0FF;border-color:#D3ADF7;color:#531DAB}
 [data-ar-design="classic"] [data-ar="tag"][data-size="sm"]{height:20px;padding:0 5px;line-height:18px}
-[data-ar-design="classic"] [data-ar="tag"][data-size="xs"]{height:16px;padding:0 4px;border-radius:4px;font-size:10px;line-height:14px}
+[data-ar-design="classic"] [data-ar="tag"][data-size="xs"]{height:16px;padding:0 4px;border-radius:4px;font-size:calc(10px * var(--ar-font-scale, 1));line-height:14px}
 /* 丸い札（今の ARROW の「備考の件数の丸」：角丸10・高さ20・白い1px の縁・12px） */
 [data-ar-design="classic"] [data-ar="tag"][data-shape="pill"]{height:20px;padding:0 6px;border-radius:10px;line-height:18px}
 [data-ar-design="classic"] [data-ar="tag"][data-shape="pill"][data-tone="accent"]{background:var(--ar-accent);border-color:#fff;color:#fff}

@@ -3,7 +3,7 @@
    縦：左に 2px の線 rgba(5,5,5,.06)、項目 4px 0 4px 16px・13px（行の高さ 13px）・rgba(0,0,0,.88)、今いるところはテーマ色の線（2px）と文字。
    横：下に 1px の線、項目の間 16px・4px 0、今いるところは下に 2px のテーマ色。高さ 21。
    今の ARROW は Anchor を使っていないので、主色（antd は #1677FF）はページのテーマ色にする。 */
-[data-ar-design="classic"] [data-ar="anchor"]{border-left:2px solid rgba(5,5,5,.06);font-size:13px;line-height:13px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="anchor"]{border-left:2px solid rgba(5,5,5,.06);font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]{padding:4px 0 4px 16px;margin-left:-2px;border-left:2px solid transparent;color:rgba(0,0,0,.88);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
 [data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"]:hover{color:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="anchor"]>[data-part="link"][data-level="2"]{padding-left:32px}

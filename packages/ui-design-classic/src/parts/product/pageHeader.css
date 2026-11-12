@@ -13,7 +13,7 @@
 .title_wrap[data-v-uie81813e8d9d3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: 18px;
+  font-size:calc(18px * var(--ar-font-scale, 1));
 }
 .content_wrap[data-v-uie81813e8d9d3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   padding: 30px 20px 10px;
@@ -48,7 +48,7 @@
 .title_wrap[data-v-ui0bf67cafdd81]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: 18px;
+  font-size:calc(18px * var(--ar-font-scale, 1));
 }
 .content_wrap[data-v-ui0bf67cafdd81]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   padding: 30px 20px 10px;
@@ -59,7 +59,7 @@
 .title_wrap[data-v-uidcb9fab83017]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: 18px;
+  font-size:calc(18px * var(--ar-font-scale, 1));
   margin-bottom: 8px;
 }
 .submit_wrap[data-v-uidcb9fab83017]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -148,7 +148,7 @@
 .title_wrap[data-v-uic005df4c23a8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: 18px;
+  font-size:calc(18px * var(--ar-font-scale, 1));
 }
 .content_wrap[data-v-uic005df4c23a8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   padding: 30px 20px 10px;
@@ -166,7 +166,7 @@
 /* @component src/View/Personal/EmployeeEach/Mypc.vue#0 */
 .attention[data-v-ui0aa32a45494f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #d10c1d;
-  font-size: 15px;
+  font-size:calc(15px * var(--ar-font-scale, 1));
   font-weight: 600;
 }
 .submit_button_wrap[data-v-ui0aa32a45494f]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

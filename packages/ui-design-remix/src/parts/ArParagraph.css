@@ -1,7 +1,7 @@
 /* @covers ArParagraph 1.1.0 */
 /* ArParagraph：本文 13.5px・行の高さ1.75・ink */
-[data-ar-design="remix"] [data-ar="paragraph"]{margin:0;font-size:13.5px;line-height:1.75;color:var(--ar-color-text);font-feature-settings:"palt" 1}
-[data-ar-design="remix"] [data-ar="paragraph"][data-size="sm"]{font-size:12.5px;line-height:1.6}
+[data-ar-design="remix"] [data-ar="paragraph"]{margin:0;font-size:calc(13.5px * var(--ar-font-scale, 1));line-height:1.75;color:var(--ar-color-text);font-feature-settings:"palt" 1}
+[data-ar-design="remix"] [data-ar="paragraph"][data-size="sm"]{font-size:calc(12.5px * var(--ar-font-scale, 1));line-height:1.6}
 [data-ar-design="remix"] [data-ar="paragraph"][data-strong]{font-weight:700}
 [data-ar-design="remix"] [data-ar="paragraph"][data-type="secondary"]{color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="paragraph"][data-type="muted"]{color:var(--ar-color-text-muted)}

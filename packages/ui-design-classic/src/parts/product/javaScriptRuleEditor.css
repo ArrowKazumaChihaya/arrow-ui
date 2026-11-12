@@ -36,7 +36,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #cbd5e1;
 }
 .ts_rule_editor_legend_dot[data-v-ui099469e81f78]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -52,7 +52,7 @@
   border-radius: 4px;
   background: #1f2937;
   color: #e2e8f0;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   padding: 0 8px;
 }
 .ts_rule_editor_body[data-v-ui099469e81f78]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -118,7 +118,7 @@
   border-radius: 4px;
   background: #0b1220;
   color: #e2e8f0;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   line-height: 1.5;
   padding: 6px 8px;
   white-space: pre-wrap;
@@ -152,7 +152,7 @@
   border-top: 1px solid #4c1d2a;
   background: #2a1113;
   color: #fda4af;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   line-height: 1.5;
   white-space: pre-wrap;
   padding: 8px 10px;

@@ -1,8 +1,8 @@
 /* @covers ArText 1.0.0 */
 /* ArText：ant-design-vue 4 の Typography.Text（行の高さ 1.5714＝14px で 22px） */
 [data-ar-design="classic"] [data-ar="text"]{line-height:1.5714}
-[data-ar-design="classic"] [data-ar="text"][data-size="sm"]{font-size:12px}
-[data-ar-design="classic"] [data-ar="text"][data-size="md"]{font-size:14px}
+[data-ar-design="classic"] [data-ar="text"][data-size="sm"]{font-size:calc(12px * var(--ar-font-scale, 1))}
+[data-ar-design="classic"] [data-ar="text"][data-size="md"]{font-size:calc(14px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="text"]:is([data-type="secondary"],[data-type="muted"]){color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="text"][data-type="success"]{color:#52C41A}
 [data-ar-design="classic"] [data-ar="text"][data-type="warning"]{color:#FAAD14}

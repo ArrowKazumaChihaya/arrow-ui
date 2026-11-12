@@ -1,7 +1,7 @@
 /* @covers ArDaySummary 1.0.0 */
 /* 今の画面の Tag と同じ材料（高さ24・角丸4・#D9D9D9 の枠・12px）で並べる */
 [data-ar-design="classic"] [data-ar="day-summary"]{gap:8px}
-[data-ar-design="classic"] [data-ar="day-summary"]>:is([data-part="item"],[data-part="publish"]){gap:4px;height:24px;padding:0 8px;border:1px solid #D9D9D9;border-radius:4px;background:#FAFAFA;color:rgba(0,0,0,.65);font-size:12px;line-height:22px}
+[data-ar-design="classic"] [data-ar="day-summary"]>:is([data-part="item"],[data-part="publish"]){gap:4px;height:24px;padding:0 8px;border:1px solid #D9D9D9;border-radius:4px;background:#FAFAFA;color:rgba(0,0,0,.65);font-size:calc(12px * var(--ar-font-scale, 1));line-height:22px}
 [data-ar-design="classic"] [data-ar="day-summary"]>:is([data-part="item"],[data-part="publish"])>[data-part="icon"]{width:13px;height:13px}
 [data-ar-design="classic"] [data-ar="day-summary"]>[data-part="item"]>[data-part="value"]{color:rgba(0,0,0,.88);font-weight:600}
 [data-ar-design="classic"] [data-ar="day-summary"]>[data-part="item"][data-tone="danger"]{background:#FFF2F0;border-color:#FFCCC7;color:#CF1322}

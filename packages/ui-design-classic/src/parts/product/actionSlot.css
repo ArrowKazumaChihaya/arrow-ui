@@ -11,7 +11,7 @@
 }
 .bulk_resend_login_url_attention[data-v-uid8552a46282a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #555;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   line-height: 1.6;
   margin-bottom: 12px;
 }

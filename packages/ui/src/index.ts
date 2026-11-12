@@ -7,7 +7,7 @@ import "./styles/index.css";
 export { contracts, componentNames, designedComponents, structuralComponents } from "./contracts";
 export type { ArComponentName } from "./contracts";
 export { defineDesign, ArDesignError } from "./design";
-export type { ArDesign } from "./design";
+export type { ArDesign, ArDesignTone } from "./design";
 export { icons } from "./icons";
 export type { ArIconName } from "./icons";
 export { useArUi, captureArUiContext } from "./provider/context";

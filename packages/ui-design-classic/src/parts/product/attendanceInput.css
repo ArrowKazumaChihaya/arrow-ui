@@ -30,11 +30,11 @@
 }
 
 .paidhol_tooltip:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   margin-bottom: 4px;
 }
 .paidhol_tooltip .subject:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 10px;
+  font-size:calc(10px * var(--ar-font-scale, 1));
   font-weight: 600;
 }
 }

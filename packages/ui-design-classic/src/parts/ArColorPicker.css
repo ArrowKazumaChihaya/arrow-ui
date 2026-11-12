@@ -7,16 +7,16 @@
 [data-ar-design="classic"] [data-ar="color-picker"]>[data-part="chip"]>[data-part="swatch"]{width:100%;height:100%}
 [data-ar-design="classic"] [data-ar="color-picker"]>[data-part="chip"]>[data-part="swatch"][data-empty]{background:#fff!important}
 [data-ar-design="classic"] [data-ar="color-picker"]>[data-part="chip"]>[data-part="value"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-[data-ar-design="classic"] [data-ar="color-picker-panel"]{width:260px;padding:20px 24px;gap:12px;background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);font-size:13px}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]{width:260px;padding:20px 24px;gap:12px;background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="sv"]{height:150px;border-radius:4px;background:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,var(--ar-color-hue,#1677FF))}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="sv"]>[data-part="sv-knob"]{width:16px;height:16px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 1px rgba(0,0,0,.3)}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hue"]{height:8px;border-radius:4px;background:linear-gradient(to right,red,#ff0,lime,cyan,blue,#f0f,red)}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hue"]>[data-part="hue-knob"]{top:-4px;width:16px;height:16px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 1px rgba(0,0,0,.3)}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>:is([data-part="sv"],[data-part="hue"]):focus-visible{outline:2px solid #91CAFF;outline-offset:2px}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hex"]{gap:6px;color:rgba(0,0,0,.88)}
-[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hex"]>[data-part="hex-input"]{height:24px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;font-size:12px;outline:0}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hex"]>[data-part="hex-input"]{height:24px;padding:0 7px;border:1px solid #D9D9D9;border-radius:4px;font-size:calc(12px * var(--ar-font-scale, 1));outline:0}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="hex"]>[data-part="hex-input"]:focus{border-color:#4096FF;box-shadow:0 0 0 2px rgba(5,145,255,.1)}
-[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="detail"]{gap:4px;padding:0;border:0;background:none;color:#1677FF;font-size:13px}
+[data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="detail"]{gap:4px;padding:0;border:0;background:none;color:#1677FF;font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="color-picker-panel"]>[data-part="detail"]:hover{color:#4096FF}
 /* ArColorSwatches：今の「色選択」の升（40×25・角は無し）。選んだ色は白いレ点。 */
 [data-ar-design="classic"] [data-ar="color-swatches"]{gap:4px}

@@ -8,7 +8,7 @@
 .ant-modal-title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center !important;
   font-weight: 600 !important;
-  font-size: var(--arrow-modal-title-size, 20px) !important;
+  font-size:var(--arrow-modal-title-size, calc(20px * var(--ar-font-scale, 1))) !important;
 }
 .ant_dropdown_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   display: inline-block;
@@ -17,7 +17,7 @@
 .modal_title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   text-align: center;
   font-weight: 600;
-  font-size: var(--arrow-modal-title-size, 20px);
+  font-size:var(--arrow-modal-title-size, calc(20px * var(--ar-font-scale, 1)));
 }
 .submit_wrap:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   margin-top: 25px;
@@ -42,7 +42,7 @@
   .ant-modal-title:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     text-align: center !important;
     font-weight: 600 !important;
-    font-size: var(--arrow-modal-title-size-mobile, 16px) !important;
+    font-size:var(--arrow-modal-title-size-mobile, calc(16px * var(--ar-font-scale, 1))) !important;
   }
   .ant-modal-close:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     top: 6px !important;

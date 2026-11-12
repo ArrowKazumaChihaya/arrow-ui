@@ -1,6 +1,6 @@
 /* @covers ArPopconfirm 1.0.0 */
 /* ArPopconfirm（antd Popconfirm：白・角丸8・padding 12px・印は塗りの ! 14px #FAAD14・題13px・ボタンは小（24px）で間8px） */
-[data-ar-design="classic"] [data-ar="popconfirm"]{padding:12px;border-radius:8px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:rgba(0,0,0,.88);font-size:13px;line-height:13px;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="popconfirm"]{padding:12px;border-radius:8px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:rgba(0,0,0,.88);font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
 [data-ar-design="classic"] [data-ar="popconfirm"]>[data-part="arrow"]{width:8px;height:8px;left:calc(var(--ar-float-arrow, 29px) - 4px);background:#fff;box-shadow:2px 2px 5px rgba(0,0,0,.05)}
 [data-ar-design="classic"] [data-ar="popconfirm"][data-placement^="top"]>[data-part="arrow"]{bottom:-4px}
 [data-ar-design="classic"] [data-ar="popconfirm"][data-placement^="bottom"]>[data-part="arrow"]{top:-4px;box-shadow:-2px -2px 5px rgba(0,0,0,.05)}

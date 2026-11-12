@@ -7,7 +7,7 @@
  */
 export const contracts = {
   ArThemeScope: "1.0.0",
-  ArUiProvider: "1.1.0",
+  ArUiProvider: "1.2.0",
   ArCluster: "1.0.0",
   ArCompact: "1.0.0",
   ArDivider: "1.0.0",

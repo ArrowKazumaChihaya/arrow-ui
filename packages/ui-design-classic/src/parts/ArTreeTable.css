@@ -2,13 +2,13 @@
 /* ArTreeTable（今の Component/Table/TreeTable：ARROW の表に antd の Tree（showLine・draggable）を入れたもの）。
    見出しは白地・テーマ色の1px枠（その他＝teal は #ABABAB）・中央・13px/20px・高さ34、行は上に #E8E8E8 の線・行高32・13px rgba(0,0,0,.65)。
    1列目：開け閉めは 24px の枠のまん中に 11px の四角の −／＋（rgba(0,0,0,.88)）、字下げ 24px、つなぎの線は #D9D9D9、つまみは 12px あけて 16px の ⠿（#A8A8A8）。合計の行は #EFEFEF */
-[data-ar-design="classic"] [data-ar="tree-table"]{--ar-tt-indent:24px;--ar-tt-toggle:24px;--ar-tt-start:0px;--ar-tt-corner:40px;color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="tree-table"]{--ar-tt-indent:24px;--ar-tt-toggle:24px;--ar-tt-start:0px;--ar-tt-corner:40px;color:rgba(0,0,0,.65);font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px}
 [data-ar-design="classic"] [data-ar="tree-table"]>[data-part="viewport"]>[data-part="table"]{table-layout:fixed;background:#fff}
-[data-ar-design="classic"] [data-ar="tree-table"] [data-part="header-cell"]{height:34px;padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:rgba(0,0,0,.65);font-size:13px;font-weight:400;line-height:20px;text-align:center}
+[data-ar-design="classic"] [data-ar="tree-table"] [data-part="header-cell"]{height:34px;padding:6px 8px;border:1px solid var(--ar-accent);border-right:0;background:#fff;color:rgba(0,0,0,.65);font-size:calc(13px * var(--ar-font-scale, 1));font-weight:400;line-height:20px;text-align:center}
 [data-ar-design="classic"] [data-ar="tree-table"] [data-part="header-cell"]:last-child{border-right:1px solid var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="tree-table"] [data-part="header-cell"][data-col="actions"]{width:auto;border-top:0;border-bottom:0;border-right:0}
 [data-ar-design="classic"] [data-ar="tree-table"]:is([data-ar-palette="teal"] *,[data-ar-palette="teal"]) [data-part="header-cell"]{border-color:#ABABAB}
-[data-ar-design="classic"] [data-ar="tree-table"] :is([data-part="cell"],tbody[data-part="before-rows"] td){padding:6px 8px;border-top:1px solid #E8E8E8;background:#fff;color:rgba(0,0,0,.65);font-size:13px;line-height:32px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="tree-table"] :is([data-part="cell"],tbody[data-part="before-rows"] td){padding:6px 8px;border-top:1px solid #E8E8E8;background:#fff;color:rgba(0,0,0,.65);font-size:calc(13px * var(--ar-font-scale, 1));line-height:32px;white-space:nowrap}
 [data-ar-design="classic"] [data-ar="tree-table"] tbody[data-part="before-rows"] td{border-top:0}
 [data-ar-design="classic"] [data-ar="tree-table"] [data-part="cell"][data-tree]{padding-left:0}
 [data-ar-design="classic"] [data-ar="tree-table"] [data-part="cell"][data-col="actions"]{width:auto}
@@ -28,7 +28,7 @@
 [data-ar-design="classic"] [data-ar="tree-table"]:not([data-draggable]) td[data-tree]>[data-part="tree"]>[data-part="content"]{margin-left:12px}
 [data-ar-design="classic"] [data-ar="tree-table"] tfoot[data-part="foot"] [data-part="cell"]{background:#EFEFEF}
 [data-ar-design="classic"] [data-ar="tree-table"] tfoot[data-part="foot"] [data-part="cell"]:first-child{padding-left:8px}
-[data-ar-design="classic"] [data-ar="tree-table"] [data-part="empty"]{padding:16px;color:rgba(0,0,0,.25);font-size:14px;line-height:22px;text-align:center}
+[data-ar-design="classic"] [data-ar="tree-table"] [data-part="empty"]{padding:16px;color:rgba(0,0,0,.25);font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px;text-align:center}
 [data-ar-design="classic"] [data-ar="tree-table"] [data-part="row"][data-drop="before"]>td{box-shadow:inset 0 2px 0 #1677FF}
 [data-ar-design="classic"] [data-ar="tree-table"] [data-part="row"][data-drop="after"]>td{box-shadow:inset 0 -2px 0 #1677FF}
 [data-ar-design="classic"] [data-ar="tree-table"] [data-part="row"][data-drop="inside"]>td{background:#E6F4FF}

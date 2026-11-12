@@ -1,9 +1,9 @@
 /* @covers ArPopover 1.0.0 */
 /* ArPopover：デザインシステムの .pop.ad-popv（白・角丸12・sh-pop・幅240・余白 12/14・13px 行の高さ1.6、見出し 13.5px 太字）と .ad-arr。
    variant="cell" はシフトの .r-tip（見た目は ArTooltip.css の共通のルール。ここはマスの端から2px の寄せだけ）。 */
-[data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"]{width:240px;max-width:calc(100vw - 16px);padding:12px 14px;border-radius:12px;background:#fff;color:var(--ar-color-text);box-shadow:var(--ar-shadow-pop);font-size:13px;line-height:1.6;outline:0;animation:ar-popover-in .14s ease-out}
+[data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"]{width:240px;max-width:calc(100vw - 16px);padding:12px 14px;border-radius:12px;background:#fff;color:var(--ar-color-text);box-shadow:var(--ar-shadow-pop);font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.6;outline:0;animation:ar-popover-in .14s ease-out}
 [data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"]:focus-visible{box-shadow:var(--ar-shadow-pop),0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="title"]{margin-bottom:4px;font-size:13.5px;font-weight:700}
+[data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="title"]{margin-bottom:4px;font-size:calc(13.5px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{gap:8px;margin-top:8px}
 [data-ar-design="remix"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="arrow"]{width:10px;height:10px;background:#fff;transform:rotate(45deg)}
 [data-ar-design="remix"] [data-ar="popover"][data-part="root"]:is([data-placement^="top"],[data-placement^="bottom"])>[data-part="panel"]>[data-part="arrow"]{left:clamp(14px,calc(var(--ar-float-arrow,29px) - 5px),calc(100% - 24px))}

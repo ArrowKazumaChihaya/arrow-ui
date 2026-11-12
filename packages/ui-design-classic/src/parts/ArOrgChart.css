@@ -3,7 +3,7 @@
    地は白（#F0F0F0 の1pxの枠・角丸8）、札は antd の Card の small（白・#D9D9D9 の1px・角丸8・余白 8px 12px）、いちばん上の札はページのテーマ色の1pxの枠、
    名前は ARROW のリンクの色 #4F92C2 の 700 13px（下線）、ID と人数は 12px rgba(0,0,0,.45)／.88、つなぐ線は #D9D9D9 の1px、
    開け閉めは antd の Tree（showLine）の四角の −／＋（14px・#D9D9D9 の枠・角丸2）、右下の拡大縮小は antd の Button の small（高さ24・角丸4・#D9D9D9 の枠）。 */
-[data-ar-design="classic"] [data-ar="org-chart"]{border:1px solid #F0F0F0;border-radius:8px;background:#fff;color:rgba(0,0,0,.88);font:400 14px/1.5714 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+[data-ar-design="classic"] [data-ar="org-chart"]{border:1px solid #F0F0F0;border-radius:8px;background:#fff;color:rgba(0,0,0,.88);font:400 calc(14px * var(--ar-font-scale, 1))/1.5714 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
 [data-ar-design="classic"] [data-ar="org-chart"]>[data-part="viewport"]:focus-visible{outline:4px solid #91CAFF;outline-offset:-4px}
 [data-ar-design="classic"] [data-ar="org-chart"]>[data-part="viewport"]>[data-part="canvas"]{gap:28px}
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="node"]{width:150px;gap:2px;padding:8px 12px;border:1px solid #D9D9D9;border-radius:8px;background:#fff;color:inherit;font:inherit;transition:all .2s}
@@ -13,11 +13,11 @@
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="node"][data-state~="selected"]{border-color:var(--ar-accent);background:color-mix(in srgb,var(--ar-accent) 8%,#fff)}
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="node-head"]{gap:6px}
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="node-icon"]{flex:none;width:16px;height:16px;color:var(--ar-accent)}
-[data-ar-design="classic"] [data-ar="org-chart"] [data-part="name"]{color:#4F92C2;font:700 13px/20px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;text-decoration:underline}
-[data-ar-design="classic"] [data-ar="org-chart"] [data-part="code"]{color:rgba(0,0,0,.45);font-size:12px;line-height:1.5}
-[data-ar-design="classic"] [data-ar="org-chart"] [data-part="count"]{gap:4px;font-size:12px;line-height:1.5}
+[data-ar-design="classic"] [data-ar="org-chart"] [data-part="name"]{color:#4F92C2;font:700 calc(13px * var(--ar-font-scale, 1))/calc(20px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif;text-decoration:underline}
+[data-ar-design="classic"] [data-ar="org-chart"] [data-part="code"]{color:rgba(0,0,0,.45);font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5}
+[data-ar-design="classic"] [data-ar="org-chart"] [data-part="count"]{gap:4px;font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="count-icon"]{width:14px;height:14px;color:rgba(0,0,0,.45)}
-[data-ar-design="classic"] [data-ar="org-chart"] [data-part="toggle"]{gap:1px;min-width:14px;height:14px;margin-top:2px;padding:0 1px;border:1px solid #D9D9D9;border-radius:2px;background:#fff;color:rgba(0,0,0,.88);font:400 10px/1 sans-serif}
+[data-ar-design="classic"] [data-ar="org-chart"] [data-part="toggle"]{gap:1px;min-width:14px;height:14px;margin-top:2px;padding:0 1px;border:1px solid #D9D9D9;border-radius:2px;background:#fff;color:rgba(0,0,0,.88);font:400 calc(10px * var(--ar-font-scale, 1))/1 sans-serif}
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="toggle"]>[data-ar="icon"]{width:10px;height:10px}
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="toggle"]:hover{border-color:#4096FF;color:#4096FF}
 [data-ar-design="classic"] [data-ar="org-chart"] [data-part="toggle"]:focus-visible{outline:4px solid #91CAFF;outline-offset:1px}
@@ -32,6 +32,6 @@
 [data-ar-design="classic"] [data-ar="org-chart"]>[data-part="controls"]>button:not(:disabled):hover{border-color:#4096FF;color:#4096FF}
 [data-ar-design="classic"] [data-ar="org-chart"]>[data-part="controls"]>button:disabled{background:#F5F5F5;color:rgba(0,0,0,.25)}
 [data-ar-design="classic"] [data-ar="org-chart"]>[data-part="controls"]>button:focus-visible{outline:4px solid #91CAFF;outline-offset:1px}
-[data-ar-design="classic"] [data-ar="org-chart"]>[data-part="hint"]{gap:6px;color:rgba(0,0,0,.45);font-size:12px}
+[data-ar-design="classic"] [data-ar="org-chart"]>[data-part="hint"]{gap:6px;color:rgba(0,0,0,.45);font-size:calc(12px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="org-chart"]>[data-part="hint"]>[data-ar="icon"]{width:14px;height:14px}
 /* 拡大・縮小の −／＋ は ArZoomControl（variant="plain"：antd の小さなボタンを 8px あけて並べる＝前と同じ値） */

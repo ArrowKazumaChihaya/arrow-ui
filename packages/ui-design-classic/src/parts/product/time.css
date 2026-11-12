@@ -43,7 +43,7 @@
   }
   span:has(+ input.ant-input):where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     line-height: 27px !important;
-    font-size: 13px;
+    font-size:calc(13px * var(--ar-font-scale, 1));
   }
   .time_component
     + span:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

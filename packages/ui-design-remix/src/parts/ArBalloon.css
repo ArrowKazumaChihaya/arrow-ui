@@ -1,6 +1,6 @@
 /* @covers ArBalloon 1.0.0 */
 /* 吹き出し（AntDataDisplay の Tooltip .ad-tip：濃い面・12.5px・角丸8・しっぽ10） */
-[data-ar-design="remix"] [data-ar="balloon"][data-shape="bubble"]{max-width:280px;padding:6px 10px;border-radius:8px;font:500 12.5px/1.5 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="balloon"][data-shape="bubble"]{max-width:280px;padding:6px 10px;border-radius:8px;font:500 calc(12.5px * var(--ar-font-scale, 1))/1.5 var(--ar-font-family)}
 [data-ar-design="remix"] [data-ar="balloon"][data-tone="ink"]{background:var(--ar-color-text);color:#fff}
 [data-ar-design="remix"] [data-ar="balloon"][data-tone="accent"]{background:var(--ar-accent-ink);color:#fff}
 [data-ar-design="remix"] [data-ar="balloon"][data-tone="danger"]{background:var(--ar-color-danger);color:#fff;font-weight:600}

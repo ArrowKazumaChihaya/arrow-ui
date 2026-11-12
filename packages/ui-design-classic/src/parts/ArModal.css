@@ -1,13 +1,13 @@
 /* @covers ArModal 1.1.0 */
 /* ArModal（ant-design-vue 4 の Modal ＋ ARROW の上書き：題は中央・20px・600、閉じるは右上8px、頭の下16px。手順は ant-design-vue の Steps の色） */
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="scrim"]{background:var(--ar-color-overlay)}
-[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]{border-radius:8px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:var(--ar-color-text);padding:20px 24px;font-size:14px;line-height:1.5715}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]{border-radius:8px;background:#fff;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:var(--ar-color-text);padding:20px 24px;font-size:calc(14px * var(--ar-font-scale, 1));line-height:1.5715}
 [data-ar-design="classic"] [data-ar="modal"][data-size="md"]>[data-part="panel"]{max-width:520px}
 [data-ar-design="classic"] [data-ar="modal"][data-size="full"]>[data-part="panel"]{border-radius:0}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]{position:static;gap:12px;margin-bottom:16px;align-items:flex-start}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]{text-align:center}
-[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:20px;font-weight:600;line-height:30px;color:var(--ar-color-text)}
-[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:4px;font-size:14px;line-height:22px;color:var(--ar-color-text-secondary)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:calc(20px * var(--ar-font-scale, 1));font-weight:600;line-height:30px;color:var(--ar-color-text)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:4px;font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px;color:var(--ar-color-text-secondary)}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{position:absolute;top:8px;right:8px;width:22px;height:22px;padding:0;border:0;border-radius:4px;background:none;color:rgba(0,0,0,.45);display:inline-flex;align-items:center;justify-content:center;transition:color .2s,background-color .2s}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]>[data-ar="icon"]{width:16px;height:16px}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]:hover{background:rgba(0,0,0,.06);color:var(--ar-color-text)}
@@ -31,8 +31,8 @@
 [data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]:is(:not([style*="max-width"]),[style*="max-width: 380px"]){max-width:416px!important}
 [data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]{margin-bottom:0}
 [data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]{text-align:left}
-[data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:16px;line-height:1.5}
-[data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:8px;font-size:14px;line-height:20px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:calc(16px * var(--ar-font-scale, 1));line-height:1.5}
+[data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:8px;font-size:calc(14px * var(--ar-font-scale, 1));line-height:20px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"]{margin-top:0}
 /* 印は ArModal が渡した名前（data-icon）で antd の印に置き換える：help は ? の線（QuestionCircleOutlined・今の Info の説明）、info は i の塗り（青）、check は ✓ の塗り（緑・success）、x は × の塗り（赤・error）、alert は ! の塗り（黄・confirm／warning） */
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-icon="help"]>[data-ar="icon"]{background-color:#1677FF;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M512%2064C264.6%2064%2064%20264.6%2064%20512s200.6%20448%20448%20448%20448-200.6%20448-448S759.4%2064%20512%2064zm0%20820c-205.4%200-372-166.6-372-372s166.6-372%20372-372%20372%20166.6%20372%20372-166.6%20372-372%20372z%22%2F%3E%3Cpath%20d%3D%22M623.6%20316.7C593.6%20290.4%20554%20276%20512%20276s-81.6%2014.5-111.6%2040.7C369.2%20344%20352%20380.7%20352%20420v7.6c0%204.4%203.6%208%208%208h48c4.4%200%208-3.6%208-8V420c0-44.1%2043.1-80%2096-80s96%2035.9%2096%2080c0%2031.1-22%2059.6-56.1%2072.7-21.2%208.1-39.2%2022.3-52.1%2040.9-13.1%2019-19.9%2041.8-19.9%2064.9V620c0%204.4%203.6%208%208%208h48c4.4%200%208-3.6%208-8v-22.7a48.3%2048.3%200%200130.9-44.8c59-22.7%2097.1-74.7%2097.1-132.5.1-39.3-17.1-76-48.3-103.3zM472%20732a40%2040%200%201080%200%2040%2040%200%2010-80%200z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M512%2064C264.6%2064%2064%20264.6%2064%20512s200.6%20448%20448%20448%20448-200.6%20448-448S759.4%2064%20512%2064zm0%20820c-205.4%200-372-166.6-372-372s166.6-372%20372-372%20372%20166.6%20372%20372-166.6%20372-372%20372z%22%2F%3E%3Cpath%20d%3D%22M623.6%20316.7C593.6%20290.4%20554%20276%20512%20276s-81.6%2014.5-111.6%2040.7C369.2%20344%20352%20380.7%20352%20420v7.6c0%204.4%203.6%208%208%208h48c4.4%200%208-3.6%208-8V420c0-44.1%2043.1-80%2096-80s96%2035.9%2096%2080c0%2031.1-22%2059.6-56.1%2072.7-21.2%208.1-39.2%2022.3-52.1%2040.9-13.1%2019-19.9%2041.8-19.9%2064.9V620c0%204.4%203.6%208%208%208h48c4.4%200%208-3.6%208-8v-22.7a48.3%2048.3%200%200130.9-44.8c59-22.7%2097.1-74.7%2097.1-132.5.1-39.3-17.1-76-48.3-103.3zM472%20732a40%2040%200%201080%200%2040%2040%200%2010-80%200z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
@@ -42,7 +42,7 @@
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-icon="alert"]>[data-ar="icon"]{background-color:#FAAD14;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M512%2064C264.6%2064%2064%20264.6%2064%20512s200.6%20448%20448%20448%20448-200.6%20448-448S759.4%2064%20512%2064zm-32%20232c0-4.4%203.6-8%208-8h48c4.4%200%208%203.6%208%208v272c0%204.4-3.6%208-8%208h-48c-4.4%200-8-3.6-8-8V296zm32%20440a48.01%2048.01%200%20010-96%2048.01%2048.01%200%20010%2096z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2264%2064%20896%20896%22%3E%3Cpath%20d%3D%22M512%2064C264.6%2064%2064%20264.6%2064%20512s200.6%20448%20448%20448%20448-200.6%20448-448S759.4%2064%20512%2064zm-32%20232c0-4.4%203.6-8%208-8h48c4.4%200%208%203.6%208%208v272c0%204.4-3.6%208-8%208h-48c-4.4%200-8-3.6-8-8V296zm32%20440a48.01%2048.01%200%20010-96%2048.01%2048.01%200%20010%2096z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
 /* confirm（antd の Modal.confirm）：幅は既定 416（useArConfirm の既定 380 も 416 にする）。幅を指定したとき（今の Info の説明は 700）はその幅。
    本文（description・default slot）は印の右（22＋12＝34px）にそろえ、題の下 8px・14px／行20px。ボタンは本文の下 12px・右寄せ。 */
-[data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="body"]{margin:8px 0 0 34px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:14px;line-height:20px;color:rgba(0,0,0,.88)}
+[data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="body"]{margin:8px 0 0 34px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:calc(14px * var(--ar-font-scale, 1));line-height:20px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="footer"]{margin-top:12px}
 /* 足のボタンは antd の Modal の既定のまま（ARROW のボタンの見た目ではない）：キャンセルは白地・#D9D9D9 の枠・文字 .88・影 0 2px 0 rgba(0,0,0,.02)（hover は #4096FF）。
    主なボタンは antd の primary #1677FF（ui-Modal）。confirm は本文の中にボタンがあるので ARROW の上書き（.ant-modal-body .ant-btn-primary）で #4395D4（arrow-Dialog-*） */
@@ -54,23 +54,23 @@
 /* 手順 */
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]{gap:12px;padding:0 0 16px}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]{gap:8px 16px}
-[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]{font-size:14px;color:var(--ar-color-text-muted)}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]{font-size:calc(14px * var(--ar-font-scale, 1));color:var(--ar-color-text-muted)}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]>[data-part="step-label"]{gap:8px}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]:not(:last-child)::after{width:40px;background:rgba(5,5,5,.06);margin-left:16px}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"][data-state="done"]:not(:last-child)::after{background:var(--classic-blue)}
-[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]>[data-part="step-label"]>[data-part="step-mark"]{width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.06);color:var(--ar-color-text-muted);font-size:12px}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]>[data-part="step-label"]>[data-part="step-mark"]{width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.06);color:var(--ar-color-text-muted);font-size:calc(12px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"][data-state="current"]{color:var(--ar-color-text)}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"][data-state="current"]>[data-part="step-label"]>[data-part="step-mark"]{background:var(--classic-blue);color:#fff}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"][data-state="done"]{color:var(--ar-color-text)}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"][data-state="done"]>[data-part="step-label"]>[data-part="step-mark"]{background:#E6F4FF;color:var(--classic-blue)}
 /* 中身・足 */
-[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="body"]{font-size:13px;line-height:1.5;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="body"]{font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.5;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]{gap:8px;margin-top:12px}
 [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-start"],[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]>[data-part="footer-end"]{gap:8px}
-[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]>*>[data-part="note"]{font-size:14px;color:var(--ar-color-text-muted)}@media (max-width:767px){
+[data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]>*>[data-part="note"]{font-size:calc(14px * var(--ar-font-scale, 1));color:var(--ar-color-text-muted)}@media (max-width:767px){
   [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]{padding:20px 10px 15px}
   [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]{padding:0 18px}
-  [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:16px}
+  [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:calc(16px * var(--ar-font-scale, 1))}
   [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{top:6px;right:6px}
 }@media (max-width:640px){
   [data-ar-design="classic"] [data-ar="modal"][data-mobile="fullscreen"]>[data-part="panel"]{border-radius:0}
@@ -84,5 +84,5 @@
 
 @media(max-width:640px){
   [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]{gap:8px}
-  [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]{font-size:11px;line-height:1.4}
+  [data-ar-design="classic"] [data-ar="modal"]>[data-part="panel"]>[data-part="nav"]>[data-part="steps"]>[data-part="step"]{font-size:calc(11px * var(--ar-font-scale, 1));line-height:1.4}
 }

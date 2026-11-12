@@ -9,11 +9,11 @@
 [data-ar-design="remix"] [data-ar="choice-card"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
 [data-ar-design="remix"] [data-ar="choice-card"]>[data-part="chevron"]{color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="title"]{gap:8px}
-[data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"]{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:12px;font-weight:700;letter-spacing:0;white-space:nowrap}
+[data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"]{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:700;letter-spacing:0;white-space:nowrap}
 [data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"][data-tone="ok"]{background:#E6F3EC;color:#1E7A4C}
 [data-ar-design="remix"] [data-ar="choice-card"] [data-part="tag"][data-tone="neutral"]{background:#EEF1F5;color:#525E6B}
-[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="description"]{color:var(--ar-color-text-secondary);font-size:12.5px;font-weight:400;line-height:1.6}
-[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]{gap:6px;color:var(--ar-color-text-secondary);font-size:12px;font-weight:400;line-height:1.55}
+[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="description"]{color:var(--ar-color-text-secondary);font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:400;line-height:1.6}
+[data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]{gap:6px;color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:400;line-height:1.55}
 [data-ar-design="remix"] [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]>[data-ar="icon"]{width:15px;height:15px;margin-top:1px;color:var(--ar-color-text-muted)}
 /* card */
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]{gap:8px;min-height:112px;padding:16px 18px;border:1.5px solid var(--ar-color-border);border-radius:16px}
@@ -26,7 +26,7 @@
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="check"]>[data-ar="icon"]{width:13px;height:13px;stroke-width:3}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="icon"]{color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="icon"]>[data-ar="icon"]{width:18px;height:18px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="body"]>[data-part="title"]{font-size:18px;font-weight:700;line-height:1.5}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"]>[data-part="body"]>[data-part="title"]{font-size:calc(18px * var(--ar-font-scale, 1));font-weight:700;line-height:1.5}
 /* option */
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]{gap:14px;padding:16px;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]:hover:not(:disabled),[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-state~="on"]{background:var(--ar-accent-faint);box-shadow:inset 0 0 0 1.5px var(--ar-accent-line)}
@@ -35,9 +35,9 @@
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="icon"]>[data-ar="icon"]{width:18px;height:18px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]:disabled>[data-part="icon"]{background:#EEF1F5;color:#A3AEB9}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="body"]{gap:4px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="body"]>[data-part="title"]{font-size:15px;font-weight:700;line-height:1.5}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"]>[data-part="body"]>[data-part="title"]{font-size:calc(15px * var(--ar-font-scale, 1));font-weight:700;line-height:1.5}
 /* tile */
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]{gap:10px;min-height:52px;padding:9px 12px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);font-size:13.5px;font-weight:700;line-height:1.35}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]{gap:10px;min-height:52px;padding:9px 12px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);font-size:calc(13.5px * var(--ar-font-scale, 1));font-weight:700;line-height:1.35}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]:hover:not(:disabled,[data-state~="on"]){background:var(--ar-accent-faint);box-shadow:inset 0 0 0 1px var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]{background:var(--ar-accent);color:var(--ar-on-accent);box-shadow:none}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]:disabled{background:#FAFBFC;color:#A3AEB9}
@@ -45,37 +45,37 @@
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="icon"]>[data-ar="icon"]{width:15px;height:15px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]>[data-part="icon"]{background:rgba(255,255,255,.24);color:#FFFFFF}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="title"]{width:100%;flex-wrap:nowrap}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="title"]>[data-part="tag"]{flex:none;height:auto;margin-left:auto;padding:1px 6px;border-radius:6px;background:#F1F3F5;color:#5B6672;font-size:11px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="title"]>[data-part="tag"]{flex:none;height:auto;margin-left:auto;padding:1px 6px;border-radius:6px;background:#F1F3F5;color:#5B6672;font-size:calc(11px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]>[data-part="body"]>[data-part="title"]>[data-part="tag"]{background:rgba(255,255,255,.24);color:#FFFFFF}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="description"]{margin-top:1px;color:var(--ar-color-text-muted);font-size:11.5px;font-weight:500;line-height:1.35}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"]>[data-part="body"]>[data-part="description"]{margin-top:1px;color:var(--ar-color-text-muted);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:500;line-height:1.35}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-state~="on"]>[data-part="body"]>[data-part="description"]{color:rgba(255,255,255,.88)}
 /* 大きさ：sm */
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="sm"]{gap:6px;min-height:88px;padding:12px 14px;border-radius:12px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="sm"]>[data-part="body"]{gap:6px;padding-right:24px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="sm"]>[data-part="check"]{top:12px;right:12px;width:18px;height:18px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="sm"]>[data-part="check"]>[data-ar="icon"]{width:11px;height:11px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="sm"]>[data-part="body"]>[data-part="title"]{font-size:15px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-size="sm"]>[data-part="body"]>[data-part="description"]{font-size:12px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="sm"]>[data-part="body"]>[data-part="title"]{font-size:calc(15px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="choice-card"][data-size="sm"]>[data-part="body"]>[data-part="description"]{font-size:calc(12px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="sm"]{gap:12px;padding:12px;border-radius:12px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="sm"]>[data-part="icon"]{width:36px;height:36px;border-radius:10px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="sm"]>[data-part="icon"]>[data-ar="icon"]{width:16px;height:16px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="sm"]>[data-part="body"]>[data-part="title"]{font-size:14px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="sm"]{gap:8px;min-height:44px;padding:6px 10px;border-radius:11px;font-size:13px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="sm"]>[data-part="body"]>[data-part="title"]{font-size:calc(14px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="sm"]{gap:8px;min-height:44px;padding:6px 10px;border-radius:11px;font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="sm"]>[data-part="icon"]{width:26px;height:26px;border-radius:8px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="sm"]>[data-part="icon"]>[data-ar="icon"]{width:13px;height:13px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="sm"]>[data-part="body"]>[data-part="description"]{font-size:11px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="sm"]>[data-part="body"]>[data-part="description"]{font-size:calc(11px * var(--ar-font-scale, 1))}
 /* 大きさ：lg */
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="lg"]{gap:10px;min-height:128px;padding:20px 22px;border-radius:18px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="lg"]>[data-part="body"]{gap:10px;padding-right:32px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="lg"]>[data-part="check"]{top:16px;right:16px;width:24px;height:24px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="lg"]>[data-part="check"]>[data-ar="icon"]{width:14px;height:14px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="lg"]>[data-part="body"]>[data-part="title"]{font-size:20px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-size="lg"]>[data-part="body"]>[data-part="description"]{font-size:13px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="card"][data-size="lg"]>[data-part="body"]>[data-part="title"]{font-size:calc(20px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="choice-card"][data-size="lg"]>[data-part="body"]>[data-part="description"]{font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="lg"]{gap:16px;padding:20px;border-radius:16px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="lg"]>[data-part="icon"]{width:52px;height:52px;border-radius:14px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="lg"]>[data-part="icon"]>[data-ar="icon"]{width:20px;height:20px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="lg"]>[data-part="body"]>[data-part="title"]{font-size:16px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="lg"]{gap:12px;min-height:60px;padding:12px 14px;border-radius:14px;font-size:14.5px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="option"][data-size="lg"]>[data-part="body"]>[data-part="title"]{font-size:calc(16px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="lg"]{gap:12px;min-height:60px;padding:12px 14px;border-radius:14px;font-size:calc(14.5px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="lg"]>[data-part="icon"]{width:34px;height:34px;border-radius:10px}
 [data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="lg"]>[data-part="icon"]>[data-ar="icon"]{width:17px;height:17px}
-[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="lg"]>[data-part="body"]>[data-part="description"]{font-size:12px}
+[data-ar-design="remix"] [data-ar="choice-card"][data-variant="tile"][data-size="lg"]>[data-part="body"]>[data-part="description"]{font-size:calc(12px * var(--ar-font-scale, 1))}

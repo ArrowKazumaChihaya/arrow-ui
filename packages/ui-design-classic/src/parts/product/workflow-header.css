@@ -16,7 +16,7 @@
   border-bottom: 3px solid transparent;
   background: white;
   color: #52666f;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   font-weight: bold;
   cursor: pointer;
 }
@@ -32,12 +32,12 @@
 }
 .domain_button
   small[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 10px;
+  font-size:calc(10px * var(--ar-font-scale, 1));
   font-weight: normal;
 }
 @media screen and (max-width: 959px) {
   .domain_button[data-v-uidec8f89b1721]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 11px;
+    font-size:calc(11px * var(--ar-font-scale, 1));
   }
 }
 
@@ -60,6 +60,6 @@
   border-radius: 10px;
   color: #fff;
   font-weight: 600;
-  font-size: 9px;
+  font-size:calc(9px * var(--ar-font-scale, 1));
 }
 }

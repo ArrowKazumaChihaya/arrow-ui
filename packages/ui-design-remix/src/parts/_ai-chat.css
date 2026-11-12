@@ -1,7 +1,7 @@
 /* Product chat dock: state, consent and actions belong to the consumer. */
 [data-ar-design="remix"] .ai-chat[data-v-ai-chat] {
   color: var(--ar-color-text);
-  font: 14px/1.6 var(--ar-font-family);
+  font:calc(14px * var(--ar-font-scale, 1))/1.6 var(--ar-font-family);
 }
 [data-ar-design="remix"] .ai-chat__panel[data-v-ai-chat] {
   background: var(--ar-color-surface);
@@ -14,18 +14,18 @@
   border-bottom: 1px solid var(--ar-color-border);
 }
 [data-ar-design="remix"] .ai-chat__heading h2[data-v-ai-chat] {
-  font-size: 18px;
+  font-size:calc(18px * var(--ar-font-scale, 1));
   font-weight: 700;
   color: var(--ar-color-text);
 }
 [data-ar-design="remix"] .ai-chat__spark[data-v-ai-chat] {
   color: var(--ar-accent);
-  font-size: 27px;
+  font-size:calc(27px * var(--ar-font-scale, 1));
 }
 [data-ar-design="remix"] :is(.ai-chat__hint, .ai-chat__status, .ai-chat__speaker, .ai-chat__tools)[data-v-ai-chat],
 [data-ar-design="remix"] .ai-chat__usage[data-v-ai-chat-usage] {
   color: var(--ar-color-text-muted);
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 [data-ar-design="remix"] .ai-chat__status.is-ready[data-v-ai-chat] { color: var(--ar-color-ok); }
 [data-ar-design="remix"] .ai-chat__icon[data-v-ai-chat] {
@@ -84,5 +84,5 @@
   outline-offset: 2px;
 }
 @media(max-width:959px) {
-  [data-ar-design="remix"] .ai-chat__composer textarea[data-v-ai-chat] { font-size:16px; }
+  [data-ar-design="remix"] .ai-chat__composer textarea[data-v-ai-chat] { font-size:calc(16px * var(--ar-font-scale, 1)); }
 }

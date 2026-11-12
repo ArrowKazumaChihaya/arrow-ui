@@ -4,7 +4,7 @@
 }
 .ant-alert
   .ant-alert-message:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
 }
 .ant-alert
   .ant-alert-icon:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

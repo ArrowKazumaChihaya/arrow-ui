@@ -1,7 +1,7 @@
 /* @covers ArPopover 1.0.0 */
 /* ArPopover：antd の Popover（白・角丸8・余白12・antd の影・幅は中身なり、見出し 13px 太さ600・下8px、中身 13px 行の高さ13px・游ゴシック、矢印 16×8、基準との間 16px）。
    variant="cell" は今の ARROW の Tooltip と同じ濃い地（矢印なし）。refs/classic/antd-Popover-open.png を実測。 */
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]{width:max-content;max-width:min(320px,calc(100vw - 16px));padding:12px;border-radius:8px;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;outline:0}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]{width:max-content;max-width:min(320px,calc(100vw - 16px));padding:12px;border-radius:8px;background:#fff;color:rgba(0,0,0,.88);box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);font:400 calc(13px * var(--ar-font-scale, 1))/calc(13px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;outline:0}
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]:focus-visible{outline:2px solid #91CAFF;outline-offset:1px}
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="title"]{min-width:177px;margin-bottom:8px;font-weight:600}
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"]>[data-part="footer"]{gap:8px;margin-top:12px}
@@ -16,4 +16,4 @@
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="bottom"]>[data-part="panel"]>[data-part="arrow"]{top:-5.65px;border-top-left-radius:2px}
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="left"]>[data-part="panel"]>[data-part="arrow"]{right:-5.65px;border-top-right-radius:2px}
 [data-ar-design="classic"] [data-ar="popover"][data-part="root"][data-placement^="right"]>[data-part="panel"]>[data-part="arrow"]{left:-5.65px;border-bottom-left-radius:2px}
-[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"]{width:auto;max-width:none;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="popover"][data-part="root"]>[data-part="panel"][data-variant="cell"]{width:auto;max-width:none;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font:400 calc(13px * var(--ar-font-scale, 1))/calc(13px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}

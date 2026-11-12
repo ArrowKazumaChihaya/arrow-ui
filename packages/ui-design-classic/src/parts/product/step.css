@@ -22,7 +22,7 @@
 .step_wrap_sp
   .step_sp_text
   .step_total:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   margin: 0 5px;
 }
 .step_wrap_sp
@@ -30,7 +30,7 @@
   .step:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   width: 24px;
   height: 24px;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   line-height: 24px;
   text-align: center;
   border-radius: 24px;

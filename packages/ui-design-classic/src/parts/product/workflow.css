@@ -9,13 +9,13 @@
 [data-v-uiaedd507485d9]
   .admit_flow_arrow:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #6c757d;
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   font-weight: bold;
 }
 [data-v-uiaedd507485d9]
   .admit_flow_tag:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   border-radius: 16px;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   font-weight: 600;
   background-color: white;
 }
@@ -57,14 +57,14 @@
 .empty_card[data-v-ui43cab3e2ec48]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   background: white;
   border: 1px solid #ddd;
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
 }
 /* @end-component */
 
 /* @component src/Component/Workflow/ApprovalFlow.vue#0 */
 .caption[data-v-ui1e3eb95dee76]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .candidate[data-v-ui1e3eb95dee76]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
   color: #5c5c5c;
 }
 /* @end-component */
@@ -72,7 +72,7 @@
 /* @component src/Component/Workflow/AttachmentFiles.vue#0 */
 .metadata[data-v-ui36d253cad02b]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .help[data-v-ui36d253cad02b]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #666;
 }
 /* @end-component */
@@ -103,7 +103,7 @@
 
 /* @component src/Component/Workflow/ExpensePaymentRecord.vue#0 */
 .detail[data-v-uib1f689e62a2a]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #777;
 }
 /* @end-component */
@@ -116,14 +116,14 @@
 
 /* @component src/Component/Workflow/ExpensePayrollAssignmentTable.vue#0 */
 .small[data-v-ui7445fb8835c8]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #777;
 }
 /* @end-component */
 
 /* @component src/Component/Workflow/ExpensePayrollPreviewTable.vue#0 */
 .small[data-v-ui49171080addc]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #777;
 }
 /* @end-component */
@@ -157,7 +157,7 @@ fieldset[data-v-ui9ae6b325de9c]:where([data-ar-design="classic"], [data-ar-desig
 
 /* @component src/Component/Workflow/ExpenseSettlementState.vue#0 */
 .detail[data-v-ui9c0f7eb49bfe]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #777;
 }
 /* @end-component */
@@ -239,7 +239,7 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ar-design="classic"], [data-ar-desig
 /* @component src/View/Common/Workflow/Requests.vue#0 */
 .form_name[data-v-uia9f709ed20f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #777;
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
 }
 .empty[data-v-uia9f709ed20f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
 .error[data-v-uia9f709ed20f3]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -272,7 +272,7 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ar-design="classic"], [data-ar-desig
 .table_preview
   > small[data-v-ui2a90abaf00ff]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   color: #90959a;
-  font-size: 11px;
+  font-size:calc(11px * var(--ar-font-scale, 1));
 }
 /* @end-component */
 
@@ -304,7 +304,7 @@ fieldset[data-v-ui34a47bbaf561]:where([data-ar-design="classic"], [data-ar-desig
   font-weight: 600;
 }
 .small[data-v-ui03222b1eeb1d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 12px;
+  font-size:calc(12px * var(--ar-font-scale, 1));
   color: #777;
 }
 .validation[data-v-ui03222b1eeb1d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {

@@ -2,7 +2,7 @@
 /* ArDropdown：
  * variant="ops"：今の ARROW の「操作」（UI/Dropdown）。テーマ色のボタン（高さ32・角丸6・右端に白い∨）、開くと真下に同じ幅で ARROW のボタンが縦に並ぶ（危ない項目は #CA3A31）。
  * それ以外：ant-design-vue 4 の Dropdown（白・角丸8・padding 4・項目 32px・hover rgba(0,0,0,.04)・危ない項目は #FF4D4F）。 */
-[data-ar-design="classic"] [data-ar="dropdown"]>[data-part="trigger"]{position:relative;justify-content:center;gap:5px;min-width:150px;height:32px;padding:0 24px 0 7px;border:1px solid var(--ar-accent);border-radius:6px;background:var(--ar-accent);color:#fff;font-size:13px;font-weight:400;box-shadow:0 2px 0 rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="dropdown"]>[data-part="trigger"]{position:relative;justify-content:center;gap:5px;min-width:150px;height:32px;padding:0 24px 0 7px;border:1px solid var(--ar-accent);border-radius:6px;background:var(--ar-accent);color:#fff;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:400;box-shadow:0 2px 0 rgba(5,145,255,.1)}
 [data-ar-design="classic"] [data-ar="dropdown"]>[data-part="trigger"] [data-ar="icon"]{width:16px;height:16px}
 [data-ar-design="classic"] [data-ar="dropdown"]>[data-part="trigger"]>[data-part="caret"]{position:absolute;right:8px;top:50%;transform:translateY(-50%)}
 /* 開く印は今の ARROW の Dropdown と同じ /icons/down_arrow.svg（白・10px）。ArIcon が classic の絵（cd）で描く */
@@ -10,9 +10,9 @@
 [data-ar-design="classic"] [data-ar="dropdown"]>[data-part="trigger"]:not(:disabled):hover::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#fff;opacity:.1;pointer-events:none}
 [data-ar-design="classic"] [data-ar="dropdown"]>[data-part="trigger"]:focus-visible{outline:2px solid var(--ar-accent-line);outline-offset:1px}
 [data-ar-design="classic"] [data-ar="dropdown"]>[data-part="trigger"]:disabled{background:#F5F5F5;border-color:#D9D9D9;color:rgba(0,0,0,.25);box-shadow:none}
-[data-ar-design="classic"] [data-ar="dropdown-menu"]{background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:rgba(0,0,0,.88);font-size:14px}
+[data-ar-design="classic"] [data-ar="dropdown-menu"]{background:#fff;border-radius:8px;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05);color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]{padding:4px}
-[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]{gap:8px;min-height:32px;padding:5px 12px;border-radius:4px;color:rgba(0,0,0,.88);font-size:14px;line-height:22px;transition:background .2s}
+[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]{gap:8px;min-height:32px;padding:5px 12px;border-radius:4px;color:rgba(0,0,0,.88);font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px;transition:background .2s}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"] [data-ar="icon"]{width:14px;height:14px}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]:is(:hover,:focus-visible):not([aria-disabled="true"]){outline:0;background:rgba(0,0,0,.04)}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"][data-state~="selected"]{background:#E6F4FF;color:var(--classic-blue)}
@@ -20,13 +20,13 @@
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"][data-tone="danger"]:not([aria-disabled="true"]){color:#FF4D4F}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"][data-tone="danger"]:is(:hover,:focus-visible):not([aria-disabled="true"]){background:#FF4D4F;color:#fff}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="divider"]{height:1px;margin:4px 0;background:rgba(5,5,5,.06)}
-[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="group"]{padding:5px 12px;color:rgba(0,0,0,.45);font-size:13px;line-height:22px}
-[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="description"]{font-size:12px;line-height:18px;color:rgba(0,0,0,.45)}
+[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="group"]{padding:5px 12px;color:rgba(0,0,0,.45);font-size:calc(13px * var(--ar-font-scale, 1));line-height:22px}
+[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="description"]{font-size:calc(12px * var(--ar-font-scale, 1));line-height:18px;color:rgba(0,0,0,.45)}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-rich]>[data-part="item"]{align-items:flex-start}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="icon-box"]{height:22px}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]:has(>[data-part="list"][data-variant="ops"]){border-radius:0;box-shadow:none;background:#fff}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]{padding:2px 0 0;gap:1px}
-[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"]{position:relative;justify-content:center;align-items:center;min-height:32px;height:32px;padding:0 7px;border:1px solid var(--ar-accent);border-radius:6px;background:var(--ar-accent);color:#fff;font-size:13px;line-height:1;box-shadow:0 2px 0 rgba(5,145,255,.1)}
+[data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"]{position:relative;justify-content:center;align-items:center;min-height:32px;height:32px;padding:0 7px;border:1px solid var(--ar-accent);border-radius:6px;background:var(--ar-accent);color:#fff;font-size:calc(13px * var(--ar-font-scale, 1));line-height:1;box-shadow:0 2px 0 rgba(5,145,255,.1)}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"]:is(:hover,:focus-visible):not([aria-disabled="true"]){background:var(--ar-accent);color:#fff;box-shadow:inset 0 0 0 100px rgba(255,255,255,.1)}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"][data-tone="danger"]{border-color:#CA3A31;background:#CA3A31;color:#fff}
 [data-ar-design="classic"] [data-ar="dropdown-menu"]>[data-part="list"][data-variant="ops"]>[data-part="item"][data-tone="danger"]:is(:hover,:focus-visible):not([aria-disabled="true"]){background:#CA3A31;color:#fff}

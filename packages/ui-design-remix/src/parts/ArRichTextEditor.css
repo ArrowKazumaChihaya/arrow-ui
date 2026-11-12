@@ -2,13 +2,13 @@
 /* ArRichTextEditor：書類集計キャンバスの自作書類の編集（.edw 角丸12・field の内側の線、.tbar #F8FAFC の段 6px 8px と下線、.tb 高さ32 角丸8 700 12.5px・乗せると白、
    .tb.av テーマ色の塗り、.tsep 1×20、.edbody #E9EDF1 の地 18px、.pdfs 白い紙 560px 40px 44px・明朝 11.5px・表の線 #888、.vv 変数の札、.edft 下の段 12px）と、
    通知キャンバスのメールテンプレートの編集（線 #E6EBF0 の枠・30px の「ARROW 差し込み項目」・.v-ib 30px の元に戻す・右端の「194文字」・本文 500 13.5px 行1.9 の 14px 16px）。 */
-[data-ar-design="remix"] [data-ar="rich-text-editor"]{font-feature-settings:"palt" 1;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-field);overflow:hidden;color:var(--ar-color-text);font:400 14px/1.5 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="rich-text-editor"]{font-feature-settings:"palt" 1;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--ar-color-field);overflow:hidden;color:var(--ar-color-text);font:400 calc(14px * var(--ar-font-scale, 1))/1.5 var(--ar-font-family)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]:not([data-paper]){box-shadow:inset 0 0 0 1px var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-state~="focused"]:not([data-paper]){box-shadow:inset 0 0 0 1px var(--ar-accent),0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-state~="invalid"]{box-shadow:inset 0 0 0 1.5px var(--ar-color-danger)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-state~="disabled"]{background:var(--ar-color-surface-alt)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]{gap:2px;padding:6px 8px;border-bottom:1px solid var(--ar-color-border);background:var(--ar-color-surface-alt)}
-[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="tool"]{gap:5px;height:32px;min-width:32px;padding:0 6px;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font:700 12.5px/normal var(--ar-font-family);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="tool"]{gap:5px;height:32px;min-width:32px;padding:0 6px;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font:700 calc(12.5px * var(--ar-font-scale, 1))/normal var(--ar-font-family);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="tool"]>svg{width:15px;height:15px}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="tool"]:not(:disabled):hover{background:#fff;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="tool"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
@@ -20,7 +20,7 @@
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="tool"]>[data-part="tool-value"]{font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="tool"][data-state~="open"]:not([data-tool="variables"])>[data-part="caret"]{transform:rotate(180deg)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="separator"]{width:1px;height:20px;margin:0 4px;background:var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="count"]{font-size:12px;line-height:18px;color:var(--ar-color-text-muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="toolbar"]>[data-part="count"]{font-size:calc(12px * var(--ar-font-scale, 1));line-height:18px;color:var(--ar-color-text-muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 [data-ar-design="remix"] [data-ar="rich-text-editor"] [data-part="count"][data-state~="over"]{color:var(--ar-color-danger);font-weight:700}
 /* メール（紙の形でない）の段：差し込み項目のボタン 30px・元に戻す 30px の灰色・間 6px・下線は ln-2 */
 [data-ar-design="remix"] [data-ar="rich-text-editor"]:not([data-paper])>[data-part="toolbar"]{gap:6px;border-bottom-color:var(--ar-color-border-subtle)}
@@ -32,29 +32,29 @@
 [data-ar-design="remix"] [data-ar="rich-text-editor"]:not([data-paper])>[data-part="toolbar"]>[data-part="separator"]{margin:0}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="variables"]{border-bottom:1px solid var(--ar-color-border-subtle)}
 /* 本文 */
-[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="body"]>[data-part="paper"]>[data-part="content"]{padding:14px 16px;color:var(--ar-color-text);font:500 13.5px/1.9 var(--ar-font-family)}
-[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="body"]>[data-part="paper"]>[data-part="placeholder"]{top:14px;left:16px;right:16px;color:#9AA5B1;font:500 13.5px/1.9 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="body"]>[data-part="paper"]>[data-part="content"]{padding:14px 16px;color:var(--ar-color-text);font:500 calc(13.5px * var(--ar-font-scale, 1))/1.9 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="body"]>[data-part="paper"]>[data-part="placeholder"]{top:14px;left:16px;right:16px;color:#9AA5B1;font:500 calc(13.5px * var(--ar-font-scale, 1))/1.9 var(--ar-font-family)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="body"]>[data-part="paper"]>[data-part="content"] [data-part="token"]{padding:0 3px;border-radius:4px;background:color-mix(in srgb,var(--ar-accent) 18%,#fff);color:var(--ar-accent-ink);font-family:ui-monospace,Menlo,monospace;font-size:.78em}
 /* 紙の形（書類） */
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]{padding:18px;background:#E9EDF1}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]{background:#fff;box-shadow:0 2px 10px rgba(31,41,51,.15)}
-[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"]{min-height:360px;padding:40px 44px;color:#222;font:400 11.5px/1.6 "Noto Serif JP","Hiragino Mincho ProN",serif}
-[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="placeholder"]{top:40px;left:44px;right:44px;color:#9AA5B1;font:400 13.5px/1.6 var(--ar-font-family)}
-[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] h1{margin:0 0 16px;text-align:center;font-size:20px;line-height:1.6;letter-spacing:.2em}
+[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"]{min-height:360px;padding:40px 44px;color:#222;font:400 calc(11.5px * var(--ar-font-scale, 1))/1.6 "Noto Serif JP","Hiragino Mincho ProN",serif}
+[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="placeholder"]{top:40px;left:44px;right:44px;color:#9AA5B1;font:400 calc(13.5px * var(--ar-font-scale, 1))/1.6 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] h1{margin:0 0 16px;text-align:center;font-size:calc(20px * var(--ar-font-scale, 1));line-height:1.6;letter-spacing:.2em}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] :is(h2,h3,h4){margin:12px 0 6px;line-height:1.6}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] p{margin:8px 0}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] table{width:100%;margin:0 0 10px}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] :is(td,th){padding:5px 7px;border:1px solid #888;font-weight:400;text-align:left;vertical-align:top}
 [data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] th{width:80px;background:#D1D5D8;text-align:center;white-space:nowrap}
-[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] [data-part="token"]{font-size:10.5px;background:color-mix(in srgb,var(--ar-accent) 18%,#fff)}
+[data-ar-design="remix"] [data-ar="rich-text-editor"][data-paper]>[data-part="body"]>[data-part="paper"]>[data-part="content"] [data-part="token"]{font-size:calc(10.5px * var(--ar-font-scale, 1));background:color-mix(in srgb,var(--ar-accent) 18%,#fff)}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="body"]>[data-part="paper"]>[data-part="content"] .page-break{margin:10px 0;color:#9AA5B1;font-family:monospace;text-align:center}
 /* 下の段 */
-[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]{gap:10px;padding:6px 12px;border-top:1px solid var(--ar-color-border);background:#fff;color:var(--ar-color-text-muted);font-size:12px;line-height:1.5}
+[data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]{gap:10px;padding:6px 12px;border-top:1px solid var(--ar-color-border);background:#fff;color:var(--ar-color-text-muted);font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]>[data-part="count"]{font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]>[data-part="words"]{display:none}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]>[data-part="footer-extra"]{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap}
 /* 浮かぶメニュー（.pop と .mi：白・角丸12・sh-pop・余白6、行は高さ38・角丸9・13.5px、乗せると #F2F5F8） */
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"]{min-width:180px;max-height:320px;overflow:auto;padding:6px;border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font:400 13.5px/1.5 var(--ar-font-family)}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"]{min-width:180px;max-height:320px;overflow:auto;padding:6px;border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font:400 calc(13.5px * var(--ar-font-scale, 1))/1.5 var(--ar-font-family)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"][data-kind="variables"]{width:280px}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"][data-kind="fontSize"]{min-width:96px}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]{gap:10px;width:100%;min-height:38px;padding:0 10px;border-radius:9px}
@@ -62,15 +62,15 @@
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]:focus-visible{outline:0;background:#F2F5F8;box-shadow:inset 0 0 0 2px var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"][data-state~="selected"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>svg{width:15px;height:15px;color:var(--ar-color-text-secondary)}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>[data-part="group-count"]{margin-left:auto;font-size:12px;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>[data-part="group-count"]{margin-left:auto;font-size:calc(12px * var(--ar-font-scale, 1));color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>[data-part="caret"]{transform:rotate(-90deg)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="group"][data-state~="open"]>[data-part="option"]>[data-part="caret"]{transform:none}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="items"]{margin:2px 0 4px 26px;padding-left:8px;border-left:1px solid var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="items"]>[data-part="option"]{min-height:34px;font-size:13px}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h1"]>[data-part="option-label"]{font-size:20px;font-weight:700}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h2"]>[data-part="option-label"]{font-size:17px;font-weight:700}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h3"]>[data-part="option-label"]{font-size:15px;font-weight:700}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h4"]>[data-part="option-label"]{font-size:13.5px;font-weight:700}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="items"]>[data-part="option"]{min-height:34px;font-size:calc(13px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h1"]>[data-part="option-label"]{font-size:calc(20px * var(--ar-font-scale, 1));font-weight:700}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h2"]>[data-part="option-label"]{font-size:calc(17px * var(--ar-font-scale, 1));font-weight:700}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h3"]>[data-part="option-label"]{font-size:calc(15px * var(--ar-font-scale, 1));font-weight:700}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h4"]>[data-part="option-label"]{font-size:calc(13.5px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"]>[data-part="swatches"]{gap:4px}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"]>[data-part="swatches"]>[data-part="option"]{width:26px;min-height:26px;height:26px;border-radius:7px;box-shadow:inset 0 0 0 1px rgba(31,41,51,.12)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"]>[data-part="swatches"]>[data-part="option"]:hover{box-shadow:inset 0 0 0 1px rgba(31,41,51,.12),0 0 0 2px var(--ar-accent-line)}

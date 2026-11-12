@@ -1,10 +1,10 @@
 /* @covers ArCard 1.1.0 */
 /* ArCard（band＝今のページの帯 Title：高さ36・テーマ色・白 18px/600・中央、その下は枠なし。elevated・outlined・plain＝ARROW の Card：余白10・角丸5・#9B9A9B の枠、見出し 16px/600 黒、本文 13px） */
-[data-ar-design="classic"] [data-ar="card"]{background:#fff;color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="card"]{background:#fff;color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,游ゴシック体,"ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]{position:relative;height:36px;padding:0 12px;justify-content:center;flex-wrap:nowrap;background:var(--ar-accent);color:#fff}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:18px;font-weight:600;line-height:36px;white-space:nowrap}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:calc(18px * var(--ar-font-scale, 1));font-weight:600;line-height:36px;white-space:nowrap}
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{display:none}
-[data-ar-design="classic"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:16px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="band"][data-size="sm"]>[data-part="head"]>[data-part="title"]{font-size:calc(16px * var(--ar-font-scale, 1))}
 /* 帯の中の操作は今の Title の slot と同じく、見出しの文字のすぐ右に続ける（帯の中の h2 の中：白・太さ600） */
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="head"]>[data-part="actions"]{gap:3px;margin-left:10px;color:#fff;font-weight:600}
 /* 今の Title は見出しの行（18px・行の高さ36）に 13px の補足を並べると、行の高さがそろわず帯が 38px になる */
@@ -15,10 +15,10 @@
 [data-ar-design="classic"] [data-ar="card"][data-variant="band"]>[data-part="tabs"]+[data-part="body"]{--ar-card-pad-x:15px;padding:15px;border-top:2px solid var(--ar-accent);background:color-mix(in srgb,var(--ar-accent) 6%,#fff)}
 [data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"]){padding:10px;border:1px solid #9B9A9B;border-radius:5px}
 [data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]{gap:8px;flex-wrap:nowrap;margin-bottom:10px}
-[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]>[data-part="title"]{gap:6px;color:#000;font-size:16px;font-weight:600;line-height:16px}
+[data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]>[data-part="title"]{gap:6px;color:#000;font-size:calc(16px * var(--ar-font-scale, 1));font-weight:600;line-height:16px}
 [data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:16px;height:16px}
 [data-ar-design="classic"] [data-ar="card"]:is([data-variant="elevated"],[data-variant="outlined"],[data-variant="plain"])>[data-part="head"]>[data-part="actions"]{gap:3px;margin-left:auto}
-[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{font-size:13px;line-height:13px}
+[data-ar-design="classic"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{font-size:calc(13px * var(--ar-font-scale, 1));line-height:13px}
 [data-ar-design="classic"] [data-ar="card"]>[data-part="cover"]{min-height:90px;margin:-10px -10px 10px;background:var(--ar-accent)}
 [data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]{display:flex;margin:10px -10px -10px;border-top:1px solid #9B9A9B}
 [data-ar-design="classic"] [data-ar="card"]>[data-part="footer"]>*{flex:1;height:36px;border-radius:0}

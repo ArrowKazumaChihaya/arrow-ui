@@ -1,11 +1,11 @@
 /* @covers ArExample 1.0.0 */
 /* 今の ARROW に例の箱はないので、antd の材料で：#FAFAFA の地・#D9D9D9 の線・角丸8・内側 8px 12px。
    見出しは 13px 600（info の i は #4F92C2）、行は 13px（項目 rgba(0,0,0,.65)、値 600 黒）。札・結果は antd の Tag（processing の青）。 */
-[data-ar-design="classic"] [data-ar="example"]{border:1px solid #D9D9D9;border-radius:8px;background:#FAFAFA;color:#000;font:13px/1.6 "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
+[data-ar-design="classic"] [data-ar="example"]{border:1px solid #D9D9D9;border-radius:8px;background:#FAFAFA;color:#000;font:calc(13px * var(--ar-font-scale, 1))/1.6 "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3","メイリオ",sans-serif}
 [data-ar-design="classic"] [data-ar="example"][data-variant="box"]{gap:4px;padding:8px 12px}
 [data-ar-design="classic"] [data-ar="example"][data-variant="box"]>[data-part="head"]{gap:6px;font-weight:600}
 [data-ar-design="classic"] [data-ar="example"][data-variant="box"]>[data-part="head"]>[data-part="head-icon"]{width:13px;height:13px;color:#4F92C2}
-[data-ar-design="classic"] [data-ar="example"] :is([data-part="tag"],[data-part="result"]){display:inline-flex;align-items:center;gap:4px;padding:0 7px;border:1px solid #91CAFF;border-radius:4px;background:#E6F4FF;color:#0958D9;font-size:12px;line-height:20px}
+[data-ar-design="classic"] [data-ar="example"] :is([data-part="tag"],[data-part="result"]){display:inline-flex;align-items:center;gap:4px;padding:0 7px;border:1px solid #91CAFF;border-radius:4px;background:#E6F4FF;color:#0958D9;font-size:calc(12px * var(--ar-font-scale, 1));line-height:20px}
 [data-ar-design="classic"] [data-ar="example"][data-variant="inline"]>[data-part="result"][data-tone="warn"]{border-color:#FFE58F;background:#FFFBE6;color:#D48806}
 [data-ar-design="classic"] [data-ar="example"][data-variant="inline"]>[data-part="result"][data-tone="danger"]{border-color:#FFCCC7;background:#FFF2F0;color:#CF1322}
 [data-ar-design="classic"] [data-ar="example"] :is([data-part="tag"],[data-part="result"])>[data-ar="icon"]{width:12px;height:12px}

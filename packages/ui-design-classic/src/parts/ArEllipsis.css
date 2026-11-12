@@ -2,4 +2,4 @@
 /* 本文は今の ARROW の地の文字（游ゴシック・行の高さ 13px＝index.html の div 指定）。全文の吹き出しは今の Tooltip と同じ（rgba(0,0,0,.85)・角丸6・余白 6px 8px・文字は div の指定で 13px／行13px） */
 [data-ar-design="classic"] [data-ar="ellipsis"]{font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;line-height:13px}
 [data-ar-design="classic"] [data-ar="ellipsis"][data-state~="cut"]:focus-visible{outline:1px solid #4096FF}
-[data-ar-design="classic"] [data-ar="ellipsis-tip"]{max-width:250px;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font:400 13px/13px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
+[data-ar-design="classic"] [data-ar="ellipsis-tip"]{max-width:250px;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.85);color:#fff;font:400 calc(13px * var(--ar-font-scale, 1))/calc(13px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}

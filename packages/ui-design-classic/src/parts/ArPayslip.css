@@ -2,24 +2,24 @@
 /* ArPayslip（今の ARROW の給与明細の紙 .payment_slip：白・padding 25。左上に水色の札「給与明細書」（310×35・#9ad1e2・白の22px/600）、会社名 20px/600、
    見出しの表は 17px で下に #9ad1e2 の3pxの線、項目の札は #ddd の 12px。4列の表 .slip_table（列の間0.6%）：線 1px #4daac3・行の高さ33・15px、
    頭と合計の名前は #cbe9f4 の地・600・均等割り付け、行の名前は #cbe9f4 の地・600・左寄せ、値は右寄せ。表と表の間32px。手で直した金額は緑） */
-[data-ar-design="classic"] [data-ar="payslip"]{gap:0;padding:25px;background:#fff;color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:15px;line-height:normal}
+[data-ar-design="classic"] [data-ar="payslip"]{gap:0;padding:25px;background:#fff;color:#000;font-family:"Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif;font-size:calc(15px * var(--ar-font-scale, 1));line-height:normal}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]{align-items:center;gap:6px 12px;padding-bottom:5px;border-bottom:3px solid #9ad1e2}
-[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="title"]{flex:0 0 310px;height:35px;margin-bottom:10px;background:#9ad1e2;color:#fff;font-size:22px;font-weight:600;line-height:35px;text-align:center}
-[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="period"]{order:3;font-size:17px}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="title"]{flex:0 0 310px;height:35px;margin-bottom:10px;background:#9ad1e2;color:#fff;font-size:calc(22px * var(--ar-font-scale, 1));font-weight:600;line-height:35px;text-align:center}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="period"]{order:3;font-size:calc(17px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]{order:2;flex-basis:100%;gap:3px 16px;margin:0}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div{align-items:center;gap:5px}
-[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"] dt{display:inline-block;padding:0 12px;background:#ddd;font-size:12px;line-height:22px;text-align:center}
-[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"] dd{font-size:17px;line-height:22px}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"] dt{display:inline-block;padding:0 12px;background:#ddd;font-size:calc(12px * var(--ar-font-scale, 1));line-height:22px;text-align:center}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"] dd{font-size:calc(17px * var(--ar-font-scale, 1));line-height:22px}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div:first-child{flex-basis:100%}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div:first-child>dt{display:none}
-[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div:first-child>dd{font-size:20px;font-weight:600}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="meta"]>div:first-child>dd{font-size:calc(20px * var(--ar-font-scale, 1));font-weight:600}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="head"]>[data-part="toolbar"]{order:4;margin-left:auto;gap:8px}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="columns"]{gap:0 .6%;margin-top:7px}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="columns"]>[data-part="column"]{gap:32px}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="section"]{border-top:1px solid #4daac3;border-left:1px solid #4daac3}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="section"] tr{grid-template-columns:50% 50%}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="section"] thead tr{grid-template-columns:100%}
-[data-ar-design="classic"] [data-ar="payslip"] [data-part="section"] :is(th,td){box-sizing:border-box;height:33px;border-right:1px solid #4daac3;border-bottom:1px solid #4daac3;font-size:15px;line-height:32px}
+[data-ar-design="classic"] [data-ar="payslip"] [data-part="section"] :is(th,td){box-sizing:border-box;height:33px;border-right:1px solid #4daac3;border-bottom:1px solid #4daac3;font-size:calc(15px * var(--ar-font-scale, 1));line-height:32px}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="section-title"]{padding:0 50px;background:#cbe9f4;font-weight:600;text-align:justify;text-align-last:justify}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="row"]{min-height:33px}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="label"]{overflow:hidden;padding:0 4px;background:#cbe9f4;font-weight:600;text-overflow:ellipsis;white-space:nowrap}
@@ -31,7 +31,7 @@
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="row"][data-state~="total"]>[data-part="label"]{padding:0 20px;text-align:justify;text-align-last:justify}
 /* 前回と比べる（今の ARROW にはない。値の下に antd の補足の文字 12px・rgba(0,0,0,.45)。行は伸びる） */
 [data-ar-design="classic"] [data-ar="payslip"]:not([data-compare="off"]) [data-part="section"] :is(th,td){height:auto;min-height:33px}
-[data-ar-design="classic"] [data-ar="payslip"] [data-part="diff"]{color:rgba(0,0,0,.45);font-size:12px;line-height:1.4}
+[data-ar-design="classic"] [data-ar="payslip"] [data-part="diff"]{color:rgba(0,0,0,.45);font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.4}
 [data-ar-design="classic"] [data-ar="payslip"][data-compare="prev"] [data-part="section"] [data-part="value"]{flex-direction:column;align-items:flex-end;justify-content:center}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="diff"]>[data-part="prev"]{display:inline;margin-right:4px}
 [data-ar-design="classic"] [data-ar="payslip"] [data-part="diff"]>b{font-weight:600}
@@ -40,7 +40,7 @@
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]{display:grid;grid-template-columns:50% 50%;border:1px solid #4daac3}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dt{padding:0 12px;background:#cbe9f4;border-right:1px solid #4daac3;font-weight:600;line-height:32px;white-space:nowrap;text-align:justify;text-align-last:justify}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd{padding:0 4px;line-height:32px;text-align:right;white-space:nowrap}
-[data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="unit"]{margin-left:1px;font-size:12px}
+[data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="unit"]{margin-left:1px;font-size:calc(12px * var(--ar-font-scale, 1))}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"]>dd>[data-part="diff"]{margin-left:6px}
 [data-ar-design="classic"] [data-ar="payslip"]>[data-part="totals"]>[data-part="total"][data-state~="emphasis"]>dd{font-weight:600}
 

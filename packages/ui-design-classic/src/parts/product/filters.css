@@ -10,7 +10,7 @@
   text-align: left;
 }
 .filter_text[data-v-ui32bb2030682d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 32px;
   margin: 0 5px;
 }
@@ -21,7 +21,7 @@
 }
 @media screen and (max-width: 499px) {
   .filter_text[data-v-ui32bb2030682d]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 12px;
+    font-size:calc(12px * var(--ar-font-scale, 1));
     line-height: 27px;
   }
 }
@@ -86,12 +86,12 @@
   margin-right: auto;
 }
 .filter_attention[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 14px;
+  font-size:calc(14px * var(--ar-font-scale, 1));
   font-weight: 600;
   margin: 5px 10px 12px;
 }
 .filter_text[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 32px;
 }
 @media screen and (max-width: 768px) {
@@ -101,7 +101,7 @@
 }
 @media screen and (max-width: 499px) {
   .filter_text[data-v-ui550a92ca7152]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 12px;
+    font-size:calc(12px * var(--ar-font-scale, 1));
     line-height: 27px;
   }
 }
@@ -120,7 +120,7 @@
   text-align: left;
 }
 .filter_text[data-v-ui04bb9eb08cf0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 32px;
   margin: 0 5px;
 }
@@ -134,7 +134,7 @@
 }
 @media screen and (max-width: 499px) {
   .filter_text[data-v-ui04bb9eb08cf0]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 12px;
+    font-size:calc(12px * var(--ar-font-scale, 1));
     line-height: 27px;
   }
 }
@@ -153,7 +153,7 @@
   text-align: left;
 }
 .filter_text[data-v-ui8a9f41c2c141]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 13px;
+  font-size:calc(13px * var(--ar-font-scale, 1));
   line-height: 32px;
   margin: 0 5px;
 }
@@ -167,7 +167,7 @@
 }
 @media screen and (max-width: 499px) {
   .filter_text[data-v-ui8a9f41c2c141]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-    font-size: 12px;
+    font-size:calc(12px * var(--ar-font-scale, 1));
     line-height: 27px;
   }
 }

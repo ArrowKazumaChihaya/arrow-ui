@@ -3,7 +3,7 @@
 [data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]{gap:6px 10px}
 [data-ar-design="remix"] [data-ar="date-picker"]:not([data-range])>[data-part="row"]{gap:6px}
 [data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="separator"]{color:var(--ar-color-text-faint)}
-[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="days"]{font-size:12.5px;font-weight:600;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="days"]{font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]{width:var(--ar-size-control-md);height:var(--ar-size-control-md);border:1px solid var(--ar-color-field);border-radius:10px;background:#fff;color:var(--ar-color-text-muted);transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]:hover:not(:disabled){border-color:var(--ar-color-text-faint);color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="date-picker"]>[data-part="row"]>[data-part="trigger"]:focus-visible,[data-ar-design="remix"] [data-ar="date-picker"][data-state~="open"]>[data-part="row"]>[data-part="trigger"]{outline:0;border-color:var(--ar-accent);color:var(--ar-accent-ink);box-shadow:0 0 0 3px var(--ar-accent-ring)}
@@ -11,12 +11,12 @@
 [data-ar-design="remix"] [data-ar="date-picker"][data-state~="invalid"]>[data-part="row"]>[data-part="trigger"]{border-color:var(--ar-color-danger)}
 /* パネル */
 [data-ar-design="remix"] [data-ar="date-picker-panel"]{width:270px;padding:12px;background:#fff;border-radius:12px;box-shadow:var(--ar-shadow-pop);font-family:var(--ar-font-family);color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]{gap:4px;margin-bottom:8px;font-size:14px;font-weight:700}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]{gap:4px;margin-bottom:8px;font-size:calc(14px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]{width:30px;height:30px;border:0;border-radius:9px;background:none;color:var(--ar-color-text-muted);transition:background var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]:hover{background:#F1F4F7;color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="head"]>[data-part="nav"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
-[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]{gap:2px;font-size:12.5px;font-weight:500}
-[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{height:24px;line-height:24px;font-size:11.5px;font-weight:700;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]{gap:2px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:500}
+[data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"]{height:24px;line-height:24px;font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:700;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-kind="sun"]{color:var(--ar-color-sun)}
 [data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="weekday"][data-kind="sat"]{color:var(--ar-color-sat)}
 [data-ar-design="remix"] [data-ar="date-picker-panel"]>[data-part="grid"]>[data-part="row"]>[data-part="day"]{height:30px;line-height:30px;border-radius:8px;background:none;color:var(--ar-color-text);font:inherit;font-family:var(--ar-font-family-numeric)}
@@ -35,4 +35,4 @@
 /* 大きさの段（押す所。入力は ArDateInput の段） */
 [data-ar-design="remix"] [data-ar="date-picker"][data-size="sm"]>[data-part="row"]>[data-part="trigger"]{width:var(--ar-size-control-sm);height:var(--ar-size-control-sm);border-radius:9px}
 [data-ar-design="remix"] [data-ar="date-picker"][data-size="lg"]>[data-part="row"]>[data-part="trigger"]{width:var(--ar-size-control-lg);height:var(--ar-size-control-lg);border-radius:11px}
-[data-ar-design="remix"] [data-ar="date-picker"][data-size="lg"]>[data-part="row"]>[data-part="days"]{font-size:13.5px}
+[data-ar-design="remix"] [data-ar="date-picker"][data-size="lg"]>[data-part="row"]>[data-part="days"]{font-size:calc(13.5px * var(--ar-font-scale, 1))}

@@ -1,6 +1,6 @@
 /* @covers ArToast 1.0.0 */
 /* ArToast（今の画面にない部品。ant-design-vue の message に近い白い札に、リンク色の文字ボタン） */
-[data-ar-design="classic"] [data-ar="toast"]{bottom:24px;gap:12px;padding:9px 12px;border-radius:8px;background:#fff;color:var(--ar-color-text);font-size:14px;line-height:22px;white-space:nowrap;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
+[data-ar-design="classic"] [data-ar="toast"]{bottom:24px;gap:12px;padding:9px 12px;border-radius:8px;background:#fff;color:var(--ar-color-text);font-size:calc(14px * var(--ar-font-scale, 1));line-height:22px;white-space:nowrap;box-shadow:0 6px 16px 0 rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
 [data-ar-design="classic"] [data-ar="toast"]>[data-part="icon"]{width:16px;height:16px;color:#52C41A}
 [data-ar-design="classic"] [data-ar="toast"]>[data-part="undo"],[data-ar-design="classic"] [data-ar="toast"]>[data-part="close"]{padding:0;border:0;background:none;color:var(--classic-blue);font:inherit}
 [data-ar-design="classic"] [data-ar="toast"]>[data-part="undo"]:hover,[data-ar-design="classic"] [data-ar="toast"]>[data-part="close"]:hover{color:#4096FF}

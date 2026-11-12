@@ -1,7 +1,7 @@
 /* @covers ArTree 1.0.0 */
 /* ArTree：antd の Tree（今の ARROW の TreeTable・店舗の選択の中身）。行は高さ24＋下4・1段 24px の字下げ・開閉は 24px 幅の ▼（10px・rgba(0,0,0,.88)、閉じると右向き）、
    名前は 13px（ARROW の div の指定）・余白 0 4・角丸6、乗せると rgba(0,0,0,.04)、選ぶと淡いテーマ色（antd の #E6F4FF にあたる）、チェックは名前の前（間8）。refs/classic/antd-Tree.png を実測。 */
-[data-ar-design="classic"] [data-ar="tree"]{color:rgba(0,0,0,.88);font:400 13px/24px "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
+[data-ar-design="classic"] [data-ar="tree"]{color:rgba(0,0,0,.88);font:400 calc(13px * var(--ar-font-scale, 1))/calc(24px * var(--ar-font-scale, 1)) "Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",メイリオ,sans-serif}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]{gap:0;min-height:28px;padding:0 0 4px calc(var(--ar-tree-depth,0) * 24px);outline:0}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>:is([data-part="switcher"],[data-part="handle"]){width:24px;height:24px;color:rgba(0,0,0,.88)}
 [data-ar-design="classic"] [data-ar="tree"]>[data-part="node"]>[data-part="switcher"]>[data-ar="icon"]:not([data-part="grip"]){display:none}

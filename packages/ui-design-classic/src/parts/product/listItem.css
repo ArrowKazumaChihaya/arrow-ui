@@ -1,6 +1,6 @@
 @layer arrow-product-classic {/* @component src/Popup/EmployeeEach/WidowType.vue#0 */
 p.popup_title[data-v-uia3818b091563]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
   font-weight: 600;
   border-bottom: 1px solid black;
   margin-top: 20px;
@@ -15,13 +15,13 @@ p.popup_title
 ul[data-v-uia3818b091563]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   margin-top: 10px;
   margin-left: 16px;
-  font-size: 16px;
+  font-size:calc(16px * var(--ar-font-scale, 1));
 }
 ul
   li[data-v-uia3818b091563]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   list-style-type: square;
   line-height: 20px;
-  font-size: 15px;
+  font-size:calc(15px * var(--ar-font-scale, 1));
   margin-top: 10px;
 }
 ul
