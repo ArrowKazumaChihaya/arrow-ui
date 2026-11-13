@@ -509,6 +509,14 @@
 [data-ar-design="remix"] table tr.error:not(.adding,.editting)>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-color-danger-subtle)}
 /* エラーのある行に乗せたときは、赤のまま少し濃くする（ホバーの色で赤が消えないように） */
 [data-ar-design="remix"] table tbody tr.error:not(.adding,.editting):is(:hover,[data-group-hover="on"])>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:color-mix(in srgb, var(--ar-color-danger) 16%, var(--ar-color-danger-subtle))}
+/* 打刻申請：申請中の行は種類ごとに色を分ける（追加＝青・修正＝橙・削除＝灰）。エラー行の赤とは混ざらない。エラーが残る行は左端に赤い線を残す */
+[data-ar-design="remix"] table tr.req-add:not(.adding,.editting)>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:#e6f0ff}
+[data-ar-design="remix"] table tr.req-edit:not(.adding,.editting)>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-color-warn-subtle)}
+[data-ar-design="remix"] table tr.req-delete:not(.adding,.editting)>:is(td,th):not([data-ui-fixed], [data-ui-fixed] *){background:#e9ecef}
+[data-ar-design="remix"] table tr.error:is(.req-add,.req-edit,.req-delete)>td:first-child:not([data-ui-fixed], [data-ui-fixed] *){box-shadow:inset 4px 0 0 var(--ar-color-danger)}
+[data-ar-design="remix"] table .creating:not([data-ui-fixed], [data-ui-fixed] *){color:#1f4fb0;font-weight:600}
+[data-ar-design="remix"] table .editting_shift.editting:not([data-ui-fixed], [data-ui-fixed] *),[data-ar-design="remix"] table .branch_id_col.editting:not([data-ui-fixed], [data-ui-fixed] *){color:#9a5b00;font-weight:600}
+[data-ar-design="remix"] table .deleting:not([data-ui-fixed], [data-ui-fixed] *){color:#6b7280;text-decoration:line-through}
 /* 1人分が何行にもなる表は、どの行に乗せても同じ人の行をまとめて色を変える */
 [data-ar-design="remix"] table[data-ui-part="table"] tbody tr[data-group-hover="on"]:not(.error)>td:not([data-ui-fixed], [data-ui-fixed] *){background:var(--ar-accent-subtle)}
 
