@@ -489,8 +489,8 @@
  },
  {
   "name": "ArStack",
-  "version": "1.0.0",
-  "description": "縦に並べる。間は余白トークンの段階だけ。製品のレイアウト層で使う。",
+  "version": "1.1.0",
+  "description": "縦に並べる。間は余白トークンの段階だけ。measure を付けると、読みやすい幅（sm 480 / md 720 / lg 960）までに収める。製品のレイアウト層で使う。",
   "props": [
    {
     "name": "gap",
@@ -512,6 +512,12 @@
     "required": false,
     "description": "",
     "default": "\"div\""
+   },
+   {
+    "name": "measure",
+    "type": "'sm' | 'md' | 'lg'",
+    "required": false,
+    "description": ""
    }
   ],
   "emits": [],
@@ -13785,9 +13791,9 @@
   "props": [
    {
     "name": "mode",
-    "type": "'month' | 'day'",
+    "type": "'month' | 'day' | 'stack'",
     "required": false,
-    "description": "month：1行＝1日（日付を押せる）。day：1行＝1つの内容。",
+    "description": "month：1行＝1日（日付を押せる）。day：1行＝1つの内容。stack：1日の積み上げ（rows の順が下からの層）。",
     "default": "\"month\""
    },
    {
@@ -13862,6 +13868,17 @@
    "legend-item",
    "swatch",
    "hint",
+   "stack",
+   "stack-inner",
+   "stack-plot",
+   "stack-block",
+   "block",
+   "tip",
+   "stack-lines",
+   "stack-line",
+   "stack-axis",
+   "stack-tick",
+   "stack-tickline",
    "grid",
    "head",
    "head-label",
@@ -13876,7 +13893,6 @@
    "gridline",
    "bar",
    "bar-text",
-   "tip",
    "note"
   ],
   "dataAr": "time-chart"

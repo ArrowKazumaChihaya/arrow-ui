@@ -24,6 +24,8 @@ const show = (v: string | number | null | undefined) => (v === null || v === und
 const isChanged = computed(() => props.changed ?? show(props.before) !== show(props.after));
 const form = computed(() => props.layout ?? (props.items ? "table" : "inline"));
 const H = computed<ArChangedValueHeaders>(() => ({ label: "項目", before: "変更前", after: "変更後", list: "項目（変更前 → 変更後）", ...props.headers }));
+/** 変更前が空（— で表す）のときは data-blank を付ける（取り消し線と「—」が重ならないよう CSS で線を消す）。 */
+const isBlank = (v: string | number | null | undefined) => v === null || v === undefined || v === "";
 const itemChanged = (it: ArChangedValueItem) => show(it.before) !== show(it.after);
 const keyOf = (it: ArChangedValueItem) => it.key ?? it.label;
 /** text：今の UI/ChangedValue と同じ（null は空の文字、変わったかはそのまま比べる）。 */
@@ -44,7 +46,7 @@ const textChanged = computed(() => props.changed ?? props.before !== props.after
     <tbody>
       <tr v-for="it in items ?? []" :key="keyOf(it)" data-part="row" :data-state="itemChanged(it) ? 'changed' : undefined">
         <th data-part="label" scope="row">{{ it.label }}</th>
-        <td data-part="cell" data-col="before"><component :is="itemChanged(it) ? 's' : 'span'" data-part="before">{{ show(it.before) }}</component></td>
+        <td data-part="cell" data-col="before"><component :is="itemChanged(it) ? 's' : 'span'" data-part="before" :data-blank="isBlank(it.before) ? '' : undefined">{{ show(it.before) }}</component></td>
         <td data-part="cell" data-col="after">
           <span data-part="change"><span v-if="itemChanged(it)" data-part="arrow" aria-hidden="true">→</span><span data-ar-visually-hidden>{{ labels.after }}</span><b data-part="after">{{ show(it.after) }}</b></span>
         </td>
@@ -56,7 +58,7 @@ const textChanged = computed(() => props.changed ?? props.before !== props.after
     <div v-for="it in items ?? []" :key="keyOf(it)" data-part="row" role="row" :data-state="itemChanged(it) ? 'changed' : undefined">
       <span data-part="change" role="cell">
         <b data-part="label">{{ it.label }}</b>
-        <template v-if="itemChanged(it)"><span data-ar-visually-hidden>{{ labels.before }}</span><s data-part="before">{{ show(it.before) }}</s>
+        <template v-if="itemChanged(it)"><span data-ar-visually-hidden>{{ labels.before }}</span><s data-part="before" :data-blank="isBlank(it.before) ? '' : undefined">{{ show(it.before) }}</s>
         <span data-part="arrow" aria-hidden="true">→</span></template>
         <span data-ar-visually-hidden>{{ labels.after }}</span><b data-part="after">{{ show(it.after) }}</b>
       </span>
@@ -73,7 +75,7 @@ const textChanged = computed(() => props.changed ?? props.before !== props.after
   <component :is="$slots.before || $slots.after ? 'div' : 'span'" v-else data-ar="changed-value" data-part="root" :data-rich="$slots.before || $slots.after ? '' : undefined" :data-state="isChanged ? 'changed' : undefined">
     <template v-if="isChanged">
       <span :data-ar-visually-hidden="$slots.before || $slots.after ? undefined : ''" data-part="before-label">{{ labels.before }}</span>
-      <component :is="$slots.before ? 'div' : 's'" data-part="before"><slot name="before">{{ show(before) }}</slot></component>
+      <component :is="$slots.before ? 'div' : 's'" data-part="before" :data-blank="isBlank(before) ? '' : undefined"><slot name="before">{{ show(before) }}</slot></component>
       <span data-part="arrow" aria-hidden="true">→</span>
       <span :data-ar-visually-hidden="$slots.before || $slots.after ? undefined : ''" data-part="after-label">{{ labels.after }}</span>
       <component :is="$slots.after ? 'div' : 'span'" data-part="after"><slot name="after">{{ show(after) }}</slot></component>

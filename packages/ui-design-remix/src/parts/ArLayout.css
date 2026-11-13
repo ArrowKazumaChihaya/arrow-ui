@@ -7,3 +7,8 @@
 [data-ar-design="remix"] [data-ar="layout"][data-has-sider="end"]>[data-part="sider"]{border-right:0;border-left:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="layout"]>[data-part="content"]{background:var(--ar-color-bg)}
 [data-ar-design="remix"] [data-ar="layout"]>[data-part="footer"]{min-height:30px;padding:0 14px;background:#fff;border-top:1px solid var(--ar-color-border);color:var(--ar-color-text-muted);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:500;box-sizing:border-box}
+/* ArStack の measure：読みやすい幅までに収める（年末調整の回答など、横に広げすぎない画面） */
+[data-ar-design="remix"] [data-ar="stack"][data-measure]{width:100%;margin-inline:0}
+[data-ar-design="remix"] [data-ar="stack"][data-measure="sm"]{max-width:480px}
+[data-ar-design="remix"] [data-ar="stack"][data-measure="md"]{max-width:720px}
+[data-ar-design="remix"] [data-ar="stack"][data-measure="lg"]{max-width:960px}

@@ -16,7 +16,7 @@ export const contracts = {
   ArMasonry: "1.0.0",
   ArSplit: "1.0.0",
   ArSplitter: "1.0.0",
-  ArStack: "1.0.0",
+  ArStack: "1.1.0",
   ArButton: "1.1.0",
   ArFloatButton: "1.0.0",
   ArIcon: "1.0.0",

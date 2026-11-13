@@ -4,7 +4,7 @@
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]{display:flex;align-items:center;gap:6px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:700;line-height:18.75px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="field"][data-layout="stacked"]>[data-part="label"]{margin-bottom:6px}
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]{column-gap:14px;align-items:start}
-[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;overflow-wrap:anywhere;gap:4px;font-size:calc(13.5px * var(--ar-font-scale, 1));font-weight:600;line-height:20.25px;text-align:right;padding-top:8px}
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-end;min-width:0;overflow-wrap:break-word;word-break:auto-phrase;text-wrap:balance;gap:4px;font-size:calc(13.5px * var(--ar-font-scale, 1));font-weight:600;line-height:20.25px;text-align:right;padding-top:8px}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-part="required"]{display:block;flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:18px}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="help"]{margin-top:4px;font-size:calc(12px * var(--ar-font-scale, 1));line-height:18px;color:var(--ar-color-text-muted);white-space:pre-line;overflow-wrap:anywhere}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="control"]>[data-part="error"]{display:flex;gap:6px;align-items:center;margin-top:6px;font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600;line-height:18.75px;color:var(--ar-color-danger-ink)}
@@ -21,11 +21,11 @@
 @container ar-field (max-width:480px){
   [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"],
   [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]{grid-column:1/-1;min-width:0}
-  [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-start;text-align:left;white-space:normal;overflow:visible;height:auto;margin-bottom:6px;overflow-wrap:anywhere;padding-top:0}
+  [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="label"]{justify-content:flex-start;text-align:left;white-space:normal;overflow:visible;height:auto;margin-bottom:6px;overflow-wrap:break-word;padding-top:0}
 }
 
 /* Context help belongs beside the field label, independent of control width. */
-[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>label{display:inline-flex;align-items:center;gap:4px;min-width:0}
+[data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>label{display:inline-flex;align-items:center;gap:4px;min-width:0;overflow-wrap:break-word;word-break:auto-phrase;text-wrap:balance}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>label>[data-part="required"]{flex:none;padding:0 5px;border-radius:4px;background:var(--ar-color-danger-subtle);color:var(--ar-color-danger-ink);font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:18px}
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-ar="info"]{flex:none}
 
