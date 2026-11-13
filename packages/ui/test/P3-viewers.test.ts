@@ -70,6 +70,12 @@ describe("ArTimeChart", () => {
     expect(w.findAll('[data-part="stack-lines"] [data-part="block"]').length).toBe(1);
     expect(w.find('[data-part="grid"]').exists()).toBe(false);
   });
+  it("stack：シフトの線だけのときは、積み上げの枠（空の段）を出さない", () => {
+    const rows = [{ key: "shift", label: "シフト", bars: [{ kind: "shift" as const, start: 540, end: 720 }] }];
+    const w = mount(ArTimeChart, { props: { mode: "stack", rows } });
+    expect(w.find('[data-part="stack-plot"]').exists()).toBe(false);
+    expect(w.findAll('[data-part="stack-lines"] [data-part="block"]').length).toBe(1);
+  });
   it("重なる計算区分を独立した帯に残し、区分名と全期間を読み上げる", async () => {
     const row = { key: "day", label: "11/04", weekday: 3, holiday: true, bars: [{ kind: "work" as const, start: 480, end: 1080 }], tracks: [
       { key: "premium", label: "休日割増", bars: [{ kind: "outhol" as const, start: 480, end: 1080 }] },

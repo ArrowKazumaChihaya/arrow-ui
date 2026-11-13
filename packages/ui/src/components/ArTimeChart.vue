@@ -155,7 +155,8 @@ const stackBlocks = computed<StackBlock[]>(() => {
   }
   return out;
 });
-const stackTotal = computed(() => Math.max(STACK_BASE, ...stackBlocks.value.map((x) => x.bottom + x.height)));
+// シフトの線だけのとき（積む層が無いとき）は、上に空の段を残さない。
+const stackTotal = computed(() => Math.max(0, ...stackBlocks.value.map((x) => x.bottom + x.height)));
 const blockStyle = (x: StackBlock) => ({
   left: `${pct(x.start)}%`,
   width: `${pct(x.end) - pct(x.start)}%`,
@@ -173,7 +174,7 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
     </div>
     <div v-if="mode === 'stack'" data-part="stack" role="group" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 40}px` }">
       <div data-part="stack-inner">
-        <div data-part="stack-plot" :style="{ height: `calc(var(--ar-chart-stack-unit, 64px) * ${stackTotal})` }">
+        <div v-if="stackBlocks.length" data-part="stack-plot" :style="{ height: `calc(var(--ar-chart-stack-unit, 64px) * ${stackTotal})` }">
           <ArTooltip v-for="x in stackBlocks" :key="x.key" :style="blockStyle(x)" placement="top" data-part="stack-block">
             <span data-part="block" :data-kind="x.bar.kind" :data-lifted="x.bottom > 0 ? '' : undefined" tabindex="0" :aria-label="x.tip" />
             <template #content><span data-part="tip">{{ x.tip }}</span></template>
