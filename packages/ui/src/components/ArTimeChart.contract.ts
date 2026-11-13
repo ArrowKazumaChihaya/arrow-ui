@@ -2,6 +2,7 @@
  * ArTimeChart 1.1 の契約。時間の横棒のチャート（勤怠の月のチャート・1日のチャート）。
  * month：1行＝1日。帯（通常勤務・残業・休日勤務・休憩）と、上の細い線＝シフト、下の細い線＝深夜。日付を押すと select（その日の大きなチャート）。
  * day：1行＝1つの内容（シフト・勤務・休憩・深夜勤務）。帯の中に「18:00〜27:00」などの文字。
+ * stack：1日を積み上げで出す（旧 ARROW の勤怠の1日のチャート）。縦が量、横が時間。rows の順が層の順で、先頭の行（打刻の勤務）が下の1段、2つ目から（法定外・休日・深夜の割増）が上に半段ずつ重なる。kind が shift の帯は下の細い線。休憩は帯を作らず空ける。
  * 帯に乗せると「種類・時間帯・時間数」の吹き出し。時刻は 0:00 からの分（翌日の 3:00 は 1620。前日の 23:00 は -60）。
  * デザインが選べる形（ArDesign.forms.ArTimeChart）：
  * - tick："180"（既定。3時間ごとの目盛り）／"60"（1時間ごと。今の ARROW の勤怠の月のチャート。classic）。tickStep で上書きできる。
@@ -69,8 +70,8 @@ export interface ArTimeChartRow {
 }
 
 export interface ArTimeChartProps {
-  /** month：1行＝1日（日付を押せる）。day：1行＝1つの内容。 */
-  mode?: "month" | "day";
+  /** month：1行＝1日（日付を押せる）。day：1行＝1つの内容。stack：1日の積み上げ（rows の順が下からの層）。 */
+  mode?: "month" | "day" | "stack";
   rows: readonly ArTimeChartRow[];
   /** 横軸の範囲（分）。既定は month が [-60, 1680]（前日23時〜翌4時）、day は帯から決める（前後1時間）。 */
   range?: readonly [number, number];

@@ -70,7 +70,7 @@ const range = computed<[number, number]>(() => {
   const hi = Math.ceil(Math.max(...all.map((b) => b.end)) / 60) * 60 + 120;
   return [lo, hi];
 });
-const step = computed(() => props.tickStep ?? (props.mode === "day" ? 60 : Number(tickForm.value)));
+const step = computed(() => props.tickStep ?? (props.mode !== "month" ? 60 : Number(tickForm.value)));
 const span = computed(() => range.value[1] - range.value[0]);
 const pct = (m: number) => ((Math.max(range.value[0], Math.min(range.value[1], m)) - range.value[0]) / span.value) * 100;
 const hourText = (m: number) => {
@@ -88,7 +88,7 @@ const clock = (m: number) => {
   return `${h}:${String(((m % 60) + 60) % 60).padStart(2, "0")}`;
 };
 const lane = (k: ArTimeChartKind) =>
-  props.mode === "day" ? "main" : k === "shift" ? "shift" : k === "night" ? "night" : ["preover", "overtime", "weekOver", "monthOver", "sixtyOver"].includes(k) ? "over" : "main";
+  props.mode !== "month" ? "main" : k === "shift" ? "shift" : k === "night" ? "night" : ["preover", "overtime", "weekOver", "monthOver", "sixtyOver"].includes(k) ? "over" : "main";
 const tipOf = (b: ArTimeChartBar) => {
   if (b.tip) return b.tip;
   const lines = [b.name ?? kindName(b.kind)];
@@ -129,6 +129,39 @@ const legendKinds = computed<ArTimeChartKind[]>(() => {
 });
 const legendText = (k: ArTimeChartKind) =>
   kindName(k) + (props.mode === "month" ? (k === "shift" ? L.value.shiftLine : k === "night" ? L.value.nightLine : "") : "");
+// stack: 1日を「積み上げ」で出す。shift の帯は下の細い線。それ以外の行は下から順の層（先頭の行＝基本の1段、2つ目から＝割増の半段）。
+const STACK_BASE = 1;
+const STACK_PREMIUM = 0.5;
+interface StackBlock { key: string; bar: ArTimeChartBar; layer: number; start: number; end: number; bottom: number; height: number; tip: string }
+const stackLines = computed(() => props.rows.flatMap((r) => barsOf(r).filter((b) => b.kind === "shift")));
+const stackBlocks = computed<StackBlock[]>(() => {
+  if (props.mode !== "stack") return [];
+  const layers = props.rows.map((r) => barsOf(r).filter((b) => b.kind !== "shift")).filter((bars) => bars.length > 0);
+  const cuts = [...new Set(layers.flatMap((bars) => bars.flatMap((b) => [b.start, b.end])))].sort((a, b) => a - b);
+  const out: StackBlock[] = [];
+  for (let i = 0; i + 1 < cuts.length; i++) {
+    const a = cuts[i] ?? 0;
+    const b = cuts[i + 1] ?? a;
+    let bottom = 0;
+    layers.forEach((bars, layer) => {
+      const bar = bars.find((x) => x.start <= a && x.end >= b);
+      if (!bar) return;
+      const height = layer === 0 ? STACK_BASE : STACK_PREMIUM;
+      const prev = [...out].reverse().find((x) => x.layer === layer);
+      if (prev && prev.end === a && prev.bar === bar && prev.bottom === bottom) prev.end = b;
+      else out.push({ key: `${layer}:${a}`, bar, layer, start: a, end: b, bottom, height, tip: tipOf(bar) });
+      bottom += height;
+    });
+  }
+  return out;
+});
+const stackTotal = computed(() => Math.max(STACK_BASE, ...stackBlocks.value.map((x) => x.bottom + x.height)));
+const blockStyle = (x: StackBlock) => ({
+  left: `${pct(x.start)}%`,
+  width: `${pct(x.end) - pct(x.start)}%`,
+  bottom: `calc(var(--ar-chart-stack-unit, 64px) * ${x.bottom})`,
+  height: `calc(var(--ar-chart-stack-unit, 64px) * ${x.height})`,
+});
 const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付・形態" : "内容"));
 </script>
 
@@ -138,7 +171,26 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
       <span v-for="k in legendKinds" :key="k" data-part="legend-item"><i data-part="swatch" :data-kind="k" :data-lane="lane(k)" aria-hidden="true" />{{ legendText(k) }}</span>
       <span v-if="hint" data-part="hint"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>{{ hint }}</span>
     </div>
-    <div data-part="grid" role="table" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 48}px` }">
+    <div v-if="mode === 'stack'" data-part="stack" role="group" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 40}px` }">
+      <div data-part="stack-inner">
+        <div data-part="stack-plot" :style="{ height: `calc(var(--ar-chart-stack-unit, 64px) * ${stackTotal})` }">
+          <ArTooltip v-for="x in stackBlocks" :key="x.key" :style="blockStyle(x)" placement="top" data-part="stack-block">
+            <span data-part="block" :data-kind="x.bar.kind" :data-lifted="x.bottom > 0 ? '' : undefined" tabindex="0" :aria-label="x.tip" />
+            <template #content><span data-part="tip">{{ x.tip }}</span></template>
+          </ArTooltip>
+        </div>
+        <div data-part="stack-lines">
+          <ArTooltip v-for="(line, i) in stackLines" :key="`line:${i}`" :style="{ left: `${pct(line.start)}%`, width: `${Math.max(minBarWidth, pct(line.end) - pct(line.start))}%` }" placement="top" data-part="stack-line">
+            <span data-part="block" data-kind="shift" tabindex="0" :aria-label="tipOf(line)" />
+            <template #content><span data-part="tip">{{ tipOf(line) }}</span></template>
+          </ArTooltip>
+        </div>
+        <div data-part="stack-axis" aria-hidden="true">
+          <span v-for="(t, index) in ticks" :key="t.m" data-part="stack-tick" :style="{ left: `${t.left}%` }"><i data-part="stack-tickline" />{{ t.text }}</span>
+        </div>
+      </div>
+    </div>
+    <div v-else data-part="grid" role="table" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 48}px` }">
       <div data-part="head" role="row">
         <div data-part="head-label" role="columnheader">{{ head }}</div>
         <div data-part="ticks" role="columnheader" aria-hidden="true">

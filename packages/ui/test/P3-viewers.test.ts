@@ -55,6 +55,21 @@ describe("ArOrgChart", () => {
 });
 
 describe("ArTimeChart", () => {
+  it("stack：基本の1段に割増の半段が重なり、休憩は空き、シフトは下の線", () => {
+    const rows = [
+      { key: "punch", label: "実働", bars: [{ kind: "work" as const, start: 480, end: 780 }, { kind: "work" as const, start: 840, end: 1020 }, { kind: "overtime" as const, start: 1020, end: 1440 }] },
+      { key: "over", label: "残業", bars: [{ kind: "overtime" as const, start: 1020, end: 1440 }] },
+      { key: "mid", label: "深夜", bars: [{ kind: "night" as const, start: 1320, end: 1440 }] },
+      { key: "shift", label: "シフト", bars: [{ kind: "shift" as const, start: 540, end: 720 }] },
+    ];
+    const w = mount(ArTimeChart, { props: { mode: "stack", rows, legend: true } });
+    const blocks = w.findAll('[data-part="stack-plot"] [data-part="block"]');
+    // 下の段：通常2つ＋残業1つ。その上に残業の割増（半段）と深夜（半段）が重なる。
+    expect(blocks.map((b) => b.attributes("data-kind")).sort()).toEqual(["night", "overtime", "overtime", "work", "work"]);
+    expect(blocks.filter((b) => b.attributes("data-lifted") !== undefined).length).toBe(2);
+    expect(w.findAll('[data-part="stack-lines"] [data-part="block"]').length).toBe(1);
+    expect(w.find('[data-part="grid"]').exists()).toBe(false);
+  });
   it("重なる計算区分を独立した帯に残し、区分名と全期間を読み上げる", async () => {
     const row = { key: "day", label: "11/04", weekday: 3, holiday: true, bars: [{ kind: "work" as const, start: 480, end: 1080 }], tracks: [
       { key: "premium", label: "休日割増", bars: [{ kind: "outhol" as const, start: 480, end: 1080 }] },
