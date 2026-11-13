@@ -6797,7 +6797,7 @@
    },
    {
     "name": "tone",
-    "type": "'danger' | 'accent' | 'neutral' | 'warn'",
+    "type": "'danger' | 'warn' | 'accent' | 'neutral'",
     "required": false,
     "description": "件数・点の色。danger＝赤（お知らせ・やること・メニューの件数。remix は count の赤 #DC2525）、accent＝テーマ色、\nneutral＝灰色、warn＝橙（未保存・未提出の件数）。",
     "default": "\"danger\""
@@ -6817,7 +6817,7 @@
    },
    {
     "name": "status",
-    "type": "'danger' | 'ok' | 'accent' | 'neutral' | 'warn'",
+    "type": "'danger' | 'warn' | 'ok' | 'accent' | 'neutral'",
     "required": false,
     "description": "状態の点（出勤中・処理中・未提出・エラー）。渡すと件数ではなく「点＋言葉」の形になる。\nok＝緑、accent＝テーマ色（淡い輪つき＝処理中）、warn＝橙、danger＝赤、neutral＝灰色。"
    },
@@ -7617,7 +7617,7 @@
    },
    {
     "name": "restriction",
-    "type": "'none' | 'warn' | 'strict'",
+    "type": "'warn' | 'none' | 'strict'",
     "required": false,
     "description": "範囲の強さ。strict＝範囲内でのみ打刻できる（テーマ色の実線）、warn＝勤怠エラーのみ（橙の点線）、none＝制限なし（円を出さない）。",
     "default": "\"strict\""
@@ -8137,7 +8137,7 @@
    },
    {
     "name": "tags",
-    "type": "readonly { key: string; label: string; tone?: 'danger' | 'ok' | 'accent' | 'neutral' | 'warn' | 'event' | 'solid' | undefined; palette?: 'blue' | 'green' | 'yellow' | 'pink' | 'orange' | 'teal' | 'amber' | undefined; }[]",
+    "type": "readonly { key: string; label: string; tone?: 'danger' | 'warn' | 'ok' | 'accent' | 'neutral' | 'event' | 'solid' | undefined; palette?: 'blue' | 'green' | 'yellow' | 'pink' | 'orange' | 'teal' | 'amber' | undefined; }[]",
     "required": false,
     "description": "",
     "default": "[]"
@@ -8259,7 +8259,7 @@
    },
    {
     "name": "tone",
-    "type": "'danger' | 'ok' | 'accent' | 'warn'",
+    "type": "'danger' | 'warn' | 'ok' | 'accent'",
     "required": false,
     "description": "色。accent＝テーマ色の塗りに白文字。",
     "default": "\"accent\""
@@ -8359,7 +8359,7 @@
    },
    {
     "name": "tone",
-    "type": "'danger' | 'default' | 'ok' | 'warn'",
+    "type": "'danger' | 'warn' | 'default' | 'ok'",
     "required": false,
     "description": "数字の色（未提出＝warn、不足＝danger など）。",
     "default": "\"default\""
@@ -8699,7 +8699,7 @@
   "props": [
    {
     "name": "tone",
-    "type": "'danger' | 'ok' | 'accent' | 'neutral' | 'warn' | 'event' | 'solid'",
+    "type": "'danger' | 'warn' | 'ok' | 'accent' | 'neutral' | 'event' | 'solid'",
     "required": false,
     "description": "意味の色。neutral＝標準・変更なし、accent＝種類（テーマ色の淡い札）、solid＝テーマ色の塗り、\nok＝提出済、warn＝未提出・非公開、danger＝エラー・不足、event＝イベント。色だけで伝えず、必ず言葉を入れる。",
     "default": "\"neutral\""
@@ -9475,7 +9475,7 @@
   "props": [
    {
     "name": "tone",
-    "type": "'danger' | 'info' | 'ok' | 'warn' | 'loading'",
+    "type": "'danger' | 'warn' | 'info' | 'ok' | 'loading'",
     "required": false,
     "description": "ok：終わった（緑のチェック）。info：案内（テーマ色）。warn：注意（橙）。danger：失敗（赤）。loading：送っている途中（回る輪）。",
     "default": "\"info\""
@@ -9636,7 +9636,7 @@
    },
    {
     "name": "iconTone",
-    "type": "'danger' | 'info' | 'ok' | 'warn'",
+    "type": "'danger' | 'warn' | 'info' | 'ok'",
     "required": false,
     "description": "印の色。warn 橙・danger 赤・info テーマ色・ok 緑。"
    },
@@ -9789,7 +9789,7 @@
    },
    {
     "name": "tone",
-    "type": "'danger' | 'info' | 'ok' | 'warn'",
+    "type": "'danger' | 'warn' | 'info' | 'ok'",
     "required": false,
     "description": "印の色。info はテーマ色、ok 緑、warn 橙、danger 赤。",
     "default": "\"info\""
@@ -9936,7 +9936,7 @@
    },
    {
     "name": "iconTone",
-    "type": "'danger' | 'info' | 'warn'",
+    "type": "'danger' | 'warn' | 'info'",
     "required": false,
     "description": "印の色。"
    },
@@ -10647,7 +10647,7 @@
    },
    {
     "name": "tone",
-    "type": "'danger' | 'accent' | 'warn' | 'ink'",
+    "type": "'danger' | 'warn' | 'accent' | 'ink'",
     "required": false,
     "description": "ink：濃い吹き出し（既定）。accent：テーマ色。danger：注意（赤）。warn：気をつける（橙の淡い面）。",
     "default": "\"ink\""
@@ -11133,7 +11133,7 @@
    },
    {
     "name": "resultTone",
-    "type": "'danger' | 'accent' | 'warn'",
+    "type": "'danger' | 'warn' | 'accent'",
     "required": false,
     "description": "結果の色（accent＝ふつう、warn＝注意、danger＝間違い）。",
     "default": "\"accent\""

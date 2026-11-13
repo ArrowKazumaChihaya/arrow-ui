@@ -15,6 +15,7 @@ export type ArButtonTone =
   | "danger-fill"
   | "danger-outline"
   | "edit"
+  | "warn"
   | "dark"
   | "overlay";
 

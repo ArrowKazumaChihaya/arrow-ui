@@ -52,14 +52,16 @@
 [data-ar-design="remix"] [data-ar="button"][data-intent="add"]{--ar-action:#3578B9;--ar-action-strong:#28639C;--ar-action-ink:#28639C;--ar-action-subtle:#EDF5FC;--ar-action-line:#ADCBE7;--ar-action-ring:rgba(53,120,185,.24)}
 [data-ar-design="remix"] [data-ar="button"]:is([data-intent="edit"],[data-tone="edit"]){--ar-action:#278359;--ar-action-strong:#206C49;--ar-action-ink:#206C49;--ar-action-subtle:#E9F6EE;--ar-action-line:#A8D5BB;--ar-action-ring:rgba(39,131,89,.24)}
 [data-ar-design="remix"] [data-ar="button"][data-intent="delete"]{--ar-action:var(--ar-color-danger);--ar-action-strong:var(--ar-color-danger-ink);--ar-action-ink:var(--ar-color-danger-ink);--ar-action-subtle:var(--ar-color-danger-subtle);--ar-action-line:#EBC2BF;--ar-action-ring:rgba(192,50,43,.22)}
-[data-ar-design="remix"] [data-ar="button"]:is([data-intent],[data-tone="edit"]):not(:disabled,[aria-disabled="true"]){background:var(--ar-action-subtle);color:var(--ar-action-ink);text-shadow:none;box-shadow:none}
+[data-ar-design="remix"] [data-ar="button"]:is([data-intent],[data-tone="edit"],[data-tone="warn"]):not(:disabled,[aria-disabled="true"]){background:var(--ar-action-subtle);color:var(--ar-action-ink);text-shadow:none;box-shadow:none}
 [data-ar-design="remix"] [data-ar="button"][data-intent][data-tone="primary"]:not(:disabled,[aria-disabled="true"]){background:var(--ar-action);color:#fff}
 [data-ar-design="remix"] [data-ar="button"][data-intent][data-tone="dashed"]:not(:disabled,[aria-disabled="true"]){background:#fff;border-color:var(--ar-action-line)}
-[data-ar-design="remix"] [data-ar="button"]:is([data-intent],[data-tone="edit"]):hover:not(:disabled,[aria-disabled="true"]){background:var(--ar-action-subtle);box-shadow:inset 0 0 0 1px var(--ar-action-line)}
+[data-ar-design="remix"] [data-ar="button"]:is([data-intent],[data-tone="edit"],[data-tone="warn"]):hover:not(:disabled,[aria-disabled="true"]){background:var(--ar-action-subtle);box-shadow:inset 0 0 0 1px var(--ar-action-line)}
 [data-ar-design="remix"] [data-ar="button"][data-intent][data-tone="primary"]:hover:not(:disabled,[aria-disabled="true"]){background:var(--ar-action-strong)}
-[data-ar-design="remix"] [data-ar="button"]:is([data-intent],[data-tone="edit"]):focus-visible:not(:disabled,[aria-disabled="true"]){outline:0;box-shadow:0 0 0 3px var(--ar-action-ring)}
+[data-ar-design="remix"] [data-ar="button"]:is([data-intent],[data-tone="edit"],[data-tone="warn"]):focus-visible:not(:disabled,[aria-disabled="true"]){outline:0;box-shadow:0 0 0 3px var(--ar-action-ring)}
 
 [data-ar-design="remix"] [data-ar="button"][data-intent="delete"][data-tone="danger"]:not(:disabled,[aria-disabled="true"]){background:var(--ar-color-danger);color:#fff}
 
 /* Label and icon share the control centre, independent of inherited prose leading. */
 [data-ar-design="remix"] [data-ar="button"]>[data-part="label"]{display:inline-flex;align-items:center;justify-content:center;gap:6px;line-height:1.4}
+/* warn：「未ロック」の印（ArTag の warn）と同じ色。ロック・ロック解除の操作に使う */
+[data-ar-design="remix"] [data-ar="button"][data-tone="warn"]{--ar-action:var(--ar-color-warn);--ar-action-strong:var(--ar-color-warn);--ar-action-ink:var(--ar-color-warn);--ar-action-subtle:var(--ar-color-warn-subtle);--ar-action-line:var(--ar-color-warn-line);--ar-action-ring:var(--ar-color-warn-line)}
