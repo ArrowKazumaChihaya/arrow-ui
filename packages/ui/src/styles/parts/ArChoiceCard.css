@@ -3,6 +3,8 @@
 [data-ar="choice-card"]:disabled{cursor:not-allowed}
 [data-ar="choice-card"][data-variant="card"]{flex-direction:column;align-items:flex-start}
 [data-ar="choice-card"][data-variant="option"]{align-items:flex-start}
+/* 説明も理由もない選択肢は、アイコンと題名の高さの中心を揃える（上に寄って見えない）。 */
+[data-ar="choice-card"][data-variant="option"]:not(:has(>[data-part="body"]>[data-part="description"],>[data-part="body"]>[data-part="reason"])){align-items:center}
 [data-ar="choice-card"]>[data-part="check"]{display:flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
 [data-ar="choice-card"][data-variant="card"]>[data-part="check"]{position:absolute}
 [data-ar="choice-card"]>[data-part="icon"]{display:flex;align-items:center;justify-content:center;flex:none}
