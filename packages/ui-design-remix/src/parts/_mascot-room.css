@@ -1,0 +1,209 @@
+/* 製品の「みんなの作業部屋」：マスコットが利用者を囲み、行った作業を中央のPCの画面に出すページ。配置・状態・会話は製品が持つ。 */
+[data-ar-design="remix"] .mascot-room[data-v-mascot-room] {
+  color: var(--ar-color-text);
+  font: calc(14px * var(--ar-font-scale, 1))/1.7 var(--ar-font-family);
+}
+[data-ar-design="remix"] .mascot-room__title[data-v-mascot-room] {
+  color: var(--ar-color-text);
+  font-size: calc(20px * var(--ar-font-scale, 1));
+  font-weight: 700;
+  line-height: 1.4;
+}
+[data-ar-design="remix"] :is(.mascot-room__lead, .mascot-room__hint, .mascot-room__notice)[data-v-mascot-room] {
+  color: var(--ar-color-text-muted);
+  font-size: calc(12px * var(--ar-font-scale, 1));
+}
+/* 部屋：やわらかい床の上に、席と画面を置く */
+[data-ar-design="remix"] .mascot-room__floor[data-v-mascot-room] {
+  padding: 16px;
+  border: 1px solid var(--ar-color-border-subtle);
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--ar-accent-faint), transparent 70%),
+    var(--ar-color-surface-alt);
+}
+/* 席：マスコットとそのPC。色は、席を囲むテーマ色（マスコットの色）に従う */
+[data-ar-design="remix"] .mascot-room__seat[data-v-mascot-room] {
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  transition: background var(--ar-motion-fast), border-color var(--ar-motion-fast), transform var(--ar-motion-fast);
+}
+[data-ar-design="remix"] .mascot-room__seat[data-v-mascot-room]:hover { background: var(--ar-accent-faint); transform: translateY(-2px); }
+[data-ar-design="remix"] .mascot-room__seat[data-v-mascot-room]:focus-visible { outline: 0; box-shadow: 0 0 0 3px var(--ar-accent-ring); }
+[data-ar-design="remix"] .mascot-room__seat.is-selected[data-v-mascot-room] {
+  border-color: var(--ar-accent);
+  background: var(--ar-accent-faint);
+  box-shadow: 0 0 0 3px var(--ar-accent-ring);
+}
+[data-ar-design="remix"] .mascot-room__seat [data-ar="mascot"] { filter: drop-shadow(0 4px 6px rgba(21, 35, 55, .14)); }
+/* 画面の右の席は、左右を反転して画面の方を向く。お腹のARROWロゴは反転させない（チャットのマスコットと同じ軸） */
+[data-ar-design="remix"] .mascot-room__seat.is-flipped [data-ar="mascot"] { transform: scaleX(-1); }
+[data-ar-design="remix"] .mascot-room__seat.is-flipped [data-ar="mascot"] .official-logo-ring { transform-box: fill-box; transform-origin: 50% 50%; transform: scaleX(-1); }
+[data-ar-design="remix"] .mascot-room__seat.is-flipped [data-ar="mascot"] .official-logo-arrow { transform-box: fill-box; transform-origin: 5.96% 50%; transform: scaleX(-1); }
+[data-ar-design="remix"] .mascot-room__seat-name[data-v-mascot-room] {
+  color: var(--ar-accent-ink);
+  font-size: calc(13px * var(--ar-font-scale, 1));
+  font-weight: 700;
+  line-height: 1.4;
+}
+/* マスコットのPC：画面と、その下の土台 */
+[data-ar-design="remix"] .mascot-room__laptop[data-v-mascot-room] {
+  position: relative;
+  margin: 4px 0 8px;
+  border: 2px solid var(--ar-accent-line);
+  border-radius: 8px 8px 3px 3px;
+  background: var(--ar-color-surface);
+  line-height: 1.35;
+  transition: background var(--ar-motion-fast), border-color var(--ar-motion-fast);
+}
+[data-ar-design="remix"] .mascot-room__laptop[data-v-mascot-room]::after {
+  content: "";
+  position: absolute;
+  left: -9px;
+  right: -9px;
+  bottom: -8px;
+  height: 5px;
+  border-radius: 1px 1px 6px 6px;
+  background: var(--ar-accent-line);
+}
+[data-ar-design="remix"] .mascot-room__laptop-role[data-v-mascot-room] {
+  color: var(--ar-color-text-muted);
+  font-size: calc(11px * var(--ar-font-scale, 1));
+}
+[data-ar-design="remix"] .mascot-room__laptop-status[data-v-mascot-room] {
+  color: var(--ar-color-text-secondary);
+  font-size: calc(12px * var(--ar-font-scale, 1));
+  font-weight: 700;
+}
+[data-ar-design="remix"] .mascot-room__seat:is(.is-thinking, .is-working, .is-done) .mascot-room__laptop[data-v-mascot-room] {
+  border-color: var(--ar-accent);
+  background: var(--ar-accent-faint);
+}
+[data-ar-design="remix"] .mascot-room__seat:is(.is-thinking, .is-working, .is-done) .mascot-room__laptop-status[data-v-mascot-room] { color: var(--ar-accent-ink); }
+[data-ar-design="remix"] .mascot-room__seat:is(.is-thinking, .is-working) .mascot-room__laptop-status[data-v-mascot-room] { animation: mascot-room-blink 1.2s ease-in-out infinite; }
+[data-ar-design="remix"] .mascot-room__seat.is-working .mascot-room__laptop[data-v-mascot-room] { box-shadow: 0 0 0 3px var(--ar-accent-ring); }
+[data-ar-design="remix"] .mascot-room__seat.is-failed .mascot-room__laptop[data-v-mascot-room] { border-color: var(--ar-color-danger); }
+[data-ar-design="remix"] .mascot-room__seat.is-failed .mascot-room__laptop-status[data-v-mascot-room] { color: var(--ar-color-danger-ink); }
+@keyframes mascot-room-blink { 50% { opacity: .45; } }
+/* 中央の大きなPCの画面 */
+[data-ar-design="remix"] .mascot-room__screen[data-v-mascot-room] {
+  border: 3px solid var(--ar-color-text-secondary);
+  border-radius: 18px;
+  background: var(--ar-color-surface);
+  box-shadow: var(--ar-shadow-pop);
+}
+[data-ar-design="remix"] .mascot-room__screen-bar[data-v-mascot-room] {
+  border-bottom: 1px solid var(--ar-color-border);
+  background: var(--ar-color-surface-alt);
+}
+[data-ar-design="remix"] .mascot-room__screen-bar .mascot-room__title[data-v-mascot-room] { font-size: calc(14px * var(--ar-font-scale, 1)); }
+[data-ar-design="remix"] .mascot-room__screen-lamp[data-v-mascot-room] {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ar-color-ok);
+}
+[data-ar-design="remix"] .mascot-room__screen-body[data-v-mascot-room] { overscroll-behavior: contain; }
+[data-ar-design="remix"] .mascot-room__welcome-title[data-v-mascot-room] {
+  color: var(--ar-accent-ink);
+  font-size: calc(16px * var(--ar-font-scale, 1));
+  font-weight: 700;
+}
+/* 依頼（利用者の発言） */
+[data-ar-design="remix"] .mascot-room__ask[data-v-mascot-room] {
+  border-radius: 16px 16px 4px 16px;
+  background: var(--ar-accent);
+  color: var(--ar-on-accent);
+}
+/* 行った作業：誰が・何を・読んだか書いたか */
+[data-ar-design="remix"] .mascot-room__work[data-v-mascot-room] {
+  border: 1px dashed var(--ar-color-border);
+  border-radius: var(--ar-radius-cell);
+  background: var(--ar-color-surface-alt);
+  font-size: calc(13px * var(--ar-font-scale, 1));
+}
+[data-ar-design="remix"] .mascot-room__step[data-v-mascot-room] { transition: opacity var(--ar-motion-fast); }
+[data-ar-design="remix"] .mascot-room__step.is-waiting[data-v-mascot-room] { opacity: .32; }
+[data-ar-design="remix"] .mascot-room__step-owner[data-v-mascot-room] {
+  display: inline-block;
+  border-radius: 999px;
+  background: var(--ar-accent-faint);
+  color: var(--ar-accent-ink);
+  font-size: calc(11.5px * var(--ar-font-scale, 1));
+  font-weight: 700;
+  white-space: nowrap;
+}
+[data-ar-design="remix"] .mascot-room__step-state[data-v-mascot-room] {
+  color: var(--ar-color-ok);
+  font-size: calc(11.5px * var(--ar-font-scale, 1));
+  font-weight: 700;
+}
+[data-ar-design="remix"] .mascot-room__step.is-failed .mascot-room__step-state[data-v-mascot-room] { color: var(--ar-color-danger-ink); }
+/* 返事：伝えるマスコットの名前と本文 */
+[data-ar-design="remix"] .mascot-room__speaker[data-v-mascot-room] {
+  color: var(--ar-accent-ink);
+  font-size: calc(12px * var(--ar-font-scale, 1));
+  font-weight: 700;
+}
+/* データを変える前の確認 */
+[data-ar-design="remix"] .mascot-room__pending[data-v-mascot-room] {
+  border: 1px solid var(--ar-color-warn-line);
+  border-radius: var(--ar-radius-cell);
+  background: var(--ar-color-warn-subtle);
+}
+[data-ar-design="remix"] .mascot-room__summary[data-v-mascot-room] {
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-radius: var(--ar-radius-control);
+  background: var(--ar-color-surface);
+}
+[data-ar-design="remix"] .mascot-room__thinking[data-v-mascot-room] {
+  color: var(--ar-accent-ink);
+  font-size: calc(13px * var(--ar-font-scale, 1));
+  font-weight: 700;
+}
+[data-ar-design="remix"] .mascot-room__error[data-v-mascot-room] {
+  margin-bottom: 10px;
+  border-radius: var(--ar-radius-control);
+  background: var(--ar-color-danger-subtle);
+  color: var(--ar-color-danger-ink);
+}
+/* 利用者の席：みんなへ頼む入力欄 */
+[data-ar-design="remix"] .mascot-room__desk[data-v-mascot-room] {
+  border: 1px solid var(--ar-accent-line);
+  border-radius: 18px;
+  background: var(--ar-color-surface);
+  box-shadow: var(--ar-shadow-pop);
+}
+[data-ar-design="remix"] .mascot-room__desk[data-v-mascot-room]:focus-within {
+  border-color: var(--ar-accent);
+  box-shadow: var(--ar-shadow-pop), 0 0 0 3px var(--ar-accent-ring);
+}
+[data-ar-design="remix"] .mascot-room .mascot-room__desk textarea[data-v-mascot-room],
+[data-ar-design="remix"] .mascot-room .mascot-room__desk textarea[data-v-mascot-room]:is(:focus, :focus-visible) {
+  /* 枠は外側の席（.mascot-room__desk）が持つ。製品の入力欄の既定の枠は出さない。 */
+  border: 0 !important;
+  outline: 0 !important;
+  background: none !important;
+  box-shadow: none;
+  color: var(--ar-color-text);
+  field-sizing: content;
+}
+@media (pointer: coarse) {
+  [data-ar-design="remix"] .mascot-room__desk textarea[data-v-mascot-room] { font-size: calc(16px * var(--ar-font-scale, 1)); }
+}
+@media (max-width: 959px) {
+  [data-ar-design="remix"] .mascot-room__floor[data-v-mascot-room] { padding: 8px; border-radius: 18px; }
+  [data-ar-design="remix"] .mascot-room__seat-name[data-v-mascot-room] { font-size: calc(11px * var(--ar-font-scale, 1)); }
+  [data-ar-design="remix"] .mascot-room__laptop-status[data-v-mascot-room] { font-size: calc(10.5px * var(--ar-font-scale, 1)); }
+  [data-ar-design="remix"] .mascot-room__laptop[data-v-mascot-room]::after { left: -5px; right: -5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-ar-design="remix"] :is(.mascot-room__seat, .mascot-room__step, .mascot-room__laptop)[data-v-mascot-room] { transition: none; }
+  [data-ar-design="remix"] .mascot-room__seat[data-v-mascot-room]:hover { transform: none; }
+  [data-ar-design="remix"] .mascot-room__seat .mascot-room__laptop-status[data-v-mascot-room] { animation: none; }
+}
