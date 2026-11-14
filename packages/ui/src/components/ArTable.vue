@@ -377,14 +377,8 @@ const actionsColWidth = computed(() => {
 const tableEl = ref<HTMLTableElement | null>(null);
 const lefts = ref<Record<string, number>>({});
 const isStart = (c: ArTableColumn<Row>) => c.sticky === true || c.sticky === "start";
-const stickyKeys = computed(() => {
-  const out: string[] = [];
-  for (const c of cols.value) {
-    if (!isStart(c)) break;
-    out.push(c.key);
-  }
-  return out;
-});
+/** 左に止める列。止めない列が手前にあってもよい（コードは横スクロールで隠れ、氏名だけ左に残る）。止めた列は、手前に止めた列の幅だけ右に貼りつく。 */
+const stickyKeys = computed(() => cols.value.filter(isStart).map((c) => c.key));
 const endKeys = computed(() => {
   const out: string[] = [];
   for (const c of [...cols.value].reverse()) {

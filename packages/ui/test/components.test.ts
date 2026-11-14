@@ -78,6 +78,27 @@ describe("ArTable", () => {
     expect(w.get('[data-part="viewport"]').attributes("aria-label")).toBe("勤務メンバー");
   });
 
+  it("手前の列を止めなくても、止めた列は左に残る（コードは隠れ、氏名だけ止める）", () => {
+    const codeFirst: ArTableColumn<Row & { code: string }>[] = [
+      { key: "code", title: "コード", width: 80 },
+      { key: "name", title: "氏名", width: 140, sticky: true },
+      { key: "minutes", title: "時間" },
+    ];
+    const w = mount(T, {
+      props: {
+        columns: codeFirst,
+        rows: rows.map((r) => ({ ...r, code: String(r.id).padStart(4, "0") })),
+        rowKey: "id",
+        caption: "表",
+      },
+    });
+    const cells = w.findAll('tbody tr:first-child [data-part="cell"]');
+    expect(cells[0]?.attributes("data-sticky")).toBeUndefined();
+    expect(cells[1]?.attributes("data-sticky")).toBe("start");
+    expect(cells[2]?.attributes("data-sticky")).toBeUndefined();
+    expect(w.findAll("thead th[data-sticky='start']")).toHaveLength(1);
+  });
+
   it("並べ替えの印を押すと asc → desc → なし を出す（並べ替えは製品がする）", async () => {
     const w = mount(T, { props: { columns, rows, rowKey: "id", caption: "表" } });
     await w.get('[data-part="sort"]').trigger("click");
