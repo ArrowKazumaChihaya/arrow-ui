@@ -103,6 +103,12 @@
 [data-ar-design="remix"] .ai-chat__mascot [data-ar="mascot"] { filter: drop-shadow(0 4px 6px rgba(21, 35, 55, .14)); }
 /* 絵は右向きなので、左右を反転して、画面の内側（左）を向かせる */
 [data-ar-design="remix"] .ai-chat [data-ar="mascot"] { transform: scaleX(-1); }
+/* お腹のARROWロゴは反転させない：ロゴ全体の左右の中心を軸に、もう一度反転して元の向きに戻す（リングは79.56%、矢印は31.43%が中心） */
+[data-ar-design="remix"] .ai-chat [data-ar="mascot"] .official-logo-ring { transform-box: fill-box; transform-origin: 79.56% 50%; transform: scaleX(-1); }
+[data-ar-design="remix"] .ai-chat [data-ar="mascot"] .official-logo-arrow { transform-box: fill-box; transform-origin: 31.43% 50%; transform: scaleX(-1); }
+/* 避けるときは速めに、ふわっと動かす */
+[data-ar-design="remix"] .ai-chat__talk { transition: bottom .3s cubic-bezier(.22, 1, .36, 1); }
+@media (prefers-reduced-motion: reduce) { [data-ar-design="remix"] .ai-chat__talk { transition: none; } }
 [data-ar-design="remix"] .ai-chat__mascot-hint[data-v-ai-chat] {
   border: 1px solid var(--ar-accent-line);
   border-radius: 14px 14px 2px 14px;
