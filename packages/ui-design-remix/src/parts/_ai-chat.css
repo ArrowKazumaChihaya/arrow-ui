@@ -109,27 +109,9 @@
 /* 避けるときは速めに、ふわっと動かす */
 [data-ar-design="remix"] .ai-chat__talk { transition: bottom .3s cubic-bezier(.22, 1, .36, 1); }
 @media (prefers-reduced-motion: reduce) { [data-ar-design="remix"] .ai-chat__talk { transition: none; } }
-[data-ar-design="remix"] .ai-chat__mascot-hint[data-v-ai-chat] {
-  border: 1px solid var(--ar-accent-line);
-  border-radius: 14px 14px 2px 14px;
-  background: var(--ar-color-surface);
-  color: var(--ar-accent-ink);
-  box-shadow: var(--ar-shadow-pop);
-  font-size:calc(12px * var(--ar-font-scale, 1));
-  font-weight: 700;
-  line-height: 1.5;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity var(--ar-motion-fast), transform var(--ar-motion-fast);
-  pointer-events: none;
-}
-[data-ar-design="remix"] .ai-chat__mascot:is(:hover, :focus-visible, .is-greeting) .ai-chat__mascot-hint[data-v-ai-chat] {
-  opacity: 1;
-  transform: none;
-}
 [data-ar-design="remix"] .ai-chat__heading-name[data-v-ai-chat] { color: var(--ar-accent-ink); }
 @media (prefers-reduced-motion: reduce) {
-  [data-ar-design="remix"] :is(.ai-chat__mascot, .ai-chat__mascot-hint)[data-v-ai-chat] { transition: none; }
+  [data-ar-design="remix"] .ai-chat__mascot[data-v-ai-chat] { transition: none; }
 }
 /* マスコットとの会話：返事・確認の吹き出しと、そばの入力欄。 */
 /* 吹き出し：クリックの前に出る「聞いてね」の吹き出しを大きくした形。しっぽでマスコットを指す。 */
