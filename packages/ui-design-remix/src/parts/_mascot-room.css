@@ -1,4 +1,4 @@
-/* 製品の「みんなの作業部屋」：マスコットが利用者を囲み、行った作業を中央のPCの画面に出すページ。配置・状態・会話は製品が持つ。 */
+/* 製品の「みんなの作業部屋」：大きなPCの画面（ARROW の画面）の前にマスコットが並び、横に会話を出すページ。配置・状態・会話は製品が持つ。 */
 [data-ar-design="remix"] .mascot-room[data-v-mascot-room] {
   color: var(--ar-color-text);
   font: calc(14px * var(--ar-font-scale, 1))/1.7 var(--ar-font-family);
@@ -15,7 +15,7 @@
 }
 /* 部屋：やわらかい床の上に、席と画面を置く */
 [data-ar-design="remix"] .mascot-room__floor[data-v-mascot-room] {
-  padding: 16px;
+  padding: 14px;
   border: 1px solid var(--ar-color-border-subtle);
   border-radius: 24px;
   background:
@@ -113,41 +113,21 @@
   font-size: calc(16px * var(--ar-font-scale, 1));
   font-weight: 700;
 }
-/* 中央の画面の切り替え（会話と作業／ARROW の画面） */
-[data-ar-design="remix"] .mascot-room__tabs[data-v-mascot-room] {
-  padding: 3px;
-  border-radius: 999px;
-  background: var(--ar-color-bg);
-}
-[data-ar-design="remix"] .mascot-room__tab[data-v-mascot-room] {
-  border: 0;
-  border-radius: 999px;
-  background: none;
-  color: var(--ar-color-text-secondary);
-  font: inherit;
-  font-size: calc(12px * var(--ar-font-scale, 1));
-  font-weight: 700;
-  line-height: 1.6;
-  transition: background var(--ar-motion-fast), color var(--ar-motion-fast);
-}
-[data-ar-design="remix"] .mascot-room__tab[data-v-mascot-room]:hover { color: var(--ar-accent-ink); }
-[data-ar-design="remix"] .mascot-room__tab.is-selected[data-v-mascot-room] {
-  background: var(--ar-color-surface);
-  color: var(--ar-accent-ink);
-  box-shadow: 0 1px 3px rgba(21, 35, 55, .16);
-}
-[data-ar-design="remix"] .mascot-room__tab[data-v-mascot-room]:focus-visible { outline: 0; box-shadow: 0 0 0 3px var(--ar-accent-ring); }
 /* はめ込んだ ARROW の画面 */
 [data-ar-design="remix"] .mascot-room__arrow[data-v-mascot-room] { background: var(--ar-color-bg); }
 [data-ar-design="remix"] .mascot-room__arrow-frame[data-v-mascot-room] { border: 0; background: var(--ar-color-bg); }
-/* ARROW の画面を出している間の、いちばん新しい返事 */
-[data-ar-design="remix"] .mascot-room__latest[data-v-mascot-room] {
+/* 会話と行った作業（ARROW の画面の横に、いつも出す） */
+[data-ar-design="remix"] .mascot-room__talk[data-v-mascot-room] {
   border: 1px solid var(--ar-color-border);
-  border-radius: 16px;
+  border-radius: 18px;
   background: var(--ar-color-surface);
+  box-shadow: var(--ar-shadow-pop);
 }
-[data-ar-design="remix"] .mascot-room__latest .mascot-room__thinking[data-v-mascot-room] { margin: 0; }
-[data-ar-design="remix"] .mascot-room__latest .mascot-room__error[data-v-mascot-room] { margin: 0; padding: 8px 10px; }
+[data-ar-design="remix"] .mascot-room__talk-bar[data-v-mascot-room] {
+  border-bottom: 1px solid var(--ar-color-border);
+  background: var(--ar-color-surface-alt);
+}
+[data-ar-design="remix"] .mascot-room__talk-bar .mascot-room__title[data-v-mascot-room] { font-size: calc(14px * var(--ar-font-scale, 1)); }
 /* 依頼（利用者の発言） */
 [data-ar-design="remix"] .mascot-room__ask[data-v-mascot-room] {
   border-radius: 16px 16px 4px 16px;
@@ -207,26 +187,22 @@
   background: var(--ar-color-danger-subtle);
   color: var(--ar-color-danger-ink);
 }
-/* 利用者の席：みんなへ頼む入力欄 */
+/* 利用者の席：みんなへ頼む入力欄（会話の下） */
 [data-ar-design="remix"] .mascot-room__desk[data-v-mascot-room] {
-  border: 1px solid var(--ar-accent-line);
-  border-radius: 18px;
+  border-top: 1px solid var(--ar-color-border);
   background: var(--ar-color-surface);
-  box-shadow: var(--ar-shadow-pop);
 }
-[data-ar-design="remix"] .mascot-room__desk[data-v-mascot-room]:focus-within {
-  border-color: var(--ar-accent);
-  box-shadow: var(--ar-shadow-pop), 0 0 0 3px var(--ar-accent-ring);
-}
-[data-ar-design="remix"] .mascot-room .mascot-room__desk textarea[data-v-mascot-room],
-[data-ar-design="remix"] .mascot-room .mascot-room__desk textarea[data-v-mascot-room]:is(:focus, :focus-visible) {
-  /* 枠は外側の席（.mascot-room__desk）が持つ。製品の入力欄の既定の枠は出さない。 */
-  border: 0 !important;
-  outline: 0 !important;
-  background: none !important;
-  box-shadow: none;
+[data-ar-design="remix"] .mascot-room .mascot-room__desk textarea[data-v-mascot-room] {
+  border: 1px solid var(--ar-color-field);
+  border-radius: 14px;
+  background: var(--ar-color-surface);
   color: var(--ar-color-text);
   field-sizing: content;
+}
+[data-ar-design="remix"] .mascot-room .mascot-room__desk textarea[data-v-mascot-room]:is(:focus, :focus-visible) {
+  border-color: var(--ar-accent);
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--ar-accent-ring);
 }
 @media (pointer: coarse) {
   [data-ar-design="remix"] .mascot-room__desk textarea[data-v-mascot-room] { font-size: calc(16px * var(--ar-font-scale, 1)); }
@@ -238,7 +214,7 @@
   [data-ar-design="remix"] .mascot-room__laptop[data-v-mascot-room]::after { left: -5px; right: -5px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  [data-ar-design="remix"] :is(.mascot-room__seat, .mascot-room__step, .mascot-room__laptop, .mascot-room__tab)[data-v-mascot-room] { transition: none; }
+  [data-ar-design="remix"] :is(.mascot-room__seat, .mascot-room__step, .mascot-room__laptop)[data-v-mascot-room] { transition: none; }
   [data-ar-design="remix"] .mascot-room__seat[data-v-mascot-room]:hover { transform: none; }
   [data-ar-design="remix"] .mascot-room__seat .mascot-room__laptop-status[data-v-mascot-room] { animation: none; }
 }
