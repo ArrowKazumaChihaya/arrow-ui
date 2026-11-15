@@ -1,4 +1,4 @@
-/* 製品の「みんなの作業部屋」：大きなPCの画面（ARROW の画面）の前にマスコットが並び、横に会話を出すページ。配置・状態・会話は製品が持つ。 */
+/* 製品の「みんなの作業部屋」：左に大きなPCの画面（ARROW の画面）、右にマスコットの席と会話を出すページ。配置・状態・会話は製品が持つ。 */
 [data-ar-design="remix"] .mascot-room[data-v-mascot-room] {
   color: var(--ar-color-text);
   font: calc(14px * var(--ar-font-scale, 1))/1.7 var(--ar-font-family);
@@ -43,16 +43,19 @@
 [data-ar-design="remix"] .mascot-room__seat.is-flipped [data-ar="mascot"] { transform: scaleX(-1); }
 [data-ar-design="remix"] .mascot-room__seat.is-flipped [data-ar="mascot"] .official-logo-ring { transform-box: fill-box; transform-origin: 50% 50%; transform: scaleX(-1); }
 [data-ar-design="remix"] .mascot-room__seat.is-flipped [data-ar="mascot"] .official-logo-arrow { transform-box: fill-box; transform-origin: 5.96% 50%; transform: scaleX(-1); }
+/* 席は会話の上に6人が1列で並ぶ。名前は折り返さず、小さめの字で1行に収める */
 [data-ar-design="remix"] .mascot-room__seat-name[data-v-mascot-room] {
   color: var(--ar-accent-ink);
-  font-size: calc(13px * var(--ar-font-scale, 1));
+  font-size: calc(10.5px * var(--ar-font-scale, 1));
   font-weight: 700;
   line-height: 1.4;
+  letter-spacing: -.03em;
+  white-space: nowrap;
 }
 /* マスコットのPC：画面と、その下の土台 */
 [data-ar-design="remix"] .mascot-room__laptop[data-v-mascot-room] {
   position: relative;
-  margin: 4px 0 8px;
+  margin: 2px 0 8px;
   border: 2px solid var(--ar-accent-line);
   border-radius: 8px 8px 3px 3px;
   background: var(--ar-color-surface);
@@ -62,10 +65,10 @@
 [data-ar-design="remix"] .mascot-room__laptop[data-v-mascot-room]::after {
   content: "";
   position: absolute;
-  left: -9px;
-  right: -9px;
-  bottom: -8px;
-  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -7px;
+  height: 4px;
   border-radius: 1px 1px 6px 6px;
   background: var(--ar-accent-line);
 }
@@ -75,7 +78,8 @@
 }
 [data-ar-design="remix"] .mascot-room__laptop-status[data-v-mascot-room] {
   color: var(--ar-color-text-secondary);
-  font-size: calc(12px * var(--ar-font-scale, 1));
+  font-size: calc(10.5px * var(--ar-font-scale, 1));
+  white-space: nowrap;
   font-weight: 700;
 }
 [data-ar-design="remix"] .mascot-room__seat:is(.is-thinking, .is-working, .is-done) .mascot-room__laptop[data-v-mascot-room] {
@@ -209,9 +213,7 @@
 }
 @media (max-width: 959px) {
   [data-ar-design="remix"] .mascot-room__floor[data-v-mascot-room] { padding: 8px; border-radius: 18px; }
-  [data-ar-design="remix"] .mascot-room__seat-name[data-v-mascot-room] { font-size: calc(11px * var(--ar-font-scale, 1)); }
-  [data-ar-design="remix"] .mascot-room__laptop-status[data-v-mascot-room] { font-size: calc(10.5px * var(--ar-font-scale, 1)); }
-  [data-ar-design="remix"] .mascot-room__laptop[data-v-mascot-room]::after { left: -5px; right: -5px; }
+  [data-ar-design="remix"] .mascot-room__seat-name[data-v-mascot-room] { font-size: calc(11px * var(--ar-font-scale, 1)); letter-spacing: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   [data-ar-design="remix"] :is(.mascot-room__seat, .mascot-room__step, .mascot-room__laptop)[data-v-mascot-room] { transition: none; }
