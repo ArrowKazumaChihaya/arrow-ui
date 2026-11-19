@@ -93,6 +93,11 @@ export interface ArTimeChartProps {
   compact?: boolean;
   /** 凡例だけを出す（グラフは出さない。小さなチャートを並べるときに、1か所にまとめた凡例を置く）。 */
   legendOnly?: boolean;
+  /**
+   * month：1日の行の中を、stack と同じ積み上げで描く（tracks の順が下からの層。先頭が1段、2つ目から半段ずつ上に重ねる）。
+   * kind が shift の帯は下の細い線。表（日付の列・目盛り）はそのまま。
+   */
+  stacked?: boolean;
 }
 
 export interface ArTimeChartLabels {

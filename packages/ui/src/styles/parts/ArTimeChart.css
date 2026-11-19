@@ -43,3 +43,8 @@
 [data-ar="time-chart"] [data-part="stack-axis"]>[data-part="stack-tick"]{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%);white-space:nowrap}
 [data-ar="time-chart"] [data-part="stack-axis"] [data-part="stack-tickline"]{display:block;width:1px;height:10px;margin-bottom:4px;background:currentColor;opacity:.35}
 [data-ar="time-chart"] [data-part="block"]:focus-visible{outline:2px solid var(--ar-color-text);outline-offset:1px}
+/* month の stacked：1日の行の中の小さな積み上げ（ポップアップの1日のチャートと同じ形）。1段＝--ar-chart-row-stack-unit、シフトは下の細い線。 */
+[data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"][data-row-block]{position:absolute;display:block}
+[data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"][data-row-line]{position:absolute;bottom:6px;display:block;height:var(--ar-chart-row-stack-line,4px)}
+[data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"]:is([data-row-block],[data-row-line]) [data-part="block"]{display:block;width:100%;height:100%;box-sizing:border-box}
+[data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"][data-row-block] [data-part="block"][data-lifted]{border-bottom:1px dashed #fff}

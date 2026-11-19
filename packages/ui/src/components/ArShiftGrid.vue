@@ -28,6 +28,7 @@ import {
   pct,
   spanLong,
   spanShort,
+  clockShort,
   weekdayOf,
   workMinutes,
   type ChartDrag,
@@ -115,6 +116,7 @@ const L = computed<ArShiftGridLabels>(() => ({
   shift: "シフト",
   break: "休憩",
   punch: "勤怠",
+  planBreak: "シフト休憩",
   noShift: "シフトなし",
   noPattern: "パターンなし",
   weekdays: ["日", "月", "火", "水", "木", "金", "土"],
@@ -163,7 +165,7 @@ const tipForm = useDesignForm<"line" | "section">("ArShiftGrid", "tip", "line");
 const hintForm = useDesignForm<"kbd" | "text">("ArShiftGrid", "hint", "kbd");
 const summaryForm = useDesignForm<"dots" | "paren">("ArShiftGrid", "summary", "dots");
 
-const SHOW: ArShiftGridShow = { avatar: true, code: false, hours: true, days: true, off: true, count: true, shortage: true, events: true, locked: true, unpublished: true, leave: true, avail: true, detail: true, hints: true };
+const SHOW: ArShiftGridShow = { avatar: true, code: false, hours: true, days: true, off: true, count: true, shortage: true, events: true, locked: true, unpublished: true, leave: true, avail: true, times: true, breaks: true, planBreaks: true, punches: true, hints: true };
 const show = computed<ArShiftGridShow>(() => ({ ...SHOW, ...props.show }));
 const uid = useId("ar-sg");
 
@@ -174,9 +176,14 @@ const mode = computed(() => localMode.value);
 const localW = ref<number | null>(props.columnWidth ?? null);
 watch(() => props.columnWidth, (w) => { localW.value = w ?? null; });
 
-const zoomRange = computed(() =>
-  mode.value === "chart" ? { min: 80, max: 280, step: 20, ...props.zoom.chart } : { min: props.days.length <= 16 ? 44 : 28, max: 140, step: 8, ...props.zoom.cell },
-);
+/** 枠の幅に日の数がちょうど収まる列の幅（名前の列を引いて日の数で割る）。まだ測れていなければ 0。 */
+const fitColumn = computed(() => (viewW.value ? Math.floor((viewW.value - nameW.value) / Math.max(1, props.days.length)) : 0));
+const zoomRange = computed(() => {
+  const base = mode.value === "chart" ? { min: 80, max: 280, step: 20, ...props.zoom.chart } : { min: 28, max: 140, step: 8, ...props.zoom.cell };
+  // 小さくできるのは、表が枠の幅いっぱいになる（横に動かさなくてよい）ところまで。表の右に余白が空くほど小さくしない。
+  const min = Math.max(base.min, fitColumn.value);
+  return { ...base, min, max: Math.max(base.max, min + base.step * 4) };
+});
 const root = ref<HTMLElement | null>(null);
 const viewport = ref<HTMLElement | null>(null);
 const gridEl = ref<HTMLElement | null>(null);
@@ -367,14 +374,18 @@ const cellViews = computed<CellView[][]>(() => {
           if (breaks.length) detail.push({ label: L.value.break, values: breaks.map((t) => spanLong(t)) });
           if (c?.punches?.length) detail.push({ label: L.value.punch, values: c.punches.map((t) => spanLong(t)) });
         }
-      } else if (leave) lines = colW.value >= 40 ? [leaveTime && colW.value >= 88 ? `${leaveLabel} ${spanShort(leaveTime)}` : leaveLabel] : [];
-      else if (shift && colW.value >= 36) {
-        lines = times.map(spanShort);
-        // 休憩・打刻（勤怠）の時間もマスに出す（触れなくても見える）。出すかどうかは表示内容の「シフト・休憩・勤怠の時間」。
-        if (show.value.detail && colW.value >= 88) {
-          if (breaks.length) detail.push({ label: L.value.break, values: breaks.map(spanShort) });
-          if (c?.punches?.length) detail.push({ label: L.value.punch, values: c.punches.map(spanShort) });
-        }
+      } else if (leave) lines = [leaveTime && colW.value >= 88 ? `${leaveLabel} ${spanShort(leaveTime)}` : leaveLabel];
+      else if (shift) {
+        // マスの文字は消さない。狭い列は「開始」「終了」を2行に分けて、文字の大きさ（--sg-fs）を列の幅に合わせる。
+        const narrow = colW.value < 64;
+        const spans = (list: readonly ArShiftGridTime[]) => (narrow ? list.flatMap((t) => [clockShort(t.start), clockShort(t.end)]) : list.map(spanShort));
+        if (show.value.times) lines = spans(times);
+        // シフト・休憩・シフト休憩・勤怠（打刻）は、表示内容でそれぞれ出す・出さないを選ぶ。
+        const planBreaks = [...(c?.planBreaks ?? [])];
+        const punches = [...(c?.punches ?? [])];
+        if (show.value.breaks && breaks.length) detail.push({ label: narrow ? "" : L.value.break, values: spans(breaks) });
+        if (show.value.planBreaks && planBreaks.length) detail.push({ label: narrow ? "" : L.value.planBreak, values: spans(planBreaks) });
+        if (show.value.punches && punches.length) detail.push({ label: narrow ? "" : L.value.punch, values: spans(punches) });
       }
       const availText = !avail
         ? ""

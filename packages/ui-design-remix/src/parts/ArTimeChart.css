@@ -78,3 +78,8 @@
 [data-ar-design="remix"] [data-ar="time-chart"][data-compact]>[data-part="stack"]{padding:10px 8px 2px;border-radius:10px}
 [data-ar-design="remix"] [data-ar="time-chart"][data-compact] [data-part="stack-axis"]{font-size:calc(10px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="time-chart"][data-compact]>[data-part="stack"]>[data-part="stack-inner"]{margin-inline:10px}
+
+/* month の stacked：1段 14px・シフトの線 4px（行の高さは段の数に合わせる） */
+[data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"]{--ar-chart-row-stack-unit:14px;--ar-chart-row-stack-line:4px}
+[data-ar-design="remix"] [data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"][data-row-block] [data-part="block"]{border-radius:1px}
+[data-ar-design="remix"] [data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"][data-row-line] [data-part="block"]{border-radius:2px}

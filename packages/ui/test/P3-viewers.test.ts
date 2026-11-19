@@ -80,6 +80,19 @@ describe("ArTimeChart", () => {
     expect(only.find('[data-part="stack"]').exists()).toBe(false);
     expect(only.find('[data-part="grid"]').exists()).toBe(false);
   });
+  it("month の stacked：表のまま、1日の行の中を積み上げで描き、シフトは下の線", () => {
+    const row = { key: "2026-11-03", label: "11/03", weekday: 2, bars: [], tracks: [
+      { key: "punch", label: "勤務", bars: [{ kind: "work" as const, start: 540, end: 1080 }] },
+      { key: "over", label: "残業", bars: [{ kind: "overtime" as const, start: 1020, end: 1080 }] },
+      { key: "shift", label: "シフト", bars: [{ kind: "shift" as const, start: 540, end: 1020 }] },
+    ] };
+    const w = mount(ArTimeChart, { props: { mode: "month", rows: [row], stacked: true } });
+    expect(w.find('[data-part="grid"]').exists()).toBe(true);
+    expect(w.findAll('[data-row-block] [data-part="block"]').map((b) => b.attributes("data-kind")).sort()).toEqual(["overtime", "work", "work"]);
+    expect(w.findAll('[data-row-block] [data-part="block"][data-lifted]')).toHaveLength(1);
+    expect(w.findAll('[data-row-line]')).toHaveLength(1);
+    expect(w.findAll('[data-part="lane"] [data-part="bar"]')).toHaveLength(0);
+  });
   it("stack：シフトの線だけのときは、積み上げの枠（空の段）を出さない", () => {
     const rows = [{ key: "shift", label: "シフト", bars: [{ kind: "shift" as const, start: 540, end: 720 }] }];
     const w = mount(ArTimeChart, { props: { mode: "stack", rows } });

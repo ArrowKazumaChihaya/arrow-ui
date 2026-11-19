@@ -41,6 +41,8 @@ export interface ArShiftGridCell {
   times?: readonly ArShiftGridTime[];
   /** 休憩（チャートの帯の斜線・吹き出し）。 */
   breaks?: readonly ArShiftGridTime[];
+  /** シフト休憩（休憩を分けて持つ設定のとき。マスの文字だけに出す）。 */
+  planBreaks?: readonly ArShiftGridTime[];
   /** 打刻（勤怠）。吹き出しと、classic の広い列の文字に出す。 */
   punches?: readonly ArShiftGridTime[];
   /** 当てはまるパターンの key（色と名前）。無いとパターンなし（灰色のマス）。 */
@@ -127,8 +129,14 @@ export interface ArShiftGridShow {
   leave: boolean;
   /** 勤務可能な人（提出）。 */
   avail: boolean;
-  /** マスの中のシフト・休憩・打刻（勤怠）の時間（列が広いとき）。 */
-  detail: boolean;
+  /** マスの中のシフトの時間。 */
+  times: boolean;
+  /** マスの中の休憩の時間（cell.breaks）。 */
+  breaks: boolean;
+  /** マスの中のシフト休憩の時間（cell.planBreaks。休憩を分けて持つ設定のとき）。 */
+  planBreaks: boolean;
+  /** マスの中の勤怠（打刻）の時間（cell.punches）。 */
+  punches: boolean;
   /** 表の下のショートカットキー・チャートの操作の案内。 */
   hints: boolean;
 }
@@ -236,6 +244,7 @@ export interface ArShiftGridLabels {
   shift: string;
   break: string;
   punch: string;
+  planBreak: string;
   noShift: string;
   noPattern: string;
   weekdays: readonly string[];

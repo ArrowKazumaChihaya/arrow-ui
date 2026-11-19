@@ -106,6 +106,9 @@
 /* お腹のARROWロゴは反転させない：赤い丸（リング）の中心を軸に、もう一度反転して元の向きに戻す。赤い丸はお腹の中心のまま（矢印の軸は、矢印の左から5.96%＝リングの中心） */
 [data-ar-design="remix"] .ai-chat [data-ar="mascot"] .official-logo-ring { transform-box: fill-box; transform-origin: 50% 50%; transform: scaleX(-1); }
 [data-ar-design="remix"] .ai-chat [data-ar="mascot"] .official-logo-arrow { transform-box: fill-box; transform-origin: 5.96% 50%; transform: scaleX(-1); }
+/* 矢を取り出して説明する動き（guide）の間は、矢だけを戻さない。矢は取り出したあと軸（シャフト）と先を足して伸びるので、
+   矢の絵だけを戻すと、足した軸と向きが食い違って手元で折れて見える。動きの間は、絵全体と同じく反転したままにする。 */
+[data-ar-design="remix"] .ai-chat [data-ar="mascot"] svg[data-motion="guide"] .official-logo-arrow { transform: none; }
 /* 避けるときは速めに、ふわっと動かす */
 [data-ar-design="remix"] .ai-chat__talk { transition: bottom .3s cubic-bezier(.22, 1, .36, 1); }
 @media (prefers-reduced-motion: reduce) { [data-ar-design="remix"] .ai-chat__talk { transition: none; } }

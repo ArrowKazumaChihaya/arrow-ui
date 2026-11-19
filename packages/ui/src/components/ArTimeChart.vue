@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<ArTimeChartProps>(), {
   labels: () => ({}),
   compact: false,
   legendOnly: false,
+  stacked: false,
 });
 const emit = defineEmits<{ select: [row: ArTimeChartRow] }>();
 
@@ -138,7 +139,11 @@ interface StackBlock { key: string; bar: ArTimeChartBar; layer: number; start: n
 const stackLines = computed(() => props.rows.flatMap((r) => barsOf(r).filter((b) => b.kind === "shift")));
 const stackBlocks = computed<StackBlock[]>(() => {
   if (props.mode !== "stack") return [];
-  const layers = props.rows.map((r) => barsOf(r).filter((b) => b.kind !== "shift")).filter((bars) => bars.length > 0);
+  return stackOf(props.rows.map((r) => barsOf(r)));
+});
+/** 層（下から順の帯の組）から、積み上げの四角を作る。先頭の層が1段、2つ目からは半段ずつ上に重ねる。シフトの帯は層にしない。 */
+function stackOf(rowBars: readonly (readonly ArTimeChartBar[])[]): StackBlock[] {
+  const layers = rowBars.map((bars) => bars.filter((b) => b.kind !== "shift")).filter((bars) => bars.length > 0);
   const cuts = [...new Set(layers.flatMap((bars) => bars.flatMap((b) => [b.start, b.end])))].sort((a, b) => a - b);
   const out: StackBlock[] = [];
   for (let i = 0; i + 1 < cuts.length; i++) {
@@ -156,6 +161,19 @@ const stackBlocks = computed<StackBlock[]>(() => {
     });
   }
   return out;
+}
+/** month の stacked：1日の行の中に、ポップアップの1日のチャートと同じ積み上げを小さく描く（区分ごとの帯＝層）。 */
+const rowStack = (r: ArTimeChartRow) => stackOf(tracksOf(r).length ? tracksOf(r).map((t) => t.bars) : [r.bars]);
+const rowStackTotal = (r: ArTimeChartRow) => Math.max(0, ...rowStack(r).map((x) => x.bottom + x.height));
+const rowShiftLines = (r: ArTimeChartRow) => barsOf(r).filter((b) => b.kind === "shift");
+const stackedRowHeight = (r: ArTimeChartRow) => ({
+  minHeight: `calc(var(--ar-chart-row-stack-unit, 14px) * ${Math.max(1, rowStackTotal(r))} + var(--ar-chart-row-stack-line, 4px) + 14px)`,
+});
+const rowBlockStyle = (x: StackBlock) => ({
+  left: `${pct(x.start)}%`,
+  width: `${pct(x.end) - pct(x.start)}%`,
+  bottom: `calc(var(--ar-chart-row-stack-line, 4px) + 8px + var(--ar-chart-row-stack-unit, 14px) * ${x.bottom})`,
+  height: `calc(var(--ar-chart-row-stack-unit, 14px) * ${x.height})`,
 });
 // シフトの線だけのとき（積む層が無いとき）は、上に空の段を残さない。
 const stackTotal = computed(() => Math.max(0, ...stackBlocks.value.map((x) => x.bottom + x.height)));
@@ -207,7 +225,7 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
           data-part="row-label"
           role="rowheader"
           :aria-label="`${L.open.replace('{label}', r.label)}：${rowAria(r)}`"
-          :style="rowHeight(r)"
+          :style="stacked ? stackedRowHeight(r) : rowHeight(r)"
           @click="emit('select', r)"
         >
           <b data-part="date">{{ r.label }}<em v-if="wdText(r)" data-part="weekday" :data-weekday="wdTone(r)">({{ wdText(r) }})</em></b>
@@ -217,12 +235,24 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
           <b data-part="date">{{ r.label }}</b>
           <small v-if="r.sub" data-part="sub">{{ r.sub }}</small>
         </div>
-        <div data-part="lane" role="cell" :aria-label="rowAria(r)" :style="rowHeight(r)">
+        <div data-part="lane" role="cell" :aria-label="rowAria(r)" :style="stacked ? stackedRowHeight(r) : rowHeight(r)" :data-stacked="stacked ? '' : undefined">
           <span v-for="t in ticks" :key="t.m" data-part="gridline" aria-hidden="true" :style="{ left: `${t.left}%` }" />
-          <ArTooltip v-for="b in placedBars(r)" :key="b.key" :data-lane="lane(b.bar.kind)" :data-track="b.track" :style="b.style" placement="top">
-            <span data-part="bar" :data-kind="b.bar.kind" tabindex="0" :aria-label="b.tip"><span v-if="mode === 'day' && (b.bar.text ?? '') !== ''" data-part="bar-text">{{ b.bar.text }}</span></span>
-            <template #content><span data-part="tip">{{ b.tip }}</span></template>
-          </ArTooltip>
+          <template v-if="stacked">
+            <ArTooltip v-for="x in rowStack(r)" :key="x.key" :style="rowBlockStyle(x)" placement="top" data-row-block="">
+              <span data-part="block" :data-kind="x.bar.kind" :data-lifted="x.bottom > 0 ? '' : undefined" tabindex="0" :aria-label="x.tip" />
+              <template #content><span data-part="tip">{{ x.tip }}</span></template>
+            </ArTooltip>
+            <ArTooltip v-for="(line, i) in rowShiftLines(r)" :key="`shift:${i}`" :style="{ left: `${pct(line.start)}%`, width: `${Math.max(minBarWidth, pct(line.end) - pct(line.start))}%` }" placement="top" data-row-line="">
+              <span data-part="block" data-kind="shift" tabindex="0" :aria-label="tipOf(line)" />
+              <template #content><span data-part="tip">{{ tipOf(line) }}</span></template>
+            </ArTooltip>
+          </template>
+          <template v-else>
+            <ArTooltip v-for="b in placedBars(r)" :key="b.key" :data-lane="lane(b.bar.kind)" :data-track="b.track" :style="b.style" placement="top">
+              <span data-part="bar" :data-kind="b.bar.kind" tabindex="0" :aria-label="b.tip"><span v-if="mode === 'day' && (b.bar.text ?? '') !== ''" data-part="bar-text">{{ b.bar.text }}</span></span>
+              <template #content><span data-part="tip">{{ b.tip }}</span></template>
+            </ArTooltip>
+          </template>
           <span v-if="!barsOf(r).length && r.note" data-part="note">{{ r.note }}</span>
         </div>
       </div>

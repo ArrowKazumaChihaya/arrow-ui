@@ -54,8 +54,9 @@ describe("ArShiftGrid", () => {
     expect(av.text()).toBe("希望 10:00–15:00");
     await av.trigger("click");
     expect(w.emitted("avail")![0]![0]).toMatchObject({ member: 2, date: "2026-10-20", row: 1, col: 2 });
+    // 狭い列でも文字は消さず、開始・終了を2行に分ける。
     await w.setProps({ columnWidth: 32 });
-    expect(cell(w, 0, 2).findAll('[data-part="line"]')).toHaveLength(0);
+    expect(cell(w, 0, 2).findAll('[data-part="shift"]>[data-part="line"]').map((x) => x.text())).toEqual(["9:00", "12:00", "17:00", "21:00"]);
     expect(cell(w, 1, 2).get('[data-part="avail"]').text()).toBe("希");
   });
 
@@ -223,13 +224,16 @@ describe("ArShiftGrid", () => {
     expect(cell(w, 0, 0).get('[data-part="bar"][data-leave]').attributes("data-with-shift")).toBe("");
   });
 
-  it("マスに休憩・打刻の時間を出し、表示内容 detail で消せる。列の幅を決めたら枠が余っても広げない", async () => {
+  it("マスにシフト・休憩・勤怠の時間を出し、表示内容でそれぞれ消せる。列の幅を決めたら枠が余っても広げない", async () => {
     const withPunch = { ...cells, "1": { ...cells["1"], "2026-10-18": { ...cells["1"]!["2026-10-18"], punches: [{ start: 542, end: 1085 }] } } };
     const w = mount(ArShiftGrid, { props: { ...base, cells: withPunch, columnWidth: 120 } });
     expect(cell(w, 0, 0).findAll('[data-part="detail"]').map((x) => x.text())).toEqual(["休憩12:00–13:00", "勤怠9:02–18:05"]);
     expect(w.get('[data-ar="shift-grid"]').attributes("data-fixed")).toBe("");
-    await w.setProps({ show: { detail: false } });
+    await w.setProps({ show: { punches: false } });
+    expect(cell(w, 0, 0).findAll('[data-part="detail"]').map((x) => x.text())).toEqual(["休憩12:00–13:00"]);
+    await w.setProps({ show: { breaks: false, punches: false, times: false } });
     expect(cell(w, 0, 0).findAll('[data-part="detail"]')).toHaveLength(0);
+    expect(cell(w, 0, 0).findAll('[data-part="shift"]>[data-part="line"]')).toHaveLength(0);
     const auto = mount(ArShiftGrid, { props: { ...base, cells: withPunch } });
     expect(auto.get('[data-ar="shift-grid"]').attributes("data-fixed")).toBeUndefined();
   });
