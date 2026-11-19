@@ -326,6 +326,7 @@ interface CellView {
   /** シフトと同じ日の有給（半日・時間）の印。シフトを入れても有給を残して見せる。 */
   leaveMark: string;
   leaveTime?: ArShiftGridTime;
+  availMark: boolean;
   style: Record<string, string>;
 }
 const cellViews = computed<CellView[][]>(() => {
@@ -339,6 +340,8 @@ const cellViews = computed<CellView[][]>(() => {
       const times = [...(c?.times ?? [])];
       const breaks = [...(c?.breaks ?? [])];
       const avail = show.value.avail && !shift && !leave && c?.avail?.times.length ? c.avail : undefined;
+      // シフトがある日も、提出（勤務可能）があれば、マスの右上に小さな印を出す（時間は吹き出し）。
+      const availMark = show.value.avail && shift && c?.avail?.times.length ? c.avail : undefined;
       const leaveTime = typeof c?.leave === "object" ? c.leave.time : undefined;
       const leaveLabel = (typeof c?.leave === "object" && c.leave.label) || L.value.leave;
       const tip: TipRow[] = [{ values: [`${m.name}　${dv.dateText}`] }];
@@ -349,6 +352,7 @@ const cellViews = computed<CellView[][]>(() => {
         if (c?.punches?.length) tip.push({ label: L.value.punch, values: c.punches.map((t) => spanLong(t)) });
       }
       if (show.value.leave && isLeave(c)) tip.push(leaveTime ? { label: leaveLabel, values: [spanLong(leaveTime)] } : { label: L.value.leaveAll, values: [] });
+      if (availMark) tip.push({ label: L.value.avail, values: availMark.times.map((t) => spanLong(t)) });
       if (avail) {
         tip.push({ label: L.value.avail, values: avail.times.map((t) => spanLong(t)) });
         if (avail.note) tip.push({ values: [avail.note] });
@@ -414,6 +418,7 @@ const cellViews = computed<CellView[][]>(() => {
         barLabel: leave ? leaveLabel : times.map(spanShort).join(" / "),
         leaveMark: leaveWithShift ? (leaveTime && colW.value >= 60 ? `${leaveLabel} ${spanShort(leaveTime)}` : leaveLabel) : "",
         leaveTime: leaveWithShift ? leaveTime : undefined,
+        availMark: !!availMark,
         style,
       };
     }),
@@ -933,6 +938,7 @@ const dayOf = (dv: DayView) => dv.d;
     :data-wide="wide ? '' : undefined"
     :data-fit="fitMode"
     :data-fixed="localW != null ? '' : undefined"
+    :data-narrow="colW < 64 ? '' : undefined"
     :data-editable="editable ? '' : undefined"
     :data-dragging="drag ? '' : undefined"
   >
@@ -1153,6 +1159,7 @@ const dayOf = (dv: DayView) => dv.d;
                     </span>
                     <span data-part="bar-label">{{ drag && barsOf(mv.r, c).state ? barsOf(mv.r, c).times.map(spanShort).join(" / ") : cv(mv.r, c).barLabel }}</span>
                   </span>
+                  <i v-if="cv(mv.r, c).availMark" data-part="avail-mark" aria-hidden="true" />
                   <span v-if="fillHere(mv.r, c)" data-part="fill-handle" aria-hidden="true" />
                   <ArIcon v-if="cv(mv.r, c).locked && show.locked" line name="lock" data-part="lock" aria-hidden="true" />
                 </div>

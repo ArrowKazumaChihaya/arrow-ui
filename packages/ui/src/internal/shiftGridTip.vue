@@ -3,7 +3,7 @@
  * ArShiftGrid の吹き出し（ライブラリの中だけ）。マスは数百あるので、吹き出しは1つだけ持ち、乗せたマスへ動かす。
  * 表の本体と別の部品にして、吹き出しが動いても表を描き直さない。
  */
-import { ref, shallowRef } from "vue";
+import { nextTick, ref, shallowRef } from "vue";
 import ArFloat from "./ArFloat.vue";
 import type { TipRow } from "./shiftGrid";
 
@@ -12,10 +12,14 @@ const anchor = shallowRef<HTMLElement | null>(null);
 const rows = ref<TipRow[]>([]);
 const below = ref(false);
 
+const float = ref<InstanceType<typeof ArFloat> | null>(null);
 function show(el: HTMLElement, r: TipRow[], placeBelow = false) {
+  const moved = anchor.value !== el || rows.value !== r;
   anchor.value = el;
   rows.value = r;
   below.value = placeBelow;
+  // 中身の行の数で吹き出しの高さが変わるので、描き直してから置き直す（前のマスの位置に残さない）。
+  if (moved) void nextTick(() => float.value?.place());
 }
 function hide() {
   anchor.value = null;
@@ -25,6 +29,7 @@ defineExpose({ show, hide, anchor });
 
 <template>
   <ArFloat
+    ref="float"
     :open="!!anchor && rows.length > 0"
     :anchor="anchor"
     :placement="below ? 'bottom-start' : 'top-start'"

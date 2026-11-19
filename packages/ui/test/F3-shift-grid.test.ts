@@ -238,6 +238,17 @@ describe("ArShiftGrid", () => {
     expect(auto.get('[data-ar="shift-grid"]').attributes("data-fixed")).toBeUndefined();
   });
 
+  it("シフトがある日も、提出があれば右上に印を出し、狭い列では休憩・勤怠を縦に並べる", async () => {
+    const both = { ...cells, "1": { ...cells["1"], "2026-10-18": { ...cells["1"]!["2026-10-18"], avail: { times: [{ start: 540, end: 1080 }] } } } };
+    const w = mount(ArShiftGrid, { props: { ...base, cells: both, columnWidth: 120 } });
+    expect(cell(w, 0, 0).find('[data-part="avail-mark"]').exists()).toBe(true);
+    expect(cell(w, 0, 0).find('[data-part="avail"]').exists()).toBe(false);
+    await w.setProps({ show: { avail: false } });
+    expect(cell(w, 0, 0).find('[data-part="avail-mark"]').exists()).toBe(false);
+    await w.setProps({ show: { avail: true }, columnWidth: 40 });
+    expect(w.get('[data-ar="shift-grid"]').attributes("data-narrow")).toBe("");
+  });
+
   it("classic の形：2段目に「名前」とシフトチャートのボタン、マスは塗り、要約は今の書き方", async () => {
     const design = { forms: { ArShiftGrid: { head: "button", cell: "fill", summary: "paren", fit: "scale" } } };
     const { arUiContextKey } = await import("../src/provider/context");

@@ -4790,6 +4790,11 @@ ul.fr-dropdown-list
   padding: 0;
   max-width: initial;
 }
+/* 表を広く使うページ（シフトのテーブルなど）：幅の上限を外し、左右の余白を詰める */
+.root_component.wide[data-v-ui5bc3f455d2e5] {
+  max-width: none;
+  padding-inline: var(--arrow-page-padding-wide-inline, 20px);
+}
 @media screen and (max-width: 959px) {
   .root_component[data-v-ui5bc3f455d2e5] {
     padding: var(--arrow-page-padding-tablet, 25px 30px 60px);

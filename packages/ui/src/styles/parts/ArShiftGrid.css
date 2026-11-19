@@ -82,3 +82,9 @@
 [data-ar="shift-grid-menu"]>[data-part="menu"]{display:flex;flex-direction:column}
 [data-ar="shift-grid-menu"]>[data-part="menu"]>[data-part="menu-item"]{display:flex;align-items:center;cursor:pointer;font-family:inherit}
 [data-ar="shift-grid"] [data-part="cell"]>[data-part="lock"]{position:absolute;pointer-events:none}
+/* シフトがある日の提出の印（右上の小さな丸） */
+[data-ar="shift-grid"] [data-part="cell"]>[data-part="avail-mark"]{position:absolute;top:3px;right:3px;z-index:3;pointer-events:none}
+/* 狭い列：休憩・勤怠の時間は開始・終了を縦に並べ、マスからはみ出さない */
+[data-ar="shift-grid"][data-narrow] [data-part="cell"] [data-part="detail"]{flex-direction:column;align-items:center;gap:0}
+[data-ar="shift-grid"] [data-part="cell"] [data-part="detail-label"]:empty{display:none}
+[data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"]{max-width:100%}

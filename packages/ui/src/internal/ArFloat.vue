@@ -100,6 +100,15 @@ watch(
   },
   { immediate: true },
 );
+// 開いたまま基準の要素が替わったとき（表の吹き出しを隣のマスへ動かすときなど）も、置き直す。
+watch(
+  () => props.anchor,
+  async (next, prev) => {
+    if (!props.open || !next || next === prev) return;
+    await nextTick();
+    place();
+  },
+);
 onBeforeUnmount(() => {
   releaseOverlayLayer(layerId);
   bind(false);

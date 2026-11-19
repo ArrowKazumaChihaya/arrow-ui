@@ -142,3 +142,4 @@
 
 /* シフトと同じ日の半日・時間有給の印 */
 [data-ar-design="classic"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"] [data-part="leave-mark"]{margin-top:1px;font-size:calc(10px * var(--ar-font-scale, 1));font-weight:700;text-align:center;opacity:.95}
+[data-ar-design="classic"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail-mark"]{width:7px;height:7px;border-radius:50%;background:#46A574;box-shadow:0 0 0 1px #fff}

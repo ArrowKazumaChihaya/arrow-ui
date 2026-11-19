@@ -128,3 +128,6 @@
 
 /* Tracks stay vertically centered, including empty days; times are available in the cell tooltip. */
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="track"]>[data-part="bar-label"]{display:none}
+
+/* シフトがある日の提出の印：緑の小さな丸（白い縁） */
+[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail-mark"]{width:8px;height:8px;border-radius:50%;background:var(--ar-remix-hope-line);box-shadow:0 0 0 1.5px #fff}

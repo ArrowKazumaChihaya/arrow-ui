@@ -49,7 +49,7 @@ export interface ArShiftGridCell {
   pattern?: ArShiftGridKey | null;
   /** 有給。true＝全日。時間で取ったときは time を渡す。 */
   leave?: boolean | { label?: string; time?: ArShiftGridTime };
-  /** 提出（勤務可能）。シフトがない日に緑の点線の「希望」で出し、押すと avail イベント。 */
+  /** 提出（勤務可能）。シフトがない日に緑の点線の「希望」で出し、押すと avail イベント。シフトがある日は右上の小さな印（時間は吹き出し）。 */
   avail?: { times: readonly ArShiftGridTime[]; note?: string } | null;
   /** このマスは変えられない（権限など）。ロックの日は ArShiftGridDay.locked。 */
   readonly?: boolean;
@@ -382,6 +382,7 @@ export type ArShiftGridPart =
   | "detail"
   | "detail-label"
   | "leave-mark"
+  | "avail-mark"
   | "avail"
   | "track"
   | "bar-track"
