@@ -72,3 +72,9 @@
 [data-ar-design="remix"] [data-ar="time-chart"] [data-part="stack-plot"]{border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="time-chart"] [data-part="stack-lines"] [data-part="block"]{border-radius:2px}
 [data-ar-design="remix"] [data-ar="time-chart"] [data-part="stack-axis"]{color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1));font-variant-numeric:tabular-nums}
+
+/* compact：1か月ぶんの1日のチャートを並べるときの小さな積み上げ（1段 26px・余白と目盛りの文字を小さく） */
+[data-ar-design="remix"] [data-ar="time-chart"][data-compact]{--ar-chart-stack-unit:26px;--ar-chart-stack-line-height:8px;--ar-chart-stack-line-gap:6px;--ar-chart-stack-axis-height:26px;gap:6px}
+[data-ar-design="remix"] [data-ar="time-chart"][data-compact]>[data-part="stack"]{padding:10px 8px 2px;border-radius:10px}
+[data-ar-design="remix"] [data-ar="time-chart"][data-compact] [data-part="stack-axis"]{font-size:calc(10px * var(--ar-font-scale, 1))}
+[data-ar-design="remix"] [data-ar="time-chart"][data-compact]>[data-part="stack"]>[data-part="stack-inner"]{margin-inline:10px}

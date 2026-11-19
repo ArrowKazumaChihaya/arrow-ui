@@ -70,6 +70,16 @@ describe("ArTimeChart", () => {
     expect(w.findAll('[data-part="stack-lines"] [data-part="block"]').length).toBe(1);
     expect(w.find('[data-part="grid"]').exists()).toBe(false);
   });
+  it("stack：compact は小さな積み上げの印を付け、legendOnly は凡例だけを出す", () => {
+    const rows = [{ key: "punch", label: "実働", bars: [{ kind: "work" as const, start: 480, end: 780 }] }];
+    const small = mount(ArTimeChart, { props: { mode: "stack", rows, compact: true } });
+    expect(small.get('[data-ar="time-chart"]').attributes("data-compact")).toBe("");
+    expect(small.find('[data-part="stack-plot"]').exists()).toBe(true);
+    const only = mount(ArTimeChart, { props: { mode: "stack", rows: [], legend: ["work", "night"], legendOnly: true } });
+    expect(only.findAll('[data-part="legend-item"]').map((x) => x.text())).toEqual(["通常勤務", "深夜勤務"]);
+    expect(only.find('[data-part="stack"]').exists()).toBe(false);
+    expect(only.find('[data-part="grid"]').exists()).toBe(false);
+  });
   it("stack：シフトの線だけのときは、積み上げの枠（空の段）を出さない", () => {
     const rows = [{ key: "shift", label: "シフト", bars: [{ kind: "shift" as const, start: 540, end: 720 }] }];
     const w = mount(ArTimeChart, { props: { mode: "stack", rows } });

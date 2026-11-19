@@ -19,6 +19,8 @@ const props = withDefaults(defineProps<ArTimeChartProps>(), {
   minBarWidth: 0.4,
   label: undefined,
   labels: () => ({}),
+  compact: false,
+  legendOnly: false,
 });
 const emit = defineEmits<{ select: [row: ArTimeChartRow] }>();
 
@@ -167,12 +169,12 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
 </script>
 
 <template>
-  <div data-ar="time-chart" data-part="root" :data-mode="mode" role="group" :aria-label="label">
+  <div data-ar="time-chart" data-part="root" :data-mode="mode" :data-compact="compact ? '' : undefined" role="group" :aria-label="label">
     <div v-if="legendKinds.length || hint" data-part="legend">
       <span v-for="k in legendKinds" :key="k" data-part="legend-item"><i data-part="swatch" :data-kind="k" :data-lane="lane(k)" aria-hidden="true" />{{ legendText(k) }}</span>
       <span v-if="hint" data-part="hint"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>{{ hint }}</span>
     </div>
-    <div v-if="mode === 'stack'" data-part="stack" role="group" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 40}px` }">
+    <div v-if="mode === 'stack' && !legendOnly" data-part="stack" role="group" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * (compact ? 26 : 40)}px` }">
       <div data-part="stack-inner">
         <div v-if="stackBlocks.length" data-part="stack-plot" :style="{ height: `calc(var(--ar-chart-stack-unit, 64px) * ${stackTotal})` }">
           <ArTooltip v-for="x in stackBlocks" :key="x.key" :style="blockStyle(x)" placement="top" data-part="stack-block">
@@ -191,7 +193,7 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
         </div>
       </div>
     </div>
-    <div v-else data-part="grid" role="table" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 48}px` }">
+    <div v-else-if="!legendOnly" data-part="grid" role="table" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 48}px` }">
       <div data-part="head" role="row">
         <div data-part="head-label" role="columnheader">{{ head }}</div>
         <div data-part="ticks" role="columnheader" aria-hidden="true">

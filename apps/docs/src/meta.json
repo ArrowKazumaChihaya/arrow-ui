@@ -13853,6 +13853,20 @@
     "required": false,
     "description": "画面の文字。",
     "default": "{}"
+   },
+   {
+    "name": "compact",
+    "type": "boolean",
+    "required": false,
+    "description": "小さく出す（stack：1段・余白・目盛りの文字を小さくする。1か月ぶんの1日のチャートを並べるときなど）。",
+    "default": "false"
+   },
+   {
+    "name": "legendOnly",
+    "type": "boolean",
+    "required": false,
+    "description": "凡例だけを出す（グラフは出さない。小さなチャートを並べるときに、1か所にまとめた凡例を置く）。",
+    "default": "false"
    }
   ],
   "emits": [

@@ -89,6 +89,10 @@ export interface ArTimeChartProps {
   label?: string;
   /** 画面の文字。 */
   labels?: Partial<ArTimeChartLabels>;
+  /** 小さく出す（stack：1段・余白・目盛りの文字を小さくする。1か月ぶんの1日のチャートを並べるときなど）。 */
+  compact?: boolean;
+  /** 凡例だけを出す（グラフは出さない。小さなチャートを並べるときに、1か所にまとめた凡例を置く）。 */
+  legendOnly?: boolean;
 }
 
 export interface ArTimeChartLabels {
