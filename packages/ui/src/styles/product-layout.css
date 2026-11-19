@@ -6760,15 +6760,17 @@ th.toggle[data-v-ui1e028877e6aa] {
   flex-shrink: 0;
   box-sizing: content-box;
 }
+/* この層の content-box は、層の外の * { box-sizing: border-box } に負ける。幅は内側の余白を含めた値にする
+   （操作の列 75px・追加の列 44px に収まり、ボタンが左にはみ出して欠けない）。 */
 .attendance_table_wrap
   .operation_daily_col.edit_delete[data-v-uica23177efdef] {
   gap: 3px;
-  width: 67px;
+  width: 75px;
   padding: 3px 0 3px 8px;
 }
 .attendance_table_wrap
   .operation_daily_col.add[data-v-uica23177efdef] {
-  width: 32px;
+  width: 43px;
   padding: 3px 8px 3px 3px;
 }
 .attendance_table_wrap

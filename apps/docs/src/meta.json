@@ -12121,7 +12121,7 @@
  },
  {
   "name": "ArPayslipLine",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "props": [
    {
@@ -12154,7 +12154,14 @@
     "name": "edited",
     "type": "boolean",
     "required": false,
-    "description": ""
+    "description": "手で直した値（1.1：値の字をデザインの「手で直した」色にし、ペンの印に乗せると editedHint を出す）。"
+   },
+   {
+    "name": "editedHint",
+    "type": "string",
+    "required": false,
+    "description": "手で直した印の説明（ペンに乗せる・フォーカスすると出る吹き出し）。",
+    "default": "\"自動計算ではなく、手で入れた金額です。編集で空にして確定すると、自動計算に戻ります。\""
    },
    {
     "name": "total",
@@ -12206,6 +12213,7 @@
    "label",
    "value",
    "amount",
+   "edited-mark",
    "edited",
    "diff",
    "prev"
