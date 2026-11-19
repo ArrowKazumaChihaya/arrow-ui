@@ -7,14 +7,10 @@
 [data-ar-design="remix"] [data-ar="view-options"]>[data-part="trigger"]:disabled{opacity:.5}
 [data-ar-design="remix"] [data-ar="view-options"]>[data-part="trigger"]>[data-ar="icon"]{width:14px;height:14px}
 /* 件数は ArBadge（tone="accent" variant="subtle"：18・角丸9・11px 700） */
-/* パネルは dropdown-menu と同じ板（角丸12・shadow.pop・文字の色） */
-[data-ar-design="remix"] [data-ar="view-options-panel"]{border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font-family:var(--ar-font-family)}
-[data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]{max-height:560px;padding:6px}
+/* 板と項目の行は、ほかのプルダウンと共通（_picker.css の「プルダウンの板と行」） */
+[data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]{max-height:560px;padding:8px}
 [data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="title"]{padding:8px 10px 4px;color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="group-title"]{margin-top:4px;padding:8px 10px 2px;border-top:1px solid var(--ar-color-border-subtle);color:var(--ar-color-text-muted);font-size:calc(10.5px * var(--ar-font-scale, 1));font-weight:700;letter-spacing:.06em}
-[data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]{gap:10px;padding:7px 10px;border-radius:9px;color:var(--ar-color-text)}
-[data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]:hover:not(:disabled){background:#F3F6F9}
-[data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ar-accent-line)}
 [data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]:disabled{opacity:.55}
 [data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="text"]>b{font-size:calc(13px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="view-options-panel"]>[data-part="panel"]>[data-part="group"]>[data-part="option"]>[data-part="text"]>[data-part="description"]{color:var(--ar-color-text-muted);font-size:calc(11px * var(--ar-font-scale, 1));line-height:1.4}

@@ -23,6 +23,7 @@
 [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="list"],[data-ar="rich-text-menu"]>[data-part="menu"] [data-part="items"]{display:flex;flex-direction:column}
 [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]{display:flex;align-items:center;box-sizing:border-box;cursor:pointer;text-align:left;white-space:nowrap;border:0;background:none;font:inherit;color:inherit;margin:0}
 [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>svg{flex:none;display:block}
+[data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>[data-part="option-check"]{margin-left:auto}
 [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>svg:not([data-fill]){fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>svg[data-fill]{fill:currentColor;stroke:none}
 [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>[data-part="option-label"]{margin:0;font:inherit}

@@ -138,13 +138,9 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="domain-switch"][data-state~="open"]{box-shadow:0 0 0 2px var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>:is([data-part="domain-switch"]):focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="toggle"]{gap:4px;height:32px;padding:0 10px;border:1px solid var(--ar-color-border);border-radius:8px;background:#fff;color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1))}
-[data-ar-design="remix"] [data-ar="app-domain-menu"]{width:264px;max-width:calc(100vw - 16px);padding:8px;border-radius:14px}
-[data-ar-design="remix"] [data-ar="app-domain-menu"]>[data-part="domain-menu-item"]{gap:10px;height:42px;padding:0 12px;border:0;border-radius:10px;background:none;color:var(--ar-color-text);font-size:calc(14px * var(--ar-font-scale, 1));font-weight:500;text-align:left;outline:0}
-[data-ar-design="remix"] [data-ar="app-domain-menu"]>[data-part="domain-menu-item"]:is(:hover,:focus-visible){background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="app-domain-menu"]{width:264px;max-width:calc(100vw - 16px)}
 [data-ar-design="remix"] [data-ar="app-domain-menu"]>[data-part="domain-menu-title"]{padding:6px 12px;color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:500;letter-spacing:.06em}
 [data-ar-design="remix"] [data-ar="app-domain-menu"]>[data-part="domain-menu-item"]>[data-part="domain-note"]{padding:2px 8px;border-radius:6px;background:#EEF1F2;color:var(--ar-color-text-secondary);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:500}
-[data-ar-design="remix"] [data-ar="app-domain-menu"]>[data-part="domain-menu-item"]>[data-part="domain-menu-check"]{color:var(--ar-accent-ink)}
-[data-ar-design="remix"] [data-ar="app-domain-menu"]>[data-part="domain-menu-item"][aria-checked="true"]{background:#F4F7F8;font-weight:700}
 @media (max-width:959px) {
   [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="logo"]:has(+[data-part="top-divider"]){margin-right:0}
   [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="top-divider"]{display:none}
@@ -193,8 +189,8 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-ar="badge"]{min-width:0;height:auto;padding:0;border:0;background:none;box-shadow:none}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="pill"]>[data-ar="badge"]>[data-part="count"]{min-width:20px;height:20px;padding:0 6px;border:0;border-radius:10px;background:#C93A2F;color:#fff;font-size:calc(12px * var(--ar-font-scale, 1));font-weight:700;line-height:20px;box-shadow:none;box-sizing:border-box}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="top"]>[data-part="account"]>[data-part="account-arrow"]{width:16px;height:16px}
-/* 一覧・メニューの板（案：白・縁 #DDE5E6・角丸14・影） */
-[data-ar-design="remix"] :is([data-ar="app-pill-list"],[data-ar="app-domain-menu"],[data-ar="app-account-menu"]){box-sizing:border-box;padding:8px;border:1px solid #DDE5E6;border-radius:14px;background:#fff;box-shadow:0 14px 34px rgba(35,41,43,.13),0 2px 6px rgba(35,41,43,.06)}
+/* お知らせ・やることの一覧の板は、プルダウンと同じ（白・縁 #DDE5E6・角丸14・影）。業務の切り替え・管理ページの板と行は _picker.css の「プルダウンの板と行」 */
+[data-ar-design="remix"] [data-ar="app-pill-list"]{box-sizing:border-box;padding:8px;border:1px solid #DDE5E6;border-radius:14px;background:#fff;box-shadow:0 14px 34px rgba(35,41,43,.13),0 2px 6px rgba(35,41,43,.06)}
 [data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]{margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
 [data-ar-design="remix"] [data-ar="app-pill-list"]:has([data-tone="notice"]){width:388px!important;min-width:0;max-width:calc(100vw - 16px)}
 [data-ar-design="remix"] [data-ar="app-pill-list"]:has([data-tone="todo"]){width:336px!important;min-width:0;max-width:calc(100vw - 16px)}
@@ -203,11 +199,8 @@
 [data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]{border-radius:10px}
 [data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]>[data-part="pill-item"]{padding:10px 12px;border-radius:10px;font-size:calc(14px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="app-pill-list"]>[data-part="pill-list"]>[data-part="pill-rows"]>[data-part="pill-row"]:hover{background:#F4F7F8}
-[data-ar-design="remix"] [data-ar="app-domain-menu"]{width:264px}
 [data-ar-design="remix"] [data-ar="app-domain-menu"]>[data-part="domain-menu-title"]{padding:6px 12px}
-[data-ar-design="remix"] [data-ar="app-account-menu"]{width:256px;min-width:0}
-[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]{height:auto;gap:10px;padding:11px 12px;border-radius:10px;font-size:calc(14px * var(--ar-font-scale, 1));line-height:1.5}
-[data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]:is(:hover,:focus-visible){background:#F4F7F8}
+[data-ar-design="remix"] [data-ar="app-account-menu"]{width:288px;min-width:0}
 [data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]>[data-part="menu-icon"]{color:#7B868B}
 [data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-divider"]{height:1px;margin:6px 12px;background:#E3EAEB}
 /* 子のメニュー（給与計算：支給・年次） */

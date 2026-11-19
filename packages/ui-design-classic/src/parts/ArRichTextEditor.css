@@ -1,4 +1,4 @@
-/* @covers ArRichTextEditor 1.1.0 */
+/* @covers ArRichTextEditor 1.2.0 */
 /* ArRichTextEditor：今の ARROW の Froala 4.2.1（MailTemplateContent.vue・CustomDocumentContent.vue。froala_editor.pkgd.min.css と本番 index.html の地の文字）を実測。
    枠は角丸10・#CCCCCC の1px。ツールバーは白・高さ50（上の枠1・ボタンの段48・下に左右9pxをあけた #EFEFEF の1pxの線）・ボタンは 38×40・外側 4px 2px・角丸4・#333 の 24px の塗りの絵、
    乗せると #EBEBEB、押している（太字など）は絵が #0098F7、開いたメニューのボタンは #D6D6D6、元に戻せないときは #BDBDBD で薄さ .3。まとまりの間は 12px と 17px（区切りの線はない）・最後のまとまりは右端。
@@ -48,7 +48,7 @@
 [data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="list"]>[data-part="option"]{min-width:72px;height:30px;padding:0 20px;line-height:30px}
 [data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]:is(:hover,:focus-visible){outline:0;background:#EBEBEB}
 [data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"][data-state~="selected"]{background:#D6D6D6}
-[data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="list"]>[data-part="option"]>svg{width:24px;height:24px;margin:3px 4px;color:#333}
+[data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="list"]>[data-part="option"]>svg:not([data-part="option-check"]){width:24px;height:24px;margin:3px 4px;color:#333}
 [data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"][data-kind="align"] [data-part="option-label"]{display:none}
 [data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"][data-kind="align"] [data-part="list"]>[data-part="option"]{padding:0 8px;height:30px}
 [data-ar-design="classic"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block]{height:auto;min-height:30px}

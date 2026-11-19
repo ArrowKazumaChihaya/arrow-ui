@@ -1,4 +1,4 @@
-/* @covers ArRichTextEditor 1.1.0 */
+/* @covers ArRichTextEditor 1.2.0 */
 /* ArRichTextEditor：書類集計キャンバスの自作書類の編集（.edw 角丸12・field の内側の線、.tbar #F8FAFC の段 6px 8px と下線、.tb 高さ32 角丸8 700 12.5px・乗せると白、
    .tb.av テーマ色の塗り、.tsep 1×20、.edbody #E9EDF1 の地 18px、.pdfs 白い紙 560px 40px 44px・明朝 11.5px・表の線 #888、.vv 変数の札、.edft 下の段 12px）と、
    通知キャンバスのメールテンプレートの編集（線 #E6EBF0 の枠・30px の「ARROW 差し込み項目」・.v-ib 30px の元に戻す・右端の「194文字」・本文 500 13.5px 行1.9 の 14px 16px）。 */
@@ -53,20 +53,16 @@
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]>[data-part="count"]{font-variant-numeric:tabular-nums}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]>[data-part="words"]{display:none}
 [data-ar-design="remix"] [data-ar="rich-text-editor"]>[data-part="footer"]>[data-part="footer-extra"]{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap}
-/* 浮かぶメニュー（.pop と .mi：白・角丸12・sh-pop・余白6、行は高さ38・角丸9・13.5px、乗せると #F2F5F8） */
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"]{min-width:180px;max-height:320px;overflow:auto;padding:6px;border-radius:12px;background:#fff;box-shadow:var(--ar-shadow-pop);color:var(--ar-color-text);font:400 calc(13.5px * var(--ar-font-scale, 1))/1.5 var(--ar-font-family)}
+/* 浮かぶメニュー：板と行は、ほかのプルダウンと共通（_picker.css の「プルダウンの板と行」）。見出しの見本の文字の大きさだけここで決める */
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"]{min-width:180px;max-height:320px;overflow:auto}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"][data-kind="variables"]{width:280px}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"][data-kind="fontSize"]{min-width:96px}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]{gap:10px;width:100%;min-height:38px;padding:0 10px;border-radius:9px}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]:hover{background:#F2F5F8}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]:focus-visible{outline:0;background:#F2F5F8;box-shadow:inset 0 0 0 2px var(--ar-accent)}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"][data-state~="selected"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>svg{width:15px;height:15px;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] :not([data-part="swatches"])>[data-part="option"]{width:100%}
+[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>svg:not([data-part="option-check"]){width:15px;height:15px;color:var(--ar-color-text-secondary)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>[data-part="group-count"]{margin-left:auto;font-size:calc(12px * var(--ar-font-scale, 1));color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="option"]>[data-part="caret"]{transform:rotate(-90deg)}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="group"][data-state~="open"]>[data-part="option"]>[data-part="caret"]{transform:none}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="items"]{margin:2px 0 4px 26px;padding-left:8px;border-left:1px solid var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-part="items"]>[data-part="option"]{min-height:34px;font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h1"]>[data-part="option-label"]{font-size:calc(20px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h2"]>[data-part="option-label"]{font-size:calc(17px * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="rich-text-menu"]>[data-part="menu"] [data-block="h3"]>[data-part="option-label"]{font-size:calc(15px * var(--ar-font-scale, 1));font-weight:700}

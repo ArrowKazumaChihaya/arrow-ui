@@ -8,6 +8,7 @@
  */
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useAttrs, useSlots, watch } from "vue";
 import ArFloat from "../internal/ArFloat.vue";
+import ArIcon from "./ArIcon.vue";
 import ArVariablePanel from "./ArVariablePanel.vue";
 import { froalaGlyphs, lineGlyphs, type EditorGlyph } from "../internal/editorGlyphs";
 import {
@@ -710,6 +711,7 @@ const bodyStyle = computed(() => ({ minHeight: props.minHeight, maxHeight: props
               @click="applySize(s)"
             >
               {{ s }}
+              <ArIcon v-if="currentSize === s" line name="check" size="sm" data-part="option-check" />
             </button>
           </div>
         </template>
