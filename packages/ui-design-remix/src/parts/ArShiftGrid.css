@@ -55,7 +55,7 @@
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="head-event"]>[data-part="name-head"]{display:flex;align-items:center;justify-content:flex-start;padding-left:14px;font-size:calc(11px * var(--ar-font-scale, 1));font-weight:700;line-height:16.5px;color:var(--ar-color-text-muted);letter-spacing:.04em}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="event"]{gap:3px;font-size:calc(10px * var(--ar-font-scale, 1));font-weight:700;line-height:15px;color:#4A5562}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="event"]>[data-part="event-dot"]{width:6px;height:6px;border-radius:50%;background:var(--sg-ev,#8E6BC4)}
-[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="name"]{gap:8px;min-height:40px;padding:4px 8px 4px 10px;background:#fff;box-shadow:1px 0 0 var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="name"]{gap:8px;min-height:40px;padding:4px 8px 4px 10px;background:#fff;box-shadow:2px 0 0 var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="name"][data-state="drop"]{box-shadow:inset 0 2px 0 var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="name"]>[data-part="grip"]{color:#C3CBD3}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="name"]>[data-part="grip"] [data-ar="icon"]{width:15px;height:15px}
@@ -66,7 +66,7 @@
 [data-ar-design="remix"] [data-ar="shift-grid"][data-compact] [data-part="name"]>[data-part="member"]>[data-part="summary"]{font-size:calc(9.5px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="summary"]>span:not(:last-child)::after{content:"・"}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]{min-height:40px;padding:2px;background:#fff;cursor:cell}
-[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"][data-weekend]{background:#EEF1F5}
+[data-ar-design="remix"] [data-ar="shift-grid"] /* 土日だけの色分けはしない（法定休日・法定外休日は人ごとの設定で、曜日では決まらないため。日付の見出しの曜日の色だけ残す） */
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"][data-today]{background:color-mix(in srgb,var(--ar-accent) 4%,#fff)}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"][data-locked]{background:var(--ar-remix-lock-stripe);cursor:not-allowed}
 /* ロックのマス：シフトのキャンバスどおり、鍵の印は日付の見出しにだけ出し、マスは斜線だけにする（狭いマスで鍵が並ぶと見づらいため） */
