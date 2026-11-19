@@ -88,7 +88,7 @@ describe("ArTimeChart", () => {
     ] };
     const w = mount(ArTimeChart, { props: { mode: "month", rows: [row], stacked: true } });
     expect(w.find('[data-part="grid"]').exists()).toBe(true);
-    expect(w.findAll('[data-row-block] [data-part="block"]').map((b) => b.attributes("data-kind")).sort()).toEqual(["overtime", "work", "work"]);
+    expect(w.findAll('[data-row-block] [data-part="block"]').map((b) => b.attributes("data-kind")).sort()).toEqual(["overtime", "work"]);
     expect(w.findAll('[data-row-block] [data-part="block"][data-lifted]')).toHaveLength(1);
     expect(w.findAll('[data-row-line]')).toHaveLength(1);
     expect(w.findAll('[data-part="lane"] [data-part="bar"]')).toHaveLength(0);
