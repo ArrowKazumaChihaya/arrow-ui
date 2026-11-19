@@ -10,3 +10,5 @@
 [data-ar="spin"][data-block]{display:flex;width:100%;justify-content:center;align-items:center}
 [data-ar="spin"][data-duplicate]{display:none!important}
 [data-ar="spin"]>[data-part="mask"][data-duplicate]>*{display:none!important}
+/* fullscreen：幕を画面に固定し、輪を画面の中央に出す（中身が画面より長くても見える） */
+[data-ar="spin"]>[data-part="mask"][data-fullscreen]{position:fixed;inset:0;z-index:1050}

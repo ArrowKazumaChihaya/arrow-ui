@@ -6,7 +6,7 @@ import type { ArSpinProps } from "./ArSpin.contract";
 import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
 import { blockSpinOwner, registerBlockSpin, unregisterBlockSpin } from "./ArSpin.registry";
 
-const props = withDefaults(defineProps<ArSpinProps>(), { spinning: true, size: "md", tip: undefined, block: false, minHeight: undefined });
+const props = withDefaults(defineProps<ArSpinProps>(), { spinning: true, size: "md", tip: undefined, block: false, minHeight: undefined, fullscreen: false });
 const content = ref<HTMLElement | null>(null);
 let suspendedFocus: HTMLElement | null = null;
 watch(() => props.spinning, async (spinning) => {
@@ -42,7 +42,7 @@ const duplicate = computed(() => (registered.value !== null && blockSpinOwner(id
 <template>
   <div v-if="$slots.default" ref="wrap" data-ar="spin" data-part="root" data-wrap :data-size="size" :aria-busy="spinning">
     <div ref="content" data-part="content" :inert="spinning || undefined"><slot /></div>
-    <div v-if="spinning" data-part="mask" :data-duplicate="duplicate" role="status" :aria-label="tip ?? '読み込み中'">
+    <div v-if="spinning" data-part="mask" :data-duplicate="duplicate" :data-fullscreen="fullscreen || undefined" role="status" :aria-label="tip ?? '読み込み中'">
       <span data-part="spinner" aria-hidden="true" />
       <span v-if="tip" data-part="tip">{{ tip }}</span>
     </div>

@@ -15,3 +15,5 @@
 [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]{display:flex;align-items:flex-start}
 [data-ar="choice-card"]>[data-part="body"]>[data-part="reason"]>[data-ar="icon"]{flex:none}
 [data-ar="choice-card"]>[data-part="chevron"]{flex:none;align-self:center;width:16px;height:16px}
+/* 日本語の題名・説明は、単語の途中で折り返さず、意味の区切り（文節）で折り返す（対応していないブラウザは今までどおり） */
+[data-ar="choice-card"]>[data-part="body"] :is([data-part="title"],[data-part="description"]){word-break:auto-phrase;text-wrap:pretty}

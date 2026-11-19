@@ -8,6 +8,8 @@ export interface ArSpinProps {
   tip?: string;
   /** 独立した読込領域として横幅いっぱいに中央配置する。 */
   block?: boolean;
+  /** 中身を包むとき、幕を画面いっぱいに張り、輪を画面の中央に出す（アプリ全体の「処理中」など。長いページでも輪が画面の外に出ない）。 */
+  fullscreen?: boolean;
   /** 読込完了まで確保する領域の最小高さ。 */
   minHeight?: string;
 }

@@ -10216,6 +10216,13 @@
     "default": "false"
    },
    {
+    "name": "fullscreen",
+    "type": "boolean",
+    "required": false,
+    "description": "中身を包むとき、幕を画面いっぱいに張り、輪を画面の中央に出す（アプリ全体の「処理中」など。長いページでも輪が画面の外に出ない）。",
+    "default": "false"
+   },
+   {
     "name": "minHeight",
     "type": "string",
     "required": false,

@@ -30,4 +30,9 @@ describe("only one loading mark turns in a region", () => {
     expect(document.querySelector('[data-part="mask"]')!.hasAttribute("data-duplicate")).toBe(false);
     w.unmount();
   });
+  it("fullscreen は幕に印を付け、画面に固定して輪を画面の中央に出す", () => {
+    const w = mount(ArSpin, { props: { spinning: true, fullscreen: true, tip: "処理中..." }, slots: { default: () => h("p", "本文") }, attachTo: document.body });
+    expect(w.get('[data-part="mask"]').attributes("data-fullscreen")).toBeDefined();
+    w.unmount();
+  });
 });
