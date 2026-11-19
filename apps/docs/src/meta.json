@@ -11393,6 +11393,38 @@
   "dataAr": "flag-view"
  },
  {
+  "name": "ArFormatIcon",
+  "version": "1.0.0",
+  "description": "書類の形式（PDF・CSV・Excel）のアイコン。紙の形に、形式の色の札と文字（PDF／CSV／XLS）。\n色は形式で決まる（PDF＝赤、CSV＝緑、Excel＝青）。ArCatalog の一覧の印と同じ形。",
+  "props": [
+   {
+    "name": "format",
+    "type": "ArFormatIconFormat",
+    "required": true,
+    "description": "形式。"
+   },
+   {
+    "name": "size",
+    "type": "number",
+    "required": false,
+    "description": "大きさ（px。既定 24）。",
+    "default": "24"
+   },
+   {
+    "name": "label",
+    "type": "string",
+    "required": false,
+    "description": "読み上げる名前。省くと飾り（aria-hidden）。"
+   }
+  ],
+  "emits": [],
+  "slots": [],
+  "parts": [
+   "root"
+  ],
+  "dataAr": "format-icon"
+ },
+ {
   "name": "ArInfo",
   "version": "1.0.0",
   "description": "小さな説明・注意（今の Info・Attention）。\nnote と attention は文字（改行はそのまま出す）。mark（？）と detail（詳細）は押せる印で、\nhref があれば新しいタブで開き、無ければ open を出す（説明のポップアップは製品が ArModal で出す）。",

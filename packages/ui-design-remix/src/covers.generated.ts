@@ -51,6 +51,7 @@ export const covers = {
   ArFlagView: "1.0.0",
   ArFloatButton: "1.0.0",
   ArForm: "1.0.0",
+  ArFormatIcon: "1.0.0",
   ArIcon: "1.0.0",
   ArImage: "1.0.0",
   ArInfo: "1.0.0",

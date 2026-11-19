@@ -673,6 +673,11 @@
         "ja": "ビットの表示"
       },
       {
+        "slug": "format-icon",
+        "name": "ArFormatIcon",
+        "ja": "書類の形式のアイコン"
+      },
+      {
         "slug": "info",
         "name": "ArInfo",
         "ja": "説明・注意"

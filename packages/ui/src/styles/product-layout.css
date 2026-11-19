@@ -34333,3 +34333,11 @@ table:has(tbody > tr)
   .menu_section_grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 12px 8px; }
   .menu_section { margin: 0 0 20px; }
 }
+/* 書類の出力ウィザード（ポップアップ）：
+   「形式を選んでダウンロード」では、書類ごとの出力ボタンを幅いっぱいの大きなボタンに並べ、中の手順の枠は外す。
+   前へ・次への段は、長い一覧をスクロールしても下に見えたままにする。 */
+[data-ar-design] [data-output-download] [data-ar="document-block"][data-variant]{border:0;padding:0;background:none;box-shadow:none}
+[data-ar-design] [data-output-download] [data-ar="document-block"][data-variant]>[data-part="box"]{border:0;padding:0;background:none;box-shadow:none}
+[data-output-download] [data-ar="document-block"] [data-ar="cluster"]{justify-content:stretch}
+[data-output-download] [data-ar="document-block"] [data-ar="button"]{flex:1 1 220px}
+[data-ar="modal"] [data-ar="wizard"]>[data-part="actions"]{position:sticky;bottom:0;z-index:2;background:var(--ar-color-surface,#fff)}
