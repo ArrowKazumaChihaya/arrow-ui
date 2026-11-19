@@ -199,6 +199,41 @@ describe("ArShiftGrid", () => {
     expect(w.emitted("copy")).toHaveLength(1);
   });
 
+  it("チャートの帯も右クリックで開く（マスと同じ。追加／編集だけ）", async () => {
+    const w = mount(ArShiftGrid, { props: { ...base, mode: "chart" as const, contextMenu: true }, attachTo: document.body });
+    await cell(w, 0, 0).trigger("contextmenu");
+    await nextTick();
+    const items = [...document.querySelectorAll('[data-ar="shift-grid-menu"] [data-part="menu-item"]')] as HTMLButtonElement[];
+    expect(items.map((x) => x.textContent?.trim())).toEqual(["編集"]);
+    items[0]!.click();
+    expect(w.emitted("open")![0]![0]).toMatchObject({ member: 1, date: "2026-10-18" });
+  });
+
+  it("シフトと同じ日の半日有給は、マスに印を残し、チャートには斜線の帯で出す", async () => {
+    const withLeave = {
+      ...cells,
+      "1": { ...cells["1"], "2026-10-18": { ...cells["1"]!["2026-10-18"], leave: { time: { start: 780, end: 1080 } } } },
+    };
+    const w = mount(ArShiftGrid, { props: { ...base, cells: withLeave, columnWidth: 120 } });
+    expect(cell(w, 0, 0).get('[data-part="leave-mark"]').text()).toBe("有給 13:00–18:00");
+    expect(cell(w, 0, 0).findAll('[data-part="shift"]>[data-part="line"]').map((x) => x.text())).toEqual(["9:00–18:00"]);
+    await w.setProps({ show: { leave: false } });
+    expect(cell(w, 0, 0).find('[data-part="leave-mark"]').exists()).toBe(false);
+    await w.setProps({ show: { leave: true }, mode: "chart" });
+    expect(cell(w, 0, 0).get('[data-part="bar"][data-leave]').attributes("data-with-shift")).toBe("");
+  });
+
+  it("マスに休憩・打刻の時間を出し、表示内容 detail で消せる。列の幅を決めたら枠が余っても広げない", async () => {
+    const withPunch = { ...cells, "1": { ...cells["1"], "2026-10-18": { ...cells["1"]!["2026-10-18"], punches: [{ start: 542, end: 1085 }] } } };
+    const w = mount(ArShiftGrid, { props: { ...base, cells: withPunch, columnWidth: 120 } });
+    expect(cell(w, 0, 0).findAll('[data-part="detail"]').map((x) => x.text())).toEqual(["休憩12:00–13:00", "勤怠9:02–18:05"]);
+    expect(w.get('[data-ar="shift-grid"]').attributes("data-fixed")).toBe("");
+    await w.setProps({ show: { detail: false } });
+    expect(cell(w, 0, 0).findAll('[data-part="detail"]')).toHaveLength(0);
+    const auto = mount(ArShiftGrid, { props: { ...base, cells: withPunch } });
+    expect(auto.get('[data-ar="shift-grid"]').attributes("data-fixed")).toBeUndefined();
+  });
+
   it("classic の形：2段目に「名前」とシフトチャートのボタン、マスは塗り、要約は今の書き方", async () => {
     const design = { forms: { ArShiftGrid: { head: "button", cell: "fill", summary: "paren", fit: "scale" } } };
     const { arUiContextKey } = await import("../src/provider/context");

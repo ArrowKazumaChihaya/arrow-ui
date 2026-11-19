@@ -163,7 +163,7 @@ const tipForm = useDesignForm<"line" | "section">("ArShiftGrid", "tip", "line");
 const hintForm = useDesignForm<"kbd" | "text">("ArShiftGrid", "hint", "kbd");
 const summaryForm = useDesignForm<"dots" | "paren">("ArShiftGrid", "summary", "dots");
 
-const SHOW: ArShiftGridShow = { avatar: true, code: false, hours: true, days: true, off: true, count: true, shortage: true, events: true, locked: true, unpublished: true, leave: true, avail: true, hints: true };
+const SHOW: ArShiftGridShow = { avatar: true, code: false, hours: true, days: true, off: true, count: true, shortage: true, events: true, locked: true, unpublished: true, leave: true, avail: true, detail: true, hints: true };
 const show = computed<ArShiftGridShow>(() => ({ ...SHOW, ...props.show }));
 const uid = useId("ar-sg");
 
@@ -175,7 +175,7 @@ const localW = ref<number | null>(props.columnWidth ?? null);
 watch(() => props.columnWidth, (w) => { localW.value = w ?? null; });
 
 const zoomRange = computed(() =>
-  mode.value === "chart" ? { min: 80, max: 280, step: 20, ...props.zoom.chart } : { min: 28, max: 140, step: 8, ...props.zoom.cell },
+  mode.value === "chart" ? { min: 80, max: 280, step: 20, ...props.zoom.chart } : { min: props.days.length <= 16 ? 44 : 28, max: 140, step: 8, ...props.zoom.cell },
 );
 const root = ref<HTMLElement | null>(null);
 const viewport = ref<HTMLElement | null>(null);
@@ -316,6 +316,9 @@ interface CellView {
   times: ArShiftGridTime[];
   breaks: ArShiftGridTime[];
   barLabel: string;
+  /** シフトと同じ日の有給（半日・時間）の印。シフトを入れても有給を残して見せる。 */
+  leaveMark: string;
+  leaveTime?: ArShiftGridTime;
   style: Record<string, string>;
 }
 const cellViews = computed<CellView[][]>(() => {
@@ -364,8 +367,15 @@ const cellViews = computed<CellView[][]>(() => {
           if (breaks.length) detail.push({ label: L.value.break, values: breaks.map((t) => spanLong(t)) });
           if (c?.punches?.length) detail.push({ label: L.value.punch, values: c.punches.map((t) => spanLong(t)) });
         }
-      } else if (leave) lines = colW.value >= 40 ? [leaveLabel] : [];
-      else if (shift && colW.value >= 64) lines = times.map(spanShort);
+      } else if (leave) lines = colW.value >= 40 ? [leaveTime && colW.value >= 88 ? `${leaveLabel} ${spanShort(leaveTime)}` : leaveLabel] : [];
+      else if (shift && colW.value >= 36) {
+        lines = times.map(spanShort);
+        // 休憩・打刻（勤怠）の時間もマスに出す（触れなくても見える）。出すかどうかは表示内容の「シフト・休憩・勤怠の時間」。
+        if (show.value.detail && colW.value >= 88) {
+          if (breaks.length) detail.push({ label: L.value.break, values: breaks.map(spanShort) });
+          if (c?.punches?.length) detail.push({ label: L.value.punch, values: c.punches.map(spanShort) });
+        }
+      }
       const availText = !avail
         ? ""
         : fill
@@ -374,6 +384,7 @@ const cellViews = computed<CellView[][]>(() => {
             ? fmt(L.value.availWide, { t: spanShort({ start: avail.times[0]!.start, end: avail.times[avail.times.length - 1]!.end }) })
             : L.value.availShort;
       if (fill && avail && wide.value) detail = [{ label: "勤務可能", values: avail.times.map((t) => spanLong(t)) }];
+      const leaveWithShift = show.value.leave && isLeave(c) && shift;
       return {
         kind: shift ? "shift" : leave ? "leave" : "empty",
         color,
@@ -390,6 +401,8 @@ const cellViews = computed<CellView[][]>(() => {
         times,
         breaks,
         barLabel: leave ? leaveLabel : times.map(spanShort).join(" / "),
+        leaveMark: leaveWithShift ? (leaveTime && colW.value >= 60 ? `${leaveLabel} ${spanShort(leaveTime)}` : leaveLabel) : "",
+        leaveTime: leaveWithShift ? leaveTime : undefined,
         style,
       };
     }),
@@ -636,7 +649,7 @@ function openAt(r: number, c: number) {
 const menu = ref<{ el: HTMLElement; r: number; c: number } | null>(null);
 const menuPanel = ref<HTMLElement | null>(null);
 function onContext(e: MouseEvent) {
-  if (!props.contextMenu || !props.editable || mode.value !== "cell") return;
+  if (!props.contextMenu || !props.editable) return;
   const p = posOf(e);
   if (!p || props.days[p.c]!.outside) return;
   e.preventDefault();
@@ -648,8 +661,11 @@ function onContext(e: MouseEvent) {
 const menuItems = computed(() => {
   if (!menu.value) return [];
   const has = cv(menu.value.r, menu.value.c).kind !== "empty";
+  const open = { k: "open", n: has ? L.value.edit : L.value.add, ic: has ? ("pen" as const) : ("plus" as const), dis: false };
+  // チャートの帯の編集も、マスと同じく右クリック（コピー・貼り付けなどはマスの表示だけ）。
+  if (mode.value === "chart") return [open];
   return [
-    { k: "open", n: has ? L.value.edit : L.value.add, ic: has ? ("pen" as const) : ("plus" as const), dis: false },
+    open,
     { k: "copy", n: L.value.copy, ic: "copy" as const, dis: false },
     { k: "cut", n: L.value.cut, ic: "cut" as const, dis: false },
     { k: "paste", n: L.value.paste, ic: "paste" as const, dis: !clip.value },
@@ -875,6 +891,8 @@ const axis = computed(() => {
 });
 const gridStyle = computed(() => ({
   "--sg-col": `${colW.value}px`,
+  // マスの文字は列の幅に合わせて大きさを変える（消さずに、狭ければ小さく・広ければ大きく）。
+  "--sg-fs": `${Math.min(13, Math.max(9, Math.round((colW.value / 11) * 10) / 10))}px`,
   "--sg-n": String(n.value),
   transform: scale.value < 1 ? `scale(${scale.value})` : undefined,
   width: scale.value < 1 ? `${contentW.value}px` : undefined,
@@ -903,6 +921,7 @@ const dayOf = (dv: DayView) => dv.d;
     :data-summary="memberViews.some((x) => x.parts.length) ? '' : undefined"
     :data-wide="wide ? '' : undefined"
     :data-fit="fitMode"
+    :data-fixed="localW != null ? '' : undefined"
     :data-editable="editable ? '' : undefined"
     :data-dragging="drag ? '' : undefined"
   >
@@ -1070,6 +1089,7 @@ const dayOf = (dv: DayView) => dv.d;
                   <template v-if="mode === 'cell'">
                     <span v-if="cv(mv.r, c).kind !== 'empty'" data-part="shift" :data-leave="cv(mv.r, c).kind === 'leave' ? '' : undefined">
                       <span v-for="(l, i) in cv(mv.r, c).lines" :key="i" data-part="line">{{ l }}</span>
+                      <span v-if="cv(mv.r, c).leaveMark" data-part="leave-mark">{{ cv(mv.r, c).leaveMark }}</span>
                       <span v-for="(d, i) in cv(mv.r, c).detail" :key="'d' + i" data-part="detail">
                         <b data-part="detail-label">{{ d.label }}</b><span v-for="(v, j) in d.values" :key="j" data-part="line">{{ v }}</span>
                       </span>
@@ -1110,6 +1130,7 @@ const dayOf = (dv: DayView) => dv.d;
                         @click="emit('avail', { ...spot(mv.r, c), avail: cv(mv.r, c).avail! })"
                       />
                       <i v-if="cv(mv.r, c).kind === 'leave'" data-part="bar" data-leave="" style="left: 0; width: 100%" />
+                      <i v-else-if="cv(mv.r, c).leaveTime" data-part="bar" data-leave="" data-with-shift="" :style="bar(cv(mv.r, c).leaveTime!)" />
                       <i v-for="(t, i) in barsOf(mv.r, c).times" :key="'b' + i" data-part="bar" :style="bar(t)" @pointerdown="startBar($event, mv.r, c, 'move', i)" />
                       <em v-for="(t, i) in barsOf(mv.r, c).breaks" :key="'k' + i" data-part="break" :style="bar(t)" />
                       <template v-if="editable && !cv(mv.r, c).locked">

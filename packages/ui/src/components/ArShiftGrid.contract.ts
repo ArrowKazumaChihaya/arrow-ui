@@ -43,7 +43,7 @@ export interface ArShiftGridCell {
   breaks?: readonly ArShiftGridTime[];
   /** 打刻（勤怠）。吹き出しと、classic の広い列の文字に出す。 */
   punches?: readonly ArShiftGridTime[];
-  /** 当てはまるパターンの key（色と名前）。無いとパターンなし（remix は点線の白いマス、classic は灰色）。 */
+  /** 当てはまるパターンの key（色と名前）。無いとパターンなし（灰色のマス）。 */
   pattern?: ArShiftGridKey | null;
   /** 有給。true＝全日。時間で取ったときは time を渡す。 */
   leave?: boolean | { label?: string; time?: ArShiftGridTime };
@@ -123,10 +123,12 @@ export interface ArShiftGridShow {
   locked: boolean;
   /** 非公開（見出しの目の印）。 */
   unpublished: boolean;
-  /** 有給のマス。 */
+  /** 有給のマス（シフトと同じ日の半日・時間有給の印もこれで出す）。 */
   leave: boolean;
   /** 勤務可能な人（提出）。 */
   avail: boolean;
+  /** マスの中のシフト・休憩・打刻（勤怠）の時間（列が広いとき）。 */
+  detail: boolean;
   /** 表の下のショートカットキー・チャートの操作の案内。 */
   hints: boolean;
 }
@@ -171,7 +173,7 @@ export interface ArShiftGridProps {
    * 列の幅（v-model:column-width。px）。マスとチャートで別の範囲（zoom）。
    * 渡さない・null は「枠に合わせる」（remix の既定）：表の枠の幅から名前の列を引き、日の数で割った幅に広げる（1440px の画面の月の表で 31 日がカードに収まる）。
    * 範囲の下限（マス 28・チャート 80）より狭くなるときだけ下限にして横に動かす。枠の幅が変わればついていく。
-   * −／＋ を押すと、その時の幅から決めた数を update:columnWidth で出す（以後はその幅。列は枠が余ればその幅から広がる）。
+   * −／＋ を押すと、その時の幅から決めた数を update:columnWidth で出す（以後はその幅そのままで、枠が余っても広げない。マスと文字の大きさがその幅に合わせて変わる）。
    * 「枠に合わせる」に戻すには null を渡す（または公開の fitWidth()、toolbar スロットの fitWidth）。
    * classic の週・月（forms.fit="scale"）は今の ARROW と同じく 136px／34px で描いて枠まで縮める。
    */
@@ -194,7 +196,7 @@ export interface ArShiftGridProps {
   patternEdit?: boolean;
   /** 表の上に列の幅（−／＋）とマス／チャートの切り替えを出す。製品の帯に置くときは false にして、zoomIn などを使う。 */
   controls?: boolean;
-  /** マスを右クリックしたときの操作の一覧（追加・編集・コピー・切り取り・貼り付け・削除）。 */
+  /** マス・チャートの帯を右クリックしたときの操作の一覧（追加・編集。マスの表示ではコピー・切り取り・貼り付け・削除も）。 */
   contextMenu?: boolean;
   /** 表の高さの上限（"640px" など。はみ出すと縦に動き、見出しは上に固定）。 */
   maxHeight?: string;
@@ -370,6 +372,7 @@ export type ArShiftGridPart =
   | "line"
   | "detail"
   | "detail-label"
+  | "leave-mark"
   | "avail"
   | "track"
   | "bar-track"

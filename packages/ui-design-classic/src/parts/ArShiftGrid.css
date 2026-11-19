@@ -139,3 +139,6 @@
 /* パターンを探して無いときは ArEmpty。classic は今の形（11px の文字だけ）をここで保つ */
 [data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-none"]>[data-part="icon"]{display:none}
 [data-ar-design="classic"] [data-ar="shift-grid"]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern-none"]{font-family:inherit}
+
+/* シフトと同じ日の半日・時間有給の印 */
+[data-ar-design="classic"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"] [data-part="leave-mark"]{margin-top:1px;font-size:calc(10px * var(--ar-font-scale, 1));font-weight:700;text-align:center;opacity:.95}

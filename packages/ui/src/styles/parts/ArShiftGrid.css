@@ -48,6 +48,9 @@
 [data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"]{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden;white-space:nowrap}
 [data-ar="shift-grid"] [data-part="cell"] [data-part="line"]{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 [data-ar="shift-grid"] [data-part="cell"] [data-part="detail"]{display:block}
+[data-ar="shift-grid"] [data-part="cell"] [data-part="leave-mark"]{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+/* 列の幅を決めたとき（−／＋を押したあと）は、枠が余っても広げず、その幅のまま */
+[data-ar="shift-grid"][data-fixed] [data-part="grid"]{grid-template-columns:var(--sg-name) repeat(var(--sg-n),var(--sg-col))}
 [data-ar="shift-grid"] [data-part="cell"] [data-part="detail-label"]{display:block}
 [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail"]{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap;cursor:pointer;padding:0;font-family:inherit}
 [data-ar="shift-grid"] [data-part="cell"]>[data-part="track"]{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
