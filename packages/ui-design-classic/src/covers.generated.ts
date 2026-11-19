@@ -80,7 +80,7 @@ export const covers = {
   ArPageHeading: "1.0.0",
   ArPagination: "1.0.0",
   ArParagraph: "1.1.0",
-  ArPayslip: "1.2.0",
+  ArPayslip: "1.3.0",
   ArPayslipLine: "1.0.0",
   ArPayslipTable: "1.0.0",
   ArPdfViewer: "1.0.0",

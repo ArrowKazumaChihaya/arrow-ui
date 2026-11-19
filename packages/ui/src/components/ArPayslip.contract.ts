@@ -60,6 +60,19 @@ export interface ArPayslipProps {
    * 並べ方。auto＝幅が狭いと列を縦に積む（既定）。wide＝どの幅でも4列の横長の明細のまま、幅に合わせて小さく縮めて出す（スマホの「明細」表示）。
    */
   layout?: "auto" | "wide";
+  /**
+   * 列の高さを、この行数ぶんにそろえる（1.3）。項目の数が人によって違っても、明細の縦幅を同じにする。
+   * 項目が少ない列は下を白いまま伸ばし、4列の高さをそろえる。行数より項目が多い列は、その分だけ伸びる。
+   * 4列で並ぶとき（明細の幅 1000px 以上か layout="wide"）だけ効く。省略すると項目の数の高さ（これまでどおり）。
+   */
+  rows?: number;
+  /**
+   * 備考（1.3）。渡すと、明細のいちばん下に幅いっぱいの「備考」の欄を出す（空の文字でも欄は出す＝縦幅を変えない）。
+   * 改行はそのまま。入力にするときは note の slot に入力欄を置く。
+   */
+  note?: string;
+  /** 備考の欄の見出し（既定「備考」）。 */
+  noteLabel?: string;
   /** 行の高さ。md＝38（マイページ）・sm＝34（管理者。勤怠の列は30）。 */
   size?: "md" | "sm";
   /** 差が0のときの文字。 */
@@ -67,5 +80,5 @@ export interface ArPayslipProps {
   /** 「前」の文字。 */
   prevLabel?: string;
 }
-/** slot：toolbar（見出しの右）、column-0〜column-3（ArPayslipTableとArPayslipLineで構成する列）。 */
-export type ArPayslipPart = "root" | "head" | "title" | "period" | "meta" | "toolbar" | "columns" | "column" | "section" | "section-title" | "row" | "label" | "value" | "edited" | "diff" | "prev" | "totals" | "total" | "unit";
+/** slot：toolbar（見出しの右）、column-0〜column-3（ArPayslipTableとArPayslipLineで構成する列）、note（備考の中身。入力欄など）。 */
+export type ArPayslipPart = "root" | "head" | "title" | "period" | "meta" | "toolbar" | "columns" | "column" | "section" | "section-title" | "row" | "label" | "value" | "edited" | "diff" | "prev" | "totals" | "total" | "unit" | "note" | "note-title" | "note-body";

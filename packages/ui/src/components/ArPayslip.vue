@@ -1,6 +1,8 @@
 <script setup lang="ts">
 /**
- * ArPayslip 1.0 — 明細書の紙の形。上に書類名・支給分・会社や氏名、4列の表（勤怠／支給／控除／その他）、下に合計の箱。
+ * ArPayslip 1.3 — 明細書の紙の形。rows で列の高さを決まった行数にそろえ（人によって縦幅が変わらない）、合計の行を列の下にそろえる。
+ * note で一番下に備考の欄を出す。
+ * もとは 1.0 — 明細書の紙の形。上に書類名・支給分・会社や氏名、4列の表（勤怠／支給／控除／その他）、下に合計の箱。
  * compare で前回と比べる（差は自動で計算。文字の差も渡せる）。値の並べ方は渡した順のまま。
  */
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
@@ -17,6 +19,9 @@ const props = withDefaults(defineProps<ArPayslipProps>(), {
   compare: "off",
   size: "md",
   layout: "auto",
+  rows: undefined,
+  note: undefined,
+  noteLabel: "備考",
   zeroDiff: "±0",
   prevLabel: "前",
 });
@@ -60,7 +65,7 @@ const showTotalDiff = (item: ArPayslipTotal) => props.compare !== "off" && diffO
       </dl>
       <div v-if="$slots.toolbar" data-part="toolbar"><slot name="toolbar" /></div>
     </header>
-    <div data-part="columns" :style="{ '--ar-payslip-cols': cols.length }">
+    <div data-part="columns" :data-rows="rows ? '' : undefined" :style="{ '--ar-payslip-cols': cols.length, ...(rows ? { '--ar-payslip-rows': String(rows) } : {}) }">
       <div v-for="(col, ci) in cols" :key="ci" data-part="column">
         <slot :name="`column-${ci}`">
           <ArPayslipTable v-for="section in col" :key="section.title" :title="section.title">
@@ -69,6 +74,10 @@ const showTotalDiff = (item: ArPayslipTotal) => props.compare !== "off" && diffO
         </slot>
       </div>
     </div>
+    <section v-if="note !== undefined || $slots.note" data-part="note">
+      <h3 data-part="note-title">{{ noteLabel }}</h3>
+      <div data-part="note-body"><slot name="note">{{ note }}</slot></div>
+    </section>
     <dl v-if="totals.length" data-part="totals">
       <div v-for="t in totals" :key="t.label" data-part="total" :data-state="t.emphasis ? 'emphasis' : undefined">
         <dt>{{ t.label }}</dt>

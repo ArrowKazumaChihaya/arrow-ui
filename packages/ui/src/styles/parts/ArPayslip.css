@@ -40,3 +40,21 @@
 [data-ar="payslip"][data-layout="wide"]{width:1000px;max-width:none;zoom:var(--ar-payslip-scale,1)}
 [data-ar="payslip"][data-layout="wide"] [data-part="label"]{overflow-wrap:normal}
 [data-ar="payslip"][data-layout="wide"]>[data-part="columns"]{grid-template-columns:repeat(var(--ar-payslip-cols,4),minmax(0,1fr))}
+
+/* rows（1.3）：4列で並ぶとき、列の高さを「見出し＋行の高さ×行数」にそろえる。見出しと行の高さはデザインが --ar-payslip-head-h / --ar-payslip-row-h で決める。
+   合計の行は列の下にそろえる（今の ARROW の明細と同じ）：表が1つの列は表を下まで伸ばして最後の合計の行を下に、表が複数の列は最後の表を下に寄せる。 */
+[data-ar="payslip"]>[data-part="columns"][data-rows]{align-items:stretch}
+[data-ar="payslip"]>[data-part="columns"][data-rows]>[data-part="column"]>[data-part="section"]:only-child{flex:1 1 auto;display:flex;flex-direction:column}
+[data-ar="payslip"]>[data-part="columns"][data-rows]>[data-part="column"]>[data-part="section"]:only-child>tbody{display:flex;flex:1 1 auto;flex-direction:column}
+[data-ar="payslip"]>[data-part="columns"][data-rows]>[data-part="column"]>[data-part="section"]:only-child>tbody>[data-part="row"]:last-child[data-state~="total"]{margin-top:auto}
+[data-ar="payslip"]>[data-part="columns"][data-rows]>[data-part="column"]>[data-part="section"]:last-child:not(:only-child){margin-top:auto}
+@container ar-payslip (min-width:1000px){
+  [data-ar="payslip"]>[data-part="columns"][data-rows]{min-height:calc(var(--ar-payslip-head-h,34px) + var(--ar-payslip-row-h,38px) * var(--ar-payslip-rows,0))}
+}
+[data-ar="payslip"][data-layout="wide"]>[data-part="columns"][data-rows]{min-height:calc(var(--ar-payslip-head-h,34px) + var(--ar-payslip-row-h,38px) * var(--ar-payslip-rows,0))}
+/* note（1.3）：一番下の備考の欄。改行はそのまま。 */
+[data-ar="payslip"]>[data-part="note"]{display:flex;flex-direction:column;box-sizing:border-box;min-width:0}
+[data-ar="payslip"]>[data-part="note"]>[data-part="note-title"]{margin:0;font:inherit}
+[data-ar="payslip"]>[data-part="note"]>[data-part="note-body"]{white-space:pre-wrap;overflow-wrap:anywhere}
+/* 狭い明細で合計の箱を上に回すときも、備考は一番下のまま。 */
+@container ar-payslip (max-width:599px){[data-ar="payslip"]>[data-part="note"]{order:3}}
