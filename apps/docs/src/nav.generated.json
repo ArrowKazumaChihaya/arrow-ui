@@ -623,6 +623,11 @@
         "ja": "下のメニュー（スマホ）"
       },
       {
+        "slug": "catalog",
+        "name": "ArCatalog",
+        "ja": "書類の一覧"
+      },
+      {
         "slug": "changed-value",
         "name": "ArChangedValue",
         "ja": "変更前→変更後"

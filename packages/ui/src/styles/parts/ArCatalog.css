@@ -1,0 +1,67 @@
+/* ArCatalog：上の帯、左に分類（検索・すべて・よく使う・分類）、中に一覧、右に選んだ項目の説明。
+   1180px 以下：説明は右から出る引き出し（幕つき）。900px 以下：分類は横に並ぶ。700px 以下：説明は下から出る。 */
+[data-ar="catalog"]{display:flex;flex-direction:column;min-width:0;box-sizing:border-box;overflow:hidden}
+[data-ar="catalog"] *{box-sizing:border-box}
+[data-ar="catalog"]>[data-part="band"]{display:flex;align-items:center}
+[data-ar="catalog"]>[data-part="band"]>[data-part="band-end"]{margin-left:auto;display:inline-flex;align-items:center}
+[data-ar="catalog"]>[data-part="body"]{display:flex;flex-wrap:wrap;align-items:stretch;min-width:0}
+[data-ar="catalog"] [data-part="nav"]{flex:1 1 240px;max-width:280px;min-width:220px;display:flex;flex-direction:column}
+[data-ar="catalog"] [data-part="search"]{display:flex;align-items:center}
+[data-ar="catalog"] [data-part="search"]>input{flex:1;min-width:0;border:0;outline:none;background:none;font:inherit;color:inherit;padding:0}
+[data-ar="catalog"] [data-part="nav-list"]{display:flex;flex-direction:column}
+[data-ar="catalog"] [data-part="nav-item"]{display:flex;align-items:center;width:100%;border:0;cursor:pointer;text-align:left;font:inherit}
+[data-ar="catalog"] [data-part="nav-item"]>span:first-of-type{flex:1;min-width:0}
+[data-ar="catalog"] [data-part="main"]{flex:999 1 520px;min-width:0;display:flex;flex-direction:column}
+[data-ar="catalog"] [data-part="favorites-head"]{display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="catalog"] [data-part="chips"]{display:flex;flex-wrap:wrap}
+[data-ar="catalog"] [data-part="chip"]{display:inline-flex;align-items:center;cursor:pointer;font:inherit}
+[data-ar="catalog"] [data-part="heading"]{display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="catalog"] [data-part="heading"]>h2{margin:0}
+[data-ar="catalog"] [data-part="clear"]{display:inline-flex;align-items:center;border:0;background:none;cursor:pointer;font:inherit}
+[data-ar="catalog"] [data-part="legend"]{margin-left:auto;display:flex;align-items:center;flex-wrap:wrap}
+[data-ar="catalog"] [data-part="legend-item"]{display:inline-flex;align-items:center}
+[data-ar="catalog"] [data-part="format"]{flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+[data-ar="catalog"] [data-part="format"]>rect{fill:currentColor;stroke:none}
+[data-ar="catalog"] [data-part="format"]>text{fill:#fff;stroke:none}
+[data-ar="catalog"] [data-part="group"]{display:flex;flex-direction:column}
+[data-ar="catalog"] [data-part="group-head"]{display:flex;align-items:center}
+[data-ar="catalog"] [data-part="group-head"]>h3{margin:0}
+[data-ar="catalog"] [data-part="group-icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
+[data-ar="catalog"] [data-part="list"]{overflow:hidden}
+[data-ar="catalog"] [data-part="row"]{display:flex;align-items:center}
+[data-ar="catalog"] [data-part="star"]{flex:none;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;cursor:pointer}
+[data-ar="catalog"] [data-part="pick"]{flex:1;min-width:0;display:flex;align-items:center;border:0;background:none;cursor:pointer;text-align:left;font:inherit;color:inherit}
+[data-ar="catalog"] [data-part="row-title"]{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-ar="catalog"] :is([data-part="row-group"],[data-part="warning"]){white-space:nowrap}
+[data-ar="catalog"] [data-part="formats"]{display:inline-flex;justify-content:flex-end}
+[data-ar="catalog"] [data-part="end"]{display:inline-flex;justify-content:center;flex:none}
+[data-ar="catalog"] [data-part="aside"]{flex:1 1 320px;max-width:380px;min-width:300px}
+[data-ar="catalog"] [data-part="aside-inner"]{position:sticky;display:flex;flex-direction:column}
+[data-ar="catalog"] [data-part="aside-head"]{display:flex;align-items:center}
+[data-ar="catalog"] [data-part="aside-close"]{margin-left:auto;display:none;align-items:center;justify-content:center;border:0;background:none;cursor:pointer}
+[data-ar="catalog"] [data-part="aside-title"]{margin:0}
+[data-ar="catalog"] [data-part="placeholder"]{display:flex;flex-direction:column;align-items:center;text-align:center}
+[data-ar="catalog"] [data-part="scrim"]{display:none}
+/* タブレット：説明は右から出る */
+@media (max-width:1180px){
+  [data-ar="catalog"] [data-part="aside"]{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100%;min-width:0;z-index:1040;overflow:auto;transform:translateX(105%);transition:transform .22s ease}
+  [data-ar="catalog"] [data-part="aside"][data-open]{transform:none}
+  [data-ar="catalog"] [data-part="aside-inner"]{position:static}
+  [data-ar="catalog"] [data-part="aside-close"]{display:inline-flex}
+  [data-ar="catalog"] [data-part="scrim"]{display:block;position:fixed;inset:0;z-index:1035;border:0;padding:0;cursor:pointer}
+}
+/* 小さい画面：分類は横に並ぶ */
+@media (max-width:900px){
+  [data-ar="catalog"] [data-part="nav"]{flex:1 1 100%;max-width:none;min-width:0}
+  [data-ar="catalog"] [data-part="nav-head"]{display:none}
+  [data-ar="catalog"] [data-part="nav-list"]{flex-direction:row;overflow-x:auto;scrollbar-width:none}
+  [data-ar="catalog"] [data-part="nav-list"]>[data-part="nav-item"]{width:auto;flex:none;white-space:nowrap}
+  [data-ar="catalog"] [data-part="legend"]{margin-left:0;width:100%}
+  [data-ar="catalog"] [data-part="row-group"]{display:none}
+}
+/* スマホ：説明は下から出る */
+@media (max-width:700px){
+  [data-ar="catalog"] [data-part="aside"]{top:auto;left:0;width:100%;max-height:84vh;transform:translateY(105%)}
+  [data-ar="catalog"] [data-part="aside"][data-open]{transform:none}
+}
+@media (prefers-reduced-motion:reduce){[data-ar="catalog"] [data-part="aside"]{transition:none}}

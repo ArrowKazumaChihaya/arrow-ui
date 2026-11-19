@@ -10790,6 +10790,118 @@
   "dataAr": "bottom-nav"
  },
  {
+  "name": "ArCatalog",
+  "version": "1.0.0",
+  "description": "書類などを分類・検索・よく使うで探し、選んだ項目の説明を右に出す画面（書類・集計のページ）。\n選ぶ・よく使うの出し入れはイベントで知らせる（保存は製品がする）。説明の中身は detail スロット。",
+  "props": [
+   {
+    "name": "title",
+    "type": "string",
+    "required": true,
+    "description": "上の帯の題名（「書類・集計」）。"
+   },
+   {
+    "name": "icon",
+    "type": "string",
+    "required": false,
+    "description": "帯の印。",
+    "default": "\"files\""
+   },
+   {
+    "name": "groups",
+    "type": "readonly ArCatalogGroup[]",
+    "required": true,
+    "description": ""
+   },
+   {
+    "name": "selected",
+    "type": "string | null",
+    "required": false,
+    "description": "選んでいる項目（v-model:selected）。",
+    "default": "null"
+   },
+   {
+    "name": "favorites",
+    "type": "readonly string[]",
+    "required": false,
+    "description": "よく使う項目（v-model:favorites。☆の順）。",
+    "default": "[]"
+   },
+   {
+    "name": "labels",
+    "type": "Partial<ArCatalogLabels>",
+    "required": false,
+    "description": "画面の文字。",
+    "default": "{}"
+   }
+  ],
+  "emits": [
+   {
+    "name": "update:selected",
+    "payload": "[key: string | null]",
+    "description": ""
+   },
+   {
+    "name": "update:favorites",
+    "payload": "[keys: string[]]",
+    "description": ""
+   }
+  ],
+  "slots": [
+   "band-end",
+   "group-end",
+   "detail"
+  ],
+  "parts": [
+   "root",
+   "band",
+   "band-title",
+   "band-end",
+   "body",
+   "nav",
+   "search",
+   "nav-list",
+   "nav-item",
+   "nav-count",
+   "nav-head",
+   "main",
+   "favorites",
+   "favorites-head",
+   "favorites-star",
+   "chips",
+   "chip",
+   "heading",
+   "heading-count",
+   "clear",
+   "legend",
+   "legend-item",
+   "format",
+   "empty",
+   "group",
+   "group-head",
+   "group-icon",
+   "group-count",
+   "list",
+   "row",
+   "star",
+   "pick",
+   "row-title",
+   "row-group",
+   "warning",
+   "formats",
+   "end",
+   "aside",
+   "aside-inner",
+   "placeholder",
+   "aside-head",
+   "aside-tag",
+   "aside-close",
+   "aside-title",
+   "scrim"
+  ],
+  "dataAr": "catalog"
+ },
+ {
   "name": "ArChangedValue",
   "version": "1.2.0",
   "description": "変更前→変更後。変わっていなければ今の値だけを出す。\nlayout=\"text\" は今の UI/ChangedValue と同じ1つの文「前 → 後」（変わったときは class=\"changed\"）。\nitems を渡すと「項目｜変更前｜変更後」の表（table）か、1列の一覧（list）にまとめる（保存前の確認・変更履歴の詳細）。\n読み上げでは「変更前 … 変更後 …」と読む（矢印は飾り）。",

@@ -21,6 +21,7 @@ export const covers = {
   ArCard: "1.1.0",
   ArCarousel: "1.0.0",
   ArCascader: "1.0.0",
+  ArCatalog: "1.0.0",
   ArChangedValue: "1.2.0",
   ArCheckbox: "1.1.0",
   ArCheckboxGroup: "1.1.0",
