@@ -64,3 +64,5 @@
 [data-ar-design="remix"] [data-ar="item"]>[data-part="title"]>[data-part="label"]{max-width:100%;min-width:0;flex-wrap:wrap}
 [data-ar-design="remix"] [data-ar="item"]>[data-part="title"]>[data-part="label"]>[data-part="label-text"]{word-break:normal;overflow-wrap:break-word}
 [data-ar-design="remix"] [data-ar="item"]>[data-part="content"]>[data-ar="switch"]:first-child{margin-block:6px}
+/* 項目名と値の縦位置をそろえる：値が文字だけのときは、1行目を項目名（上の余白7px）と同じ高さに置く。 */
+[data-ar-design="remix"] [data-ar="item"][data-variant="row"]>[data-part="content"]>:first-child:is([data-ar="text"],[data-ar="paragraph"]){padding-top:7px}

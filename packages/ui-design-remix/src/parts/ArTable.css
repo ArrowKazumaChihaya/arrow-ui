@@ -22,8 +22,10 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] [data-part="row"]:hover>td{background:var(--ar-accent-faint)}
 /* 枠（box）は表の箱の内側の影で描いているので、背景のある固定列のマスが枠を隠さないよう、そのマスにも枠の線を描く（最終行の下・左右の端）。 */
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky]{box-shadow:inset 0 -1px 0 var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="start"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),6px 0 6px -6px rgba(31,41,51,.18)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="end"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),-6px 0 6px -6px rgba(31,41,51,.18)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="start"]{box-shadow:inset 0 -1px 0 var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"]:is([data-scrolled-x="start"],[data-scrolled-x="both"]) tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="start"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),6px 0 6px -6px rgba(31,41,51,.18)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="end"]{box-shadow:inset 0 -1px 0 var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"]:is([data-scrolled-x="end"],[data-scrolled-x="both"]) tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="end"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),-6px 0 6px -6px rgba(31,41,51,.18)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr>td[data-sticky="start"]:first-child:not([data-sticky-edge]){box-shadow:inset 1px 0 0 var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky="start"]:first-child:not([data-sticky-edge]){box-shadow:inset 1px 0 0 var(--ar-color-border),inset 0 -1px 0 var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] [data-part="cell"][data-col="actions"]{padding-left:8px}
@@ -75,7 +77,8 @@
 
 /* 左に固定した列 */
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-sticky]{background:var(--ar-color-surface)}
-[data-ar-design="remix"] [data-ar="table"] [data-sticky-edge]{box-shadow:6px 0 6px -6px rgba(31,41,51,.18)}
+/* 固定列の右の影は、横にスクロールして固定列の下に中身が流れているときだけ（止まっているときは出さない）。 */
+[data-ar-design="remix"] [data-ar="table"]:is([data-scrolled-x="start"],[data-scrolled-x="both"]) [data-sticky-edge]:not([data-sticky-edge="end"]){box-shadow:6px 0 6px -6px rgba(31,41,51,.18)}
 
 /* 詰めた表 */
 [data-ar-design="remix"] [data-ar="table"][data-density="compact"] thead[data-part="head"]>tr{height:30px}
@@ -127,7 +130,7 @@
 /* ---- 1.1：給与・年調・勤怠の集計表 ---- */
 /* 右に止めた列：左の端に影（年調の「反映」） */
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-sticky="end"]{background:var(--ar-color-surface)}
-[data-ar-design="remix"] [data-ar="table"] [data-sticky-edge="end"]{box-shadow:-6px 0 6px -6px rgba(31,41,51,.18)}
+[data-ar-design="remix"] [data-ar="table"]:is([data-scrolled-x="end"],[data-scrolled-x="both"]) [data-sticky-edge="end"]{box-shadow:-6px 0 6px -6px rgba(31,41,51,.18)}
 [data-ar-design="remix"] [data-ar="table"] tfoot [data-part="cell"][data-sticky]{background:var(--ar-color-surface-alt)}
 /* 2段の見出し（給与一覧）：上の段のまとまりは中央・左に acc-line の線・下に acc-line、下の段は右寄せの 600。合計の列の見出しは acc-100、セルは acc-25。
    2段の見出しの行は 34px ずつ。押すと開くボタンは ∨／› 14px＋名前＋10.5px 600 mute の「閉じる／内訳」 */

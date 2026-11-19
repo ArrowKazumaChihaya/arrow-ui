@@ -39,14 +39,15 @@
 [data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>:is(button,a,[role="button"],[data-ar="button"])+:is(button,a,[role="button"],[data-ar="button"]){border-left:1px solid var(--ar-color-border-subtle)}
 
 /* plain：中のさらに小さな線の箱（角丸12・線・10/12の余白） */
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]{border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);padding:10px 12px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]{border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border);padding:14px 16px}
 /* plain：本文のすぐ下に区切り線つきのフッターが続くとき、線が本文にくっつかないよう余白をあける */
 [data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="body"]:has(+[data-part="footer"]){padding-bottom:12px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]{gap:6px;flex-wrap:nowrap;margin-bottom:2px}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{gap:4px;font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:400;line-height:1.5;color:var(--ar-color-text-secondary)}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:13px;height:13px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]{gap:6px;flex-wrap:nowrap;margin-bottom:10px}
+/* 枠の見出し：小さく細い灰色だと見出しに見えないので、本文より少し大きい太字にする */
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]{gap:6px;font-size:calc(14px * var(--ar-font-scale, 1));font-weight:700;line-height:1.5;letter-spacing:.02em;color:var(--ar-color-text)}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="title"]>[data-part="icon"]{width:16px;height:16px;color:var(--ar-accent-ink)}
 [data-ar-design="remix"] [data-ar="card"][data-variant="plain"]>[data-part="head"]>[data-part="actions"]{gap:4px;margin-left:auto}
-[data-ar-design="remix"] [data-ar="card"][data-variant="plain"][data-size="sm"]{padding:8px 10px}
+[data-ar-design="remix"] [data-ar="card"][data-variant="plain"][data-size="sm"]{padding:12px 14px}
 
 [data-ar-design="remix"] [data-ar="card"][data-flush]>[data-part="body"]{--ar-card-pad-x:0px;padding:0}
 

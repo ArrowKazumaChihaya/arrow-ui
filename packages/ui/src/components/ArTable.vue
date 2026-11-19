@@ -561,6 +561,26 @@ const rowState = (row: Row) =>
   ]
     .filter(Boolean)
     .join(" ") || undefined;
+/* ---- 横スクロールの位置：固定列の影は、その列の下に中身が流れているときだけ出す ---- */
+const viewportEl = ref<HTMLElement | null>(null);
+const scrolledX = ref<"start" | "end" | "both" | undefined>(undefined);
+function measureScrollX() {
+  const el = viewportEl.value;
+  if (!el) return;
+  const max = el.scrollWidth - el.clientWidth;
+  const fromStart = el.scrollLeft > 1;
+  const beforeEnd = max > 1 && el.scrollLeft < max - 1;
+  scrolledX.value = fromStart && beforeEnd ? "both" : fromStart ? "start" : beforeEnd ? "end" : undefined;
+}
+let scrollRo: ResizeObserver | null = null;
+onMounted(() => {
+  measureScrollX();
+  if (typeof ResizeObserver !== "undefined" && viewportEl.value) {
+    scrollRo = new ResizeObserver(() => measureScrollX());
+    scrollRo.observe(viewportEl.value);
+  }
+});
+onBeforeUnmount(() => scrollRo?.disconnect());
 /* ---- 行の並べ替え（sortableRows） ---- */
 const rootEl = ref<HTMLElement | null>(null);
 const armed = ref<ArRowKey | null>(null);
@@ -640,8 +660,9 @@ const colspan = computed(
     :data-vertical-align="verticalAlign"
     :data-sticky-header="stickyHeader || undefined"
     :data-sortable="sortableRows || undefined"
+    :data-scrolled-x="scrolledX"
   >
-    <div data-part="viewport" role="region" :aria-label="caption" tabindex="0">
+    <div ref="viewportEl" data-part="viewport" role="region" :aria-label="caption" tabindex="0" @scroll.passive="measureScrollX">
       <table ref="tableEl" data-part="table">
         <caption data-ar-visually-hidden>
           {{

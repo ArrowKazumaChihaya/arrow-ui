@@ -8,4 +8,5 @@
 [data-ar="radio-group"][data-type="button"][data-block]{display:flex}
 [data-ar="radio-group"][data-type="button"][data-block]>[data-part="item"]{flex:1}
 [data-ar="radio-group"][data-type="button"]>[data-part="item"]{position:relative;justify-content:center;white-space:nowrap}
-[data-ar="radio-group"][data-type="button"]>[data-part="item"]>[data-part="control"]{position:static}
+/* 見えない入力欄の入れ物は並びから外す（場所を取ると文字が間隔の分だけ右に寄る）。 */
+[data-ar="radio-group"][data-type="button"]>[data-part="item"]>[data-part="control"]{position:absolute;inset:0}

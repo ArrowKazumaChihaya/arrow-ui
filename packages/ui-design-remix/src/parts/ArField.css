@@ -30,3 +30,8 @@
 [data-ar-design="remix"] [data-ar="field"]>[data-part="label"]>[data-ar="info"]{flex:none}
 
 [data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]>:is([data-ar="select"],[data-ar="tree-select"])[data-block]{max-width:var(--ar-field-control-size,24rem)}
+/* 項目名と値の縦位置をそろえる：入力欄を含まない値（文字・チップ・表示だけの部品と「詳細」などのボタン）は、
+   入力欄と同じ高さ36pxの行の中で上下中央に置き、項目名（上の余白8px＋行の高さ20.25px）の中心とそろえる。並ぶもの同士は8px空ける。 */
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]:not(:has(input,select,textarea,table,[data-ar="table"],[data-ar="stack"],[data-ar="card"],[data-ar="select"],[data-ar="tree-select"])){display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:36px}
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]:not(:has(input,select,textarea,table,[data-ar="table"],[data-ar="stack"],[data-ar="card"],[data-ar="select"],[data-ar="tree-select"]))>:is([data-part="help"],[data-part="error"]){flex-basis:100%;margin-top:-4px}
+[data-ar-design="remix"] [data-ar="field"][data-layout="inline"]>[data-part="control"]:not(:has(input,select,textarea,table,[data-ar="table"],[data-ar="stack"],[data-ar="card"],[data-ar="select"],[data-ar="tree-select"]))>:not([data-part="help"],[data-part="error"],[data-ar="button"]){min-height:36px;display:inline-flex;align-items:center;flex-wrap:wrap}
