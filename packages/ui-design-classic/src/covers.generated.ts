@@ -139,7 +139,7 @@ export const covers = {
   ArTour: "1.0.0",
   ArTransfer: "1.0.0",
   ArTree: "1.0.0",
-  ArTreeSelect: "1.2.0",
+  ArTreeSelect: "1.3.0",
   ArTreeTable: "1.1.0",
   ArUpload: "1.2.0",
   ArVariablePanel: "1.0.0",

@@ -434,6 +434,7 @@ defineExpose({ focus: () => root.value?.focus(), open: () => setOpen(true), clos
               ><template v-else>{{ p.text }}</template></template
             ></span
           >
+          <ArIcon line v-if="!multiple && values.includes(r.node.value)" name="check" size="sm" data-part="node-check" />
         </div>
         <div v-if="!rows.length" data-part="empty" role="status">
           {{ query ? `「${query}」は見つかりません` : emptyText }}

@@ -6000,7 +6000,7 @@
  },
  {
   "name": "ArTreeSelect",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "部署のような木から選ぶ（プルダウンの中に木）。\nmultiple はチェックで選び、一部だけ選んでいる親は indeterminate（テーマ色に白い横線）。1つ選ぶときは選んだ行が淡いテーマ色。\nキーボード：↓↑で行を動く、→ で開く・子へ、← で閉じる・親へ、Enter・Space で選ぶ／チェック、Escape で閉じる。\n1.1：「子店舗を含める」の切り替え（v-model:includeChildren）と、プルダウンの下の操作（actions・action）。",
   "props": [
    {
@@ -6246,6 +6246,7 @@
    "check",
    "node-label",
    "match",
+   "node-check",
    "empty",
    "footer",
    "include",

@@ -14,3 +14,5 @@
 /* Keep full hierarchy paths inside the input on narrow layouts. */
 [data-ar="tree-select"]>[data-part="tags"]>[data-part="tag"]>[data-part="tag-label"]{min-width:0;white-space:normal;overflow-wrap:anywhere}
 [data-ar="tree-select"]>[data-part="tags"]>[data-part="tag"]>[data-part="tag-remove"]{flex:none}
+/* 1.3：1つだけ選ぶとき、選んだ行の右にチェック（ArSelect の選択肢と同じ） */
+[data-ar="tree-select-panel"]>[data-part="list"]>[data-part="node"]>[data-part="node-check"]{margin-left:auto;flex:none}

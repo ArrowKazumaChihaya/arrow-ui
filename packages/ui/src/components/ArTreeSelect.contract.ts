@@ -94,4 +94,4 @@ export interface ArTreeSelectEmits {
 
 export type ArTreeSelectPart = "root" | "icon" | "value" | "placeholder" | "tags" | "tag" | "tag-label" | "tag-remove" | "clear" | "arrow" | "include-mark";
 /** プルダウン（data-ar="tree-select-panel"）の部位。 */
-export type ArTreeSelectPanelPart = "search" | "list" | "node" | "switch" | "check" | "node-label" | "empty" | "footer" | "include" | "include-box" | "include-label" | "action";
+export type ArTreeSelectPanelPart = "search" | "list" | "node" | "switch" | "check" | "node-label" | "node-check" | "empty" | "footer" | "include" | "include-box" | "include-label" | "action";

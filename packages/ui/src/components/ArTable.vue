@@ -561,15 +561,29 @@ const rowState = (row: Row) =>
   ]
     .filter(Boolean)
     .join(" ") || undefined;
-/* ---- 横スクロールの位置：固定列の影は、その列の下に中身が流れているときだけ出す ---- */
+/* ---- 横スクロールの位置：固定列の影は、その列が実際に止まって、下に中身が流れているときだけ出す ----
+   2列目だけを止める表もあるので「スクロールしたか」ではなく、端の固定列が本来の位置から止まる位置に来たかで決める。
+   start：本来の左端（前の列の幅の合計）− 止める位置（left）より右へスクロールしたとき。
+   end：本来の右端（後ろの列の幅の合計）− 止める位置（right）より手前にいるとき。 */
 const viewportEl = ref<HTMLElement | null>(null);
 const scrolledX = ref<"start" | "end" | "both" | undefined>(undefined);
+function siblingsWidth(cell: Element, dir: "previous" | "next"): number {
+  let w = 0;
+  for (let p = dir === "previous" ? cell.previousElementSibling : cell.nextElementSibling; p; p = dir === "previous" ? p.previousElementSibling : p.nextElementSibling)
+    w += p.getBoundingClientRect().width;
+  return w;
+}
 function measureScrollX() {
   const el = viewportEl.value;
   if (!el) return;
   const max = el.scrollWidth - el.clientWidth;
-  const fromStart = el.scrollLeft > 1;
-  const beforeEnd = max > 1 && el.scrollLeft < max - 1;
+  const head = tableEl.value?.querySelector("thead");
+  const startEdge = head?.querySelector<HTMLElement>('th[data-sticky-edge="start"]');
+  const endEdge = head?.querySelector<HTMLElement>('th[data-sticky-edge="end"]');
+  const startAt = startEdge ? Math.max(0, siblingsWidth(startEdge, "previous") - (parseFloat(getComputedStyle(startEdge).left) || 0)) : 0;
+  const endAt = endEdge ? Math.max(0, siblingsWidth(endEdge, "next") - (parseFloat(getComputedStyle(endEdge).right) || 0)) : 0;
+  const fromStart = el.scrollLeft > startAt + 1;
+  const beforeEnd = max > 1 && el.scrollLeft < max - endAt - 1;
   scrolledX.value = fromStart && beforeEnd ? "both" : fromStart ? "start" : beforeEnd ? "end" : undefined;
 }
 let scrollRo: ResizeObserver | null = null;

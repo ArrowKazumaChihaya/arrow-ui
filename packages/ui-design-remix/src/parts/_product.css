@@ -280,6 +280,8 @@
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_row th:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;top:0;z-index:2; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_col.col1 :is(th,td):first-child:not([data-ui-fixed], [data-ui-fixed] *) { position:sticky;left:0;z-index:1; }
 [data-ar-design="remix"] table[data-ui-part="table"] .sticky_row.sticky_col.col1 th:first-child:not([data-ui-fixed], [data-ui-fixed] *) { z-index:3; }
+/* 見出しが2段のとき、左に止めるのは1段目の先頭（日付など。下の段にまたがる）だけ。2段目の先頭（シフトの「開始」など）まで止めると、横にスクロールしたとき日付の上に重なる。 */
+[data-ar-design="remix"] table[data-ui-part="table"] thead.sticky_col.col1 tr:not(:first-child)>th:first-child:not([data-ui-fixed], [data-ui-fixed] *) { left:auto; z-index:2; }
 [data-ar-design="remix"] :is([data-ui-part="link"],a:not([data-ar])):not([data-ui-fixed], [data-ui-fixed] *) { color:var(--ar-accent-ink);text-decoration:none; }
 [data-ar-design="remix"] [data-ui-part="notice"]:not([data-ui-fixed], [data-ui-fixed] *) { color:var(--ar-color-text-muted); }
 [data-ar-design="remix"] [data-ui-part="badge"]:not([data-ui-fixed], [data-ui-fixed] *) { display:inline-flex;align-items:center;border-radius:6px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);padding:3px 7px;font-size:calc(12px * var(--ar-font-scale, 1));font-weight:600; }

@@ -1131,16 +1131,7 @@ html[data-ar-design] {
     padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
   }
 }
-/* PC幅でマスコットがいるときは、ページの右にマスコットの通り道を空け、表や入力欄にかぶらないようにする。
-   中身の幅に上限があるページは、左右の余白がマスコットより広くなる画面幅では空けない。 */
-@media screen and (min-width: 960px) {
-  html[data-ar-design]:has(.ai-chat__mascot) .menu_layout .root_component:not(.form, .slip) {
-    padding-right: max(35px, calc(var(--arrow-floating-right) + 96px - (100vw - var(--arrow-content-max-width, 1440px)) / 2));
-  }
-  html[data-ar-design]:has(.ai-chat__mascot) .menu_layout .root_component.wide {
-    padding-right: calc(var(--arrow-floating-right) + 96px);
-  }
-}
+/* マスコットのために表や中身の幅を縮めない（マスコットは中身より優先度が低い。中身は常に幅いっぱい）。 */
 /* Sticky actions stay above the mobile menu; floating help must not cover Save. */
 
 html[data-ar-design="remix"]:has(.menu_layout :is([data-ar="save-bar"][data-sticky], [data-ar="affix"][data-position="bottom"])) .ai-chat[data-v-ai-chat] {
