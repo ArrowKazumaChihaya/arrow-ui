@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<ArBottomNavProps>(), {
   max: 5,
   more: true,
   moreSheet: true,
+  moreCurrent: false,
   moreIcon: "menu",
   moreOpen: undefined,
   fixed: true,
@@ -32,7 +33,11 @@ const shown = computed(() => (showMore.value ? props.items.slice(0, Math.max(0, 
 const rest = computed(() => (props.more === "always" ? props.items : props.items.slice(shown.value.length)));
 const count = computed(() => shown.value.length + (showMore.value ? 1 : 0));
 const has = (it: ArAppNavItem, key?: string) => key !== undefined && (it.key === key || !!it.children?.some((c) => c.key === key));
-const moreOn = computed(() => showMore.value && rest.value.some((it) => has(it, props.current)) && !shown.value.some((it) => has(it, props.current)));
+const moreOn = computed(
+  () =>
+    showMore.value &&
+    (props.moreCurrent || (rest.value.some((it) => has(it, props.current)) && !shown.value.some((it) => has(it, props.current)))),
+);
 
 /* 子の段 */
 const rootEl = ref<HTMLElement | null>(null);

@@ -1559,7 +1559,7 @@
  },
  {
   "name": "ArSectionMenu",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "props": [
    {
@@ -1797,7 +1797,7 @@
  },
  {
   "name": "ArTabs",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "タブ。中身の出し分けは使う側が modelValue で行う。\nvariant：band はカードの頭（帯）に置くタブ、line はカードの中の下線のタブ、card は閉じられる・足せるタブ。\n←→ で移り、Home / End で端へ。閉じられるタブは Delete で close。",
   "props": [
    {
@@ -10693,7 +10693,7 @@
  },
  {
   "name": "ArBottomNav",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "スマホの下に固定するメニュー。アイコンと小さな名前を等分に並べ、今いるものをテーマ色で示す。\n子のある項目を押すと、メニューの上に子の段を出す（今の ARROW のスマホのフッター）。↑ キーで子の段へ、Escape で閉じる。\n並べきれない項目は右端の「メニュー」に入れ、押すと下から一覧（ArDrawer placement=\"bottom\"）を出す。",
   "props": [
    {
@@ -10728,6 +10728,13 @@
     "required": false,
     "description": "「メニュー」を押したときに下から一覧を出す（既定 true）。false なら more だけを出す（製品がメニューのページへ移るとき）。",
     "default": "true"
+   },
+   {
+    "name": "moreCurrent",
+    "type": "boolean",
+    "required": false,
+    "description": "1.3：「メニュー」を今いる項目にする（並べた項目にないページ＝メニューから開くページにいるとき）。",
+    "default": "false"
    },
    {
     "name": "moreIcon",

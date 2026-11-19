@@ -38,3 +38,8 @@
 @media(max-width:600px){
   [data-ar-design="remix"] [data-ar="period-nav"][data-size="md"]:not([data-inverse])>[data-part="center"]>[data-part="label"]{padding:0 4px;font-size:calc(16px * var(--ar-font-scale, 1));letter-spacing:0}
 }
+/* 帯の上の題（「○○さんの勤怠詳細」など）は、折り返すときも言葉の途中で切らない（「詳細」が「詳｜細」にならない）。スマホでは少し小さく。 */
+[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{word-break:auto-phrase;overflow-wrap:anywhere;text-wrap:balance}
+@media(max-width:600px){
+  [data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{padding:0 6px;font-size:calc(16px * var(--ar-font-scale, 1));line-height:1.4}
+}

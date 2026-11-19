@@ -1,4 +1,4 @@
-/** ArBottomNav 1.1 の契約。スマホの下に固定するメニュー（5つ）。子のメニューと「メニュー（その他）」の一覧を持つ。 */
+/** ArBottomNav 1.3 の契約。スマホの下に固定するメニュー（5つ）。子のメニューと「メニュー（その他）」の一覧を持つ。 */
 import type { ArIconName } from "../icons";
 import type { ArAppNavItem } from "./ArAppHeader.contract";
 
@@ -19,6 +19,8 @@ export interface ArBottomNavProps {
   more?: boolean | "always";
   /** 「メニュー」を押したときに下から一覧を出す（既定 true）。false なら more だけを出す（製品がメニューのページへ移るとき）。 */
   moreSheet?: boolean;
+  /** 1.3：「メニュー」を今いる項目にする（並べた項目にないページ＝メニューから開くページにいるとき）。 */
+  moreCurrent?: boolean;
   /** 「メニュー」のアイコン（既定 menu）。 */
   moreIcon?: ArIconName;
   /** 下から出る一覧が開いているか（v-model:moreOpen。渡さなければ中で持つ）。 */

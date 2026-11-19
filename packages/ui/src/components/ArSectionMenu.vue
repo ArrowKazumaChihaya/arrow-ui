@@ -30,7 +30,7 @@ function filterItems(items:readonly ArMenuItem[], parentLabel=''):ArMenuItem[]{
  return items.flatMap(item=>{
   if(item.type==='divider')return [];
   const path=parentLabel+' '+(item.label ?? '');
-  if(fold(path).includes(query.value))return [item];
+  if(fold(path).includes(query.value) || (item.keywords!==undefined && fold(item.keywords).includes(query.value)))return [item];
   const children=item.children ? filterItems(item.children,path) : [];
   return children.length ? [{...item,children}] : [];
  });
@@ -46,7 +46,7 @@ function flattenItems(items:readonly ArMenuItem[],prefix='',ancestorDisabled=fal
   if(item.type==='divider')continue;
   const disabled=ancestorDisabled || !!item.disabled || !!item.locked;
   if(item.children?.length)result.push(...flattenItems(item.children,`${prefix}${item.label} > `,disabled));
-  else result.push({value:item.key,label:prefix+item.label,disabled,icon:item.locked?'lock':item.icon});
+  else result.push({value:item.key,label:prefix+item.label,disabled,icon:item.locked?'lock':item.icon,keywords:item.keywords});
  }
  return result;
 }

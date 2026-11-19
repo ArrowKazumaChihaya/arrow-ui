@@ -1,4 +1,4 @@
-/* @covers ArTabs 1.1.0 */
+/* @covers ArTabs 1.2.0 */
 /* band：カードの頭の .v-tabs。line：カードの中の下線のタブ（.ad-tabs）。card：閉じられるタブ（.ad-tabs.xcard）。 */
 [data-ar-design="remix"] [data-ar="tabs"]{font-size:calc(13.5px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="tabs"]:is([data-variant="line"],[data-variant="card"])>[data-part="list"]>[data-part="tab"]{font-feature-settings:"palt" 1}

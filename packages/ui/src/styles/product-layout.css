@@ -1131,6 +1131,16 @@ html[data-ar-design] {
     padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
   }
 }
+/* PC幅でマスコットがいるときは、ページの右にマスコットの通り道を空け、表や入力欄にかぶらないようにする。
+   中身の幅に上限があるページは、左右の余白がマスコットより広くなる画面幅では空けない。 */
+@media screen and (min-width: 960px) {
+  html[data-ar-design]:has(.ai-chat__mascot) .menu_layout .root_component:not(.form, .slip) {
+    padding-right: max(35px, calc(var(--arrow-floating-right) + 96px - (100vw - var(--arrow-content-max-width, 1440px)) / 2));
+  }
+  html[data-ar-design]:has(.ai-chat__mascot) .menu_layout .root_component.wide {
+    padding-right: calc(var(--arrow-floating-right) + 96px);
+  }
+}
 /* Sticky actions stay above the mobile menu; floating help must not cover Save. */
 
 html[data-ar-design="remix"]:has(.menu_layout :is([data-ar="save-bar"][data-sticky], [data-ar="affix"][data-position="bottom"])) .ai-chat[data-v-ai-chat] {
@@ -23443,8 +23453,10 @@ table
 .drag_handle[data-v-uibb136b1eb259]:not(.disable) {
   cursor: ns-resize;
 }
+/* 並べ替えのつまみ（⠿）と項目名の間をあける。 */
 .drag_icon_wrap[data-v-uibb136b1eb259] {
   width: 16px;
+  margin-right: 6px;
   display: inline-block;
 }
 .drag_icon_wrap
@@ -23453,7 +23465,7 @@ table
   height: 16px;
 }
 .is_drag[data-v-uibb136b1eb259] {
-  width: calc(100% - 16px);
+  width: calc(100% - 22px);
 }
 .no_drag[data-v-uibb136b1eb259] {
   width: 100%;
@@ -25260,8 +25272,10 @@ table
 .minute_unit[data-v-ui29b5d8f5837e] {
   margin: 0 5px;
 }
+/* カードの横幅いっぱいに広げる（狭い画面では今までの幅で横に動かす）。余りは「休日の組み合わせ」の列が受け持つ。 */
 .work_type_table_wrap[data-v-ui3e009b5e618a] {
-  width: 910px;
+  width: 100%;
+  min-width: 910px;
 }
 .show_hidden_button_wrap[data-v-ui3e009b5e618a] {
   margin-bottom: 10px;
@@ -25294,8 +25308,7 @@ table
   th.related_work_types[data-v-ui3e009b5e618a],
 table
   td.related_work_types[data-v-ui3e009b5e618a] {
-  width: 350px;
-  max-width: 350px;
+  width: auto;
   min-width: 350px;
 }
 table

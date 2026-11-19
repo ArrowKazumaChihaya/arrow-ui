@@ -9,7 +9,6 @@
 [data-ar-design="remix"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"][data-level="2"]{padding-left:58px}
 [data-ar-design="remix"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"]:hover:not([aria-disabled="true"]):not([data-state~="selected"]){background:var(--ar-color-hover)}
 [data-ar-design="remix"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"][data-state~="selected"]{background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-weight:700}
-[data-ar-design="remix"] [data-ar="menu"]:not([data-mode="horizontal"])>[data-part="item"][data-level="0"][data-state~="selected"]{background:var(--ar-accent);color:var(--ar-on-accent);text-shadow:var(--ar-on-accent-shadow)}
 [data-ar-design="remix"] [data-ar="menu"]>[data-part="item"]>[data-part="arrow"]{color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="menu"]>[data-part="item"][data-state~="selected"]>[data-part="arrow"]{color:inherit}
 [data-ar-design="remix"] [data-ar="menu"]>[data-part="item"]:is([data-state~="disabled"],[data-state~="locked"]){color:var(--ar-color-text-faint)}
@@ -19,7 +18,6 @@
 [data-ar-design="remix"] [data-ar="menu"][data-size="sm"]:not([data-mode="horizontal"])>[data-part="item"]{gap:6px;height:auto;padding:6px 8px;border-radius:7px;line-height:18px;color:var(--ar-color-text-secondary);font-weight:500}
 [data-ar-design="remix"] [data-ar="menu"][data-size="sm"]:not([data-mode="horizontal"])>[data-part="item"][data-level="1"]{padding-left:24px}
 [data-ar-design="remix"] [data-ar="menu"][data-size="sm"]:not([data-mode="horizontal"])>[data-part="item"][data-state~="selected"]{color:var(--ar-accent-ink);font-weight:700}
-[data-ar-design="remix"] [data-ar="menu"][data-size="sm"]:not([data-mode="horizontal"])>[data-part="item"][data-level="0"][data-state~="selected"]{color:var(--ar-on-accent)}
 [data-ar-design="remix"] [data-ar="menu"][data-size="sm"]>[data-part="item"]:is([data-state~="disabled"],[data-state~="locked"]){color:var(--ar-color-text-faint)}
 [data-ar-design="remix"] [data-ar="menu"][data-mode="horizontal"]{gap:4px;border-bottom:1px solid var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="menu"][data-mode="horizontal"]>[data-part="item"]{gap:6px;padding:10px 12px;margin-bottom:-1px;border-bottom:3px solid transparent;color:var(--ar-color-text-secondary)}

@@ -90,10 +90,10 @@
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"] [data-part="detail"]>[data-part="detail-label"]{display:inline;font-weight:700}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"] [data-part="detail"]>[data-part="line"]{display:inline}
 /* シフトと同じ日の半日・時間有給：斜線の小さな札で残す */
-[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"] [data-part="leave-mark"]{align-self:center;margin-top:1px;padding:0 5px;border-radius:3px;background:rgba(255,255,255,.88);color:#3F4750;font-size:.86em;font-weight:700;box-shadow:inset 0 0 0 1px rgba(0,0,0,.16)}
+[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="shift"] [data-part="leave-mark"]{align-self:center;margin-top:1px;padding:0 5px;border-radius:3px;background:rgba(255,255,255,.88);color:#3F4750;font-size:1em;font-weight:700;box-shadow:inset 0 0 0 1px rgba(0,0,0,.16)}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="bar-track"]>[data-part="bar"][data-leave]{background:var(--ar-remix-leave-stripe);box-shadow:inset 0 0 0 1px #B9BFC6}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="bar-track"]>[data-part="bar"][data-with-shift]{opacity:.9}
-[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail"]{border-radius:7px;border:1.5px dashed var(--ar-remix-hope-line);background:var(--ar-remix-hope-subtle);color:#1E7A4C;font-size:calc(10px * var(--ar-font-scale, 1));font-weight:700}
+[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail"]{border-radius:7px;border:1.5px dashed var(--ar-remix-hope-line);background:var(--ar-remix-hope-subtle);color:#1E7A4C;font-size:calc(var(--sg-fs, 10.5px) * var(--ar-font-scale, 1));font-weight:700}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail"]:hover{background:#DDF1E5}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail"]:focus-visible{outline:2px solid var(--ar-remix-hope-line);outline-offset:1px}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="track"]{gap:3px}
@@ -131,3 +131,7 @@
 
 /* シフトがある日の提出の印：緑の小さな丸（白い縁） */
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]>[data-part="avail-mark"]{width:8px;height:8px;border-radius:50%;background:var(--ar-remix-hope-line);box-shadow:0 0 0 1.5px #fff}
+/* スマホ（compact）：操作の並びは左にそろえ、パターンは幅いっぱいに折り返して並べる（右端で切れて見えないことがないように）。 */
+[data-ar-design="remix"] [data-ar="shift-grid"][data-compact]>[data-part="toolbar"]{justify-content:flex-start}
+[data-ar-design="remix"] [data-ar="shift-grid"][data-compact]>[data-part="layout"]>[data-part="patterns"]{width:auto;flex-wrap:wrap;overflow-x:visible}
+[data-ar-design="remix"] [data-ar="shift-grid"][data-compact]>[data-part="layout"]>[data-part="patterns"]>[data-part="pattern"]{flex:0 1 auto;max-width:calc(50% - 4px)}

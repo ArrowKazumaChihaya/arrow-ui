@@ -20,6 +20,12 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"]>[data-part="viewport"]{background:var(--ar-color-surface);border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td{border-bottom:0}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] [data-part="row"]:hover>td{background:var(--ar-accent-faint)}
+/* 枠（box）は表の箱の内側の影で描いているので、背景のある固定列のマスが枠を隠さないよう、そのマスにも枠の線を描く（最終行の下・左右の端）。 */
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky]{box-shadow:inset 0 -1px 0 var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="start"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),6px 0 6px -6px rgba(31,41,51,.18)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="end"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),-6px 0 6px -6px rgba(31,41,51,.18)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr>td[data-sticky="start"]:first-child:not([data-sticky-edge]){box-shadow:inset 1px 0 0 var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky="start"]:first-child:not([data-sticky-edge]){box-shadow:inset 1px 0 0 var(--ar-color-border),inset 0 -1px 0 var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] [data-part="cell"][data-col="actions"]{padding-left:8px}
 
 /* 行の状態（選んだ・薄い） */

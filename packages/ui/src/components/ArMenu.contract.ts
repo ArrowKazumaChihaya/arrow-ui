@@ -28,6 +28,8 @@ export interface ArMenuItem {
   href?: string;
   /** 外部資料を別タブで開く。別タブでは noopener noreferrer を付ける。 */
   target?: "_blank";
+  /** ArSectionMenu 1.2：探す欄で見出しのほかに当てる言葉（そのページにある設定の名前など）。空白区切り。 */
+  keywords?: string;
 }
 
 export interface ArMenuProps {

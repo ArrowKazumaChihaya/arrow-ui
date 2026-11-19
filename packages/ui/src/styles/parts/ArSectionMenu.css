@@ -5,3 +5,5 @@
 
 /* Section headings must remain below the sticky mobile picker after navigation. */
 [data-ar="section-menu"][data-scroll]>[data-part="content"] [id]{scroll-margin-top:var(--ar-section-menu-scroll-offset,50px)}
+/* スマホの切り替えセレクトは、下のカードと同じ幅いっぱいにする（選択欄の既定の最大幅を外す）。 */
+[data-ar="section-menu"] [data-part="mobile"]{--ar-field-control-size:100%}

@@ -16,12 +16,16 @@ const style = computed(() => (bottom.value ? { bottom: `max(var(--ar-affix-botto
 const isWin = (x: unknown): x is Window => x === window;
 function scroller(node: HTMLElement | null): HTMLElement | Window {
   for (let p = node?.parentElement; p; p = p.parentElement) {
+    // html・body に overflow が付いていても、張り付く基準は画面（ウィンドウ）。
+    if (p === document.documentElement || p === document.body) break;
     const o = getComputedStyle(p).overflowY;
     if (o === "auto" || o === "scroll") return p;
   }
   return window;
 }
 let target: HTMLElement | Window | null = null;
+/** 中身があとから読み込まれて高さが変わったとき（スクロールしていなくても）張り付いたかを測り直す。 */
+let sizes: ResizeObserver | null = null;
 function check() {
   const e = el.value;
   if (!e || !target) return;
@@ -39,11 +43,17 @@ onMounted(() => {
   target = scroller(el.value);
   target.addEventListener("scroll", check, { passive: true });
   window.addEventListener("resize", check);
+  if (typeof ResizeObserver !== "undefined") {
+    sizes = new ResizeObserver(() => check());
+    sizes.observe(isWin(target) ? document.body : target);
+    if (el.value?.parentElement) sizes.observe(el.value.parentElement);
+  }
   check();
 });
 onBeforeUnmount(() => {
   target?.removeEventListener("scroll", check);
   window.removeEventListener("resize", check);
+  sizes?.disconnect();
 });
 </script>
 

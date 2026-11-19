@@ -187,18 +187,20 @@ async function onDelete(pill: string, item: string) {
   else hide(true);
 }
 
-/* メニュー：指で押すと子のメニューを出したままにする（navigate も出す）。↓ で子の最初へ。 */
-let lastPointer = "mouse";
+/* メニュー：押すと子のメニューを出したままにする（navigate も出す）。↓ で子の最初へ。 */
 function onNav(item: ArAppNavItem, e: MouseEvent) {
   emit("navigate", item.key, e);
 }
+/**
+ * 子のある項目は、押したら子の一覧を出したままにする（乗せて開いたあとに押しても閉じない。もう一度押すと閉じる）。
+ * 指でもマウスでも同じ。乗せただけで開いたものは、離れると閉じる。
+ */
 function onItemClick(item: ArAppNavItem, e: MouseEvent) {
   onNav(item, e);
-  if (hasChildren(item) && lastPointer !== "mouse") {
-    show("item", item.key, true);
-    pinned.value = true;
-  }
-  lastPointer = "mouse";
+  if (!hasChildren(item)) return;
+  if (pinned.value && isOpen("item", item.key)) return hide(false);
+  show("item", item.key, true);
+  pinned.value = true;
 }
 function onItemKey(e: KeyboardEvent, item: ArAppNavItem) {
   if (!hasChildren(item)) return;
@@ -533,7 +535,6 @@ function onDomainMenuKey(e: KeyboardEvent) {
           :aria-current="it.key === current ? 'page' : undefined"
           :aria-expanded="hasChildren(it) ? isOpen('item', it.key) : undefined"
           :aria-controls="hasChildren(it) && isOpen('item', it.key) ? `${uid}-sub` : undefined"
-          @pointerdown="lastPointer = $event.pointerType || 'mouse'"
           @click="onItemClick(it, $event)"
           @keydown="onItemKey($event, it)"
           @pointerenter="onEnter($event, 'item', it.key, hasChildren(it))"
