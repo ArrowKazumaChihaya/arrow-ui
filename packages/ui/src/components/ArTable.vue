@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="Row extends object">
 /**
- * ArTable 1.4 — 表。
+ * ArTable 1.9 — 表。
  * box（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。
  * 見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。
  * 並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。
@@ -573,6 +573,8 @@ function siblingsWidth(cell: Element, dir: "previous" | "next"): number {
     w += p.getBoundingClientRect().width;
   return w;
 }
+/** 右に続きがあることを示す印（右端の影と ›）の高さ。表の枠（viewport）の高さに合わせる。 */
+const viewportH = ref(0);
 function measureScrollX() {
   const el = viewportEl.value;
   if (!el) return;
@@ -585,6 +587,7 @@ function measureScrollX() {
   const fromStart = el.scrollLeft > startAt + 1;
   const beforeEnd = max > 1 && el.scrollLeft < max - endAt - 1;
   scrolledX.value = fromStart && beforeEnd ? "both" : fromStart ? "start" : beforeEnd ? "end" : undefined;
+  viewportH.value = el.offsetHeight;
 }
 let scrollRo: ResizeObserver | null = null;
 onMounted(() => {
@@ -1127,6 +1130,8 @@ const colspan = computed(
         </tfoot>
       </table>
     </div>
+    <!-- 右に続きがあるときは、右端に影と › を出して横に動かせることを知らせる（スマホで大事な列が隠れていても気づけるように）。 -->
+    <span v-if="scrolledX === 'end' || scrolledX === 'both'" data-part="scroll-hint" aria-hidden="true" :style="{ height: `${viewportH}px` }"><ArIcon line name="cr" size="sm" /></span>
     <div v-if="viewOptions || $slots.below" data-part="below">
       <ArViewOptions
         v-if="viewOptions"

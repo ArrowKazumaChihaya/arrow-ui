@@ -1,4 +1,4 @@
-/* @covers ArButton 1.1.0 */
+/* @covers ArButton 1.2.0 */
 /* ArButton：ARROW 共通の .btn（角丸10・13px太字）。大きさの段は入力と同じ sm 30・md 36・lg 42（size.control-*）。デザインシステムの .btn は 34 だが、入力・時刻と横に並べてそろえるため 36 にした。 */
 [data-ar-design="remix"] [data-ar="button"]{height:var(--ar-size-control-md);padding:0 14px;gap:6px;border:0;border-radius:10px;font-size:calc(13px * var(--ar-font-scale, 1));font-weight:700;line-height:1;text-decoration:none;background:#fff;color:var(--ar-color-text-secondary);box-shadow:inset 0 0 0 1px var(--ar-color-border);transition:background var(--ar-motion-fast),box-shadow var(--ar-motion-fast),color var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="button"]:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
@@ -65,3 +65,5 @@
 [data-ar-design="remix"] [data-ar="button"]>[data-part="label"]{display:inline-flex;align-items:center;justify-content:center;gap:6px;line-height:1.4}
 /* warn：「未ロック」の印（ArTag の warn）と同じ色。ロック・ロック解除の操作に使う */
 [data-ar-design="remix"] [data-ar="button"][data-tone="warn"]{--ar-action:var(--ar-color-warn);--ar-action-strong:var(--ar-color-warn);--ar-action-ink:var(--ar-color-warn);--ar-action-subtle:var(--ar-color-warn-subtle);--ar-action-line:var(--ar-color-warn-line);--ar-action-ring:var(--ar-color-warn-line)}
+/* 押した瞬間に少し沈む（押したことが分かるように）。 */
+[data-ar-design="remix"] [data-ar="button"]:active:not(:disabled,[aria-disabled="true"]){transform:translateY(1px) scale(.98)}

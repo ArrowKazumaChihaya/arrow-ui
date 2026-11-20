@@ -13,6 +13,10 @@ export const FOCUSABLE =
 
 let openCount = 0;
 const openDialogs: symbol[] = [];
+/** 後ろのページを動かさない（ダイアログ以外の重なり、下部ナビの子の段などからも数えて使う）。 */
+export function lockPageScroll(on: boolean) {
+  lock(on);
+}
 function lock(on: boolean) {
   if (typeof document === "undefined") return;
   openCount = Math.max(0, openCount + (on ? 1 : -1));
@@ -118,6 +122,8 @@ export function useDialog(opts: {
         }
         await nextTick();
         if (!opts.open()) return;
+        // 開いた状態で作られた（v-if で出した）ときは、最初はまだ置かれていないのでテーマ色が読めない。置かれてから読み直す。
+        palette.value ??= readPalette();
         const scope = opts.initial?.() ?? null;
         const first = scope ? Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE)).find((element) => !element.closest("[inert]")) : undefined;
         let target = first ?? opts.panel.value;

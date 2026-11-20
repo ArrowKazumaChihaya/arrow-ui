@@ -540,3 +540,16 @@
 
 /* 一覧の表の中の手で直した金額（.money.custom）：今の ARROW と同じく緑（明細の手で直した値と同じ色） */
 [data-ar-design="remix"] .money.custom:not([data-ui-fixed], [data-ui-fixed] *){color:var(--ar-color-ok)}
+/* 書類・集計の右の説明：書類名は上の見出し（aside-title）と同じなので出さない。空行（br）は決まった間にする（【対象者】などの前後が空きすぎないように）。 */
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] .document_instruction_title:not([data-ui-fixed], [data-ui-fixed] *){display:none}
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] .document_instruction_content>br:not([data-ui-fixed], [data-ui-fixed] *){display:none}
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] .document_instruction_content>p:not([data-ui-fixed], [data-ui-fixed] *){margin:0;line-height:1.7}
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] .document_instruction_content>br+p:not([data-ui-fixed], [data-ui-fixed] *){margin-top:10px}
+/* 部署/店舗の一覧の「店舗数合計」の行：本文のマスと同じ左右の余白にする（文字が表の左枠にくっつき、数が上の列とずれていた）。 */
+[data-ar-design="remix"] .branches_table_wrap tfoot td.name[data-v-ui94d86d6be01e]:not([data-ui-fixed], [data-ui-fixed] *){padding:10px 4px 10px 8px;font-weight:700}
+[data-ar-design="remix"] .branches_table_wrap tfoot td.branch_num_count[data-v-ui94d86d6be01e]:not([data-ui-fixed], [data-ui-fixed] *){padding:10px 4px}
+/* 年末調整の一覧：他の一覧（勤怠・給与・賞与・報酬）と見た目をそろえる。見出しに縦の線を引かない、氏名は文字の色の太字、行は詰める。 */
+[data-ar-design="remix"] th[data-v-ui981f0a996d1e]:not([data-ui-fixed], [data-ui-fixed] *){border-left:0;border-right:0}
+[data-ar-design="remix"] .nencho_name[data-v-ui981f0a996d1e] a:not([data-ui-fixed], [data-ui-fixed] *){color:var(--ar-color-text);font-weight:700;text-decoration:none}
+[data-ar-design="remix"] .nencho_name[data-v-ui981f0a996d1e] a:hover:not([data-ui-fixed], [data-ui-fixed] *){color:var(--ar-accent-ink);text-decoration:underline}
+[data-ar-design="remix"] td[data-v-ui981f0a996d1e]:not([data-ui-fixed], [data-ui-fixed] *){padding-top:6px;padding-bottom:6px}

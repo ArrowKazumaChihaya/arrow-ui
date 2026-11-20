@@ -111,3 +111,6 @@
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"][data-tone="ok"]{color:color-mix(in srgb,var(--ar-event-color,var(--ar-color-ok)) 70%,#1F2933)}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>[data-part="dot"]{display:none}
 [data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:inherit;letter-spacing:inherit}
+/* 狭いマス（スマホ）でも読める大きさ（9px 以上）にする。入りきらないときは小さくせずに2行まで折り返す（文節で「法定外／休日」）。 */
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]{font-size:max(9px,min(calc(10.5px * var(--ar-font-scale, 1)),16cqw))}
+[data-ar-design="remix"] [data-ar="calendar"][data-variant="board"]>[data-part="grid"]>[data-part="row"]>[data-part="cell"]>[data-part="event"]>span{white-space:normal;word-break:auto-phrase;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;text-align:center}

@@ -84,3 +84,5 @@
 @media (max-width:700px){
   [data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"]{border-radius:18px 18px 0 0}
 }
+/* 選ぶ前の案内は文節で折り返す（「ボタ／ン」のように語の途中で切れないように）。 */
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] [data-part="placeholder"]>span{word-break:auto-phrase;text-wrap:pretty}

@@ -54,3 +54,4 @@
 [data-ar="shift-chart"][data-variant="print"]>[data-part="grid"]>[data-part="head"]>*{display:table-cell}
 [data-ar="shift-chart"][data-variant="print"]>[data-part="grid"]>:is([data-part="row"],[data-part="counts"],[data-part="foot-axis"])>*{display:table-cell;vertical-align:middle}
 [data-ar="shift-chart"][data-variant="print"]>:is([data-part="legend"],[data-part="summary"]){break-inside:avoid;page-break-inside:avoid}
+[data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="range"]{display:inline-flex;align-items:center;gap:inherit}

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 /**
- * ArShiftChart 1.0 — シフトのチャート。1行＝1人のバー（パターンの色・休憩は白い斜線）を、表示する時間の上に並べる。
+ * ArShiftChart 1.1 — シフトのチャート。1行＝1人のバー（パターンの色・休憩は白い斜線）を、表示する時間の上に並べる。
  * バーのドラッグで移動・両端で伸び縮み・休憩の移動と伸び縮み（ドラッグの間隔できざむ）、空いた行のドラッグで追加、提出（緑の点線の枠）からの追加。
  * 下に1時間ごとの人数・募集・不足の行。上に表示する時間・シフトに合わせる・ドラッグの間隔・印刷。読み取り専用・スマホ・印刷用の形を持つ。
  * データは製品の形（0:00 からの分）で受け取り、変えた結果はイベントで返す（保存は製品）。
  */
-import { computed, ref, shallowRef } from "vue";
+import { computed, onBeforeUnmount, ref, shallowRef } from "vue";
 import ArAvatar from "./ArAvatar.vue";
 import ArButton from "./ArButton.vue";
 import ArEmpty from "./ArEmpty.vue";
@@ -182,9 +182,19 @@ function setRange(r: [number, number]) {
   innerRange.value = r;
   emit("update:range", r);
 }
+/** 押したことが分かるように、時間の範囲の欄を少しだけ光らせる（範囲が変わらないときも反応が見える）。 */
+const fitFlash = ref(false);
+let fitFlashTimer: ReturnType<typeof setTimeout> | undefined;
 function fit() {
   setRange(fitted.value);
+  fitFlash.value = false;
+  clearTimeout(fitFlashTimer);
+  requestAnimationFrame(() => {
+    fitFlash.value = true;
+    fitFlashTimer = setTimeout(() => (fitFlash.value = false), 700);
+  });
 }
+onBeforeUnmount(() => clearTimeout(fitFlashTimer));
 const hourText = (m: number, form = axisForm.value) => {
   const h = Math.floor(m / 60);
   if (form === "number") return String(h);
@@ -532,9 +542,11 @@ const keysId = `${uid}-keys`;
     </div>
     <div v-if="showToolbar" data-part="toolbar">
       <span data-part="toolbar-label">{{ L.range }}</span>
-      <ArSelect :model-value="range[0]" :options="fromOptions" size="sm" :label="L.rangeFrom" :list-height="240" @update:model-value="setFrom" />
-      <span aria-hidden="true">〜</span>
-      <ArSelect :model-value="range[1]" :options="toOptions" size="sm" :label="L.rangeTo" :list-height="240" @update:model-value="setTo" />
+      <span data-part="range" :data-state="fitFlash ? 'flash' : undefined">
+        <ArSelect :model-value="range[0]" :options="fromOptions" size="sm" :label="L.rangeFrom" :list-height="240" @update:model-value="setFrom" />
+        <span aria-hidden="true">〜</span>
+        <ArSelect :model-value="range[1]" :options="toOptions" size="sm" :label="L.rangeTo" :list-height="240" @update:model-value="setTo" />
+      </span>
       <ArButton tone="secondary" size="sm" @click="fit">{{ L.fit }}</ArButton>
       <template v-if="!readonly">
         <span data-part="toolbar-sep" aria-hidden="true" />

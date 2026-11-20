@@ -1,13 +1,15 @@
 <script setup lang="ts">
 /**
- * ArBottomNav 1.1 — スマホの下に固定するメニュー。アイコンと小さな名前を等分に並べ、今いるものをテーマ色で示す。
+ * ArBottomNav 1.4 — スマホの下に固定するメニュー。アイコンと小さな名前を等分に並べ、今いるものをテーマ色で示す。
  * 子のある項目を押すと、メニューの上に子の段を出す（今の ARROW のスマホのフッター）。↑ キーで子の段へ、Escape で閉じる。
+ * 子の段を出している間は後ろを暗くして動かさず、押した項目だけを選んだ色にする（幕を押すと閉じる）。
  * 並べきれない項目は右端の「メニュー」に入れ、押すと下から一覧（ArDrawer placement="bottom"）を出す。
  */
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import ArIcon from "./ArIcon.vue";
 import ArDrawer from "./ArDrawer.vue";
 import ArNavSheet from "../internal/ArNavSheet.vue";
+import { lockPageScroll } from "../internal/dialog";
 import { useId } from "../provider/context";
 import type { ArAppNavItem } from "./ArAppHeader.contract";
 import type { ArBottomNavProps } from "./ArBottomNav.contract";
@@ -32,17 +34,18 @@ const showMore = computed(() => props.more === "always" || (props.more !== false
 const shown = computed(() => (showMore.value ? props.items.slice(0, Math.max(0, props.max - 1)) : props.items));
 const rest = computed(() => (props.more === "always" ? props.items : props.items.slice(shown.value.length)));
 const count = computed(() => shown.value.length + (showMore.value ? 1 : 0));
+const openKey = ref<string | null>(null);
 const has = (it: ArAppNavItem, key?: string) => key !== undefined && (it.key === key || !!it.children?.some((c) => c.key === key));
 const moreOn = computed(
   () =>
     showMore.value &&
+    openKey.value === null &&
     (props.moreCurrent || (rest.value.some((it) => has(it, props.current)) && !shown.value.some((it) => has(it, props.current)))),
 );
 
 /* 子の段 */
 const rootEl = ref<HTMLElement | null>(null);
 const subEl = ref<HTMLElement | null>(null);
-const openKey = ref<string | null>(null);
 const openItem = computed(() => shown.value.find((it) => it.key === openKey.value));
 const openIndex = computed(() => shown.value.findIndex((it) => it.key === openKey.value));
 const itemEls = new Map<string, HTMLElement>();
@@ -89,10 +92,22 @@ function onSubKey(e: KeyboardEvent) {
   }
 }
 function onDoc(e: PointerEvent) {
+  // 幕は click で閉じる（押した瞬間に消すと、指を離したときに下の画面を押してしまう）。
+  if ((e.target as Element | null)?.closest?.('[data-ar="bottom-nav-scrim"]')) return;
   if (openKey.value && !rootEl.value?.contains(e.target as Node)) openKey.value = null;
 }
 onMounted(() => document.addEventListener("pointerdown", onDoc, true));
-onBeforeUnmount(() => document.removeEventListener("pointerdown", onDoc, true));
+let scrollLocked = false;
+function setScrollLock(on: boolean) {
+  if (on === scrollLocked) return;
+  scrollLocked = on;
+  lockPageScroll(on);
+}
+watch(() => !!openItem.value?.children?.length, setScrollLock);
+onBeforeUnmount(() => {
+  document.removeEventListener("pointerdown", onDoc, true);
+  setScrollLock(false);
+});
 
 /* 「メニュー」の一覧 */
 const innerOpen = ref(false);
@@ -128,7 +143,7 @@ function onSheetNav(key: string, e: MouseEvent) {
       :key="it.key"
       :ref="(el: unknown) => setRef(it.key, el)"
       data-part="item"
-      :data-state="[has(it, current) && 'on', openKey === it.key && 'open'].filter(Boolean).join(' ') || undefined"
+      :data-state="[has(it, current) && (openKey === null || openKey === it.key) && 'on', openKey === it.key && 'open'].filter(Boolean).join(' ') || undefined"
       :data-ar-palette="it.palette"
       :href="it.href"
       :type="it.href ? undefined : 'button'"
@@ -190,6 +205,7 @@ function onSheetNav(key: string, e: MouseEvent) {
       </component>
     </div>
   </nav>
+  <div v-if="openItem?.children?.length" data-ar="bottom-nav-scrim" aria-hidden="true" @click="closeSub(false)" />
   <ArDrawer v-if="showMore && moreSheet" :open="sheetOpen" :title="L.more" placement="bottom" @update:open="setSheet">
     <ArNavSheet :items="rest" :current="current" :label="L.more" @navigate="onSheetNav" />
   </ArDrawer>

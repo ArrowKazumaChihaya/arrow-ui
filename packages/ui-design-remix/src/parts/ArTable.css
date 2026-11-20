@@ -1,4 +1,4 @@
-/* @covers ArTable 1.8.0 */
+/* @covers ArTable 1.9.0 */
 /* ArTable（box＝.lst/.lr：外枠 角丸12・線、見出し34・行44。board＝シフト画面の .v-tr：外枠なし、角の丸い見出し・行50・合計の帯） */
 [data-ar-design="remix"] [data-ar="table"]{font-feature-settings:"palt" 1;color:var(--ar-color-text);font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.5}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="viewport"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:2px}
@@ -210,3 +210,6 @@
 /* board：2行目以降の行（時刻が複数ある人）は低くする。1行 50px のまま行数分だけ高くならないように */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody[data-part="body"]>tr[data-part="row"][data-line]:not([data-line="0"][data-line-last]){height:36px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody[data-part="body"]>tr[data-part="row"][data-line][data-state~="editing"]:not([data-line="0"][data-line-last]){height:40px}
+/* 見出しは文節で折り返す（「会社負／担」のように語の途中で切れないように）。列に入らない長い語だけは途中で折る。 */
+[data-ar-design="remix"] [data-ar="table"] thead th{word-break:auto-phrase;overflow-wrap:anywhere;text-wrap:pretty}
+[data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-hint"]{padding-right:2px;border-radius:0 12px 12px 0;background:linear-gradient(to right,transparent,rgba(31,41,51,.10));color:var(--ar-color-text-muted)}

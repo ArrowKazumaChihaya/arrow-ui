@@ -1,4 +1,4 @@
-/* @covers ArButton 1.1.0 */
+/* @covers ArButton 1.2.0 */
 /* ArButton（今の ARROW の Button：ui-Button）。antd の Button に ARROW の上書き（ant_button_wrap）を重ねた形。
    高さ32・角丸6・左右7px・枠1px。文字は .text_wrap（13px 400 游ゴシック・行の高さ30）、アイコンは ARROW のアイコン（16px・文字との間5px）。
    塗りの種類は背景＝枠＝色（primary＝add #4395D4、edit #69AF8A、danger＝delete #CA3A31、dark＝lock など #000）・白い文字・影 0 2px 0 rgba(5,145,255,.1)。

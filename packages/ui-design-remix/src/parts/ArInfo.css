@@ -10,3 +10,5 @@
 [data-ar-design="remix"] [data-ar="info"][data-kind="detail"]:hover{background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="info"]:is([data-kind="mark"],[data-kind="detail"]):focus-visible{outline:0;box-shadow:0 0 0 3px var(--ar-accent-ring)}
 [data-ar-design="remix"] [data-ar="info"]{font-feature-settings:"palt" 1}
+/* 説明の文の最後の1文字だけが次の行に落ちないように。 */
+[data-ar-design="remix"] [data-ar="info"]{text-wrap:pretty}

@@ -1,4 +1,4 @@
-/* @covers ArAppHeader 1.2.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.3.0 */
+/* @covers ArAppHeader 1.2.0, ArAppFooter 1.0.0, ArMobileHeader 1.1.0, ArBottomNav 1.4.0 */
 /* 画面の頭（Header .v-hd：1段目38・2段目の項目36・今いる項目はテーマ色の塗り・下端3pxのテーマ色の線） */
 [data-ar-design="remix"] [data-ar="app-header"]{z-index:60;background:#fff;box-shadow:0 1px 0 var(--ar-color-border),0 6px 24px rgba(31,41,51,.04);color:var(--ar-color-text);font-size:calc(14px * var(--ar-font-scale, 1));line-height:1.5;font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="app-header"]::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--ar-accent)}
@@ -31,7 +31,8 @@
 [data-ar-design="remix"] [data-ar="app-account-menu"]{min-width:200px}
 [data-ar-design="remix"] [data-ar="app-account-menu"]>[data-part="menu-item"]>[data-part="menu-arrow"][data-ar="icon"]{margin-left:auto;color:var(--ar-color-text-faint)}
 /* 画面の足（.v-fo：左に文字のリンク、右に白いボタン。下に .v-cp の著作権：11px・左寄せ・下に26px） */
-[data-ar-design="remix"] [data-ar="app-footer"]{padding:30px 32px 0;padding-inline-end:max(32px,var(--ar-app-footer-end-inset,0px));color:var(--ar-color-text);font-feature-settings:"palt" 1}
+/* フッターの左右は画面の中身（ページの左右の余白 20px）とそろえる。右下のマスコット（AIチャットの入口）は重なる操作を避けて動くので、右に場所を空けない。 */
+[data-ar-design="remix"] [data-ar="app-footer"]{padding:30px 20px 0;color:var(--ar-color-text);font-feature-settings:"palt" 1}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]{align-items:center;gap:6px;padding-bottom:10px}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>:is([data-part="links"],[data-part="supports"]){gap:6px}
 [data-ar-design="remix"] [data-ar="app-footer"]>[data-part="row"]>[data-part="links"]>[data-part="link"]{display:inline-flex;align-items:center;height:30px;padding:0 10px;border:0;border-radius:8px;background:none;color:var(--ar-color-text-secondary);font-size:calc(12.5px * var(--ar-font-scale, 1));font-weight:600;line-height:1.4}
@@ -288,3 +289,4 @@
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-state~="on"]{border-color:var(--hd-line,var(--ar-accent-ring));background:var(--hd-tint,var(--ar-accent-subtle));color:var(--hd-ink,var(--ar-accent-ink));box-shadow:none}
 [data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"][data-state~="on"]>[data-part="item-icon"]{background:var(--hd-ink,var(--ar-accent));color:#fff}
 @media (prefers-reduced-motion: reduce){[data-ar-design="remix"] [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]:hover{transform:none}}
+[data-ar-design="remix"] [data-ar="bottom-nav-scrim"]{background:var(--ar-color-overlay)}

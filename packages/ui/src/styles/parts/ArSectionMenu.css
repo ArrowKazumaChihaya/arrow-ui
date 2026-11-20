@@ -7,3 +7,5 @@
 [data-ar="section-menu"][data-scroll]>[data-part="content"] [id]{scroll-margin-top:var(--ar-section-menu-scroll-offset,50px)}
 /* スマホの切り替えセレクトは、下のカードと同じ幅いっぱいにする（選択欄の既定の最大幅を外す）。 */
 [data-ar="section-menu"] [data-part="mobile"]{--ar-field-control-size:100%}
+/* 左のメニューは長いページでも見えるように、PC では画面に付いてくる（メニューが画面より高いときはメニューの中を動かす）。 */
+@media(min-width:901px){[data-ar="section-menu"]>[data-part="navigation"]{position:sticky;top:20px;z-index:1;max-height:calc(100vh - 40px);overflow-y:auto}}

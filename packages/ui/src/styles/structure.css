@@ -109,6 +109,8 @@
 [data-ar="modal"]>[data-part="panel"]>[data-part="body"]{flex:1;overflow:auto;min-height:0}
 [data-ar="modal"]>[data-part="panel"]>[data-part="footer"]{display:flex;justify-content:flex-end;flex-wrap:wrap;flex:none}
 [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{cursor:pointer;flex:none}
+/* モーダルを開くとスクロールを止める。スクロールバーの分の幅はいつも取っておき、背景が左右にずれないようにする。 */
+html{scrollbar-gutter:stable}
 html[data-ar-modal-open]{overflow:hidden}
 [data-ar="text-input"]{display:inline-flex;align-items:center;box-sizing:border-box;vertical-align:middle;min-width:0}
 [data-ar="text-input"]>[data-part="input"]{flex:1;min-width:0;border:0;outline:0;background:transparent;margin:0;font:inherit;color:inherit}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArButton 1.0 — ボタン。種類（tone）・大きさ・形・アイコン・読み込み中・押せない・幅いっぱい。
+ * ArButton 1.2 — ボタン。種類（tone）・大きさ・形・アイコン・読み込み中・押せない・幅いっぱい。
  * href を渡すとリンク（a 要素）として出す。
  * 後ろのアイコン（iconEnd：開く∨など）はいつも線で描く（今の ARROW のボタンには後ろのアイコンが無く、開く印は antd の∨のため）。
  */
@@ -78,7 +78,7 @@ function onClick(e: MouseEvent) {
     :aria-disabled="(href && inactive) || explains ? 'true' : undefined"
     :aria-busy="loading || undefined"
     :aria-label="iconOnly() ? label : undefined"
-    :title="iconOnly() ? label : undefined"
+    :title="explains ? disabledReason : iconOnly() ? label : undefined"
     @click="onClick"
   >
     <span v-if="loading" data-part="spinner" aria-hidden="true" />

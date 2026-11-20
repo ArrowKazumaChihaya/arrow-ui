@@ -86,3 +86,5 @@
 [data-ar="app-domain-menu"]>[data-part="domain-menu-item"]>[data-part="domain-menu-icon"]{display:inline-flex;align-items:center;justify-content:center;flex:none}
 [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-label"]{display:inline-flex;flex-direction:column;align-items:center}
 [data-ar="app-header"]>[data-part="nav"]>[data-part="item"]>[data-part="item-label"]::after{content:attr(data-label);display:block;height:0;overflow:hidden;visibility:hidden;font-weight:700;pointer-events:none}
+/* 下部ナビの子の段を出している間の幕（下部ナビのすぐ下に重ねる。押すと閉じる） */
+[data-ar="bottom-nav-scrim"]{position:fixed;inset:0;z-index:899}
