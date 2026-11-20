@@ -105,3 +105,5 @@
 /* 「シフトに合わせる」を押したとき：時間の選択欄を選んだときと同じ青い枠を、少しのあいだ出して反応を見せる。 */
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="fit"]{transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="fit"][data-flash]{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
+/* 表示する時間の選択欄：「翌3時」が入る幅に（一般の選択欄の最小幅 120px にしない）。 */
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="range"]>[data-ar="select"]{width:92px;min-width:0}

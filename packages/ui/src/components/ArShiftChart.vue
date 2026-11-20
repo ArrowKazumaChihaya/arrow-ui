@@ -543,9 +543,9 @@ const keysId = `${uid}-keys`;
     <div v-if="showToolbar" data-part="toolbar">
       <span data-part="toolbar-label">{{ L.range }}</span>
       <span data-part="range">
-        <ArSelect :model-value="range[0]" :options="fromOptions" size="sm" :label="L.rangeFrom" :width="92" :list-height="240" @update:model-value="setFrom" />
+        <ArSelect :model-value="range[0]" :options="fromOptions" size="sm" :label="L.rangeFrom" :searchable="false" :list-height="240" @update:model-value="setFrom" />
         <span aria-hidden="true">〜</span>
-        <ArSelect :model-value="range[1]" :options="toOptions" size="sm" :label="L.rangeTo" :width="92" :list-height="240" @update:model-value="setTo" />
+        <ArSelect :model-value="range[1]" :options="toOptions" size="sm" :label="L.rangeTo" :searchable="false" :list-height="240" @update:model-value="setTo" />
       </span>
       <ArButton tone="secondary" size="sm" data-part="fit" :data-flash="fitFlash ? '' : undefined" @click="fit">{{ L.fit }}</ArButton>
       <template v-if="!readonly">
