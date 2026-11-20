@@ -1,8 +1,9 @@
 <script setup lang="ts">
 /**
- * ArPeriodBox 1.0 — 期間の箱。1か月／半月／カスタムの切り替えと期間、中に決まり（スロット）、下に「適用」。
+ * ArPeriodBox 1.1 — 期間の箱。1か月／半月／カスタムの切り替えと期間、中に決まり（スロット）、下に「適用」。
  * 期間は "YYYY-MM-DD" の start・end で受け渡し、1か月・半月を選ぶと月の初め〜末日、1〜15日／16日〜末日にそろえる。
  * 日付を直して1か月・半月に合わなくなったら「カスタム」に変える。形（range／nav）はデザインが選ぶ。
+ * 1.1：modes にカスタムがないときは、日付を打つ欄を出さず、月の切り替え（半月は前半・後半）と期間の文字（曜日・日数つき）を出す。
  */
 import { computed } from "vue";
 import ArButton from "./ArButton.vue";
@@ -86,6 +87,19 @@ function onRange(r: ArDateRangeValue) {
   const mode: ArPeriodMode = same(month) && props.modes.includes("month") ? "month" : same(half) && props.modes.includes("half") ? "half" : "custom";
   set({ mode, start: r.start, end: r.end });
 }
+/** 1.1：カスタムを選べないときは、日付を自由に打たせない（月と前半・後半で決める）。 */
+const fixedOnly = computed(() => !props.modes.includes("custom"));
+const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"];
+function dayText(s: string): { text: string; weekday: string; kind: string } {
+  const p = parts(s);
+  const w = new Date(p.y, p.m - 1, p.d).getDay();
+  return { text: `${p.m}月${p.d}日`, weekday: `（${(L.value.weekdays ?? WEEKDAYS)[w]}）`, kind: w === 0 ? "sun" : w === 6 ? "sat" : "weekday" };
+}
+const periodDays = computed(() => {
+  const a = parts(props.modelValue.start);
+  const b = parts(props.modelValue.end);
+  return Math.round((Date.UTC(b.y, b.m - 1, b.d) - Date.UTC(a.y, a.m - 1, a.d)) / 86400000) + 1;
+});
 const monthLabel = computed(() => `${start.value.y}年${start.value.m}月`);
 </script>
 
@@ -123,7 +137,38 @@ const monthLabel = computed(() => `${start.value.y}年${start.value.m}月`);
           <ArSegmented v-if="modeOptions.length > 1" :model-value="modelValue.mode" :options="modeOptions" :label="L.modes" size="sm" :disabled="disabled" @update:model-value="pickMode" />
           <span v-if="hint" data-part="hint">{{ hint }}</span>
         </div>
+        <div v-if="fixedOnly" data-part="fixed">
+          <ArPeriodNav
+            data-part="nav"
+            :label="monthLabel"
+            :labels="{ prev: L.prevMonth, next: L.nextMonth, pick: label }"
+            :prev-disabled="disabled"
+            :next-disabled="disabled"
+            @prev="shiftMonth(-1)"
+            @next="shiftMonth(1)"
+          />
+          <ArSegmented
+            v-if="modelValue.mode === 'half'"
+            :model-value="isSecond ? 'second' : 'first'"
+            :options="[
+              { value: 'first', label: L.first },
+              { value: 'second', label: L.second },
+            ]"
+            :label="L.halves"
+            size="sm"
+            :disabled="disabled"
+            @update:model-value="pickHalf"
+          />
+          <span data-part="period" aria-live="polite">
+            <template v-for="(d, i) in [dayText(modelValue.start), dayText(modelValue.end)]" :key="i">
+              <span v-if="i === 1" data-part="tilde">〜</span>
+              <span data-part="date">{{ d.text }}<span data-part="weekday" :data-kind="d.kind">{{ d.weekday }}</span></span>
+            </template>
+            <span data-part="days">{{ (L.days ?? ((n: number) => `${n}日間`))(periodDays) }}</span>
+          </span>
+        </div>
         <ArDateRange
+          v-else
           data-part="range"
           :model-value="{ start: modelValue.start || null, end: modelValue.end || null }"
           show-days

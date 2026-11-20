@@ -4,3 +4,6 @@
 [data-ar="period-box"]>[data-part="box"]>[data-part="modes"]{display:flex;flex-wrap:wrap;align-items:center}
 [data-ar="period-box"]>[data-part="apply"]{display:flex;align-items:center}
 [data-ar="period-box"]>[data-part="box"]>[data-part="actions"]{display:flex;justify-content:flex-end}
+/* 1.1：カスタムがないときの、月の切り替え・前半後半・期間の文字。 */
+[data-ar="period-box"]>[data-part="box"]>[data-part="fixed"]{display:flex;flex-wrap:wrap;align-items:center;min-width:0}
+[data-ar="period-box"]>[data-part="box"]>[data-part="fixed"]>[data-part="period"]{display:inline-flex;flex-wrap:wrap;align-items:baseline}

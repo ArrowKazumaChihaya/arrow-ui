@@ -1,4 +1,4 @@
-/* @covers ArPeriodBox 1.0.0 */
+/* @covers ArPeriodBox 1.1.0 */
 /* ArPeriodBox（PopRecruit の「募集する期間」：切り替え（.seg sm）の右に 11.5px の灰色の説明、下に年・月・日の範囲と「30日間」。
    決まりは下に間14、適用は右寄せの主ボタン（PopBulk の「日付に当てはめる」：カレンダーの印つき）。箱の枠は描かない） */
 [data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="modes"]{gap:6px 10px}
@@ -6,3 +6,11 @@
 [data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="range"]{margin-top:8px}
 [data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="body"]{margin-top:14px}
 [data-ar-design="remix"] [data-ar="period-box"]>[data-part="apply"]{justify-content:flex-end;gap:8px;margin-top:14px}
+/* 1.1：月の切り替え・前半後半・期間の文字（日付は 14px 700、曜日は土青・日赤、日数は控えめ）。 */
+[data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="fixed"]{gap:8px 14px;margin-top:8px}
+[data-ar-design="remix"] [data-ar="period-box"]>[data-part="box"]>[data-part="fixed"]>[data-part="period"]{gap:4px 6px;color:var(--ar-color-text);font-size:calc(14px * var(--ar-font-scale, 1));font-weight:700;font-variant-numeric:tabular-nums}
+[data-ar-design="remix"] [data-ar="period-box"] [data-part="period"] [data-part="weekday"]{font-weight:500;color:var(--ar-color-text-muted)}
+[data-ar-design="remix"] [data-ar="period-box"] [data-part="period"] [data-part="weekday"][data-kind="sun"]{color:var(--ar-color-sun)}
+[data-ar-design="remix"] [data-ar="period-box"] [data-part="period"] [data-part="weekday"][data-kind="sat"]{color:var(--ar-color-sat)}
+[data-ar-design="remix"] [data-ar="period-box"] [data-part="period"] :is([data-part="tilde"],[data-part="days"]){color:var(--ar-color-text-muted);font-weight:500}
+[data-ar-design="remix"] [data-ar="period-box"] [data-part="period"]>[data-part="days"]{margin-left:6px;font-size:calc(12.5px * var(--ar-font-scale, 1))}

@@ -1,5 +1,5 @@
 /**
- * ArPeriodBox 1.0 の契約。シフトのポップアップ（募集・一括登録・一括削除・Excel）の「期間の箱」：
+ * ArPeriodBox 1.1 の契約。シフトのポップアップ（募集・一括登録・一括削除・Excel）の「期間の箱」：
  * 1か月／半月（／カスタム）の切り替えと期間、決まり（曜日ごとの時間など。中身は製品が default のスロットに置く）、「適用」。
  *
  * デザインが選ぶ形（ArDesign.forms.ArPeriodBox）。値の受け渡し（v-model・apply）はどの形でも同じ。
@@ -31,12 +31,18 @@ export interface ArPeriodBoxLabels {
   /** 切り替えのまとまりの名前（読み上げ）。 */
   modes: string;
   halves: string;
+  /** 1.1：カスタムがないときの期間の文字の曜日（日〜土）と日数（「30日間」）。 */
+  weekdays?: readonly string[];
+  days?: (n: number) => string;
 }
 
 export interface ArPeriodBoxProps {
   /** 期間（v-model）。 */
   modelValue: ArPeriodBoxValue;
-  /** 出す切り替え（既定は 1か月・半月・カスタム。layout="nav" ではカスタムを出さない）。 */
+  /**
+   * 出す切り替え（既定は 1か月・半月・カスタム。layout="nav" ではカスタムを出さない）。
+   * 1.1：カスタムを含まないときは、日付を打つ欄を出さず、月の切り替えと前半・後半で決める（打った日が使われないのに見えてしまうため）。
+   */
   modes?: readonly ArPeriodMode[];
   /** 「適用」のボタンの文字。渡したときだけ出し、押すと apply。 */
   applyText?: string;

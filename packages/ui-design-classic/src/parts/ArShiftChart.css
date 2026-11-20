@@ -1,4 +1,4 @@
-/* @covers ArShiftChart 1.1.0 */
+/* @covers ArShiftChart 1.2.0 */
 /* ArShiftChart：今の ARROW のシフトチャート（View/Manager/Shift/Calendar/Chart/Daily.vue。scoped の CSS を ARROW_front で描いて実測）。
    右上に Toggle（「当店舗シフトのみを表示」）、表は幅いっぱい・最小 600px。行は 50px で上に lightgray の線、名前の列 160px（左 15px・14px 600・行の高さ 20px）、
    名前の前に 30px の吹き出しの丸（#5DB2B7・右に 7.5px の三角・白い人の絵 16px に rgb(50,50,50) の 2px の線）。

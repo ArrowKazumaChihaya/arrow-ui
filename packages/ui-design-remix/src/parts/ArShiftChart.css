@@ -1,4 +1,4 @@
-/* @covers ArShiftChart 1.1.0 */
+/* @covers ArShiftChart 1.2.0 */
 /* ArShiftChart：シフトのキャンバスの日の詳細の「チャート」（RxChart。bundle.css の .r-ch・.r-chbar・.r-chg・.r-chn・.r-trk・.r-bar・.r-brk・.r-hd・.r-avb・.r-ob・.r-pl・.r-lvb・.r-heat・.r-chleg・.r-chs）。
    操作の行 12.5px（ラベル 700）・区切り 1×20、表は角丸12・ln の内側の線、見出し 30px acc-50（名前 11.5px 700 acc-ink・時刻 11px 700）、
    名前 168px（頭文字の丸 28px・名前 13px 700・時間 10.5px mute）、行 46px・1時間ごとの ln-2 の線、バー 11px から 24px の角丸7（パターンの色・白い 11px 700 の時刻）、
@@ -104,6 +104,6 @@
 [data-ar-design="remix"] [data-ar="shift-chart"][data-variant="print"]>[data-part="summary"]{border:1px solid #DCE2E8;background:#fff}
 /* 「シフトに合わせる」を押したら、時間の範囲の欄を一瞬テーマ色で囲む（範囲が変わらないときも押したことが分かる）。 */
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="range"]{border-radius:10px}
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="range"][data-state~="flash"]{animation:ar-shift-chart-fit .7s ease-out}
-@keyframes ar-shift-chart-fit{0%{box-shadow:0 0 0 0 var(--ar-accent-ring),0 0 0 0 transparent;background:var(--ar-accent-subtle)}40%{box-shadow:0 0 0 4px var(--ar-accent-ring)}100%{box-shadow:0 0 0 8px transparent;background:transparent}}
-@media (prefers-reduced-motion: reduce){[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="range"][data-state~="flash"]{animation:none;box-shadow:0 0 0 3px var(--ar-accent-ring)}}
+@media (prefers-reduced-motion: reduce){/* 「シフトに合わせる」を押したとき：時間の選択欄を選んだときと同じ青い枠を、少しのあいだ出して反応を見せる。 */
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="fit"]{transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
+[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="fit"][data-flash]{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
