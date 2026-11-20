@@ -52,7 +52,7 @@ export const covers = {
   ArFloatButton: "1.0.0",
   ArForm: "1.0.0",
   ArFormatIcon: "1.0.0",
-  ArIcon: "1.0.0",
+  ArIcon: "1.1.0",
   ArImage: "1.0.0",
   ArInfo: "1.0.0",
   ArInputNumber: "1.0.0",

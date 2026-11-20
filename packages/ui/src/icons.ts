@@ -1,3 +1,5 @@
+import type { ArSetIconName } from "./iconSets";
+
 /** ARROW の線のアイコン（24×24・線の太さ1.8・角は丸）。名前 → SVG の中身。 */
 export const icons = {
   "cal": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"></rect><path d=\"M16 2v4M8 2v4M3 10h18\"></path>", // カレンダー・シフト
@@ -120,4 +122,5 @@ export const icons = {
   "logout": "<path d=\"M10 4.5H6.5A1.5 1.5 0 0 0 5 6v12a1.5 1.5 0 0 0 1.5 1.5H10M14 8l4 4-4 4M18 12H9\"></path>", // ログアウト
   "apps": "<rect x=\"4\" y=\"4\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect><rect x=\"13.5\" y=\"4\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect><rect x=\"4\" y=\"13.5\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect><rect x=\"13.5\" y=\"13.5\" width=\"6.5\" height=\"6.5\" rx=\"1.6\"></rect>", // システムの切り替え（2×2の四角）
 } as const;
-export type ArIconName = keyof typeof icons;
+/** ARROW の線のアイコンの名前か、追加の組のアイコンの名前（「組の名前:アイコンの名前」。iconSets.ts）。 */
+export type ArIconName = keyof typeof icons | ArSetIconName;

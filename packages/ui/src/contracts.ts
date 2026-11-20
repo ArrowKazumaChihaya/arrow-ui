@@ -19,7 +19,7 @@ export const contracts = {
   ArStack: "1.1.0",
   ArButton: "1.1.0",
   ArFloatButton: "1.0.0",
-  ArIcon: "1.0.0",
+  ArIcon: "1.1.0",
   ArLink: "1.0.0",
   ArParagraph: "1.1.0",
   ArSegmented: "1.2.0",

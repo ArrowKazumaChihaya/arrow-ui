@@ -10,6 +10,8 @@ export { defineDesign, ArDesignError } from "./design";
 export type { ArDesign, ArDesignTone } from "./design";
 export { icons } from "./icons";
 export type { ArIconName } from "./icons";
+export { registerIconSet, loadIconSet } from "./iconSets";
+export type { ArSetIconName, ArIconSet } from "./iconSets";
 export { useArUi, captureArUiContext } from "./provider/context";
 export { componentMeta } from "./contracts";
 export * from "./components.generated";

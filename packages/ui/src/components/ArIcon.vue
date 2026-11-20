@@ -1,6 +1,7 @@
 <script setup lang="ts">
 /**
- * ArIcon 1.0 — ARROW のアイコン。ふだんはライブラリの線のアイコン。
+ * ArIcon 1.1 — ARROW のアイコン。ふだんはライブラリの線のアイコン。
+ * 「組の名前:アイコンの名前」（例 lucide:arrow-up）は、アプリが registerIconSet で足した組の線の絵を描く。
  * デザインがその名前の絵（ArDesign.icons）を持っていれば、その絵を描く（例：classic は今の ARROW の塗りの絵）。
  * 部品の中の印（開閉の∨・閉じる×・チェックの✓・ページ送りの‹› など）は line を付けて、いつも線で描く
  * （classic でも今の ARROW はそこに antd の印を使っていて、ARROW の塗りの絵ではないため）。
@@ -8,6 +9,7 @@
  */
 import { computed } from "vue";
 import { icons, type ArIconName } from "../icons";
+import { isSetIconName, setIconBody } from "../iconSets";
 import { useArUi } from "../provider/context";
 
 const props = withDefaults(
@@ -41,6 +43,8 @@ const drawn = computed(() => {
   const svg = props.line ? undefined : ui?.design.value.icons?.[props.name];
   return svg ? parse(svg) : null;
 });
+/** 線の絵の中身。追加の組は読み終わるまで空。 */
+const lineBody = computed(() => (isSetIconName(props.name) ? setIconBody(props.name) : icons[props.name]));
 </script>
 
 <template>
@@ -72,6 +76,6 @@ const drawn = computed(() => {
     :aria-label="label"
     :aria-hidden="label ? undefined : 'true'"
     focusable="false"
-    v-html="icons[name]"
+    v-html="lineBody"
   />
 </template>
