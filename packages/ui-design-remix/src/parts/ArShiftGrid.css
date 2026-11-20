@@ -65,7 +65,8 @@
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="name"]>[data-part="member"]>[data-part="member-name"]{font-size:calc(13px * var(--ar-font-scale, 1));font-weight:700;line-height:19.5px}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="name"]>[data-part="member"]>[data-part="summary"]{font-size:calc(10.5px * var(--ar-font-scale, 1));line-height:1.35;color:var(--ar-color-text-muted)}
 [data-ar-design="remix"] [data-ar="shift-grid"][data-compact] [data-part="name"]>[data-part="member"]>[data-part="summary"]{font-size:calc(9.5px * var(--ar-font-scale, 1))}
-[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="summary"]>span:not(:last-child)::after{content:"・"}
+/* 名前の下の集計（時間・勤務日数・休みの日数）は1つずつ行を分ける。「・」の後ろで折り返して人によって2行・3行に揺れないように。 */
+[data-ar-design="remix"] [data-ar="shift-grid"] [data-part="summary"]>span{display:block}
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"]{min-height:28px;padding:2px;background:#fff;cursor:cell}
 [data-ar-design="remix"] [data-ar="shift-grid"] /* 土日だけの色分けはしない（法定休日・法定外休日は人ごとの設定で、曜日では決まらないため。日付の見出しの曜日の色だけ残す） */
 [data-ar-design="remix"] [data-ar="shift-grid"] [data-part="cell"][data-today]{background:color-mix(in srgb,var(--ar-accent) 4%,#fff)}
