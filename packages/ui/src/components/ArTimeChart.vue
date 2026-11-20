@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArTimeChart 1.2 — 時間の横棒のチャート。month は1日＝1行の1か月（勤怠の種類ごとの色の帯・上の線がシフト・下の線が深夜）、day は1日の内容ごとの行。
+ * ArTimeChart 1.3 — 時間の横棒のチャート。month は1日＝1行の1か月（勤怠の種類ごとの色の帯・上の線がシフト・下の線が深夜）、day は1日の内容ごとの行。
  * 帯に乗せると「種類・時間帯・時間数」の吹き出し。month の日付は押せる（select。その日の大きなチャートを開く）。
  * キーボード：month の日付は Tab で移って Enter。行の読み上げに帯の中身（種類・時間帯）を含める。
  */
@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<ArTimeChartProps>(), {
   compact: false,
   legendOnly: false,
   stacked: false,
+  columns: undefined,
 });
 const emit = defineEmits<{ select: [row: ArTimeChartRow] }>();
 
@@ -186,11 +187,14 @@ const blockStyle = (x: StackBlock) => ({
   bottom: `calc(var(--ar-chart-stack-unit, 64px) * ${x.bottom})`,
   height: `calc(var(--ar-chart-stack-unit, 64px) * ${x.height})`,
 });
+/** 1.3：month だけ、日付とチャートの間に文字の列を並べる。 */
+const infoColumns = computed(() => (props.mode === "month" ? (props.columns ?? []) : []));
+const infoStyle = computed(() => ({ "--ar-chart-info-count": String(infoColumns.value.length) }));
 const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付・形態" : "内容"));
 </script>
 
 <template>
-  <div data-ar="time-chart" data-part="root" :data-mode="mode" :data-compact="compact ? '' : undefined" role="group" :aria-label="label">
+  <div data-ar="time-chart" data-part="root" :data-mode="mode" :data-compact="compact ? '' : undefined" :data-info="infoColumns.length ? '' : undefined" role="group" :aria-label="label">
     <div v-if="legendKinds.length || hint" data-part="legend">
       <span v-for="k in legendKinds" :key="k" data-part="legend-item"><i data-part="swatch" :data-kind="k" :data-lane="lane(k)" aria-hidden="true" />{{ legendText(k) }}</span>
       <span v-if="hint" data-part="hint"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>{{ hint }}</span>
@@ -217,6 +221,9 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
     <div v-else-if="!legendOnly" data-part="grid" role="table" :aria-label="label" :style="{ '--ar-chart-tick-width': `${Math.max(0, ticks.length - 1) * 48}px` }">
       <div data-part="head" role="row">
         <div data-part="head-label" role="columnheader">{{ head }}</div>
+        <div v-if="infoColumns.length" data-part="head-info" :style="infoStyle">
+          <span v-for="c in infoColumns" :key="c.key" data-part="info-cell" role="columnheader">{{ c.label }}</span>
+        </div>
         <div data-part="ticks" role="columnheader" aria-hidden="true">
           <span v-for="(t, index) in ticks" :key="t.m" data-part="tick" :style="{ left: `${t.left}%`, marginLeft: 0, transform: tickShift(index) }">{{ t.text }}</span>
         </div>
@@ -237,6 +244,9 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
         <div v-else data-part="row-label" role="rowheader" :style="rowHeight(r)">
           <b data-part="date">{{ r.label }}</b>
           <small v-if="r.sub" data-part="sub">{{ r.sub }}</small>
+        </div>
+        <div v-if="infoColumns.length" data-part="info" :style="infoStyle">
+          <span v-for="c in infoColumns" :key="c.key" data-part="info-cell" role="cell">{{ r.cells?.[c.key] ?? "" }}</span>
         </div>
         <div data-part="lane" role="cell" :aria-label="rowAria(r)" :style="stacked ? stackedRowHeight(r) : rowHeight(r)" :data-stacked="stacked ? '' : undefined">
           <span v-for="t in ticks" :key="t.m" data-part="gridline" aria-hidden="true" :style="{ left: `${t.left}%` }" />

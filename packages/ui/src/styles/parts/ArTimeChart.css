@@ -48,3 +48,8 @@
 [data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"][data-row-line]{position:absolute;bottom:6px;display:block;height:var(--ar-chart-row-stack-line,4px)}
 [data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"]:is([data-row-block],[data-row-line]) [data-part="block"]{display:block;width:100%;height:100%;box-sizing:border-box}
 [data-ar="time-chart"] [data-part="lane"]>[data-ar="tooltip"][data-row-block] [data-part="block"][data-lifted]{border-bottom:1px dashed #fff}
+/* 1.3：日付とチャートの間の文字の列（シフト・勤怠・休憩など）。狭い画面ではチャートだけにする。 */
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="head-info"],
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="info"]{display:grid;grid-template-columns:repeat(var(--ar-chart-info-count,1),minmax(84px,auto));align-items:center;min-width:0}
+[data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="info"]>[data-part="info-cell"]{white-space:pre-line;font-variant-numeric:tabular-nums}
+@media(max-width:1199px){[data-ar="time-chart"]>[data-part="grid"]>:is([data-part="head"],[data-part="row"])>:is([data-part="head-info"],[data-part="info"]){display:none}}

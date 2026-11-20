@@ -157,7 +157,7 @@ export const contracts = {
   ArShiftGrid: "1.3.0",
   ArShiftViewTable: "1.0.0",
   ArThumbnail: "1.3.0",
-  ArTimeChart: "1.2.0",
+  ArTimeChart: "1.3.0",
   ArViewOptions: "1.1.0",
   ArYearInput: "1.1.0",
   ArYearMonthInput: "1.1.0",

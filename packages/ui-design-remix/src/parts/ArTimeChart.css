@@ -1,4 +1,4 @@
-/* @covers ArTimeChart 1.2.0 */
+/* @covers ArTimeChart 1.3.0 */
 /* ArTimeChart：勤怠キャンバスの勤怠詳細の「チャート」（.r-chleg 凡例 11.5px・16×10 角丸3 の色、.r-chg 角丸12・ln の内側の線、見出し acc-50 の 30px・11.5px 700 acc-ink、目盛り 10.5px 700、
    日の名前 168px（12.5px 700・曜日 日は赤 土は青・形態 11px mute）、帯の場所 高さ38・ln-2 の上の線・#EEF1F4 の目盛りの線、土日は #FAFBFD の地・有給全日は斜線の地、
    帯：シフトは上の 4px の線（#5591CE）、勤務は 13px から 16px の角丸4（通常 #4EB187。割増の色は今の ARROW と同じ系統：法定内残業 #FFA8A8・法定外残業 #FF5656・週 #BE3F3F・月 #742828・60時間 #DB0000・法定外休日 #FFF27A・法定休日 #DCCF56）、深夜は下の 4px の線（#6126A5）、休憩は灰色の斜線、打刻もれは赤い斜線）
@@ -87,3 +87,8 @@
 /* stacked の行：month の帯の置き方（上から13px・高さ16px）を使わず、下からの積み上げにする（シフトは細い線） */
 [data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"][data-stacked]>[data-ar="tooltip"]{top:auto}
 [data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"]>[data-part="grid"]>[data-part="row"]>[data-part="lane"][data-stacked]>[data-ar="tooltip"][data-row-line]{height:var(--ar-chart-row-stack-line,4px)}
+/* 1.3：日付とチャートの間の文字の列。見出しは日付の見出しと同じ地と文字、値は 12px の時刻を中央寄せの1列ずつ。 */
+@media(min-width:1200px){[data-ar-design="remix"] [data-ar="time-chart"][data-mode="month"][data-info]>[data-part="grid"]{grid-template-columns:168px auto minmax(max(520px,var(--ar-chart-tick-width,0px)),1fr)}}
+[data-ar-design="remix"] [data-ar="time-chart"]>[data-part="grid"]>[data-part="head"]>[data-part="head-info"]{color:var(--ar-accent-ink);font-size:calc(11.5px * var(--ar-font-scale, 1));font-weight:700}
+[data-ar-design="remix"] [data-ar="time-chart"]>[data-part="grid"]>[data-part="row"]>[data-part="info"]{border-top:1px solid var(--ar-color-border-subtle);border-right:1px solid var(--ar-color-border-subtle);background:#fff;color:var(--ar-color-text);font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.4}
+[data-ar-design="remix"] [data-ar="time-chart"]>[data-part="grid"]>:is([data-part="head"],[data-part="row"])>:is([data-part="head-info"],[data-part="info"])>[data-part="info-cell"]{padding:4px 8px;text-align:center}

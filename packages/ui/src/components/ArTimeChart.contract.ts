@@ -1,5 +1,5 @@
 /**
- * ArTimeChart 1.1 の契約。時間の横棒のチャート（勤怠の月のチャート・1日のチャート）。
+ * ArTimeChart 1.3 の契約。時間の横棒のチャート（勤怠の月のチャート・1日のチャート）。
  * month：1行＝1日。帯（通常勤務・残業・休日勤務・休憩）と、上の細い線＝シフト、下の細い線＝深夜。日付を押すと select（その日の大きなチャート）。
  * day：1行＝1つの内容（シフト・勤務・休憩・深夜勤務）。帯の中に「18:00〜27:00」などの文字。
  * stack：1日を積み上げで出す（旧 ARROW の勤怠の1日のチャート）。縦が量、横が時間。rows の順が層の順で、先頭の行（打刻の勤務）が下の1段、2つ目から（法定外・休日・深夜の割増）が上に半段ずつ重なる。kind が shift の帯は下の細い線。休憩は帯を作らず空ける。
@@ -65,8 +65,16 @@ export interface ArTimeChartRow {
   /** 行の地。holiday＝土日・祝日の淡い地、paid＝有給の斜線の地、error＝エラーの淡い赤（名前の側）。 */
   tone?: "holiday" | "paid" | "error";
   bars: readonly ArTimeChartBar[];
+  /** 1.3: columns の各列に出す文字（キーは列の key。改行で複数行）。 */
+  cells?: Readonly<Record<string, string>>;
   /** 1.1: 区分ごとの帯。bars があれば先頭の帯に残し、tracks を後ろに並べる。空の帯も順序を保持する。 */
   tracks?: readonly ArTimeChartTrack[];
+}
+
+/** 1.3: month の日付とチャートの間に並べる文字の列（シフト・勤怠・休憩の時刻など）。 */
+export interface ArTimeChartColumn {
+  key: string;
+  label: string;
 }
 
 export interface ArTimeChartProps {
@@ -98,6 +106,11 @@ export interface ArTimeChartProps {
    * kind が shift の帯は下の細い線。表（日付の列・目盛り）はそのまま。
    */
   stacked?: boolean;
+  /**
+   * 1.3：month の日付とチャートの間に並べる文字の列。行の cells から出す。
+   * 画面が狭いとき（1200px 未満）は列を出さず、チャートだけにする（チャートが細くなりすぎないように）。
+   */
+  columns?: readonly ArTimeChartColumn[];
 }
 
 export interface ArTimeChartLabels {
@@ -132,6 +145,9 @@ export type ArTimeChartPart =
   | "date"
   | "weekday"
   | "sub"
+  | "head-info"
+  | "info"
+  | "info-cell"
   | "lane"
   | "gridline"
   | "bar"
