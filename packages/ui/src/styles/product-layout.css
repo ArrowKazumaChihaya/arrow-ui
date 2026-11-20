@@ -6737,41 +6737,22 @@ th.toggle[data-v-ui1e028877e6aa] {
   td.operation[data-v-uica23177efdef] {
   box-sizing: border-box;
 }
+/* 操作の列：編集・削除・追加（＋）は同じ「備考の編集・追加」なので1つの列に左から並べる
+   （打刻のない日の＋も、打刻のある日の鉛筆と同じ位置に来る）。列の幅は3つのボタンと間・余白が入る 128px。 */
 .attendance_table_wrap
   .table_wrap
   table
   tbody
-  td.operation.edit_delete[data-v-uica23177efdef] {
-  width: 75px;
-  min-width: 75px;
-}
-.attendance_table_wrap
-  .table_wrap
-  table
-  tbody
-  td.operation.add[data-v-uica23177efdef] {
-  width: 44px;
-  min-width: 44px;
+  td.operation[data-v-uica23177efdef] {
+  width: 128px;
+  min-width: 128px;
 }
 .attendance_table_wrap
   .operation_daily_col[data-v-uica23177efdef] {
   display: flex;
-  justify-content: center;
-  flex-shrink: 0;
-  box-sizing: content-box;
-}
-/* この層の content-box は、層の外の * { box-sizing: border-box } に負ける。幅は内側の余白を含めた値にする
-   （操作の列 75px・追加の列 44px に収まり、ボタンが左にはみ出して欠けない）。 */
-.attendance_table_wrap
-  .operation_daily_col.edit_delete[data-v-uica23177efdef] {
+  justify-content: flex-start;
   gap: 3px;
-  width: 75px;
-  padding: 3px 0 3px 8px;
-}
-.attendance_table_wrap
-  .operation_daily_col.add[data-v-uica23177efdef] {
-  width: 43px;
-  padding: 3px 8px 3px 3px;
+  padding: 3px 8px;
 }
 .attendance_table_wrap
   .operation_button[data-v-uica23177efdef] {
@@ -6789,8 +6770,6 @@ th.toggle[data-v-ui1e028877e6aa] {
   line-height: 18px;
 }
 @media screen and (max-width: 499px) {
-  .attendance_table_wrap
-    .operation_daily_col.add[data-v-uica23177efdef],
   .attendance_table_wrap
     .operation_button[data-v-uica23177efdef] {
     width: 27px;

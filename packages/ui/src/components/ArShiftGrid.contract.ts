@@ -223,6 +223,8 @@ export interface ArShiftGridProps {
 export interface ArShiftGridLabels {
   name: string;
   events: string;
+  /** 日付の見出しの下の、ロック・非公開の印の行の見出し。 */
+  state: string;
   count: string;
   shortage: string;
   /** {n} 人。 */

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArTimeChart 1.1 — 時間の横棒のチャート。month は1日＝1行の1か月（勤怠の種類ごとの色の帯・上の線がシフト・下の線が深夜）、day は1日の内容ごとの行。
+ * ArTimeChart 1.2 — 時間の横棒のチャート。month は1日＝1行の1か月（勤怠の種類ごとの色の帯・上の線がシフト・下の線が深夜）、day は1日の内容ごとの行。
  * 帯に乗せると「種類・時間帯・時間数」の吹き出し。month の日付は押せる（select。その日の大きなチャートを開く）。
  * キーボード：month の日付は Tab で移って Enter。行の読み上げに帯の中身（種類・時間帯）を含める。
  */
@@ -86,6 +86,9 @@ const ticks = computed(() => {
   for (let m = first; m <= range.value[1]; m += step.value) out.push({ m, left: pct(m), text: hourText(m) });
   return out;
 });
+/** 見出しの目盛りの文字の位置。両端の文字は枠の内側に寄せ、枠の端に貼りつかないよう少しあける（「翌0」などが右端で切れて見えないように）。 */
+const tickShift = (index: number) =>
+  index === 0 ? "translateX(6px)" : index === ticks.value.length - 1 ? "translateX(calc(-100% - 6px))" : "translateX(-50%)";
 const clock = (m: number) => {
   const h = Math.floor(m / 60);
   return `${h}:${String(((m % 60) + 60) % 60).padStart(2, "0")}`;
@@ -215,7 +218,7 @@ const head = computed(() => props.headLabel ?? (props.mode === "month" ? "日付
       <div data-part="head" role="row">
         <div data-part="head-label" role="columnheader">{{ head }}</div>
         <div data-part="ticks" role="columnheader" aria-hidden="true">
-          <span v-for="(t, index) in ticks" :key="t.m" data-part="tick" :style="{ left: `${t.left}%`, marginLeft: 0, transform: index === 0 ? 'none' : index === ticks.length - 1 ? 'translateX(-100%)' : 'translateX(-50%)' }">{{ t.text }}</span>
+          <span v-for="(t, index) in ticks" :key="t.m" data-part="tick" :style="{ left: `${t.left}%`, marginLeft: 0, transform: tickShift(index) }">{{ t.text }}</span>
         </div>
       </div>
       <div v-for="r in rows" :key="r.key" data-part="row" role="row" :data-tone="r.tone">

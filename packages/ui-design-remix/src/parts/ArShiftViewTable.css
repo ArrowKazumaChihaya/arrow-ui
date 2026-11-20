@@ -17,6 +17,8 @@
 /* 見出し：淡いテーマ色の地・46px。日の数字の下に曜日、今日はテーマ色の丸と下線 */
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>th{height:46px;background:var(--ar-accent-subtle);color:var(--ar-accent-ink);font-size:calc(12px * var(--ar-font-scale, 1));font-weight:700;line-height:1.5;white-space:nowrap}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="corner"]{padding-left:14px;font-size:calc(11.5px * var(--ar-font-scale, 1));letter-spacing:.04em}
+/* 曜日の色はテーブルタブ（ArShiftGrid）とそろえる：平日＝文字の色、土＝青、日・祝＝赤 */
+[data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"]{color:var(--ar-color-text)}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"][data-tone="sun"]{color:var(--ar-color-sun)}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"][data-tone="sat"]{color:var(--ar-color-sat)}
 [data-ar-design="remix"] [data-ar="shift-view-table"]>[data-part="scroll"]>[data-part="table"]>thead>tr>[data-part="day"][data-state~="today"]{box-shadow:inset 0 -2px 0 var(--ar-accent)}

@@ -441,6 +441,12 @@
 [data-ar-design="remix"] .attendance_table_wrap .shift_time_col:not([data-ui-fixed], [data-ui-fixed] *){display:flex;align-items:center;justify-content:center;height:32px;line-height:1.4;margin:0;box-sizing:border-box}
 [data-ar-design="remix"] .attendance_table_wrap :is(.date_col,.work_type_col,.hourly_paidhol_col,.branch_id_col,.carfare_col):not([data-ui-fixed], [data-ui-fixed] *){display:flex;align-items:center;justify-content:center;line-height:1.4;box-sizing:content-box}
 [data-ar-design="remix"] .attendance_table_wrap .branch_id_col:not([data-ui-fixed], [data-ui-fixed] *){justify-content:flex-start}
+/* 勤怠の表（勤怠表・集計・備考）：見出しは左寄せなので、値も左に寄せて縦をそろえる（操作の列は除く）。
+   時間の列（通常〜合計）は幅を取り、「7時間00分」と隣の列の値の間をあける。 */
+[data-ar-design="remix"] .attendance_table_wrap table tbody td:not(.operation):not([data-ui-fixed], [data-ui-fixed] *){text-align:start}
+[data-ar-design="remix"] .attendance_table_wrap :is(.date_col,.work_type_col,.hourly_paidhol_col,.carfare_col,.shift_time_col):not([data-ui-fixed], [data-ui-fixed] *){justify-content:flex-start}
+[data-ar-design="remix"] .attendance_table_wrap .branchly_shift:not([data-ui-fixed], [data-ui-fixed] *){text-align:start}
+[data-ar-design="remix"] .attendance_table_wrap th.time_detail:not([data-ui-fixed], [data-ui-fixed] *){min-width:92px}
 [data-ar-design="remix"] .attendance_table_wrap .shift_time_col>[data-ar="time-input"]:not([data-ui-fixed], [data-ui-fixed] *){vertical-align:middle}
 [data-ar-design="remix"] .attendance_table_wrap:not([data-ui-fixed], [data-ui-fixed] *){margin-top:0;padding-top:0}
 @media(max-width:499px){[data-ar-design="remix"] .attendance_table_wrap .shift_time_col:not([data-ui-fixed], [data-ui-fixed] *){height:27px}}

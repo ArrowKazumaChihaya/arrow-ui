@@ -8761,41 +8761,22 @@ td:has(div)
   td.operation[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   box-sizing: border-box;
 }
+/* 操作の列：編集・削除・追加（＋）を1つの列に左から並べる（備考の編集と追加を同じ位置に）。 */
 .attendance_table_wrap
   .table_wrap
   table
   tbody
-  td.operation.edit_delete[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  width: 75px;
-  min-width: 75px;
+  td.operation[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  width: 128px;
+  min-width: 128px;
   vertical-align: middle;
-}
-.attendance_table_wrap
-  .table_wrap
-  table
-  tbody
-  td.operation.add[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  width: 44px;
-  min-width: 44px;
-  vertical-align: bottom;
 }
 .attendance_table_wrap
   .operation_daily_col[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
   display: flex;
-  justify-content: center;
-  flex-shrink: 0;
-  box-sizing: content-box;
-}
-.attendance_table_wrap
-  .operation_daily_col.edit_delete[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
+  justify-content: flex-start;
   gap: 3px;
-  width: 67px;
-  padding: 3px 0 3px 8px;
-}
-.attendance_table_wrap
-  .operation_daily_col.add[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
-  width: 32px;
-  padding: 3px 8px 3px 3px;
+  padding: 3px 8px;
 }
 .attendance_table_wrap
   .operation_button[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
@@ -8813,8 +8794,6 @@ td:has(div)
   line-height: 18px;
 }
 @media screen and (max-width: 499px) {
-  .attendance_table_wrap
-    .operation_daily_col.add[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *),
   .attendance_table_wrap
     .operation_button[data-v-uica23177efdef]:where([data-ar-design="classic"], [data-ar-design="classic"] *) {
     width: 27px;

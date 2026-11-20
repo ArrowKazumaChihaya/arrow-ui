@@ -39,6 +39,8 @@
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="icon-box"]{width:36px;height:36px;border-radius:10px;background:var(--hd-tint,var(--ar-accent-subtle));color:var(--hd-ink,var(--ar-accent-ink))}
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="label"]{font-size:calc(14px * var(--ar-font-scale, 1));font-weight:500}
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>[data-part="description"]{font-size:calc(12px * var(--ar-font-scale, 1));line-height:1.5;color:#5B676B}
+/* 説明文の最後の1〜2文字だけが次の行に落ちないように、文節で折り返し、最後の行を短くしすぎない。 */
+[data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="item"]>[data-part="text"]>:is([data-part="description"],[data-part="disabled-reason"]){word-break:auto-phrase;text-wrap:pretty}
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="group"]{padding:8px 12px 4px;font-size:calc(12px * var(--ar-font-scale, 1));font-weight:500;letter-spacing:.06em;color:#5B676B}
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"]>[data-part="divider"]{margin:6px 12px;background:#E3EAEB}
 [data-ar-design="remix"] [data-ar="dropdown-menu"]>[data-part="list"][data-rich]>[data-part="item"]{gap:12px;min-height:52px;padding:8px 12px}

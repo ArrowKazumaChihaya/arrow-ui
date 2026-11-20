@@ -275,6 +275,16 @@ describe("ArShiftGrid", () => {
     }
   });
 
+  it("日付の下の状態の行は、ロック・非公開の日があるときだけ「状態」の見出しつきで出し、なければ行ごと出さない", async () => {
+    const w = mount(ArShiftGrid, { props: base });
+    expect(w.get('[data-part="head-sub"]>[data-part="name-head"]').text()).toBe("状態");
+    const plain = days.map((d) => ({ date: d.date }));
+    await w.setProps({ days: plain });
+    expect(w.find('[data-part="head-sub"]').exists()).toBe(false);
+    await w.setProps({ mode: "chart" });
+    expect(w.find('[data-part="head-sub"]').exists()).toBe(true);
+  });
+
   it("classic の形：2段目に「名前」とシフトチャートのボタン、マスは塗り、要約は今の書き方", async () => {
     const design = { forms: { ArShiftGrid: { head: "button", cell: "fill", summary: "paren", fit: "scale" } } };
     const { arUiContextKey } = await import("../src/provider/context");

@@ -1,4 +1,4 @@
-/* @covers ArTimeChart 1.1.0 */
+/* @covers ArTimeChart 1.2.0 */
 /* ArTimeChart：今の ARROW の勤怠の個人の「チャート」（View/Manager/AttendanceEach/MonthlyChart.vue・scoped の CSS を実測）。ARROW の Table（theme attendance）：
    見出しは白・テーマ色の1pxの枠・13px rgba(0,0,0,.65)・高さ35、「日付」「勤務形態」は各 110px、時刻の列は 600px 以上で1時間ごとに lightgray の線と 13px の時刻（線の左下に寄せる）。
    行は下に #E8E8E8 の線、日付と形態は真ん中寄せ 13px。帯は行の中で上から 深夜（15px・#6126A5）・残業（15px：法定内 #FFA8A8・法定外 #FF5656・週 #BE3F3F・月 #742828・60時間超 #DB0000）・

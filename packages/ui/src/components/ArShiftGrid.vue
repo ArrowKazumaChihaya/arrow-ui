@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArShiftGrid 1.2 — シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
+ * ArShiftGrid 1.3 — シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
  * マス（パターン色の淡い面と左の線。1日に2つのシフトは1行に1つずつ）とチャート（6時〜24時の帯。ドラッグで移動・伸縮・ほかの人／日へ移す・空いたマスで追加）。
  * 見出し（曜日の色・今日の印・鍵・目の印・押すと day-open）、イベントの行、人数と募集に対する不足の行、名前の列と見出しの固定、
  * 左のパターンの一覧（検索つき・マスへドラッグ）、列の幅の −／＋、ドラッグでの選択・オートフィル・右クリックの操作。
@@ -99,6 +99,7 @@ const emit = defineEmits<{
 const L = computed<ArShiftGridLabels>(() => ({
   name: "名前",
   events: "イベント",
+  state: "状態",
   count: "シフト人数",
   shortage: "募集に対して不足",
   countCell: "{n}人",
@@ -298,6 +299,8 @@ const dayViews = computed(() =>
 );
 type DayView = (typeof dayViews.value)[number];
 const anyEvents = computed(() => show.value.events && props.days.some((d) => d.events?.length));
+/** 日付の見出しの下の行（ロック・非公開の印、チャートの時間の目盛り、classic のチャートのボタン）。中身のない期間は行ごと出さない。 */
+const anyStatus = computed(() => headForm.value === "button" || mode.value === "chart" || dayViews.value.some((dv) => dv.locked || dv.unpub));
 const anyShortage = computed(() => show.value.shortage && props.days.some((d) => d.need != null || d.shortage != null));
 
 function hm(min: number) {
@@ -1059,8 +1062,8 @@ const dayOf = (dv: DayView) => dv.d;
                   <small v-if="!(headForm === 'button' && wide)" data-part="date-week">{{ dv.w }}</small>
                 </div>
               </div>
-              <div data-part="head-sub" role="row">
-                <div data-part="name-head" role="columnheader">{{ headForm === "button" ? L.name : "" }}</div>
+              <div v-if="anyStatus" data-part="head-sub" role="row">
+                <div data-part="name-head" role="columnheader">{{ headForm === "button" ? L.name : mode === "chart" ? "" : L.state }}</div>
                 <div v-for="dv in dayViews" :key="dv.d.date" data-part="status" role="columnheader" :data-today="dv.today ? '' : undefined">
                   <button v-if="headForm === 'button'" type="button" data-part="chart-button" :aria-label="`${dv.dateText} ${L.dayChart}`" @click="emit('day-chart', dayOf(dv))">
                     <ArIcon name="chart" size="sm" /><span v-if="wide">{{ L.dayChart }}</span>

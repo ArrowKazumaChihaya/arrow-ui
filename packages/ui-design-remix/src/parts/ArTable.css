@@ -17,17 +17,11 @@
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-blank]{color:var(--ar-color-text-muted);font-weight:400}
 
 /* 外枠（box）。見出しと色のついた行は枠の線の上に塗る（.lst と同じ） */
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"]>[data-part="viewport"]{background:var(--ar-color-surface);border-radius:12px;box-shadow:inset 0 0 0 1px var(--ar-color-border)}
+/* 枠（box）は表の箱の線（border）で描く。スクロールする中身の外側なので、背景のある固定列のマスに隠れない（以前は内側の影で描き、
+   固定列の最終行だけに下線を足していたため、表が箱より短いと氏名の下にだけ線が残った）。 */
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"]>[data-part="viewport"]{background:var(--ar-color-surface);border:1px solid var(--ar-color-border);border-radius:12px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td{border-bottom:0}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] [data-part="row"]:hover>td{background:var(--ar-accent-faint)}
-/* 枠（box）は表の箱の内側の影で描いているので、背景のある固定列のマスが枠を隠さないよう、そのマスにも枠の線を描く（最終行の下・左右の端）。 */
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky]{box-shadow:inset 0 -1px 0 var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="start"]{box-shadow:inset 0 -1px 0 var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"]:is([data-scrolled-x="start"],[data-scrolled-x="both"]) tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="start"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),6px 0 6px -6px rgba(31,41,51,.18)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="end"]{box-shadow:inset 0 -1px 0 var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"]:is([data-scrolled-x="end"],[data-scrolled-x="both"]) tbody[data-part="body"]>tr:last-child>td[data-sticky-edge="end"]{box-shadow:inset 0 -1px 0 var(--ar-color-border),-6px 0 6px -6px rgba(31,41,51,.18)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr>td[data-sticky="start"]:first-child:not([data-sticky-edge]){box-shadow:inset 1px 0 0 var(--ar-color-border)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>td[data-sticky="start"]:first-child:not([data-sticky-edge]){box-shadow:inset 1px 0 0 var(--ar-color-border),inset 0 -1px 0 var(--ar-color-border)}
 [data-ar-design="remix"] [data-ar="table"][data-variant="box"] [data-part="cell"][data-col="actions"]{padding-left:8px}
 
 /* 行の状態（選んだ・薄い） */
@@ -108,7 +102,8 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot[data-part="foot"] [data-part="cell"]:last-child{border-radius:0 10px 10px 0}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"][data-density="compact"] tbody[data-part="body"]>tr[data-part="row"]{height:46px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"][data-density="compact"] [data-part="cell"]{font-size:calc(13px * var(--ar-font-scale, 1))}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td[data-part="empty"]{border-bottom:1px solid var(--ar-color-border-subtle)}
+/* 空の行は下に線を引かない（下の区切り線と二重になるため。空の一覧 ArList と見た目をそろえる） */
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td[data-part="empty"]{border-bottom:0}
 /* board の名前だけの列（勤務可能な人）：丸は 28px・12px、間8px、名前はさらに太く。見出しは左に 12px。 */
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] th[data-person="single"]:first-child{padding-left:12px}
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] td [data-part="person"][data-single]{gap:10px}
