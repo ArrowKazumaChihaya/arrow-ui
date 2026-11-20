@@ -7,7 +7,9 @@ return {
   ...classicTokens,
   // 画面の左右の余白は詰めて広く使う（表を広く使うページと同じ 20px）。広い画面でも 1680px までにして間延びさせない。
   "content-max-width": "1680px",
-  "page-padding": "26px 20px 80px",
+  // 右だけはマスコット（右下・右端から約112px）の幅を空け、表やボタンがマスコットにかからないようにする（全ページ共通）。
+  "page-padding": "26px 124px 80px 20px",
+  "page-padding-wide-inline": "20px 124px",
   "page-padding-tablet": "20px 16px 86px",
   "page-padding-mobile": "16px 12px 86px",
   "color-primary": palettes.blue.accent,

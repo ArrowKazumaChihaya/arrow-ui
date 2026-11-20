@@ -50,6 +50,7 @@ export const classicTokens = {
   "table-font-size": "13px",
   "content-max-width": "1440px",
   "page-padding": "30px 35px 80px",
+  "page-padding-wide-inline": "20px",
   "page-padding-tablet": "25px 30px 60px",
   "page-padding-mobile": "5px 5px 20px",
   "header-padding": "10px 40px",
