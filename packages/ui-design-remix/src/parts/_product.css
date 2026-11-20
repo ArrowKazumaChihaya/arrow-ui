@@ -565,3 +565,6 @@
 /* 勤怠表（管理・マイページ）：縦のスクロールバー（8px）の分だけ表の右端が上の帯より短くならないよう、スクロールバーの場所をいつも取り、その分だけ枠を右へ広げる。 */
 [data-ar-design="remix"] .attendance_table_wrap:not([data-ui-fixed], [data-ui-fixed] *){width:calc(100% + 8px);max-width:none;margin-right:-8px}
 [data-ar-design="remix"] .attendance_table_wrap .table_wrap:not([data-ui-fixed], [data-ui-fixed] *){scrollbar-gutter:stable}
+/* 勤怠表・打刻申請：行を編集しても ✓（確定・申請）が表の右の外に隠れないよう、操作の列を右端に止める。入力段が増えても下へずれないよう上にそろえる。 */
+[data-ar-design="remix"] .attendance_table_wrap tbody td:has(.operation_col):not([data-ui-fixed], [data-ui-fixed] *){position:sticky;right:0;z-index:2;vertical-align:top;background:var(--ar-color-surface);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
+[data-ar-design="remix"] .attendance_table_wrap thead th.button:not([data-ui-fixed], [data-ui-fixed] *){position:sticky;right:0;z-index:4}
