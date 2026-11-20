@@ -1054,11 +1054,15 @@ const colspan = computed(
                   </slot>
                 </td>
               </template>
+              <!-- 編集中の行の［キャンセル］［確定］は右端に止める（表が横にはみ出しても、横に動かさずに押せるように）。 -->
               <td
                 v-if="hasActions && j === 1"
                 data-part="cell"
                 data-col="actions"
                 data-align="end"
+                :data-sticky="isEditing(row) && !anyEnd ? 'end' : undefined"
+                :data-sticky-edge="isEditing(row) && !anyEnd ? 'end' : undefined"
+                :style="isEditing(row) && !anyEnd ? { right: '0px' } : undefined"
                 :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
                 @click.stop
               >

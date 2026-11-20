@@ -5,8 +5,10 @@ export function createProductTokens(design: ArDesign): DesignTokens {
 const { tokens: library, palettes } = design;
 return {
   ...classicTokens,
-  "page-padding": "26px 32px 80px",
-  "page-padding-tablet": "20px 24px 86px",
+  // 画面の左右の余白は詰めて広く使う（表を広く使うページと同じ 20px）。広い画面でも 1680px までにして間延びさせない。
+  "content-max-width": "1680px",
+  "page-padding": "26px 20px 80px",
+  "page-padding-tablet": "20px 16px 86px",
   "page-padding-mobile": "16px 12px 86px",
   "color-primary": palettes.blue.accent,
   "color-link": palettes.blue["accent-ink"],

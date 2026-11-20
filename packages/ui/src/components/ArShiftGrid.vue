@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArShiftGrid 1.1 — シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
+ * ArShiftGrid 1.2 — シフトのテーブル（日×人の格子）。シフトのテーブルタブの週・半月・月の表。
  * マス（パターン色の淡い面と左の線。1日に2つのシフトは1行に1つずつ）とチャート（6時〜24時の帯。ドラッグで移動・伸縮・ほかの人／日へ移す・空いたマスで追加）。
  * 見出し（曜日の色・今日の印・鍵・目の印・押すと day-open）、イベントの行、人数と募集に対する不足の行、名前の列と見出しの固定、
  * 左のパターンの一覧（検索つき・マスへドラッグ）、列の幅の −／＋、ドラッグでの選択・オートフィル・右クリックの操作。
@@ -253,6 +253,19 @@ const cellOf = (m: ArShiftGridMember, date: string): ArShiftGridCell | undefined
 const hasShift = (c: ArShiftGridCell | undefined) => !!c?.times?.length;
 const isLeave = (c: ArShiftGridCell | undefined) => !!c?.leave;
 const wide = computed(() => colW.value >= 100);
+/**
+ * マスの文字の並べ方と大きさ。列の幅から、「10:00-19:00」が1行に入る大きさなら1行、入らなければ開始・終了の2行にして、
+ * その並べ方で入るいちばん大きい文字にする（9〜13px）。月の表示だけは、2行でも小さすぎる幅になったら
+ * どのマスも一緒に文字を出さない（色だけ。中身は触れると出る）。週・半月は文字を消さない。
+ */
+const cellText = computed(() => {
+  const room = colW.value - 8;
+  const oneLine = room / 6.8;
+  if (oneLine >= 10.5) return { narrow: false, fs: Math.min(13, Math.round(oneLine * 10) / 10), hidden: false };
+  const twoLines = room / 3.3;
+  if (n.value >= 28 && twoLines < 10) return { narrow: true, fs: 9, hidden: true };
+  return { narrow: true, fs: Math.min(13, Math.max(9, Math.round(twoLines * 10) / 10)), hidden: false };
+});
 
 const dayViews = computed(() =>
   props.days.map((d, i) => {
@@ -380,8 +393,8 @@ const cellViews = computed<CellView[][]>(() => {
         }
       } else if (leave) lines = [leaveTime && colW.value >= 88 ? `${leaveLabel} ${spanShort(leaveTime)}` : leaveLabel];
       else if (shift) {
-        // マスの文字は消さない。狭い列は「開始」「終了」を2行に分けて、文字の大きさ（--sg-fs）を列の幅に合わせる。
-        const narrow = colW.value < 64;
+        // 狭い列は「開始」「終了」を2行に分けて、文字の大きさ（--sg-fs）を列の幅に合わせる（cellText）。
+        const narrow = cellText.value.narrow;
         const spans = (list: readonly ArShiftGridTime[]) => (narrow ? list.flatMap((t) => [clockShort(t.start), clockShort(t.end)]) : list.map(spanShort));
         if (show.value.times) lines = spans(times);
         // シフト・休憩・シフト休憩・勤怠（打刻）は、表示内容でそれぞれ出す・出さないを選ぶ。
@@ -390,6 +403,10 @@ const cellViews = computed<CellView[][]>(() => {
         if (show.value.breaks && breaks.length) detail.push({ label: narrow ? "" : L.value.break, values: spans(breaks) });
         if (show.value.planBreaks && planBreaks.length) detail.push({ label: narrow ? "" : L.value.planBreak, values: spans(planBreaks) });
         if (show.value.punches && punches.length) detail.push({ label: narrow ? "" : L.value.punch, values: spans(punches) });
+        if (cellText.value.hidden) {
+          lines = [];
+          detail = [];
+        }
       }
       const availText = !avail
         ? ""
@@ -907,8 +924,8 @@ const axis = computed(() => {
 });
 const gridStyle = computed(() => ({
   "--sg-col": `${colW.value}px`,
-  // マスの文字は列の幅に合わせて大きさを変える（消さずに、狭ければ小さく・広ければ大きく）。
-  "--sg-fs": `${Math.min(13, Math.max(9, Math.round((colW.value / 11) * 10) / 10))}px`,
+  // マスの文字は列の幅と並べ方に合わせて大きさを変える（cellText）。
+  "--sg-fs": `${cellText.value.fs}px`,
   "--sg-n": String(n.value),
   transform: scale.value < 1 ? `scale(${scale.value})` : undefined,
   width: scale.value < 1 ? `${contentW.value}px` : undefined,
@@ -938,7 +955,7 @@ const dayOf = (dv: DayView) => dv.d;
     :data-wide="wide ? '' : undefined"
     :data-fit="fitMode"
     :data-fixed="localW != null ? '' : undefined"
-    :data-narrow="colW < 64 ? '' : undefined"
+    :data-narrow="cellText.narrow ? '' : undefined"
     :data-editable="editable ? '' : undefined"
     :data-dragging="drag ? '' : undefined"
   >

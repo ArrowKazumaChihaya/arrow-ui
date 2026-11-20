@@ -249,6 +249,32 @@ describe("ArShiftGrid", () => {
     expect(w.get('[data-ar="shift-grid"]').attributes("data-narrow")).toBe("");
   });
 
+  it("列の幅から、1行（開始-終了）か2行（開始・終了）を決めて入る大きさの文字にし、月の表示だけ狭すぎると全部のマスの文字を出さない", async () => {
+    const font = (w: ReturnType<typeof mount>) => (w.get('[data-part="grid"]').element as HTMLElement).style.getPropertyValue("--sg-fs");
+    const week = mount(ArShiftGrid, { props: { ...base, columnWidth: 120 } });
+    expect(week.get('[data-ar="shift-grid"]').attributes("data-narrow")).toBeUndefined();
+    expect(cell(week, 0, 0).findAll('[data-part="shift"]>[data-part="line"]').map((x) => x.text())).toEqual(["9:00–18:00"]);
+    expect(font(week)).toBe("13px");
+    // 64px は1行に入らないので2行。2行なら大きめの文字にできる（前は 9px で、休憩の行が切れていた）。
+    await week.setProps({ columnWidth: 64 });
+    expect(week.get('[data-ar="shift-grid"]').attributes("data-narrow")).toBe("");
+    expect(cell(week, 0, 0).findAll('[data-part="shift"]>[data-part="line"]').map((x) => x.text())).toEqual(["9:00", "18:00"]);
+    expect(font(week)).toBe("13px");
+    // 週・半月は狭くても文字を消さない。
+    await week.setProps({ columnWidth: 36 });
+    expect(cell(week, 0, 0).findAll('[data-part="shift"]>[data-part="line"]')).toHaveLength(2);
+    const month = Array.from({ length: 30 }, (_, i): ArShiftGridDay => ({ date: `2026-11-${String(i + 1).padStart(2, "0")}` }));
+    const monthCells = { "1": { "2026-11-01": cells["1"]!["2026-10-18"]!, "2026-11-02": cells["1"]!["2026-10-20"]! } };
+    const m = mount(ArShiftGrid, { props: { ...base, days: month, cells: monthCells, today: "2026-11-20", columnWidth: 48 } });
+    expect(cell(m, 0, 0).findAll('[data-part="shift"]>[data-part="line"]')).toHaveLength(2);
+    await m.setProps({ columnWidth: 36 });
+    for (const c of [0, 1]) {
+      expect(cell(m, 0, c).find('[data-part="shift"]').exists()).toBe(true);
+      expect(cell(m, 0, c).findAll('[data-part="line"]')).toHaveLength(0);
+      expect(cell(m, 0, c).findAll('[data-part="detail"]')).toHaveLength(0);
+    }
+  });
+
   it("classic の形：2段目に「名前」とシフトチャートのボタン、マスは塗り、要約は今の書き方", async () => {
     const design = { forms: { ArShiftGrid: { head: "button", cell: "fill", summary: "paren", fit: "scale" } } };
     const { arUiContextKey } = await import("../src/provider/context");

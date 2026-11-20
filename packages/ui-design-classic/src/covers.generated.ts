@@ -108,7 +108,7 @@ export const covers = {
   ArSelect: "1.3.0",
   ArShiftChart: "1.0.0",
   ArShiftDaySheet: "1.0.0",
-  ArShiftGrid: "1.1.0",
+  ArShiftGrid: "1.2.0",
   ArShiftViewTable: "1.0.0",
   ArSkeleton: "1.0.0",
   ArSlider: "1.0.0",

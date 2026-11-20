@@ -40,6 +40,19 @@ describe("F2：ダイアログの表（ArTable 1.3）と無効のラジオ", () 
     expect(ed["2:shift"]![0]).toMatchObject({ start: { time: "17:00" }, end: { time: "21:00" } });
   });
 
+  it("編集中の行の［キャンセル］［確定］のマスだけ右端に止める（表が横にはみ出しても押せる）", async () => {
+    const w = mount(ArTable<P>, { props: { columns, rows, rowKey: "id", caption: "表", editing: [2] } });
+    const actions = w.findAll('td[data-col="actions"]');
+    const editing = actions.filter((td) => td.find('[data-part="actions"][data-kind="edit"]').exists());
+    expect(editing).toHaveLength(1);
+    expect(editing[0]!.attributes("data-sticky")).toBe("end");
+    expect(editing[0]!.attributes("data-sticky-edge")).toBe("end");
+    expect((editing[0]!.element as HTMLElement).style.right).toBe("0px");
+    for (const td of actions.filter((td) => !td.find('[data-kind="edit"]').exists())) expect(td.attributes("data-sticky")).toBeUndefined();
+    await w.setProps({ editing: [] });
+    expect(w.findAll('td[data-col="actions"][data-sticky]')).toHaveLength(0);
+  });
+
   it("確定は commit（空の組は除く）、取り消しは cancel とその行の edits を消す。Esc・Ctrl+Enter でも", async () => {
     const edits = { "2:name": "中抜け2", "1:name": "別の行" };
     const w = mount(ArTable<P>, { props: { columns, rows, rowKey: "id", caption: "表", editing: [2], edits } });
