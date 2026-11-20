@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="Row extends object">
 /**
- * ArTable 1.9 — 表。
+ * ArTable 1.10 — 表。右に続きがあるときの印は押すと右へ送る。
  * box（外枠の中の一覧）と board（シフト画面の「勤務メンバー」「勤務可能な人」）の2つの形。
  * 見出しの固定・左の列の固定・選ぶ・開く・合計の行・名前の列（頭文字の丸）・行の右端の操作を部品として持つ。
  * 並べ替えの印を押すと update:sort を出すだけで、データの並べ替えは製品が行う。
@@ -334,6 +334,7 @@ const L = computed<ArTableLabels>(() => ({
   commit: "確定",
   cancel: "取り消す",
   removeRange: "この時間を消す",
+  scrollRight: "右の続きを見る",
   ...props.labels,
 }));
 
@@ -575,6 +576,11 @@ function siblingsWidth(cell: Element, dir: "previous" | "next"): number {
 }
 /** 右に続きがあることを示す印（右端の影と ›）の高さ。表の枠（viewport）の高さに合わせる。 */
 const viewportH = ref(0);
+/** 1.10：右端の続きの印を押すと、見えている幅の8割ぶん右へ動かす（印だけで押せないのは紛らわしいため）。 */
+function scrollRight() {
+  const el = viewportEl.value;
+  if (el) el.scrollBy({ left: Math.max(120, el.clientWidth * 0.8), behavior: "smooth" });
+}
 function measureScrollX() {
   const el = viewportEl.value;
   if (!el) return;
@@ -1131,7 +1137,16 @@ const colspan = computed(
       </table>
     </div>
     <!-- 右に続きがあるときは、右端に影と › を出して横に動かせることを知らせる（スマホで大事な列が隠れていても気づけるように）。 -->
-    <span v-if="scrolledX === 'end' || scrolledX === 'both'" data-part="scroll-hint" aria-hidden="true" :style="{ height: `${viewportH}px` }"><ArIcon line name="cr" size="sm" /></span>
+    <button
+      v-if="scrolledX === 'end' || scrolledX === 'both'"
+      type="button"
+      data-part="scroll-hint"
+      tabindex="-1"
+      :aria-label="L.scrollRight"
+      :title="L.scrollRight"
+      :style="{ height: `${viewportH}px` }"
+      @click="scrollRight"
+    ><ArIcon line name="cr" size="sm" /></button>
     <div v-if="viewOptions || $slots.below" data-part="below">
       <ArViewOptions
         v-if="viewOptions"

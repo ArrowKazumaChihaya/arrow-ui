@@ -28,7 +28,7 @@ export const covers = {
   ArChip: "1.0.0",
   ArChoiceCard: "1.1.0",
   ArCollapse: "1.1.0",
-  ArColorPicker: "1.1.0",
+  ArColorPicker: "1.2.0",
   ArColorSwatches: "1.0.0",
   ArCompact: "1.0.0",
   ArDateInput: "1.1.0",

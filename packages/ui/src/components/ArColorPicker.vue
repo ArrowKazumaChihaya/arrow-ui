@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArColorPicker 1.1 — 色を選ぶ（イベント・パターンの色）。ふだんは決まった色の丸（ArColorSwatches）から選び、
+ * ArColorPicker 1.2 — 色を選ぶ（イベント・パターンの色）。ふだんは決まった色の丸（ArColorSwatches）から選び、
  * 自由な色は「詳細」で色の面・色相の帯・HEX から選ぶ。選ぶたびにすぐ値が変わる。
  * キーボード：色の面は←→で鮮やかさ・↑↓で明るさ、色相の帯は←→、HEX は打って Enter。
  */
@@ -35,6 +35,13 @@ const open = ref(false);
 const detail = ref(props.detailOpen);
 const hsv = ref<Hsv>(hexToHsv(props.modelValue ?? (props.colors ?? arEventColors)[0]?.value ?? "#5591CE"));
 const hexText = ref(props.modelValue ?? "");
+/** 1.2：見本の横には色の名前（紫・青…）を出す。決まった色にない色は「自由な色」。カラーコードは出さない。 */
+const valueText = computed(() => {
+  const value = props.modelValue ? normalizeHex(props.modelValue) : null;
+  if (!value) return props.labels.empty;
+  const swatch = (props.colors ?? arEventColors).find((color) => normalizeHex(color.value) === value);
+  return swatch?.label ?? props.labels.custom ?? "自由な色";
+});
 watch(
   () => props.modelValue,
   (v) => {
@@ -133,12 +140,12 @@ function pickSwatch(v: string) {
       aria-haspopup="dialog"
       :aria-expanded="open"
       :aria-controls="open ? `${baseId}-panel` : undefined"
-      :aria-label="`${label}：${modelValue ?? labels.empty}`"
+      :aria-label="`${label}：${valueText}`"
       :disabled="disabled"
       @click="setOpen(!open)"
     >
       <i data-part="swatch" :style="{ background: modelValue ?? 'transparent' }" :data-empty="modelValue ? undefined : ''" aria-hidden="true" />
-      <span data-part="value">{{ modelValue ? modelValue.toUpperCase() : labels.empty }}</span>
+      <span data-part="value">{{ valueText }}</span>
     </button>
     <template v-if="readonly" />
     <ArModal

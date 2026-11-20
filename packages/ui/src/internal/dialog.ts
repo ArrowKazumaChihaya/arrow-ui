@@ -19,9 +19,17 @@ export function lockPageScroll(on: boolean) {
 }
 function lock(on: boolean) {
   if (typeof document === "undefined") return;
+  const root = document.documentElement;
+  // 止める前のスクロールバーの幅。Chrome は overflow:hidden にすると scrollbar-gutter:stable でも
+  // その幅を返してしまい、後ろのページが横にずれるので、同じ幅を右の余白で補う。
+  if (on && openCount === 0 && typeof window !== "undefined")
+    root.style.setProperty("--ar-scrollbar-gap", `${Math.max(0, window.innerWidth - root.clientWidth)}px`);
   openCount = Math.max(0, openCount + (on ? 1 : -1));
-  if (openCount > 0) document.documentElement.setAttribute("data-ar-modal-open", "");
-  else document.documentElement.removeAttribute("data-ar-modal-open");
+  if (openCount > 0) root.setAttribute("data-ar-modal-open", "");
+  else {
+    root.removeAttribute("data-ar-modal-open");
+    root.style.removeProperty("--ar-scrollbar-gap");
+  }
 }
 
 /** 部品を置いた場所（Teleport の前）の要素から、テーマ色の名前を読む。 */

@@ -26,7 +26,8 @@ export interface ArColorPickerProps {
   readonly?: boolean;
   /** 読み上げ用の名前（例：「イベントの色」）。 */
   label: string;
-  labels?: { detail: string; hide: string; hex: string; saturation: string; hue: string; empty: string; title?: string };
+  /** custom（1.2）：決まった色にない色のときに見本の横に出す名前（既定「自由な色」）。 */
+  labels?: { detail: string; hide: string; hex: string; saturation: string; hue: string; empty: string; title?: string; custom?: string };
 }
 export interface ArColorPickerEmits {
   /** 色を選ぶ・動かすたびに出す（"#RRGGBB"）。 */

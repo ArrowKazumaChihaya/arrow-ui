@@ -111,7 +111,7 @@
 [data-ar="modal"]>[data-part="panel"]>[data-part="header"]>[data-part="close"]{cursor:pointer;flex:none}
 /* モーダルを開くとスクロールを止める。スクロールバーの分の幅はいつも取っておき、背景が左右にずれないようにする。 */
 html{scrollbar-gutter:stable}
-html[data-ar-modal-open]{overflow:hidden}
+html[data-ar-modal-open]{overflow:hidden;padding-right:var(--ar-scrollbar-gap,0px)}
 [data-ar="text-input"]{display:inline-flex;align-items:center;box-sizing:border-box;vertical-align:middle;min-width:0}
 [data-ar="text-input"]>[data-part="input"]{flex:1;min-width:0;border:0;outline:0;background:transparent;margin:0;font:inherit;color:inherit}
 [data-ar="select"]{position:relative;display:inline-flex;align-items:center;vertical-align:middle;min-width:0}

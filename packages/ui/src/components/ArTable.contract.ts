@@ -198,6 +198,8 @@ export interface ArTableLabels {
   dragHandle: string;
   /** 並べ替えたあとに読み上げる文。{n} は新しい順番（1から）。 */
   moved: string;
+  /** 1.10：右端の続きの印（押すと右へ動かす）の名前。 */
+  scrollRight?: string;
   /** 入力の行の確定・取り消しのボタンの名前。 */
   commit?: string;
   cancel?: string;

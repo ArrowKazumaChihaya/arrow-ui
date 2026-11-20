@@ -556,3 +556,7 @@
 /* シフトテンプレートの編集（ShiftTemplateRow）：余白が十分あるので、時間の入力欄を大きく（lg と同じ 84px・高さ md）。 */
 [data-ar-design="remix"] [data-v-ui65020ee27331] [data-ar="time-input"][data-size="sm"]:not([data-ui-fixed], [data-ui-fixed] *){height:var(--ar-size-control-md);border-radius:10px}
 [data-ar-design="remix"] [data-v-ui65020ee27331] [data-ar="time-input"][data-size="sm"]:not([data-ui-fixed], [data-ui-fixed] *)>[data-part="input"]{width:84px;font-size:calc(15px * var(--ar-font-scale, 1))}
+/* 書類の右の説明：ほかの補足文と同じ 13px・控えめの色に（大きいと目立ちすぎる）。 */
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] .document_instruction_content:not([data-ui-fixed], [data-ui-fixed] *){color:var(--ar-color-text-secondary);font-size:calc(13px * var(--ar-font-scale, 1))}
+/* 部署/店舗の選択欄（BranchSelectorInner）：ページや状態で 180px／315px と変わらないよう、どこでも同じ 240px に。 */
+[data-ar-design="remix"] .branch_selector_wrap[data-v-uida970b36ba89] [data-ar="tree-select"]:not([data-ui-fixed], [data-ui-fixed] *){width:240px;min-width:0;max-width:100%}

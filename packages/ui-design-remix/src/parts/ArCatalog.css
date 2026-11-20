@@ -86,3 +86,6 @@
 }
 /* 選ぶ前の案内は文節で折り返す（「ボタ／ン」のように語の途中で切れないように）。 */
 [data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] [data-part="placeholder"]>span{word-break:auto-phrase;text-wrap:pretty}
+/* 右の説明の「出力に進む」：淡いテーマ色（桃）だと白い文字が薄く、押せないボタンに見えるので、濃いほうの色で塗る。 */
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] [data-ar="button"][data-tone="primary"]:not([aria-disabled="true"]){background:var(--ar-accent-strong);border-color:var(--ar-accent-strong)}
+[data-ar-design="remix"] [data-ar="catalog"] [data-part="aside"] [data-ar="button"][data-tone="primary"]:not([aria-disabled="true"]):hover{background:var(--ar-accent-ink);border-color:var(--ar-accent-ink)}
