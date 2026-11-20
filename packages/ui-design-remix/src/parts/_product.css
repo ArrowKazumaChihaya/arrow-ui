@@ -553,3 +553,6 @@
 [data-ar-design="remix"] .nencho_name[data-v-ui981f0a996d1e] a:not([data-ui-fixed], [data-ui-fixed] *){color:var(--ar-color-text);font-weight:700;text-decoration:none}
 [data-ar-design="remix"] .nencho_name[data-v-ui981f0a996d1e] a:hover:not([data-ui-fixed], [data-ui-fixed] *){color:var(--ar-accent-ink);text-decoration:underline}
 [data-ar-design="remix"] td[data-v-ui981f0a996d1e]:not([data-ui-fixed], [data-ui-fixed] *){padding-top:6px;padding-bottom:6px}
+/* シフトテンプレートの編集（ShiftTemplateRow）：余白が十分あるので、時間の入力欄を大きく（lg と同じ 84px・高さ md）。 */
+[data-ar-design="remix"] [data-v-ui65020ee27331] [data-ar="time-input"][data-size="sm"]{height:var(--ar-size-control-md);border-radius:10px}
+[data-ar-design="remix"] [data-v-ui65020ee27331] [data-ar="time-input"][data-size="sm"]>[data-part="input"]{width:84px;font-size:calc(15px * var(--ar-font-scale, 1))}
