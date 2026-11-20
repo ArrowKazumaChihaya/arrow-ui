@@ -102,8 +102,6 @@
 [data-ar-design="remix"] [data-ar="shift-chart"][data-variant="print"]>[data-part="grid"]>[data-part="counts"]>*{background:#fff}
 [data-ar-design="remix"] [data-ar="shift-chart"][data-variant="print"]>[data-part="grid"]>[data-part="counts"]>[data-part="count-track"]>[data-part="cell"]{box-shadow:inset 0 0 0 1px #E6EBF0}
 [data-ar-design="remix"] [data-ar="shift-chart"][data-variant="print"]>[data-part="summary"]{border:1px solid #DCE2E8;background:#fff}
-/* 「シフトに合わせる」を押したら、時間の範囲の欄を一瞬テーマ色で囲む（範囲が変わらないときも押したことが分かる）。 */
-[data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="range"]{border-radius:10px}
-@media (prefers-reduced-motion: reduce){/* 「シフトに合わせる」を押したとき：時間の選択欄を選んだときと同じ青い枠を、少しのあいだ出して反応を見せる。 */
+/* 「シフトに合わせる」を押したとき：時間の選択欄を選んだときと同じ青い枠を、少しのあいだ出して反応を見せる。 */
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="fit"]{transition:border-color var(--ar-motion-fast),box-shadow var(--ar-motion-fast)}
 [data-ar-design="remix"] [data-ar="shift-chart"]>[data-part="toolbar"]>[data-part="fit"][data-flash]{border-color:var(--ar-accent);box-shadow:0 0 0 3px var(--ar-accent-ring)}
