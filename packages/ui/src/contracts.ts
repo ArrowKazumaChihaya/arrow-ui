@@ -119,7 +119,7 @@ export const contracts = {
   ArToast: "1.0.0",
   ArWatermark: "1.0.0",
   ArAppFooter: "1.0.0",
-  ArAppHeader: "1.2.0",
+  ArAppHeader: "1.3.0",
   ArApprovalFlow: "1.2.0",
   ArBalloon: "1.0.0",
   ArBottomNav: "1.4.0",

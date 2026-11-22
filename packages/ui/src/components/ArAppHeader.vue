@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * ArAppHeader 1.1 — PC の画面の頭（2段）。
+ * ArAppHeader 1.3 — PC の画面の頭（2段）。1.3：押して出した一覧は、フォーカスがどこにあっても Escape で閉じる。
  * 1段目：ロゴ（slot）・お知らせとやることのピル（件数の丸。押す・指すと下に一覧）・右端に管理ページ（押すとメニュー）。
  * 2段目：メニュー（今いるものをテーマ色で塗る。子のメニューは真下に出す）。下端にページのテーマ色の線。項目はすべて props で渡す。
  * ピルの一覧と子のメニューは、指す・フォーカス・押す・↓ キーで開き、↑↓ Home End で移り、Escape で閉じて元へ戻る。
@@ -228,9 +228,19 @@ function onDocPointer(e: PointerEvent) {
   if (owner?.contains(target)) return;
   hide(false);
 }
-onMounted(() => document.addEventListener("pointerdown", onDocPointer, true));
+/** 押して出したままの一覧は、フォーカスがどこにあっても Escape で閉じる（マウスで押したあと、フォーカスが項目に無いこともあるため）。 */
+function onDocKey(e: KeyboardEvent) {
+  if (e.key !== "Escape" || !open.value || e.defaultPrevented) return;
+  e.preventDefault();
+  hide(true);
+}
+onMounted(() => {
+  document.addEventListener("pointerdown", onDocPointer, true);
+  document.addEventListener("keydown", onDocKey);
+});
 onBeforeUnmount(() => {
   document.removeEventListener("pointerdown", onDocPointer, true);
+  document.removeEventListener("keydown", onDocKey);
   clearTimeout(timer);
 });
 

@@ -5,7 +5,7 @@ export const covers = {
   ArAlert: "1.1.0",
   ArAnchor: "1.0.0",
   ArAppFooter: "1.0.0",
-  ArAppHeader: "1.2.0",
+  ArAppHeader: "1.3.0",
   ArApprovalFlow: "1.2.0",
   ArAuthPanel: "1.0.0",
   ArAutoComplete: "1.0.0",
