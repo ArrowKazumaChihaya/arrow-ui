@@ -24,7 +24,8 @@
 /* 帯の上（inverse）：白い文字、前へ・次へは白の淡い丸 */
 [data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="label"]{border-color:transparent;background:none;color:var(--ar-on-accent)}
 [data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="arrow"]{border-color:transparent;background:rgba(255,255,255,.2);color:var(--ar-on-accent)}
-[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="arrow"]:disabled{visibility:hidden}
+/* 押せない前へ・次へも消さずに薄く出す（片方だけ消えると、次の人・月が無いのか分からないため。帯の外と同じ）。 */
+[data-ar-design="remix"] [data-ar="period-nav"][data-inverse]>[data-part="center"]>[data-part="arrow"]:disabled{opacity:.45}
 /* 「今日」があるときは3列（左の余白｜前へ・期間・次へ｜今日）。広いときは真ん中のまま、狭いときは真ん中が左へ寄って「今日」と重ならない。 */
 [data-ar-design="remix"] [data-ar="period-nav"]:has(>[data-part="today"]){display:grid;grid-template-columns:minmax(0,1fr) auto minmax(max-content,1fr);column-gap:8px}
 [data-ar-design="remix"] [data-ar="period-nav"]:has(>[data-part="today"])>[data-part="center"]{grid-column:2}
