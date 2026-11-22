@@ -118,6 +118,8 @@ const size = computed(() => (props.size === "auto" ? measured.value : props.size
 /* ---- 列の幅・検索・期間（v-model。渡されなければ中で持つ） ---- */
 const innerWidth = ref<number | null>(null);
 const cw = computed(() => props.columnWidth ?? innerWidth.value ?? (Number(widthForm.value) || 120));
+/** 大きさは、この型の既定の列幅を 100% とした割合で見せる（px は使う人に意味が分からないため）。 */
+const zoomText = computed(() => `${Math.round((cw.value / (Number(widthForm.value) || 120)) * 100)}%`);
 function setWidth(v: number) {
   const next = Math.min(props.maxColumnWidth, Math.max(props.minColumnWidth, v));
   innerWidth.value = next;
@@ -311,7 +313,7 @@ function dayState(d: { today: boolean }) {
       <ArZoomControl
         v-if="zoom"
         data-part="zoom"
-        :value="`${cw}px`"
+        :value="zoomText"
         :out-disabled="cw <= minColumnWidth"
         :in-disabled="cw >= maxColumnWidth"
         :size="size === 'sm' ? 'sm' : 'md'"

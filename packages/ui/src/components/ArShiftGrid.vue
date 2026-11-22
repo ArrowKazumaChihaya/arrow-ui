@@ -200,6 +200,8 @@ const autoW = computed(() => {
   return Math.max(min, Math.floor((viewW.value - nameW.value) / n.value));
 });
 const colW = computed(() => localW.value ?? autoW.value);
+/** 大きさは、枠に合わせた幅を 100% とした割合で見せる（px は使う人に意味が分からないため）。 */
+const zoomText = computed(() => `${Math.round((colW.value / Math.max(1, autoW.value)) * 100)}%`);
 const fitMode = computed(() => props.fit ?? (fitForm.value === "scale" && localW.value == null && !(n.value > 7 && n.value < 28) ? "scale" : "scroll"));
 const contentW = computed(() => nameW.value + n.value * colW.value);
 const scale = computed(() => (fitMode.value === "scale" && viewW.value ? Math.min(1, viewW.value / contentW.value) : 1));
@@ -967,7 +969,7 @@ const dayOf = (dv: DayView) => dv.d;
       <template v-if="controls">
         <ArZoomControl
           data-part="zoom"
-          :value="`${colW}px`"
+          :value="zoomText"
           :out-disabled="!canZoomOut"
           :in-disabled="!canZoomIn"
           :size="compact ? 'sm' : 'md'"
