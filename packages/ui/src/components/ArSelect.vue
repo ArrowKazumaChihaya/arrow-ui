@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<ArSelectProps>(), {
   loading: false,
   clearable: false,
   searchable: undefined,
-  searchPlaceholder: "探す",
+  searchPlaceholder: "検索",
   emptyText: "選べるものがありません",
   loadingText: "読み込み中…",
   block: false,

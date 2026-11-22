@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<ArTreeSelectProps>(), {
   expanded: undefined,
   defaultExpandAll: false,
   searchable: false,
-  searchPlaceholder: "探す",
+  searchPlaceholder: "検索",
   placeholder: "選んでください",
   variant: "field",
   icon: undefined,

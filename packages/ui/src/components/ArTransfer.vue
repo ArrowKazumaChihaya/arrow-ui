@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<ArTransferProps>(), {
   unit: "",
   searchable: true,
   disabled: false,
-  labels: () => ({ search: "探す", toRight: "右へ移す", toLeft: "左へ移す", empty: "ありません" }),
+  labels: () => ({ search: "検索", toRight: "右へ移す", toLeft: "左へ移す", empty: "ありません" }),
 });
 const emit = defineEmits<{ "update:modelValue": [value: ArTransferValue[]] }>();
 
