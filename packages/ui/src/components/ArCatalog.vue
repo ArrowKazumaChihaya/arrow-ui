@@ -40,7 +40,10 @@ const query = ref("");
 const q = computed(() => query.value.trim());
 const groupOf = (key: string) => props.groups.find((g) => g.items.some((i) => i.key === key));
 const itemOf = (key: string) => props.groups.flatMap((g) => g.items).find((i) => i.key === key);
-const allCount = computed(() => props.groups.reduce((n, g) => n + g.items.length, 0));
+/** 同じ項目を複数の分類に置くことがあるので、件数は key の重なりを除いて数える（「すべて」が実際の種類より多く見えないように）。 */
+const distinctCount = (lists: readonly { items: readonly { key: string | number }[] }[]): number =>
+  new Set(lists.flatMap((list) => list.items.map((item) => item.key))).size;
+const allCount = computed(() => distinctCount(props.groups));
 const isFav = (key: string) => props.favorites.includes(key);
 const favItems = computed(() => props.favorites.map(itemOf).filter((i): i is ArCatalogItem => !!i));
 const usedFormats = computed(() => {
@@ -62,7 +65,7 @@ const shown = computed<Shown[]>(() => {
   const g = props.groups.find((x) => x.key === view.value);
   return g ? [{ group: g, items: g.items, head: false, showGroupName: false }] : [];
 });
-const shownCount = computed(() => shown.value.reduce((n, s) => n + s.items.length, 0));
+const shownCount = computed(() => distinctCount(shown.value));
 const heading = computed(() => {
   if (q.value) return fmt(L.value.searchTitle, { q: q.value });
   if (view.value === "fav") return L.value.favorites;

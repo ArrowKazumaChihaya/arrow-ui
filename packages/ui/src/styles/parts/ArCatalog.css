@@ -1,6 +1,7 @@
 /* ArCatalog：上の帯、左に分類（検索・すべて・よく使う・分類）、中に一覧、右に選んだ項目の説明。
    1180px 以下：説明は右から出る引き出し（幕つき）。900px 以下：分類は横に並ぶ。700px 以下：説明は下から出る。 */
-[data-ar="catalog"]{display:flex;flex-direction:column;min-width:0;box-sizing:border-box;overflow:hidden}
+/* 角の外は切り取るが、スクロールの箱にはしない（hidden だと右の説明欄の sticky がページのスクロールに付いて来ない）。 */
+[data-ar="catalog"]{display:flex;flex-direction:column;min-width:0;box-sizing:border-box;overflow:clip}
 [data-ar="catalog"] *{box-sizing:border-box}
 [data-ar="catalog"]>[data-part="band"]{display:flex;align-items:center}
 [data-ar="catalog"]>[data-part="band"]>[data-part="band-end"]{margin-left:auto;display:inline-flex;align-items:center}

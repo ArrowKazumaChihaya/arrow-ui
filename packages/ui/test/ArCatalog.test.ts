@@ -68,3 +68,21 @@ describe("ArCatalog", () => {
     expect(empty.find('[data-part="placeholder"]').exists()).toBe(true);
   });
 });
+
+describe("ArCatalog の件数", () => {
+  it("同じ項目を複数の分類に置いても、「すべて」と見出しの件数は1つに数える", async () => {
+    const shared = { key: "gensen", title: "源泉徴収票" };
+    const w = mount(ArCatalog, {
+      props: {
+        groups: [
+          { key: "join", title: "入社", items: [shared, { key: "a", title: "資格取得届" }] },
+          { key: "leave", title: "退社", items: [shared] },
+        ],
+      },
+    });
+    const allNav = w.get('[data-part="nav-item"]');
+    expect(allNav.get('[data-part="nav-count"]').text()).toBe("2");
+    expect(w.get('[data-part="heading-count"]').text()).toBe("2件");
+    w.unmount();
+  });
+});
