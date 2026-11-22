@@ -74,6 +74,7 @@ describe("ArCatalog の件数", () => {
     const shared = { key: "gensen", title: "源泉徴収票" };
     const w = mount(ArCatalog, {
       props: {
+        title: "書類・集計",
         groups: [
           { key: "join", title: "入社", items: [shared, { key: "a", title: "資格取得届" }] },
           { key: "leave", title: "退社", items: [shared] },
