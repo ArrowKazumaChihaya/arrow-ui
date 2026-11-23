@@ -52,14 +52,16 @@ const dayInput = ref<HTMLInputElement | null>(null);
 function syncFromValue(v: string | null) {
   const s = splitDate(v);
   if (!s && badDate.value) return; // 「無効な日付」のときは打った数字を残す
-  parts.value = s ? { y: String(s.y), m: show(s.m), d: show(s.d) } : { y: parts.value.y || String(initialYear()), m: "", d: "" };
+  // 年を空にできる形では、空の値のとき年も空のままにする（月日だけ入れて、触っていない年で登録されないように）。
+  const emptyYear = yearEmpty.value === "option" ? "" : String(initialYear());
+  parts.value = s ? { y: String(s.y), m: show(s.m), d: show(s.d) } : { y: parts.value.y || emptyYear, m: "", d: "" };
 }
 syncFromValue(props.modelValue);
 watch(() => props.modelValue, value => { if (!ownUpdate) syncFromValue(value); });
 
 const years = computed(() => {
   if (props.years) return [...props.years];
-  const cur = Number(parts.value.y) || thisYear;
+  const cur = Number(parts.value.y) || initialYear();
   const from = Math.min(props.minYear ?? thisYear - 5, cur);
   const to = Math.max(props.maxYear ?? thisYear + 5, cur);
   // desc：新しい年が上（今の ARROW・ArYearInput と同じ）

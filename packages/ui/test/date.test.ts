@@ -65,6 +65,25 @@ describe("ArDateInput", () => {
 });
 
 
+describe("ArDateInput の空の年", () => {
+  it("年を空にできる形では、値が空なら年も空で、月日だけでは値にしない", async () => {
+    const w = mount(ArDateInput, { props: { modelValue: null, allowEmptyYear: true, initialYear: 1990 } });
+    expect(w.get('[data-part="year"]').text()).not.toContain("1990");
+    const m = w.get('[data-part="month"]');
+    await m.setValue("4");
+    await m.trigger("blur");
+    const d = w.get('[data-part="day"]');
+    await d.setValue("15");
+    await d.trigger("blur");
+    expect((w.emitted("update:modelValue") ?? []).flat().filter((v) => v !== null)).toEqual([]);
+  });
+
+  it("年を空にしない形では、値が空でも最初の年を出す", () => {
+    const w = mount(ArDateInput, { props: { modelValue: null, allowEmptyYear: false, initialYear: 1990 } });
+    expect(w.get('[data-part="year"]').text()).toContain("1990");
+  });
+});
+
 describe("ArDateInput live segmented entry", () => {
   it("keeps a one-digit day draft through model echo and accepts the second digit", async () => {
     const w = mount(ArDateInput, { props: { modelValue: "2026-10-08", pad: "zero", updateOnInput: true,
