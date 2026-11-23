@@ -24,7 +24,8 @@ const steps = computed(() =>
   }),
 );
 const mark = (s: { status: ArStepStatus; i: number }) => (s.status === "finish" ? "✓" : s.status === "error" ? "!" : String(s.i + 1));
-const statusText = (s: ArStepStatus) => ({ wait: "未", process: "今", finish: "済み", error: "エラー" })[s];
+/* 手順の状態を読み上げ・表示する言葉（「今」「未」だけでは何のことか分からないため）。 */
+const statusText = (s: ArStepStatus) => ({ wait: "これから", process: "いまの手順", finish: "済み", error: "エラー" })[s];
 /* 幅が足りないときは縦に並べる（ResizeObserver で根の幅を見る）。 */
 const root = ref<HTMLElement | null>(null);
 const width = ref<number | null>(null);
