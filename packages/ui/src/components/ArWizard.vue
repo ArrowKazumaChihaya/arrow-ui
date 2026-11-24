@@ -47,7 +47,7 @@ watch(()=>props.value,()=>{
 </script>
 <template>
   <section data-ar="wizard" data-part="root" :data-layout="layout">
-    <div ref="stepsViewport" data-part="steps" role="region" :aria-label="labels.steps" tabindex="0"><ArSteps :items="items" :current="current" :label="labels.steps" size="mini" /></div>
+    <div ref="stepsViewport" data-part="steps" role="region" :aria-label="labels.steps" tabindex="0"><ArSteps :items="items" :current="current" :label="labels.steps" :status-labels="labels.status" size="mini" /></div>
     <p data-part="summary" data-ar-visually-hidden aria-live="polite">{{current+1}} / {{options.length}} — {{option?.label}}</p>
     <div data-part="content"><slot /></div>
     <div v-if="!disabled && option" data-part="actions">

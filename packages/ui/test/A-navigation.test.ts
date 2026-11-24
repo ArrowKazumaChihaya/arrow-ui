@@ -110,6 +110,14 @@ describe("ArSteps", () => {
     expect(w.emitted("update:current")?.[0]).toEqual([0]);
     expect(steps[2]!.find("button").exists()).toBe(false);
   });
+  it("状態の読み上げは既定が日本語で、渡した言葉があれば置き換える（日本語以外の画面用）", () => {
+    const items = [{ title: "A" }, { title: "B" }, { title: "C" }];
+    const hidden = (w: ReturnType<typeof mount>) => w.findAll("[data-ar-visually-hidden]").map((x) => x.text());
+    expect(hidden(mount(ArSteps, { props: { current: 1, size: "mini", items } }))).toEqual(["（済み）", "（いまの手順）", "（これから）"]);
+    expect(
+      hidden(mount(ArSteps, { props: { current: 1, size: "mini", items, statusLabels: { finish: "Done", process: "Current" } } })),
+    ).toEqual(["（Done）", "（Current）", "（これから）"]);
+  });
   it("status=error で今の手順を赤に", () => {
     const w = mount(ArSteps, { props: { current: 0, status: "error", items: [{ title: "送る" }] } });
     expect(w.get('[data-part="step"]').attributes("data-status")).toBe("error");

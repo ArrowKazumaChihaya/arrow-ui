@@ -20,7 +20,14 @@ export interface ArWizardProps {
   /** form は読みやすい幅で中央に配置。fluid は従来どおり配置先の全幅を使う。 */
   layout?: "fluid" | "form";
   /** nextStep may contain {step}; an explicit option.nextText still takes precedence. */
-  labels?: { steps: string; prev: string; next: string; nextStep?: string };
+  labels?: {
+    steps: string;
+    prev: string;
+    next: string;
+    nextStep?: string;
+    /** 手順の状態を読み上げる言葉（ArSteps の statusLabels）。 */
+    status?: Partial<Record<"wait" | "process" | "finish" | "error", string>>;
+  };
   scrollOnChange?: boolean;
 }
 export interface ArWizardEmits { prev: []; next: []; }
