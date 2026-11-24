@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<ArItemProps>(), {
   detail: false,
   detailHref: undefined,
   detailText: "詳細",
-  titleWidth: "200px",
+  titleWidth: undefined,
   id: undefined,
   variant: "form",
   help: undefined,
@@ -91,7 +91,7 @@ async function onRevert(e: MouseEvent): Promise<void> {
 </script>
 
 <template>
-  <div data-ar="item" data-part="root" :data-variant="variant" :data-state="state" :style="{ '--ar-item-title': titleWidth }">
+  <div data-ar="item" data-part="root" :data-variant="variant" :data-state="state" :style="titleWidth ? { '--ar-item-title': titleWidth } : undefined">
     <div data-part="title">
       <label :id="labelId" data-part="label" :for="id" @click="onLabelClick"
         ><span data-part="label-text"><slot name="title">{{ title }}</slot></span

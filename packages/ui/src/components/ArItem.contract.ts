@@ -19,7 +19,7 @@ export interface ArItemProps {
   detailHref?: string;
   /** 「詳細」の文字。 */
   detailText?: string;
-  /** 項目名の幅（CSS の長さ）。長い項目名（「シフトテーブルに勤務時間と日数を表示」など）は 230px・236px などに広げる。 */
+  /** 項目名の幅（CSS の長さ）。省くと行（row）は幅の25%（200〜280px）、それ以外は 200px。 */
   titleWidth?: string;
   /** 入力の id（省くと自動）。default スロットの値で入力に渡す。 */
   id?: string;
