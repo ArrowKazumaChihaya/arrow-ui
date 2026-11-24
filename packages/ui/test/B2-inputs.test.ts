@@ -244,6 +244,20 @@ describe("色・曜日・札", () => {
 });
 
 describe("ArTransfer・ArUpload", () => {
+  it("検索は半角カナ・ひらがなでも、カタカナの名前・カナに当たる", async () => {
+    const items = [
+      { value: 1, label: "田中", keywords: "タナカ" },
+      { value: 2, label: "山本", keywords: "ﾔﾏﾓﾄ" },
+    ];
+    const w = mount(ArTransfer, { props: { modelValue: [], items, label: "相手" } });
+    const input = w.get('[data-part="search"] input');
+    for (const [query, label] of [["ﾀﾅｶ", "田中"], ["たなか", "田中"], ["ヤマモト", "山本"], ["やまも", "山本"]]) {
+      await input.setValue(query);
+      expect(w.text()).toContain(label);
+      expect(w.text()).not.toContain(label === "田中" ? "山本" : "田中");
+    }
+  });
+
   it("左でチェックして ＞ で右へ移す", async () => {
     const items = [{ value: 1, label: "田中" }, { value: 2, label: "山本" }, { value: 3, label: "鈴木" }];
     const w = mount(ArTransfer, { props: { modelValue: [3], items, label: "相手" } });

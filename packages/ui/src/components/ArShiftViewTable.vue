@@ -11,6 +11,7 @@ import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
 import ArSegmented from "./ArSegmented.vue";
 import ArHoverTip from "../internal/ArHoverTip.vue";
+import { fold } from "../internal/options";
 import ArZoomControl from "./ArZoomControl.vue";
 import { useDesignForm, useId } from "../provider/context";
 import type {
@@ -228,10 +229,11 @@ const subOf = (row: ArShiftViewRow) => {
   const s = summaryOf(row);
   return summaryForm.value === "days" ? L.value.summaryDays(s) : L.value.summaryHours(s);
 };
+// 半角カナ・ひらがなで探しても、カタカナの名前・カナ（keywords）に当たるように選ぶ部品と同じ fold で比べる
 const visibleRows = computed(() => {
-  const text = q.value.trim().toLowerCase();
+  const text = fold(q.value.trim());
   if (!text) return props.rows;
-  return props.rows.filter((r) => `${r.name} ${r.keywords ?? ""}`.toLowerCase().includes(text));
+  return props.rows.filter((r) => fold(`${r.name} ${r.keywords ?? ""}`).includes(text));
 });
 const avatarText = (r: ArShiftViewRow) => (typeof r.avatar === "string" ? r.avatar : r.name.trim().charAt(0));
 

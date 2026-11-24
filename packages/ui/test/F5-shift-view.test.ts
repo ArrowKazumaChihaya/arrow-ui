@@ -74,6 +74,17 @@ describe("ArShiftViewTable", () => {
     expect(w.get('[data-part="empty"]').text()).toContain("「だれも」に当てはまる従業員はいません");
   });
 
+  it("半角カナ・カタカナで探しても、ひらがな・全角のカナに当たる", async () => {
+    const w = mount(ArShiftViewTable, {
+      props: { ...base, rows: [...rows, { key: 3, name: "山田 太郎", keywords: "ﾔﾏﾀﾞ ﾀﾛｳ" }] },
+    });
+    const input = w.get('[data-part="search-input"]');
+    for (const query of ["ﾁﾊﾔ", "チハヤ", "やまだ", "ヤマダ", "ﾀﾞ ﾀ"]) {
+      await input.setValue(query);
+      expect(w.findAll('tbody [data-part="name"]')).toHaveLength(1);
+    }
+  });
+
   it("search に数を渡すと行がその数以上のときだけ検索を出す", () => {
     expect(mount(ArShiftViewTable, { props: { ...base, search: 30 } }).find('[data-part="search"]').exists()).toBe(false);
     expect(mount(ArShiftViewTable, { props: { ...base, search: 2 } }).find('[data-part="search"]').exists()).toBe(true);

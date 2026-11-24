@@ -9,6 +9,7 @@ import ArButton from "./ArButton.vue";
 import ArCheckbox from "./ArCheckbox.vue";
 import ArEmpty from "./ArEmpty.vue";
 import ArIcon from "./ArIcon.vue";
+import { fold } from "../internal/options";
 import type { ArTransferProps, ArTransferValue, ArTransferItem } from "./ArTransfer.contract";
 
 const props = withDefaults(defineProps<ArTransferProps>(), {
@@ -22,11 +23,10 @@ const emit = defineEmits<{ "update:modelValue": [value: ArTransferValue[]] }>();
 
 const checked = ref<[Set<ArTransferValue>, Set<ArTransferValue>]>([new Set(), new Set()]);
 const query = ref(["", ""]);
-const norm = (s: string) => s.normalize("NFKC").toLowerCase();
 const sides = computed(() => {
   const right = new Set(props.modelValue);
   const by = (side: 0 | 1) =>
-    props.items.filter((it) => right.has(it.value) === (side === 1) && (!query.value[side] || norm(`${it.label} ${it.keywords ?? ""}`).includes(norm(query.value[side]!))));
+    props.items.filter((it) => right.has(it.value) === (side === 1) && (!query.value[side] || fold(`${it.label} ${it.keywords ?? ""}`).includes(fold(query.value[side]!))));
   return [by(0), by(1)] as const;
 });
 const counts = computed(() => {
