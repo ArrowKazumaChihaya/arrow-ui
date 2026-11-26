@@ -376,7 +376,7 @@ const cellViews = computed<CellView[][]>(() => {
         if (avail.note) tip.push({ values: [avail.note] });
         if (props.editable) tip.push({ values: [L.value.availHint] });
       }
-      if (dv.locked) tip.push({ values: [L.value.locked] });
+      // ロックの日は斜線と日付の鍵の印で分かるので、吹き出しには出さない（中身のないマスに「ロック中」だけの吹き出しが出ないように）。
       const tipRows: TipRow[] = c?.tip ? c.tip.split("\n").map((v) => ({ values: [v] })) : tip.length > 1 ? tip : [];
       const color = leave ? undefined : p?.color;
       const style: Record<string, string> = {};

@@ -5,3 +5,5 @@
 [data-ar-design="remix"] [data-ar="empty"]>[data-part="action"]{margin-top:4px}
 [data-ar-design="remix"] [data-ar="empty"][data-size="md"]{gap:8px;padding:28px 16px;font-size:calc(13px * var(--ar-font-scale, 1))}
 [data-ar-design="remix"] [data-ar="empty"][data-size="md"]>[data-part="icon"]{width:28px;height:28px}
+/* 「データがありません」などの空の表示にアイコンは付けない（文だけで伝わる。画面ごとに有る無しがばらつかないように）。 */
+[data-ar-design="remix"] [data-ar="empty"]>[data-part="icon"]{display:none}
