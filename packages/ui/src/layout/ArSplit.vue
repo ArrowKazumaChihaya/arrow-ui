@@ -19,9 +19,9 @@ withDefaults(
 
 <template>
   <div data-ar="split" :data-stack-below="stackBelow">
-    <div data-part="track" :data-start="start" :data-fixed="fixed" :data-gap="gap" :data-align="align">
-      <div data-part="start"><slot name="start" /></div>
-      <div data-part="end"><slot name="end" /></div>
+    <div data-part="track" :data-start="start" :data-fixed="fixed" :data-gap="gap" :data-align="align" :data-single="!$slots.start || !$slots.end || undefined">
+      <div v-if="$slots.start" data-part="start"><slot name="start" /></div>
+      <div v-if="$slots.end" data-part="end"><slot name="end" /></div>
     </div>
   </div>
 </template>
