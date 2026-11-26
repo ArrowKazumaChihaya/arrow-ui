@@ -69,14 +69,19 @@
 }
 
 /* 確認：共通デザイン原稿の一枚のカード。入力フォームの帯・区切り線を使わない。 */
-[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]{flex-direction:row;align-items:center;gap:12px;padding:22px 22px 12px;border:0}
+/* アイコンは題と横に並べ（題が2行なら題の上下中央）、本文（description）はその下に幅いっぱいで出す。 */
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:12px;row-gap:0;padding:22px 22px 12px;border:0}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]{display:contents}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{grid-column:2;grid-row:1;align-self:center;margin:0}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]:not(:has(>[data-part="icon"]))>[data-part="heading"]>[data-part="title"]{grid-column:1/-1}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{grid-column:1/-1;grid-row:2}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"]{align-items:center;justify-content:center;width:36px;height:36px;margin:0;border-radius:10px;background:var(--ar-accent-subtle)}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="warn"]{background:color-mix(in srgb,#E39A2D 10%,var(--ar-color-surface))}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="danger"]{background:color-mix(in srgb,var(--ar-color-danger) 10%,var(--ar-color-surface))}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="icon"][data-tone="ok"]{background:color-mix(in srgb,var(--ar-color-ok) 10%,var(--ar-color-surface))}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="title"]{font-size:calc(16px * var(--ar-font-scale, 1));line-height:1.5}
-[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:8px;line-height:1.6}
-[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="body"]{padding:0 22px 16px;font-size:calc(13px * var(--ar-font-scale, 1));line-height:1.6}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="header"]>[data-part="heading"]>[data-part="description"]{margin-top:12px;font-size:calc(14px * var(--ar-font-scale, 1));line-height:1.7;color:var(--ar-color-text-secondary)}
+[data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="body"]{padding:0 22px 16px;font-size:calc(14px * var(--ar-font-scale, 1));line-height:1.7}
 [data-ar-design="remix"] [data-ar="modal"][data-variant="confirm"]>[data-part="panel"]>[data-part="footer"]{padding:4px 22px 20px;background:var(--ar-color-surface);border:0}
 
 @media(max-width:640px){

@@ -58,7 +58,8 @@
 [data-ar="table"] th[data-wrap]>[data-part="sort"]>span{min-width:0}
 
 /* Keep row-wide confirmation controls inside the visible width of a scrolling table. */
-[data-ar="table"]>[data-part="viewport"]{container-type:inline-size}
+/* 入れ物の幅は表の外側（root）で測る。viewport を入れ物にすると、viewport を中身の幅（fit-content）にできないため。 */
+[data-ar="table"]{container-type:inline-size}
 [data-ar="table"] td[data-full]>*{position:sticky;left:0;max-inline-size:calc(100cqw - 24px);box-sizing:border-box}
 /* 右に続きがある印：表の枠の右端に重ねる（押せない・読み上げない）。 */
 [data-ar="table"]{position:relative}

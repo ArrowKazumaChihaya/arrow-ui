@@ -83,8 +83,12 @@
 [data-ar="date-input"]{display:inline-flex;align-items:center;flex-wrap:nowrap;vertical-align:middle}
 [data-ar="date-input"] input,[data-ar="date-input"] select{margin:0;font-variant-numeric:tabular-nums}
 [data-ar="table"]{min-width:0}
-[data-ar="table"]>[data-part="viewport"]{overflow:auto;max-width:100%}
-[data-ar="table"]>[data-part="viewport"]>[data-part="table"]{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%}
+[data-ar="table"]>[data-part="viewport"]{overflow:auto;max-width:100%;width:fit-content}
+/* 幅いっぱいに使う表（fit）と、シフトの盤（board）は今までどおり枠の幅まで広げる。 */
+[data-ar="table"]:is([data-fit],[data-variant="board"])>[data-part="viewport"]{width:auto}
+/* 表の幅は中身に合わせる（列を必要以上に広げない）。枠より広い表は横にスクロールする。 */
+[data-ar="table"]>[data-part="viewport"]>[data-part="table"]{border-collapse:separate;border-spacing:0;width:max-content;min-width:0}
+[data-ar="table"]:is([data-fit],[data-variant="board"])>[data-part="viewport"]>[data-part="table"]{min-width:100%}
 [data-ar="table"] [data-lead]{width:1%;min-width:40px;max-width:40px;box-sizing:border-box;padding-left:0!important;padding-right:0!important;text-align:center}
 [data-ar="table"] :is(th,td)[data-align="center"]{text-align:center}
 [data-ar="table"] :is(th,td)[data-align="end"]{text-align:right}

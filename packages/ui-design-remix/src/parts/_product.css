@@ -359,6 +359,9 @@
   [data-ar-design="remix"] .sortable_table_component table[data-ui-part="table"]> :is(thead,tbody)>tr:not([data-ui-fixed], [data-ui-fixed] *){display:table-row!important}
   [data-ar-design="remix"] table[data-ui-part="table"]>tbody.smooth-dnd-container>tr:not([data-ui-fixed], [data-ui-fixed] *){display:table-row!important}
 }
+/* 並べ替えの表（smooth-dnd）：つかんだ行の写しを行の形で重ねて見せず、落とす位置を示す線にする（ArTable の並べ替えと同じ見せ方）。 */
+[data-ar-design="remix"] tr.smooth-dnd-ghost:not([data-ui-fixed], [data-ui-fixed] *){display:block!important;height:3px!important;min-height:0!important;padding:0!important;overflow:hidden!important;border:0!important;border-radius:2px!important;background:var(--ar-accent)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--ar-accent) 25%,transparent)!important;opacity:1!important}
+[data-ar-design="remix"] tr.smooth-dnd-ghost>*:not([data-ui-fixed], [data-ui-fixed] *){visibility:hidden!important}
 /* Shared authentication composition, including narrow viewports and text zoom. */
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *){position:relative;isolation:isolate;overflow:clip;background:var(--ar-color-bg);min-height:100dvh}
 [data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *)::before,[data-ar-design="remix"] .login_wrapper:has([data-ar="auth-panel"]):not([data-ui-fixed], [data-ui-fixed] *)::after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%}

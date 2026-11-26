@@ -34312,4 +34312,5 @@ table:has(tbody > tr)
 [data-ar-design] [data-output-download] [data-ar="document-block"][data-variant]>[data-part="box"]{border:0;padding:0;background:none;box-shadow:none}
 [data-output-download] [data-ar="document-block"] [data-ar="cluster"]{justify-content:stretch}
 [data-output-download] [data-ar="document-block"] [data-ar="button"]{flex:1 1 220px}
-[data-ar="modal"] [data-ar="wizard"]>[data-part="actions"]{position:sticky;bottom:0;z-index:2;background:var(--ar-color-surface,#fff)}
+/* 窓の中の手順のボタン帯は下に固定する。帯の下（窓の内側の余白）に中身が透けて見えないよう、下へ同じ色を伸ばして隠す。 */
+[data-ar="modal"] [data-ar="wizard"]>[data-part="actions"]{position:sticky;bottom:0;z-index:2;background:var(--ar-color-surface,#fff);box-shadow:0 28px 0 0 var(--ar-color-surface,#fff)}

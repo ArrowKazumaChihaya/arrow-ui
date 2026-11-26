@@ -909,7 +909,8 @@ const colspan = computed(
           </tr>
         </tbody>
         <tbody data-part="body">
-          <tr v-if="!rows.length">
+          <!-- 表の中に追加の段（before-rows）があるときは、「データがありません」を重ねて出さない。 -->
+          <tr v-if="!rows.length && !$slots['before-rows']">
             <td data-part="empty" :colspan="colspan">
               <slot name="empty"><ArEmpty :text="emptyText" :icon="emptyIcon" /></slot>
             </td>
