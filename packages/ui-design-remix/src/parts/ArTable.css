@@ -215,7 +215,8 @@
 [data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody[data-part="body"]>tr[data-part="row"][data-line][data-state~="editing"]:not([data-line="0"][data-line-last]){height:40px}
 /* 見出しは文節で折り返す（「会社負／担」のように語の途中で切れないように）。列に入らない長い語だけは途中で折る。 */
 [data-ar-design="remix"] [data-ar="table"] thead th{word-break:auto-phrase;overflow-wrap:anywhere;text-wrap:pretty}
-[data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-hint"]{padding-right:2px;border-radius:0 12px 12px 0;background:linear-gradient(to right,transparent,rgba(31,41,51,.10));color:var(--ar-color-text-muted)}
+/* 右の続きの印は › だけ（影のようなグラデーションは出さない）。 */
+[data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-hint"]{padding-right:2px;background:none;color:var(--ar-color-text-muted)}
 /* board（シフトの勤務メンバーなど）：PC 幅で表が横にはみ出しても、操作の列（編集・削除・入力中の ✓）は右端に止めて、横へ送らなくても押せるようにする。スマホでは時刻の入力欄を覆うので止めない。 */
 @media(min-width:640px){[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff)}[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{position:sticky;right:0;z-index:4}}
 /* 編集中の行の［キャンセル］［確定］は上にそろえる。時刻を入れて次の入力段が増え、行が高くなっても ✓ が下へずれて押し損じないように。 */
@@ -235,3 +236,5 @@
 }
 /* 操作の列は、左の列の中身（ボタンなど）とくっつかないように左を空ける。 */
 [data-ar-design="remix"] [data-ar="table"][data-sized] td:is([data-kind="actions"],[data-col="actions"]){padding-left:16px}
+/* board の時刻の列（段の列）は、入力欄が収まる最小の余白にして、PC で横に動かさずに編集できる幅にする。 */
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] td[data-line-cell]{padding-left:4px;padding-right:4px}
