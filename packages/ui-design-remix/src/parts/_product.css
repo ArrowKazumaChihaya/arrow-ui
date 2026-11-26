@@ -590,3 +590,10 @@
 [data-ar-design="remix"] .attendance_table_wrap th.round_time:not([data-ui-fixed], [data-ui-fixed] *){width:56px;min-width:56px}
 [data-ar-design="remix"] .attendance_table_wrap :is(th.shift,th.punch,th.punch_round).separated:not([data-ui-fixed], [data-ui-fixed] *){width:auto;min-width:0}
 [data-ar-design="remix"] .attendance_table_wrap .shift_time_col:not([data-ui-fixed], [data-ui-fixed] *){min-width:0}
+
+/* 勤怠詳細の備考タブ：列の幅は見出しの幅で固定する（追加・編集で入力欄が出ても、ボタンの列ほか列の幅を変えない）。余りは備考の列が受け取る。 */
+[data-ar-design="remix"] .attendance_table_wrap[data-v-uica23177efdef] .table_wrap table:not([data-ui-fixed], [data-ui-fixed] *){table-layout:fixed;width:max(100%, var(--remarks-table-min-width))}
+[data-ar-design="remix"] .attendance_table_wrap[data-v-uica23177efdef] .branch_id_col :is([data-ar="select"],[data-ar="tree-select"]):not([data-ui-fixed], [data-ui-fixed] *){width:100%;max-width:100%;min-width:0}
+/* 並べ替えの表：追加・編集中のつまみは場所を残して見えなくする（項目名・列の幅がずれない）。 */
+[data-ar-design="remix"] .drag_icon_wrap.drag_icon_idle:not([data-ui-fixed], [data-ui-fixed] *){visibility:hidden}
+[data-ar-design="remix"] td.drag_cell>*:not([data-ui-fixed], [data-ui-fixed] *){display:inline-block;vertical-align:top}

@@ -19,6 +19,7 @@ import {
   nextTick,
   onBeforeUnmount,
   onMounted,
+  onUpdated,
   ref,
   useSlots,
   watch,
@@ -729,10 +730,38 @@ function colStyle(c: ArTableColumn<Row>): Record<string, string> | undefined {
   return { width: `${Math.round(baseOf(c) * stretch.value)}px` };
 }
 /** 見出しのセルの下限（決めた幅より縮めない）。 */
-function headMin(c: ArTableColumn<Row>): Record<string, string> | undefined {
-  if (!sized.value || isFixedCol(c)) return undefined;
-  return { minWidth: `${Math.round(baseOf(c))}px` };
+/**
+ * 一度広がった列は縮めない（追加・編集で入力欄やボタンが出て列が広がったあと、確定・取り消しで元の幅に戻ってガタつかないように）。
+ * 入れ物の幅が変わったとき・列が変わったときは測り直す。
+ */
+const widest = ref<Record<string, number>>({});
+function rememberWidths(): void {
+  if (!sized.value) return;
+  const head = tableEl.value?.querySelector("thead");
+  if (!head) return;
+  const next = { ...widest.value };
+  let changed = false;
+  for (const th of Array.from(head.querySelectorAll<HTMLElement>("th[data-col-key]"))) {
+    const key = th.dataset.colKey ?? "";
+    const w = Math.round(th.getBoundingClientRect().width);
+    if (w > (next[key] ?? 0)) {
+      next[key] = w;
+      changed = true;
+    }
+  }
+  if (changed) widest.value = next;
 }
+function headMin(c: ArTableColumn<Row>): Record<string, string> | undefined {
+  if (!sized.value) return undefined;
+  const seen = widest.value[c.key];
+  const base = isFixedCol(c) ? 0 : Math.round(baseOf(c));
+  const min = Math.max(base, seen ?? 0);
+  return min > 0 ? { minWidth: `${min}px` } : undefined;
+}
+const actionsHeadMin = computed(() => {
+  const seen = widest.value.__actions;
+  return sized.value && seen ? { minWidth: `${seen}px` } : undefined;
+});
 const stretchCols = computed(() => cols.value.filter((c) => !isFixedCol(c)));
 function measureNow(): { avail: number; table: number; data: number; current: number } | null {
   const root = rootEl.value;
@@ -752,6 +781,7 @@ let relayoutPending = false;
 async function relayout() {
   if (!sized.value || relayoutPending) return;
   relayoutPending = true;
+  widest.value = {};
   try {
     const root = rootEl.value;
     if (!root) return;
@@ -775,8 +805,13 @@ async function relayout() {
     }
   } finally {
     relayoutPending = false;
+    await nextTick();
+    rememberWidths();
   }
 }
+onUpdated(() => {
+  if (!relayoutPending) rememberWidths();
+});
 let widthRo: ResizeObserver | null = null;
 onMounted(() => {
   void relayout();
@@ -924,6 +959,7 @@ const colspan = computed(
                 :data-align="alignOf(h.col)"
                 :data-wrap="h.col.wrap || undefined"
                 :data-kind="h.col.kind"
+                :data-col-key="h.col.key"
                 :data-sticky="stickAttr(h.col)"
                 :data-sticky-key="stickAttr(h.col) ? h.col.key : undefined"
                 :data-sticky-edge="edgeAttr(h.col)"
@@ -997,9 +1033,11 @@ const colspan = computed(
               v-if="hasActions"
               data-part="header-cell"
               data-col="actions"
+              data-col-key="__actions"
               data-align="end"
               scope="col"
               :rowspan="headSpan"
+              :style="actionsHeadMin"
             >
               <span data-ar-visually-hidden>{{ L.actions }}</span>
             </th>
@@ -1015,6 +1053,7 @@ const colspan = computed(
                 :data-total="h.col.total || undefined"
                 :data-group-start="groupStart(h.col) || undefined"
                 :data-kind="h.col.kind"
+                :data-col-key="h.col.key"
                 :style="headMin(h.col)"
                 :aria-sort="ariaSort(h.col)"
               >
