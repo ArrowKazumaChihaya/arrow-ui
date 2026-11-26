@@ -344,7 +344,9 @@ const keyOf = (row: Row): ArRowKey =>
 const valueOf = (row: Row, col: ArTableColumn<Row>) =>
   col.value ? col.value(row) : (row as Record<string, unknown>)[col.key];
 const isBlank = (v: unknown) => v === null || v === undefined || v === "" || (Array.isArray(v) && v.length === 0);
-const alignOf = (col: ArTableColumn<Row>) => col.align ?? (col.numeric ? "end" : "start");
+/** 寄せ。省くと数字の列は右、時刻の列（kind:time・timeRange）は中央、ほかは左。 */
+const alignOf = (col: ArTableColumn<Row>) =>
+  col.align ?? (col.numeric ? "end" : col.kind === "time" || col.kind === "timeRange" ? "center" : "start");
 /** 合計の行のセル（span でつないだ列は飛ばす）。 */
 const footCells = computed(() => {
   const out: {
@@ -1169,7 +1171,7 @@ const colspan = computed(
                   :data-numeric="c.numeric || undefined"
                   :data-emphasis="c.emphasis"
                   :data-wrap="c.wrap || undefined"
-                  :data-kind="c.kind === 'actions' || c.kind === 'text' ? c.kind : undefined"
+                  :data-kind="c.kind"
                   :data-blank="
                     (!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!isLineCol(c) || j === 1)) ||
                     undefined

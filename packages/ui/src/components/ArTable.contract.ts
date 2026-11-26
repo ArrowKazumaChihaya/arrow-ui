@@ -108,7 +108,7 @@ export interface ArTableColumn<Row> {
   key: string;
   /** 見出しの文字。 */
   title: string;
-  /** 寄せ。省くと numeric の列は end、ほかは start。 */
+  /** 寄せ。省くと numeric の列は end、時刻の列（kind:time・timeRange）は center、ほかは start。 */
   align?: "start" | "center" | "end";
   /**
    * 列の種類。同じ種類の列は、どの表でも同じ幅になる（幅は表の決まりで持つ。画面ごとに px を書かない）。

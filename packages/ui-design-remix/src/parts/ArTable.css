@@ -75,7 +75,7 @@
 /* 左に固定した列 */
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-sticky]{background:var(--ar-color-surface)}
 /* 固定列の右の影は、横にスクロールして固定列の下に中身が流れているときだけ（止まっているときは出さない）。 */
-[data-ar-design="remix"] [data-ar="table"]:is([data-scrolled-x="start"],[data-scrolled-x="both"]) [data-sticky-edge]:not([data-sticky-edge="end"]){box-shadow:6px 0 6px -6px rgba(31,41,51,.18)}
+/* 止めた列の影は出さない（横に動かしていない時や右端まで動かした時にも影が残って見えるため）。 */
 
 /* 詰めた表 */
 [data-ar-design="remix"] [data-ar="table"][data-density="compact"] thead[data-part="head"]>tr{height:30px}
@@ -128,7 +128,7 @@
 /* ---- 1.1：給与・年調・勤怠の集計表 ---- */
 /* 右に止めた列：左の端に影（年調の「反映」） */
 [data-ar-design="remix"] [data-ar="table"] [data-part="cell"][data-sticky="end"]{background:var(--ar-color-surface)}
-[data-ar-design="remix"] [data-ar="table"]:is([data-scrolled-x="end"],[data-scrolled-x="both"]) [data-sticky-edge="end"]{box-shadow:-6px 0 6px -6px rgba(31,41,51,.18)}
+
 [data-ar-design="remix"] [data-ar="table"] tfoot [data-part="cell"][data-sticky]{background:var(--ar-color-surface-alt)}
 /* 2段の見出し（給与一覧）：上の段のまとまりは中央・左に acc-line の線・下に acc-line、下の段は右寄せの 600。合計の列の見出しは acc-100、セルは acc-25。
    2段の見出しの行は 34px ずつ。押すと開くボタンは ∨／› 14px＋名前＋10.5px 600 mute の「閉じる／内訳」 */
@@ -217,7 +217,7 @@
 [data-ar-design="remix"] [data-ar="table"] thead th{word-break:auto-phrase;overflow-wrap:anywhere;text-wrap:pretty}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-hint"]{padding-right:2px;border-radius:0 12px 12px 0;background:linear-gradient(to right,transparent,rgba(31,41,51,.10));color:var(--ar-color-text-muted)}
 /* board（シフトの勤務メンバーなど）：PC 幅で表が横にはみ出しても、操作の列（編集・削除・入力中の ✓）は右端に止めて、横へ送らなくても押せるようにする。スマホでは時刻の入力欄を覆うので止めない。 */
-@media(min-width:640px){[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{position:sticky;right:0;z-index:4}}
+@media(min-width:640px){[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff)}[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{position:sticky;right:0;z-index:4}}
 /* 編集中の行の［キャンセル］［確定］は上にそろえる。時刻を入れて次の入力段が増え、行が高くなっても ✓ が下へずれて押し損じないように。 */
 [data-ar-design="remix"] [data-ar="table"] td[data-col="actions"]:has(>[data-part="actions"][data-kind="edit"]){vertical-align:top;padding-top:10px}
 /* 開け閉めできる見出しは、セルのどこを押しても開け閉めする（「内訳」「閉じる」の文字は出さない）。 */
@@ -227,11 +227,11 @@
 [data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-hint"][data-beside-sticky]{border-radius:0}
 /* 2段の見出しは、上の段（まとまり）と下の段の間にも線を引く（縦の区切り線と同じ色）。 */
 [data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th{border-top:1px solid color-mix(in srgb,var(--ar-accent-ink) 24%,transparent)}
-/* board の右に止めた操作の列：影は見出しから行まで同じ位置で続け、ボタンとの間を空ける。 */
+/* board の右に止めた操作の列：影は出さず、左の列とボタンの間を空ける（勤怠詳細の操作の列と同じ 16px）。 */
 @media(min-width:640px){
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{padding-left:12px}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{background:var(--ar-accent-subtle);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
-[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot td[data-col="actions"]{position:sticky;right:0;z-index:2;box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{padding-left:16px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{background:var(--ar-accent-subtle)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot td[data-col="actions"]{position:sticky;right:0;z-index:2}
 }
 /* 操作の列は、左の列の中身（ボタンなど）とくっつかないように左を空ける。 */
 [data-ar-design="remix"] [data-ar="table"][data-sized] td:is([data-kind="actions"],[data-col="actions"]){padding-left:16px}

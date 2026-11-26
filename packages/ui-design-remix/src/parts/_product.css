@@ -571,3 +571,11 @@
 /* 勤怠表・打刻申請：行を編集しても ✓（確定・申請）が表の右の外に隠れないよう、操作の列を右端に止める。入力段が増えても下へずれないよう上にそろえる。 */
 [data-ar-design="remix"] .attendance_table_wrap tbody td:has(.operation_col):not([data-ui-fixed], [data-ui-fixed] *){position:sticky;right:0;z-index:2;vertical-align:top;background:var(--ar-color-surface);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
 [data-ar-design="remix"] .attendance_table_wrap thead th.button:not([data-ui-fixed], [data-ui-fixed] *){position:sticky;right:0;z-index:4}
+/* 並べ替えの表（古い表）：新しい表（ArTable）と同じく、掴んだ行は薄くし、落とす位置に線を出す（行は動かさない）。 */
+[data-ar-design="remix"] tbody.smooth-dnd-container>tr[data-dragging]:not([data-ui-fixed], [data-ui-fixed] *)>td{opacity:.45}
+[data-ar-design="remix"] tbody.smooth-dnd-container>tr[data-drop="before"]:not([data-ui-fixed], [data-ui-fixed] *)>td{box-shadow:inset 0 2px 0 var(--ar-accent)}
+[data-ar-design="remix"] tbody.smooth-dnd-container>tr[data-drop="after"]:not([data-ui-fixed], [data-ui-fixed] *)>td{box-shadow:inset 0 -2px 0 var(--ar-accent)}
+/* 古い表の見出しも新しい表（ArTable）と同じ：13px・中央寄せ・区切り線はテーマ色、2段の見出しの間にも線。 */
+[data-ar-design="remix"] table[data-ui-part="table"] thead th:not([data-ui-fixed], [data-ui-fixed] *){font-size:calc(13px * var(--ar-font-scale, 1));text-align:center;letter-spacing:.02em}
+[data-ar-design="remix"] table[data-ui-part="table"]:not(.login__version) thead th+th:not([data-ui-fixed], [data-ui-fixed] *){border-left-color:color-mix(in srgb,var(--ar-accent-ink) 32%,transparent)}
+[data-ar-design="remix"] table[data-ui-part="table"] thead tr+tr>th:not([data-ui-fixed], [data-ui-fixed] *){border-top:1px solid color-mix(in srgb,var(--ar-accent-ink) 24%,transparent)}
