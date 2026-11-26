@@ -579,3 +579,14 @@
 [data-ar-design="remix"] table[data-ui-part="table"] thead th:not([data-ui-fixed], [data-ui-fixed] *){font-size:calc(13px * var(--ar-font-scale, 1));text-align:center;letter-spacing:.02em}
 [data-ar-design="remix"] table[data-ui-part="table"]:not(.login__version) thead th+th:not([data-ui-fixed], [data-ui-fixed] *){border-left-color:color-mix(in srgb,var(--ar-accent-ink) 32%,transparent)}
 [data-ar-design="remix"] table[data-ui-part="table"] thead tr+tr>th:not([data-ui-fixed], [data-ui-fixed] *){border-top:1px solid color-mix(in srgb,var(--ar-accent-ink) 24%,transparent)}
+
+/* 勤怠詳細の時刻の列（2026-11-27 詰め直し）：左右の余白は 4px。同じまとまりの列は同じ幅で、編集していない時も幅を変えない。
+   シフト・予定休憩＝72px（時刻の入力 62px）、勤怠・休憩＝104px（当日/前日つきの入力 96px）、丸め（入力にならない）＝56px。 */
+[data-ar-design="remix"] .attendance_table_wrap td:has(.shift_time_col):not([data-ui-fixed], [data-ui-fixed] *){padding-left:4px;padding-right:4px}
+[data-ar-design="remix"] :is(.attendance_table_wrap th.shift_start,.attendance_table_wrap th.shift_end,.attendance_table_wrap th.punch_start,.attendance_table_wrap th.punch_end,.attendance_table_wrap th.break_start,.attendance_table_wrap th.break_end,.attendance_table_wrap th.round_time):not([data-ui-fixed], [data-ui-fixed] *){padding-left:4px;padding-right:4px}
+[data-ar-design="remix"] :is(.attendance_table_wrap th.shift_start,.attendance_table_wrap th.shift_end):not([data-ui-fixed], [data-ui-fixed] *){width:72px;min-width:72px}
+[data-ar-design="remix"] :is(.attendance_table_wrap th.punch_start,.attendance_table_wrap th.punch_end,.attendance_table_wrap th.break_start,.attendance_table_wrap th.break_end,.attendance_table_wrap th.actual_break_start,.attendance_table_wrap th.actual_break_end):not([data-ui-fixed], [data-ui-fixed] *){width:104px;min-width:104px}
+[data-ar-design="remix"] :is(.attendance_table_wrap th.plan_break_start,.attendance_table_wrap th.plan_break_end):not([data-ui-fixed], [data-ui-fixed] *){width:72px;min-width:72px}
+[data-ar-design="remix"] .attendance_table_wrap th.round_time:not([data-ui-fixed], [data-ui-fixed] *){width:56px;min-width:56px}
+[data-ar-design="remix"] .attendance_table_wrap :is(th.shift,th.punch,th.punch_round).separated:not([data-ui-fixed], [data-ui-fixed] *){width:auto;min-width:0}
+[data-ar-design="remix"] .attendance_table_wrap .shift_time_col:not([data-ui-fixed], [data-ui-fixed] *){min-width:0}

@@ -682,7 +682,7 @@ function endDrag() {
  * 表が入れ物より狭いときは、データの列を同じ割合で広げる（1.5倍まで）。それでも余るときは表を広げず左に置く。
  * 操作の列（kind:"actions"・actions の欄）はボタンが横に並ぶ幅のまま広げない。
  * 決めた幅は下限で、入れ物より広い表も列を縮めない（はみ出す分は横に動かす）。
- * 種類も幅もない列が1つでもある表と board は、今までどおり表の幅を自動で分け合う。
+ * 種類も幅もない列が1つでもある表は、今までどおり表の幅を自動で分け合う（board も全部の列に幅があれば同じ決まり。編集の有無で列の幅が変わらない）。
  */
 const KIND_WIDTH: Record<ArTableColumnKind, readonly [number, number]> = {
   select: [48, 48],
@@ -711,7 +711,6 @@ const NARROW_WIDTH = 640;
 const isFixedCol = (c: ArTableColumn<Row>) => c.kind === "actions";
 const sized = computed(
   () =>
-    props.variant !== "board" &&
     cols.value.length > 0 &&
     cols.value.every((c) => c.kind !== undefined || !!c.width),
 );
@@ -1226,7 +1225,7 @@ const colspan = computed(
               >
                 <span v-if="isEditing(row)" data-part="actions" data-kind="edit">
                   <slot name="edit-actions" :row="row" :commit="() => commitRow(row)" :cancel="() => cancelRow(row)">
-                    <ArButton tone="muted" size="sm" icon="x" :label="L.cancel" @click="cancelRow(row)" />
+                    <ArButton tone="secondary" size="sm" icon="x" :label="L.cancel" @click="cancelRow(row)" />
                     <ArButton tone="primary" size="sm" icon="check" :label="L.commit" @click="commitRow(row)" />
                   </slot>
                 </span>
