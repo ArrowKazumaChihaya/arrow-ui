@@ -327,3 +327,40 @@ describe("ArTable 列の種類と幅", () => {
     expect(w.findAll("colgroup col")[1]!.attributes("style")).toContain("width: 90px");
   });
 });
+
+describe("ArTable 見出しの表記", () => {
+  it("操作の列（kind: actions）の見出しの文字は読み上げだけにする", () => {
+    const w = mount(T, {
+      props: {
+        rows: [{ id: 1, name: "a" }],
+        rowKey: "id",
+        columns: [
+          { key: "name", title: "名前", kind: "text" },
+          { key: "actions", title: "操作", kind: "actions" },
+        ],
+      },
+    });
+    const th = w.findAll("thead th")[1]!;
+    expect(th.find("[data-ar-visually-hidden]").text()).toBe("操作");
+  });
+  it("開け閉めの見出しに「内訳」を見せず、セルを押しても開く", async () => {
+    const w = mount(T, {
+      props: {
+        rows: [{ id: 1, a: 1, b: 2, s: 3 }],
+        rowKey: "id",
+        columnGroups: [{ key: "g", title: "支給", collapsible: true }],
+        columns: [
+          { key: "a", title: "A", group: "g", show: "open" },
+          { key: "b", title: "B", group: "g", show: "open" },
+          { key: "s", title: "支給合計", group: "g", show: "closed", total: true },
+        ],
+        openGroups: [],
+      },
+    });
+    const th = w.find("thead th[data-collapsed]");
+    expect(th.find('[data-part="toggle-hint"]').exists()).toBe(false);
+    expect(th.find("[data-ar-visually-hidden]").text()).toBe("内訳");
+    await th.trigger("click");
+    expect(w.emitted("update:openGroups")?.at(-1)).toEqual([["g"]]);
+  });
+});

@@ -579,6 +579,8 @@ function siblingsWidth(cell: Element, dir: "previous" | "next"): number {
 }
 /** 右に続きがあることを示す印（右端の影と ›）の高さ。表の枠（viewport）の高さに合わせる。 */
 const viewportH = ref(0);
+/** 右に止めた列（右端に貼りついた操作の列など）の幅。続きの印はその左に出す（止めた列のボタンと重ねない）。 */
+const stickyEndW = ref(0);
 /** 1.10：右端の続きの印を押すと、見えている幅の8割ぶん右へ動かす（印だけで押せないのは紛らわしいため）。 */
 function scrollRight() {
   const el = viewportEl.value;
@@ -597,6 +599,13 @@ function measureScrollX() {
   const beforeEnd = max > 1 && el.scrollLeft < max - endAt - 1;
   scrolledX.value = fromStart && beforeEnd ? "both" : fromStart ? "start" : beforeEnd ? "end" : undefined;
   viewportH.value = el.offsetHeight;
+  const vpRight = el.getBoundingClientRect().right;
+  let left = vpRight;
+  for (const th of Array.from(head?.querySelectorAll<HTMLElement>("tr:first-child > th") ?? [])) {
+    const cs = getComputedStyle(th);
+    if (cs.position === "sticky" && cs.right !== "auto") left = Math.min(left, th.getBoundingClientRect().left);
+  }
+  stickyEndW.value = Math.max(0, Math.round(vpRight - left));
 }
 let scrollRo: ResizeObserver | null = null;
 onMounted(() => {
@@ -685,7 +694,7 @@ const KIND_WIDTH: Record<ArTableColumnKind, readonly [number, number]> = {
   yearmonth: [112, 88],
   date: [112, 88],
   status: [120, 88],
-  amount: [128, 104],
+  amount: [104, 96],
   category: [128, 88],
   timeRange: [136, 104],
   datetime: [160, 120],
@@ -888,6 +897,7 @@ const colspan = computed(
                 :colspan="h.colspan"
                 :data-collapsible="h.group.collapsible || undefined"
                 :data-group-start="true"
+                @click.self="h.group.collapsible && toggleGroups(h.group.key)"
               >
                 <button
                   v-if="h.group.collapsible"
@@ -901,7 +911,7 @@ const colspan = computed(
                     line
                     name="cd"
                     size="sm"
-                  />{{ h.group.title }}<span data-part="toggle-hint">{{ h.group.openHint ?? "閉じる" }}</span>
+                  />{{ h.group.title }}<span data-ar-visually-hidden>{{ h.group.openHint ?? "閉じる" }}</span>
                 </button>
                 <template v-else>{{ h.group.title }}</template>
               </th>
@@ -921,6 +931,7 @@ const colspan = computed(
                 :data-person="h.col.avatar ? (h.col.sub ? 'with-sub' : 'single') : undefined"
                 :data-total="h.col.total || undefined"
                 :data-collapsed="h.collapsed ? true : undefined"
+                @click.self="h.collapsed && toggleGroups(h.collapsed.key)"
               >
                 <slot :name="`head-${h.col.key}`" :column="h.col">
                   <button
@@ -935,7 +946,7 @@ const colspan = computed(
                       line
                       name="cr"
                       size="sm"
-                    />{{ h.col.title }}<span data-part="toggle-hint">{{ h.collapsed.closedHint ?? "内訳" }}</span>
+                    />{{ h.col.title }}<span data-ar-visually-hidden>{{ h.collapsed.closedHint ?? "内訳" }}</span>
                   </button>
                   <button
                     v-else-if="h.col.toggles"
@@ -976,6 +987,7 @@ const colspan = computed(
                       <path data-dir="desc" data-shape="caret" d="M12 21.5 4 13h16Z" />
                     </svg>
                   </button>
+                  <span v-else-if="h.col.kind === 'actions'" data-ar-visually-hidden>{{ h.col.title }}</span>
                   <template v-else>{{ h.col.title }}</template>
                 </slot>
               </th>
@@ -1279,7 +1291,8 @@ const colspan = computed(
       tabindex="-1"
       :aria-label="L.scrollRight"
       :title="L.scrollRight"
-      :style="{ height: `${viewportH}px` }"
+      :data-beside-sticky="stickyEndW > 0 || undefined"
+      :style="{ height: `${viewportH}px`, right: stickyEndW > 0 ? `${stickyEndW}px` : undefined }"
       @click="scrollRight"
     ><ArIcon line name="cr" size="sm" /></button>
     <div v-if="viewOptions || $slots.below" data-part="below">

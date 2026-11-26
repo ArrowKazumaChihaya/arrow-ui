@@ -220,3 +220,18 @@
 @media(min-width:640px){[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{position:sticky;right:0;z-index:4}}
 /* 編集中の行の［キャンセル］［確定］は上にそろえる。時刻を入れて次の入力段が増え、行が高くなっても ✓ が下へずれて押し損じないように。 */
 [data-ar-design="remix"] [data-ar="table"] td[data-col="actions"]:has(>[data-part="actions"][data-kind="edit"]){vertical-align:top;padding-top:10px}
+/* 開け閉めできる見出しは、セルのどこを押しても開け閉めする（「内訳」「閉じる」の文字は出さない）。 */
+[data-ar-design="remix"] [data-ar="table"] th:is([data-collapsible],[data-collapsed]){cursor:pointer}
+[data-ar-design="remix"] [data-ar="table"] th:is([data-collapsible],[data-collapsed]):hover{background:color-mix(in srgb,var(--ar-accent-ink) 8%,var(--ar-accent-subtle))}
+/* 右に止めた列があるときの続きの印は、その列の左に出す（角は丸めない）。 */
+[data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-hint"][data-beside-sticky]{border-radius:0}
+/* 2段の見出しは、上の段（まとまり）と下の段の間にも線を引く（縦の区切り線と同じ色）。 */
+[data-ar-design="remix"] [data-ar="table"] thead tr[data-tier="2"]>th{border-top:1px solid color-mix(in srgb,var(--ar-accent-ink) 24%,transparent)}
+/* board の右に止めた操作の列：影は見出しから行まで同じ位置で続け、ボタンとの間を空ける。 */
+@media(min-width:640px){
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{padding-left:12px}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{background:var(--ar-accent-subtle);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot td[data-col="actions"]{position:sticky;right:0;z-index:2;box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
+}
+/* 操作の列は、左の列の中身（ボタンなど）とくっつかないように左を空ける。 */
+[data-ar-design="remix"] [data-ar="table"][data-sized] td:is([data-kind="actions"],[data-col="actions"]){padding-left:16px}

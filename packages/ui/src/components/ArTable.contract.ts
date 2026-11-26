@@ -75,9 +75,9 @@ export interface ArTableAvatar {
 /**
  * 列の種類と幅（文字の大きさの設定に合わせて伸び縮みする）。
  * select 48 / index 48 / color 72 / time 80 / count 88 / flag 96 / percent 96 / code 104 / yearmonth 112 /
- * date 112 / amount 128 / category 128 / status 120 / timeRange 136 / branch 168 / datetime 160 / name 200 /
+ * date 112 / amount 104 / category 128 / status 120 / timeRange 136 / branch 168 / datetime 160 / name 200 /
  * text（下限 200）・actions は余った幅を受け取る。表の入れ物が 640px 未満のときは詰めた幅
- * （time・count 64 / flag・percent・color・code 72 / status・yearmonth・date・category 88 / amount・timeRange 104 /
+  * （time・count 64 / flag・percent・color・code 72 / status・yearmonth・date・category 88 / amount 96 / timeRange 104 /
  * name・branch・datetime・text 120）。幅は下限で、表が入れ物より広くても縮めない（はみ出す分は横に動かす）。
  */
 export type ArTableColumnKind =

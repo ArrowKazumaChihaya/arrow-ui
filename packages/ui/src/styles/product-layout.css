@@ -23421,6 +23421,8 @@ table
 .drag_handle[data-v-uibb136b1eb259]
   > * {
   display: inline-block;
+  /* つまみ（⠿）と項目名を上下中央にそろえる（2行まで出す名前の箱は基準線が下端になり、行が高いと名前だけ上にずれるため）。 */
+  vertical-align: middle;
 }
 .drag_handle[data-v-uibb136b1eb259]:not(.disable) {
   cursor: ns-resize;

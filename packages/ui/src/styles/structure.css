@@ -94,6 +94,8 @@
 /* 操作の列は、ボタンを折り返さず横に並べた幅ぴったり（広げない）。 */
 [data-ar="table"] :is(td[data-kind="actions"],td[data-col="actions"]){white-space:nowrap}
 [data-ar="table"] td[data-kind="actions"] :is([data-ar="cluster"],[data-ar="stack"]){flex-wrap:nowrap}
+/* 種類を決めた表のデータの列（文の列と wrap の列以外）は折り返さない（「0人」が「0／人」に割れない。足りないときは列が広がる）。 */
+[data-ar="table"][data-sized] td[data-part="cell"]:not([data-wrap],[data-kind="text"]){white-space:nowrap}
 /* 文の列（タイトル・備考など）は決めた幅で折り返す（長い文で列が伸びて表がはみ出さないように）。 */
 [data-ar="table"][data-sized] td[data-kind="text"]{white-space:normal;overflow-wrap:anywhere}
 [data-ar="table"] [data-lead]{width:1%;min-width:40px;max-width:40px;box-sizing:border-box;padding-left:0!important;padding-right:0!important;text-align:center}
