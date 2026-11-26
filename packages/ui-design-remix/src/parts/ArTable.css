@@ -220,3 +220,13 @@
 @media(min-width:640px){[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tbody td[data-col="actions"]{position:sticky;right:0;z-index:2;background:var(--ar-color-surface,#fff);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead th[data-col="actions"]{position:sticky;right:0;z-index:4}}
 /* 編集中の行の［キャンセル］［確定］は上にそろえる。時刻を入れて次の入力段が増え、行が高くなっても ✓ が下へずれて押し損じないように。 */
 [data-ar-design="remix"] [data-ar="table"] td[data-col="actions"]:has(>[data-part="actions"][data-kind="edit"]){vertical-align:top;padding-top:10px}
+/* 余った幅を受け取る操作の列は、見出し（「操作」）もボタンと同じ右に寄せる。 */
+[data-ar-design="remix"] [data-ar="table"] [data-part="header-cell"][data-actions-grow]{text-align:right}
+/* 右端の空き列（余った幅を受け取る列）：見出しの帯と行の線だけ続ける。手前の見出しの区切り線は引かない。 */
+[data-ar-design="remix"] [data-ar="table"] thead [data-part="filler"]{padding:0;background:var(--ar-accent-subtle);border-bottom:1px solid var(--ar-color-border)}
+[data-ar-design="remix"] [data-ar="table"] :is(tbody,tfoot) [data-part="filler"]{padding:0;border-bottom:1px solid var(--ar-color-border-subtle)}
+[data-ar-design="remix"] [data-ar="table"] tr>[data-part="header-cell"]:has(+[data-part="filler"]){border-right:0}
+[data-ar-design="remix"] [data-ar="table"][data-variant="box"] tbody[data-part="body"]>tr:last-child>[data-part="filler"]{border-bottom:0}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] thead [data-part="filler"]{border-bottom:0;border-radius:0 10px 10px 0}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] [data-part="row"]:hover>[data-part="filler"]{background:#FAFBFD}
+[data-ar-design="remix"] [data-ar="table"][data-variant="board"] tfoot[data-part="foot"] [data-part="filler"]{background:#F7F9FB;border-radius:0 10px 10px 0}

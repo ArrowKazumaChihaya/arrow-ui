@@ -262,3 +262,88 @@ describe("ArList・ArEmpty・ArCollapse", () => {
     w.unmount();
   });
 });
+
+describe("ArTable 列の種類と幅", () => {
+  const rows = [{ id: 1, code: "001", name: "山田", on: "2026/11/19", note: "備考" }];
+  it("種類の列は col に data-kind を付け、px を書かない", () => {
+    const w = mount(T, {
+      props: {
+        rows,
+        rowKey: "id",
+        columns: [
+          { key: "code", title: "コード", kind: "code" },
+          { key: "on", title: "日付", kind: "date" },
+          { key: "note", title: "備考", kind: "text" },
+        ],
+      },
+    });
+    const cols = w.findAll("colgroup col");
+    expect(cols.map((c) => c.attributes("data-kind"))).toEqual(["code", "date", "text"]);
+    expect(cols[0]!.attributes("style")).toBeUndefined();
+    expect(cols[2]!.attributes("data-grow")).toBe("true");
+    expect(w.find('[data-col="filler"]').exists()).toBe(false);
+  });
+  it("文の列も操作もない表は、右端の空き列が余った幅を受け取る", () => {
+    const w = mount(T, {
+      props: {
+        rows,
+        rowKey: "id",
+        columns: [
+          { key: "code", title: "コード", kind: "code" },
+          { key: "name", title: "氏名", kind: "name" },
+        ],
+      },
+    });
+    expect(w.findAll('col[data-col="filler"]')).toHaveLength(1);
+    expect(w.findAll('tbody td[data-col="filler"]')).toHaveLength(1);
+    expect(w.find('thead th[data-col="filler"]').exists()).toBe(true);
+  });
+  it("右端の操作の列（kind: actions）があれば、その列が余った幅を受け取り、見出しも右に寄せる", () => {
+    const w = mount(T, {
+      props: {
+        rows,
+        rowKey: "id",
+        columns: [
+          { key: "name", title: "氏名", kind: "name" },
+          { key: "actions", title: "操作", kind: "actions", align: "end" },
+        ],
+      },
+    });
+    expect(w.find('[data-col="filler"]').exists()).toBe(false);
+    expect(w.findAll("colgroup col")[1]!.attributes("data-grow")).toBe("true");
+    expect(w.findAll("thead th")[1]!.attributes("data-actions-grow")).toBe("true");
+  });
+  it("種類も幅もない列がある表は、今までどおり自動で分け合う（空き列を足さない）", () => {
+    const w = mount(T, {
+      props: {
+        rows,
+        rowKey: "id",
+        columns: [
+          { key: "code", title: "コード", kind: "code" },
+          { key: "name", title: "氏名" },
+        ],
+      },
+    });
+    expect(w.find('[data-col="filler"]').exists()).toBe(false);
+    expect(w.findAll("colgroup col")[1]!.attributes("style")).toBeUndefined();
+  });
+});
+
+describe("ArTable 列の種類：縮めない下限", () => {
+  it("種類のある列の見出しのセルに data-kind を付ける（width を渡した列には付けない）", () => {
+    const w = mount(T, {
+      props: {
+        rows: [{ id: 1, a: "x", b: "y" }],
+        rowKey: "id",
+        columns: [
+          { key: "a", title: "A", kind: "amount" },
+          { key: "b", title: "B", kind: "amount", width: 90 },
+        ],
+      },
+    });
+    const ths = w.findAll("thead th");
+    expect(ths[0]!.attributes("data-kind")).toBe("amount");
+    expect(ths[1]!.attributes("data-kind")).toBeUndefined();
+    expect(w.findAll("colgroup col")[1]!.attributes("style")).toContain("width: 90px");
+  });
+});

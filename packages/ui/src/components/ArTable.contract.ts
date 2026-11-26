@@ -72,6 +72,35 @@ export interface ArTableAvatar {
   seed?: string | number;
 }
 
+/**
+ * 列の種類と幅（文字の大きさの設定に合わせて伸び縮みする）。
+ * select 48 / index 48 / color 72 / time 80 / count 88 / flag 96 / percent 96 / code 104 / yearmonth 112 /
+ * date 112 / amount 128 / category 128 / status 120 / timeRange 136 / branch 168 / datetime 160 / name 200 /
+ * text（下限 200）・actions は余った幅を受け取る。表の入れ物が 640px 未満のときは詰めた幅
+ * （time・count 64 / flag・percent・color・code 72 / status・yearmonth・date・category 88 / amount・timeRange 104 /
+ * name・branch・datetime・text 120）。幅は下限で、表が入れ物より広くても縮めない（はみ出す分は横に動かす）。
+ */
+export type ArTableColumnKind =
+  | "select"
+  | "index"
+  | "color"
+  | "time"
+  | "count"
+  | "flag"
+  | "percent"
+  | "code"
+  | "yearmonth"
+  | "date"
+  | "amount"
+  | "category"
+  | "status"
+  | "timeRange"
+  | "branch"
+  | "datetime"
+  | "name"
+  | "text"
+  | "actions";
+
 export interface ArTableColumn<Row> {
   /** 1.5：長い見出しと本文をセル内で折り返し、本文の改行を保持する。日付・金額などは省略して従来の表示を保つ。 */
   wrap?: boolean;
@@ -81,7 +110,14 @@ export interface ArTableColumn<Row> {
   title: string;
   /** 寄せ。省くと numeric の列は end、ほかは start。 */
   align?: "start" | "center" | "end";
-  /** px。データに合わせた幅は数で渡してよい。省くと中身に合わせる。fitを使わない表では、この幅より列を狭めない。 */
+  /**
+   * 列の種類。同じ種類の列は、どの表でも同じ幅になる（幅は表の決まりで持つ。画面ごとに px を書かない）。
+   * 中身がその幅より長いときだけ広がる。text（タイトル・備考などの文）は表の余った幅を受け取って広がる。
+   * 全部の列に kind か width があり text がない表は、右端の操作の列（kind:"actions"）か空き列が余りを受け取る（データの列は間延びしない）。
+   * 種類も width もない列が1つでもある表は、今までどおり表の幅を自動で分け合う。
+   */
+  kind?: ArTableColumnKind;
+  /** px。種類の幅で足りない特別な列だけに使う（kind より優先）。fitを使わない表では、この幅より列を狭めない。 */
   width?: number;
   /**
    * 横にスクロールしても残す。true・"start"＝左に（止めない列が手前にあってもよい。手前の止めない列は横にスクロールして隠れ、止めた列だけ左に残る。社員コード→氏名のように、コードは隠れて氏名だけ残す形）、"end"＝右に（右から続けて指定する。年調の「反映」）。

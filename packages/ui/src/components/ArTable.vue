@@ -368,11 +368,18 @@ const footCells = computed(() => {
 const hasActions = computed(() => !!slots.actions || anyEditing.value);
 const editableTable = computed(() => props.columns.some((c) => "editor" in c && (c as { editor?: unknown }).editor !== undefined) || !!slots["edit-actions"]);
 /** 操作の列の幅。入力できる表（editor のある列がある表）は、入力の行の［取り消し］［確定］が入る分を常に取っておく（編集・追加にしても列の幅が変わらない）。 */
-const actionsColWidth = computed(() => {
-  if (props.actionsWidth !== undefined) return { width: `${props.actionsWidth}px` };
-  if (editableTable.value) return { width: "136px" };
-  return props.fit ? { width: "96px" } : undefined;
+const actionsMin = computed(() => {
+  if (props.actionsWidth !== undefined) return `${props.actionsWidth}px`;
+  if (editableTable.value) return "136px";
+  return props.fit ? "96px" : undefined;
 });
+/** 操作の列が余った幅を受け取るときは col に幅を書かず、見出しのセルの最小幅で取っておく（ボタンは右に寄せたまま）。 */
+const actionsColWidth = computed(() =>
+  actionsMin.value && absorber.value !== "actions-slot" ? { width: actionsMin.value } : undefined,
+);
+const actionsHeadMin = computed(() =>
+  actionsMin.value && absorber.value === "actions-slot" ? { minWidth: actionsMin.value } : undefined,
+);
 
 /* ---- 左に固定する列：見出しのセルの位置を測って left にする ---- */
 const tableEl = ref<HTMLTableElement | null>(null);
@@ -662,13 +669,44 @@ function endDrag() {
   dropAt.value = null;
   armed.value = null;
 }
+/* ---- 列の幅：種類（kind）ごとの決まった幅。余った幅は文の列 → 操作の列 → 右端の空き列の順に受け取る ---- */
+/** 余った幅を受け取る文の列（kind:"text"）。 */
+const isGrow = (c: ArTableColumn<Row>) => c.kind === "text";
+/** 種類も幅も決めていない列（今までどおり、表の幅を自動で分け合う）。 */
+const isUnsized = (c: ArTableColumn<Row>) => c.kind === undefined && !c.width;
+/** 右端に並ぶ操作の列（kind:"actions"）。 */
+const trailingActionKeys = computed(() => {
+  const out: string[] = [];
+  for (const c of [...cols.value].reverse()) {
+    if (c.kind === "actions" && !c.width) out.push(c.key);
+    else break;
+  }
+  return out;
+});
+/**
+ * 余った幅を誰が受け取るか。文の列 → 右端の操作の列 → 操作の欄（actions の slot）→ 右端の空き列の順。
+ * 種類も幅もない列が1つでもある表は、今までどおり自動で分け合う（カレンダーなど、列を均等に並べる表を変えない）。
+ */
+const absorber = computed<"grow" | "actions-col" | "actions-slot" | "filler" | "none">(() => {
+  if (cols.value.some(isGrow)) return "grow";
+  if (cols.value.some(isUnsized)) return "none";
+  if (trailingActionKeys.value.length) return "actions-col";
+  if (hasActions.value) return "actions-slot";
+  return "filler";
+});
+const hasFiller = computed(() => absorber.value === "filler");
+/** 列の幅（col の style）。種類のある列は CSS の決まり（data-kind）で幅を持つので px を返さない。 */
+function colStyle(c: ArTableColumn<Row>): Record<string, string> | undefined {
+  return c.width ? { width: `${c.width}px` } : undefined;
+}
 const colspan = computed(
   () =>
     cols.value.length +
     (props.selectable ? 1 : 0) +
     (props.expandable ? 1 : 0) +
     (hasActions.value ? 1 : 0) +
-    (handleColumn.value ? 1 : 0),
+    (handleColumn.value ? 1 : 0) +
+    (hasFiller.value ? 1 : 0),
 );
 </script>
 
@@ -696,8 +734,15 @@ const colspan = computed(
           <col v-if="handleColumn" data-col="drag" />
           <col v-if="selectable" data-col="select" />
           <col v-if="expandable" data-col="expand" />
-          <col v-for="c in cols" :key="c.key" :style="c.width ? { width: `${c.width}px` } : undefined" />
+          <col
+            v-for="c in cols"
+            :key="c.key"
+            :data-kind="c.width ? undefined : c.kind"
+            :data-grow="(absorber === 'grow' && isGrow(c)) || (absorber === 'actions-col' && trailingActionKeys.includes(c.key)) || undefined"
+            :style="colStyle(c)"
+          />
           <col v-if="hasActions" data-col="actions" :style="actionsColWidth" />
+          <col v-if="hasFiller" data-col="filler" />
         </colgroup>
         <thead data-part="head" :data-tiers="head.two ? 2 : undefined">
           <tr>
@@ -782,6 +827,8 @@ const colspan = computed(
                 :rowspan="h.rowspan > 1 ? h.rowspan : undefined"
                 :data-align="alignOf(h.col)"
                 :data-wrap="h.col.wrap || undefined"
+                :data-actions-grow="(absorber === 'actions-col' && trailingActionKeys.includes(h.col.key)) || undefined"
+                :data-kind="h.col.width ? undefined : h.col.kind"
                 :data-sticky="stickAttr(h.col)"
                 :data-sticky-key="stickAttr(h.col) ? h.col.key : undefined"
                 :data-sticky-edge="edgeAttr(h.col)"
@@ -856,9 +903,11 @@ const colspan = computed(
               data-align="end"
               scope="col"
               :rowspan="headSpan"
+              :style="actionsHeadMin"
             >
               <span data-ar-visually-hidden>{{ L.actions }}</span>
             </th>
+            <th v-if="hasFiller" data-part="filler" data-col="filler" aria-hidden="true" :rowspan="headSpan" />
           </tr>
           <tr v-if="head.two" data-tier="2">
             <template v-for="h in head.bottom" :key="h.key">
@@ -870,6 +919,7 @@ const colspan = computed(
                 :data-wrap="h.col.wrap || undefined"
                 :data-total="h.col.total || undefined"
                 :data-group-start="groupStart(h.col) || undefined"
+                :data-kind="h.col.width ? undefined : h.col.kind"
                 :aria-sort="ariaSort(h.col)"
               >
                 <slot :name="`head-${h.col.key}`" :column="h.col">
@@ -1084,6 +1134,13 @@ const colspan = computed(
                 </span>
                 <span v-else data-part="actions"><slot name="actions" :row="row" :index="i" /></span>
               </td>
+              <td
+                v-if="hasFiller && j === 1"
+                data-part="filler"
+                data-col="filler"
+                aria-hidden="true"
+                :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
+              />
             </tr>
             <tr v-if="expandable && isOpen(row)" data-part="expanded-row">
               <td v-if="handleColumn" data-col="drag" />
@@ -1133,6 +1190,7 @@ const colspan = computed(
               </slot>
             </td>
             <td v-if="hasActions" data-part="cell" data-col="actions" />
+            <td v-if="hasFiller" data-part="filler" data-col="filler" aria-hidden="true" />
           </tr>
         </tfoot>
       </table>
