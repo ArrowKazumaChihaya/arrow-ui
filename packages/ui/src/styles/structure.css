@@ -87,34 +87,15 @@
 [data-ar="table"]>[data-part="viewport"]{overflow:auto;max-width:100%}
 /* 表は入れ物の幅いっぱい（縮めない）。列の中身が入らないときだけ横にはみ出して、入れ物の中で横に動かす。 */
 [data-ar="table"]>[data-part="viewport"]>[data-part="table"]{border-collapse:separate;border-spacing:0;width:100%}
-/* 列の種類ごとの幅（どの表でも同じ種類の列は同じ幅。中身が長いときだけ広がり、表が入れ物より広くても縮めない）。
-   幅は col に、縮めない下限は見出しのセル（th）に付ける。text と余りを受け取る列（data-grow）は幅を書かない。 */
-[data-ar="table"] :is(col,th)[data-kind="select"],[data-ar="table"] :is(col,th)[data-kind="index"]{--ar-col:48px}
-[data-ar="table"] :is(col,th)[data-kind="color"]{--ar-col:72px}
-[data-ar="table"] :is(col,th)[data-kind="time"]{--ar-col:80px}
-[data-ar="table"] :is(col,th)[data-kind="count"]{--ar-col:88px}
-[data-ar="table"] :is(col,th):is([data-kind="flag"],[data-kind="percent"]){--ar-col:96px}
-[data-ar="table"] :is(col,th)[data-kind="code"]{--ar-col:104px}
-[data-ar="table"] :is(col,th):is([data-kind="yearmonth"],[data-kind="date"]){--ar-col:112px}
-[data-ar="table"] :is(col,th)[data-kind="status"]{--ar-col:120px}
-[data-ar="table"] :is(col,th):is([data-kind="amount"],[data-kind="category"]){--ar-col:128px}
-[data-ar="table"] :is(col,th)[data-kind="timeRange"]{--ar-col:136px}
-[data-ar="table"] :is(col,th)[data-kind="datetime"]{--ar-col:160px}
-[data-ar="table"] :is(col,th)[data-kind="branch"]{--ar-col:168px}
-[data-ar="table"] :is(col,th)[data-kind="name"]{--ar-col:200px}
-[data-ar="table"] :is(col,th)[data-kind="text"]{--ar-col:200px}
-/* スマホの幅（表の入れ物が 640px 未満）は、横に動かさずに見える列を増やすため、種類ごとに詰めた幅にする（同じ種類は同じ幅のまま）。 */
-@container (max-width: 639px){
-[data-ar="table"] :is(col,th):is([data-kind="time"],[data-kind="count"]){--ar-col:64px}
-[data-ar="table"] :is(col,th):is([data-kind="flag"],[data-kind="percent"],[data-kind="color"],[data-kind="code"]){--ar-col:72px}
-[data-ar="table"] :is(col,th):is([data-kind="status"],[data-kind="yearmonth"],[data-kind="date"],[data-kind="category"]){--ar-col:88px}
-[data-ar="table"] :is(col,th):is([data-kind="amount"],[data-kind="timeRange"]){--ar-col:104px}
-[data-ar="table"] :is(col,th):is([data-kind="name"],[data-kind="branch"],[data-kind="datetime"],[data-kind="text"]){--ar-col:120px}
-}
-[data-ar="table"] col[data-kind]:not([data-kind="text"],[data-kind="actions"],[data-grow]){width:calc(var(--ar-col) * var(--ar-font-scale, 1))}
-[data-ar="table"] th[data-kind]:not([data-kind="actions"]){min-width:calc(var(--ar-col) * var(--ar-font-scale, 1));box-sizing:border-box}
-[data-ar="table"] col[data-kind="actions"]:not([data-grow]){width:1px}
-[data-ar="table"] :is(th,td)[data-col="filler"]{padding:0!important;border-right:0!important}
+/* 列の幅を種類で決めた表（data-sized）：幅は ArTable が col に書く。表は列の合計の幅で、入れ物より広いときだけ横に動かす。 */
+[data-ar="table"][data-sized]>[data-part="viewport"]{width:fit-content}
+[data-ar="table"][data-sized]>[data-part="viewport"]>[data-part="table"]{width:auto}
+[data-ar="table"] th[data-kind]{box-sizing:border-box}
+/* 操作の列は、ボタンを折り返さず横に並べた幅ぴったり（広げない）。 */
+[data-ar="table"] :is(td[data-kind="actions"],td[data-col="actions"]){white-space:nowrap}
+[data-ar="table"] td[data-kind="actions"] :is([data-ar="cluster"],[data-ar="stack"]){flex-wrap:nowrap}
+/* 文の列（タイトル・備考など）は決めた幅で折り返す（長い文で列が伸びて表がはみ出さないように）。 */
+[data-ar="table"][data-sized] td[data-kind="text"]{white-space:normal;overflow-wrap:anywhere}
 [data-ar="table"] [data-lead]{width:1%;min-width:40px;max-width:40px;box-sizing:border-box;padding-left:0!important;padding-right:0!important;text-align:center}
 [data-ar="table"] :is(th,td)[data-align="center"]{text-align:center}
 [data-ar="table"] :is(th,td)[data-align="end"]{text-align:right}

@@ -30,6 +30,7 @@ import ArIcon from "./ArIcon.vue";
 import ArCheckbox from "./ArCheckbox.vue";
 import { useDesignForm } from "../provider/context";
 import type {
+  ArTableColumnKind,
   ArRowKey,
   ArTableColumn,
   ArTableEditValue,
@@ -368,18 +369,13 @@ const footCells = computed(() => {
 const hasActions = computed(() => !!slots.actions || anyEditing.value);
 const editableTable = computed(() => props.columns.some((c) => "editor" in c && (c as { editor?: unknown }).editor !== undefined) || !!slots["edit-actions"]);
 /** 操作の列の幅。入力できる表（editor のある列がある表）は、入力の行の［取り消し］［確定］が入る分を常に取っておく（編集・追加にしても列の幅が変わらない）。 */
-const actionsMin = computed(() => {
-  if (props.actionsWidth !== undefined) return `${props.actionsWidth}px`;
-  if (editableTable.value) return "136px";
-  return props.fit ? "96px" : undefined;
+/** 操作の欄の幅。幅を決めた表（sized）は、ボタンが横に並ぶ幅ぴったりにして広げない（ボタンの左に余白を作らない）。 */
+const actionsColWidth = computed(() => {
+  if (props.actionsWidth !== undefined) return { width: `${props.actionsWidth}px` };
+  if (editableTable.value) return { width: "136px" };
+  if (sized.value) return { width: "1px" };
+  return props.fit ? { width: "96px" } : undefined;
 });
-/** 操作の列が余った幅を受け取るときは col に幅を書かず、見出しのセルの最小幅で取っておく（ボタンは右に寄せたまま）。 */
-const actionsColWidth = computed(() =>
-  actionsMin.value && absorber.value !== "actions-slot" ? { width: actionsMin.value } : undefined,
-);
-const actionsHeadMin = computed(() =>
-  actionsMin.value && absorber.value === "actions-slot" ? { minWidth: actionsMin.value } : undefined,
-);
 
 /* ---- 左に固定する列：見出しのセルの位置を測って left にする ---- */
 const tableEl = ref<HTMLTableElement | null>(null);
@@ -670,43 +666,133 @@ function endDrag() {
   armed.value = null;
 }
 /* ---- 列の幅：種類（kind）ごとの決まった幅。余った幅は文の列 → 操作の列 → 右端の空き列の順に受け取る ---- */
-/** 余った幅を受け取る文の列（kind:"text"）。 */
-const isGrow = (c: ArTableColumn<Row>) => c.kind === "text";
-/** 種類も幅も決めていない列（今までどおり、表の幅を自動で分け合う）。 */
-const isUnsized = (c: ArTableColumn<Row>) => c.kind === undefined && !c.width;
-/** 右端に並ぶ操作の列（kind:"actions"）。 */
-const trailingActionKeys = computed(() => {
-  const out: string[] = [];
-  for (const c of [...cols.value].reverse()) {
-    if (c.kind === "actions" && !c.width) out.push(c.key);
-    else break;
-  }
-  return out;
-});
-/**
- * 余った幅を誰が受け取るか。文の列 → 右端の操作の列 → 操作の欄（actions の slot）→ 右端の空き列の順。
- * 種類も幅もない列が1つでもある表は、今までどおり自動で分け合う（カレンダーなど、列を均等に並べる表を変えない）。
+/*
+ * ---- 列の幅：種類（kind）ごとに決まった幅（同じ種類はどの表でも同じ幅）。----
+ * 表が入れ物より狭いときは、データの列を同じ割合で広げる（1.5倍まで）。それでも余るときは表を広げず左に置く。
+ * 操作の列（kind:"actions"・actions の欄）はボタンが横に並ぶ幅のまま広げない。
+ * 決めた幅は下限で、入れ物より広い表も列を縮めない（はみ出す分は横に動かす）。
+ * 種類も幅もない列が1つでもある表と board は、今までどおり表の幅を自動で分け合う。
  */
-const absorber = computed<"grow" | "actions-col" | "actions-slot" | "filler" | "none">(() => {
-  if (cols.value.some(isGrow)) return "grow";
-  if (cols.value.some(isUnsized)) return "none";
-  if (trailingActionKeys.value.length) return "actions-col";
-  if (hasActions.value) return "actions-slot";
-  return "filler";
-});
-const hasFiller = computed(() => absorber.value === "filler");
-/** 列の幅（col の style）。種類のある列は CSS の決まり（data-kind）で幅を持つので px を返さない。 */
-function colStyle(c: ArTableColumn<Row>): Record<string, string> | undefined {
-  return c.width ? { width: `${c.width}px` } : undefined;
+const KIND_WIDTH: Record<ArTableColumnKind, readonly [number, number]> = {
+  select: [48, 48],
+  index: [48, 48],
+  color: [72, 72],
+  time: [80, 64],
+  count: [88, 64],
+  flag: [96, 72],
+  percent: [96, 72],
+  code: [104, 72],
+  yearmonth: [112, 88],
+  date: [112, 88],
+  status: [120, 88],
+  amount: [128, 104],
+  category: [128, 88],
+  timeRange: [136, 104],
+  datetime: [160, 120],
+  branch: [168, 120],
+  name: [200, 120],
+  text: [240, 120],
+  actions: [0, 0],
+};
+const MAX_STRETCH = 1.5;
+/** 入れ物がこの幅より狭いときは詰めた幅（スマホ）。 */
+const NARROW_WIDTH = 640;
+const isFixedCol = (c: ArTableColumn<Row>) => c.kind === "actions";
+const sized = computed(
+  () =>
+    props.variant !== "board" &&
+    cols.value.length > 0 &&
+    cols.value.every((c) => c.kind !== undefined || !!c.width),
+);
+const narrow = ref(false);
+const fontScale = ref(1);
+const stretch = ref(1);
+function baseOf(c: ArTableColumn<Row>): number {
+  if (c.width) return c.width * fontScale.value;
+  if (!c.kind || isFixedCol(c)) return 0;
+  return KIND_WIDTH[c.kind][narrow.value ? 1 : 0] * fontScale.value;
 }
+/** 列の幅（col の style）。 */
+function colStyle(c: ArTableColumn<Row>): Record<string, string> | undefined {
+  if (!sized.value) return c.width ? { width: `${c.width}px` } : undefined;
+  if (isFixedCol(c)) return { width: "1px" };
+  return { width: `${Math.round(baseOf(c) * stretch.value)}px` };
+}
+/** 見出しのセルの下限（決めた幅より縮めない）。 */
+function headMin(c: ArTableColumn<Row>): Record<string, string> | undefined {
+  if (!sized.value || isFixedCol(c)) return undefined;
+  return { minWidth: `${Math.round(baseOf(c))}px` };
+}
+const stretchCols = computed(() => cols.value.filter((c) => !isFixedCol(c)));
+function measureNow(): { avail: number; table: number; data: number; current: number } | null {
+  const root = rootEl.value;
+  const vp = viewportEl.value;
+  const table = tableEl.value;
+  if (!root || !vp || !table) return null;
+  const border = vp.offsetWidth - vp.clientWidth;
+  const avail = root.clientWidth - border;
+  const current = Array.from(table.querySelectorAll<HTMLElement>("col[data-stretch]")).reduce(
+    (sum, col) => sum + col.getBoundingClientRect().width,
+    0,
+  );
+  const data = stretchCols.value.reduce((sum, c) => sum + baseOf(c), 0);
+  return { avail, table: table.getBoundingClientRect().width, data, current };
+}
+let relayoutPending = false;
+async function relayout() {
+  if (!sized.value || relayoutPending) return;
+  relayoutPending = true;
+  try {
+    const root = rootEl.value;
+    if (!root) return;
+    fontScale.value = Number.parseFloat(getComputedStyle(root).getPropertyValue("--ar-font-scale")) || 1;
+    narrow.value = root.clientWidth < NARROW_WIDTH;
+    await nextTick();
+    // 2回まで：固定の列（操作など）の幅を測ってから割合を決め、中身で列が広がってはみ出したら割合を戻す。
+    for (let i = 0; i < 2; i++) {
+      const m = measureNow();
+      if (!m || m.data <= 0) {
+        stretch.value = 1;
+        return;
+      }
+      const fixed = m.table - m.current;
+      const want = Math.min(MAX_STRETCH, Math.max(1, (m.avail - fixed) / m.data));
+      const over = i === 0 ? 0 : Math.max(0, m.table - m.avail);
+      const next = Math.max(1, Math.min(want, stretch.value - over / m.data));
+      if (Math.abs(next - stretch.value) < 0.001 && i > 0) return;
+      stretch.value = i === 0 ? want : next;
+      await nextTick();
+    }
+  } finally {
+    relayoutPending = false;
+  }
+}
+let widthRo: ResizeObserver | null = null;
+onMounted(() => {
+  void relayout();
+  if (typeof ResizeObserver !== "undefined" && rootEl.value) {
+    let last = -1;
+    widthRo = new ResizeObserver(() => {
+      const w = rootEl.value?.clientWidth ?? 0;
+      if (w === last) return;
+      last = w;
+      void relayout();
+    });
+    widthRo.observe(rootEl.value);
+  }
+});
+onBeforeUnmount(() => widthRo?.disconnect());
+watch(
+  () => [cols.value.map((c) => `${c.key}:${c.kind ?? ""}:${c.width ?? ""}`).join(","), props.rows.length],
+  () => void relayout(),
+);
 const colspan = computed(
   () =>
     cols.value.length +
     (props.selectable ? 1 : 0) +
     (props.expandable ? 1 : 0) +
     (hasActions.value ? 1 : 0) +
-    (handleColumn.value ? 1 : 0) +
-    (hasFiller.value ? 1 : 0),
+    (handleColumn.value ? 1 : 0),
 );
 </script>
 
@@ -717,6 +803,7 @@ const colspan = computed(
     data-part="root"
     :data-variant="variant"
     :data-fit="fit || undefined"
+    :data-sized="sized || undefined"
     :data-density="density"
     :data-vertical-align="verticalAlign"
     :data-sticky-header="stickyHeader || undefined"
@@ -737,12 +824,10 @@ const colspan = computed(
           <col
             v-for="c in cols"
             :key="c.key"
-            :data-kind="c.width ? undefined : c.kind"
-            :data-grow="(absorber === 'grow' && isGrow(c)) || (absorber === 'actions-col' && trailingActionKeys.includes(c.key)) || undefined"
+            :data-stretch="(sized && !isFixedCol(c)) || undefined"
             :style="colStyle(c)"
           />
           <col v-if="hasActions" data-col="actions" :style="actionsColWidth" />
-          <col v-if="hasFiller" data-col="filler" />
         </colgroup>
         <thead data-part="head" :data-tiers="head.two ? 2 : undefined">
           <tr>
@@ -827,12 +912,11 @@ const colspan = computed(
                 :rowspan="h.rowspan > 1 ? h.rowspan : undefined"
                 :data-align="alignOf(h.col)"
                 :data-wrap="h.col.wrap || undefined"
-                :data-actions-grow="(absorber === 'actions-col' && trailingActionKeys.includes(h.col.key)) || undefined"
-                :data-kind="h.col.width ? undefined : h.col.kind"
+                :data-kind="h.col.kind"
                 :data-sticky="stickAttr(h.col)"
                 :data-sticky-key="stickAttr(h.col) ? h.col.key : undefined"
                 :data-sticky-edge="edgeAttr(h.col)"
-                :style="[stickStyle(h.col), !fit && h.col.width ? { minWidth: `${h.col.width}px` } : undefined]"
+                :style="[stickStyle(h.col), sized ? headMin(h.col) : !fit && h.col.width ? { minWidth: `${h.col.width}px` } : undefined]"
                 :aria-sort="ariaSort(h.col)"
                 :data-person="h.col.avatar ? (h.col.sub ? 'with-sub' : 'single') : undefined"
                 :data-total="h.col.total || undefined"
@@ -903,11 +987,9 @@ const colspan = computed(
               data-align="end"
               scope="col"
               :rowspan="headSpan"
-              :style="actionsHeadMin"
             >
               <span data-ar-visually-hidden>{{ L.actions }}</span>
             </th>
-            <th v-if="hasFiller" data-part="filler" data-col="filler" aria-hidden="true" :rowspan="headSpan" />
           </tr>
           <tr v-if="head.two" data-tier="2">
             <template v-for="h in head.bottom" :key="h.key">
@@ -919,7 +1001,8 @@ const colspan = computed(
                 :data-wrap="h.col.wrap || undefined"
                 :data-total="h.col.total || undefined"
                 :data-group-start="groupStart(h.col) || undefined"
-                :data-kind="h.col.width ? undefined : h.col.kind"
+                :data-kind="h.col.kind"
+                :style="headMin(h.col)"
                 :aria-sort="ariaSort(h.col)"
               >
                 <slot :name="`head-${h.col.key}`" :column="h.col">
@@ -1074,6 +1157,7 @@ const colspan = computed(
                   :data-numeric="c.numeric || undefined"
                   :data-emphasis="c.emphasis"
                   :data-wrap="c.wrap || undefined"
+                  :data-kind="c.kind === 'actions' || c.kind === 'text' ? c.kind : undefined"
                   :data-blank="
                     (!canEdit(row, c) && isBlank(cellValue(row, c, lineOf(c, j - 1))) && (!isLineCol(c) || j === 1)) ||
                     undefined
@@ -1134,13 +1218,6 @@ const colspan = computed(
                 </span>
                 <span v-else data-part="actions"><slot name="actions" :row="row" :index="i" /></span>
               </td>
-              <td
-                v-if="hasFiller && j === 1"
-                data-part="filler"
-                data-col="filler"
-                aria-hidden="true"
-                :rowspan="anyLines && lineCount(row) > 1 ? lineCount(row) : undefined"
-              />
             </tr>
             <tr v-if="expandable && isOpen(row)" data-part="expanded-row">
               <td v-if="handleColumn" data-col="drag" />
@@ -1190,7 +1267,6 @@ const colspan = computed(
               </slot>
             </td>
             <td v-if="hasActions" data-part="cell" data-col="actions" />
-            <td v-if="hasFiller" data-part="filler" data-col="filler" aria-hidden="true" />
           </tr>
         </tfoot>
       </table>
