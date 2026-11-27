@@ -757,6 +757,10 @@ const tableStyle = computed(() => {
     (hasActions.value ? actionsSlotWidth.value : 0);
   return { width: `${total}px` };
 });
+/** 表の上のボタンの並びの幅：表と同じ幅（入れ物より広い表は入れ物の幅）にして、右端を表の右端にそろえる。 */
+const toolbarStyle = computed(() =>
+  tableStyle.value ? { width: `min(100%, ${tableStyle.value.width})` } : undefined,
+);
 const stretchCols = computed(() => cols.value.filter((c) => !isFixedCol(c)));
 function relayout(): void {
   if (!sized.value) return;
@@ -834,6 +838,8 @@ const colspan = computed(
     :data-sortable="sortableRows || undefined"
     :data-scrolled-x="scrolledX"
   >
+    <!-- 表の上のボタン（toolbar）。表が横いっぱいでないときも、表の右端にそろえる。 -->
+    <div v-if="$slots.toolbar" data-part="toolbar" :style="toolbarStyle"><slot name="toolbar" /></div>
     <div ref="viewportEl" data-part="viewport" role="region" :aria-label="caption" tabindex="0" @scroll.passive="measureScrollX">
       <table ref="tableEl" data-part="table" :style="tableStyle" @mouseover="showClippedText">
         <caption data-ar-visually-hidden>

@@ -354,7 +354,8 @@ export interface ArTableEmits<Row> {
  * cell-<key>（{ row, value, index, line, Default }：Default は既定の表示を描く部品、line は段に分けた列の段の番号）・head-<key>（{ column }）・foot-<key>（{ value }）・expanded（{ row }）・empty、
  * actions（{ row, index }：行の右端の操作。アイコンだけのボタンに aria-label を付ける）、
  * before-rows（見出しのすぐ下・行の上。シフト画面の「シフト追加」）、
- * below（表の下。ArPagination や「表示内容」のプルダウンを置く）。
+ * below（表の下。ArPagination や「表示内容」のプルダウンを置く）、
+ * toolbar（表の上のボタン。表が横いっぱいでないときも表の右端にそろえる）。
  */
 export type ArTablePart =
   | "root"
@@ -385,6 +386,7 @@ export type ArTablePart =
   | "foot-value"
   | "empty"
   | "below"
+  | "toolbar"
   | "drag-handle"
   | "status"
   | "group-cell"

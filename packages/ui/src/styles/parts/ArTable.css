@@ -64,3 +64,4 @@
 /* 右に続きがある印：表の枠の右端に重ねる（押せない・読み上げない）。 */
 [data-ar="table"]{position:relative}
 [data-ar="table"]>[data-part="scroll-hint"]{position:absolute;top:0;right:0;width:28px;display:flex;align-items:center;justify-content:flex-end;margin:0;padding:0;border:0;font:inherit;cursor:pointer;z-index:4}
+[data-ar="table"]>[data-part="toolbar"]{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:12px;max-width:100%}

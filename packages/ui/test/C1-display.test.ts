@@ -380,3 +380,15 @@ describe("ArTable 列の幅は中身で変えない", () => {
     expect(empty.find("table").attributes("style")).toBe(one.find("table").attributes("style"));
   });
 });
+
+describe("ArTable 表の上のボタン（toolbar）", () => {
+  it("表と同じ幅の並びに入れ、右端を表の右端にそろえる", () => {
+    const w = mount(T, {
+      props: { rows: [{ id: 1, name: "a" }], rowKey: "id", columns: [{ key: "name", title: "名前", kind: "name" }] },
+      slots: { toolbar: () => h("button", "非表示の項目を表示") },
+    });
+    const bar = w.find('[data-part="toolbar"]');
+    expect(bar.text()).toBe("非表示の項目を表示");
+    expect(bar.attributes("style")).toContain("width: min(100%, 200px)");
+  });
+});

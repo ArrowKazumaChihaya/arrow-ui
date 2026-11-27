@@ -38,3 +38,8 @@
 [data-ar-design="remix"] [data-ar="tree-table"] [data-part="row"][data-drop="before"]>td{box-shadow:inset 0 2px 0 var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="tree-table"] [data-part="row"][data-drop="after"]>td{box-shadow:inset 0 -2px 0 var(--ar-accent)}
 [data-ar-design="remix"] [data-ar="tree-table"] [data-part="row"][data-drop="inside"]>td{background:var(--ar-accent-subtle)}
+/* 見出しは表（ArTable）と同じ：高さ42・13px・中央寄せ・テーマ色の区切り線（全ページで同じ見た目）。 */
+[data-ar-design="remix"] [data-ar="tree-table"] thead[data-part="head"]>tr{height:42px}
+[data-ar-design="remix"] [data-ar="tree-table"] [data-part="header-cell"]{height:42px;padding:0 8px;font-size:calc(13px * var(--ar-font-scale, 1));letter-spacing:.02em;text-align:center;border-bottom:1px solid var(--ar-color-border);border-right:1px solid color-mix(in srgb,var(--ar-accent-ink) 32%,transparent)}
+[data-ar-design="remix"] [data-ar="tree-table"] [data-part="header-cell"]:is(:last-child,[data-col="actions"]){border-right:0}
+[data-ar-design="remix"] [data-ar="tree-table"] [data-part="header-cell"]:has(+[data-col="actions"]){border-right:0}
