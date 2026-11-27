@@ -583,11 +583,9 @@ function siblingsWidth(cell: Element, dir: "previous" | "next"): number {
 const viewportH = ref(0);
 /** 右に止めた列（右端に貼りついた操作の列など）の幅。続きの印はその左に出す（止めた列のボタンと重ねない）。 */
 const stickyEndW = ref(0);
-/** 1.10：右端の続きの印を押すと、見えている幅の8割ぶん右へ動かす（印だけで押せないのは紛らわしいため）。 */
-function scrollRight() {
-  const el = viewportEl.value;
-  if (el) el.scrollBy({ left: Math.max(120, el.clientWidth * 0.8), behavior: "smooth" });
-}
+/** 左に止めた列の幅（左の影はその右端に出す）と、表の枠の上端（影の縦の位置）。 */
+const stickyStartW = ref(0);
+const viewportTop = ref(0);
 function measureScrollX() {
   const el = viewportEl.value;
   if (!el) return;
@@ -601,13 +599,19 @@ function measureScrollX() {
   const beforeEnd = max > 1 && el.scrollLeft < max - endAt - 1;
   scrolledX.value = fromStart && beforeEnd ? "both" : fromStart ? "start" : beforeEnd ? "end" : undefined;
   viewportH.value = el.offsetHeight;
-  const vpRight = el.getBoundingClientRect().right;
-  let left = vpRight;
+  const vpRect = el.getBoundingClientRect();
+  let left = vpRect.right;
+  let right = vpRect.left;
   for (const th of Array.from(head?.querySelectorAll<HTMLElement>("tr:first-child > th") ?? [])) {
     const cs = getComputedStyle(th);
-    if (cs.position === "sticky" && cs.right !== "auto") left = Math.min(left, th.getBoundingClientRect().left);
+    if (cs.position !== "sticky") continue;
+    const r = th.getBoundingClientRect();
+    if (cs.right !== "auto") left = Math.min(left, r.left);
+    else if (cs.left !== "auto") right = Math.max(right, r.right);
   }
-  stickyEndW.value = Math.max(0, Math.round(vpRight - left));
+  stickyEndW.value = Math.max(0, Math.round(vpRect.right - left));
+  stickyStartW.value = Math.max(0, Math.round(right - vpRect.left));
+  viewportTop.value = el.offsetTop;
 }
 let scrollRo: ResizeObserver | null = null;
 onMounted(() => {
@@ -1306,18 +1310,21 @@ const colspan = computed(
         </tfoot>
       </table>
     </div>
-    <!-- 右に続きがあるときは、右端に影と › を出して横に動かせることを知らせる（スマホで大事な列が隠れていても気づけるように）。 -->
-    <button
-      v-if="scrolledX === 'end' || scrolledX === 'both'"
-      type="button"
-      data-part="scroll-hint"
-      tabindex="-1"
-      :aria-label="L.scrollRight"
-      :title="L.scrollRight"
-      :data-beside-sticky="stickyEndW > 0 || undefined"
-      :style="{ height: `${viewportH}px`, right: stickyEndW > 0 ? `${stickyEndW}px` : undefined }"
-      @click="scrollRight"
-    ><ArIcon line name="cr" size="sm" /></button>
+    <!-- 横に続きがあるときだけ、隠れている側の端にほんのり影を出す（止めた列があればその列の内側の端）。出る・消えるはふわっと。 -->
+    <div
+      data-part="scroll-shade"
+      data-side="start"
+      aria-hidden="true"
+      :data-on="(scrolledX === 'start' || scrolledX === 'both') || undefined"
+      :style="{ top: `${viewportTop}px`, height: `${viewportH}px`, left: `${stickyStartW}px` }"
+    />
+    <div
+      data-part="scroll-shade"
+      data-side="end"
+      aria-hidden="true"
+      :data-on="(scrolledX === 'end' || scrolledX === 'both') || undefined"
+      :style="{ top: `${viewportTop}px`, height: `${viewportH}px`, right: `${stickyEndW}px` }"
+    />
     <div v-if="viewOptions || $slots.below" data-part="below">
       <ArViewOptions
         v-if="viewOptions"

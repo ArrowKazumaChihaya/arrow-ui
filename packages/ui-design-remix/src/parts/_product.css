@@ -597,3 +597,7 @@
 /* 並べ替えの表：追加・編集中のつまみは場所を残して見えなくする（項目名・列の幅がずれない）。 */
 [data-ar-design="remix"] .drag_icon_wrap.drag_icon_idle:not([data-ui-fixed], [data-ui-fixed] *){visibility:hidden}
 [data-ar-design="remix"] td.drag_cell>*:not([data-ui-fixed], [data-ui-fixed] *){display:inline-block;vertical-align:top}
+/* 並べ替えの表：つまみ（⠿）と項目名の1行目を真横にそろえる。項目名の文字（p・行の高さ1.6）とつまみの箱を、同じ文字の大きさ・行の高さにする。 */
+[data-ar-design="remix"] td.drag_cell>:is(.is_drag,.no_drag,.drag_icon_wrap):not([data-ui-fixed], [data-ui-fixed] *){font-size:inherit;line-height:1.6;margin:0}
+[data-ar-design="remix"] td.drag_cell>.drag_icon_wrap:not([data-ui-fixed], [data-ui-fixed] *){height:1.6em;display:inline-flex;align-items:center}
+[data-ar-design="remix"] td.drag_cell>:is(.is_drag,.no_drag)>[data-ar="ellipsis"]:not([data-ui-fixed], [data-ui-fixed] *){vertical-align:top;line-height:1.6}
