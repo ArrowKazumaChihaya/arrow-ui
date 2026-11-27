@@ -18,5 +18,5 @@ export interface ArProfileCardProps {
   tags?: readonly { key: string; label: string; tone?: ArTagProps["tone"]; palette?: ArPaletteName }[];
   tagsLabel?: string;
 }
-/** Slots: actions (edit/navigation), photo-actions, footer; none own business logic. */
-export type ArProfileCardPart = "root" | "summary" | "header" | "identity" | "photo" | "name" | "actions" | "footer";
+/** Slots: actions (edit/navigation), head-actions（帯の見出しの右端）, title-actions（見出しの文字のすぐ右）, photo-actions, footer; none own business logic. */
+export type ArProfileCardPart = "root" | "summary" | "header" | "identity" | "photo" | "names" | "name-block" | "kana" | "name" | "actions" | "footer";

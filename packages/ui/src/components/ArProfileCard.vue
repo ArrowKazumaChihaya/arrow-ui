@@ -25,6 +25,8 @@ const descriptionItems = computed(() => [
 <template>
   <article data-ar="profile-card" data-part="root" :data-layout="layout">
     <ArCard :variant="title ? 'band' : 'elevated'" :title="title" :icon="title ? 'users' : undefined">
+      <template v-if="$slots['title-actions']" #title-actions><slot name="title-actions" /></template>
+      <template v-if="$slots['head-actions']" #actions><slot name="head-actions" /></template>
       <ArStack :gap="4" data-part="summary">
         <ArCluster :gap="4" justify="between" align="start" data-part="header">
           <div data-part="identity">
@@ -35,10 +37,13 @@ const descriptionItems = computed(() => [
               <ArAvatar v-else :src="image" :name="name" :size="layout === 'compact' ? 'lg' : 'xl'" />
               <slot name="photo-actions" />
             </div>
-            <ArStack :gap="1">
+            <ArStack :gap="1" data-part="names">
               <ArText v-if="code" type="muted" size="sm">{{ code }}</ArText>
-              <ArTitle v-if="name" :level="3" data-part="name">{{ name }}</ArTitle>
-              <ArText v-if="kana" type="muted" size="sm">{{ kana }}</ArText>
+              <!-- 読みは氏名のすぐ上に小さく（ふりがなのように）。 -->
+              <div data-part="name-block">
+                <ArText v-if="kana" type="muted" size="sm" data-part="kana">{{ kana }}</ArText>
+                <ArTitle v-if="name" :level="3" data-part="name">{{ name }}</ArTitle>
+              </div>
               <ArCluster v-if="tags.length && !tagsLabel" :gap="1">
                 <ArTag v-for="tag in tags" :key="tag.key" :tone="tag.tone ?? 'accent'" :data-ar-palette="tag.palette" size="sm">{{ tag.label }}</ArTag>
               </ArCluster>

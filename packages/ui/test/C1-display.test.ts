@@ -381,6 +381,34 @@ describe("ArTable 列の幅は中身で変えない", () => {
   });
 });
 
+describe("ArTable 操作の列はボタンの並び＋左右12px、見出しは入りきる幅", () => {
+  it("操作の欄の幅はボタンの並びの幅に左右12pxを足した幅（測るまでは既定の幅）", async () => {
+    const rect = HTMLElement.prototype.getBoundingClientRect;
+    HTMLElement.prototype.getBoundingClientRect = function (this: HTMLElement) {
+      if (this.dataset.ar === "button") {
+        const left = this.dataset.i === "1" ? 100 : 136;
+        return { left, right: left + 30, width: 30, top: 0, bottom: 30, height: 30, x: left, y: 0, toJSON: () => ({}) } as DOMRect;
+      }
+      return rect.call(this);
+    };
+    try {
+      const w = mount(T, {
+        props: { rows: [{ id: 1, name: "山田" }], rowKey: "id", columns: [{ key: "name", title: "名前", kind: "name" }] },
+        slots: {
+          actions: () => [h("button", { "data-ar": "button", "data-i": "1" }, "編"), h("button", { "data-ar": "button", "data-i": "2" }, "削")],
+        },
+      });
+      await nextTick();
+      await nextTick();
+      // ボタン2つ（100〜166）＝66px ＋ 左右12px ＝ 90px。
+      expect(w.find('col[data-col="actions"]').attributes("style")).toContain("width: 90px");
+      expect(w.find("table").attributes("style")).toContain("width: 210px"); // jsdom は入れ物の幅が0なので、名前は詰めた幅（120px）。
+    } finally {
+      HTMLElement.prototype.getBoundingClientRect = rect;
+    }
+  });
+});
+
 describe("ArTable 表の上のボタン（toolbar）", () => {
   it("表と同じ幅の並びに入れ、右端を表の右端にそろえる", () => {
     const w = mount(T, {

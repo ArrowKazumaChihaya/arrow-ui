@@ -569,7 +569,9 @@
 [data-ar-design="remix"] .attendance_table_wrap:not([data-ui-fixed], [data-ui-fixed] *){width:calc(100% + 8px);max-width:none;margin-right:-8px}
 [data-ar-design="remix"] .attendance_table_wrap .table_wrap:not([data-ui-fixed], [data-ui-fixed] *){scrollbar-gutter:stable}
 /* 勤怠表・打刻申請：行を編集しても ✓（確定・申請）が表の右の外に隠れないよう、操作の列を右端に止める。入力段が増えても下へずれないよう上にそろえる。 */
-[data-ar-design="remix"] .attendance_table_wrap tbody td:has(.operation_col):not([data-ui-fixed], [data-ui-fixed] *){position:sticky;right:0;z-index:2;vertical-align:top;background:var(--ar-color-surface);box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
+[data-ar-design="remix"] .attendance_table_wrap tbody td:has(.operation_col):not([data-ui-fixed], [data-ui-fixed] *){position:sticky;right:0;z-index:2;vertical-align:top;background:var(--ar-color-surface);box-shadow:-6px 0 8px -6px rgba(15,23,42,0);transition:box-shadow .25s ease}
+/* 右に隠れた列がある時（表が data-scroll-more-end を付ける）だけ、止めた操作の列の左にほんのり影（新しい表と同じ）。 */
+[data-ar-design="remix"] .attendance_table_wrap [data-scroll-more-end] tbody td:has(.operation_col):not([data-ui-fixed], [data-ui-fixed] *){box-shadow:-6px 0 8px -6px rgba(15,23,42,.18)}
 [data-ar-design="remix"] .attendance_table_wrap thead th.button:not([data-ui-fixed], [data-ui-fixed] *){position:sticky;right:0;z-index:4}
 /* 並べ替えの表（古い表）：新しい表（ArTable）と同じく、掴んだ行は薄くし、落とす位置に線を出す（行は動かさない）。 */
 [data-ar-design="remix"] tbody.smooth-dnd-container>tr[data-dragging]:not([data-ui-fixed], [data-ui-fixed] *)>td{opacity:.45}

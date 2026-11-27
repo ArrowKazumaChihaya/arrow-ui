@@ -17,6 +17,7 @@ import {
   h,
   markRaw,
   nextTick,
+  onUpdated,
   onBeforeUnmount,
   onMounted,
   ref,
@@ -617,9 +618,16 @@ let scrollRo: ResizeObserver | null = null;
 onMounted(() => {
   measureScrollX();
   if (typeof ResizeObserver !== "undefined" && viewportEl.value) {
+    // 枠の大きさだけでなく表そのものの幅が変わった時（読み込み・列の開閉・幅の計算のやり直し）も、影を出すか測り直す。
     scrollRo = new ResizeObserver(() => measureScrollX());
     scrollRo.observe(viewportEl.value);
+    if (tableEl.value) scrollRo.observe(tableEl.value);
   }
+});
+// 行・編集の行・列が変わって描き直したあと：操作の列のボタンと見出しの幅を測り、影の要否も測り直す。
+onUpdated(() => {
+  measureContentWidths();
+  measureScrollX();
 });
 onBeforeUnmount(() => scrollRo?.disconnect());
 /* ---- 行の並べ替え（sortableRows） ---- */
@@ -684,7 +692,7 @@ function endDrag() {
  * ---- 列の幅：種類（kind）ごとに決まった幅（同じ種類はどの表でも同じ幅）。----
  * 列の幅は中身では変えない（行の追加・編集・0件でも同じ）。表は固定レイアウトで、はみ出す文字は「…」にし、マウスを乗せると全文を出す。
  * 表が入れ物より狭いときは、データの列を同じ割合で広げる（1.5倍まで）。それでも余るときは表を広げず左に置く。
- * 操作の列（kind:"actions"・actions の欄）はボタン2つ分の決まった幅（行が無くても取っておく）で広げない。
+ * 操作の列（kind:"actions"・actions の欄）はボタンの並び＋左右12px（測るまでは既定の幅）で、入れ物の幅では広げない。見出しは文字が入りきる幅より狭くしない。
  * 種類も幅もない列が1つでもある表は、今までどおり表の幅を自動で分け合う。
  */
 const KIND_WIDTH: Record<ArTableColumnKind, readonly [number, number]> = {
@@ -725,19 +733,105 @@ const sized = computed(
 const narrow = ref(false);
 const fontScale = ref(1);
 const stretch = ref(1);
+/** 見出しの文字が入りきる幅（測ったもの。列の種類の幅より広い見出しは「…」にせずこの幅まで広げる）。 */
+const headMin = ref<Record<string, number>>({});
 function baseOf(c: ArTableColumn<Row>): number {
-  if (c.width) return c.width * fontScale.value;
-  if (!c.kind || isFixedCol(c)) return 0;
-  return KIND_WIDTH[c.kind][narrow.value ? 1 : 0] * fontScale.value;
+  if (isFixedCol(c)) return 0;
+  const base = c.width ? c.width * fontScale.value : c.kind ? KIND_WIDTH[c.kind][narrow.value ? 1 : 0] * fontScale.value : 0;
+  return Math.max(base, headMin.value[c.key] ?? 0);
+}
+/**
+ * 操作の列のボタンの並びの幅（測ったもの。key は列の key、actions の欄は "__actions"）。
+ * 列の幅は「ボタンの並び＋左右の余白」で決め、入れ物の幅やスクロールでは変えない。一度測った幅より狭くはしない
+ * （編集の行のボタンなどで行ごとに並びが違っても、操作するたびに列の幅が動かないように）。
+ */
+const actionsContent = ref<Record<string, number>>({});
+/** 操作の列の、ボタンの左右の余白。 */
+const ACTIONS_PAD = 12;
+function actionsWidthOf(key: string, fallback: number): number {
+  const content = actionsContent.value[key];
+  return content ? Math.ceil(content) + ACTIONS_PAD * 2 : Math.round(fallback * fontScale.value);
 }
 /** 操作の列（kind:"actions"）の幅。 */
 function fixedColWidth(c: ArTableColumn<Row>): number {
-  return Math.round((c.width ?? ACTIONS_WIDTH) * fontScale.value);
+  return actionsWidthOf(c.key, c.width ?? ACTIONS_WIDTH);
 }
 /** actions の欄（slot）の幅。 */
 const actionsSlotWidth = computed(() =>
-  Math.round((props.actionsWidth ?? (editableTable.value ? EDITABLE_ACTIONS_WIDTH : ACTIONS_WIDTH)) * fontScale.value),
+  actionsWidthOf("__actions", props.actionsWidth ?? (editableTable.value ? EDITABLE_ACTIONS_WIDTH : ACTIONS_WIDTH)),
 );
+let headCanvas: CanvasRenderingContext2D | null | undefined;
+/** 見出しの文字を測るための canvas（使えない環境では null）。 */
+function headMeasureContext(): CanvasRenderingContext2D | null {
+  if (headCanvas === undefined) {
+    try {
+      headCanvas = typeof document === "undefined" ? null : document.createElement("canvas").getContext("2d");
+    } catch {
+      headCanvas = null;
+    }
+  }
+  return headCanvas;
+}
+/** 操作の列のボタンの並び（広がる時だけ書き換える）と、見出しの文字が入りきる幅を測る。 */
+function measureContentWidths(): void {
+  const t = tableEl.value;
+  if (!sized.value || !t) return;
+  const actions: Record<string, number> = { ...actionsContent.value };
+  let actionsChanged = false;
+  for (const td of Array.from(t.querySelectorAll<HTMLElement>("tbody td"))) {
+    const key = td.dataset.kind === "actions" ? td.dataset.col : td.dataset.col === "actions" ? "__actions" : undefined;
+    if (!key) continue;
+    const buttons = Array.from(td.querySelectorAll<HTMLElement>('[data-ar="button"]'));
+    if (!buttons.length) continue;
+    let left = Infinity;
+    let right = -Infinity;
+    for (const b of buttons) {
+      const r = b.getBoundingClientRect();
+      if (r.width === 0) continue;
+      left = Math.min(left, r.left);
+      right = Math.max(right, r.right);
+    }
+    const w = right - left;
+    if (w > 0 && w > (actions[key] ?? 0) + 0.5) {
+      actions[key] = w;
+      actionsChanged = true;
+    }
+  }
+  if (actionsChanged) actionsContent.value = actions;
+  const heads: Record<string, number> = { ...headMin.value };
+  let headsChanged = false;
+  const ctx = headMeasureContext();
+  for (const th of ctx ? Array.from(t.querySelectorAll<HTMLTableCellElement>("thead th[data-col-key]")) : []) {
+    const key = th.dataset.colKey;
+    const col = cols.value.find((c) => c.key === key);
+    if (!key || !col || !col.title || isFixedCol(col) || th.colSpan > 1) continue;
+    // 見出しの文字の幅はフォントから直接測る（表の並びに左右されない）。並べ替えの印・余白の分を足す。
+    const sort = th.querySelector<HTMLElement>('[data-part="sort"]');
+    const textEl = sort?.querySelector<HTMLElement>("span") ?? th;
+    const cs = getComputedStyle(textEl);
+    ctx!.font = cs.font;
+    const spacing = Number.parseFloat(cs.letterSpacing) || 0;
+    const text = ctx!.measureText(col.title).width + spacing * col.title.length;
+    const thCs = getComputedStyle(th);
+    let extra = (Number.parseFloat(thCs.paddingLeft) || 0) + (Number.parseFloat(thCs.paddingRight) || 0);
+    if (sort) {
+      const icon = sort.querySelector("svg")?.getBoundingClientRect().width ?? 0;
+      const sortCs = getComputedStyle(sort);
+      extra +=
+        icon +
+        (Number.parseFloat(sortCs.columnGap) || 0) +
+        (Number.parseFloat(sortCs.paddingLeft) || 0) +
+        (Number.parseFloat(sortCs.paddingRight) || 0);
+    }
+    const need = Math.ceil(text + extra + 2);
+    if (need !== heads[key]) {
+      heads[key] = need;
+      headsChanged = true;
+    }
+  }
+  if (headsChanged) headMin.value = heads;
+  if (actionsChanged || headsChanged) relayout();
+}
 function colWidth(c: ArTableColumn<Row>): number {
   return isFixedCol(c) ? fixedColWidth(c) : Math.floor(baseOf(c) * stretch.value);
 }
@@ -771,8 +865,16 @@ function relayout(): void {
   const root = rootEl.value;
   const vp = viewportEl.value;
   if (!root || !vp) return;
-  fontScale.value = Number.parseFloat(getComputedStyle(root).getPropertyValue("--ar-font-scale")) || 1;
-  narrow.value = root.clientWidth < NARROW_WIDTH;
+  const scale = Number.parseFloat(getComputedStyle(root).getPropertyValue("--ar-font-scale")) || 1;
+  const isNarrow = root.clientWidth < NARROW_WIDTH;
+  if (scale !== fontScale.value || isNarrow !== narrow.value) {
+    // 文字の大きさや詰めた幅が変わったら、ボタンの並びと見出しを測り直す。
+    actionsContent.value = {};
+    headMin.value = {};
+    void nextTick(() => measureContentWidths());
+  }
+  fontScale.value = scale;
+  narrow.value = isNarrow;
   const avail = root.clientWidth - (vp.offsetWidth - vp.clientWidth);
   const fixed =
     sideWidth.value +
@@ -802,6 +904,10 @@ function showClippedText(event: MouseEvent): void {
 let widthRo: ResizeObserver | null = null;
 onMounted(() => {
   relayout();
+  void nextTick(() => {
+    measureContentWidths();
+    measureScrollX();
+  });
   if (typeof ResizeObserver !== "undefined" && rootEl.value) {
     let last = -1;
     widthRo = new ResizeObserver(() => {

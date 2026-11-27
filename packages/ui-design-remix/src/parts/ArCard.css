@@ -81,3 +81,8 @@
 /* Equal-height cards keep their actions aligned even when descriptions wrap. */
 [data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]{flex-wrap:wrap;margin-top:auto}
 [data-ar-design="remix"] [data-ar="card"]>[data-part="footer"]>[data-ar="button"]{flex:1 1 140px;height:auto;min-height:44px;white-space:normal;line-height:1.5}
+/* 見出しの文字のすぐ右のボタン（社員詳細の前後の人への切り替えなど）。右端の actions とは別に、文字に続けて置く。 */
+[data-ar-design="remix"] [data-ar="card"]>[data-part="head"]>[data-part="title-actions"]{position:relative;display:flex;align-items:center;gap:6px;margin-left:12px;text-shadow:none}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="title-actions"]):has(>[data-part="actions"]:not(:empty)){grid-template-columns:auto minmax(0,1fr) auto}
+[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="title-actions"])>[data-part="title-actions"]{justify-self:start}
+@media(max-width:640px){[data-ar-design="remix"] [data-ar="card"][data-variant="band"]>[data-part="head"]:has(>[data-part="title-actions"])>[data-part="title"]{flex:0 1 auto}}

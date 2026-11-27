@@ -237,3 +237,5 @@
 /* 横に続きがある時の影：ほんのり（隠れている側の端だけ）。 */
 [data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-shade"][data-side="start"]{background:linear-gradient(to right,rgba(31,41,51,.07),transparent)}
 [data-ar-design="remix"] [data-ar="table"]>[data-part="scroll-shade"][data-side="end"]{background:linear-gradient(to left,rgba(31,41,51,.07),transparent)}
+/* 操作の列：幅は「ボタンの並び＋左右12px」（ArTable が測って決める）。余白はどの表も左右12pxにそろえる。 */
+[data-ar-design="remix"] [data-ar="table"][data-sized] tbody td:is([data-kind="actions"],[data-col="actions"]),[data-ar-design="remix"] [data-ar="table"][data-sized] tfoot td:is([data-kind="actions"],[data-col="actions"]),[data-ar-design="remix"] [data-ar="table"][data-sized] thead th:is([data-kind="actions"],[data-col="actions"]){padding-left:12px;padding-right:12px}

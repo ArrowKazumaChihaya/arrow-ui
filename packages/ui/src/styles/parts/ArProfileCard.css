@@ -21,3 +21,6 @@
 }
 [data-ar="profile-card"] [data-part="photo-button"]{display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;background:none;border-radius:50%;font:inherit;cursor:pointer}
 [data-ar="profile-card"] [data-part="photo-button"]:focus-visible{outline:2px solid var(--ar-accent);outline-offset:3px}
+/* 読みは氏名のすぐ上に小さく（ふりがなのように）、氏名と一つのまとまりにする。 */
+[data-ar="profile-card"] [data-part="name-block"]{display:flex;flex-direction:column;gap:0;min-width:0}
+[data-ar="profile-card"] [data-part="name-block"]>[data-part="kana"]{font-size:calc(11px * var(--ar-font-scale, 1));line-height:1.3}
