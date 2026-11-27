@@ -265,7 +265,7 @@ describe("ArList・ArEmpty・ArCollapse", () => {
 
 describe("ArTable 列の種類と幅", () => {
   const rows = [{ id: 1, code: "001", name: "山田", on: "2026/11/19", note: "備考" }];
-  it("全部の列に種類がある表は data-sized を付け、col に種類の幅を書き、見出しに下限を付ける", () => {
+  it("全部の列に種類がある表は data-sized を付け、col に種類の幅を書き、表の幅を列の合計で固定する", () => {
     const w = mount(T, {
       props: {
         rows,
@@ -280,10 +280,10 @@ describe("ArTable 列の種類と幅", () => {
     expect(w.find('[data-ar="table"]').attributes("data-sized")).toBe("true");
     const cols = w.findAll("colgroup col");
     expect(cols.map((c) => c.attributes("style"))).toEqual(["width: 104px;", "width: 112px;", "width: 240px;"]);
-    expect(w.findAll("thead th")[0]!.attributes("style")).toContain("min-width: 104px");
+    expect(w.find("table").attributes("style")).toContain("width: 456px");
     expect(w.findAll("thead th")[0]!.attributes("data-kind")).toBe("code");
   });
-  it("操作の列（kind: actions）は広げない（1px＝ボタンの幅ぴったり）", () => {
+  it("操作の列（kind: actions）は行が無くても決まった幅（ボタン2つ分 104px）で広げない", () => {
     const w = mount(T, {
       props: {
         rows,
@@ -295,7 +295,7 @@ describe("ArTable 列の種類と幅", () => {
       },
     });
     const cols = w.findAll("colgroup col");
-    expect(cols[1]!.attributes("style")).toContain("width: 1px");
+    expect(cols[1]!.attributes("style")).toContain("width: 104px");
     expect(cols[1]!.attributes("data-stretch")).toBeUndefined();
     expect(w.find('tbody td[data-kind="actions"]').exists()).toBe(true);
   });
@@ -362,5 +362,21 @@ describe("ArTable 見出しの表記", () => {
     expect(th.find("[data-ar-visually-hidden]").text()).toBe("内訳");
     await th.trigger("click");
     expect(w.emitted("update:openGroups")?.at(-1)).toEqual([["g"]]);
+  });
+});
+
+describe("ArTable 列の幅は中身で変えない", () => {
+  it("行が0件でも1件でも、操作の欄（actions）と各列の幅は同じ", async () => {
+    const columns = [
+      { key: "name", title: "名前", kind: "name" },
+      { key: "on", title: "日付", kind: "date" },
+    ];
+    const slots = { actions: () => h("button", "x") };
+    const empty = mount(T, { props: { rows: [], rowKey: "id", columns }, slots });
+    const one = mount(T, { props: { rows: [{ id: 1, name: "山田", on: "2026/11/27" }], rowKey: "id", columns }, slots });
+    const widths = (w: ReturnType<typeof mount>) => w.findAll("colgroup col").map((c) => c.attributes("style"));
+    expect(widths(empty)).toEqual(widths(one));
+    expect(empty.find('col[data-col="actions"]').attributes("style")).toContain("width: 104px");
+    expect(empty.find("table").attributes("style")).toBe(one.find("table").attributes("style"));
   });
 });

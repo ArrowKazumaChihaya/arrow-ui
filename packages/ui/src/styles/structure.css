@@ -89,7 +89,18 @@
 [data-ar="table"]>[data-part="viewport"]>[data-part="table"]{border-collapse:separate;border-spacing:0;width:100%}
 /* 列の幅を種類で決めた表（data-sized）：幅は ArTable が col に書く。表は列の合計の幅で、入れ物より広いときだけ横に動かす。 */
 [data-ar="table"][data-sized]>[data-part="viewport"]{width:fit-content}
-[data-ar="table"][data-sized]>[data-part="viewport"]>[data-part="table"]{width:auto}
+[data-ar="table"][data-sized]>[data-part="viewport"]>[data-part="table"]{width:auto;table-layout:fixed}
+/* 種類を決めた表：列の幅は中身で変えない。はみ出す文字は「…」（マウスを乗せると全文）。折り返す列（wrap・文の列）は幅の中で折り返す。 */
+[data-ar="table"][data-sized] :is(td[data-part="cell"],th[data-part="header-cell"]){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="table"][data-sized] :is(td[data-part="cell"],th[data-part="header-cell"]):is([data-wrap],[data-kind="text"]){white-space:normal;overflow-wrap:anywhere}
+[data-ar="table"][data-sized] :is(td[data-part="cell"],th[data-part="header-cell"])>*{max-width:100%;min-width:0}
+/* 入力欄・ボタンのあるセルは切らない（枠やフォーカスの輪が欠けないように）。 */
+[data-ar="table"][data-sized] td[data-part="cell"]:has([data-ar="button"],[data-ar="text-input"],[data-ar="select"],[data-ar="time-input"],[data-ar="date-input"],input,textarea){overflow:visible}
+[data-ar="table"][data-sized] td[data-part="cell"] [data-part="person"]{min-width:0;max-width:100%}
+[data-ar="table"][data-sized] td[data-part="cell"] [data-part="person"]>[data-part="name"]{min-width:0;overflow:hidden}
+[data-ar="table"][data-sized] td[data-part="cell"] [data-part="person"]>[data-part="name"]>*{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+[data-ar="table"][data-sized] th[data-part="header-cell"]>[data-part="sort"]{max-width:100%;min-width:0}
+[data-ar="table"][data-sized] th[data-part="header-cell"]>[data-part="sort"]>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 [data-ar="table"] th[data-kind]{box-sizing:border-box}
 /* 種類を決めた表の入力欄は列の幅の中に収める（追加・編集で入力欄が出ても列の幅を変えない）。 */
 [data-ar="table"][data-sized] td[data-part="cell"] :is([data-ar="text-input"],[data-ar="select"],[data-ar="textarea"],[data-ar="date-input"]){max-width:100%;min-width:0}

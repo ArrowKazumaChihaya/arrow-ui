@@ -19,7 +19,6 @@ import {
   nextTick,
   onBeforeUnmount,
   onMounted,
-  onUpdated,
   ref,
   useSlots,
   watch,
@@ -374,9 +373,9 @@ const editableTable = computed(() => props.columns.some((c) => "editor" in c && 
 /** 操作の列の幅。入力できる表（editor のある列がある表）は、入力の行の［取り消し］［確定］が入る分を常に取っておく（編集・追加にしても列の幅が変わらない）。 */
 /** 操作の欄の幅。幅を決めた表（sized）は、ボタンが横に並ぶ幅ぴったりにして広げない（ボタンの左に余白を作らない）。 */
 const actionsColWidth = computed(() => {
+  if (sized.value) return { width: `${actionsSlotWidth.value}px` };
   if (props.actionsWidth !== undefined) return { width: `${props.actionsWidth}px` };
   if (editableTable.value) return { width: "136px" };
-  if (sized.value) return { width: "1px" };
   return props.fit ? { width: "96px" } : undefined;
 });
 
@@ -677,13 +676,12 @@ function endDrag() {
   dropAt.value = null;
   armed.value = null;
 }
-/* ---- 列の幅：種類（kind）ごとの決まった幅。余った幅は文の列 → 操作の列 → 右端の空き列の順に受け取る ---- */
 /*
  * ---- 列の幅：種類（kind）ごとに決まった幅（同じ種類はどの表でも同じ幅）。----
+ * 列の幅は中身では変えない（行の追加・編集・0件でも同じ）。表は固定レイアウトで、はみ出す文字は「…」にし、マウスを乗せると全文を出す。
  * 表が入れ物より狭いときは、データの列を同じ割合で広げる（1.5倍まで）。それでも余るときは表を広げず左に置く。
- * 操作の列（kind:"actions"・actions の欄）はボタンが横に並ぶ幅のまま広げない。
- * 決めた幅は下限で、入れ物より広い表も列を縮めない（はみ出す分は横に動かす）。
- * 種類も幅もない列が1つでもある表は、今までどおり表の幅を自動で分け合う（board も全部の列に幅があれば同じ決まり。編集の有無で列の幅が変わらない）。
+ * 操作の列（kind:"actions"・actions の欄）はボタン2つ分の決まった幅（行が無くても取っておく）で広げない。
+ * 種類も幅もない列が1つでもある表は、今までどおり表の幅を自動で分け合う。
  */
 const KIND_WIDTH: Record<ArTableColumnKind, readonly [number, number]> = {
   select: [48, 48],
@@ -709,6 +707,11 @@ const KIND_WIDTH: Record<ArTableColumnKind, readonly [number, number]> = {
 const MAX_STRETCH = 1.5;
 /** 入れ物がこの幅より狭いときは詰めた幅（スマホ）。 */
 const NARROW_WIDTH = 640;
+/** 選択・つまみ・開閉の列の幅。 */
+const SIDE_WIDTH = { drag: 40, select: 48, expand: 40 } as const;
+/** 操作の列の既定の幅：小さいボタン2つ（32px）と間・左右の余白。入力できる表は［取り消し］［確定］の入る幅。 */
+const ACTIONS_WIDTH = 104;
+const EDITABLE_ACTIONS_WIDTH = 136;
 const isFixedCol = (c: ArTableColumn<Row>) => c.kind === "actions";
 const sized = computed(
   () =>
@@ -723,113 +726,89 @@ function baseOf(c: ArTableColumn<Row>): number {
   if (!c.kind || isFixedCol(c)) return 0;
   return KIND_WIDTH[c.kind][narrow.value ? 1 : 0] * fontScale.value;
 }
+/** 操作の列（kind:"actions"）の幅。 */
+function fixedColWidth(c: ArTableColumn<Row>): number {
+  return Math.round((c.width ?? ACTIONS_WIDTH) * fontScale.value);
+}
+/** actions の欄（slot）の幅。 */
+const actionsSlotWidth = computed(() =>
+  Math.round((props.actionsWidth ?? (editableTable.value ? EDITABLE_ACTIONS_WIDTH : ACTIONS_WIDTH)) * fontScale.value),
+);
+function colWidth(c: ArTableColumn<Row>): number {
+  return isFixedCol(c) ? fixedColWidth(c) : Math.floor(baseOf(c) * stretch.value);
+}
 /** 列の幅（col の style）。 */
 function colStyle(c: ArTableColumn<Row>): Record<string, string> | undefined {
   if (!sized.value) return c.width ? { width: `${c.width}px` } : undefined;
-  if (isFixedCol(c)) return { width: "1px" };
-  return { width: `${Math.round(baseOf(c) * stretch.value)}px` };
+  return { width: `${colWidth(c)}px` };
 }
-/** 見出しのセルの下限（決めた幅より縮めない）。 */
-/**
- * 一度広がった列は縮めない（追加・編集で入力欄やボタンが出て列が広がったあと、確定・取り消しで元の幅に戻ってガタつかないように）。
- * 入れ物の幅が変わったとき・列が変わったときは測り直す。
- */
-const widest = ref<Record<string, number>>({});
-function rememberWidths(): void {
-  if (!sized.value) return;
-  const head = tableEl.value?.querySelector("thead");
-  if (!head) return;
-  const next = { ...widest.value };
-  let changed = false;
-  for (const th of Array.from(head.querySelectorAll<HTMLElement>("th[data-col-key]"))) {
-    const key = th.dataset.colKey ?? "";
-    const w = Math.round(th.getBoundingClientRect().width);
-    if (w > (next[key] ?? 0)) {
-      next[key] = w;
-      changed = true;
-    }
-  }
-  if (changed) widest.value = next;
-}
-function headMin(c: ArTableColumn<Row>): Record<string, string> | undefined {
+const sideWidth = computed(
+  () =>
+    (handleColumn.value ? SIDE_WIDTH.drag : 0) +
+    (props.selectable ? SIDE_WIDTH.select : 0) +
+    (props.expandable ? SIDE_WIDTH.expand : 0),
+);
+/** 種類を決めた表の幅（列の幅の合計。中身では変わらない）。 */
+const tableStyle = computed(() => {
   if (!sized.value) return undefined;
-  const seen = widest.value[c.key];
-  const base = isFixedCol(c) ? 0 : Math.round(baseOf(c));
-  const min = Math.max(base, seen ?? 0);
-  return min > 0 ? { minWidth: `${min}px` } : undefined;
-}
-const actionsHeadMin = computed(() => {
-  const seen = widest.value.__actions;
-  return sized.value && seen ? { minWidth: `${seen}px` } : undefined;
+  const total =
+    sideWidth.value +
+    cols.value.reduce((sum, c) => sum + colWidth(c), 0) +
+    (hasActions.value ? actionsSlotWidth.value : 0);
+  return { width: `${total}px` };
 });
 const stretchCols = computed(() => cols.value.filter((c) => !isFixedCol(c)));
-function measureNow(): { avail: number; table: number; data: number; current: number } | null {
+function relayout(): void {
+  if (!sized.value) return;
   const root = rootEl.value;
   const vp = viewportEl.value;
-  const table = tableEl.value;
-  if (!root || !vp || !table) return null;
-  const border = vp.offsetWidth - vp.clientWidth;
-  const avail = root.clientWidth - border;
-  const current = Array.from(table.querySelectorAll<HTMLElement>("col[data-stretch]")).reduce(
-    (sum, col) => sum + col.getBoundingClientRect().width,
-    0,
-  );
+  if (!root || !vp) return;
+  fontScale.value = Number.parseFloat(getComputedStyle(root).getPropertyValue("--ar-font-scale")) || 1;
+  narrow.value = root.clientWidth < NARROW_WIDTH;
+  const avail = root.clientWidth - (vp.offsetWidth - vp.clientWidth);
+  const fixed =
+    sideWidth.value +
+    cols.value.filter(isFixedCol).reduce((sum, c) => sum + fixedColWidth(c), 0) +
+    (hasActions.value ? actionsSlotWidth.value : 0);
   const data = stretchCols.value.reduce((sum, c) => sum + baseOf(c), 0);
-  return { avail, table: table.getBoundingClientRect().width, data, current };
+  stretch.value = data > 0 ? Math.min(MAX_STRETCH, Math.max(1, (avail - fixed) / data)) : 1;
 }
-let relayoutPending = false;
-async function relayout() {
-  if (!sized.value || relayoutPending) return;
-  relayoutPending = true;
-  widest.value = {};
-  try {
-    const root = rootEl.value;
-    if (!root) return;
-    fontScale.value = Number.parseFloat(getComputedStyle(root).getPropertyValue("--ar-font-scale")) || 1;
-    narrow.value = root.clientWidth < NARROW_WIDTH;
-    await nextTick();
-    // 2回まで：固定の列（操作など）の幅を測ってから割合を決め、中身で列が広がってはみ出したら割合を戻す。
-    for (let i = 0; i < 2; i++) {
-      const m = measureNow();
-      if (!m || m.data <= 0) {
-        stretch.value = 1;
-        return;
-      }
-      const fixed = m.table - m.current;
-      const want = Math.min(MAX_STRETCH, Math.max(1, (m.avail - fixed) / m.data));
-      const over = i === 0 ? 0 : Math.max(0, m.table - m.avail);
-      const next = Math.max(1, Math.min(want, stretch.value - over / m.data));
-      if (Math.abs(next - stretch.value) < 0.001 && i > 0) return;
-      stretch.value = i === 0 ? want : next;
-      await nextTick();
-    }
-  } finally {
-    relayoutPending = false;
-    await nextTick();
-    rememberWidths();
+/** はみ出して「…」になったセルには、マウスを乗せた時に全文を出す（title）。 */
+function showClippedText(event: MouseEvent): void {
+  if (!sized.value || !(event.target instanceof Element)) return;
+  const cell = event.target.closest<HTMLElement>("td,th");
+  if (!cell || !tableEl.value?.contains(cell)) return;
+  // 切れている要素（いちばん内側）の文字だけを出す（氏名の頭文字の丸などは入れない）。
+  const clipped = [cell, ...Array.from(cell.querySelectorAll<HTMLElement>("*"))]
+    .filter((el) => el.scrollWidth > el.clientWidth + 1 && getComputedStyle(el).textOverflow === "ellipsis")
+    .pop();
+  const text = (clipped?.innerText ?? "").replace(/\s+/g, " ").trim();
+  if (clipped && text) {
+    cell.title = text;
+    cell.dataset.clipTitle = "";
+  } else if (cell.dataset.clipTitle !== undefined) {
+    cell.removeAttribute("title");
+    delete cell.dataset.clipTitle;
   }
 }
-onUpdated(() => {
-  if (!relayoutPending) rememberWidths();
-});
 let widthRo: ResizeObserver | null = null;
 onMounted(() => {
-  void relayout();
+  relayout();
   if (typeof ResizeObserver !== "undefined" && rootEl.value) {
     let last = -1;
     widthRo = new ResizeObserver(() => {
       const w = rootEl.value?.clientWidth ?? 0;
       if (w === last) return;
       last = w;
-      void relayout();
+      relayout();
     });
     widthRo.observe(rootEl.value);
   }
 });
 onBeforeUnmount(() => widthRo?.disconnect());
 watch(
-  () => [cols.value.map((c) => `${c.key}:${c.kind ?? ""}:${c.width ?? ""}`).join(","), props.rows.length],
-  () => void relayout(),
+  () => cols.value.map((c) => `${c.key}:${c.kind ?? ""}:${c.width ?? ""}`).join(","),
+  () => relayout(),
 );
 const colspan = computed(
   () =>
@@ -856,16 +835,16 @@ const colspan = computed(
     :data-scrolled-x="scrolledX"
   >
     <div ref="viewportEl" data-part="viewport" role="region" :aria-label="caption" tabindex="0" @scroll.passive="measureScrollX">
-      <table ref="tableEl" data-part="table">
+      <table ref="tableEl" data-part="table" :style="tableStyle" @mouseover="showClippedText">
         <caption data-ar-visually-hidden>
           {{
             caption
           }}
         </caption>
         <colgroup>
-          <col v-if="handleColumn" data-col="drag" />
-          <col v-if="selectable" data-col="select" />
-          <col v-if="expandable" data-col="expand" />
+          <col v-if="handleColumn" data-col="drag" :style="sized ? { width: `${SIDE_WIDTH.drag}px` } : undefined" />
+          <col v-if="selectable" data-col="select" :style="sized ? { width: `${SIDE_WIDTH.select}px` } : undefined" />
+          <col v-if="expandable" data-col="expand" :style="sized ? { width: `${SIDE_WIDTH.expand}px` } : undefined" />
           <col
             v-for="c in cols"
             :key="c.key"
@@ -963,7 +942,7 @@ const colspan = computed(
                 :data-sticky="stickAttr(h.col)"
                 :data-sticky-key="stickAttr(h.col) ? h.col.key : undefined"
                 :data-sticky-edge="edgeAttr(h.col)"
-                :style="[stickStyle(h.col), sized ? headMin(h.col) : !fit && h.col.width ? { minWidth: `${h.col.width}px` } : undefined]"
+                :style="[stickStyle(h.col), !sized && !fit && h.col.width ? { minWidth: `${h.col.width}px` } : undefined]"
                 :aria-sort="ariaSort(h.col)"
                 :data-person="h.col.avatar ? (h.col.sub ? 'with-sub' : 'single') : undefined"
                 :data-total="h.col.total || undefined"
@@ -1037,7 +1016,6 @@ const colspan = computed(
               data-align="end"
               scope="col"
               :rowspan="headSpan"
-              :style="actionsHeadMin"
             >
               <span data-ar-visually-hidden>{{ L.actions }}</span>
             </th>
@@ -1054,7 +1032,6 @@ const colspan = computed(
                 :data-group-start="groupStart(h.col) || undefined"
                 :data-kind="h.col.kind"
                 :data-col-key="h.col.key"
-                :style="headMin(h.col)"
                 :aria-sort="ariaSort(h.col)"
               >
                 <slot :name="`head-${h.col.key}`" :column="h.col">
